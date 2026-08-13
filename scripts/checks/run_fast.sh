@@ -196,21 +196,28 @@ done <"$skipped_file"
 
 cd "$repo_root"
 run_count=0
-failure=0
+keep_going=${HERMES_KEEP_GOING:-0}
+failures=()
 while IFS=$'\t' read -r name command reason; do
     echo "== $name"
     if bash -c "$command"; then
         run_count=$((run_count + 1))
     else
         status=$?
-        echo "FAST LANE FAILED: $name exited $status" >&2
-        failure=$status
-        break
+        failures+=("$name (exit $status)")
+        if [[ "$keep_going" != 1 ]]; then
+            echo "FAST LANE FAILED: $name exited $status" >&2
+            exit "$status"
+        fi
     fi
 done <"$selected_file"
 
 skip_count=$(wc -l <"$skipped_file" | tr -d ' ')
-if (( failure != 0 )); then
-    exit "$failure"
+if (( ${#failures[@]} )); then
+    printf 'FAST LANE FAILED %d check(s):\n' "${#failures[@]}" >&2
+    for index in "${!failures[@]}"; do
+        printf '  %d. %s\n' "$((index + 1))" "${failures[$index]}" >&2
+    done
+    exit 1
 fi
 echo "FAST LANE: $run_count run, $skip_count skipped — full chain remains the commit gate."

@@ -95,6 +95,7 @@ pusu('IM-G3-U3-L7', pass).
 pusu('IM-G3-U3-L8', pass).
 pusu('IM-G3-U3-L9', pass).
 pusu('IM-G3-U3-L11', pass).
+pusu('IM-G3-U3-L12', pass).
 pusu('IM-G3-U3-L16', pass).
 pusu('IM-G3-U4-L3', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G3-U4-L4', pass).
@@ -132,7 +133,7 @@ pusu('IM-G4-U2-L3', pass).
 pusu('IM-G4-U2-L5', pass).
 pusu('IM-G4-U2-L9', pass).
 pusu('IM-G4-U2-L16', pass).
-pusu('IM-G4-U3-L1', broken(execute_mismatch, 'a productive task did not execute')).
+pusu('IM-G4-U3-L1', pass).
 pusu('IM-G4-U3-L8', pass).
 pusu('IM-G4-U3-L16', pass).
 pusu('IM-G4-U4-L9', broken(contrast_cannot_run, 'no attached executable contrast route')).
@@ -256,7 +257,7 @@ pusu('IM-G1-U3-L20', pass).
 pusu('IM-G1-U3-L22', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U3-L23', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U3-L24', pass).
-pusu('IM-G1-U3-L25', broken(execute_mismatch, 'a productive task did not execute')).
+pusu('IM-G1-U3-L25', pass).
 pusu('IM-G1-U3-L26', broken(contrast_cannot_run, 'no attached executable contrast route')).
 pusu('IM-G1-U3-L27', pass).
 pusu_viability('IM-G1-U3-L27', 'flip_subtraction_order', o(context(minuend_at_least_subtrahend)), found('subtract(1,2)')).

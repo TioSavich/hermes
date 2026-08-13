@@ -1,0 +1,405 @@
+{
+  "builder_version": "wave5-row-map-v4-sentence-bounded-source",
+  "g8": {
+    "mapped": 0,
+    "unmappable_by_family": {
+      "curriculum_task": 321
+    },
+    "usable": 321
+  },
+  "legacy_falsifier": {
+    "correct": 1782,
+    "execution_limit": 1,
+    "magnitude_refused": 28,
+    "per_family": {
+      "add": {
+        "correct": 650,
+        "magnitude_refused": 11
+      },
+      "add_fractions": {
+        "correct": 24
+      },
+      "compare_numerals_by_place_value": {
+        "correct": 4
+      },
+      "compare_rectangle_areas": {
+        "correct": 1
+      },
+      "construct_rectangle_with_area": {
+        "correct": 1
+      },
+      "convert_measurement": {
+        "correct": 1
+      },
+      "decimal_add": {
+        "correct": 2
+      },
+      "decimal_compare": {
+        "correct": 1
+      },
+      "decimal_value": {
+        "correct": 3
+      },
+      "divide": {
+        "correct": 378,
+        "magnitude_refused": 8
+      },
+      "multiply": {
+        "correct": 329,
+        "execution_limit": 1,
+        "magnitude_refused": 1
+      },
+      "rectangle_missing_side_from_area": {
+        "correct": 1
+      },
+      "rectangle_missing_side_from_perimeter": {
+        "correct": 2
+      },
+      "rectangle_perimeter": {
+        "correct": 2
+      },
+      "rectangle_side_lengths_for_area": {
+        "correct": 2
+      },
+      "subtract": {
+        "correct": 358,
+        "magnitude_refused": 8
+      },
+      "subtract_fractions": {
+        "correct": 18
+      },
+      "unit_cube_volume": {
+        "correct": 3
+      },
+      "unit_fraction": {
+        "correct": 2
+      }
+    },
+    "post_guard_divergent_rows": [
+      {
+        "bound": 5000,
+        "id": "im_defrag_63cb47ce188220a1fa0bdb67_1",
+        "lesson": "IM-G4-U4-L10",
+        "operands": {
+          "a": 500650,
+          "b": 75
+        },
+        "operation": "productive-add(500650,75)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_ec3c3b60e84a53328cbc42ac_1",
+        "lesson": "IM-G4-U4-L10",
+        "operands": {
+          "a": 50650,
+          "b": 75
+        },
+        "operation": "productive-add(50650,75)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_fee428b5ba79e320edc24fae_1",
+        "lesson": "IM-G4-U4-L10",
+        "operands": {
+          "a": 5650,
+          "b": 75
+        },
+        "operation": "productive-add(5650,75)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_171c79588a7e40f2f49a15ae_1",
+        "lesson": "IM-G4-U4-L20",
+        "operands": {
+          "a": 142571,
+          "b": 10909
+        },
+        "operation": "productive-add(142571,10909)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_85db6b4838d90cee6eec8d99_1",
+        "lesson": "IM-G4-U4-L20",
+        "operands": {
+          "a": 7106,
+          "b": 2835
+        },
+        "operation": "productive-add(7106,2835)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_70311b6ba7e358a0806ed353_1",
+        "lesson": "IM-G4-U4-L22",
+        "operands": {
+          "a": 7000,
+          "b": 3000
+        },
+        "operation": "productive-add(7000,3000)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_8f010cbab93cf9e6303136bc_1",
+        "lesson": "IM-G4-U4-L22",
+        "operands": {
+          "a": 7180,
+          "b": 3920
+        },
+        "operation": "productive-add(7180,3920)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_f14a74e83e4e1c8779aa9fe7_1",
+        "lesson": "IM-G4-U4-L9",
+        "operands": {
+          "a": 920000,
+          "b": 3000
+        },
+        "operation": "productive-add(920000,3000)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_a33db129754d2986ebc79fa9_1",
+        "lesson": "IM-G4-U5-L14",
+        "operands": {
+          "a": 12500,
+          "b": 9000
+        },
+        "operation": "productive-add(12500,9000)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_6fda165fb49a23e82c3f622f_1",
+        "lesson": "IM-G4-U5-L14",
+        "operands": {
+          "a": 13000,
+          "b": 9900
+        },
+        "operation": "productive-add(13000,9900)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_dd8840ab30ed938d79d16e0b_1",
+        "lesson": "IM-G4-U5-L14",
+        "operands": {
+          "a": 130000,
+          "b": 99000
+        },
+        "operation": "productive-add(130000,99000)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_22da88b44b3380497dfe8788_1",
+        "lesson": "IM-G4-U6-L24",
+        "operands": {
+          "a": 50000,
+          "b": 999
+        },
+        "operation": "productive-subtract(50000,999)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_9bd5b2bfd8a2376c6570f823_1",
+        "lesson": "IM-G4-U9-L4",
+        "operands": {
+          "a": 6387,
+          "b": 129
+        },
+        "operation": "productive-subtract(6387,129)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_99603233f827358b66d52a43_1",
+        "lesson": "IM-G4-U9-L4",
+        "operands": {
+          "a": 6387,
+          "b": 4329
+        },
+        "operation": "productive-subtract(6387,4329)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_e660a5de2e40b7be0384e344_1",
+        "lesson": "IM-G4-U9-L6",
+        "operands": {
+          "a": 5280,
+          "b": 3
+        },
+        "operation": "productive-divide(5280,3)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_4bec77b0bdf59f2fddcd83f7_1",
+        "lesson": "IM-G4-U9-L8",
+        "operands": {
+          "a": 5848,
+          "b": 8
+        },
+        "operation": "productive-divide(5848,8)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_9c6ccdde8ac24c5aee8f55b0_1",
+        "lesson": "IM-G4-U9-L9",
+        "operands": {
+          "a": 25300,
+          "b": 493
+        },
+        "operation": "productive-subtract(25300,493)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_cec7668944fba3680e17f9ff_1",
+        "lesson": "IM-G4-U9-L9",
+        "operands": {
+          "a": 26000,
+          "b": 1493
+        },
+        "operation": "productive-subtract(26000,1493)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_f8ddf493b7fbefa95a4c5173_1",
+        "lesson": "IM-G4-U9-L9",
+        "operands": {
+          "a": 5300,
+          "b": 473
+        },
+        "operation": "productive-subtract(5300,473)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound_seconds": 5,
+        "id": "im_defrag_57ecff3868b0382d5d1a329f_1",
+        "lesson": "IM-G5-U4-L1",
+        "operands": {
+          "a": 600,
+          "b": 500
+        },
+        "operation": "productive-multiply(600,500)",
+        "proof_ok": true,
+        "refusal_kind": "strategy_execution_time_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_34483b2c64a16de69a99f15d_1",
+        "lesson": "IM-G6-U3-L4",
+        "operands": {
+          "a": 6300,
+          "b": 30
+        },
+        "operation": "productive-divide(6300,30)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_ea82c4159840672019e8bf4c_1",
+        "lesson": "IM-G6-U3-L4",
+        "operands": {
+          "a": 6300,
+          "b": 45
+        },
+        "operation": "productive-divide(6300,45)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_71d614ac80ff0bedf14d8eb6_1",
+        "lesson": "IM-G6-U3-L9",
+        "operands": {
+          "a": 15840,
+          "b": 16
+        },
+        "operation": "productive-divide(15840,16)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_f08105570c834dcc4b5bba03_1",
+        "lesson": "IM-G6-U3-L9",
+        "operands": {
+          "a": 15840,
+          "b": 16
+        },
+        "operation": "productive-divide(15840,16)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_2373cf0d1beace9ccb5d3f9a_1",
+        "lesson": "IM-G6-U4-L1",
+        "operands": {
+          "a": 5000,
+          "b": 10000
+        },
+        "operation": "productive-divide(5000,10000)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      },
+      {
+        "bound": 5000,
+        "id": "im_defrag_3859402c790428b3bf83efdb_1",
+        "lesson": "IM-G7-U2-L8",
+        "operands": {
+          "a": 30000,
+          "b": 1500
+        },
+        "operation": "productive-divide(30000,1500)",
+        "proof_ok": true,
+        "refusal_kind": "grounded_arithmetic_magnitude_bound"
+      }
+    ],
+    "rows": 1811
+  },
+  "pool": "curriculum/im/generated/compiled_defragged_task_instances.pl",
+  "pool_sha256": "075d90684c8c5bfc5059ee0955e3458c13447e8fe615eef76ba9828c4555b111",
+  "pool_total": 2659,
+  "status_counts": {
+    "already_complete": 834,
+    "blocked_layout": 385,
+    "blocked_missing_visual": 142,
+    "recovered": 1295,
+    "recovered_with_referent": 3
+  },
+  "usable_total": 2132
+}

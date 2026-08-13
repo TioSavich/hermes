@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 # Run every check in scripts/checks/. Each check prints PASS lines and exits
-# nonzero on failure; this runner stops at the first failure and names it.
+# nonzero on failure. The default stops at the first failure and names it;
+# HERMES_KEEP_GOING=1 runs every check and reports the failures in suite order.
 # The suite includes strict SWI-Prolog loads and Node renders; a full run
 # takes several minutes. route_behavior.py binds a loopback port.
-set -euo pipefail
+set -uo pipefail
 CHECKS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+KEEP_GOING=${HERMES_KEEP_GOING:-0}
+FAILED=()
 
 # The two Prolog checks need -g main -t halt. Loading a file whose entry point is
 # :- initialization(main, main) with -s does not run main: both checks sat in this
@@ -13,7 +16,15 @@ CHECKS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # it had not, and neither had anything else, because the check was not running.
 run() {
     echo "== $1"
-    "${@:2}"
+    if "${@:2}"; then
+        return 0
+    else
+        local status=$?
+        FAILED+=("$1 (exit $status)")
+        if [[ "$KEEP_GOING" != 1 ]]; then
+            exit "$status"
+        fi
+    fi
 }
 
 run root_resolver.py        python3 "$CHECKS_DIR/root_resolver.py"
@@ -148,5 +159,13 @@ run error_rule_automaton_join.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$C
 # Last: the manifest indexes every data artifact and the readers that open it, so
 # it describes the settled state after every other generator has run.
 run extract_data_consumption_manifest python3 "$CHECKS_DIR/../extract_data_consumption_manifest.py" --check
+
+if (( ${#FAILED[@]} )); then
+    printf 'FAILED %d check(s):\n' "${#FAILED[@]}"
+    for index in "${!FAILED[@]}"; do
+        printf '  %d. %s\n' "$((index + 1))" "${FAILED[$index]}"
+    done
+    exit 1
+fi
 
 echo "all checks passed"

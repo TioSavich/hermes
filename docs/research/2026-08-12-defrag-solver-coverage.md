@@ -87,3 +87,17 @@ direction assigns to the model. Multi-expression statements
 contribute one row per expression; correctness is per expression.
 Blocked rows (312 layout, 23 missing-visual) and the grade-8 lessons
 (guides exist, no task rows) sit outside this measurement.
+
+## Addendum: post-guard reproduction, 2026-08-12 evening
+
+The mapping was re-executed after the worker guard in commit `276910a5` at
+pool SHA-256
+`8ebb60baa9dd8eb047b012ab0b8dc5cc781635a664e8510721f6105c5b005622`.
+The post-guard legacy result is 1,782 solved, 28 magnitude-refused, and 1
+execution-limited. The magnitude refusals carry
+`grounded_arithmetic_magnitude_bound` with bound 5,000 from
+`hermes/encyclopedia.pl`; the execution-limited row is
+`multiply(600,500)` on `known_product_adjustment` under the five-second
+admitted-work limit. The 1,808 solved / 3 magnitude-refused result above was
+measured before that worker-guard commit. The family-to-machine mapping did
+not change between measurements.

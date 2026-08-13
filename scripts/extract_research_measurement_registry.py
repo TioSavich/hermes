@@ -340,8 +340,8 @@ def render_registry() -> str:
     # 36 on 2026-08-12: the defrag solver-coverage measurement entered —
     # 1,808/1,811 usable task rows run to a machine-verified correct trace
     # on their own numbers; the three refusal-line holdouts named.
-    if len(reports) != 36:
-        raise RuntimeError(f"expected 36 top-level research reports, found {len(reports)}")
+    if len(reports) != 37:
+        raise RuntimeError(f"expected 37 top-level research reports, found {len(reports)}")
     measurements = sorted(
         (measurement for report in reports for measurement in collect_measurements(report)),
         key=lambda item: (item.report, item.location, item.claim),

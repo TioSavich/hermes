@@ -19,12 +19,14 @@ from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[2]
 COMPILED = ROOT / "curriculum/im/generated/compiled_task_instances.pl"
-GRADE8_COMPILED = (
-    ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
-)
+GRADE8_COMPILED = ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
 RECOVERED = ROOT / "curriculum/im/generated/recovered_task_spans.json"
 JSON_RECOVERY_DIR = (
     ROOT / "hermes/app/runtime/experiments/docling_grade8_recovery/checkpoints"
+)
+WIDENED_VISION_CHECKPOINT_DIR = (
+    ROOT
+    / "hermes/app/runtime/experiments/docling_grade8_recovery/vision_widened/checkpoints"
 )
 OUTPUT = ROOT / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 
@@ -281,6 +283,63 @@ def span_text_for_record(record: dict, span) -> tuple[str, int, int]:
     return span.text, span.heading_line, span.end_line
 
 
+def _cited_markdown_lines(record: dict) -> list[tuple[int, str]]:
+    """Return a cited paragraph's column-clean physical lines."""
+    if record["source_kind"] != "markdown":
+        return []
+    path = ROOT / record["source"]
+    lines = path.read_text(encoding="utf-8", errors="replace").split("\n")
+    start = max(1, int(record["start"]))
+    end = min(len(lines), int(record["end"]))
+    first = lines[start - 1]
+    excerpt = record["excerpt"]
+    excerpt_at = first.find(excerpt)
+    right_column = None
+    if excerpt_at >= 0:
+        gutter = re.search(r"\s{3,}\S", first[excerpt_at + len(excerpt) :])
+        if gutter:
+            right_column = excerpt_at + len(excerpt) + gutter.start()
+    selected: list[tuple[int, str]] = []
+    for line_number in range(start, min(len(lines), end + 8) + 1):
+        raw = lines[line_number - 1]
+        if line_number > end and not raw.strip():
+            break
+        text = raw[:right_column].strip() if right_column is not None else raw.strip()
+        if text:
+            selected.append((line_number, text))
+        joined = norm(" ".join(text for _, text in selected))
+        after_excerpt = joined.partition(norm(excerpt))[2]
+        if line_number >= end and re.search(r"[.!?:;][”\"']?\s*$", after_excerpt):
+            break
+    return selected
+
+
+def _cited_markdown_text(record: dict) -> str:
+    """Return the cited source paragraph without changing its physical bytes."""
+    return norm(" ".join(text for _, text in _cited_markdown_lines(record)))
+
+
+def source_statement_for_record(record: dict, span, full: str) -> tuple[str, str]:
+    """Recover one sentence-bounded source span and name unresolved source text."""
+    excerpt = norm(record["excerpt"])
+    enclosing = norm(full)
+    if not enclosing or excerpt not in enclosing:
+        cited = _cited_markdown_text(record)
+        if excerpt and excerpt in cited:
+            enclosing = cited
+    repaired = compiler.sentence_boundary_span(enclosing, excerpt)
+    source_fragmentary = compiler.source_is_fragmentary(excerpt) or (
+        enclosing and compiler.source_is_fragmentary(enclosing)
+    )
+    if source_fragmentary:
+        return repaired.text or excerpt, "source_fragmentary"
+    if repaired.starts_mid_sentence:
+        return repaired.text, "span_starts_mid_sentence"
+    if repaired.ends_early:
+        return repaired.text, "span_ends_early"
+    return repaired.text or excerpt, "complete_source"
+
+
 def classify(rows: list[dict]) -> list[dict]:
     docs = compiler.read_teacher_guides(ROOT)
     spans = compiler.extract_student_task_spans(docs)
@@ -337,6 +396,9 @@ def classify(rows: list[dict]) -> list[dict]:
                 full_complete=False,
                 referent_recovered=False,
             )
+        row["source_statement"], row["statement_repair_class"] = (
+            source_statement_for_record(row, span, row["full"])
+        )
         row["failed_layout"] = False
         if row["source_kind"] == "markdown":
             for start, end in failed.get(row["lesson"], []):
@@ -390,8 +452,7 @@ def classify(rows: list[dict]) -> list[dict]:
     legacy_outcomes = Counter(row["outcome"] for row in legacy)
     if len(legacy) != 2146 or legacy_outcomes != EXPECTED_OUTCOMES:
         fail(
-            f"legacy scout census drift: rows={len(legacy)}, "
-            f"outcomes={legacy_outcomes}"
+            f"legacy scout census drift: rows={len(legacy)}, outcomes={legacy_outcomes}"
         )
     return results
 
@@ -521,6 +582,25 @@ def map_guide_statement(target: str, span, start: int, end: int) -> StatementMap
     return StatementMap(statement, mapped, _target_ranges(statement))
 
 
+def map_markdown_record_statement(target: str, record: dict) -> StatementMap:
+    """Map a sentence-bounded cited range that is outside its joined task span."""
+    path = record["source"]
+    selected = _cited_markdown_lines(record)
+    if not selected:
+        fail(f"empty cited markdown paragraph for {record['lesson']}")
+    start = selected[0][0]
+    end = selected[-1][0]
+    pseudo_span = compiler.StudentTaskSpan(
+        record["lesson"],
+        path,
+        start,
+        end,
+        root_position(record["position"]) or record["position"],
+        tuple(selected),
+    )
+    return map_guide_statement(target, pseudo_span, start, end)
+
+
 def _encoded_char(value: str, *, ensure_ascii: bool) -> str:
     return json.dumps(value, ensure_ascii=ensure_ascii)[1:-1]
 
@@ -648,9 +728,7 @@ def scan_compiled_file(path: Path, prefix: str, *, expected: int | None) -> list
 
 def scan_compiled_facts() -> list[dict]:
     return [
-        *scan_compiled_file(
-            COMPILED, "compiled_lesson_task_instance(", expected=2146
-        ),
+        *scan_compiled_file(COMPILED, "compiled_lesson_task_instance(", expected=2146),
         *scan_compiled_file(
             GRADE8_COMPILED, "extracted_lesson_task_instance(", expected=None
         ),
@@ -721,6 +799,88 @@ def json_recovery_records() -> dict[tuple[str, str], dict]:
                 fail(f"duplicate JSON recovery checkpoint: {key}")
             records[key] = recovery
     return records
+
+
+def vision_recovery_records() -> dict[tuple[str, str], dict]:
+    """Load narrow or widened vision provenance for recovered task rows."""
+    records = {}
+    if not JSON_RECOVERY_DIR.is_dir():
+        return records
+    for path in sorted(JSON_RECOVERY_DIR.glob("IM-G8-*.json")):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for task in payload.get("tasks", []):
+            recovery = task.get("vision_recovery")
+            if task.get("extraction_status") != "recovered" or not isinstance(
+                recovery, dict
+            ):
+                continue
+            key = (payload["lesson"], task["position"])
+            if key in records:
+                fail(f"duplicate vision recovery checkpoint: {key}")
+            checkpoints = []
+            if (
+                vision_statement_contract.recovery_provenance_class(recovery)
+                == vision_statement_contract.WIDENED_CHECKPOINT_CLASS
+            ):
+                for reading in recovery.get("readings", []):
+                    checkpoint_path = (
+                        WIDENED_VISION_CHECKPOINT_DIR
+                        / f"{reading.get('call_id', '')}.json"
+                    )
+                    if not checkpoint_path.is_file():
+                        fail(f"missing widened vision checkpoint: {checkpoint_path}")
+                    checkpoints.append(
+                        json.loads(checkpoint_path.read_text(encoding="utf-8"))
+                    )
+            records[key] = {
+                "path": path.relative_to(ROOT).as_posix(),
+                "recovery": recovery,
+                "checkpoints": checkpoints,
+            }
+    return records
+
+
+def _json_string_location(path: str, key: str, value: str) -> tuple[int, bytes]:
+    data = SOURCES.read(path)
+    matches = []
+    for ensure_ascii in (True, False):
+        encoded = json.dumps(value, ensure_ascii=ensure_ascii).encode("utf-8")
+        prefix = f'"{key}": '.encode() + encoded[:1]
+        start = 0
+        while True:
+            hit = data.find(prefix + encoded[1:], start)
+            if hit < 0:
+                break
+            matches.append((hit + len(prefix), encoded[1:-1]))
+            start = hit + 1
+    matches = list(dict.fromkeys(matches))
+    if len(matches) != 1:
+        fail(f"expected one encoded {key} value in {path}, found {len(matches)}")
+    content_start, raw = matches[0]
+    if json.loads(b'"' + raw + b'"') != value:
+        fail(f"encoded {key} value does not decode exactly in {path}")
+    return content_start, raw
+
+
+def map_widened_vision_statement(target: str, record: dict) -> StatementMap:
+    """Map widened text to its validated checkpoint-backed receipt."""
+    recovery = record["recovery"]
+    checkpoints = record["checkpoints"]
+    try:
+        vision_statement_contract.widened_statement_receipt(
+            target, recovery, checkpoints
+        )
+    except ValueError as exc:
+        fail(f"widened vision statement receipt is invalid: {exc}")
+    path = record["path"]
+    content_start, raw = _json_string_location(path, "statement", recovery["statement"])
+    return map_encoded_statement(
+        target,
+        recovery["statement"],
+        path,
+        content_start,
+        raw,
+    )
 
 
 def map_json_recovery_statement(target: str, recovery: dict) -> StatementMap:
@@ -971,6 +1131,7 @@ def _dict(tag: str, value: dict, *, atoms: set[str] = frozenset()) -> str:
 def render(results: list[dict], facts: list[dict]) -> str:
     recovered_locations = recovered_string_locations()
     json_recoveries = json_recovery_records()
+    vision_recoveries = vision_recovery_records()
     occurrence: Counter[str] = Counter()
     status_counts = Counter(STATUS[row["outcome"]] for row in results)
     lines = [
@@ -985,10 +1146,11 @@ def render(results: list[dict], facts: list[dict]) -> str:
         "          ]).",
         "",
         f"defragged_task_instance_summary({len(results)},",
-        "    counts{" + ", ".join(
-            f"{status}:{count}"
-            for status, count in sorted(status_counts.items())
-        ) + "}).",
+        "    counts{"
+        + ", ".join(
+            f"{status}:{count}" for status, count in sorted(status_counts.items())
+        )
+        + "}).",
         "",
     ]
     for row, fact in zip(results, facts):
@@ -1006,7 +1168,11 @@ def render(results: list[dict], facts: list[dict]) -> str:
             "json_task_recovered",
             "vision_task_recovered",
         }:
-            statement = row["excerpt"]
+            statement = (
+                row["source_statement"]
+                if outcome == "already_standalone"
+                else row["excerpt"]
+            )
         elif outcome in {
             "complete_task_recovered",
             "recoverable_with_referent_context",
@@ -1028,10 +1194,31 @@ def render(results: list[dict], facts: list[dict]) -> str:
                     fail(f"missing JSON recovery checkpoint: {key}")
                 mapping = map_json_recovery_statement(statement, recovery)
             elif outcome == "vision_task_recovered":
-                match = re.search(r"description_file\('([^']+)'\)", row["evidence_term"])
-                if match is None:
-                    fail("vision recovery lacks a description file")
-                mapping = map_text_file_statement(statement, match.group(1))
+                key = (row["lesson"], root_position(row["position"]))
+                vision = vision_recoveries.get(key)
+                if vision is None:
+                    fail(f"missing vision recovery checkpoint: {key}")
+                if (
+                    vision_statement_contract.recovery_provenance_class(
+                        vision["recovery"]
+                    )
+                    == vision_statement_contract.WIDENED_CHECKPOINT_CLASS
+                ):
+                    mapping = map_widened_vision_statement(statement, vision)
+                elif (
+                    vision_statement_contract.recovery_provenance_class(
+                        vision["recovery"]
+                    )
+                    == vision_statement_contract.NARROW_DESCRIPTION_CLASS
+                ):
+                    match = re.search(
+                        r"description_file\('([^']+)'\)", row["evidence_term"]
+                    )
+                    if match is None:
+                        fail("narrow vision recovery lacks a description file")
+                    mapping = map_text_file_statement(statement, match.group(1))
+                else:
+                    fail("vision recovery has an unknown provenance class")
             elif row["source_kind"] == "recovered" and span is not None:
                 key = (row["lesson"], root_position(row["position"]))
                 content_start, raw, decoded = recovered_locations[key]
@@ -1056,6 +1243,43 @@ def render(results: list[dict], facts: list[dict]) -> str:
                 mapping = compiled_excerpt_map(row, fact)
             statement = mapping.statement
             statement_segments = store.add_tokens(mapping.tokens)
+            source_statement = row["source_statement"] or statement
+            if source_statement == statement:
+                source_statement_segments = statement_segments
+            else:
+                source_mapping = None
+                try:
+                    if row["source_kind"] == "recovered" and span is not None:
+                        key = (row["lesson"], root_position(row["position"]))
+                        content_start, raw, decoded = recovered_locations[key]
+                        source_mapping = map_encoded_statement(
+                            source_statement,
+                            decoded,
+                            str(RECOVERED.relative_to(ROOT)),
+                            content_start,
+                            raw,
+                        )
+                    elif span is not None and source_statement in norm(span.text):
+                        source_mapping = map_guide_statement(
+                            source_statement,
+                            span,
+                            span.lines[0][0] if span.lines else span.heading_line,
+                            span.lines[-1][0] if span.lines else span.end_line,
+                        )
+                    elif row["source_kind"] == "markdown":
+                        source_mapping = map_markdown_record_statement(
+                            source_statement, row
+                        )
+                except SystemExit:
+                    if (
+                        row["statement_repair_class"] != "complete_source"
+                        or source_statement != norm(row["excerpt"])
+                    ):
+                        raise
+                if source_mapping is None:
+                    source_mapping = compiled_excerpt_map(row, fact)
+                source_statement = source_mapping.statement
+                source_statement_segments = store.add_tokens(source_mapping.tokens)
             referents = (
                 []
                 if outcome in {"json_task_recovered", "vision_task_recovered"}
@@ -1064,6 +1288,8 @@ def render(results: list[dict], facts: list[dict]) -> str:
             visuals = visuals_for(row, mapping, store)
         else:
             statement_segments = []
+            source_statement = row["source_statement"]
+            source_statement_segments = []
             fragment_mapping = compiled_excerpt_map(row, fact)
             referents = referents_for(row, fragment_mapping, store)
             visuals = []
@@ -1075,6 +1301,10 @@ def render(results: list[dict], facts: list[dict]) -> str:
             "complete_statement": statement,
             "statement_joiner": " ",
             "statement_segments": statement_segments,
+            "source_statement": source_statement,
+            "source_statement_joiner": " ",
+            "source_statement_segments": source_statement_segments,
+            "statement_repair_class": row["statement_repair_class"],
             "referents": referents,
             "visuals": visuals,
             "source_segments": list(store.rows.values()),
@@ -1087,7 +1317,7 @@ def render(results: list[dict], facts: list[dict]) -> str:
         rendered = _dict(
             "defragged_task",
             data,
-            atoms={"status", "blocker"},
+            atoms={"status", "blocker", "statement_repair_class"},
         )
         # source_evidence remains a Prolog term, not a lossy serialization.
         rendered = rendered[:-1] + f", source_evidence:{row['evidence_term']}}}"

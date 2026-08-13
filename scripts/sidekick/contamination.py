@@ -17,6 +17,7 @@ import argparse
 import hashlib
 import json
 import re
+from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable, Iterator
@@ -35,6 +36,9 @@ GRAM = 13
 # one item disjoint. Eight words is short enough to catch a paraphrase that
 # kept its spine and long enough not to fire on shared ordinary phrasing.
 SPLIT_GRAM = 8
+REGISTER_MIN_LESSON_DF = 3
+REGISTER_LEXICON_VERSION = "wave5-register-8gram-v1"
+REGISTER_LEXICON_PATH = RUNTIME / "contamination" / "register_8grams.json"
 HF_DATASETS = Path.home() / ".cache" / "huggingface" / "datasets"
 FORBIDDEN_PROVENANCE = ("eth-nlped", "gsm8k", "mathdial", "stepverify", "vendor/")
 WORD = re.compile(r"[a-z0-9]+")
@@ -222,6 +226,90 @@ def split_overlap(
             if gram in seen:
                 shared.append({"left": seen[gram], "right": identity, "gram": gram})
     return shared
+
+
+def derive_register_lexicon(
+    statements: Iterable[tuple[str, str]],
+    *,
+    source: str,
+    source_sha256: str,
+    size: int = SPLIT_GRAM,
+    minimum_lesson_df: int = REGISTER_MIN_LESSON_DF,
+) -> dict[str, object]:
+    """Derive register n-grams by distinct-lesson document frequency.
+
+    Repetition inside one lesson contributes once. The document-frequency
+    threshold is the complete selection rule; no phrase list is curated.
+    """
+    by_lesson: defaultdict[str, set[str]] = defaultdict(set)
+    statement_count = 0
+    for lesson, statement in statements:
+        statement_count += 1
+        by_lesson[lesson].update(grams(statement, size))
+    lesson_df: Counter[str] = Counter()
+    for lesson_grams in by_lesson.values():
+        lesson_df.update(lesson_grams)
+    entries = [
+        {"gram": gram, "lesson_document_frequency": frequency}
+        for gram, frequency in sorted(lesson_df.items())
+        if frequency >= minimum_lesson_df
+    ]
+    return {
+        "version": REGISTER_LEXICON_VERSION,
+        "gram": size,
+        "minimum_distinct_lessons": minimum_lesson_df,
+        "derivation": "all statement 8-grams occurring in at least 3 distinct lessons",
+        "split_unit": "lesson",
+        "source": source,
+        "source_sha256": source_sha256,
+        "statement_rows": statement_count,
+        "distinct_lessons": len(by_lesson),
+        "distinct_statement_grams": len(lesson_df),
+        "register_grams": len(entries),
+        "entries": entries,
+    }
+
+
+def register_lexicon_bytes(artifact: dict[str, object]) -> bytes:
+    return (json.dumps(artifact, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode()
+
+
+def load_register_lexicon(
+    path: Path = REGISTER_LEXICON_PATH,
+) -> tuple[dict[str, object], set[str]]:
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"No register lexicon at {path}. "
+            "Build it with: python3 scripts/sidekick/build_wave5_solution_mint.py"
+        )
+    artifact = json.loads(path.read_text(encoding="utf-8"))
+    if artifact.get("gram") != SPLIT_GRAM:
+        raise RuntimeError(f"register lexicon gram changed: {artifact.get('gram')}")
+    if artifact.get("minimum_distinct_lessons") != REGISTER_MIN_LESSON_DF:
+        raise RuntimeError(
+            "register lexicon lesson-frequency threshold changed: "
+            f"{artifact.get('minimum_distinct_lessons')}"
+        )
+    entries = artifact.get("entries")
+    if not isinstance(entries, list):
+        raise RuntimeError("register lexicon has no entries list")
+    lexicon = {entry["gram"] for entry in entries}
+    if artifact.get("register_grams") != len(lexicon):
+        raise RuntimeError("register lexicon count does not match its entries")
+    return artifact, lexicon
+
+
+def register_aware_split_overlap(
+    left: dict[str, str],
+    right: dict[str, str],
+    register_lexicon: set[str],
+    size: int = SPLIT_GRAM,
+) -> dict[str, list[dict[str, str]]]:
+    """Apply the train-to-held-out gate while exempting register n-grams."""
+    strict = split_overlap(left, right, size)
+    register = [hit for hit in strict if hit["gram"] in register_lexicon]
+    blocking = [hit for hit in strict if hit["gram"] not in register_lexicon]
+    return {"strict": strict, "register": register, "blocking": blocking}
 
 
 def provenance_hits(provenance: object) -> list[str]:

@@ -18,6 +18,7 @@ from scripts.curriculum import build_im_defragged_task_instances as defrag  # no
 from scripts.curriculum import compile_action_mappings as compiler  # noqa: E402
 from scripts.curriculum import extract_docling_grade as extraction  # noqa: E402
 from scripts.curriculum import recover_docling_grade8 as recovery  # noqa: E402
+from scripts.curriculum import vision_statement_contract  # noqa: E402
 from scripts.research import extract_lesson_context as context  # noqa: E402
 
 
@@ -70,6 +71,7 @@ def load_payloads(docs: list[object]) -> list[dict]:
 
 def check_source_mapping(docs: list[object], payloads: list[dict]) -> None:
     docs_by_code = {doc.code: doc for doc in docs}
+    vision_records = defrag.vision_recovery_records()
     total = 0
     blocked = Counter()
     for payload in payloads:
@@ -95,12 +97,36 @@ def check_source_mapping(docs: list[object], payloads: list[dict]) -> None:
                         assert referenced["text"] == item["raw"]
                         raw = source.read_bytes()[item["byte_start"] : item["byte_end"]]
                         assert json.loads(b'"' + raw + b'"') == item["raw"]
-                        assert recovery.normalize_item(item["kind"], item["raw"]) == item["normalized"]
-                        assert recovery.normalize_item(item["kind"], item["normalized"]) == item["normalized"]
+                        assert (
+                            recovery.normalize_item(item["kind"], item["raw"])
+                            == item["normalized"]
+                        )
+                        assert (
+                            recovery.normalize_item(item["kind"], item["normalized"])
+                            == item["normalized"]
+                        )
                 else:
                     vision = task["vision_recovery"]
                     assert vision["model"] == "gemma-4-31B-it"
-                    assert vision["call_id"].startswith("g8v_")
+                    provenance_class = (
+                        vision_statement_contract.recovery_provenance_class(vision)
+                    )
+                    if (
+                        provenance_class
+                        == vision_statement_contract.WIDENED_CHECKPOINT_CLASS
+                    ):
+                        assert vision["call_id"].startswith("g8vw_")
+                        record = vision_records[(payload["lesson"], task["position"])]
+                        receipt = vision_statement_contract.widened_statement_receipt(
+                            task["excerpt"], vision, record["checkpoints"]
+                        )
+                        assert receipt["prompt_version"] == vision["prompt_version"]
+                    else:
+                        assert (
+                            provenance_class
+                            == vision_statement_contract.NARROW_DESCRIPTION_CLASS
+                        )
+                        assert vision["call_id"].startswith("g8v_")
                 continue
             if span is None:
                 assert task["extraction_status"].startswith("blocked_")
@@ -122,8 +148,8 @@ def check_source_mapping(docs: list[object], payloads: list[dict]) -> None:
     assert total == 513, total
     assert blocked == Counter(
         {
-            "curriculum_text_absent_after_docling": 6,
-            "expression_missing_from_markdown": 135,
+            "curriculum_text_absent_after_docling": 4,
+            "expression_missing_from_markdown": 115,
             "expression_missing_without_visual": 70,
             "task_section_contains_no_curriculum_text": 3,
         }
@@ -148,7 +174,9 @@ def check_questions(payloads: list[dict]) -> None:
 
 
 def check_generated_outputs(payloads: list[dict]) -> None:
-    assert TASK_OUTPUT.read_text(encoding="utf-8") == extraction.render_tasks(8, payloads)
+    assert TASK_OUTPUT.read_text(encoding="utf-8") == extraction.render_tasks(
+        8, payloads
+    )
     assert QUESTION_OUTPUT.read_text(encoding="utf-8") == extraction.render_questions(
         8, payloads, context
     )
@@ -157,9 +185,9 @@ def check_generated_outputs(payloads: list[dict]) -> None:
     assert summary["tasks"] == 513
     assert summary["after_status_counts"] == {
         "blocked_layout": 73,
-        "blocked_missing_visual": 141,
+        "blocked_missing_visual": 119,
         "complete": 287,
-        "recovered": 12,
+        "recovered": 34,
     }
     assert summary["provider_calls"] == {"REALLMS_gemma_4_31B_it": 3}
 
@@ -188,7 +216,7 @@ def check_prolog_loads() -> None:
     prolog(
         "use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]),"
         "grade_8_extracted_task_instances:extracted_task_instance_summary(134,"
-        "counts{blocked_layout:73,blocked_missing_visual:141,complete:287,recovered:12}),"
+        "counts{blocked_layout:73,blocked_missing_visual:119,complete:287,recovered:34}),"
         "aggregate_all(count,grade_8_extracted_task_instances:"
         "extracted_lesson_task_instance(_,_,_),513)"
     )
@@ -204,8 +232,8 @@ def check_prolog_loads() -> None:
     prolog(
         "use_module(curriculum/im/generated/compiled_defragged_task_instances,[]),"
         "compiled_defragged_task_instances:defragged_task_instance_summary(2659,"
-        "counts{already_complete:834,blocked_layout:385,blocked_missing_visual:164,"
-        "recovered:1273,recovered_with_referent:3}),"
+        "counts{already_complete:834,blocked_layout:385,blocked_missing_visual:142,"
+        "recovered:1295,recovered_with_referent:3}),"
         "aggregate_all(count,(compiled_defragged_task_instances:"
         "defragged_task_instance(_,L,curriculum_task(_),D),"
         "sub_atom(L,0,5,_,'IM-G8'),get_dict(status,D,_)),513)"
@@ -242,7 +270,8 @@ def main() -> int:
     check_prolog_loads()
     print(
         "PASS Grade 8 extraction recovery: 134 lessons, 513 task sections, "
-        "11 JSON recoveries, 214 named blockers, clean Prolog loads"
+        "11 JSON recoveries, 23 vision recoveries, 192 named blockers, "
+        "clean Prolog loads"
     )
     return 0
 

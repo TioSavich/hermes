@@ -14,7 +14,6 @@
             productive_geometry_deformation/3,
             geometry_action_misconception_hook/3
           ]).
-
 :- use_module(formalization(grounded_arithmetic),
               [ integer_to_recollection/2,
                 recollection_to_integer/2,
@@ -33,6 +32,7 @@
               ]).
 :- use_module(render(polyform_tiling_scene), [polyform_tiling_render_json/2]).
 :- use_module(strategies('abstraction/kernel_gate_pilot'), [run_kernel/4]).
+:- discontiguous run_geometry_action/5.
 
 % rectangle_area_unit_iteration — gate(positive integer row and column counts
 % in a rectangular unit-square array, with the product interpreted as square
@@ -617,6 +617,15 @@ run_geometry_action(rectangular_prism_volume_layer_iteration,
     positive_integer(Length),
     positive_integer(Width),
     positive_integer(Height),
+    Magnitude is Length * Width * Height,
+    rectangular_prism_volume_layer_iteration_bound(Bound),
+    rectangular_prism_volume_layer_iteration_result(
+        Magnitude, Bound, Length, Width, Height, Outcome, Trace).
+
+rectangular_prism_volume_layer_iteration_result(
+        Magnitude, Bound, Length, Width, Height, Outcome, Trace) :-
+    Magnitude =< Bound,
+    !,
     grounded_product(Length, Width, BaseArea),
     grounded_product(BaseArea, Height, Volume),
     solid_net_render_json(unit_cube_stack(Length, Width, Height), Scene),
@@ -641,6 +650,10 @@ run_geometry_action(rectangular_prism_volume_layer_iteration,
               iterate_height_layers(Height),
               count_cubic_units(Volume)
             ].
+rectangular_prism_volume_layer_iteration_result(
+        Magnitude, Bound, Length, Width, Height, Outcome, []) :-
+    rectangular_prism_volume_refusal(
+        Length, Width, Height, Magnitude, Bound, Outcome).
 run_geometry_action(rectangular_prism_missing_dimension_from_volume,
                     volume(Volume), known_base(Length, Width), Outcome, Trace) :-
     positive_integer(Volume), positive_integer(Length), positive_integer(Width),
@@ -1922,6 +1935,33 @@ grounded_product(A, B, Product) :-
     integer_to_recollection(B, RB),
     multiply_grounded(RA, RB, RP),
     recollection_to_integer(RP, Product).
+
+% Repeated 50-by-50-by-50 probes complete under the grounded unary kernel.
+% This conservative ceiling admits that measured witness and refuses larger
+% recollections before constructing them.
+rectangular_prism_volume_layer_iteration_bound(125000).
+
+rectangular_prism_volume_refusal(Length, Width, Height, Magnitude, Bound,
+        _{
+            strategy: "rectangular_prism_volume_layer_iteration",
+            ok: false,
+            representation: "fsm",
+            result: "",
+            steps: [],
+            jumps: [],
+            error: Message,
+            note: Message,
+            refusal: _{
+                kind: "grounded_arithmetic_magnitude_bound",
+                operation: "geometry",
+                input_kind: "rectangular_prism_volume_layer_iteration",
+                magnitude: Magnitude,
+                bound: Bound
+            }
+        }) :-
+    format(string(Message),
+           "Rectangular-prism volume ~w (~wx~wx~w) exceeds this grounded-arithmetic machine's bound of ~w cubic units.",
+           [Magnitude, Length, Width, Height, Bound]).
 
 grounded_sum(A, B, Sum) :-
     integer_to_recollection(A, RA),

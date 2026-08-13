@@ -111,7 +111,7 @@
    "work_units": 70
   },
   {
-   "lessons": 94,
+   "lessons": 93,
    "lessons_per_unit": 1,
    "next_rung": "diagnostic_ready",
    "population": [
@@ -145,7 +145,6 @@
     "IM-G3-U1-L5",
     "IM-G3-U2-L3",
     "IM-G3-U3-L10",
-    "IM-G3-U3-L12",
     "IM-G3-U4-L1",
     "IM-G3-U4-L10",
     "IM-G3-U4-L14",
@@ -212,7 +211,7 @@
    ],
    "rank": 4,
    "single_blocker": "Each lesson lacks only a source-backed structured negative; the registry candidate alone is not lesson-specific evidence.",
-   "work_units": 94
+   "work_units": 93
   }
  ],
  "cuts": {
@@ -340,17 +339,17 @@
    "number_and_operations_base_ten": {
     "canonical_denominator": 312,
     "counts": {
-     "diagnostic_ready": 152,
+     "diagnostic_ready": 153,
      "executable_task": 181,
      "has_candidates": 153,
      "in_canonical_corpus": 312,
      "measured_transition": 181,
      "readable": 312,
-     "strict_and_wired": 96,
-     "strict_conjunction": 96,
-     "wired_misconception_reachable": 103
+     "strict_and_wired": 98,
+     "strict_conjunction": 98,
+     "wired_misconception_reachable": 104
     },
-    "diagnostic_scope_denominator": 152,
+    "diagnostic_scope_denominator": 153,
     "label": "number_and_operations_base_ten",
     "reader_status": {
      "checked_and_empty_no_candidate": 159,
@@ -366,8 +365,8 @@
      "in_canonical_corpus": 132,
      "measured_transition": 35,
      "readable": 132,
-     "strict_and_wired": 14,
-     "strict_conjunction": 14,
+     "strict_and_wired": 15,
+     "strict_conjunction": 15,
      "wired_misconception_reachable": 15
     },
     "diagnostic_scope_denominator": 22,
@@ -400,17 +399,17 @@
    "operations_and_algebraic_thinking": {
     "canonical_denominator": 318,
     "counts": {
-     "diagnostic_ready": 135,
+     "diagnostic_ready": 136,
      "executable_task": 173,
      "has_candidates": 151,
      "in_canonical_corpus": 318,
      "measured_transition": 173,
      "readable": 318,
-     "strict_and_wired": 87,
-     "strict_conjunction": 87,
-     "wired_misconception_reachable": 91
+     "strict_and_wired": 89,
+     "strict_conjunction": 89,
+     "wired_misconception_reachable": 92
     },
-    "diagnostic_scope_denominator": 135,
+    "diagnostic_scope_denominator": 136,
     "label": "operations_and_algebraic_thinking",
     "reader_status": {
      "checked_and_empty_no_candidate": 167,
@@ -468,8 +467,8 @@
      "in_canonical_corpus": 148,
      "measured_transition": 83,
      "readable": 148,
-     "strict_and_wired": 54,
-     "strict_conjunction": 54,
+     "strict_and_wired": 55,
+     "strict_conjunction": 55,
      "wired_misconception_reachable": 55
     },
     "diagnostic_scope_denominator": 68,
@@ -528,8 +527,8 @@
        "in_canonical_corpus": 28,
        "measured_transition": 21,
        "readable": 28,
-       "strict_and_wired": 13,
-       "strict_conjunction": 13,
+       "strict_and_wired": 14,
+       "strict_conjunction": 14,
        "wired_misconception_reachable": 14
       },
       "diagnostic_scope_denominator": 18,
@@ -846,17 +845,17 @@
    "3": {
     "canonical_denominator": 143,
     "counts": {
-     "diagnostic_ready": 52,
+     "diagnostic_ready": 53,
      "executable_task": 66,
      "has_candidates": 59,
      "in_canonical_corpus": 143,
      "measured_transition": 66,
      "readable": 143,
-     "strict_and_wired": 32,
-     "strict_conjunction": 32,
-     "wired_misconception_reachable": 33
+     "strict_and_wired": 33,
+     "strict_conjunction": 33,
+     "wired_misconception_reachable": 34
     },
-    "diagnostic_scope_denominator": 52,
+    "diagnostic_scope_denominator": 53,
     "label": "3",
     "reader_status": {
      "checked_and_empty_no_candidate": 84,
@@ -906,17 +905,17 @@
      "3": {
       "canonical_denominator": 21,
       "counts": {
-       "diagnostic_ready": 10,
+       "diagnostic_ready": 11,
        "executable_task": 12,
        "has_candidates": 11,
        "in_canonical_corpus": 21,
        "measured_transition": 12,
        "readable": 21,
-       "strict_and_wired": 9,
-       "strict_conjunction": 9,
-       "wired_misconception_reachable": 9
+       "strict_and_wired": 10,
+       "strict_conjunction": 10,
+       "wired_misconception_reachable": 10
       },
-      "diagnostic_scope_denominator": 10,
+      "diagnostic_scope_denominator": 11,
       "label": "G3U3",
       "reader_status": {
        "checked_and_empty_no_candidate": 10,
@@ -1034,8 +1033,8 @@
      "in_canonical_corpus": 151,
      "measured_transition": 56,
      "readable": 151,
-     "strict_and_wired": 21,
-     "strict_conjunction": 21,
+     "strict_and_wired": 22,
+     "strict_conjunction": 22,
      "wired_misconception_reachable": 27
     },
     "diagnostic_scope_denominator": 44,
@@ -1094,8 +1093,8 @@
        "in_canonical_corpus": 20,
        "measured_transition": 6,
        "readable": 20,
-       "strict_and_wired": 2,
-       "strict_conjunction": 2,
+       "strict_and_wired": 3,
+       "strict_conjunction": 3,
        "wired_misconception_reachable": 3
       },
       "diagnostic_scope_denominator": 3,
@@ -2222,17 +2221,17 @@
    "K-5": {
     "canonical_denominator": 879,
     "counts": {
-     "diagnostic_ready": 262,
+     "diagnostic_ready": 263,
      "executable_task": 342,
      "has_candidates": 298,
      "in_canonical_corpus": 879,
      "measured_transition": 342,
      "readable": 879,
-     "strict_and_wired": 177,
-     "strict_conjunction": 177,
-     "wired_misconception_reachable": 186
+     "strict_and_wired": 180,
+     "strict_conjunction": 180,
+     "wired_misconception_reachable": 187
     },
-    "diagnostic_scope_denominator": 262,
+    "diagnostic_scope_denominator": 263,
     "label": "K-5",
     "reader_status": {
      "checked_and_empty_no_candidate": 581,
@@ -2244,17 +2243,17 @@
    "addition": {
     "canonical_denominator": 489,
     "counts": {
-     "diagnostic_ready": 213,
+     "diagnostic_ready": 214,
      "executable_task": 276,
      "has_candidates": 229,
      "in_canonical_corpus": 489,
      "measured_transition": 276,
      "readable": 489,
-     "strict_and_wired": 139,
-     "strict_conjunction": 139,
-     "wired_misconception_reachable": 147
+     "strict_and_wired": 141,
+     "strict_conjunction": 141,
+     "wired_misconception_reachable": 148
     },
-    "diagnostic_scope_denominator": 213,
+    "diagnostic_scope_denominator": 214,
     "label": "addition",
     "reader_status": {
      "checked_and_empty_no_candidate": 260,
@@ -2350,8 +2349,8 @@
      "in_canonical_corpus": 101,
      "measured_transition": 28,
      "readable": 101,
-     "strict_and_wired": 10,
-     "strict_conjunction": 10,
+     "strict_and_wired": 11,
+     "strict_conjunction": 11,
      "wired_misconception_reachable": 11
     },
     "diagnostic_scope_denominator": 16,
@@ -2424,17 +2423,17 @@
    "multiplication": {
     "canonical_denominator": 223,
     "counts": {
-     "diagnostic_ready": 118,
+     "diagnostic_ready": 119,
      "executable_task": 165,
      "has_candidates": 106,
      "in_canonical_corpus": 223,
      "measured_transition": 165,
      "readable": 223,
-     "strict_and_wired": 74,
-     "strict_conjunction": 74,
-     "wired_misconception_reachable": 82
+     "strict_and_wired": 76,
+     "strict_conjunction": 76,
+     "wired_misconception_reachable": 83
     },
-    "diagnostic_scope_denominator": 118,
+    "diagnostic_scope_denominator": 119,
     "label": "multiplication",
     "reader_status": {
      "checked_and_empty_no_candidate": 117,
@@ -2484,17 +2483,17 @@
    "subtraction": {
     "canonical_denominator": 236,
     "counts": {
-     "diagnostic_ready": 138,
+     "diagnostic_ready": 139,
      "executable_task": 179,
      "has_candidates": 146,
      "in_canonical_corpus": 236,
      "measured_transition": 179,
      "readable": 236,
-     "strict_and_wired": 93,
-     "strict_conjunction": 93,
-     "wired_misconception_reachable": 99
+     "strict_and_wired": 95,
+     "strict_conjunction": 95,
+     "wired_misconception_reachable": 100
     },
-    "diagnostic_scope_denominator": 138,
+    "diagnostic_scope_denominator": 139,
     "label": "subtraction",
     "reader_status": {
      "checked_and_empty_no_candidate": 90,
@@ -2599,7 +2598,7 @@
     "lessons": 907,
     "reason": "missing_measured_transition"
    },
-   "count": 300,
+   "count": 301,
    "definition": "The evidence ledger has standard action, strategy, compiled executable task, structured negative, and resolved Atlas transition fields.",
    "denominator": 1308,
    "denominator_source": "data/learningcommons/derived/im_k8_spine.json",
@@ -2608,7 +2607,7 @@
     "missing_measured_transition": 907,
     "missing_standard_action_candidate": 36,
     "missing_strategy_evidence": 351,
-    "missing_structured_negative": 862
+    "missing_structured_negative": 861
    },
    "id": "diagnostic_ready"
   },
@@ -2617,15 +2616,15 @@
     "lessons": 70,
     "reason": "broken(contrast_cannot_run)"
    },
-   "count": 203,
+   "count": 206,
    "definition": "The PUSU engine reports pass: all compiled productive tasks run and at least one active contrast route exists, with every active contrast separating, context-valid, or a verified normative trace.",
-   "denominator": 300,
+   "denominator": 301,
    "denominator_source": "data/learningcommons/derived/im_lesson_evidence.json diagnostic_ready population",
    "failure_reason_counts": {
     "broken(battery_absent)": 1,
     "broken(contrast_cannot_run)": 70,
     "broken(diagnosis_wrong_error)": 1,
-    "broken(execute_mismatch)": 12,
+    "broken(execute_mismatch)": 10,
     "broken(vacuous_pair)": 1,
     "cannot_separate_at_value_layer": 1,
     "needs_separating_numerals": 1,
@@ -2638,16 +2637,16 @@
     "lessons": 83,
     "reason": "no_machine_reached_live_contrast"
    },
-   "count": 203,
+   "count": 206,
    "definition": "The lesson passes PUSU and has a contrast route whose machine reached separates, agrees_at_input, or normative_contrast.",
-   "denominator": 300,
+   "denominator": 301,
    "denominator_source": "data/learningcommons/derived/im_lesson_evidence.json diagnostic_ready population",
    "failure_reason_counts": {
-    "live_contrast_but_strict_conjunction_failed": 14,
+    "live_contrast_but_strict_conjunction_failed": 12,
     "no_machine_reached_live_contrast": 83
    },
    "id": "strict_and_wired",
-   "raw_wired_reachable_count": 217
+   "raw_wired_reachable_count": 218
   }
  ],
  "lessons": [
@@ -8026,8 +8025,8 @@
     "contrast_count": 0,
     "live_contrast_count": 0,
     "live_sources": [],
-    "productive_runs": 2,
-    "productive_total": 2,
+    "productive_runs": 4,
+    "productive_total": 4,
     "verdict": "broken(contrast_cannot_run)"
    },
    "reader": {
@@ -9875,13 +9874,13 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 2,
-    "live_contrast_count": 2,
+    "contrast_count": 4,
+    "live_contrast_count": 4,
     "live_sources": [
      "registered_misconception_rule"
     ],
-    "productive_runs": 2,
-    "productive_total": 2,
+    "productive_runs": 4,
+    "productive_total": 4,
     "verdict": "pass"
    },
    "reader": {
@@ -10618,8 +10617,8 @@
     "live_sources": [
      "receipt_contrast_route"
     ],
-    "productive_runs": 1,
-    "productive_total": 1,
+    "productive_runs": 3,
+    "productive_total": 3,
     "verdict": "pass"
    },
    "reader": {
@@ -10815,8 +10814,8 @@
     "live_sources": [
      "receipt_contrast_route"
     ],
-    "productive_runs": 3,
-    "productive_total": 3,
+    "productive_runs": 5,
+    "productive_total": 5,
     "verdict": "pass"
    },
    "reader": {
@@ -12052,8 +12051,8 @@
     "live_sources": [
      "compiled_deformation_task"
     ],
-    "productive_runs": 2,
-    "productive_total": 2,
+    "productive_runs": 4,
+    "productive_total": 4,
     "verdict": "pass"
    },
    "reader": {
@@ -12131,8 +12130,8 @@
     "live_sources": [
      "compiled_deformation_task"
     ],
-    "productive_runs": 1,
-    "productive_total": 1,
+    "productive_runs": 4,
+    "productive_total": 4,
     "verdict": "pass"
    },
    "reader": {
@@ -12206,14 +12205,14 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 2,
-    "live_contrast_count": 2,
+    "contrast_count": 3,
+    "live_contrast_count": 3,
     "live_sources": [
      "compiled_deformation_task",
      "registered_misconception_rule"
     ],
-    "productive_runs": 1,
-    "productive_total": 1,
+    "productive_runs": 3,
+    "productive_total": 3,
     "verdict": "pass"
    },
    "reader": {
@@ -12290,8 +12289,8 @@
     "contrast_count": 0,
     "live_contrast_count": 0,
     "live_sources": [],
-    "productive_runs": 4,
-    "productive_total": 4,
+    "productive_runs": 5,
+    "productive_total": 5,
     "verdict": "broken(contrast_cannot_run)"
    },
    "reader": {
@@ -14106,14 +14105,14 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 3,
-    "live_contrast_count": 3,
+    "contrast_count": 4,
+    "live_contrast_count": 4,
     "live_sources": [
      "compiled_deformation_task",
      "registered_misconception_rule"
     ],
-    "productive_runs": 2,
-    "productive_total": 2,
+    "productive_runs": 3,
+    "productive_total": 3,
     "verdict": "pass"
    },
    "reader": {
@@ -14468,14 +14467,14 @@
     "multiplication"
    ],
    "pusu": {
-    "contrast_count": 11,
-    "live_contrast_count": 11,
+    "contrast_count": 12,
+    "live_contrast_count": 12,
     "live_sources": [
      "compiled_deformation_task",
      "registered_misconception_rule"
     ],
-    "productive_runs": 10,
-    "productive_total": 10,
+    "productive_runs": 11,
+    "productive_total": 11,
     "verdict": "pass"
    },
    "reader": {
@@ -15364,8 +15363,8 @@
     "contrast_count": 0,
     "live_contrast_count": 0,
     "live_sources": [],
-    "productive_runs": 3,
-    "productive_total": 3,
+    "productive_runs": 5,
+    "productive_total": 5,
     "verdict": "broken(contrast_cannot_run)"
    },
    "reader": {
@@ -15441,13 +15440,13 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 2,
-    "live_contrast_count": 2,
+    "contrast_count": 3,
+    "live_contrast_count": 3,
     "live_sources": [
      "receipt_contrast_route"
     ],
-    "productive_runs": 6,
-    "productive_total": 6,
+    "productive_runs": 9,
+    "productive_total": 9,
     "verdict": "pass"
    },
    "reader": {
@@ -15517,8 +15516,8 @@
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
-    "strict_and_wired": false,
-    "strict_conjunction": false,
+    "strict_and_wired": true,
+    "strict_conjunction": true,
     "wired_misconception_reachable": true
    },
    "name": "How Do You Want to Subtract?",
@@ -15527,14 +15526,14 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 1,
-    "live_contrast_count": 1,
+    "contrast_count": 4,
+    "live_contrast_count": 4,
     "live_sources": [
      "registered_misconception_rule"
     ],
-    "productive_runs": 1,
-    "productive_total": 2,
-    "verdict": "broken(execute_mismatch)"
+    "productive_runs": 4,
+    "productive_total": 4,
+    "verdict": "pass"
    },
    "reader": {
     "span_count": 3,
@@ -21614,8 +21613,8 @@
     "contrast_count": 0,
     "live_contrast_count": 0,
     "live_sources": [],
-    "productive_runs": 9,
-    "productive_total": 9,
+    "productive_runs": 15,
+    "productive_total": 15,
     "verdict": "broken(contrast_cannot_run)"
    },
    "reader": {
@@ -34774,13 +34773,13 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 2,
-    "live_contrast_count": 1,
+    "contrast_count": 3,
+    "live_contrast_count": 3,
     "live_sources": [
      "receipt_contrast_route"
     ],
-    "productive_runs": 4,
-    "productive_total": 4,
+    "productive_runs": 5,
+    "productive_total": 5,
     "verdict": "pass"
    },
    "reader": {
@@ -34936,13 +34935,13 @@
     "subtraction"
    ],
    "pusu": {
-    "contrast_count": 2,
-    "live_contrast_count": 2,
+    "contrast_count": 7,
+    "live_contrast_count": 7,
     "live_sources": [
      "registered_misconception_rule"
     ],
-    "productive_runs": 6,
-    "productive_total": 6,
+    "productive_runs": 11,
+    "productive_total": 11,
     "verdict": "pass"
    },
    "reader": {
@@ -35153,27 +35152,25 @@
      "negative_candidate": true,
      "standard_action_candidate": true,
      "strategy_evidence": true,
-     "structured_negative": false
+     "structured_negative": true
     },
-    "missing_for_diagnosis": [
-     "structured_negative"
-    ],
-    "readiness": "event_ready"
+    "missing_for_diagnosis": [],
+    "readiness": "diagnostic_ready"
    },
    "grade": "3",
    "identity_spine": true,
    "lesson": "IM-G3-U3-L12",
    "lesson_number": 12,
    "memberships": {
-    "diagnostic_ready": false,
+    "diagnostic_ready": true,
     "executable_task": true,
     "has_candidates": true,
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
-    "strict_and_wired": false,
-    "strict_conjunction": false,
-    "wired_misconception_reachable": false
+    "strict_and_wired": true,
+    "strict_conjunction": true,
+    "wired_misconception_reachable": true
    },
    "name": "Subtract Strategically",
    "operation_attachments": [
@@ -35181,7 +35178,16 @@
     "multiplication",
     "subtraction"
    ],
-   "pusu": null,
+   "pusu": {
+    "contrast_count": 5,
+    "live_contrast_count": 5,
+    "live_sources": [
+     "receipt_contrast_route"
+    ],
+    "productive_runs": 9,
+    "productive_total": 9,
+    "verdict": "pass"
+   },
    "reader": {
     "span_count": 4,
     "status": "segmented"
@@ -43160,8 +43166,8 @@
     "in_canonical_corpus": true,
     "measured_transition": true,
     "readable": true,
-    "strict_and_wired": false,
-    "strict_conjunction": false,
+    "strict_and_wired": true,
+    "strict_conjunction": true,
     "wired_misconception_reachable": true
    },
    "name": "Equal Groups of Unit Fractions",
@@ -43170,14 +43176,15 @@
     "multiplication"
    ],
    "pusu": {
-    "contrast_count": 1,
-    "live_contrast_count": 1,
+    "contrast_count": 3,
+    "live_contrast_count": 3,
     "live_sources": [
-     "compiled_deformation_task"
+     "compiled_deformation_task",
+     "registered_misconception_rule"
     ],
-    "productive_runs": 0,
-    "productive_total": 1,
-    "verdict": "broken(execute_mismatch)"
+    "productive_runs": 2,
+    "productive_total": 2,
+    "verdict": "pass"
    },
    "reader": {
     "span_count": 4,
@@ -87515,7 +87522,7 @@
   "diagnostic_ready": {
    "failures": 0,
    "method": "full five-field evidence conjunction",
-   "sample_size": 300
+   "sample_size": 301
   },
   "executable_task": {
    "candidate_failures": 5,
@@ -87553,14 +87560,14 @@
     "IM-G2-U2-L7",
     "IM-G3-U1-L9",
     "IM-G3-U6-L8",
+    "IM-G3-U7-L14",
     "IM-G3-U8-L15",
-    "IM-G4-U1-L7",
-    "IM-G4-U6-L16",
+    "IM-G4-U6-L15",
     "IM-G4-U6-L19",
     "IM-G4-U6-L24",
     "IM-G5-U4-L10",
     "IM-G5-U5-L6",
-    "IM-G6-U5-L9"
+    "IM-G7-U2-L7"
    ],
    "sample_size": 12,
    "seed": 20820260730,
@@ -87568,15 +87575,15 @@
    "strata": {
     "live_source:compiled_deformation_task": "IM-G3-U6-L8",
     "live_source:receipt_contrast_route": "IM-G3-U1-L9",
-    "live_source:registered_misconception_rule": "IM-G4-U6-L16",
+    "live_source:registered_misconception_rule": "IM-G4-U6-L15",
     "verdict:broken(battery_absent)": "IM-G5-U5-L6",
     "verdict:broken(contrast_cannot_run)": "IM-G2-U2-L7",
     "verdict:broken(diagnosis_wrong_error)": "IM-G4-U6-L24",
-    "verdict:broken(execute_mismatch)": "IM-G6-U5-L9",
+    "verdict:broken(execute_mismatch)": "IM-G7-U2-L7",
     "verdict:broken(vacuous_pair)": "IM-G2-U1-L3",
     "verdict:cannot_separate_at_value_layer": "IM-G4-U6-L19",
     "verdict:needs_separating_numerals": "IM-G3-U8-L15",
-    "verdict:pass": "IM-G4-U1-L7",
+    "verdict:pass": "IM-G3-U7-L14",
     "verdict:rule_refusal_reason_unavailable": "IM-G5-U4-L10"
    }
   }

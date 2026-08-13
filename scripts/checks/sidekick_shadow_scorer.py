@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import copy
+import json
 import os
 import platform
 import sys
@@ -58,6 +60,7 @@ def scripted_run(
     responses: list[dict[str, Any]],
     server: FakeServer,
     declarations: dict[str, Any],
+    context: str = "accumulating",
 ) -> tuple[shadow_scorer.ShadowAttempt, int]:
     calls = 0
 
@@ -86,10 +89,126 @@ def scripted_run(
             "test-model",
             1.0,
             backend="openai",
+            context=context,
         )
     finally:
         shadow_scorer.chat = original_chat
     return attempt, calls
+
+
+def dry_run_message_shapes() -> list[dict[str, Any]]:
+    """Construct both E2 follow-up shapes for five frozen probe items."""
+    rows = shadow_scorer.read_rows(shadow_scorer.DEFAULT_PROBE)[:5]
+    assert len(rows) == 5
+    evidence: list[dict[str, Any]] = []
+    for row in rows:
+        initial = [
+            {"role": "system", "content": shadow_scorer.ARMS["offered"]},
+            {"role": "user", "content": row.user_turn},
+        ]
+        expected_call = row.calls[0]
+        settled_marker = f"SETTLED_ROUND_1_REPLY::{row.id}"
+        first = {
+            "content": settled_marker,
+            "tool_calls": [emitted(expected_call.name, expected_call.arguments)],
+        }
+        tool_result = {
+            "role": "tool",
+            "name": expected_call.name,
+            "content": json.dumps(
+                expected_call.response, ensure_ascii=False, sort_keys=True
+            ),
+        }
+
+        # This is the exact pre-E2 construction performed by execute_round.
+        legacy = copy.deepcopy(initial)
+        legacy.append(shadow_scorer.assistant_echo(first))
+        legacy.append(tool_result)
+        legacy_bytes = json.dumps(
+            legacy, ensure_ascii=False, separators=(",", ":")
+        ).encode("utf-8")
+
+        accumulating = shadow_scorer.next_round_messages(
+            initial, legacy, "accumulating"
+        )
+        accumulating_bytes = json.dumps(
+            accumulating, ensure_ascii=False, separators=(",", ":")
+        ).encode("utf-8")
+        isolated = shadow_scorer.next_round_messages(initial, legacy, "isolated")
+        isolated_text = json.dumps(isolated, ensure_ascii=False, sort_keys=True)
+        accumulating_text = json.dumps(accumulating, ensure_ascii=False, sort_keys=True)
+
+        record = {
+            "item": row.id,
+            "accumulating_roles": [message["role"] for message in accumulating],
+            "isolated_roles": [message["role"] for message in isolated],
+            "settled_reply_in_accumulating": settled_marker in accumulating_text,
+            "settled_reply_in_isolated": settled_marker in isolated_text,
+            "tool_result_in_isolated": tool_result in isolated,
+            "accumulating_byte_identical": accumulating_bytes == legacy_bytes,
+            "accumulating_same_list": accumulating is legacy,
+        }
+        assert record == {
+            "item": row.id,
+            "accumulating_roles": ["system", "user", "assistant", "tool"],
+            "isolated_roles": ["system", "user", "tool"],
+            "settled_reply_in_accumulating": True,
+            "settled_reply_in_isolated": False,
+            "tool_result_in_isolated": True,
+            "accumulating_byte_identical": True,
+            "accumulating_same_list": True,
+        }
+        evidence.append(record)
+    return evidence
+
+
+def no_network_request_boundary(
+    row: Row, declarations: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Drive isolated mode to its second request without opening a socket."""
+    requests: list[list[dict[str, Any]]] = []
+
+    def boundary_chat(
+        messages: list[dict[str, Any]],
+        tools: list[dict[str, Any]],
+        model: str,
+        timeout: float,
+        endpoint: str = shadow_scorer.ENDPOINT,
+        backend: str = "ollama",
+    ) -> tuple[dict[str, Any], float, str]:
+        del tools, model, timeout, endpoint, backend
+        requests.append(copy.deepcopy(messages))
+        if len(requests) == 1:
+            expected = row.calls[0]
+            return (
+                {
+                    "content": f"SETTLED_ROUND_1_REPLY::{row.id}",
+                    "tool_calls": [emitted(expected.name, expected.arguments)],
+                },
+                0.0,
+                "ok",
+            )
+        return {}, 0.0, "request_boundary"
+
+    server = FakeServer()
+    original_chat = shadow_scorer.chat
+    shadow_scorer.chat = boundary_chat
+    try:
+        attempt = shadow_scorer.run_item(
+            row,
+            "offered",
+            server,  # type: ignore[arg-type]
+            declarations,
+            "test-model",
+            1.0,
+            backend="openai",
+            context="isolated",
+        )
+    finally:
+        shadow_scorer.chat = original_chat
+    assert attempt.transport == "request_boundary"
+    assert len(requests) == 2
+    return requests[1]
 
 
 def main() -> int:
@@ -99,6 +218,20 @@ def main() -> int:
     assert shadow_scorer.read_rows is measure_floors.read_rows
     assert not hasattr(shadow_scorer, "THRESHOLDS")
     assert not hasattr(shadow_scorer, "judge")
+    assert (
+        shadow_scorer.parse_args(["--one-round-transcript", "frozen.jsonl"]).context
+        == "accumulating"
+    )
+    assert (
+        shadow_scorer.parse_args(
+            ["--one-round-transcript", "frozen.jsonl", "--context", "isolated"]
+        ).context
+        == "isolated"
+    )
+
+    shapes = dry_run_message_shapes()
+    for shape in shapes:
+        print("DRY_RUN_MESSAGE_SHAPE " + json.dumps(shape, sort_keys=True))
 
     declarations = {
         name: tool(name)
@@ -109,6 +242,24 @@ def main() -> int:
             "strategy_trace",
         )
     }
+
+    boundary_row = shadow_scorer.read_rows(shadow_scorer.DEFAULT_PROBE)[0]
+    boundary_declarations = {name: tool(name) for name in boundary_row.menu}
+    boundary = no_network_request_boundary(boundary_row, boundary_declarations)
+    assert [message["role"] for message in boundary] == ["system", "user", "tool"]
+    assert "SETTLED_ROUND_1_REPLY" not in json.dumps(boundary)
+    print(
+        "NO_NETWORK_REQUEST_BOUNDARY "
+        + json.dumps(
+            {
+                "item": boundary_row.id,
+                "context": "isolated",
+                "roles": [message["role"] for message in boundary],
+                "settled_reply_absent": True,
+            },
+            sort_keys=True,
+        )
+    )
 
     limit_row = Row(
         id="limit-two-round",
@@ -241,7 +392,14 @@ def main() -> int:
     assert implicit["cross_tab"]["by_one_round_verdict"]["pass"]["items"] == 1
     arm_summary = shadow_scorer.summarize(attempts, "offered")
     assert arm_summary["bars_moved"] is False
+    assert arm_summary["context"] == "accumulating"
     assert "verdicts" not in arm_summary
+    isolated_summary = shadow_scorer.summarize(attempts, "offered", "isolated")
+    assert isolated_summary["context"] == "isolated"
+    for cut in ("implicit", "limit"):
+        assert set(arm_summary["cuts"][cut]) == set(isolated_summary["cuts"][cut])
+        assert isolated_summary["cuts"][cut]["context"] == "isolated"
+        assert isolated_summary["cuts"][cut]["cross_tab"]["context"] == "isolated"
 
     try:
         shadow_scorer.refuse_floor_requests(["--compute-verdict-floors"])

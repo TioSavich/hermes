@@ -23,24 +23,32 @@ FIXTURES = ROOT / "scripts/checks/fixtures/im_defrag_source_spans.json"
 EXPECTED_STATUS = Counter(
     {
         "already_complete": 834,
-        "recovered": 1273,
+        "recovered": 1295,
         "recovered_with_referent": 3,
-        "blocked_missing_visual": 164,
+        "blocked_missing_visual": 142,
         "blocked_layout": 385,
     }
 )
 EXPECTED_BLOCKERS = Counter(
     {
-        "none": 2110,
+        "none": 2132,
         "required_visual_asset_unresolved": 23,
         "pdf_source_absent_no_unique_markdown_join": 242,
         "joined_source_span_not_complete": 60,
         "task_external_evidence_no_unique_productive_peer": 9,
         "known_cross_page_layout_refusal": 1,
-        "expression_missing_from_markdown": 135,
+        "expression_missing_from_markdown": 115,
         "expression_missing_without_visual": 70,
-        "curriculum_text_absent_after_docling": 6,
+        "curriculum_text_absent_after_docling": 4,
         "task_section_contains_no_curriculum_text": 3,
+    }
+)
+EXPECTED_REPAIR_CLASSES = Counter(
+    {
+        "complete_source": 2296,
+        "source_fragmentary": 94,
+        "span_ends_early": 198,
+        "span_starts_mid_sentence": 71,
     }
 )
 SWI_GOAL = r"""use_module(library(http/json)),use_module(curriculum/im/generated/compiled_defragged_task_instances), forall(compiled_defragged_task_instances:defragged_task_instance(Id,L,T,D),(term_string(T,TS,[quoted(true)]),get_dict(source_evidence,D,E),term_string(E,ES,[quoted(true)]),del_dict(source_evidence,D,_,D1),del_dict(visuals,D1,Vs,D2),length(Vs,VC),put_dict(_{record_id:Id,lesson:L,task_term:TS,evidence_term:ES,visual_count:VC},D2,O),json_write_dict(current_output,O,[width(0)]),nl)),halt."""
@@ -168,6 +176,16 @@ def check_provenance(rows: list[dict]) -> None:
         statement = joined(row["statement_segments"], row["statement_joiner"], decoded)
         if statement != row["complete_statement"]:
             fail(f"invented or unmapped statement text in {row['record_id']}")
+        if row["source_statement_segments"]:
+            source_statement = joined(
+                row["source_statement_segments"],
+                row["source_statement_joiner"],
+                decoded,
+            )
+            if source_statement != row["source_statement"]:
+                fail(
+                    f"invented or unmapped source statement in {row['record_id']}"
+                )
         if row["status"] == "blocked_layout":
             if statement or row["statement_segments"]:
                 fail(
@@ -224,17 +242,34 @@ def check_census(rows: list[dict]) -> None:
         fail(f"status census drift: {status}")
     if blockers != EXPECTED_BLOCKERS:
         fail(f"blocker census drift: {blockers}")
-    if sum(row["visual_count"] for row in rows) != 164:
-        fail("visual absence-marker count is not 164")
+    if sum(row["visual_count"] for row in rows) != 142:
+        fail("visual absence-marker count is not 142")
+    repair_classes = Counter(row["statement_repair_class"] for row in rows)
+    if repair_classes != EXPECTED_REPAIR_CLASSES:
+        fail(f"statement-repair census drift: {repair_classes}")
     if (
         sum(
             row["status"]
             in {"already_complete", "recovered", "recovered_with_referent"}
             for row in rows
         )
-        != 2110
+        != 2132
     ):
-        fail("eligible record count is not 2,110")
+        fail("eligible record count is not 2,132")
+    widened = [
+        row
+        for row in rows
+        if "provenance_class(widened_checkpoint_receipt_v1)" in row["evidence_term"]
+    ]
+    if len(widened) != 22:
+        fail(f"widened receipt census is not 22: {len(widened)}")
+    if not all(
+        "raw_response_checkpoint(" in row["evidence_term"]
+        and "structured_reading_sha256(" in row["evidence_term"]
+        and "acceptance_path(" in row["evidence_term"]
+        for row in widened
+    ):
+        fail("widened source evidence lacks its checkpoint acceptance receipt")
 
 
 def check_visual_markers() -> None:
@@ -302,6 +337,35 @@ def check_l17_type_specimen() -> None:
             fail(f"L17 referent is not copied from source bytes: {expression}")
 
 
+def check_sentence_boundary_repair(rows: list[dict]) -> None:
+    by_id = {row["record_id"]: row for row in rows}
+    books = by_id["im_defrag_996f6ccc412f7f3e566aa8b4_1"]
+    expected_books = (
+        "Mai has 5 books about space. She checks out 4 more. "
+        "How many books about space does Mai have? "
+        "Show your thinking using drawings, numbers, or words."
+    )
+    if books["complete_statement"] != expected_books:
+        fail("G1 books statement was not widened to its authored sentence boundary")
+    if books["statement_repair_class"] != "span_starts_mid_sentence":
+        fail("G1 books statement lacks its start-boundary repair class")
+
+    train_error = by_id["im_defrag_e09043be9da9e9e18c44f2bd_1"]
+    if train_error["source_statement"] != (
+        "Students find the sum of the cubes rather than the difference."
+    ):
+        fail("G2 response excerpt was not widened through its wrapped source line")
+    if train_error["statement_repair_class"] != "span_ends_early":
+        fail("G2 response excerpt lacks its end-boundary repair class")
+
+    sys.path.insert(0, str(ROOT / "scripts/curriculum"))
+    import compile_action_mappings as compiler
+
+    atomic = compiler.sentence_boundary_span("Find the value. 7 + 4", "7 + 4")
+    if atomic.text != "7 + 4" or atomic.starts_mid_sentence or atomic.ends_early:
+        fail("atomic mathematical spans must remain representation units")
+
+
 def check_double_generation() -> None:
     with tempfile.TemporaryDirectory(prefix="hermes-im-defrag-") as directory:
         first = Path(directory) / "first.pl"
@@ -330,10 +394,12 @@ def main() -> None:
     check_provenance(rows)
     check_span_fixtures(rows)
     check_l17_type_specimen()
+    check_sentence_boundary_repair(rows)
     check_double_generation()
     print(
-        "PASS im defrag: 2,659 rows; 2,110 usable; 385 layout blocks; "
-        "164 visual blocks; 20 spans; byte provenance and double generation"
+        "PASS im defrag: 2,659 rows; 2,132 usable; 22 widened receipts; "
+        "385 layout blocks; 142 visual blocks; 20 spans; byte provenance and "
+        "double generation"
     )
 
 

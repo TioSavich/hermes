@@ -60,6 +60,7 @@ FLOOR_REQUEST_ERROR = (
     "shadow_scorer.py is read-only: it does not compute verdict floors or move bars; "
     "run measure_floors.py for the frozen one-round verdict"
 )
+CONTEXT_MODES = ("accumulating", "isolated")
 
 
 @dataclass
@@ -77,6 +78,7 @@ class ShadowAttempt(Attempt):
     final_call_emission: bool = False
     final_response: dict[str, Any] = field(default_factory=dict)
     one_round_verdict: dict[str, Any] = field(default_factory=dict)
+    context: str = "accumulating"
 
 
 def refuse_floor_requests(argv: Sequence[str]) -> None:
@@ -115,6 +117,15 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--backend", choices=("ollama", "openai"), default="ollama")
     parser.add_argument(
         "--label", default="", help="names this shadow run in the output files"
+    )
+    parser.add_argument(
+        "--context",
+        choices=CONTEXT_MODES,
+        default="accumulating",
+        help=(
+            "message history for follow-up requests; isolated retains only the "
+            "system prompt, original user turn, and executed tool results"
+        ),
     )
     return parser.parse_args(supplied)
 
@@ -187,6 +198,33 @@ def execute_round(
     return round_calls
 
 
+def next_round_messages(
+    initial_messages: list[dict[str, Any]],
+    accumulated_messages: list[dict[str, Any]],
+    context: str,
+) -> list[dict[str, Any]]:
+    """Select the history presented to the next assistant response.
+
+    Accumulating mode deliberately returns the existing list object. That is
+    the pre-E2 path: the assistant echo and tool results appended by
+    ``execute_round`` remain in place without reconstruction. Isolated mode
+    starts again from the system prompt and original user turn, then carries
+    forward only executed tool results.
+    """
+    if context == "accumulating":
+        return accumulated_messages
+    if context != "isolated":
+        raise ValueError(f"unknown context mode: {context}")
+    return [
+        *(copy.deepcopy(message) for message in initial_messages),
+        *(
+            copy.deepcopy(message)
+            for message in accumulated_messages
+            if message.get("role") == "tool"
+        ),
+    ]
+
+
 def finish_attempt(
     attempt: ShadowAttempt,
     row: Row,
@@ -226,6 +264,7 @@ def run_item(
     timeout: float,
     endpoint: str = ENDPOINT,
     backend: str = "ollama",
+    context: str = "accumulating",
 ) -> ShadowAttempt:
     """Allow at most two call-execution rounds, followed by one final reply."""
     menu = openai_tools(declarations[name] for name in row.menu)
@@ -233,6 +272,7 @@ def run_item(
         {"role": "system", "content": ARMS[arm]},
         {"role": "user", "content": row.user_turn},
     ]
+    initial_messages = copy.deepcopy(messages)
     attempt = ShadowAttempt(
         item=row.id,
         row_class=row.row_class,
@@ -240,6 +280,7 @@ def run_item(
         arm=arm,
         called=False,
         expected_tool=row.calls[0].name if row.calls else "",
+        context=context,
     )
     support = [row.user_turn]
 
@@ -260,6 +301,7 @@ def run_item(
         {"round": 1, "assistant": copy.deepcopy(first), "calls": first_calls}
     )
 
+    messages = next_round_messages(initial_messages, messages, context)
     second, latency, transport = chat(messages, menu, model, timeout, endpoint, backend)
     attempt.latency_s += latency
     if transport != "ok":
@@ -282,6 +324,7 @@ def run_item(
         {"round": 2, "assistant": copy.deepcopy(second), "calls": second_calls}
     )
 
+    messages = next_round_messages(initial_messages, messages, context)
     final, latency, transport = chat(messages, menu, model, timeout, endpoint, backend)
     attempt.latency_s += latency
     if transport != "ok":
@@ -383,7 +426,9 @@ def shadow_metrics(rows: list[ShadowAttempt]) -> dict[str, Any]:
     }
 
 
-def summarize_cut(rows: list[ShadowAttempt], cut: str) -> dict[str, Any]:
+def summarize_cut(
+    rows: list[ShadowAttempt], cut: str, context: str = "accumulating"
+) -> dict[str, Any]:
     selected = [row for row in rows if row.cut == cut and row.transport == "ok"]
     cells: dict[str, Any] = {}
     for label, outcome in (("pass", True), ("fail", False), ("unknown", None)):
@@ -413,9 +458,11 @@ def summarize_cut(rows: list[ShadowAttempt], cut: str) -> dict[str, Any]:
     )
     return {
         "cut": cut,
+        "context": context,
         "items": len(selected),
         **shadow_metrics(selected),
         "cross_tab": {
+            "context": context,
             "one_round_item_metric": metric_names[0]
             if len(metric_names) == 1
             else metric_names,
@@ -435,15 +482,18 @@ def summarize_cut(rows: list[ShadowAttempt], cut: str) -> dict[str, Any]:
     }
 
 
-def summarize(attempts: list[ShadowAttempt], arm: str) -> dict[str, Any]:
+def summarize(
+    attempts: list[ShadowAttempt], arm: str, context: str = "accumulating"
+) -> dict[str, Any]:
     rows = [attempt for attempt in attempts if attempt.arm == arm]
     return {
         "arm": arm,
+        "context": context,
         "report_kind": "G5 two-round shadow; diagnostic only",
         "bars_moved": False,
         "items": sum(row.transport == "ok" for row in rows),
         "cuts": {
-            cut: summarize_cut(rows, cut)
+            cut: summarize_cut(rows, cut, context)
             for cut in sorted({attempt.cut for attempt in rows})
         },
         "transport_failures": sum(row.transport != "ok" for row in rows),
@@ -485,6 +535,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     arguments.timeout,
                     arguments.endpoint,
                     arguments.backend,
+                    arguments.context,
                 )
                 attempts.append(attempt)
                 print(
@@ -518,7 +569,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         "items_per_arm": len(rows),
         "transcript": str(transcript),
         "backend": fingerprint,
-        "arms": [summarize(attempts, arm) for arm in arguments.arms],
+        "context": arguments.context,
+        "arms": [summarize(attempts, arm, arguments.context) for arm in arguments.arms],
     }
     summary_path = destination / f"shadow-{stamp}.json"
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

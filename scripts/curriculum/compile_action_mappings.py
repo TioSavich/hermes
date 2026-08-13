@@ -264,6 +264,86 @@ class StudentTaskSpan:
         return self.source == str(RECOVERED_TASK_SPANS.relative_to(ROOT))
 
 
+# A source excerpt may identify the quantities and operation while beginning or
+# ending inside the authored sentence.  Downstream training text must not treat
+# that parser match as a complete statement.  Arithmetic expressions and
+# equations remain valid representation spans; prose is widened to the nearest
+# source sentence whose start is either the paragraph start or a capitalized
+# start after terminal punctuation.
+ATOMIC_MATH_SPAN_RE = re.compile(
+    r"^(?:[•◦]\s*)?(?:\d+\.\s*)?"
+    r"[\d,./ ]+\s*[+\-−×·÷=<>]\s*[\d,./ +\-−×·÷=<>]*$"
+)
+SOURCE_FRAGMENT_RE = re.compile(
+    r"(?:\.\.\.|…|\[(?:diagram|figure|graph|image|picture|table)\])",
+    re.IGNORECASE,
+)
+
+
+@dataclass(frozen=True)
+class SentenceSpan:
+    text: str
+    starts_mid_sentence: bool
+    ends_early: bool
+
+
+def sentence_boundary_span(source_text: str, excerpt: str) -> SentenceSpan:
+    """Widen one unique prose excerpt to verbatim source sentence boundaries.
+
+    The returned text is copied from ``source_text`` after whitespace-only
+    normalization.  Ambiguous matches, atomic mathematical spans, and sources
+    without a terminal boundary are left unchanged so the caller can preserve
+    an explicit source-fragment classification instead of inventing text.
+    """
+    source = " ".join(source_text.split())
+    target = " ".join(excerpt.split())
+    if not source or not target or ATOMIC_MATH_SPAN_RE.fullmatch(target):
+        return SentenceSpan(target, False, False)
+    matches = list(re.finditer(re.escape(target), source))
+    if len(matches) != 1:
+        return SentenceSpan(target, False, False)
+    match = matches[0]
+
+    starts = [0]
+    for boundary in re.finditer(
+        r"(?:^|[.!?][”\"']?)\s+"
+        r"(?:[•◦]\s*|\d+\.\s*)?(?=[A-Z“\"'])",
+        source,
+    ):
+        starts.append(boundary.end())
+    start = max(value for value in starts if value <= match.start())
+    marker = re.match(r"(?:[•◦]\s*|\d+\.\s*)", source[start:])
+    if marker:
+        start += marker.end()
+
+    end = None
+    for boundary in re.finditer(r"[.!?:;](?:[”\"']?)", source[match.end() :]):
+        candidate = match.end() + boundary.end()
+        tail = source[candidate:]
+        if not tail or re.match(
+            r"\s+(?=(?:[•◦]\s*|\d+\.\s*)?(?:[A-Z“\"']|$))", tail
+        ):
+            end = candidate
+            break
+    if end is None:
+        return SentenceSpan(target, start < match.start(), False)
+    return SentenceSpan(
+        source[start:end].strip(),
+        start < match.start(),
+        end > match.end(),
+    )
+
+
+def source_is_fragmentary(text: str) -> bool:
+    """Name explicit source omissions that sentence widening cannot repair."""
+    value = " ".join(text.split())
+    return bool(
+        SOURCE_FRAGMENT_RE.search(value)
+        or re.search(r"\b(?:Acti|Le)\b", value)
+        or re.search(r"(?:^|\s)[A-Z]\s*$", value)
+    )
+
+
 @dataclass(frozen=True, order=True)
 class TaskCandidate:
     code: str

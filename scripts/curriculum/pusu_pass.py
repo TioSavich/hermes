@@ -1353,7 +1353,7 @@ def previous_verdicts() -> dict[str, str]:
     return {row["lesson"]: row["pusu"] for row in document.get("rows", [])}
 
 
-def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[str, str]) -> dict:
+def payload(rows: list[dict], selected: list[str], before: dict[str, str]) -> dict:
     distribution = Counter(stage(row["pusu"]) for row in rows)
     refusal_statuses = {
         "rule_defect_no_output",
@@ -1435,7 +1435,6 @@ def payload(rows: list[dict], elapsed: float, selected: list[str], before: dict[
             "and cannot license a pass"
         ),
         "scope": {"diagnostic_ready_lessons": len(selected), "lessons": selected},
-        "timing_seconds": round(elapsed, 3),
         "verdict_distribution": dict(sorted(distribution.items())),
         "rule_refusal_distribution": dict(sorted(rule_refusal_distribution.items())),
         "rule_battery_refusal_distribution": dict(
@@ -1482,6 +1481,7 @@ def main() -> int:
     if args.merge:
         if args.calibration or args.lesson or args.first or args.offset or args.stdout or args.without_batteries or args.refusal_fixtures:
             parser.error("--merge is only for writing prior batch documents")
+        started = time.monotonic()
         documents = [json.loads(Path(path).read_text(encoding="utf-8")) for path in args.merge]
         rows = [row for document in documents for row in document["rows"]]
         lessons = [lesson for document in documents for lesson in document["scope"]["lessons"]]
@@ -1491,10 +1491,11 @@ def main() -> int:
                 prior = motion.get("before", "not_in_prior_artifact")
                 if prior != "not_in_prior_artifact":
                     before[motion["lesson"]] = prior
-        document = payload(rows, sum(item["timing_seconds"] for item in documents), lessons, before)
+        document = payload(rows, lessons, before)
         OUTPUT.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         OUTPUT_PL.write_text(compact_prolog(rows), encoding="utf-8")
-        print(f"wrote {OUTPUT.relative_to(ROOT)} ({len(rows)} lessons, {document['timing_seconds']}s)")
+        elapsed = time.monotonic() - started
+        print(f"wrote {OUTPUT.relative_to(ROOT)} ({len(rows)} lessons, {elapsed:.3f}s)")
         return 0
     if args.lesson and (args.first or args.offset):
         parser.error("--lesson and --first cannot be combined")
@@ -1514,14 +1515,15 @@ def main() -> int:
     rows = run_engine(
         lessons, productive_budget=args.productive_budget, batteries=not args.without_batteries
     )
-    document = payload(rows, time.monotonic() - start, lessons, before)
+    document = payload(rows, lessons, before)
+    elapsed = time.monotonic() - start
     if args.stdout:
         json.dump(document, sys.stdout, indent=2, sort_keys=True)
         sys.stdout.write("\n")
     else:
         OUTPUT.write_text(json.dumps(document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         OUTPUT_PL.write_text(compact_prolog(rows), encoding="utf-8")
-        print(f"wrote {OUTPUT.relative_to(ROOT)} ({len(rows)} lessons, {document['timing_seconds']}s)")
+        print(f"wrote {OUTPUT.relative_to(ROOT)} ({len(rows)} lessons, {elapsed:.3f}s)")
     return 0
 
 

@@ -104,12 +104,29 @@ without calls is the final reply and ends the item unchanged. When the second
 response calls tools, the runner executes those calls and requests one final
 reply. Any call emitted in that final response is recorded and left unexecuted.
 
+Follow-up requests accumulate the full message history by default, preserving
+the original G5 behavior. `--context isolated` instead constructs every
+follow-up from only the system prompt, original user turn, and tool results;
+the model's earlier assistant response is absent. Transcript records, the
+top-level summary, and each arm summary label the selected context mode so the
+same four metric columns can be compared between separate accumulating and
+isolated runs over the same probe and frozen one-round transcript.
+
 The required one-round transcript supplies item outcomes for the cross-tab:
 
 ```sh
 export PYTHONPATH=scripts/sidekick
 python3 scripts/sidekick/shadow_scorer.py \
   --one-round-transcript hermes/app/runtime/experiments/sidekick/floors/floors-<run>.jsonl
+```
+
+The E2 isolated-context comparison uses the same inputs:
+
+```sh
+python3 scripts/sidekick/shadow_scorer.py \
+  --context isolated \
+  --one-round-transcript hermes/app/runtime/experiments/sidekick/floors/floors-<run>.jsonl \
+  --label wave3-isolated
 ```
 
 The transcript and summary are written beside the floors files as

@@ -21,14 +21,14 @@
    "structured_negative": 76
   },
   "3": {
-   "diagnostic_ready": 52,
+   "diagnostic_ready": 53,
    "executable_task": 66,
    "measured_transition": 63,
    "negative_candidate": 113,
    "published": 143,
    "standard_action_candidate": 139,
    "strategy_evidence": 125,
-   "structured_negative": 64
+   "structured_negative": 65
   },
   "4": {
    "diagnostic_ready": 44,
@@ -14776,12 +14776,6 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipt_defects": [
-    {
-     "alternative": "smaller_from_larger_in_column",
-     "reason": "automaton_refuses_operands([50-10, 58-10, 258-20, 258-24])"
-    }
-   ],
    "negative_receipts": [
     {
      "alternative": "smaller_from_larger_in_column",
@@ -15283,13 +15277,11 @@
     "negative_candidate": true,
     "standard_action_candidate": true,
     "strategy_evidence": true,
-    "structured_negative": false
+    "structured_negative": true
    },
    "grade": "3",
    "lesson": "IM-G3-U3-L12",
-   "missing_for_diagnosis": [
-    "structured_negative"
-   ],
+   "missing_for_diagnosis": [],
    "name": "Subtract Strategically",
    "negative_candidates": [
     {
@@ -15349,12 +15341,6 @@
      "productive": "take_away_base_ones"
     }
    ],
-   "negative_receipt_defects": [
-    {
-     "alternative": "answer_as_endpoint_count_up",
-     "reason": "no_task_with_receipt_operation"
-    }
-   ],
    "negative_receipts": [
     {
      "alternative": "answer_as_endpoint_count_up",
@@ -15376,7 +15362,7 @@
      "source_kind": "activity_guidance"
     }
    ],
-   "readiness": "event_ready",
+   "readiness": "diagnostic_ready",
    "standard_action_candidates": {
     "3.NBT.A.2": [
      "add",
@@ -79311,13 +79297,13 @@
   "task_events": "curriculum/im/generated/compiled_task_instances.pl"
  },
  "summary": {
-  "diagnostic_ready": 300,
+  "diagnostic_ready": 301,
   "executable_task": 425,
   "measured_transition": 401,
   "negative_candidate": 859,
   "published": 1308,
   "standard_action_candidate": 1272,
   "strategy_evidence": 957,
-  "structured_negative": 446
+  "structured_negative": 447
  }
 }

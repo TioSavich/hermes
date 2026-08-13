@@ -5358,7 +5358,7 @@ lesson_task_span_rollup('IM-G3-U2-L9', '3', 4, 0, strategy_attached, prompt_stat
 lesson_task_span_rollup('IM-G3-U3-L1', '3', 4, 0, strategy_attached, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U3-L10', '3', 4, 1, event_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U3-L11', '3', 4, 1, diagnostic_ready, void_operand_slots).
-lesson_task_span_rollup('IM-G3-U3-L12', '3', 4, 2, event_ready, no_task_grammar_for_quantity_pair).
+lesson_task_span_rollup('IM-G3-U3-L12', '3', 4, 2, diagnostic_ready, no_task_grammar_for_quantity_pair).
 lesson_task_span_rollup('IM-G3-U3-L13', '3', 4, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G3-U3-L14', '3', 4, 0, strategy_attached, quantities_carry_no_operand_pair).
 lesson_task_span_rollup('IM-G3-U3-L15', '3', 3, 0, strategy_attached, quantities_carry_no_operand_pair).

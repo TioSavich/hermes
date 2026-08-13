@@ -26,6 +26,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+from scripts.curriculum import vision_statement_contract  # noqa: E402
+
+
 SOURCE_ROOT = (
     ROOT
     / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
@@ -37,6 +40,10 @@ DEFAULT_CHECKPOINT_ROOT = (
 )
 DEFAULT_QUESTION_CHECKPOINT_ROOT = (
     ROOT / "hermes/app/runtime/experiments/docling_grade_questions"
+)
+WIDENED_VISION_CHECKPOINT_DIR = (
+    ROOT
+    / "hermes/app/runtime/experiments/docling_grade8_recovery/vision_widened/checkpoints"
 )
 RUN_VERSION = "docling_grade_extraction_v1"
 IMAGE_RE = re.compile(r"^!\[Image\]\((document_artifacts/[^)]+)\)$")
@@ -280,7 +287,9 @@ def extract_lesson(doc: Any, compiler: Any, context: Any) -> dict[str, Any]:
     )
     spans, _reason, markers = compiler._segment_docling_task_regions(doc)
     if markers != len(headings):
-        raise ValueError(f"task marker disagreement for {doc.code}: {markers} != {len(headings)}")
+        raise ValueError(
+            f"task marker disagreement for {doc.code}: {markers} != {len(headings)}"
+        )
     spans_by_position = {span.position: span for span in spans}
     tasks = []
     for number, heading_index in enumerate(headings, 1):
@@ -294,7 +303,10 @@ def extract_lesson(doc: Any, compiler: Any, context: Any) -> dict[str, Any]:
                 spans_by_position.get(f"student_task_statement({number})"),
             )
         )
-    questions = [asdict(question) for question in context.extract_middle_guide_questions(doc.path)]
+    questions = [
+        asdict(question)
+        for question in context.extract_middle_guide_questions(doc.path)
+    ]
     return {
         "run_version": RUN_VERSION,
         "lesson": doc.code,
@@ -326,7 +338,8 @@ def discover_docs(grade: int, compiler: Any) -> list[Any]:
     docs = [
         doc
         for doc in compiler.read_teacher_guides(ROOT)
-        if doc.code.startswith(prefix) and doc.source_corpus == compiler.DOCLING_GUIDE_CORPUS
+        if doc.code.startswith(prefix)
+        and doc.source_corpus == compiler.DOCLING_GUIDE_CORPUS
     ]
     return sorted(docs, key=lambda item: tuple(map(int, re.findall(r"\d+", item.code))))
 
@@ -376,11 +389,7 @@ def _visual_term(row: dict[str, str]) -> str:
 
 def _recovery_item_term(row: dict[str, Any]) -> str:
     bbox = row.get("bbox")
-    bbox_term = (
-        "none"
-        if bbox is None
-        else "bbox({l}, {t}, {r}, {b})".format(**bbox)
-    )
+    bbox_term = "none" if bbox is None else "bbox({l}, {t}, {r}, {b})".format(**bbox)
     page = "none" if row.get("page") is None else str(row["page"])
     return (
         "json_item(ref({ref}), index({index}), kind({kind}), page({page}), "
@@ -399,9 +408,7 @@ def _recovery_item_term(row: dict[str, Any]) -> str:
 
 
 def _recovery_term(recovery: dict[str, Any]) -> str:
-    items = "[" + ", ".join(
-        _recovery_item_term(row) for row in recovery["items"]
-    ) + "]"
+    items = "[" + ", ".join(_recovery_item_term(row) for row in recovery["items"]) + "]"
     return (
         "recovery(docling_json(source({source}), sha256({sha256}), "
         "heading(ref({heading_ref}), index({heading_index}), raw({heading_raw})), "
@@ -420,6 +427,68 @@ def _recovery_term(recovery: dict[str, Any]) -> str:
 
 
 def _vision_recovery_term(recovery: dict[str, Any]) -> str:
+    provenance_class = vision_statement_contract.recovery_provenance_class(recovery)
+    if provenance_class == vision_statement_contract.WIDENED_CHECKPOINT_CLASS:
+        checkpoints = []
+        checkpoint_paths = []
+        for reading in recovery.get("readings", []):
+            path = WIDENED_VISION_CHECKPOINT_DIR / f"{reading['call_id']}.json"
+            if not path.is_file():
+                raise ValueError(f"widened vision checkpoint is absent: {path}")
+            checkpoints.append(json.loads(path.read_text(encoding="utf-8")))
+            checkpoint_paths.append(path.relative_to(ROOT).as_posix())
+        receipt = vision_statement_contract.widened_statement_receipt(
+            recovery["statement"], recovery, checkpoints
+        )
+        receipt_terms = []
+        for path, checkpoint, acceptance in zip(
+            checkpoint_paths, checkpoints, receipt["acceptance_paths"]
+        ):
+            reading_sha256 = hashlib.sha256(
+                json.dumps(checkpoint["reading"], sort_keys=True).encode()
+            ).hexdigest()
+            render_path = (checkpoint.get("render_receipt") or {}).get("path", "none")
+            receipt_terms.append(
+                "widened_receipt(call_id({call_id}), "
+                "raw_response_checkpoint({checkpoint}), "
+                "acceptance_path({channel}, {terminal}), "
+                "response_sha256({response_sha256}), "
+                "structured_reading_sha256({reading_sha256}), "
+                "render_receipt({render_receipt}))".format(
+                    call_id=_prolog_atom(checkpoint["call_id"]),
+                    checkpoint=_prolog_atom(path),
+                    channel=_prolog_atom(acceptance["accepted_channel"]),
+                    terminal=_prolog_atom(acceptance["terminal_class"]),
+                    response_sha256=_prolog_atom(
+                        vision_statement_contract.response_sha256(
+                            checkpoint["response"]
+                        )
+                    ),
+                    reading_sha256=_prolog_atom(reading_sha256),
+                    render_receipt=_prolog_atom(render_path),
+                )
+            )
+        return (
+            "recovery(vision(model({model}), call_id({call_id}), outcome(ok), "
+            "asset({asset}), description_file({description}), "
+            "provenance_class({provenance_class}), "
+            "prompt_version({prompt_version}), method({method}), "
+            "receipts([{receipts}]), response_sha256({response_sha256}), "
+            "statement({statement})))"
+        ).format(
+            model=_prolog_atom(recovery["model"]),
+            call_id=_prolog_atom(recovery["call_id"]),
+            asset=_prolog_atom(recovery["asset"]),
+            description=_prolog_atom(recovery["description_file"]),
+            provenance_class=_prolog_atom(provenance_class),
+            prompt_version=_prolog_atom(recovery["prompt_version"]),
+            method=_prolog_atom(recovery["method"]),
+            receipts=", ".join(receipt_terms),
+            response_sha256=_prolog_atom(recovery["response_sha256"]),
+            statement=_prolog_string(recovery["statement"]),
+        )
+    if provenance_class != vision_statement_contract.NARROW_DESCRIPTION_CLASS:
+        raise ValueError(f"unknown vision provenance class: {provenance_class}")
     return (
         "recovery(vision(model({model}), call_id({call_id}), outcome(ok), "
         "asset({asset}), description_file({description}), "
@@ -450,11 +519,17 @@ def render_tasks(grade: int, payloads: list[dict[str, Any]]) -> str:
         "          ]).",
         "",
         f"extracted_task_instance_summary({len(payloads)},",
-        "    counts{" + ", ".join(f"{key}:{counts[key]}" for key in sorted(counts)) + "}).",
+        "    counts{"
+        + ", ".join(f"{key}:{counts[key]}" for key in sorted(counts))
+        + "}).",
         "",
     ]
     for task in tasks:
-        visuals = "[" + ", ".join(_visual_term(row) for row in task["visual_provenance"]) + "]"
+        visuals = (
+            "["
+            + ", ".join(_visual_term(row) for row in task["visual_provenance"])
+            + "]"
+        )
         if "recovery" in task:
             recovery = ", " + _recovery_term(task["recovery"])
         elif "vision_recovery" in task:
@@ -488,8 +563,12 @@ def render_tasks(grade: int, payloads: list[dict[str, Any]]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def render_questions(grade: str | int, payloads: list[dict[str, Any]], context: Any) -> str:
-    questions = [question for payload in payloads for question in payload["guide_questions"]]
+def render_questions(
+    grade: str | int, payloads: list[dict[str, Any]], context: Any
+) -> str:
+    questions = [
+        question for payload in payloads for question in payload["guide_questions"]
+    ]
     absences = [
         absence
         for payload in payloads
@@ -514,10 +593,17 @@ def render_questions(grade: str | int, payloads: list[dict[str, Any]], context: 
         ":- dynamic extracted_guide_question_absence/3.",
         "",
         f"extracted_guide_question_summary({len(payloads)},",
-        "    counts{" + ", ".join(
-            [*(f"{key}:{counts[key]}" for key in sorted(counts)),
-             *(f"missing_{key}:{absence_counts[key]}" for key in sorted(absence_counts))]
-        ) + "}).",
+        "    counts{"
+        + ", ".join(
+            [
+                *(f"{key}:{counts[key]}" for key in sorted(counts)),
+                *(
+                    f"missing_{key}:{absence_counts[key]}"
+                    for key in sorted(absence_counts)
+                ),
+            ]
+        )
+        + "}).",
         "",
     ]
     for data in questions:
@@ -574,7 +660,9 @@ def build_question_summary(
         "lessons_with_two_questions": sum(
             len(payload["guide_questions"]) == 2 for payload in payloads
         ),
-        "per_unit": {str(unit): dict(values) for unit, values in sorted(per_unit.items())},
+        "per_unit": {
+            str(unit): dict(values) for unit, values in sorted(per_unit.items())
+        },
         "llm_calls": {"REALLMS": 0, "Big_Red": 0},
         "resumed_checkpoints": resumed,
         "wall_seconds": round(wall_seconds, 3),
@@ -616,7 +704,9 @@ def build_summary(
             )
             for purpose in ("assessing", "advancing")
         },
-        "per_unit": {str(unit): dict(values) for unit, values in sorted(per_unit.items())},
+        "per_unit": {
+            str(unit): dict(values) for unit, values in sorted(per_unit.items())
+        },
         "llm_calls": {"REALLMS": 0, "Big_Red": 0},
         "resumed_checkpoints": resumed,
         "wall_seconds": round(wall_seconds, 3),
@@ -625,7 +715,9 @@ def build_summary(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--grade", required=True, help="K or a grade number from 1 to 8")
+    parser.add_argument(
+        "--grade", required=True, help="K or a grade number from 1 to 8"
+    )
     parser.add_argument("--lessons", help="comma-separated canonical lesson ids")
     parser.add_argument("--checkpoint-dir", type=Path)
     parser.add_argument("--task-output", type=Path)
@@ -646,13 +738,23 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     if args.grade in {"k", "1", "2", "3", "4", "5"} and not args.questions_only:
         parser.error("--questions-only is required for Kindergarten through Grade 5")
     checkpoint_root = (
-        DEFAULT_QUESTION_CHECKPOINT_ROOT if args.questions_only else DEFAULT_CHECKPOINT_ROOT
+        DEFAULT_QUESTION_CHECKPOINT_ROOT
+        if args.questions_only
+        else DEFAULT_CHECKPOINT_ROOT
     )
     args.checkpoint_dir = args.checkpoint_dir or checkpoint_root / f"grade-{args.grade}"
-    args.task_output = args.task_output or GENERATED / f"grade_{args.grade}_extracted_task_instances.pl"
-    args.question_output = args.question_output or GENERATED / f"grade_{args.grade}_extracted_guide_questions.pl"
+    args.task_output = (
+        args.task_output
+        or GENERATED / f"grade_{args.grade}_extracted_task_instances.pl"
+    )
+    args.question_output = (
+        args.question_output
+        or GENERATED / f"grade_{args.grade}_extracted_guide_questions.pl"
+    )
     args.summary_output = args.summary_output or args.checkpoint_dir / "summary.json"
-    requested = [] if not args.lessons else [item.strip() for item in args.lessons.split(",")]
+    requested = (
+        [] if not args.lessons else [item.strip() for item in args.lessons.split(",")]
+    )
     if any(not item for item in requested):
         parser.error("--lessons must contain nonblank comma-separated ids")
     args.lessons = requested
@@ -728,7 +830,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         else:
             stale.append(args.summary_output)
         if stale:
-            raise SystemExit("stale extraction outputs: " + ", ".join(str(path) for path in stale))
+            raise SystemExit(
+                "stale extraction outputs: " + ", ".join(str(path) for path in stale)
+            )
     else:
         for path, text in outputs:
             atomic_write(path, text)

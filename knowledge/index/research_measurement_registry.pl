@@ -1,6 +1,6 @@
 /** <module> Generated research-measurement provenance registry
  *
- * The denominator is every explicit quantitative-result statement in the 36
+ * The denominator is every explicit quantitative-result statement in the 37
  * top-level Markdown reports in docs/research/: a non-code prose line with
  * a percentage or cohort ratio, or a Markdown table data row under a header
  * that names a quantitative field. A table row is one measurement vector;
