@@ -133,6 +133,11 @@ run standards_progression_overlay.py python3 "$CHECKS_DIR/standards_progression_
 run build_im_lesson_capability_census python3 "$CHECKS_DIR/../curriculum/build_im_lesson_capability_census.py" --check
 run build_im_zero_candidate_triage python3 "$CHECKS_DIR/../curriculum/build_im_zero_candidate_triage.py" --check
 run build_im_action_seam_recut python3 "$CHECKS_DIR/../curriculum/build_im_action_seam_recut.py" --check
+# The two row-to-machine maps are tracked stores that the wave-5 mints read.
+# The pool map is checked first because the grade 8 map joins its rows to the
+# pilot receipts, so a stale pool map would report as a stale grade 8 map.
+run build_wave5_row_map python3 "$CHECKS_DIR/../sidekick/build_wave5_row_map.py" --check
+run build_g8_row_machine_map python3 "$CHECKS_DIR/../curriculum/build_g8_row_machine_map.py" --check
 
 # The lesson-enactment rung. Each lane's own gate runs first, because a lane
 # checks things its own machines know and the contract's gate cannot see: the

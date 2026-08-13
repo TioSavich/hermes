@@ -234,6 +234,57 @@ def check_sequence(
         raise MaskViolation(f"a {kind} sequence supervises a historical tool call")
 
 
+def check_plain_reply_corruptions(chat: GemmaChatFormat) -> int:
+    """Prove the `C` check still catches a wrong mask on a wave-5 plain reply.
+
+    Wave 5 supervises one plain assistant reply with no tool call anywhere, so
+    the only thing standing between a mask defect and a trained model is this
+    branch of `check_sequence`. A checker that has only ever met correct masks
+    reports its own silence as evidence, so four deliberate corruptions run
+    here and each one must raise. The count of cases caught is returned for the
+    build record.
+    """
+    messages = [
+        {"role": "system", "content": "mask corruption probe"},
+        {"role": "user", "content": "A student wrote 8 + 5 = 12. What would you ask?"},
+        {"role": "assistant", "content": "Ask the student to count on from eight."},
+    ]
+    rendered = chat.render(messages, [])
+    good = build_sequence(chat, rendered, "C")
+    check_sequence(chat, rendered, good, "C")
+
+    ids = list(good.ids)
+    first_supervised = next(
+        index for index, label in enumerate(good.labels) if label != IGNORE
+    )
+    supervise_everything = Supervision(ids=ids, labels=list(ids), turn_start=0)
+    masked_close = Supervision(
+        ids=ids, labels=[*good.labels[:-1], IGNORE], turn_start=good.turn_start
+    )
+    hole_labels = list(good.labels)
+    hole_labels[first_supervised + 1] = IGNORE
+    holed_reply = Supervision(ids=ids, labels=hole_labels, turn_start=good.turn_start)
+    swapped_labels = list(good.labels)
+    swapped_labels[first_supervised] = ids[first_supervised] + 1
+    swapped_reply = Supervision(ids=ids, labels=swapped_labels, turn_start=good.turn_start)
+
+    corruptions = {
+        "supervising the prompt as well as the reply": supervise_everything,
+        "masking the reply's own close": masked_close,
+        "leaving a hole inside the reply": holed_reply,
+        "labelling a reply token as a different token": swapped_reply,
+    }
+    caught = 0
+    for name, corrupted in corruptions.items():
+        try:
+            check_sequence(chat, rendered, corrupted, "C")
+        except MaskViolation:
+            caught += 1
+        else:
+            raise MaskViolation(f"the C check accepted a mask that was {name}")
+    return caught
+
+
 def check(
     chat: GemmaChatFormat,
     rendered: Rendered,
@@ -495,9 +546,13 @@ def main() -> int:
         else:
             raise AssertionError(f"the G2 check accepted {name}")
 
+    caught_plain = check_plain_reply_corruptions(chat)
+    print(f"caught    {caught_plain} plain-reply mask corruptions")
+
     print(
         "PASS sidekick mask: legacy masks hold; G2 admits closed historical spans "
-        "and terminal [50, 1], and catches all three corruptions"
+        "and terminal [50, 1], and catches all three corruptions; the wave-5 "
+        "plain-reply mask catches its four"
     )
     return 0
 

@@ -1045,8 +1045,15 @@ def build() -> dict[str, object]:
     # display fallback reads the artifact, so it left the orphan set), and
     # the nine per-grade extracted guide-question modules entered
     # (grade_k..grade_8; pending review; compiled context consumes them).
-    if len(registry_rows) != 324:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 324")
+    # 345 from 2026-08-13: the twenty-one quarantined pilots authored in the
+    # previous commit entered the registry — fourteen g8_* modules (the
+    # solvers and their shared quantity decoder), five k7_* scene emitters
+    # and their common file, and the two question-mining stores. The commit
+    # that authored those files shipped a registry that did not yet name
+    # them, so this pin move is a repair rather than a bump: the registry
+    # now describes the tree it ships with.
+    if len(registry_rows) != 345:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 345")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1120,8 +1127,12 @@ def build() -> dict[str, object]:
     # extracted guide-question files. Their consumers are the compiled
     # context (built, not loaded) and the coming question-mining slices;
     # unconsumed here means stalled pipeline input, never vestige.
-    if len(orphan_records) != 98:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 98")
+    # 119 from 2026-08-13: all twenty-one new registry rows are orphan
+    # modules, which is what quarantine means here. Nothing imports a pilot;
+    # the mints and the scene emitters reach them by running them, never by
+    # loading them into the worker. Admission by ceremony would move them.
+    if len(orphan_records) != 119:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 119")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

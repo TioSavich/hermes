@@ -38,7 +38,7 @@ SPLIT_MANIFEST = DATASETS / "wave5-split-manifest.json"
 CALIBRATION = DATASETS / "wave5-admission-calibration.jsonl"
 RUNNER = SCRIPT_DIR / "wave5_trace_runner.pl"
 G8_ROW_MAP = REPO_ROOT / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl"
-BUILDER_VERSION = "wave5-solution-mint-v5-g8-scene-assembly"
+BUILDER_VERSION = "wave5-solution-mint-v6-g8-demand-fit"
 SPLIT_SEED = 20260812
 CALIBRATION_SEED = 20260813
 SMOKE_SEED = 20260814
@@ -539,7 +539,14 @@ def prolog_value(value: Any) -> str:
     if isinstance(value, list):
         return "[" + ",".join(prolog_value(item) for item in value) + "]"
     if isinstance(value, dict):
-        return "_{" + ",".join(f"{key}:{prolog_value(value[key])}" for key in sorted(value)) + "}"
+        # A negative number written straight after the key colon reads as the
+        # `:-` operator and the program will not parse, so a space separates
+        # the key from a leading minus sign.
+        items = []
+        for key in sorted(value):
+            rendered = prolog_value(value[key])
+            items.append(f"{key}: {rendered}" if rendered.startswith("-") else f"{key}:{rendered}")
+        return "_{" + ",".join(items) + "}"
     raise TypeError(value)
 
 
@@ -619,6 +626,194 @@ def load_g8_rows() -> tuple[list[dict[str, Any]], dict[str, Any]]:
         "refused_only_rows": refused_only,
         "selection_law": "one correct route per row, lexical machine then canonical input; refused-only rows retained for exclusion accounting",
     }
+
+
+# --- Grade 8 demand fit -----------------------------------------------------
+#
+# A routed row states a task; the machine performs one computation. The route
+# alone does not establish that the task asks for that computation. The table
+# below records, per machine, the wording by which a grade-8 task asks for the
+# result that machine returns. A row whose text does not carry that wording
+# mints no solution pair and is counted under its first failing gate.
+#
+# Three gates run before the wording test. A task that asks readers what they
+# notice or wonder states a discussion demand; those rows belong to the
+# question leg, not here. A task with a second enumerated part asks for several
+# results while the machine returns one, so the pair would leave the reader
+# unable to tell which part the program answers. A task whose text still holds
+# an empty comma run lost its operands to expression stripping.
+G8_DISCUSSION_DEMAND = re.compile(
+    r"what do you notice|what do you wonder|what questions do you have"
+    r"|be prepared to share your reasoning",
+    re.IGNORECASE,
+)
+G8_SECOND_PART = re.compile(r"(?:^|[\s;])(?:2\.|b\.)\s")
+G8_EMPTY_SLOT_RUN = re.compile(r":\s*(?:,\s*){2,}")
+G8_COORDINATE_PAIR = re.compile(r"\(\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*\)")
+G8_DEMAND_SPECS: dict[str, str] = {
+    "association_direction_from_the_fit":
+        r"(?:positive or negative|kind of |an )association"
+        r"|association between|associated with",
+    "balance_preserving_linear_solution":
+        r"solve (?:the|this|each) equation|solve for\b|what is the value of",
+    "balance_preserving_two_sided_solution":
+        r"solve (?:the|this|each) equation|solve for\b|what is the value of",
+    "bracket_root_between_whole_numbers":
+        r"between (?:two |which two )?(?:consecutive )?whole numbers"
+        r"|estimate the (?:side length|length|value)|somewhere between",
+    "classify_number_as_rational_or_irrational":
+        r"rational or irrational|is (?:a|an) (?:rational|irrational) number"
+        r"|(?:know|explain) that .{0,40}is a rational number",
+    "combine_multiples_of_powers_of_ten":
+        r"scientific notation|multiple of a power of (?:10|ten)"
+        r"|as a power of (?:10|ten)|what is the volume of",
+    "complete_two_way_table":
+        r"complete the (?:two-way )?table",
+    "copies_around_a_vertex":
+        r"how many copies",
+    "cone_volume_as_third_of_cylinder":
+        r"volume of (?:the|a|this) cone|volume of the (?:figure|solid)",
+    "cylinder_volume_from_base_and_height":
+        r"volume of (?:the|a|this) cylinder|volume of the (?:figure|solid)",
+    "decide_exponential_equivalence":
+        r"(?:are|is|whether)[^.?]{0,60}equivalent",
+    "decide_whether_the_table_is_a_function":
+        r"is .{0,60}a function|represents? a function"
+        r"|(?:decide|determine) (?:whether|if)[^.?]{0,60}function",
+    "decimal_representation_of_a_rational":
+        r"decimal representation|as a decimal",
+    "elimination_with_substitution_back":
+        r"solve (?:the|this) system|system of equations"
+        r"|how many .{0,60}and how many",
+    "evaluate_rule_at_input":
+        r"output (?:when|for|that goes with)|evaluate the rule"
+        r"|what is the output",
+    "exact_side_length_from_square_area":
+        r"(?:exact )?side length of (?:a|the) square|missing side lengths"
+        r"|side length of a square with (?:an )?area",
+    "fit_linear_rule_to_table":
+        r"rule (?:for|that describes|that fits) the table|what is the rule"
+        r"|write (?:a|an|the) (?:rule|equation) for the table",
+    "furthest_point_from_the_fitted_line":
+        r"(?:farthest|furthest) (?:point|from)",
+    "hemisphere_volume_as_half_sphere":
+        r"volume of (?:the|a|this) hemisphere|volume of the (?:figure|solid)",
+    "least_squares_line_from_pairs":
+        r"line of best fit|fit a line|equation of the line",
+    "linear_model_from_rate_and_initial":
+        r"(?:write|create|find) (?:an|the) equation"
+        r"|equation (?:that|which) (?:represents|relates|describes)",
+    "map_figure_through_transformation":
+        r"coordinates of (?:the|its) image|what are the coordinates"
+        r"|(?:draw|plot) the image of|image of (?:point|segment|triangle"
+        r"|quadrilateral|figure|polygon)",
+    "numeral_as_multiple_of_a_power_of_ten":
+        r"scientific notation|multiple of a power of (?:10|ten)",
+    "predict_and_compare_at_queries":
+        r"predict|estimate the (?:number|amount|value) (?:of|for)",
+    "prism_volume_from_base_area_and_height":
+        r"volume of (?:the|a|this) prism|volume of the (?:figure|solid)",
+    "pythagorean_converse_test":
+        r"is (?:it|this|that|the triangle)[^.?]{0,40}right triangle"
+        r"|right triangle\?",
+    "pythagorean_hypotenuse_from_legs":
+        r"length of the hypotenuse|hypotenuse",
+    "pythagorean_leg_from_hypotenuse":
+        r"how (?:high|far)\b|length of the (?:other|remaining|third) (?:leg|side)",
+    "range_of_each_variable":
+        r"range of (?:each|the) (?:variable|data)",
+    "rate_of_change_from_two_observations":
+        r"rate of change|slope of (?:the|this) line|what is the slope"
+        r"|(?:write|find|create) (?:an|the) equation",
+    "regular_polygon_interior_angle":
+        r"measure of each angle|interior angle",
+    "regular_tessellation_test":
+        r"(?:make|create) a regular tessellation|tessellate the plane"
+        r"|can you tessellate",
+    "relative_frequency_by_column":
+        r"relative frequency|what percentage|percentage of",
+    "relative_frequency_by_row":
+        r"relative frequency|what percentage|percentage of",
+    "relative_frequency_of_whole_table":
+        r"relative frequency|what percentage|percentage of",
+    "rewrite_by_exponent_rule":
+        r"(?:rewrite|write)[^.?]{0,60}single (?:exponent|power)"
+        r"|as a single power of (?:10|ten)",
+    "sphere_volume_from_radius":
+        r"volume of (?:the|a|this) sphere|volume of the (?:figure|solid)",
+    "squares_between_two_whole_numbers":
+        r"side length that is (?:greater|more) than[^.?]{0,40}less than"
+        r"|between which two whole numbers",
+    "unknown_angle_from_a_whole":
+        r"measure of angle|what is the measure|missing angle",
+}
+G8_COORDINATE_MACHINES = {"map_figure_through_transformation"}
+G8_DEMAND_MATCHERS = {
+    machine: re.compile(pattern, re.IGNORECASE)
+    for machine, pattern in G8_DEMAND_SPECS.items()
+}
+
+
+def g8_reading_points(payload: Any) -> list[str]:
+    """Labeled points held by the row's accepted figure reading, in order."""
+    points: list[str] = []
+
+    def walk(value: Any) -> None:
+        if isinstance(value, dict):
+            if {"label", "x", "y"} <= set(value):
+                points.append(f"{value['label']}({value['x']}, {value['y']})")
+                return
+            for key in sorted(value):
+                walk(value[key])
+        elif isinstance(value, list):
+            for item in value:
+                walk(item)
+
+    walk(payload)
+    return points
+
+
+def weave_g8_coordinates(text: str, mapped: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    """Put the reading's points back where expression stripping left a gap.
+
+    The substitution runs only when the number of empty slots equals the number
+    of labeled points the reading holds. A shorter reading spliced into a longer
+    list would state points the task never listed, so that case is left alone
+    and the row is excluded downstream.
+    """
+    points = g8_reading_points(mapped.get("input"))
+    match = G8_EMPTY_SLOT_RUN.search(text)
+    if match is None:
+        if G8_COORDINATE_PAIR.search(text):
+            return text, {"outcome": "coordinates_already_in_text", "points": len(points)}
+        return text, {"outcome": "no_empty_slot_run", "points": len(points)}
+    slots = match.group(0).count(",")
+    if not points or slots != len(points):
+        return text, {
+            "outcome": "slot_and_reading_disagree", "points": len(points), "slots": slots,
+        }
+    woven = f"{text[:match.start()]}: {', '.join(points)} {text[match.end():]}"
+    return woven, {"outcome": "woven_from_reading", "points": len(points), "slots": slots}
+
+
+def g8_demand_decision(text: str, mapped: dict[str, Any]) -> str:
+    """Name the first gate a grade-8 row fails, or `admitted`."""
+    machine = mapped["machine"]
+    matcher = G8_DEMAND_MATCHERS.get(machine)
+    if matcher is None:
+        raise RuntimeError(f"no grade-8 demand specification for machine {machine}")
+    demanded = bool(matcher.search(text))
+    if not demanded and G8_DISCUSSION_DEMAND.search(text):
+        return "g8_discussion_demand"
+    if not demanded:
+        return "g8_demand_kind_mismatch"
+    if G8_SECOND_PART.search(text):
+        return "g8_multi_part_demand"
+    if G8_EMPTY_SLOT_RUN.search(text):
+        return "g8_unwoven_coordinates"
+    if machine in G8_COORDINATE_MACHINES and not G8_COORDINATE_PAIR.search(text):
+        return "g8_unwoven_coordinates"
+    return "admitted"
 
 
 class ProgramRunner:
@@ -806,12 +1001,16 @@ def build() -> dict[Path, bytes]:
         "unmapped_machine", "engine_guard_refused", "referent_extraction",
         "benchmark_13gram", "output_token_bound", "heldout_8gram",
         "g8_refused_by_name", "culling_invariant",
+        "g8_discussion_demand", "g8_demand_kind_mismatch",
+        "g8_multi_part_demand", "g8_unwoven_coordinates",
     ):
         exclusions[name] += 0
     exclusion_rows: defaultdict[str, list[str]] = defaultdict(list)
     culling = Counter()
     benchmark_hits: list[dict[str, Any]] = []
     token_drops: list[str] = []
+    g8_weaves: Counter[str] = Counter()
+    g8_demands: Counter[str] = Counter()
     for row in admitted:
         mapped = mapped_rows[row["id"]]
         if not mapped["machine"]:
@@ -841,6 +1040,16 @@ def build() -> dict[Path, bytes]:
             token_drops.append(row["id"])
             continue
         raw_input, input_scope = source_scoped_input(row, mapped)
+        if grade_of(row["lesson"]) == "8":
+            raw_input, weave = weave_g8_coordinates(raw_input, mapped)
+            input_scope = {**input_scope, "g8_coordinate_weave": weave}
+            g8_weaves[str(weave["outcome"])] += 1
+            demand = g8_demand_decision(raw_input, mapped)
+            g8_demands[demand] += 1
+            if demand != "admitted":
+                exclusions[demand] += 1
+                exclusion_rows[demand].append(row["id"])
+                continue
         prepared.append({
             "row": row, "mapped": mapped, "program": program,
             "raw_input": raw_input, "input_scope": input_scope,
@@ -873,6 +1082,15 @@ def build() -> dict[Path, bytes]:
             item["raw_input"], item["input_scope"] = operation_scoped_input(
                 row, mapped, item["input_scope"]
             )
+            if grade_of(row["lesson"]) == "8":
+                item["raw_input"], weave = weave_g8_coordinates(item["raw_input"], mapped)
+                item["input_scope"] = {**item["input_scope"], "g8_coordinate_weave": weave}
+                refined_demand = g8_demand_decision(item["raw_input"], mapped)
+                if refined_demand != "admitted":
+                    raise RuntimeError(
+                        f"operation scoping broke the grade-8 demand fit for {row['id']}: "
+                        f"{refined_demand}"
+                    )
             item["culled"] = cull_wave5_training_text(item["raw_input"])
             refined_ids.add(row["id"])
 
@@ -949,6 +1167,8 @@ def build() -> dict[Path, bytes]:
             heldout_text[row["id"]] = scoped_input_by_id[row["id"]]
             continue
         raw_input, _ = source_scoped_input(row, mapped_rows[row["id"]])
+        if grade_of(row["lesson"]) == "8":
+            raw_input, _ = weave_g8_coordinates(raw_input, mapped_rows[row["id"]])
         heldout_text[row["id"]] = cull_wave5_training_text(raw_input).text
     training_text = {pair["id"]: pair["input"] for pair in pair_candidates if pair["split"] == "train"}
     overlap_result = register_aware_split_overlap(
@@ -1002,6 +1222,27 @@ def build() -> dict[Path, bytes]:
     }
     if smoke["parsed"] != 100 or smoke["ran"] != 100 or smoke["answer_match"] != 100:
         raise RuntimeError(f"100-program smoke failed: {smoke}")
+
+    # Every surviving grade-8 pair is executed, not sampled. The leg is small
+    # and its route table is the newest, so the whole leg is checked each mint.
+    g8_pairs = [pair for pair in pairs if pair["grade"] == "8"]
+    g8_runner = ProgramRunner()
+    g8_results: list[dict[str, Any]] = []
+    try:
+        for pair in g8_pairs:
+            result = g8_runner.run(pair["output"], pair["expected_answer"])
+            g8_results.append({"id": pair["id"], "machine": pair["machine"], **result})
+    finally:
+        g8_runner.close()
+    g8_verification = {
+        "pairs": len(g8_results),
+        "parsed": sum(bool(row.get("parsed")) for row in g8_results),
+        "ran": sum(bool(row.get("ran")) for row in g8_results),
+        "answer_match": sum(bool(row.get("answer_match")) for row in g8_results),
+        "failures": [row for row in g8_results if not row.get("answer_match")],
+    }
+    if g8_verification["answer_match"] != len(g8_results):
+        raise RuntimeError(f"grade-8 execution verification failed: {g8_verification}")
 
     volumes: defaultdict[str, Counter[str]] = defaultdict(Counter)
     for pair in pairs:
@@ -1086,6 +1327,20 @@ def build() -> dict[Path, bytes]:
             "pair_count": sum(pair["grade"] == "8" for pair in pairs),
             "exclusion_counts": dict(sorted(g8_exclusions.items())),
             "silent_exclusions": 0,
+            "demand_fit": {
+                "law": "a routed row mints a pair only when its text asks for the result its machine returns",
+                "gate_order": [
+                    "g8_discussion_demand", "g8_demand_kind_mismatch",
+                    "g8_multi_part_demand", "g8_unwoven_coordinates",
+                ],
+                "decision_counts": dict(sorted(g8_demands.items())),
+                "specified_machines": len(G8_DEMAND_SPECS),
+            },
+            "coordinate_weave": {
+                "law": "substitute the reading's labeled points only when the empty slot count equals the point count",
+                "outcome_counts": dict(sorted(g8_weaves.items())),
+            },
+            "execution_verification": g8_verification,
         },
         "scene_satisfiable_readmission": {
             "rows": len(SCENE_ADMISSION_EXCEPTIONS),

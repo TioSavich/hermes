@@ -89,6 +89,10 @@ add_curriculum_lane() {
     add_python scripts/curriculum/build_im_lesson_capability_census.py
     add_python scripts/curriculum/build_im_zero_candidate_triage.py
     add_python scripts/curriculum/build_im_action_seam_recut.py
+    # The row-to-machine maps read the defragged pool built above. The pool map
+    # comes first: the grade 8 map joins its rows to the pilot receipts.
+    add_python scripts/sidekick/build_wave5_row_map.py
+    add_python scripts/curriculum/build_g8_row_machine_map.py
     add_enactment_driver
     add_python scripts/curriculum/build_im_lesson_enactment_census.py
     add_python scripts/curriculum/build_counting_place_value_diagnosis.py

@@ -39,6 +39,7 @@ from supervision import (  # noqa: E402
     build as build_mask,
     build_sequence,
     check as check_mask,
+    check_plain_reply_corruptions,
     check_sequence,
 )
 
@@ -88,6 +89,15 @@ class SidekickSequenceDataset(Dataset):
             raise ValueError(
                 f"sequence dataset sha256 mismatch: expected {expected_sha256}, "
                 f"got {actual_sha256}"
+            )
+
+        # The checker meets deliberate corruptions before it meets the data.
+        # A mask check that has only ever seen correct masks reports its own
+        # silence as evidence.
+        caught = check_plain_reply_corruptions(chat)
+        if caught != 4:
+            raise ValueError(
+                f"the plain-reply mask checker caught {caught} of 4 corruptions"
             )
 
         self.examples: list[dict[str, list[int]]] = []

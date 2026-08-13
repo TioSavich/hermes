@@ -27,9 +27,14 @@ DEFAULT_OUTPUT = (
     / "hermes/app/runtime/experiments/sidekick/datasets/wave5-semantic-pass.jsonl"
 )
 SOLUTION_SOURCE_SHA256 = (
-    "80e6ff0b317f4218859227eb321c6c2f7448aa88bc0f44b8278a0e4d51e870de"
+    "1a09bdd52308929d05d125832b190257ca38304dee6d048d0355ccb986d0096a"
 )
-SOLUTION_SOURCE_ROWS = 1436
+SOLUTION_SOURCE_ROWS = 1383
+# The K-7 leg of the mint is unchanged by the grade-8 demand-fit rebuild: the
+# same 1,373 ids in the same order occupy the first 1,373 lines. The line
+# adjudications below therefore still hold for those lines. Grade 8 lost 53 of
+# its 63 rows to the demand gates, so its verdicts are keyed by id instead.
+K7_SOLUTION_LINES = 1373
 DIAGNOSIS_SOURCE_SHA256 = (
     "1ce5230bae98e1b8e12e6781a1974d5e1f9a1da95689ffd020f0b987befffbfe"
 )
@@ -87,21 +92,36 @@ SOLUTION_FLAG_LINES = {
     "referent_mismatch": numbers(
         "53 89 91 93 110 119 580 723 844 868"
     ),
-    "mangled_input": numbers(
-        "94 96 132 811 812 1376 1377 1379 1390 1394 1395 1408 1409 1412 "
-        "1414 1415 1417 1419"
-    ),
-    "operand_mismatch": numbers(
-        "145 1396 1397 1416 1420 1421 1432"
-    ),
+    "mangled_input": numbers("94 96 132 811 812"),
+    "operand_mismatch": numbers("145"),
     "wrong_machine": numbers(
         "588 604 714 833 893 894 961 962 963 1039 1040 1042 1069 1070 "
-        "1098 1099 1161 1163 1164 1374 1375 1378 1380 1381 1382 1384 "
-        "1385 1386 1387 1388 1389 1391 1392 1393 1398 1399 1400 1401 "
-        "1404 1405 1406 1407 1410 1418 1422 1423 1424 1426 1430 1431 "
-        "1434 1435 1436"
+        "1098 1099 1161 1163 1164"
     ),
-    "answer_inconsistent": numbers("1429"),
+    "answer_inconsistent": numbers(""),
+}
+# Grade-8 verdicts from the 2026-08-13 read of the demand-fit rebuild. Every
+# surviving grade-8 pair was read whole against its program, its answer, and
+# its source statement.
+G8_SOLUTION_VERDICTS: dict[str, str | None] = {
+    # The equation the program solves is x - 5(x - 1) = x - (2x - 3); the input
+    # lost the leading term and mixes two demands with a second equation.
+    "im_defrag_f1a6b99462307dd233099f1f_1": "mangled_input",
+    "im_defrag_1e44fea48a27e31352698b15_1": None,
+    "im_defrag_5933c47e5e26b87ec5187d4e_1": None,
+    # The task supplies 10,000 km per side. The program's left operand is 10^8,
+    # which is already the product of two of those sides.
+    "im_defrag_3b82ceedfb7a28535eff28d4_1": "operand_mismatch",
+    # 70 is the low end of Mai's estimate, not the area of the square, and the
+    # square itself is a figure the input does not carry.
+    "im_defrag_f6d10b87eb7627fd903ff73c_1": "referent_mismatch",
+    # The table lost its variable names and cell alignment, and the demand is to
+    # complete every missing entry rather than the one the program returns.
+    "im_defrag_9475b9f5d9008b9758f21f59_1": "mangled_input",
+    "im_defrag_3f15cb205fefb9727c8d8a82_1": None,
+    "im_defrag_030ad6d0a1d3e38a980e1eb8_1": None,
+    "im_defrag_1dc1ee52e13e591e0ae61e17_1": None,
+    "im_defrag_85edeb641252608948d2289d_1": None,
 }
 DIAGNOSIS_KEEP_LINES = numbers(
     "40 41 42 142 143 144 769 770 771 772 773 774 775 776 777 781 782 "
@@ -257,7 +277,17 @@ def build(
     if SOLUTION_KEEP_LINES & set(solution_overrides):
         raise RuntimeError("solution line has both KEEP and FLAG overrides")
 
+    stale_lines = {
+        line for line in SOLUTION_KEEP_LINES | set(solution_overrides)
+        if line > K7_SOLUTION_LINES
+    }
+    if stale_lines:
+        raise RuntimeError(
+            f"solution line adjudications past the K-7 leg: {sorted(stale_lines)}"
+        )
+
     results: list[dict[str, object]] = []
+    read_g8: set[str] = set()
     for line_number, source_row in enumerate(solution_rows, 1):
         pair_id = str(source_row["id"])
         previous = baseline.get(pair_id)
@@ -270,7 +300,15 @@ def build(
             reason = None
         if line_number in solution_overrides:
             reason = solution_overrides[line_number]
+        if pair_id in G8_SOLUTION_VERDICTS:
+            reason = G8_SOLUTION_VERDICTS[pair_id]
+            read_g8.add(pair_id)
+        elif str(source_row.get("grade")) == "8":
+            raise RuntimeError(f"grade-8 pair {pair_id} carries no read verdict")
         results.append(decision(pair_id, None if reason is None else str(reason)))
+    unread = set(G8_SOLUTION_VERDICTS) - read_g8
+    if unread:
+        raise RuntimeError(f"grade-8 verdicts name absent pairs: {sorted(unread)}")
 
     # The diagnosis set is below its ratified release floor. Carry forward only
     # decisions that existed before the rebuild, while correcting the repaired

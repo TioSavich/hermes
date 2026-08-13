@@ -52,7 +52,15 @@ pusu_budget_seconds(contrast_diagnosis, 10).
 :- dynamic pusu_contract_memo/3.
 
 pusu_text(Term, Text) :- term_string(Term, Text, [quoted(true), numbervars(true)]).
-pusu_goal_text(Goal, Text) :- term_string(Goal, Text, [quoted(true), numbervars(true)]).
+% A goal that still holds an unbound output prints that variable under its
+% run-time number, so the same pass wrote a different store every time and no
+% regeneration ever came back clean. The copy is numbered before it is written,
+% which names the unbound places A, B, C by position rather than by whatever
+% counter the engine had reached.
+pusu_goal_text(Goal, Text) :-
+    copy_term(Goal, Numbered),
+    numbervars(Numbered, 0, _),
+    term_string(Numbered, Text, [quoted(true), numbervars(true)]).
 pusu_result(Outcome, Result) :- is_dict(Outcome), get_dict(result, Outcome, Result).
 pusu_result(action_outcome(_, Fields), Result) :- member(result(Result), Fields).
 pusu_operation_domain(addition, whole_number).
