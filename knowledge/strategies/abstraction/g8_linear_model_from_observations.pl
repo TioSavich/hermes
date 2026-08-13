@@ -64,13 +64,42 @@
 %   {"kind":"linear_model","given":"rate_and_initial",
 %    "initial":40,"rate":-2.5,
 %    "input_name":"rides","output_name":"dollars on the card"}
+%
+%   Query fields, any one of which wraps the model in its query term so
+%   the JSON genre reaches every doing; each value passes through
+%   g8_quantity/2, so printed decimals decode instead of raising:
+%   "at_input":11.25            -> query(Model, at_input(45/4))
+%   "for_output":"7.4"          -> query(Model, for_output(37/5))
+%   "observation_input":3, "observation_output":21
+%                               -> query(Model, observation(3, 21))
 % ==========================================================================
 
 g8_linear_model_input_contract(
     '{\"kind\":\"linear_model\",\"given\":\"string\",\"first\":{\"input\":\"number\",\"output\":\"number\"},\"second\":{\"input\":\"number\",\"output\":\"number\"},\"initial\":\"number\",\"rate\":\"number\",\"input_name\":\"string\",\"output_name\":\"string\"}',
     '{\"kind\":\"linear_model\",\"given\":\"two_observations\",\"first\":{\"input\":6,\"output\":15},\"second\":{\"input\":12,\"output\":23},\"input_name\":\"cups\",\"output_name\":\"stack height in cm\"}').
 
-g8_linear_model_from_json(Dict, two_observations(X1, Y1, X2, Y2, Names)) :-
+% The query-bearing clauses come first: a dict carrying a query field
+% wraps the base model in its query term, with every query value routed
+% through g8_quantity/2 (the probe file's decode/3 demonstrated this
+% repair; printed decimals like 11.25 previously raised type errors
+% inside rational arithmetic instead of decoding).
+g8_linear_model_from_json(Dict, query(Model, at_input(Q))) :-
+    is_dict(Dict), get_dict(at_input, Dict, Q0), !,
+    g8_linear_model_base_from_json(Dict, Model),
+    g8_quantity(Q0, Q).
+g8_linear_model_from_json(Dict, query(Model, for_output(T))) :-
+    is_dict(Dict), get_dict(for_output, Dict, T0), !,
+    g8_linear_model_base_from_json(Dict, Model),
+    g8_quantity(T0, T).
+g8_linear_model_from_json(Dict, query(Model, observation(X, Y))) :-
+    is_dict(Dict), get_dict(observation_input, Dict, X0), !,
+    get_dict(observation_output, Dict, Y0),
+    g8_linear_model_base_from_json(Dict, Model),
+    g8_quantity(X0, X), g8_quantity(Y0, Y).
+g8_linear_model_from_json(Dict, Model) :-
+    g8_linear_model_base_from_json(Dict, Model).
+
+g8_linear_model_base_from_json(Dict, two_observations(X1, Y1, X2, Y2, Names)) :-
     is_dict(Dict),
     get_dict(kind, Dict, "linear_model"),
     get_dict(given, Dict, "two_observations"), !,
@@ -81,7 +110,7 @@ g8_linear_model_from_json(Dict, two_observations(X1, Y1, X2, Y2, Names)) :-
     g8_quantity(X20, X2), g8_quantity(Y20, Y2),
     X1 =\= X2,
     quantity_names(Dict, Names).
-g8_linear_model_from_json(Dict, rate_and_initial(Rate, Initial, Names)) :-
+g8_linear_model_base_from_json(Dict, rate_and_initial(Rate, Initial, Names)) :-
     is_dict(Dict),
     get_dict(kind, Dict, "linear_model"),
     get_dict(given, Dict, "rate_and_initial"),

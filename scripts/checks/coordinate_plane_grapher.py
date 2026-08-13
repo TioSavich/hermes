@@ -123,7 +123,7 @@ def class_count(root: ET.Element, token: str) -> int:
     )
 
 
-def render_with_node(samples: list[Path]) -> list[dict[str, str]]:
+def render_with_node(samples: list[Path]) -> tuple[list[dict[str, str]], dict[str, object]]:
     program = r"""
 const fs = require('fs');
 const crypto = require('crypto');
@@ -154,11 +154,82 @@ const invalid = {version: 1, id: 'invalid', kind: 'coordinate-plane', title: 'In
 let rejected = false;
 try { grapher.renderSpec(invalid); } catch (error) { rejected = /point or line/.test(error.message); }
 if (!rejected) throw new Error('empty coordinate spec was accepted');
-process.stdout.write(JSON.stringify(rows));
+
+// axes.show and axes.aspect. Each control states what would have to break for
+// the claim to be false, so a silently reverted renderer cannot pass.
+const plain = {
+  version: 1, id: 'axes-default-control', kind: 'coordinate-plane', title: 'Axes default control',
+  points: [{x: -2, y: -1}, {x: 3, y: 2}],
+  lines: [{type: 'segment', from: {x: -2, y: -1}, to: {x: 3, y: 2}}]
+};
+const explicit = JSON.parse(JSON.stringify(plain));
+explicit.axes = {show: true, aspect: 'stretch'};
+if (grapher.renderSpec(plain) !== grapher.renderSpec(explicit)) {
+  throw new Error('stating the default axes settings changed the SVG');
+}
+const bare = JSON.parse(JSON.stringify(plain));
+bare.axes = {show: false};
+const bareSvg = grapher.renderSpec(bare);
+['plot-frame', 'gridline', 'axis axis-x', 'axis axis-y', 'tick-label'].forEach((token) => {
+  if (bareSvg.includes(token)) throw new Error('axes.show false still drew ' + token);
+});
+if (!bareSvg.includes('data-axes-shown="false"')) throw new Error('the drawing surface is unmarked in the SVG');
+if (!bareSvg.includes('data-line-type="segment"') || !bareSvg.includes('data-point')) {
+  throw new Error('axes.show false dropped marks it was meant to keep');
+}
+const sides = (spec) => {
+  const svg = grapher.renderSpec(spec);
+  const found = [];
+  const re = /<line x1="(-?[\d.]+)" y1="(-?[\d.]+)" x2="(-?[\d.]+)" y2="(-?[\d.]+)"[^>]*class="data-line/g;
+  let m;
+  while ((m = re.exec(svg))) found.push(Math.hypot(m[3] - m[1], m[4] - m[2]));
+  return found;
+};
+const square = {
+  version: 1, id: 'equal-aspect-control', kind: 'coordinate-plane', title: 'Equal aspect control',
+  canvas: {width: 640, height: 420},
+  axes: {show: false, aspect: 'equal'},
+  lines: [
+    {type: 'segment', from: {x: 0, y: 0}, to: {x: 4, y: 0}},
+    {type: 'segment', from: {x: 4, y: 0}, to: {x: 4, y: 4}},
+    {type: 'segment', from: {x: 4, y: 4}, to: {x: 0, y: 4}},
+    {type: 'segment', from: {x: 0, y: 4}, to: {x: 0, y: 0}}
+  ]
+};
+const equalSides = sides(square);
+if (equalSides.length !== 4) throw new Error('the equal-aspect control drew ' + equalSides.length + ' sides');
+const equalSpread = Math.max.apply(null, equalSides) - Math.min.apply(null, equalSides);
+if (equalSpread > 0.01) throw new Error('equal aspect drew a square with unequal sides: ' + equalSides.join(', '));
+if (!grapher.renderSpec(square).includes('data-aspect="equal"')) {
+  throw new Error('the equal-aspect setting is unmarked in the SVG');
+}
+const stretched = JSON.parse(JSON.stringify(square));
+stretched.axes = {show: false};
+const stretchSides = sides(stretched);
+const stretchSpread = Math.max.apply(null, stretchSides) - Math.min.apply(null, stretchSides);
+if (stretchSpread < 1) {
+  throw new Error('the default no longer stretches, so the equal-aspect control proves nothing');
+}
+let refusedShow = false;
+try { grapher.validateSpec(Object.assign({}, plain, {axes: {show: 'yes'}})); }
+catch (error) { refusedShow = /axes.show/.test(error.message); }
+if (!refusedShow) throw new Error('a non-boolean axes.show was accepted');
+let refusedAspect = false;
+try { grapher.validateSpec(Object.assign({}, plain, {axes: {aspect: 'square'}})); }
+catch (error) { refusedAspect = /axes.aspect/.test(error.message); }
+if (!refusedAspect) throw new Error('an unknown axes.aspect was accepted');
+
+const controls = {
+  bare_bytes: Buffer.byteLength(bareSvg, 'utf8'),
+  equal_sides: equalSides.map((value) => Math.round(value * 100) / 100),
+  stretch_sides: stretchSides.map((value) => Math.round(value * 100) / 100)
+};
+process.stdout.write(JSON.stringify({rows, controls}));
 """
     command = ["node", "-e", program, str(GRAPher), *(str(path) for path in samples)]
     completed = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
-    return json.loads(completed.stdout)
+    payload = json.loads(completed.stdout)
+    return payload["rows"], payload["controls"]
 
 
 def check_svg(row: dict[str, str], spec: dict[str, object]) -> str:
@@ -220,7 +291,7 @@ def main() -> int:
                 f"{spec_id}: embedded JSON differs from {relative_path}")
 
     subprocess.run(["node", "--check", str(GRAPher)], cwd=ROOT, check=True)
-    rendered = render_with_node(sample_paths)
+    rendered, controls = render_with_node(sample_paths)
     evidence = [check_svg(row, specs[row["id"]]) for row in rendered]
 
     all_line_types = {
@@ -233,7 +304,8 @@ def main() -> int:
 
     readme = README.read_text(encoding="utf-8")
     for token in ["coordinate-plane", "bar-chart", "dot-plot", "slope-intercept",
-                  "through-points", "segment", "renderSpec", "version"]:
+                  "through-points", "segment", "renderSpec", "version",
+                  "axes.show", "axes.aspect"]:
         require(token in readme, f"README omits {token}")
     require("coordinate-plane/index.html" in ATLAS.read_text(encoding="utf-8"),
             "atlas does not link the grapher")
@@ -255,6 +327,10 @@ def main() -> int:
     print("PASS deterministic SVG and DOM contracts:")
     for line in evidence:
         print(f"  {line}")
+    print("PASS axis-optional and equal-unit drawing surfaces:")
+    print(f"  stating the defaults leaves the bytes alone; a bare surface is {controls['bare_bytes']} bytes")
+    print(f"  equal aspect draws a square with sides {controls['equal_sides']} px")
+    print(f"  the stretch default draws the same square {controls['stretch_sides']} px, which is what it repairs")
     print("PASS atlas, visualizer picker, README, and runtime manifest registration")
     return 0
 

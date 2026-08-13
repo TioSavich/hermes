@@ -31,8 +31,28 @@ the renderer. No machine wiring is part of this directory.
 Set `kind` to `coordinate-plane`.
 
 - `axes` is optional. It accepts `xMin`, `xMax`, `yMin`, `yMax`, `tickStep`,
-  `xLabel`, and `yLabel`. Omitted bounds are derived from the supplied points
-  and lines, include zero, and are rounded to readable tick intervals.
+  `xLabel`, `yLabel`, `show`, and `aspect`. Omitted bounds are derived from the
+  supplied points and lines, include zero, and are rounded to readable tick
+  intervals.
+- `axes.show` is `true` by default. Set it to `false` for a drawing surface:
+  no frame, no gridlines, no axis lines, no tick labels, and no axis labels.
+  The points and lines land where they would have landed with the apparatus
+  drawn, so a figure whose measurements are printed on it — a trapezoid with
+  its angles marked, say — no longer arrives dressed as a graph.
+- `axes.aspect` is `"stretch"` by default: each axis is fitted to the plot
+  rectangle on its own, which suits a function graph and distorts a figure.
+  Set it to `"equal"` to give one unit the same number of pixels both ways.
+  The domain then grows on whichever axis has room — it is never cropped — so
+  a square draws square and a length read off the picture means the same thing
+  whichever way it runs. Supplied bounds are a floor under this setting, not an
+  exact frame.
+
+Both fields belong to the coordinate-plane renderer. The bar-chart and dot-plot
+renderers accept them in a specification and do not act on them.
+
+A rendered SVG carries `data-axes-shown="false"` or `data-aspect="equal"` only
+when the specification asked for it, so a scene that says nothing about either
+renders exactly the bytes it rendered before.
 - `points` is an array of `{ "x": number, "y": number, "label": string?,
   "color": string? }` objects.
 - `lines` is an array. Each line has an optional `label` and `color`, plus one

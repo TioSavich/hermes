@@ -15,6 +15,11 @@
 
   var DEFAULT_WIDTH = 640;
   var DEFAULT_HEIGHT = 420;
+  // 'stretch' fills the plot rectangle on each axis separately, which is what a
+  // function graph wants. 'equal' gives one unit the same pixels both ways,
+  // which is what a figure wants: a square draws square, and a length measured
+  // off the picture means the same thing whichever way it runs.
+  var ASPECTS = ['stretch', 'equal'];
   var COLORS = {
     paper: '#fffdf7',
     ink: '#1b1810',
@@ -85,6 +90,12 @@
     ['xLabel', 'yLabel'].forEach(function (key) {
       if (axes[key] !== undefined) requireText(axes[key], 'axes.' + key);
     });
+    if (axes.show !== undefined && typeof axes.show !== 'boolean') {
+      fail('axes.show must be true or false');
+    }
+    if (axes.aspect !== undefined && ASPECTS.indexOf(axes.aspect) < 0) {
+      fail("axes.aspect must be 'stretch' or 'equal'");
+    }
   }
 
   function validateCoordinateSpec(spec) {
@@ -296,6 +307,36 @@
     return { xMin: x.min, xMax: x.max, yMin: y.min, yMax: y.max, xStep: x.step, yStep: y.step };
   }
 
+  // Whether the coordinate apparatus is drawn at all: frame, gridlines, tick
+  // labels, axis lines, axis labels. With it off the same spec becomes a plain
+  // drawing surface, and the marks land exactly where they would have landed.
+  function axesShown(spec) {
+    return !(spec.axes && spec.axes.show === false);
+  }
+
+  function equalAspect(spec) {
+    return !!(spec.axes && spec.axes.aspect === 'equal');
+  }
+
+  // Grow the domain, never crop it, until one unit spans the same pixels on
+  // both axes. The axis with room to spare is the one that grows, about its own
+  // centre, so everything the caller asked to show stays inside the plot.
+  function equalizeDomain(domain, plot) {
+    var xSpan = domain.xMax - domain.xMin;
+    var ySpan = domain.yMax - domain.yMin;
+    if (!(xSpan > 0) || !(ySpan > 0) || !(plot.width > 0) || !(plot.height > 0)) return domain;
+    var scale = Math.min(plot.width / xSpan, plot.height / ySpan);
+    var halfX = plot.width / (2 * scale);
+    var halfY = plot.height / (2 * scale);
+    var centerX = (domain.xMin + domain.xMax) / 2;
+    var centerY = (domain.yMin + domain.yMax) / 2;
+    return {
+      xMin: centerX - halfX, xMax: centerX + halfX,
+      yMin: centerY - halfY, yMax: centerY + halfY,
+      xStep: domain.xStep, yStep: domain.yStep
+    };
+  }
+
   function maps(domain, plot) {
     return {
       x: function (value) { return plot.left + ((value - domain.xMin) / (domain.xMax - domain.xMin)) * plot.width; },
@@ -369,7 +410,11 @@
       'aria-labelledby': titleId + ' ' + descId,
       'data-hermes-renderer': 'grapher-v1',
       'data-hermes-kind': spec.kind,
-      'data-spec-id': spec.id
+      'data-spec-id': spec.id,
+      // Present only when the caller asked for something other than the
+      // default, so a scene that says nothing renders exactly as before.
+      'data-axes-shown': (spec.kind === 'coordinate-plane' && !axesShown(spec)) ? 'false' : undefined,
+      'data-aspect': (spec.kind === 'coordinate-plane' && equalAspect(spec)) ? 'equal' : undefined
     }) + '>' +
       tag('title', { id: titleId }, escapeText(spec.title)) +
       tag('desc', { id: descId }, escapeText(description || spec.description || spec.title)) +
@@ -397,28 +442,31 @@
     var height = (spec.canvas && spec.canvas.height) || DEFAULT_HEIGHT;
     var plot = { left: 64, top: 42, width: width - 96, height: height - 96 };
     var domain = coordinateDomain(spec);
+    if (equalAspect(spec)) domain = equalizeDomain(domain, plot);
     var map = maps(domain, plot);
     var out = [];
-    out.push(emptyTag('rect', {
-      x: plot.left, y: plot.top, width: plot.width, height: plot.height,
-      fill: 'none', stroke: COLORS.ink, 'stroke-width': 1, class: 'plot-frame'
-    }));
-    tickValues(domain.xMin, domain.xMax, domain.xStep).forEach(function (value) {
-      var x = map.x(value);
-      out.push(emptyTag('line', { x1: number(x), y1: plot.top, x2: number(x), y2: plot.top + plot.height, stroke: COLORS.grid, 'stroke-width': 0.8, class: 'gridline gridline-x', 'data-value': labelNumber(value) }));
-      out.push(textNode(x, plot.top + plot.height + 19, labelNumber(value), { size: 11, fill: COLORS.muted, className: 'tick-label tick-label-x' }));
-    });
-    tickValues(domain.yMin, domain.yMax, domain.yStep).forEach(function (value) {
-      var y = map.y(value);
-      out.push(emptyTag('line', { x1: plot.left, y1: number(y), x2: plot.left + plot.width, y2: number(y), stroke: COLORS.grid, 'stroke-width': 0.8, class: 'gridline gridline-y', 'data-value': labelNumber(value) }));
-      out.push(textNode(plot.left - 10, y, labelNumber(value), { size: 11, fill: COLORS.muted, anchor: 'end', baseline: 'central', className: 'tick-label tick-label-y' }));
-    });
-    var axisY = inRange(0, domain.yMin, domain.yMax) ? map.y(0) : map.y(domain.yMin);
-    var axisX = inRange(0, domain.xMin, domain.xMax) ? map.x(0) : map.x(domain.xMin);
-    out.push(emptyTag('line', { x1: plot.left, y1: number(axisY), x2: plot.left + plot.width, y2: number(axisY), stroke: COLORS.ink, 'stroke-width': 1.7, class: 'axis axis-x' }));
-    out.push(emptyTag('line', { x1: number(axisX), y1: plot.top, x2: number(axisX), y2: plot.top + plot.height, stroke: COLORS.ink, 'stroke-width': 1.7, class: 'axis axis-y' }));
-    if (spec.axes && spec.axes.xLabel) out.push(textNode(plot.left + plot.width, height - 12, spec.axes.xLabel, { size: 12, anchor: 'end', weight: 600, className: 'axis-label axis-label-x' }));
-    if (spec.axes && spec.axes.yLabel) out.push(textNode(16, plot.top, spec.axes.yLabel, { size: 12, anchor: 'start', weight: 600, className: 'axis-label axis-label-y' }));
+    if (axesShown(spec)) {
+      out.push(emptyTag('rect', {
+        x: plot.left, y: plot.top, width: plot.width, height: plot.height,
+        fill: 'none', stroke: COLORS.ink, 'stroke-width': 1, class: 'plot-frame'
+      }));
+      tickValues(domain.xMin, domain.xMax, domain.xStep).forEach(function (value) {
+        var x = map.x(value);
+        out.push(emptyTag('line', { x1: number(x), y1: plot.top, x2: number(x), y2: plot.top + plot.height, stroke: COLORS.grid, 'stroke-width': 0.8, class: 'gridline gridline-x', 'data-value': labelNumber(value) }));
+        out.push(textNode(x, plot.top + plot.height + 19, labelNumber(value), { size: 11, fill: COLORS.muted, className: 'tick-label tick-label-x' }));
+      });
+      tickValues(domain.yMin, domain.yMax, domain.yStep).forEach(function (value) {
+        var y = map.y(value);
+        out.push(emptyTag('line', { x1: plot.left, y1: number(y), x2: plot.left + plot.width, y2: number(y), stroke: COLORS.grid, 'stroke-width': 0.8, class: 'gridline gridline-y', 'data-value': labelNumber(value) }));
+        out.push(textNode(plot.left - 10, y, labelNumber(value), { size: 11, fill: COLORS.muted, anchor: 'end', baseline: 'central', className: 'tick-label tick-label-y' }));
+      });
+      var axisY = inRange(0, domain.yMin, domain.yMax) ? map.y(0) : map.y(domain.yMin);
+      var axisX = inRange(0, domain.xMin, domain.xMax) ? map.x(0) : map.x(domain.xMin);
+      out.push(emptyTag('line', { x1: plot.left, y1: number(axisY), x2: plot.left + plot.width, y2: number(axisY), stroke: COLORS.ink, 'stroke-width': 1.7, class: 'axis axis-x' }));
+      out.push(emptyTag('line', { x1: number(axisX), y1: plot.top, x2: number(axisX), y2: plot.top + plot.height, stroke: COLORS.ink, 'stroke-width': 1.7, class: 'axis axis-y' }));
+      if (spec.axes && spec.axes.xLabel) out.push(textNode(plot.left + plot.width, height - 12, spec.axes.xLabel, { size: 12, anchor: 'end', weight: 600, className: 'axis-label axis-label-x' }));
+      if (spec.axes && spec.axes.yLabel) out.push(textNode(16, plot.top, spec.axes.yLabel, { size: 12, anchor: 'start', weight: 600, className: 'axis-label axis-label-y' }));
+    }
     (spec.lines || []).forEach(function (line, index) {
       var endpoints = line.type === 'segment' ? [line.from, line.to] : clipInfiniteLine(line, domain);
       if (!endpoints) return;
