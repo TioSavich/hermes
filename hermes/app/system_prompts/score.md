@@ -40,7 +40,7 @@ enough. For transcript-like student turns, use the full stack.
   `practiced_non_clenching` (refusal of defensive closure where it was available).
 
 ### Force (for student turns)
-- `assert/1`, `avow/1`, `acknowledge/1`, `attribute/2`, `demand/1`, `permit/1`.
+- `assert/1`, `avow/1`, `acknowledge/1`, `attribute/2`, `demand/1`, `permit/1`, `question/1`.
 
 ### Position (for student turns)
 - `pos_1s` (I), `pos_1p_incl` (we-with-you), `pos_1p_excl` (we-not-you),

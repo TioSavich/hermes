@@ -41,6 +41,12 @@ for kind tags. Reply with the program only. Do not calculate the answer in prose
 
 def few_shots(training: list[dict[str, Any]], count: int) -> list[dict[str, Any]]:
     """Select a stable family- and genre-diverse frame without held-out text."""
+    # A zero-shot arm asks for no frame at all. Without this guard the
+    # round-robin below never meets its stop condition and returns every
+    # stratum, so the tuned run would receive the whole frame it was asked to
+    # do without.
+    if count <= 0:
+        return []
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for pair in training:
         groups[(pair["genre"], pair["family"])].append(pair)
@@ -120,7 +126,17 @@ def chat(endpoint: str, api_key: str | None, payload: dict[str, Any], timeout: f
     return str(body["choices"][0]["message"]["content"])
 
 
-def artifact_shape(output_dir: Path, shots: list[dict[str, Any]]) -> None:
+def names(label: str) -> tuple[str, str, str]:
+    """Output filenames for one arm. The default label reproduces F1's names."""
+    return (
+        f"wave5-{label}-results.jsonl",
+        f"wave5-{label}-floor.json",
+        f"wave5-{label}-expected-artifact-shape.json",
+    )
+
+
+def artifact_shape(output_dir: Path, shots: list[dict[str, Any]], label: str = "f1") -> None:
+    results_name, summary_name, shape_name = names(label)
     shape = {
         "runner": RUNNER_VERSION,
         "inference_status": "CONTROLLER_RUN",
@@ -134,10 +150,10 @@ def artifact_shape(output_dir: Path, shots: list[dict[str, Any]]) -> None:
         "expected_summary_fields": [
             "runner", "model", "source_sha256", "few_shot_ids", "genre_strata",
         ],
-        "output_paths": [RESULTS_NAME, SUMMARY_NAME],
+        "output_paths": [results_name, summary_name],
     }
     output_dir.mkdir(parents=True, exist_ok=True)
-    write_json(output_dir / "wave5-f1-expected-artifact-shape.json", shape)
+    write_json(output_dir / shape_name, shape)
 
 
 def main() -> int:
@@ -147,6 +163,12 @@ def main() -> int:
     parser.add_argument("--api-key")
     parser.add_argument("--output-dir", type=Path, default=FLOORS)
     parser.add_argument("--few-shots", type=int, default=8)
+    parser.add_argument(
+        "--label",
+        default="f1",
+        help="output filename stem; the default reproduces the frozen F1 floor, "
+        "and any other value keeps a second arm from overwriting it",
+    )
     parser.add_argument("--timeout", type=float, default=120.0)
     parser.add_argument("--dry-run", action="store_true", help="validate prompts without inference")
     args = parser.parse_args()
@@ -155,7 +177,8 @@ def main() -> int:
     training = [pair for pair in pairs if pair["split"] == "train"]
     held_out = [pair for pair in pairs if pair["split"] == "held_out"]
     shots = few_shots(training, args.few_shots)
-    artifact_shape(args.output_dir, shots)
+    results_name, summary_name, _ = names(args.label)
+    artifact_shape(args.output_dir, shots, args.label)
     if args.dry_run:
         for pair in held_out:
             framed = messages(pair, shots)
@@ -207,9 +230,12 @@ def main() -> int:
             )
     summary = {
         "runner": RUNNER_VERSION,
+        "label": args.label,
         "model": args.model,
         "source": str(PAIRS.relative_to(REPO)),
         "source_sha256": sha256(PAIRS),
+        "held_out_count": len(held_out),
+        "few_shots": len(shots),
         "few_shot_ids": [shot["id"] for shot in shots],
         "temperature": 0,
         "max_tokens": 256,
@@ -217,9 +243,9 @@ def main() -> int:
         "genre_strata": summarize(results, ("genre",)),
         "genre_family_strata": summarize(results, ("genre", "ground_family")),
     }
-    write_jsonl(args.output_dir / RESULTS_NAME, results)
-    write_json(args.output_dir / SUMMARY_NAME, summary)
-    print(args.output_dir / SUMMARY_NAME)
+    write_jsonl(args.output_dir / results_name, results)
+    write_json(args.output_dir / summary_name, summary)
+    print(args.output_dir / summary_name)
     return 0
 
 

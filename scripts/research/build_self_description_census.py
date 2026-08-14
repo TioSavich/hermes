@@ -1052,8 +1052,13 @@ def build() -> dict[str, object]:
     # that authored those files shipped a registry that did not yet name
     # them, so this pin move is a repair rather than a bump: the registry
     # now describes the tree it ships with.
-    if len(registry_rows) != 345:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 345")
+    # 352 from 2026-08-14: the language lane entered the registry — the
+    # Webster morphology interface, the authored supplement, the demand-fit
+    # math lexicon, the word-problem and APE readers, the loop-admitted
+    # store, the pedagogy force funnel, and the standards router/doing
+    # stores. All quarantined; the parser points at doings it never loads.
+    if len(registry_rows) != 352:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 352")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1131,8 +1136,10 @@ def build() -> dict[str, object]:
     # modules, which is what quarantine means here. Nothing imports a pilot;
     # the mints and the scene emitters reach them by running them, never by
     # loading them into the worker. Admission by ceremony would move them.
-    if len(orphan_records) != 119:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 119")
+    # 126 from 2026-08-14: the language-lane rows are orphans in the same
+    # quarantine sense; the harness and router run them, nothing loads them.
+    if len(orphan_records) != 126:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 126")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

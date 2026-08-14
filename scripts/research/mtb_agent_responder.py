@@ -21,6 +21,10 @@ from hermes.app.worker import PersistentPrologError, PersistentPrologWorker
 import mtb_responders
 
 CHAT_ENDPOINT = "http://localhost:11434/api/chat"
+# Backends that speak the OpenAI chat shape: parameters at the top level and
+# the reply under choices[0].message. Ollama puts parameters under `options`
+# and the reply under `message`.
+OPENAI_BACKENDS = {"llama", "openai", "vllm", "llama_cpp", "llamacpp"}
 MAX_TOOL_ROUNDS = 4
 MAX_MODEL_CALLS = 6
 SUPPORTED_TASKS = {
@@ -213,6 +217,10 @@ class AgentTutorResponder:
     def __init__(self, model: str, **options: str) -> None:
         self.model = model
         self.endpoint = options.get("endpoint", CHAT_ENDPOINT)
+        # The runner has always passed `backend`, and this class has always
+        # ignored it, so every run against an OpenAI-compatible server read a
+        # reply shape that was never there and fell back on every item.
+        self.backend = options.get("backend", "ollama")
         self.num_predict = int(options.get("num_predict", "1024"))
         self.ollama_timeout = float(options.get("ollama_timeout", "600"))
         self.worker_timeout = float(options.get("worker_timeout", "120"))
@@ -237,16 +245,31 @@ class AgentTutorResponder:
     ) -> dict[str, Any]:
         if item["model_calls"] >= MAX_MODEL_CALLS:
             raise RuntimeError("model call bound reached")
-        payload = json.dumps({
-            "model": self.model,
-            "messages": messages,
-            "tools": tools,
-            "stream": False,
-            "options": {
+        if self.backend in OPENAI_BACKENDS:
+            body_out: dict[str, Any] = {
+                "model": self.model,
+                "messages": messages,
+                "stream": False,
                 "temperature": 0.0,
-                "num_predict": self.num_predict,
-            },
-        }).encode("utf-8")
+                "max_tokens": self.num_predict,
+            }
+            # An empty tools array is not the same as no tools: some servers
+            # reject it, and the caller withholds tools on purpose once the
+            # round bound is reached.
+            if tools:
+                body_out["tools"] = tools
+        else:
+            body_out = {
+                "model": self.model,
+                "messages": messages,
+                "tools": tools,
+                "stream": False,
+                "options": {
+                    "temperature": 0.0,
+                    "num_predict": self.num_predict,
+                },
+            }
+        payload = json.dumps(body_out).encode("utf-8")
         request = urllib.request.Request(
             self.endpoint,
             data=payload,
@@ -270,7 +293,14 @@ class AgentTutorResponder:
             item["model_seconds_millis"] += round(elapsed * 1000)
         message = body.get("message")
         if not isinstance(message, dict):
-            raise RuntimeError("ollama chat returned no assistant message")
+            choices = body.get("choices")
+            if isinstance(choices, list) and choices:
+                first = choices[0]
+                if isinstance(first, dict) and isinstance(
+                        first.get("message"), dict):
+                    message = first["message"]
+        if not isinstance(message, dict):
+            raise RuntimeError("chat returned no assistant message")
         return message
 
     def _check_math_claim(

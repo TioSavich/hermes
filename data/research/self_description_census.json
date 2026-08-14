@@ -416,14 +416,14 @@
       "render": 35,
       "sequent": 14,
       "standards": 22,
-      "synthesis": 63,
+      "synthesis": 70,
       "unclassified": 9,
       "workflow": 27,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 119,
+      "orphan_module": 126,
       "routed_only": 15,
       "routed_paged": 189,
       "unrouted": 12
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 83
+      "undetermined": 90
     },
-    "total": 345,
+    "total": 352,
     "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1603,6 +1603,48 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_circle_and_solid_dimensions",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_decimal_fraction_form",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_exponent_expression_equivalence",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_exponent_rule_rewrite.pl",
           "relation": "source inspected"
         }
@@ -1638,6 +1680,34 @@
       "module": "g8_linear_equation_balance",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/g8_linear_equation_balance.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_linear_equation_reading_and_authoring",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_linear_expression_normalizer",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
       "verdict": "undetermined"
     },
     {
@@ -1694,6 +1764,20 @@
       "module": "g8_polygon_angle_and_tessellation",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/g8_polygon_angle_and_tessellation.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_power_of_ten_alignment",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
       "verdict": "undetermined"
     },
     {
@@ -1764,6 +1848,20 @@
       "module": "g8_round_solid_volume",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/g8_round_solid_volume.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "g8_scaled_copy_and_similar_sides",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
       "verdict": "undetermined"
     },
     {

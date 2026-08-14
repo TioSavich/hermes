@@ -533,6 +533,13 @@ lesson_standard(Code, Framework, StandardCode, Statement) :-
 
 lesson_standard_source(Code, Framework, StandardCode, Statement) :-
     explicit_lesson_standard(Code, Framework, StandardCode, Statement).
+lesson_standard_source(Code, ccss, StandardCode, Statement) :-
+    \+ explicit_lesson_standard(Code, _, _, _),
+    ensure_loaded(im_lessons('generated/vision_lesson_digest')),
+    vision_lesson_digest:vision_lesson_standard(Code, addressing, StandardCode),
+    format(string(Statement),
+           "Addressing standard ~w cited by the IM vision lesson digest.",
+           [StandardCode]).
 lesson_standard_source(Code, im_lesson, Code, Statement) :-
     \+ explicit_lesson_standard(Code, _, _, _),
     im_lesson(Code, ConceptId, _, _, _, _),
