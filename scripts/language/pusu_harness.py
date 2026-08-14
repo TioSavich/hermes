@@ -34,6 +34,10 @@ SOURCE = REPO / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 READER = REPO / "knowledge/strategies/abstraction/word_problem_reader_pilot.pl"
 APE_READER = REPO / "knowledge/strategies/abstraction/ape_reader_pilot.pl"
 FORCE_PILOT = REPO / "knowledge/strategies/abstraction/pedagogy_force_pilot.pl"
+EXPRESSION_READER = (
+    REPO
+    / "knowledge/strategies/abstraction/printed_expression_reader_pilot.pl"
+)
 APE_LEXICON = REPO / "hermes/app/runtime/experiments/language/ape_user_lexicon.pl"
 MORPHOLOGY = REPO / "knowledge/strategies/abstraction/english_morphology.pl"
 SATURATOR = REPO / "scripts/sidekick/diagnosis_saturate.pl"
@@ -42,7 +46,7 @@ G8_TRUTH = REPO / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl"
 SURFACE_NORMALIZER = REPO / "scripts/language/surface_normalizer.py"
 DEFAULT_OUTPUT = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 DEFAULT_SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
-SCHEMA = "pusu_harness_v4"
+SCHEMA = "pusu_harness_v5"
 EXPECTED_ELIGIBLE = 2129
 
 PLAIN_NUMBER = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$")
@@ -66,6 +70,7 @@ def source_hashes() -> dict[str, str]:
             READER,
             APE_READER,
             FORCE_PILOT,
+            EXPRESSION_READER,
             APE_LEXICON,
             MORPHOLOGY,
             SATURATOR,
@@ -236,16 +241,44 @@ def load_ground_truth() -> dict[str, list[dict[str, Any]]]:
     return dict(by_id)
 
 
+SOURCE_BOUND_SELECTIONS = {
+    "source_statement_bound",
+    "source_statement_bound_deriving",
+}
+
+# A source statement that poses a question to a student.  A printed expression
+# ("7 + 1") is not one, and neither is a bare premise; both are excluded from
+# the guard below by the alphabetic-sentence test rather than by a name list.
+PROSE_STATEMENT = re.compile(r"[A-Za-z]{3,}.*\.")
+
+
 def compare_ground_truth(
     record_id: str,
     completion: dict[str, Any],
     truth_by_id: dict[str, list[dict[str, Any]]],
+    source_statement: str = "",
+    program_basis: dict[str, Any] | None = None,
+    completion_carrier: str = "",
 ) -> dict[str, Any]:
     receipts = truth_by_id.get(record_id, [])
     base: dict[str, Any] = {"available": bool(receipts), "receipts": receipts}
     if not receipts:
         return {**base, "comparable": False, "verdict": "no_ground_truth",
                 "reason": "no_verified_machine_result"}
+    # A defragged row names one sub-problem of a statement that may pose
+    # several.  When this row's own source statement asks nothing, and the
+    # answer therefore came from a sibling sub-problem, the two numbers answer
+    # different questions.  That is a category difference, not a disagreement,
+    # so the row leaves the comparison rather than losing it.
+    selection = str((program_basis or {}).get("selection", ""))
+    if (
+        completion_carrier == "complete_statement"
+        and PROSE_STATEMENT.search(source_statement or "")
+        and "?" not in source_statement
+        and selection not in SOURCE_BOUND_SELECTIONS
+    ):
+        return {**base, "comparable": False, "verdict": "no_ground_truth",
+                "reason": "source_statement_carries_no_ask"}
     expected_raw = [result_value(row["result_term"]) for row in receipts]
     if any(value is None for value in expected_raw):
         return {**base, "comparable": False, "verdict": "no_ground_truth",
@@ -298,10 +331,21 @@ class PrologRunner:
             bufsize=1,
         )
 
-    def run(self, sentence_texts: list[str]) -> dict[str, Any]:
+    def run(
+        self, sentence_texts: list[str], source_row: dict[str, Any]
+    ) -> dict[str, Any]:
         if self.process.stdin is None or self.process.stdout is None:
             raise RuntimeError("PUSU Prolog worker has no pipes")
-        request = json.dumps({"sentences": sentence_texts}, ensure_ascii=False)
+        request = json.dumps(
+            {
+                "sentences": sentence_texts,
+                "source_statement": source_row["source_statement"],
+                "complete_statement": source_row["complete_statement"],
+                "referents": source_row["referents"],
+                "source_statement_spans": source_row["source_statement_spans"],
+            },
+            ensure_ascii=False,
+        )
         self.process.stdin.write(request + "\n")
         self.process.stdin.flush()
         line = self.process.stdout.readline()
@@ -373,6 +417,22 @@ def output_row(
         sentence_rows.append({"sentence_index": sentence_index, "text": text, **receipt})
     parsed_count = sum(bool(row["parsed"]) for row in sentence_rows)
     completion = dict(reply["completion"])
+    # An answer whose whole derivation is `given` is an echo of an input, not a
+    # solution. "Han collected 4 leaves. Priya gave him 5 more leaves. How many
+    # leaves does Han have now?" returned 4 — the initial state — because the
+    # transfer sentence left a loose quantity the ask never reached. Returning
+    # a given as an answer is worse than refusing, so it refuses.
+    derivations = [
+        str(answer.get("derivation", ""))
+        for answer in (completion.get("answers") or [])
+    ]
+    if (
+        completion.get("status") == "completed"
+        and derivations
+        and all(derivation == "given" for derivation in derivations)
+    ):
+        completion["status"] = "parsed_not_completed"
+        completion["reason"] = "answer_echoes_a_given"
     if completion["status"] == "completed":
         completion_class = (
             "completed_full"
@@ -382,7 +442,14 @@ def output_row(
         completion["class"] = completion_class
     else:
         completion_class = None
-    comparison = compare_ground_truth(str(source_row["id"]), completion, truth_by_id)
+    comparison = compare_ground_truth(
+        str(source_row["id"]),
+        completion,
+        truth_by_id,
+        source_statement=str(source_row["source_statement"]),
+        program_basis=reply["program_basis"],
+        completion_carrier=str(reply.get("completion_carrier", "")),
+    )
     return {
         "schema": SCHEMA,
         "corpus_index": corpus_index,
@@ -392,8 +459,10 @@ def output_row(
         "task": str(source_row["task"]),
         "defrag_status": str(source_row["status"]),
         "complete_statement": str(source_row["complete_statement"]),
+        "source_statement": str(source_row["source_statement"]),
         "normalization": normalization,
         "source_spans": source_row["source_spans"],
+        "source_statement_spans": source_row["source_statement_spans"],
         "sentence_count": len(sentence_rows),
         "parsed_count": parsed_count,
         "parse_status": (
@@ -405,7 +474,10 @@ def output_row(
         ),
         "sentences": sentence_rows,
         "program": reply["program"],
+        "programs": reply["programs"],
         "program_basis": reply["program_basis"],
+        "printed_expression": reply["printed_expression"],
+        "completion_carrier": reply["completion_carrier"],
         "completion_status": completion_class or completion["status"],
         "completion_class": completion_class,
         "completion_reason": completion["reason"],
@@ -434,6 +506,25 @@ def metric_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         if sentence["sentence_form"] == "question"
     ]
     parsed_questions = sum(bool(sentence["parsed"]) for sentence in question_sentences)
+    # `parsed` counts a sentence the reader accepted, including one it accepted
+    # as carrying nothing it needs to read.  That is a defensible reading rule
+    # and a flattering measure, so the strict counts sit beside it: a sentence
+    # is READ only when it produced at least one fact, and a statement is read
+    # in full only when every one of its sentences was.
+    def has_facts(sentence: dict[str, Any]) -> bool:
+        return bool(sentence["parsed"]) and bool(sentence.get("facts"))
+
+    sentences_all = [sentence for row in rows for sentence in row["sentences"]]
+    sentences_parsed = sum(bool(s["parsed"]) for s in sentences_all)
+    sentences_with_facts = sum(has_facts(s) for s in sentences_all)
+    read_in_full = sum(
+        bool(row["sentences"]) and all(has_facts(s) for s in row["sentences"])
+        for row in rows
+    )
+    yielded_nothing = sum(
+        bool(row["sentences"]) and not any(has_facts(s) for s in row["sentences"])
+        for row in rows
+    )
     comparisons = [
         row for row in rows if row["ground_truth_verdict"] in {"agree", "disagree"}
     ]
@@ -444,6 +535,10 @@ def metric_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "fully_parsed": ratio(fully, count),
         "partially_parsed": ratio(partial, count),
         "unparsed": ratio(unparsed, count),
+        "read_in_full": ratio(read_in_full, count),
+        "yielded_nothing": ratio(yielded_nothing, count),
+        "sentences_parsed": ratio(sentences_parsed, len(sentences_all)),
+        "sentences_with_facts": ratio(sentences_with_facts, len(sentences_all)),
         "completed": ratio(completed, count),
         "completed_full": ratio(completed_full, count),
         "completed_from_partial": ratio(completed_from_partial, count),
@@ -588,7 +683,7 @@ def main() -> int:
                         str(source_row["complete_statement"]), profile="im"
                     )
                     sentence_texts = sentences(str(normalization["text"]))
-                    reply = runner.run(sentence_texts)
+                    reply = runner.run(sentence_texts, source_row)
                     row = output_row(
                         corpus_index, source_row, reply, normalization,
                         sentence_texts, truth_by_id, hashes

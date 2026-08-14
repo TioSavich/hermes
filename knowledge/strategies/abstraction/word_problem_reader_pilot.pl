@@ -12,6 +12,8 @@
 
 :- module(word_problem_reader_pilot,
           [ word_problem_facts/2,
+            word_problem_reading/3,
+            word_problem_refusal/2,
             exact_value_question_program/2,
             word_problem_reader_pilot_summary/1,
             check_word_problem_reader_pilot/0
@@ -25,10 +27,16 @@
 
 :- discontiguous question_form_receipt/4.
 :- discontiguous question_form_negative/4.
+:- discontiguous class_reader_receipt/5.
+:- discontiguous class_negative_receipt/5.
+:- discontiguous compile_events/7.
+:- discontiguous problem_event//1.
 
 word_problem_reader_pilot_summary(
     summary(role(orphan_seam_reader),
-            accepted_classes([possession, change, conversion, remaining_question,
+            accepted_classes([vacuous, possession, rate, payment_exchange,
+                              motion_work_interval, acquire_remove,
+                              change, conversion, remaining_question,
                               equal_group_conversion, existential_quantity,
                               partitioned_same_kind, measured_dimension,
                               container_possession, computable_comparison,
@@ -36,24 +44,55 @@ word_problem_reader_pilot_summary(
                               amount_question, exact_value_question,
                               contextual_transfer, unit_rate_question]),
             output_contract(five_form_sidekick_schema),
-            receipt_count(62))).
+            receipt_count(77))).
 
 %! word_problem_facts(+Text, -Facts) is semidet.
 %
 %  Parse the whole text. Failure of any sentence refuses the text; the caller
 %  never receives facts from an accepted prefix.
 word_problem_facts(Text, Facts) :-
+    word_problem_reading(Text, _Class, Facts).
+
+%! word_problem_reading(+Text, -Class, -Facts) is semidet.
+%
+%  Return the named admitted class as metadata beside the unchanged five-form
+%  fact stream.  A vacuous sentence succeeds with no facts.
+word_problem_reading(Text, exact_value_question, Facts) :-
     text_string(Text, String0),
     exact_value_question_program(String0, Facts), !.
-word_problem_facts(Text, Facts) :-
+word_problem_reading(Text, unit_rate_question, Facts) :-
     text_string(Text, String0),
     unit_rate_question_program(String0, Facts), !.
-word_problem_facts(Text, Facts) :-
+word_problem_reading(Text, classes(Classes), Facts) :-
     text_string(Text, String0),
     string_lower(String0, String),
     tokenize_atom(String, Tokens),
     phrase(problem_events(Events), Tokens),
+    Events \== [],
+    event_classes(Events, Classes0),
+    sort(Classes0, Classes),
     compile_events(Events, Facts).
+
+%! word_problem_refusal(+Text, -Reason) is semidet.
+%
+%  Named language-lane refusals remain metadata.  They never enter the fact
+%  stream and never imply that an arithmetic machine exists.
+word_problem_refusal(Text, comparison_ask) :-
+    refusal_tokens(Text, Tokens),
+    ( append(_, [are,there,more|_], Tokens)
+    ; append(_, [which|_], Tokens)
+    ; append(_, [who|_], Tokens)
+    ), !.
+word_problem_refusal(Text, discourse_ask) :-
+    refusal_tokens(Text, Tokens),
+    ( append(_, [what,do,you,notice|_], Tokens)
+    ; append(_, [what,do,you,wonder|_], Tokens)
+    ; append(_, [explain,how,you,know|_], Tokens)
+    ).
+
+refusal_tokens(Text, Tokens) :-
+    text_string(Text, String0), string_lower(String0, String),
+    tokenize_atom(String, Tokens), memberchk('?', Tokens).
 
 text_string(Text, Text) :- string(Text), !.
 text_string(Text, String) :- atom(Text), !, atom_string(Text, String).
@@ -65,8 +104,294 @@ problem_events([Event|Events]) -->
     problem_events(Events).
 problem_events([]) --> [].
 
+% Language-lane events consume one whole sentence.  Classification is
+% conservative at the quantity boundary: a vacuous reading is available only
+% when no number, comparison, or ask is present.
+problem_event(Event) -->
+    lane_sentence_tokens(Tokens), lane_sentence_end(End),
+    { lane_event(Tokens, End, Event) }.
+
+lane_sentence_tokens([Token|Tokens]) -->
+    [Token], { \+ memberchk(Token, ['.','?','!']) }, !,
+    lane_sentence_tokens_rest(Tokens).
+
+lane_sentence_tokens_rest([Token|Tokens]) -->
+    [Token], { \+ memberchk(Token, ['.','?','!']) }, !,
+    lane_sentence_tokens_rest(Tokens).
+lane_sentence_tokens_rest([]) --> [].
+
+lane_sentence_end('.') --> ['.'].
+lane_sentence_end('?') --> ['?'].
+lane_sentence_end('!') --> ['!'].
+
+lane_event(Tokens, '?', lane(ask, Ask, Span)) :-
+    \+ lane_legacy_question(Tokens),
+    \+ lane_unsupported_ask(Tokens),
+    lane_ask(Tokens, Ask),
+    lane_span(Tokens, '?', Span), !.
+lane_event(Tokens, '.', lane(Class, Rate, Span)) :-
+    \+ lane_legacy_conversion(Tokens),
+    lane_rate(Tokens, Rate),
+    Rate = rate(Class,_,_,_,_,_),
+    lane_span(Tokens, '.', Span), !.
+lane_event(Tokens, '.', lane(possession, Possession, Span)) :-
+    lane_possession(Tokens, Possession),
+    lane_span(Tokens, '.', Span), !.
+lane_event(Tokens, '.', lane(acquire_remove, Change, Span)) :-
+    \+ lane_legacy_change_or_transfer(Tokens),
+    lane_acquire_remove(Tokens, Change),
+    lane_span(Tokens, '.', Span), !.
+lane_event(Tokens, End, lane(vacuous, vacuous_sentence, Span)) :-
+    End \== '?', lane_vacuous(Tokens),
+    lane_span(Tokens, End, Span).
+
+lane_span(Tokens, End, Span) :-
+    append(Tokens, [End], Surface),
+    atomic_list_concat(Surface, ' ', Atom), atom_string(Atom, Span).
+
+lane_vacuous(Tokens) :-
+    \+ lane_quantity_mentions(Tokens, [_|_]),
+    \+ memberchk('$', Tokens),
+    \+ lane_comparative_token(Tokens),
+    \+ lane_ask_head(Tokens),
+    \+ lane_incomplete_quantitative_frame(Tokens).
+
+lane_incomplete_quantitative_frame(Tokens) :-
+    memberchk(each, Tokens), !.
+lane_incomplete_quantitative_frame(Tokens) :-
+    append(_, [there,Copula|_], Tokens), memberchk(Copula, [is,are]), !.
+lane_incomplete_quantitative_frame(Tokens) :-
+    member(Surface, Tokens), once(em_verb_base(Surface, Base, _)),
+    memberchk(Base, [have,hold,cost,pay,earn,buy,sell,give,get,receive,lose,
+                     remove,take,travel,run,print,type,read,work,fill,produce,
+                     represent]), !.
+
+lane_comparative_token(Tokens) :-
+    member(Token, Tokens),
+    memberchk(Token, [more,fewer,less,greater,smaller,larger,fastest,
+                      slowest,heaviest,lightest,better,worse,same,different,
+                      difference,compare]).
+
+lane_ask_head(Tokens) :-
+    member(Head, [how,what,which,who,where,when,why]), memberchk(Head, Tokens), !.
+lane_ask_head(Tokens) :-
+    member(Head, [are,is,do,does,did,can,could,would,should]),
+    Tokens = [Head|_].
+
+lane_possession(Tokens, possession(Subject, Number, Kind)) :-
+    lane_verb_position(Tokens, [have,own,possess], Subject, After),
+    lane_quantity_start(After, mention(Number,Kind), Rest),
+    lane_possession_tail(Rest).
+
+lane_possession_tail([Head|_]) :-
+    memberchk(Head, [in,inside,on,with,of,at]).
+
+lane_legacy_conversion([each|Tokens]) :-
+    member(Surface, Tokens), once(em_verb_base(Surface, Base, _)),
+    memberchk(Base, [have,hold]), !.
+
+lane_legacy_question(Tokens) :-
+    append(_, [how,many|Tail], Tokens),
+    ( append(_, [does|Rest], Tail), member(Have, Rest),
+      once(em_verb_base(Have, have, _))
+    ; append(_, [are,there|_], Tail)
+    ), !.
+lane_legacy_question(Tokens) :-
+    append(_, [how,much|Tail], Tokens), append(_, [does|_], Tail).
+
+lane_unsupported_ask(Tokens) :- memberchk(might, Tokens), !.
+lane_unsupported_ask(Tokens) :- append(_, [could,be,there|_], Tokens), !.
+lane_unsupported_ask(Tokens) :- append(_, [what,is,the,value,of|_], Tokens), !.
+lane_unsupported_ask([if,you|Tokens]) :-
+    memberchk(per, Tokens), lane_quantity_mentions(Tokens, Mentions),
+    memberchk(mention(0,_), Mentions), !.
+lane_unsupported_ask(Tokens) :-
+    ( memberchk(longer, Tokens) ; memberchk(shorter, Tokens) ), !.
+
+lane_legacy_change_or_transfer([_Subject,Surface|After]) :-
+    once(em_verb_base(Surface, Action, _)),
+    memberchk(Action, [buy,give,eat,lose,get]),
+    ( phrase(integer(_), After, KindTail), KindTail = [KindSurface|Rest],
+      lane_surface_kind(KindSurface, _), Rest == []
+    ; memberchk(Action, [give,get]),
+      ( memberchk(to, After) ; memberchk(from, After) )
+    ), !.
+
+lane_rate(Tokens,
+          rate(rate,Subject,OutputNumber,OutputKind,
+               InputNumber,InputKind)) :-
+    lane_verb_position(Tokens, [cost], Subject, _After),
+    lane_payment_pair(Tokens, OutputNumber, OutputKind, InputNumber, InputKind), !.
+lane_rate(Tokens,
+          rate(payment_exchange,Subject,OutputNumber,OutputKind,
+               InputNumber,InputKind)) :-
+    lane_verb_position(Tokens, [pay,earn,buy,sell], Subject, _After),
+    lane_payment_pair(Tokens, OutputNumber, OutputKind, InputNumber, InputKind), !.
+lane_rate(Tokens,
+          rate(motion_work_interval,Subject,OutputNumber,OutputKind,
+               InputNumber,InputKind)) :-
+    lane_verb_position(Tokens,
+                       [travel,run,print,type,read,work,mow,fill,produce],
+                       Subject, _After),
+    lane_quantity_mentions(Tokens, Mentions),
+    lane_ordered_rate_pair(Tokens, Mentions,
+                           OutputNumber,OutputKind,InputNumber,InputKind), !.
+lane_rate(Tokens,
+          rate(rate,Subject,OutputNumber,OutputKind,InputNumber,InputKind)) :-
+    lane_rate_marker(Tokens),
+    lane_rate_subject(Tokens, Subject),
+    lane_quantity_mentions(Tokens, Mentions),
+    lane_ordered_rate_pair(Tokens, Mentions,
+                           OutputNumber,OutputKind,InputNumber,InputKind), !.
+lane_rate(Tokens,
+          rate(rate,Subject,OutputNumber,OutputKind,1,InputKind)) :-
+    lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind).
+
+lane_payment_pair(Tokens, OutputNumber, dollar, InputNumber, InputKind) :-
+    lane_quantity_mentions(Tokens, Mentions),
+    member(mention(OutputNumber,dollar), Mentions),
+    member(mention(InputNumber,InputKind), Mentions), InputKind \== dollar, !.
+lane_payment_pair(Tokens, OutputNumber, dollar, InputNumber, InputKind) :-
+    lane_quantity_mentions(Tokens, Mentions),
+    member(mention(OutputNumber,dollar), Mentions),
+    append(SubjectTokens, [Cost|After], Tokens),
+    once(em_verb_base(Cost, cost, _)),
+    lane_last_noun(SubjectTokens, InputKind),
+    append(_, [for|ForTail], After),
+    lane_bare_number(ForTail, InputNumber).
+
+lane_ordered_rate_pair([for|_],
+                       [mention(InputNumber,InputKind),
+                        mention(OutputNumber,OutputKind)|_],
+                       OutputNumber,OutputKind,InputNumber,InputKind) :- !.
+lane_ordered_rate_pair(_Tokens,
+                       [mention(OutputNumber,OutputKind),
+                        mention(InputNumber,InputKind)|_],
+                       OutputNumber,OutputKind,InputNumber,InputKind).
+
+lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
+    lane_quantity_mentions(Tokens, [mention(OutputNumber,OutputKind)]),
+    ( append(_, [each,InputSurface|_], Tokens)
+    ; append(_, [every,InputSurface|_], Tokens)
+    ),
+    lane_surface_kind(InputSurface, InputKind),
+    lane_rate_subject(Tokens, Subject).
+lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
+    append(_, [each,InputSurface,Represents|_], Tokens),
+    once(em_verb_base(Represents, represent, _)),
+    lane_surface_kind(InputSurface, InputKind),
+    lane_quantity_mentions(Tokens, [mention(OutputNumber,OutputKind)]),
+    Subject = InputKind.
+
+lane_rate_marker(Tokens) :-
+    memberchk(per, Tokens), !.
+lane_rate_marker(Tokens) :-
+    memberchk(each, Tokens), !.
+lane_rate_marker(Tokens) :-
+    memberchk(every, Tokens), !.
+lane_rate_marker(Tokens) :-
+    append(_, [for|_], Tokens).
+
+lane_rate_subject(Tokens, Subject) :-
+    lane_verb_position(Tokens,
+                       [represent,use,cost,pay,earn,buy,sell,travel,run,print,
+                        type,read,work,mow,fill,produce],
+                       Subject, _After), !.
+lane_rate_subject(_Tokens, rate_context).
+
+lane_acquire_remove(Tokens, change(Subject, Action, Number, Kind)) :-
+    lane_verb_position(Tokens,
+                       [buy,give,get,receive,lose,remove,take],
+                       Subject, After),
+    lane_change_action(Tokens, Action),
+    lane_quantity_mentions(After, [mention(Number,Kind)|_]).
+
+lane_change_action(Tokens, Action) :-
+    member(Token, Tokens), once(em_verb_base(Token, Action, _)),
+    memberchk(Action, [buy,give,get,receive,lose,remove,take]), !.
+
+lane_verb_position(Tokens, Bases, Subject, After) :-
+    append(Before, [Surface|After], Tokens),
+    once(em_verb_base(Surface, Base, _)), memberchk(Base, Bases),
+    lane_subject_label(Before, Subject), !.
+
+lane_subject_label(Before, Subject) :-
+    reverse(Before, Reversed),
+    member(Surface, Reversed), atom(Surface),
+    \+ memberchk(Surface, [a,an,the,to,can,will,would,could,should,is,are,was,
+                           were,has,have,had,of,for,in,at,on,from,and,or,her,
+                           his,their,he,she,they,it,each,every]),
+    lane_surface_kind(Surface, Subject), !.
+lane_subject_label(_Before, subject).
+
+lane_last_noun(Tokens, Kind) :-
+    reverse(Tokens, Reversed), member(Surface, Reversed),
+    lane_surface_kind(Surface, Kind), !.
+
+lane_quantity_mentions([], []).
+lane_quantity_mentions(Tokens, [Mention|Mentions]) :-
+    lane_quantity_start(Tokens, Mention, Rest), !,
+    lane_quantity_mentions(Rest, Mentions).
+lane_quantity_mentions([_|Tokens], Mentions) :-
+    lane_quantity_mentions(Tokens, Mentions).
+
+lane_quantity_start(['$',Number|Rest], mention(Number,dollar), Rest) :-
+    number(Number), \+ float(Number), !.
+lane_quantity_start(Tokens, mention(Number,Kind), Rest) :-
+    phrase(integer(Number), Tokens, AfterNumber),
+    number(Number), \+ float(Number),
+    lane_quantity_kind(AfterNumber, Kind, Rest).
+
+lane_quantity_kind([Modifier,Surface|Rest], Kind, Rest) :-
+    em_category(Modifier, adjective), lane_surface_kind(Surface, Kind), !.
+lane_quantity_kind([Surface|Rest], Kind, Rest) :-
+    lane_surface_kind(Surface, Kind).
+
+lane_surface_kind(Surface, Kind) :-
+    atom(Surface),
+    ( once(math_claim_language:measurement_unit(Surface, Kind))
+    ; preferred_noun_base(Surface, Kind)
+    ).
+lane_surface_kind(ml, milliliter) :- !.
+lane_surface_kind(Surface, Kind) :-
+    atom(Surface), \+ lane_kind_stopword(Surface),
+    atom_chars(Surface, Chars), Chars \== [],
+    maplist(lane_alpha_char, Chars),
+    ( atom_concat(Singular, s, Surface), Singular \== '' -> Kind = Singular
+    ; Kind = Surface
+    ).
+
+lane_alpha_char(Char) :- char_type(Char, alpha).
+
+lane_kind_stopword(Surface) :-
+    memberchk(Surface, [a,an,the,to,of,for,in,on,at,from,and,or,if,then,than,
+                        is,are,was,were,be,been,being,do,does,did,can,could,
+                        will,would,should,may,might,must,has,have,had,with,
+                        this,that,these,those,his,her,their,our,your,my]).
+
+lane_bare_number(Tokens, Number) :-
+    phrase(integer(Number), Tokens, _), number(Number), \+ float(Number).
+
+lane_ask(Tokens, ask(Type,AskedKind,Mentions)) :-
+    lane_ask_suffix(Tokens, Type, AskedKind, AskTail),
+    lane_quantity_mentions(AskTail, Mentions).
+
+lane_ask_suffix(Tokens, how_many, AskedKind, Tail) :-
+    append(_, [how,many,Surface|Tail], Tokens),
+    lane_surface_kind(Surface, AskedKind), !.
+lane_ask_suffix(Tokens, how_much, AskedKind, Tail) :-
+    append(_, [how,much,Surface|Tail], Tokens),
+    ( lane_surface_kind(Surface, AskedKind) -> true ; AskedKind = amount ), !.
+lane_ask_suffix(Tokens, how_far, distance, Tail) :-
+    append(_, [how,far|Tail], Tokens), !.
+lane_ask_suffix(Tokens, how_long, duration, Tail) :-
+    append(_, [how,long|Tail], Tokens), !.
+lane_ask_suffix(Tokens, what_value, value, Tail) :-
+    append(_, [what,is,the,Surface|Tail], Tokens),
+    memberchk(Surface, [value,cost,rate,total,difference]), !.
+
 problem_event(has(Subject, Number, Kind, Span)) -->
-    subject(Subject), verb_base(have), integer(Number), count_noun(Kind),
+    subject(Subject), stative_verb(_Base), integer(Number), count_noun(Kind),
     possession_tail, ['.'],
     { format(string(Span), '~w has ~w ~w', [Subject, Number, Kind]) }.
 problem_event(has(there, Number, Kind, Span)) -->
@@ -122,7 +447,12 @@ problem_event(comparison(Direction, Subject, Other, Kind, Span)) -->
     { format(string(Span), 'how many ~w ~w does ~w have',
              [Direction, Kind, Subject]) }.
 
-subject(Subject) --> [Subject], { atom(Subject), atom_chars(Subject, [First|_]), char_type(First, alpha) }.
+%   A subject was one bare token, so "The Ferris wheel holds 20 people." and
+%   "A teacher prints 720 copies." refused on their determiner alone while the
+%   same sentences with a bare name read. One optional determiner is admitted
+%   and the head token still names the referent.
+subject(Subject) --> optional_determiner, [Subject],
+    { atom(Subject), atom_chars(Subject, [First|_]), char_type(First, alpha) }.
 noun_base(Base) --> [Surface], { atom(Surface), preferred_noun_base(Surface, Base) }.
 verb_base(Base) --> [Surface], { atom(Surface), once(em_verb_base(Surface, Base, _)) }.
 change_verb(Action) --> [Surface],
@@ -174,16 +504,54 @@ modifier(Modifier) --> [Surface],
       ),
       Modifier = Surface }.
 
+%!  stative_verb(-Base)// is semidet.
+%
+%   A verb that asserts what a subject stands in relation to, rather than a
+%   delta on a holding it already had.  `change//1` cannot carry these: its
+%   compilation requires a prior state, and "Mai made 8 frogs." asserts a
+%   first state rather than changing one.
+%
+%   The list is the demand the rewrite consultation measured on 2026-08-14.
+%   Of 103 refused restatements with a testable head noun, 86 carried a noun
+%   the reader already counts, so the verb was the gap.  Corpus receipts, one
+%   per admitted verb beyond `have`:
+%     hold     "The Ferris wheel holds 20 people."
+%     make     "Mai made 8 frogs."
+%     collect  "They collect 48 children's books."
+%     print    "A teacher prints 720 copies."
+%     earn     "Han earns $33.00 for 4 hours."
+%     count    "Noah counts 8 heartbeats in 10 seconds."
+%   `own` and `possess` were already reachable through the lane reader's own
+%   verb list and are named here so the two readers agree.
+stative_verb(Base) --> [Surface],
+    { atom(Surface), once(em_verb_base(Surface, Base, _)),
+      memberchk(Base, [have, own, possess, hold, contain,
+                       make, collect, print, earn, count]) }.
+
+%!  locative_tail// is semidet.
+%
+%   A prepositional phrase that says where a counted collection sits. It binds
+%   no quantity, so it is read and dropped: "There are 20 people ON THE WHEEL."
+%   was refused for this tail alone. Bounded to one phrase so it cannot run
+%   away over a sentence it has not understood.
+locative_tail --> [Preposition], optional_determiner, noun_base(_),
+    { memberchk(Preposition, [on, in, at, from, inside, outside]) }, !.
+locative_tail --> [].
+
+optional_determiner --> [Determiner],
+    { memberchk(Determiner, [the, a, an, his, her, their, its]) }, !.
+optional_determiner --> [].
+
 possession_tail --> [of], noun_base(_), !.
 possession_tail --> [for], noun_base(_), !.
 possession_tail --> [about], noun_base(_), !.
-possession_tail --> [].
+possession_tail --> locative_tail.
 
 existential_copula --> [are].
 existential_copula --> [is].
 
 existential_tail --> [of], noun_base(_), !.
-existential_tail --> [].
+existential_tail --> locative_tail.
 
 conversion_tail --> [of], noun_base(_), !.
 conversion_tail --> [in, it], !.
@@ -266,15 +634,152 @@ compile_events(Events, Facts) :-
     compile_events(Events, [], [], 1, [], RawFacts, Kinds0),
     list_to_set(Kinds0, KindSet),
     sort(KindSet, Kinds),
-    append(RawFacts, [discrete_kinds(Kinds)], Facts).
+    ( RawFacts == [] -> Facts = []
+    ; append(RawFacts, [discrete_kinds(Kinds)], Facts)
+    ).
+
+event_classes([], []).
+event_classes([Event|Events], Classes) :-
+    event_class(Event, Class), !,
+    Classes = [Class|Rest], event_classes(Events, Rest).
+event_classes([_|Events], Classes) :-
+    event_classes(Events, Classes).
+
+event_class(lane(Class,_,_), Class).
+event_class(has(_,_,_,_), possession).
+event_class(change(_,_,_,_,_), change).
+event_class(transfer(_,_,_,_,_,_), acquire_remove).
+event_class(conversion(_,_,_,_), conversion).
+event_class(measurement(_,_,_,_,_), measured_dimension).
+event_class(question(_,_,_), remaining_question).
+event_class(amount_question(_,_,_,_), amount_question).
+event_class(comparison(_,_,_,_,_), computable_comparison).
+event_class(parts(_,_,_,_,_,_,_,_), partitioned_same_kind).
 
 compile_events([], _States, _Conversions, _ActionIndex, Facts, Facts, []).
+compile_events([lane(vacuous,_,_)|Events], States, Conversions, Index,
+               Facts0, Facts, Kinds) :-
+    compile_events(Events, States, Conversions, Index, Facts0, Facts, Kinds).
+compile_events([lane(possession,possession(Subject,Number,Kind),_)|Events],
+               States0, Conversions, Index, Facts0, Facts, Kinds) :-
+    lane_name(Subject, Kind, possessed, Name),
+    replace_state(Subject, Kind, Name, Number, States0, States),
+    append(Facts0, [quantity(Name,Number,Kind)], Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
+    lane_discrete_kinds([Kind], Marks), append(Marks, TailKinds, Kinds).
+compile_events([lane(Class,
+                          rate(Class,Subject,OutputNumber,OutputKind,
+                               InputNumber,InputKind),Span)|Events],
+               States0, Conversions, Index, Facts0, Facts, Kinds) :-
+    lane_name(Subject, OutputKind, rate_total, Total),
+    lane_name(Subject, InputKind, rate_interval, Interval),
+    lane_rate_name(Subject, OutputKind, InputKind, Rate),
+    EventFacts = [quantity(Total,OutputNumber,OutputKind),
+                  quantity(Interval,InputNumber,InputKind),
+                  quantity(Rate,unknown,rate(OutputKind,InputKind)),
+                  relation(Total,scale(Interval,Rate),Span)],
+    States = [lane_rate(Class,Subject,OutputKind,InputKind,Rate)|States0],
+    append(Facts0, EventFacts, Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
+    lane_discrete_kinds([OutputKind,InputKind], Marks),
+    append(Marks, TailKinds, Kinds).
+compile_events([lane(acquire_remove,change(Subject,Action,Number,Kind),Span)|Events],
+               States0, Conversions, Index, Facts0, Facts, Kinds) :-
+    lane_change_facts(Subject, Action, Number, Kind, Span, States0,
+                      States, EventFacts),
+    append(Facts0, EventFacts, Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
+    lane_discrete_kinds([Kind], Marks), append(Marks, TailKinds, Kinds).
+compile_events([lane(ask,Ask,Span)|Events], States, Conversions, Index,
+               Facts0, Facts, Kinds) :-
+    lane_ask_facts(Ask, Span, States, QuestionFacts, QuestionKinds),
+    append(Facts0, QuestionFacts, Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
+    append(QuestionKinds, TailKinds, Kinds).
 compile_events([has(Subject, Number, Kind, _Span)|Events], States0, Conversions,
                Index, Facts0, Facts, [Kind|Kinds]) :-
     referent_name(Subject, Kind, initial, Name),
     replace_state(Subject, Kind, Name, Number, States0, States),
     append(Facts0, [quantity(Name, Number, Kind)], Facts1),
     compile_events(Events, States, Conversions, Index, Facts1, Facts, Kinds).
+
+lane_name(Subject, Kind, Stage, Name) :-
+    atomic_list_concat([lane,Subject,Kind,Stage], '_', Name).
+
+lane_rate_name(Subject, OutputKind, InputKind, Name) :-
+    atomic_list_concat([lane,Subject,OutputKind,per,InputKind], '_', Name).
+
+lane_change_facts(Subject, Action, Number, Kind, Span, States0, States,
+                  [quantity(Amount,Number,Kind),
+                   quantity(Result,unknown,Kind),
+                   relation(Result,Recipe,Span)]) :-
+    memberchk(state(Subject,Kind,Prior,_), States0),
+    lane_name(Subject,Kind,Action,Amount),
+    lane_name(Subject,Kind,after_change,Result),
+    lane_change_recipe(Action, Prior, Amount, Recipe),
+    replace_state(Subject,Kind,Result,unknown,States0,States), !.
+lane_change_facts(Subject, Action, Number, Kind, _Span, States0,
+                  [state(Subject,Kind,Amount,Number)|States0],
+                  [quantity(Amount,Number,Kind)]) :-
+    lane_name(Subject,Kind,Action,Amount).
+
+lane_change_recipe(Action, Prior, Amount, sum([Prior,Amount])) :-
+    memberchk(Action, [buy,get,receive]).
+lane_change_recipe(Action, Prior, Amount, difference(Prior,Amount)) :-
+    memberchk(Action, [give,lose,remove,take]).
+
+lane_ask_facts(ask(what_value,_AskedKind,_Mentions), _Span, States,
+               [asks(result,Rate)], []) :-
+    member(lane_rate(_,_,_,_,Rate), States), !.
+lane_ask_facts(ask(Type,_AskedKind,Mentions), Span, States, Facts, Kinds) :-
+    member(lane_rate(_,Subject,OutputKind,InputKind,Rate), States),
+    lane_rate_question(Type, Mentions, Subject, OutputKind, InputKind, Rate,
+                       Span, Facts, Kinds), !.
+lane_ask_facts(ask(_Type,AskedKind,_Mentions), _Span, _States,
+               [quantity(lane_question_result,unknown,AskedKind),
+                asks(result,lane_question_result)], Kinds) :-
+    lane_discrete_kinds([AskedKind], Kinds).
+
+lane_rate_question(Type, [mention(InputNumber,InputKind)|_], Subject,
+                   OutputKind, InputKind, Rate, Span,
+                   [quantity(Input,InputNumber,InputKind),
+                    quantity(Result,unknown,OutputKind),
+                    relation(Result,scale(Input,Rate),Span),
+                    asks(result,Result)], Kinds) :-
+    memberchk(Type, [how_many,how_much,how_far]),
+    lane_name(Subject,InputKind,question_interval,Input),
+    lane_name(Subject,OutputKind,question_result,Result),
+    lane_discrete_kinds([OutputKind,InputKind], Kinds).
+lane_rate_question(how_long, [mention(OutputNumber,OutputKind)|_], Subject,
+                   OutputKind, InputKind, Rate, Span,
+                   [quantity(Output,OutputNumber,OutputKind),
+                    quantity(Result,unknown,InputKind),
+                    relation(Output,scale(Result,Rate),Span),
+                    asks(result,Result)], Kinds) :-
+    lane_name(Subject,OutputKind,question_total,Output),
+    lane_name(Subject,InputKind,question_result,Result),
+    lane_discrete_kinds([OutputKind,InputKind], Kinds).
+lane_rate_question(how_many, [mention(OutputNumber,OutputKind)|_], Subject,
+                   OutputKind, InputKind, Rate, Span,
+                   [quantity(Output,OutputNumber,OutputKind),
+                    quantity(Result,unknown,InputKind),
+                    relation(Output,scale(Result,Rate),Span),
+                    asks(result,Result)], Kinds) :-
+    lane_name(Subject,OutputKind,question_total,Output),
+    lane_name(Subject,InputKind,question_result,Result),
+    lane_discrete_kinds([OutputKind,InputKind], Kinds).
+
+lane_discrete_kinds(Kinds, Discrete) :-
+    include(lane_discrete_kind, Kinds, Discrete).
+
+lane_discrete_kind(Kind) :-
+    atom(Kind), \+ lane_continuous_kind(Kind).
+
+lane_continuous_kind(Kind) :-
+    memberchk(Kind, [amount,value,distance,duration,dollar,cent,money,
+                     foot,inch,mile,meter,kilometer,gram,kilogram,pound,
+                     ounce,liter,milliliter,ml,second,minute,hour,day,
+                     week,month,year,degree,gallon,cup,teaspoon]).
 compile_events([parts(Subject, Action, FirstNumber, FirstModifier,
                       SecondNumber, SecondModifier, Kind, Span)|Events],
                States0, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
@@ -581,14 +1086,29 @@ run_reader_receipt(Id, Text, ExpectedFacts, ExpectedName, ExpectedValue) :-
     ).
 
 run_class_reader_receipt(Class, Id, Text, ExpectedFacts) :-
-    ( word_problem_facts(Text, Facts),
+    ( word_problem_reading(Text, ReadingClass, Facts),
       Facts == ExpectedFacts,
+      receipt_reading_class(Class, ReadingClass),
       maplist(five_form_fact, Facts)
     -> true
     ;  format(user_error, 'word_problem_reader class receipt failed: ~q/~q~n',
               [Class, Id]),
        fail
     ).
+
+receipt_reading_class(Class, ReadingClass) :-
+    language_lane_class(Class), !,
+    ( ReadingClass == Class
+    ; ReadingClass = classes(Classes), memberchk(Class, Classes)
+    ).
+receipt_reading_class(_Class, _ReadingClass).
+
+language_lane_class(vacuous).
+language_lane_class(possession).
+language_lane_class(rate).
+language_lane_class(payment_exchange).
+language_lane_class(motion_work_interval).
+language_lane_class(acquire_remove).
 
 run_class_negative_receipt(Class, Id, Text) :-
     ( \+ word_problem_facts(Text, _)
@@ -623,6 +1143,211 @@ five_form_recipe(scale(_Scale, _Source)).
 five_form_recipe(sum(Parts)) :- is_list(Parts).
 five_form_recipe(difference(_Minuend, _Subtrahend)).
 five_form_recipe(quotient(_Dividend, _Divisor)).
+
+% Slice 18 demand counts are controller measurements over the 767 unparsed
+% grade 6-7 sentences with usable machine truth.  The acquire/remove count
+% excludes two bracketed answer annotations whose prose contains "multiply".
+class_occurrence_basis(vacuous, 161, controller_shape_census).
+class_occurrence_basis(possession, 14, controller_shape_census).
+class_occurrence_basis(rate, 36, controller_shape_census).
+class_occurrence_basis(payment_exchange, 31, controller_shape_census).
+class_occurrence_basis(motion_work_interval, 53, controller_shape_census).
+class_occurrence_basis(acquire_remove, 5, live_im_content_sentence_census).
+
+class_reader_receipt(vacuous, explain_reasoning,
+    corpus_span('curriculum/im_teacher_guides/grade6/unit8/lesson9.md',
+                lines(492,492)),
+    "Explain or show your reasoning.", []).
+class_reader_receipt(vacuous, share_thinking,
+    corpus_span('curriculum/im_teacher_guides/grade2/unit2/lesson5.md',
+                lines(177,177)),
+    "Be prepared to share your thinking.", []).
+class_reader_receipt(vacuous, optional_table,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2942,2942)),
+    "You can use a table if it is helpful.", []).
+
+class_reader_receipt(possession, clare_dimes,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3240,3240)),
+    "Clare has 6 dimes in her pocket.",
+    [quantity(lane_clare_dime_possessed,6,dime),discrete_kinds([dime])]).
+class_reader_receipt(possession, han_quarters,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3242,3242)),
+    "Han has 6 quarters in his pocket.",
+    [quantity(lane_han_quarter_possessed,6,quarter),
+     discrete_kinds([quarter])]).
+class_reader_receipt(possession, restaurant_tables,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3436,3436)),
+    "A restaurant has 26 tables in its dining room.",
+    [quantity(lane_restaurant_table_possessed,26,table),
+     discrete_kinds([table])]).
+
+class_reader_receipt(rate, neon_bracelets,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3156,3156)),
+    "Neon bracelets cost $1 for 4.",
+    [quantity(lane_bracelet_dollar_rate_total,1,dollar),
+     quantity(lane_bracelet_bracelet_rate_interval,4,bracelet),
+     quantity(lane_bracelet_dollar_per_bracelet,unknown,
+              rate(dollar,bracelet)),
+     relation(lane_bracelet_dollar_rate_total,
+              scale(lane_bracelet_bracelet_rate_interval,
+                    lane_bracelet_dollar_per_bracelet),
+              "neon bracelets cost $ 1 for 4 ."),
+     discrete_kinds([bracelet])]).
+class_reader_receipt(rate, cube_two_ml,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2996,2996)),
+    "Suppose each cube represents 2 ml.",
+    [quantity(lane_cube_milliliter_rate_total,2,milliliter),
+     quantity(lane_cube_cube_rate_interval,1,cube),
+     quantity(lane_cube_milliliter_per_cube,unknown,
+              rate(milliliter,cube)),
+     relation(lane_cube_milliliter_rate_total,
+              scale(lane_cube_cube_rate_interval,
+                    lane_cube_milliliter_per_cube),
+              "suppose each cube represents 2 ml ."),
+     discrete_kinds([cube])]).
+class_reader_receipt(rate, cube_five_ml,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3012,3012)),
+    "Suppose each cube represents 5 ml.",
+    [quantity(lane_cube_milliliter_rate_total,5,milliliter),
+     quantity(lane_cube_cube_rate_interval,1,cube),
+     quantity(lane_cube_milliliter_per_cube,unknown,
+              rate(milliliter,cube)),
+     relation(lane_cube_milliliter_rate_total,
+              scale(lane_cube_cube_rate_interval,
+                    lane_cube_milliliter_per_cube),
+              "suppose each cube represents 5 ml ."),
+     discrete_kinds([cube])]).
+
+class_reader_receipt(payment_exchange, clare_paid,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2928,2928)),
+    "Clare is paid $90 for 5 hours of work.",
+    [quantity(lane_clare_dollar_rate_total,90,dollar),
+     quantity(lane_clare_hour_rate_interval,5,hour),
+     quantity(lane_clare_dollar_per_hour,unknown,rate(dollar,hour)),
+     relation(lane_clare_dollar_rate_total,
+              scale(lane_clare_hour_rate_interval,lane_clare_dollar_per_hour),
+              "clare is paid $ 90 for 5 hours of work ."),
+     discrete_kinds([])]).
+class_reader_receipt(payment_exchange, jada_tacos,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2932,2932)),
+    "Jada's family bought 50 tacos for a party and paid $72.",
+    [quantity(lane_family_dollar_rate_total,72,dollar),
+     quantity(lane_family_taco_rate_interval,50,taco),
+     quantity(lane_family_dollar_per_taco,unknown,rate(dollar,taco)),
+     relation(lane_family_dollar_rate_total,
+              scale(lane_family_taco_rate_interval,lane_family_dollar_per_taco),
+              "jada ' s family bought 50 tacos for a party and paid $ 72 ."),
+     discrete_kinds([taco])]).
+class_reader_receipt(payment_exchange, clare_mowing,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3460,3460)),
+    "Clare mowed the lawn of a community center for 2 hours and earned $30.",
+    [quantity(lane_hour_dollar_rate_total,30,dollar),
+     quantity(lane_hour_hour_rate_interval,2,hour),
+     quantity(lane_hour_dollar_per_hour,unknown,rate(dollar,hour)),
+     relation(lane_hour_dollar_rate_total,
+              scale(lane_hour_hour_rate_interval,lane_hour_dollar_per_hour),
+              "clare mowed the lawn of a community center for 2 hours and earned $ 30 ."),
+     discrete_kinds([])]).
+
+class_reader_receipt(motion_work_interval, cyclist,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2942,2942)),
+    "In a sprint to the finish line, a professional cyclist travels 380 meters in 20 seconds.",
+    [quantity(lane_cyclist_meter_rate_total,380,meter),
+     quantity(lane_cyclist_second_rate_interval,20,second),
+     quantity(lane_cyclist_meter_per_second,unknown,rate(meter,second)),
+     relation(lane_cyclist_meter_rate_total,
+              scale(lane_cyclist_second_rate_interval,
+                    lane_cyclist_meter_per_second),
+              "in a sprint to the finish line , a professional cyclist travels 380 meters in 20 seconds ."),
+     discrete_kinds([])]).
+class_reader_receipt(motion_work_interval, typing,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2952,2952)),
+    "Diego can type 140 words in 4 minutes.",
+    [quantity(lane_diego_word_rate_total,140,word),
+     quantity(lane_diego_minute_rate_interval,4,minute),
+     quantity(lane_diego_word_per_minute,unknown,rate(word,minute)),
+     relation(lane_diego_word_rate_total,
+              scale(lane_diego_minute_rate_interval,lane_diego_word_per_minute),
+              "diego can type 140 words in 4 minutes ."),
+     discrete_kinds([word])]).
+class_reader_receipt(motion_work_interval, copy_machine,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3466,3466)),
+    "A copy machine can print 480 copies every 4 minutes.",
+    [quantity(lane_machine_copy_rate_total,480,copy),
+     quantity(lane_machine_minute_rate_interval,4,minute),
+     quantity(lane_machine_copy_per_minute,unknown,rate(copy,minute)),
+     relation(lane_machine_copy_rate_total,
+              scale(lane_machine_minute_rate_interval,lane_machine_copy_per_minute),
+              "a copy machine can print 480 copies every 4 minutes ."),
+     discrete_kinds([copy])]).
+
+% These three receipts reuse the incumbent transfer facts while naming the
+% broader acquire/remove surface class introduced by this slice.
+class_reader_receipt(acquire_remove, lin_seeds,
+    corpus_span('curriculum/im_teacher_guides/grade2/unit2/lesson11.md',
+                lines(272,273)),
+    "Lin has 31 sunflower seeds. She gives 15 to Priya. How many seeds does Lin have now?",
+    [quantity(lin_seed_initial,31,seed),
+     quantity(lin_seed_give_1_change,-15,seed),
+     quantity(lin_seed_after_give_1,unknown,seed),
+     relation(lin_seed_after_give_1,
+              sum([lin_seed_initial,lin_seed_give_1_change]),
+              "she give 15 to priya"),
+     asks(result,lin_seed_after_give_1), discrete_kinds([seed])]).
+class_reader_receipt(acquire_remove, books_to_kiran,
+    corpus_span('curriculum/im_teacher_guides/grade1/unit2/lesson4.md',
+                lines(426,428)),
+    "Tyler has 7 books about spiders. He gives 3 to Kiran to read. How many books does Tyler have left?",
+    [quantity(tyler_book_initial,7,book),
+     quantity(tyler_book_give_1_change,-3,book),
+     quantity(tyler_book_after_give_1,unknown,book),
+     relation(tyler_book_after_give_1,
+              sum([tyler_book_initial,tyler_book_give_1_change]),
+              "he give 3 to kiran_to_read"),
+     asks(result,tyler_book_after_give_1), discrete_kinds([book])]).
+class_reader_receipt(acquire_remove, glue_sticks_from_table,
+    corpus_span('curriculum/im_teacher_guides/grade1/unit3/lesson25.md',
+                lines(228,231)),
+    "Clare has 4 glue sticks. Clare gets 8 glue sticks from the red table. How many sticks does Clare have now?",
+    [quantity(clare_stick_initial,4,stick),
+     quantity(clare_stick_get_1_change,8,stick),
+     quantity(clare_stick_after_get_1,unknown,stick),
+     relation(clare_stick_after_get_1,
+              sum([clare_stick_initial,clare_stick_get_1_change]),
+              "clare get 8 stick from the_red_table"),
+     asks(result,clare_stick_after_get_1), discrete_kinds([stick])]).
+
+class_negative_receipt(vacuous, quantity_bearing,
+    constructed_near_miss, "Explain your reasoning about 12 tiles.",
+    quantity_bearing_not_vacuous).
+class_negative_receipt(possession, missing_quantity,
+    constructed_near_miss, "Clare has several dimes in her pocket.",
+    missing_quantity).
+class_negative_receipt(rate, missing_rate_value,
+    constructed_near_miss, "Each cube represents some ml.",
+    missing_rate_value).
+class_negative_receipt(payment_exchange, missing_payment,
+    constructed_near_miss, "Clare is paid for five hours.",
+    missing_payment_quantity).
+class_negative_receipt(motion_work_interval, missing_distance,
+    constructed_near_miss, "A cyclist travels several meters in 20 seconds.",
+    missing_output_quantity).
+class_negative_receipt(acquire_remove, missing_acquired_quantity,
+    constructed_near_miss, "Kylar wants to buy several glasses.",
+    missing_acquired_quantity).
 
 % Each admitted class below is pinned to three verbatim corpus sentences and
 % an explicit source span. Near misses are constructed to exercise the class
@@ -859,6 +1584,81 @@ class_negative_receipt(contextual_transfer, pronoun_without_antecedent,
 % Each admitted question family has three corpus receipts and one boundary.
 % Comparison receipts include their quantitative context because an ask is
 % emitted only when the program can carry the subtraction relation.
+question_form_receipt(lane_how_many, copies,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3466,3466)),
+    "How many copies can it print in 10 minutes?").
+question_form_receipt(lane_how_many, bottles,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3190,3190)),
+    "How many bottles can you buy for $3?").
+question_form_receipt(lane_how_many, books,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3162,3162)),
+    "How many books can you buy for $21?").
+question_form_negative(lane_how_many, comparison_ask,
+    "Are there more cats or dogs?", comparison_ask).
+
+question_form_receipt(lane_how_much, blue_paint,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2996,2996)),
+    "How much blue paint is there (3 blue cubes)?").
+question_form_receipt(lane_how_much, red_paint,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2998,2998)),
+    "How much red paint is there (5 red cubes)?").
+question_form_receipt(lane_how_much, cheese,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2918,2918)),
+    "How much cheese does Mai use per pizza?").
+question_form_negative(lane_how_much, discourse_ask,
+    "What do you notice?", discourse_ask).
+
+question_form_receipt(lane_how_far, cyclist,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2942,2942)),
+    "How far does the cyclist travel in 3 seconds?").
+question_form_receipt(lane_how_far, elevator_twelve,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3438,3438)),
+    "How far can this elevator travel in 12 seconds?").
+question_form_receipt(lane_how_far, elevator_eleven,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3452,3452)),
+    "How far does the elevator travel in 11 seconds?").
+question_form_negative(lane_how_far, comparison_ask,
+    "How does its position compare to the other point?", comparison_ask).
+
+question_form_receipt(lane_how_long, typing,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(2952,2952)),
+    "How long will it take him to type 385 words?").
+question_form_receipt(lane_how_long, printing,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3472,3472)),
+    "How long did it take to print?").
+question_form_receipt(lane_how_long, tables,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3436,3436)),
+    "How long will it take the waitstaff to clear and set all the tables?").
+question_form_negative(lane_how_long, comparison_ask,
+    "How long is the longer route?", comparison_ask).
+
+question_form_receipt(lane_what_named, bracelet_cost,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3156,3156)),
+    "What is the cost per bracelet?").
+question_form_receipt(lane_what_named, book_cost,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3162,3162)),
+    "What is the cost per book?").
+question_form_receipt(lane_what_named, bag_cost,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                lines(3186,3186)),
+    "What is the cost per bag?").
+question_form_negative(lane_what_named, discourse_ask,
+    "What do you notice?", discourse_ask).
+
 question_form_receipt(how_many_have, rocks_now,
     corpus_span('curriculum/im_teacher_guides/grade1/unit3/lesson11.md',
                 lines(152,152)),

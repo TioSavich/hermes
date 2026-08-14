@@ -1057,8 +1057,13 @@ def build() -> dict[str, object]:
     # math lexicon, the word-problem and APE readers, the loop-admitted
     # store, the pedagogy force funnel, and the standards router/doing
     # stores. All quarantined; the parser points at doings it never loads.
-    if len(registry_rows) != 352:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 352")
+    # 361 from 2026-08-14 evening: the printed-expression reader entered the
+    # registry beside the session's Big Red lanes — the lesson structure read,
+    # its byte-anchoring pass, the rewrite consultation and its Prolog gate,
+    # and the two anchored curriculum stores they produce. All quarantined;
+    # the reader emits relations and never evaluates one.
+    if len(registry_rows) != 361:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 361")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1138,8 +1143,12 @@ def build() -> dict[str, object]:
     # loading them into the worker. Admission by ceremony would move them.
     # 126 from 2026-08-14: the language-lane rows are orphans in the same
     # quarantine sense; the harness and router run them, nothing loads them.
-    if len(orphan_records) != 126:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 126")
+    # 135 from 2026-08-14 evening: the printed-expression reader and the Big
+    # Red structure and consultation lanes are orphans in the same quarantine
+    # sense. The harness, the router and the slurm jobs run them; nothing
+    # loads them into the worker.
+    if len(orphan_records) != 135:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 135")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

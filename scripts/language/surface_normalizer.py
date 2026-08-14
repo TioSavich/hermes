@@ -22,6 +22,10 @@ from typing import Callable, Match
 
 
 AUDIT = ".superpowers/sdd/language-lane/surface-form-audit.md#5-normalization-spec"
+WORD_PROBLEM_AUDIT = (
+    ".superpowers/sdd/language-lane/"
+    "codex-brief-word-problem-grammar.md#32-bracketed-authored-annotations-are-stripped-never-read"
+)
 BOUNDARY = "\ue000"
 GUTTER = "\ue001"
 
@@ -66,6 +70,8 @@ RULES = {
                 "currency and percent frequency measured; preserve both glyphs"),
     "N15": Rule("N15", f"{AUDIT}-n15", "neither-no-op",
                 "audited no-op row; no normalizer rewrite authorized"),
+    "N16": Rule("N16", WORD_PROBLEM_AUDIT, "IM-only",
+                "94 measured grade 6-7 annotation-shaped sentences"),
 }
 
 
@@ -160,6 +166,9 @@ class Normalizer:
             self.replace("³", " ^ 3", "N9")
 
         if self.profile == "im":
+            # N16 removes authored metadata before any reader can receive it.
+            # The edit receipt retains the exact source span and source text.
+            self.replace(r"\[[^\[\]]*\]", "", "N16")
             # N10 removes only the measured guide furniture classes.
             self.replace(r"(?m)^[ \t]*Illustrative Mathematics®[ \t]+\d+[ \t]*$",
                          "", "N10")
@@ -301,6 +310,26 @@ def check_surface_normalizer() -> None:
     assert normalize_surface(r"Step 2 - Find 1,250cm³.\n", profile="im")["text"] == (
         r"Step 2 - Find 1250cm³.\n"
     )
+    annotation = normalize_surface(
+        "How far does the car travel? [solution: 140*7=980]", profile="im"
+    )
+    assert annotation["text"] == "How far does the car travel? "
+    annotation_edits = [row for row in annotation["edits"] if row["rule"] == "N16"]
+    assert annotation_edits == [
+        {
+            "rule": "N16",
+            "audit_row": WORD_PROBLEM_AUDIT,
+            "source_span": [29, 50],
+            "normalized_span": [29, 29],
+            "source_text": "[solution: 140*7=980]",
+            "normalized_text": "",
+        }
+    ]
+    assert "980" not in annotation["text"]
+    assert normalize_surface(
+        "How far does the car travel? [solution: 140*7=980]",
+        profile="benchmark",
+    )["text"].endswith("[solution: 140*7=980]")
     print("surface_normalizer: all receipts passed")
 
 

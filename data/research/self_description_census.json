@@ -415,15 +415,15 @@
       "pml": 15,
       "render": 35,
       "sequent": 14,
-      "standards": 22,
-      "synthesis": 70,
+      "standards": 23,
+      "synthesis": 78,
       "unclassified": 9,
       "workflow": 27,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 126,
+      "orphan_module": 135,
       "routed_only": 15,
       "routed_paged": 189,
       "unrouted": 12
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 90
+      "undetermined": 99
     },
-    "total": 352,
+    "total": 361,
     "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1571,6 +1571,20 @@
       "verdict": "undetermined"
     },
     {
+      "capability_class": "standards",
+      "evidence": [
+        {
+          "locator": "/** <module> Receipt-backed CCSS standard narrowing",
+          "path": "knowledge/standards/standard_doing.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "standard_doing",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/standards/standard_doing.pl",
+      "verdict": "undetermined"
+    },
+    {
       "capability_class": "synthesis",
       "evidence": [
         {
@@ -1589,6 +1603,20 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/ape_reader_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "ape_reader_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/ape_reader_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/channel_collapse.pl",
           "relation": "source inspected"
         }
@@ -1596,6 +1624,20 @@
       "module": "channel_collapse",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/channel_collapse.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/english_morphology.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "english_morphology",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/english_morphology.pl",
       "verdict": "undetermined"
     },
     {
@@ -1967,6 +2009,48 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "lexicon_loop_admitted_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "lexicon_supplement_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/math_lexicon_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "math_lexicon_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/math_lexicon_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
           "relation": "source inspected"
         }
@@ -1974,6 +2058,20 @@
       "module": "metaphor_seam_registry",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "pedagogy_force_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
       "verdict": "undetermined"
     },
     {
@@ -2009,6 +2107,20 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "standards_router_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/task_pattern_pilot.pl",
           "relation": "source inspected"
         }
@@ -2016,6 +2128,20 @@
       "module": "task_pattern_pilot",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/task_pattern_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/word_problem_reader_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "word_problem_reader_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/word_problem_reader_pilot.pl",
       "verdict": "undetermined"
     },
     {

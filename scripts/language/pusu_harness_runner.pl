@@ -9,13 +9,19 @@
 
 :- module(pusu_harness_runner, []).
 
+:- ensure_loaded('../../paths.pl').  % file_search_path aliases, so the
+                                     % truth-decision route can reach
+                                     % grounded arithmetic from any caller
 :- use_module(library(http/json)).
 :- use_module(library(porter_stem), [tokenize_atom/2]).
 :- use_module(library(readutil), [read_line_to_string/2]).
 :- use_module('../../knowledge/strategies/abstraction/word_problem_reader_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/ape_reader_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/pedagogy_force_pilot.pl').
+:- use_module('../../knowledge/strategies/abstraction/printed_expression_reader_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/english_morphology.pl', []).
+:- use_module('../../hermes/math_claim_language.pl', []).
+:- use_module('../../hermes/math_claim_checker.pl', []).
 
 :- initialization(main, main).
 
@@ -37,16 +43,133 @@ process_line(Line, Reply) :-
     get_dict(sentences, Request, Sentences),
     read_sentences(Sentences, 0, SentenceRows0, ScopedProgram),
     contextualize_questions(Sentences, SentenceRows0, SentenceRows, Candidates),
-    select_program(Candidates, ScopedProgram, Program0, ProgramBasis),
-    merge_discrete_kinds(Program0, Program),
-    completion_receipt(Program, Completion),
+    ( get_dict(source_statement, Request, SourceStatement0)
+    -> SourceStatement = SourceStatement0
+    ;  SourceStatement = ""
+    ),
+    select_program(Candidates, Sentences, SourceStatement, ScopedProgram,
+                   SentenceProgram0, SentenceBasis),
+    merge_discrete_kinds(SentenceProgram0, SentenceProgram),
+    completion_receipt(SentenceProgram, SentenceCompletion),
+    expression_reading(Request, ExpressionRow, ExpressionProgram,
+                       ExpressionCompletion),
+    select_completion(ExpressionRow, ExpressionProgram, ExpressionCompletion,
+                      SentenceProgram, SentenceCompletion, SentenceBasis,
+                      Program, Completion, ProgramBasis, CompletionCarrier),
     maplist(term_text, Program, ProgramStrings),
+    maplist(term_text, SentenceProgram, SentenceProgramStrings),
+    maplist(term_text, ExpressionProgram, ExpressionProgramStrings),
     Reply = _{ok:true, sentences:SentenceRows,
               program:ProgramStrings, program_basis:ProgramBasis,
+              programs:_{sentence:SentenceProgramStrings,
+                         printed_expression:ExpressionProgramStrings},
+              printed_expression:ExpressionRow,
+              expression_completion:ExpressionCompletion,
+              completion_carrier:CompletionCarrier,
               completion:Completion}.
 
 error_reply(Error, _{ok:false, error:Text}) :-
     message_to_string(Error, Text).
+
+expression_reading(Request, Row, Program, Completion) :-
+    get_dict(source_statement, Request, Source),
+    get_dict(complete_statement, Request, Complete),
+    get_dict(referents, Request, Referents),
+    get_dict(source_statement_spans, Request, Spans),
+    !,
+    printed_expression_reader_pilot:printed_expression_result(
+        Source, Complete, Referents, Spans, Result),
+    expression_result_row(Result, Source, Row, Program, Completion).
+expression_reading(_Request,
+                   _{status:not_requested,class:null,program:[],refusal:null,
+                     truth:null,fact_provenance:[]},
+                   [],
+                   _{status:not_parsed,reason:no_expression_request,
+                     asks:[],ask_targets:[],answers:[]}).
+
+expression_result_row(parsed(Class, Program, Receipt), Source, Row, Program,
+                      Completion) :-
+    term_text(Class, ClassText),
+    maplist(term_text, Program, ProgramStrings),
+    receipt_fact_provenance(Receipt.fact_provenance, FactProvenance),
+    ( expression_truth_class(Class)
+    -> truth_receipt(Source, Truth),
+       truth_completion(Truth, Completion)
+    ; completion_receipt(Program, Completion),
+      Truth = null
+    ),
+    Row = _{status:parsed,class:ClassText,program:ProgramStrings,
+            refusal:null,truth:Truth,
+            ask:Receipt.ask,route:Receipt.route,target:Receipt.target,
+            recovered:Receipt.recovered,
+            fact_provenance:FactProvenance}.
+expression_result_row(refused(Reason, _Receipt), _Source, Row, [], Completion) :-
+    term_text(Reason, ReasonText),
+    Row = _{status:refused,class:null,program:[],refusal:ReasonText,
+            truth:null,fact_provenance:[]},
+    Completion = _{status:not_parsed,reason:expression_refused,
+                   asks:[],ask_targets:[],answers:[]}.
+
+expression_truth_class(decide_truth).
+expression_truth_class(recovered_from_statement(decide_truth)).
+
+receipt_fact_provenance([], []).
+receipt_fact_provenance([fact_trace(Index,Fact,Spans)|Rows],
+                        [_{fact_index:Index,fact:FactText,spans:Spans}|Receipts]) :-
+    term_text(Fact, FactText),
+    receipt_fact_provenance(Rows, Receipts).
+
+truth_receipt(Source, Receipt) :-
+    math_claim_language:math_claims_in_text(Source, Claims),
+    ( Claims = [Claim]
+    -> term_text(Claim, ClaimText),
+       math_claim_checker:check_math_claim(Claim, Verdict),
+       Receipt = _{status:checked,module:"hermes/math_claim_checker.pl",
+                   predicate:"check_math_claim/2",worker_required:false,
+                   claim:ClaimText,verdict:Verdict}
+    ; maplist(term_text, Claims, ClaimTexts),
+      Receipt = _{status:refused,module:"hermes/math_claim_language.pl",
+                  predicate:"math_claims_in_text/2",worker_required:false,
+                  reason:non_unique_math_claim,claims:ClaimTexts}
+    ).
+
+truth_completion(Truth, Completion) :-
+    get_dict(status, Truth, checked),
+    get_dict(verdict, Truth, Verdict),
+    get_dict(verdict, Verdict, Decision),
+    memberchk(Decision, [holds,refuted]),
+    !,
+    Completion = _{status:truth_decided,reason:incumbent_math_claim_checker,
+                   asks:[],ask_targets:[],answers:[],truth:Truth}.
+truth_completion(Truth,
+                 _{status:parsed_not_completed,reason:truth_not_checked,
+                   asks:[],ask_targets:[],answers:[],truth:Truth}).
+
+select_completion(_ExpressionRow, ExpressionProgram, ExpressionCompletion,
+                  _SentenceProgram, _SentenceCompletion, _SentenceBasis,
+                  ExpressionProgram, ExpressionCompletion,
+                  _{kind:printed_expression,question_index:null,
+                    base_sentence_indices:[]}, printed_expression) :-
+    completion_succeeds(ExpressionCompletion), !.
+select_completion(_ExpressionRow, _ExpressionProgram, _ExpressionCompletion,
+                  SentenceProgram, SentenceCompletion, SentenceBasis,
+                  SentenceProgram, SentenceCompletion, SentenceBasis,
+                  complete_statement) :-
+    completion_succeeds(SentenceCompletion), !.
+select_completion(ExpressionRow, ExpressionProgram, ExpressionCompletion,
+                  _SentenceProgram, _SentenceCompletion, _SentenceBasis,
+                  ExpressionProgram, ExpressionCompletion,
+                  _{kind:printed_expression,question_index:null,
+                    base_sentence_indices:[]}, printed_expression) :-
+    get_dict(status, ExpressionRow, parsed), !.
+select_completion(_ExpressionRow, _ExpressionProgram, _ExpressionCompletion,
+                  SentenceProgram, SentenceCompletion, SentenceBasis,
+                  SentenceProgram, SentenceCompletion, SentenceBasis,
+                  complete_statement).
+
+completion_succeeds(Completion) :-
+    get_dict(status, Completion, Status),
+    memberchk(Status, [completed,truth_decided]).
 
 read_sentences([], _Index, [], []).
 read_sentences([Text|Texts], Index, [Row|Rows], Program) :-
@@ -132,19 +255,64 @@ question_program_facts(Program, Facts) :-
             ), Facts0),
     sort(Facts0, Facts).
 
-select_program(Candidates, _Fallback, Program,
+% A defragged row names one sub-problem of a statement that may pose several.
+% Selecting the last deriving candidate answers the statement's final question
+% for every row that shares the statement, so seven rows about seven different
+% sub-problems returned one number.  Bind to the row's own sub-problem first:
+% prefer a candidate whose question sentence occurs inside this row's
+% `source_statement`.  When the row carries no such question, the previous
+% order stands and the basis says which rule chose.
+select_program(Candidates, Sentences, SourceStatement, _Fallback, Program,
                _{kind:contextual,question_index:Index,
+                 selection:source_statement_bound_deriving,
+                 base_sentence_indices:BaseIndices}) :-
+    SourceStatement \== "",
+    include(deriving_candidate, Candidates, Deriving), Deriving \== [],
+    include(candidate_in_source(Sentences, SourceStatement), Deriving, Bound),
+    Bound \== [], !,
+    last(Bound, candidate(Index,Program,BaseIndices,_)).
+select_program(Candidates, Sentences, SourceStatement, _Fallback, Program,
+               _{kind:contextual,question_index:Index,
+                 selection:source_statement_bound,
+                 base_sentence_indices:BaseIndices}) :-
+    SourceStatement \== "",
+    include(candidate_in_source(Sentences, SourceStatement), Candidates, Bound),
+    Bound \== [], !,
+    last(Bound, candidate(Index,Program,BaseIndices,_)).
+select_program(Candidates, _Sentences, _SourceStatement, _Fallback, Program,
+               _{kind:contextual,question_index:Index,
+                 selection:last_deriving,
                  base_sentence_indices:BaseIndices}) :-
     include(deriving_candidate, Candidates, Deriving), Deriving \== [], !,
     last(Deriving, candidate(Index,Program,BaseIndices,_)).
-select_program(Candidates, _Fallback, Program,
+select_program(Candidates, _Sentences, _SourceStatement, _Fallback, Program,
                _{kind:contextual,question_index:Index,
+                 selection:last_candidate,
                  base_sentence_indices:BaseIndices}) :-
     Candidates \== [], !,
     last(Candidates, candidate(Index,Program,BaseIndices,_)).
-select_program([], Fallback, Fallback,
+select_program([], _Sentences, _SourceStatement, Fallback, Fallback,
                _{kind:sentence_scoped,question_index:null,
+                 selection:sentence_scoped,
                  base_sentence_indices:[]}).
+
+%! candidate_in_source(+Sentences, +SourceStatement, +Candidate) is semidet.
+%
+%  True when the candidate's question sentence is carried by this row's own
+%  source statement.  Whitespace is normalized on both sides because the
+%  sentence splitter and the defrag joiner space their output differently.
+candidate_in_source(Sentences, SourceStatement, candidate(Index,_,_,_)) :-
+    nth0(Index, Sentences, QuestionText),
+    normalize_for_match(QuestionText, Needle),
+    Needle \== "",
+    normalize_for_match(SourceStatement, Haystack),
+    sub_string(Haystack, _, _, _, Needle).
+
+normalize_for_match(Text, Normalized) :-
+    string_lower(Text, Lower),
+    split_string(Lower, " \t\n\r", " \t\n\r", Parts0),
+    exclude(==(""), Parts0, Parts),
+    atomics_to_string(Parts, " ", Normalized).
 
 deriving_candidate(candidate(_,_,_,true)).
 
@@ -170,33 +338,45 @@ last_n(Count, List, Tail) :-
     length(Prefix, Drop), append(Prefix, Tail, List).
 
 arbitration_result(Text, Form, Row, Facts) :-
-    ( word_problem_reader_pilot:word_problem_facts(Text, IncumbentFacts)
+    ( word_problem_reader_pilot:word_problem_reading(
+          Text, IncumbentClass, IncumbentFacts)
     -> maplist(term_text, IncumbentFacts, FactStrings),
+       term_text(IncumbentClass, ClassString),
        Row = _{parsed:true, reader:incumbent, sentence_form:Form,
+               reader_class:ClassString,
                facts:FactStrings, fact_spans:[], rewrite_rules:[], refusals:_{}},
        Facts = IncumbentFacts
     ; incumbent_entry_token(Text, EntryToken),
+      incumbent_refusal(Text, EntryToken, IncumbentRefusal),
       ape_reader_pilot:ape_reader_result(Text, ApeResult),
-      ape_result_row(ApeResult, EntryToken, Form, Row, Facts)
+      ape_result_row(ApeResult, IncumbentRefusal, Form, Row, Facts)
     ).
 
-ape_result_row(parsed(Facts, FactSpans, Rules), EntryToken, Form, Row, Facts) :-
+incumbent_refusal(Text, EntryToken,
+                  _{token:EntryToken,reason:ReasonString,
+                    token_basis:named_language_lane_refusal}) :-
+    word_problem_reader_pilot:word_problem_refusal(Text, Reason), !,
+    term_text(Reason, ReasonString).
+incumbent_refusal(_Text, EntryToken,
+                  _{token:EntryToken,
+                    token_basis:sentence_entry_no_failure_api}).
+
+ape_result_row(parsed(Facts, FactSpans, Rules), IncumbentRefusal,
+               Form, Row, Facts) :-
     maplist(term_text, Facts, FactStrings),
     findall(_{fact_index:Index,start:Start,end:End,text:Text},
             member(fact_span(Index,Start,End,Text), FactSpans), SpanRows),
     maplist(term_text, Rules, RuleStrings),
     Row = _{parsed:true, reader:ape, sentence_form:Form,
             facts:FactStrings, fact_spans:SpanRows, rewrite_rules:RuleStrings,
-            refusals:_{incumbent:_{token:EntryToken,
-                token_basis:sentence_entry_no_failure_api}}}.
+            refusals:_{incumbent:IncumbentRefusal}}.
 ape_result_row(refusal(Token,span(Start,End,Surface),Reason,Rules),
-               EntryToken, Form, Row, []) :-
+               IncumbentRefusal, Form, Row, []) :-
     term_text(Reason, ReasonString),
     maplist(term_text, Rules, RuleStrings),
     Row = _{parsed:false, reader:both_refused, sentence_form:Form,
             facts:[], fact_spans:[], rewrite_rules:RuleStrings,
-            refusals:_{incumbent:_{token:EntryToken,
-                token_basis:sentence_entry_no_failure_api},
+            refusals:_{incumbent:IncumbentRefusal,
                 ape:_{token:Token,start:Start,end:End,text:Surface,
                       reason:ReasonString}}}.
 
