@@ -174,6 +174,8 @@ ls_word('coupon', common_noun, forms(noun(coupon, coupons)), evidence(occurrence
 ls_word('coupons', common_noun, forms(noun(coupon, coupons)), evidence(occurrences(1)), "The corpus uses coupons as a noun, and Webster supplies no matching surface.").
 ls_word('crackers', common_noun, forms(noun(cracker, crackers)), evidence(occurrences(10)), "The corpus uses crackers as a noun, and Webster supplies no matching surface.").
 ls_word('crawled', corpus_verb, forms(verb(crawl, crawls, crawled, crawling, crawled)), evidence(occurrences(2)), "The corpus uses crawled as a verb form, and the row records its full inflection.").
+ls_word('crayon', common_noun, forms(noun(crayon, crayons)), evidence(occurrences(1), pass(relation_emission_1)), "The corpus uses crayon as a noun; Webster holds the surface only as a verb.").
+ls_word('crayons', common_noun, forms(noun(crayon, crayons)), evidence(occurrences(26), pass(relation_emission_1)), "The corpus uses crayons as a noun; Webster holds the base surface only as a verb.").
 ls_word('credit', common_noun, forms(noun(credit, credits)), evidence(occurrences(5)), "The corpus uses credit as a noun, and Webster supplies no matching surface.").
 ls_word('crew', common_noun, forms(noun(crew, crews)), evidence(occurrences(9)), "The corpus uses crew as a noun, and Webster supplies no matching surface.").
 ls_word('croissant', common_noun, forms(noun(croissant, croissants)), evidence(occurrences(5)), "The corpus uses croissant as a noun, and Webster supplies no matching surface.").
@@ -181,8 +183,12 @@ ls_word('croissants', common_noun, forms(noun(croissant, croissants)), evidence(
 ls_word('crossword', common_noun, forms(noun(crossword, crosswords)), evidence(occurrences(7)), "The corpus uses crossword as a noun, and Webster supplies no matching surface.").
 ls_word('cucumber', common_noun, forms(noun(cucumber, cucumbers)), evidence(occurrences(6)), "The corpus uses cucumber as a noun, and Webster supplies no matching surface.").
 ls_word('cumulative', adjective, forms(invariant), evidence(occurrences(1)), "The corpus uses cumulative adjectivally, and Webster supplies no matching surface.").
+ls_word('cube', common_noun, forms(noun(cube, cubes)), evidence(occurrences(35), pass(relation_emission_1)), "The corpus uses cube as a noun; Webster holds the surface only as a verb.").
+ls_word('cubes', common_noun, forms(noun(cube, cubes)), evidence(occurrences(209), pass(relation_emission_1)), "The corpus uses cubes as a noun; Webster holds the base surface only as a verb.").
+ls_word('cup', common_noun, forms(noun(cup, cups)), evidence(occurrences(78), pass(relation_emission_1)), "The corpus uses cup as a noun; Webster holds the surface only as a verb.").
 ls_word('cupcake', common_noun, forms(noun(cupcake, cupcakes)), evidence(occurrences(4)), "The corpus uses cupcake as a noun, and Webster supplies no matching surface.").
 ls_word('cupcakes', common_noun, forms(noun(cupcake, cupcakes)), evidence(occurrences(67)), "The corpus uses cupcakes as a noun, and Webster supplies no matching surface.").
+ls_word('cups', common_noun, forms(noun(cup, cups)), evidence(occurrences(72), pass(relation_emission_1)), "The corpus uses cups as a noun; Webster holds the base surface only as a verb.").
 ls_word('customer', common_noun, forms(noun(customer, customers)), evidence(occurrences(30)), "The corpus uses customer as a noun, and Webster supplies no matching surface.").
 ls_word('customers', common_noun, forms(noun(customer, customers)), evidence(occurrences(143)), "The corpus uses customers as a noun, and Webster supplies no matching surface.").
 ls_word('cycles', common_noun, forms(noun(cycle, cycles)), evidence(occurrences(12)), "The corpus uses cycles as a noun, and Webster supplies no matching surface.").
@@ -1976,12 +1982,12 @@ ls_phrase([scale, factor], math_phrase, "The questioning-paper lexicon attests s
 lexicon_supplement_summary(
     summary(role(orphan_authored_lexicon_supplement),
             sources([slice_1_ml_unknown, im_guide_saturation_1, im_guide_saturation_2]),
-            word_rows(1917), occurrence_evidence(233355), phrase_rows(8), class_counts([
+            word_rows(1923), occurrence_evidence(233776), phrase_rows(8), class_counts([
                 abbreviation(28),
                 adjective(141),
                 adverb(54),
                 algebra_symbol(21),
-                common_noun(427),
+                common_noun(433),
                 contraction_fragment(15),
                 corpus_verb(158),
                 curriculum_code(103),
@@ -2005,8 +2011,8 @@ lexicon_supplement_summary(
             ]))).
 
 check_lexicon_supplement :-
-    aggregate_all(count, ls_word(_, _, _, _, _), 1917),
-    findall(W, ls_word(W, _, _, _, _), W0), sort(W0, Words), length(Words, 1917),
+    aggregate_all(count, ls_word(_, _, _, _, _), 1923),
+    findall(W, ls_word(W, _, _, _, _), W0), sort(W0, Words), length(Words, 1923),
     findall(N, ls_word(_, _, _, evidence(occurrences(N)), _), Slice2Ns),
     length(Slice2Ns, 764), sum_list(Slice2Ns, 12529),
     findall(N, ls_word(_, _, _, evidence(occurrences(N), pass(guide_saturation_1)), _), GuideNs),

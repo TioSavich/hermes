@@ -138,13 +138,19 @@ truth_completion(Truth, Completion) :-
     get_dict(status, Truth, checked),
     get_dict(verdict, Truth, Verdict),
     get_dict(verdict, Verdict, Decision),
-    memberchk(Decision, [holds,refuted]),
+    comparison_truth_decision(Truth, Decision),
     !,
     Completion = _{status:truth_decided,reason:incumbent_math_claim_checker,
                    asks:[],ask_targets:[],answers:[],truth:Truth}.
 truth_completion(Truth,
                  _{status:parsed_not_completed,reason:truth_not_checked,
                    asks:[],ask_targets:[],answers:[],truth:Truth}).
+
+comparison_truth_decision(Truth, Decision) :-
+    memberchk(Decision, ["holds","refuted"]),
+    get_dict(claim, Truth, ClaimText),
+    term_string(Claim, ClaimText),
+    memberchk(Claim, [comparison(_,_,_), arithmetic_comparison(_,_,_)]).
 
 select_completion(_ExpressionRow, ExpressionProgram, ExpressionCompletion,
                   _SentenceProgram, _SentenceCompletion, _SentenceBasis,
@@ -409,8 +415,8 @@ ape_result_row(refusal(Token,span(Start,End,Surface),Reason,Rules),
 %   - an equation with exactly one hole writes a demand for the number that
 %     fills its blank: structure facts plus asks/2, and never a fact that the
 %     equation holds, never a value for the hole;
-%   - an equation without a hole is a truth claim; the sentence lane refuses
-%     it because truth verdicts belong to the math-claim checker;
+%   - a complete comparison is a truth claim and is routed to the incumbent
+%     math-claim checker; an equation without a hole remains refused here;
 %   - everything else refuses with a named reason for the census.
 %
 % Routed facts stay out of the statement's answering program in this slice:
@@ -418,6 +424,18 @@ ape_result_row(refusal(Token,span(Start,End,Surface),Reason,Rules),
 % every completion, answer, and verdict keeps its existing carrier.  A routed
 % sentence must also name its own source bytes; without a verified anchor the
 % route refuses rather than borrowing the statement's.
+expression_segment_row(Text, SentenceSpans, Refusals, Form, RuleStrings,
+                       Row, []) :-
+    expression_segment_shaped(Text),
+    expression_segment_truth_reading(Text, SentenceSpans, Ast, Truth),
+    !,
+    term_text(Ast, AstString),
+    Row = _{parsed:true, reader:printed_expression_segment,
+            reader_class:segment_comparison_truth,
+            expression_ast:AstString, sentence_form:Form,
+            facts:[], fact_spans:[], source_spans:SentenceSpans,
+            fact_provenance:[], truth:Truth,
+            rewrite_rules:RuleStrings, refusals:Refusals}.
 expression_segment_row(Text, SentenceSpans, Refusals, Form, RuleStrings,
                        Row, []) :-
     expression_segment_shaped(Text),
@@ -473,6 +491,8 @@ expression_surface_code(0'*).
 expression_surface_code(0'÷).
 expression_surface_code(0'/).
 expression_surface_code(0'=).
+expression_surface_code(0'>).
+expression_surface_code(0'<).
 expression_surface_code(0'?).
 expression_surface_code(0'_).
 expression_surface_code(0'().
@@ -488,9 +508,20 @@ expression_segment_reading(Text, SentenceSpans, Class, Ast, Facts) :-
     printed_expression_reader_pilot:hole_count(Ast, Holes),
     expression_segment_compile(Ast, Holes, SentenceSpans, Class, Facts).
 
+expression_segment_truth_reading(Text, SentenceSpans, Ast, Truth) :-
+    SentenceSpans = [_|_],
+    printed_expression_reader_pilot:printed_expression_ast(Text, Ast),
+    Ast = comparison(_, _, _),
+    printed_expression_reader_pilot:hole_count(Ast, no_holes),
+    truth_receipt(Text, Truth),
+    get_dict(status, Truth, checked),
+    get_dict(verdict, Truth, Verdict),
+    get_dict(verdict, Verdict, Decision),
+    memberchk(Decision, ["holds","refuted"]).
+
 % The compile steps below are the pilot's own: one authority describes
 % expression structure, and this router only decides which shapes the
-% sentence lane may carry.  The pilot file itself is unchanged.
+% sentence lane may carry.
 expression_segment_compile(Ast, no_holes, SentenceSpans,
                            segment_expression, Facts) :-
     Ast \= equation(_, _),
@@ -502,6 +533,18 @@ expression_segment_compile(equation(Left, Right), one_hole, SentenceSpans,
     printed_expression_reader_pilot:provenance_term(SentenceSpans, Span),
     printed_expression_reader_pilot:compile_missing_equation(
         Left, Right, Span, Facts, _Target).
+expression_segment_compile(comparison(Left, Relation, Right), one_hole,
+                           SentenceSpans, segment_comparison_one_hole, Facts) :-
+    printed_expression_reader_pilot:provenance_term(SentenceSpans, Span),
+    printed_expression_reader_pilot:compile_missing_comparison(
+        Left, Relation, Right, Span, Facts, _Target).
+expression_segment_compile(
+    comparison_chain(Left, FirstRelation, Middle, SecondRelation, Right),
+    one_hole, SentenceSpans, segment_comparison_chain_one_hole, Facts) :-
+    printed_expression_reader_pilot:provenance_term(SentenceSpans, Span),
+    printed_expression_reader_pilot:compile_missing_comparison_chain(
+        Left, FirstRelation, Middle, SecondRelation, Right, Span,
+        Facts, _Target).
 
 expression_segment_refusal(_Text, [], no_sentence_byte_anchor) :- !.
 expression_segment_refusal(Text, _SentenceSpans, Reason) :-
@@ -513,6 +556,10 @@ expression_segment_refusal(Text, _SentenceSpans, Reason) :-
 
 expression_segment_shape_refusal(equation(_, _), no_holes,
                                  equation_without_hole_is_a_truth_claim) :- !.
+expression_segment_shape_refusal(comparison(_, _, _), no_holes,
+                                 comparison_truth_not_decided) :- !.
+expression_segment_shape_refusal(comparison_chain(_,_,_,_,_), no_holes,
+                                 comparison_chain_truth_not_decided) :- !.
 expression_segment_shape_refusal(equation(_, _), one_hole,
                                  hole_position_not_compilable) :- !.
 expression_segment_shape_refusal(_Ast, multiple_holes,
@@ -547,6 +594,22 @@ check_expression_routing :-
     \+ expression_segment_reading("15 - 10 = 5", [Span], _, _, _),
     expression_segment_refusal("15 - 10 = 5", [Span],
                                equation_without_hole_is_a_truth_claim),
+    % A complete comparison takes the truth route and the incumbent checker
+    % decides it; the sentence reader does not reproduce comparison logic.
+    expression_segment_truth_reading("100 > 99", [Span], _, TruthA),
+    get_dict(verdict, TruthA, TruthVerdictA),
+    get_dict(verdict, TruthVerdictA, "holds"),
+    arbitration_result("100 > 99", declarative, [Span], RowTruth, ProgramTruth),
+    ProgramTruth == [],
+    get_dict(reader_class, RowTruth, segment_comparison_truth),
+    get_dict(truth, RowTruth, TruthA),
+    % A comparison blank writes a demand and no value for the unknown.
+    expression_segment_reading("5 > __", [Span],
+                               segment_comparison_one_hole, _, FactsD),
+    memberchk(relation(expr_1_missing,
+                       comparison_demand(greater,_,expr_1_missing),_), FactsD),
+    memberchk(asks(result,expr_1_missing), FactsD),
+    \+ ( member(quantity(expr_1_missing, ValueD, _), FactsD), number(ValueD) ),
     % A hole-free expression emits structure and asks nothing.
     expression_segment_reading("7 + 1", [Span], segment_expression, _, FactsC),
     memberchk(relation(expr_1_value, sum([_, _]), _), FactsC),
@@ -572,7 +635,7 @@ check_expression_routing :-
     get_dict(refusals, RowB, RefusalsB),
     get_dict(expression_route, RefusalsB, RouteB),
     get_dict(reason, RouteB, "equation_without_hole_is_a_truth_claim"),
-    format('check_expression_routing: ok receipts=13 evaluation=none~n').
+    format('check_expression_routing: ok receipts=18 evaluation=checker_only~n').
 
 incumbent_entry_token(Text, TokenString) :-
     string_lower(Text, Lower),
@@ -731,6 +794,16 @@ ask_target(Name, Program,
              referent_class:KindString}) :-
     member(relation(Name,identity_demand(Kind),_), Program), !,
     term_text(Name, NameString), term_text(Kind, KindString).
+ask_target(Name, Program,
+           _{referent:NameString,target_kind:numeric,
+             referent_class:comparison_bound}) :-
+    member(relation(Name,comparison_demand(_,_,_),_), Program), !,
+    term_text(Name, NameString).
+ask_target(Name, Program,
+           _{referent:NameString,target_kind:numeric,
+             referent_class:comparison_bound}) :-
+    member(relation(Name,comparison_chain_demand(_,_),_), Program), !,
+    term_text(Name, NameString).
 ask_target(Name, Program,
            _{referent:NameString,target_kind:numeric,
              referent_class:KindString}) :-

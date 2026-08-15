@@ -14,6 +14,23 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "knowledge/strategies/math/action_automata_registry.pl"
 CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
+# 2026-08-15. The two checks below this line read the registry and enumerate
+# outward from it, so they can only ever report a registered kind that lacks a
+# contract. A machine that files no signature at all was outside what they
+# could count: contracts and signatures were an exact bijection, and the gap
+# they printed was the difference between two sets neither of which contained
+# it. Thirty-eight grade 8 machines sat in that blind spot while running 144
+# curriculum rows to a correct answer. These maps are the third set -- machines
+# that HAVE run, recorded row by row -- and the diff against the registry now
+# goes both ways.
+MACHINE_MAPS = (
+    ROOT / "curriculum/im/generated/wave5_row_machine_map.jsonl",
+    ROOT / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl",
+)
+# A row whose route names a composition ran more than one machine under one
+# label, so the label is not itself an automaton and files no signature of its
+# own. Named from the map's own `route` field, never from an allowlist here.
+COMPOSED_ROUTES = {"composition"}
 
 SIGNATURE = re.compile(
     r"action_automaton_signature\(\s*([a-z][a-z0-9_]*)\s*,\s*"
@@ -51,6 +68,34 @@ def contracts() -> list[dict[str, Any]]:
             }
         )
     return rows
+
+
+def executed_machines() -> dict[str, dict[str, Any]]:
+    """Machines named by a recorded run, with how often and by which route.
+
+    Each row of a machine map is one curriculum row that went to one machine
+    and came back with an outcome.  The map is evidence that the machine runs;
+    it says nothing about whether the registry knows the machine exists, which
+    is the point of reading it here.
+    """
+    seen: dict[str, dict[str, Any]] = {}
+    for path in MACHINE_MAPS:
+        if not path.exists():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            machine = row.get("machine")
+            if not machine:
+                continue
+            entry = seen.setdefault(
+                machine, {"rows": 0, "routes": set(), "maps": set()}
+            )
+            entry["rows"] += 1
+            entry["routes"].add(str(row.get("route", "")))
+            entry["maps"].add(path.name)
+    return seen
 
 
 def is_integer(value: Any) -> bool:
@@ -96,6 +141,14 @@ def shape_errors(shape: Any, example: Any, path: str = "$") -> list[str]:
         )
     if shape in {"atom", "string"}:
         return [] if isinstance(example, str) and bool(example) else [f"{path}: expected nonempty string"]
+    if shape == "integer_or_unknown":
+        # A count the task withholds.  The grade 8 two-way-table pilot reads the
+        # string "?" as an unknown cell and sends anything else to the shared
+        # quantity decoder (g8_two_way_table_association.pl:110), so the leaf is
+        # an integer or that one mark, and nothing else.
+        if is_integer(example) or example == "?":
+            return []
+        return [f"{path}: expected an integer or the unknown mark \"?\""]
     return [] if example == shape else [f"{path}: expected literal {shape!r}"]
 
 
@@ -127,6 +180,28 @@ def main() -> int:
         failures.append(f"duplicate registry signatures: {signature_duplicates}")
     if contract_duplicates:
         failures.append(f"duplicate input contracts: {contract_duplicates}")
+
+    # The other direction. A machine that ran on curriculum rows and files no
+    # signature cannot show up in remaining_gap, because that gap is computed
+    # from the registry outward. Read the recorded runs and name it here.
+    signature_kinds = {kind for _, kind in signatures}
+    executed = executed_machines()
+    unsigned: list[str] = []
+    composed: list[str] = []
+    for machine in sorted(executed):
+        if machine in signature_kinds:
+            continue
+        entry = executed[machine]
+        detail = (
+            f"{machine}: ran on {entry['rows']} recorded curriculum row(s) "
+            f"({', '.join(sorted(entry['maps']))}) and files no "
+            f"action_automaton_signature/4"
+        )
+        if entry["routes"] & COMPOSED_ROUTES:
+            composed.append(f"{machine} ({entry['rows']} rows)")
+        else:
+            unsigned.append(machine)
+            failures.append(detail)
 
     for row in rows:
         pair = (row["operation"], row["kind"])
@@ -182,6 +257,9 @@ def main() -> int:
                     "contracts": len(rows),
                     "registered_signatures": len(signature_set),
                     "remaining_gap": len(signature_set - set(contract_pairs)),
+                    "executed_machines": len(executed),
+                    "executed_without_signature": sorted(unsigned),
+                    "executed_composed_routes": sorted(composed),
                     "traces": traces,
                 },
                 indent=2,
@@ -196,8 +274,16 @@ def main() -> int:
         f"contracts={len(rows)} "
         f"registered-signatures={len(signature_set)} "
         f"remaining-gap={len(signature_set - set(contract_pairs))} "
-        f"verified-live={len(traces)}"
+        f"verified-live={len(traces)} "
+        f"executed-machines={len(executed)} "
+        f"executed-unsigned={len(unsigned)} "
+        f"executed-composed={len(composed)}"
     )
+    for machine in composed:
+        print(
+            f"  composed route, no signature of its own: {machine}",
+            file=sys.stderr,
+        )
     for failure in failures:
         print(f"FAIL: {failure}", file=sys.stderr)
     return 1 if failures else 0

@@ -7,7 +7,7 @@
  * answer and truth verdict.
  *
  * Check from the repository root:
- * `swipl -q -g printed_expression_reader_pilot:check_printed_expression_reader_pilot -t halt knowledge/strategies/abstraction/printed_expression_reader_pilot.pl`
+ * `swipl -q -s paths.pl -s knowledge/strategies/abstraction/printed_expression_reader_pilot.pl -g printed_expression_reader_pilot:check_printed_expression_reader_pilot -t halt`
  */
 
 :- module(printed_expression_reader_pilot,
@@ -20,6 +20,7 @@
 :- use_module(library(dcg/basics), [blanks//0, blank//0, digits//1]).
 :- use_module(library(lists), [append/2, memberchk/2]).
 :- use_module(library(porter_stem), [porter_stem/2, tokenize_atom/2]).
+:- use_module(hermes(math_claim_checker), [check_math_claim/2]).
 
 printed_expression_reader_pilot_summary(
     summary(role(orphan_printed_expression_reader),
@@ -55,7 +56,8 @@ printed_expression_ast(Text0, Ast) :-
 
 printed_surface(Ast) -->
     blanks, optional_bullet, blanks, optional_item_number, blanks,
-    ( equation_surface(Ast)
+    ( comparison_surface(Ast)
+    ; equation_surface(Ast)
     ; expression(Ast)
     ),
     blanks.
@@ -65,7 +67,24 @@ optional_bullet --> [0x25e6], !.
 optional_bullet --> [].
 
 optional_item_number --> digits(_), ".", blank, !, blanks.
+optional_item_number --> [Code], ".", blank,
+    { code_type(Code, alpha) }, !, blanks.
 optional_item_number --> [].
+
+comparison_surface(comparison_chain(Left, FirstRelation, Middle,
+                                    SecondRelation, Right)) -->
+    comparison_side(Left), blanks, comparison_operator(FirstRelation), blanks,
+    comparison_side(Middle), blanks, comparison_operator(SecondRelation), blanks,
+    comparison_side(Right),
+    { ( Left \== hole ; Middle \== hole ; Right \== hole ) }.
+comparison_surface(comparison(Left, Relation, Right)) -->
+    comparison_side(Left), blanks, comparison_operator(Relation), blanks,
+    comparison_side(Right),
+    { ( Left \== hole ; Right \== hole ) }.
+
+comparison_side(Tree) --> expression(Tree).
+comparison_operator(greater) --> ">".
+comparison_operator(smaller) --> "<".
 
 equation_surface(equation(Left, Right)) -->
     equation_side(Left), blanks, "=", blanks, equation_side(Right),
@@ -278,6 +297,29 @@ compile_for_ask(decide_truth, equation(Left, Right), _Spans, [], Receipt) :-
     hole_count(equation(Left, Right), no_holes),
     Receipt = compile{route:check_math_claim,truth_surface:verbatim,
                       target:none,recovered:false}.
+compile_for_ask(decide_truth, comparison(Left, Relation, Right), _Spans, [],
+                Receipt) :-
+    hole_count(comparison(Left, Relation, Right), no_holes),
+    Receipt = compile{route:check_math_claim,truth_surface:verbatim,
+                      target:none,recovered:false}.
+compile_for_ask(find_missing_number, comparison(Left, Relation, Right), Spans,
+                Program, Receipt) :-
+    hole_count(comparison(Left, Relation, Right), one_hole),
+    provenance_term(Spans, Span),
+    compile_missing_comparison(Left, Relation, Right, Span, Program, Target),
+    Receipt = compile{route:standards_router,target:Target,recovered:false}.
+compile_for_ask(find_missing_number,
+                comparison_chain(Left, FirstRelation, Middle,
+                                 SecondRelation, Right), Spans,
+                Program, Receipt) :-
+    Ast = comparison_chain(Left, FirstRelation, Middle,
+                           SecondRelation, Right),
+    hole_count(Ast, one_hole),
+    provenance_term(Spans, Span),
+    compile_missing_comparison_chain(Left, FirstRelation, Middle,
+                                     SecondRelation, Right, Span,
+                                     Program, Target),
+    Receipt = compile{route:standards_router,target:Target,recovered:false}.
 compile_for_ask(find_missing_number, equation(Left, Right), Spans,
                 Program, Receipt) :-
     hole_count(equation(Left, Right), one_hole),
@@ -303,6 +345,9 @@ hole_count(Tree, Class) :-
 
 tree_hole(hole).
 tree_hole(equation(Left, Right)) :- tree_hole(Left) ; tree_hole(Right).
+tree_hole(comparison(Left, _, Right)) :- tree_hole(Left) ; tree_hole(Right).
+tree_hole(comparison_chain(Left, _, Middle, _, Right)) :-
+    tree_hole(Left) ; tree_hole(Middle) ; tree_hole(Right).
 tree_hole(add(Left, Right)) :- tree_hole(Left) ; tree_hole(Right).
 tree_hole(subtract(Left, Right)) :- tree_hole(Left) ; tree_hole(Right).
 tree_hole(multiply(Left, Right)) :- tree_hole(Left) ; tree_hole(Right).
@@ -312,6 +357,39 @@ tree_hole(mixed(Whole, Fraction)) :- tree_hole(Whole) ; tree_hole(Fraction).
 hole_cardinality([], no_holes).
 hole_cardinality([hole], one_hole).
 hole_cardinality([hole,hole|_], multiple_holes).
+
+compile_missing_comparison(Left, Relation, Right, Span, Program,
+                           expr_1_missing) :-
+    comparison_side_name(Left, expr_1_comparison_left, Span,
+                         LeftName, LeftFacts),
+    comparison_side_name(Right, expr_1_comparison_right, Span,
+                         RightName, RightFacts),
+    append([LeftFacts, RightFacts,
+            [relation(expr_1_missing,
+                      comparison_demand(Relation, LeftName, RightName), Span),
+             asks(result,expr_1_missing)]], Program).
+
+comparison_side_name(hole, _KnownName, _Span, expr_1_missing,
+                     [quantity(expr_1_missing,unknown,number)]) :- !.
+comparison_side_name(Tree, KnownName, Span, KnownName, Facts) :-
+    compile_tree(Tree, KnownName, Span, Facts).
+
+compile_missing_comparison_chain(Left, FirstRelation, Middle,
+                                 SecondRelation, Right, Span, Program,
+                                 expr_1_missing) :-
+    comparison_side_name(Left, expr_1_comparison_left, Span,
+                         LeftName, LeftFacts),
+    comparison_side_name(Middle, expr_1_comparison_middle, Span,
+                         MiddleName, MiddleFacts),
+    comparison_side_name(Right, expr_1_comparison_right, Span,
+                         RightName, RightFacts),
+    append([LeftFacts, MiddleFacts, RightFacts,
+            [relation(expr_1_missing,
+                      comparison_chain_demand(
+                          comparison(FirstRelation, LeftName, MiddleName),
+                          comparison(SecondRelation, MiddleName, RightName)),
+                      Span),
+             asks(result,expr_1_missing)]], Program).
 
 compile_missing_equation(hole, Expression, Span, Program, expr_1_missing) :-
     Expression \== hole,
@@ -472,11 +550,18 @@ check_printed_expression_reader_pilot :-
                                         multiply(literal(3),literal(5)))),
     check_ast("54- 16 = ?", equation(subtract(literal(54),literal(16)),hole)),
     check_ast("10 = 9 + ___", equation(literal(10),add(literal(9),hole))),
-    %  Still out of scope, and deliberately so: an inequality parses to a
-    %  truth claim that no registered checker can decide today, so admitting
-    %  the syntax would trade an honest refusal for a downstream failure.
-    \+ printed_expression_ast("100 > 99", _),
-    format('check_printed_expression_reader_pilot: ok examples=16 evaluation=none~n').
+    % Updated receipt: this syntax used to be refused because no checker was
+    % registered.  It now parses as a truth claim and the incumbent grounded
+    % comparison checker decides it.
+    check_ast("100 > 99",
+              comparison(literal(100),greater,literal(99))),
+    check_math_claim(comparison(100, greater, 99), ComparisonVerdict),
+    get_dict(verdict, ComparisonVerdict, "holds"),
+    check_ast("5 > __", comparison(literal(5),greater,hole)),
+    check_ast("a. 786.2 < ___ < 786.3",
+              comparison_chain(literal(786.2),smaller,hole,smaller,
+                               literal(786.3))),
+    format('check_printed_expression_reader_pilot: ok examples=19 evaluation=checker_only~n').
 
 check_ast(Text, Expected) :-
     printed_expression_ast(Text, Actual),

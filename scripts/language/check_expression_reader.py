@@ -482,8 +482,12 @@ def validate_reader_boundary(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def sources() -> dict[str, str]:
+    # Resolved so the receipt does not depend on the literal invocation
+    # path — run_all.sh reaches this file through scripts/checks/../language/
+    # and a direct call does not (2026-08-15, root cause of recurring
+    # false staleness).
     paths = [
-        Path(__file__),
+        Path(__file__).resolve(),
         SOURCE,
         TRUTH,
         READER,

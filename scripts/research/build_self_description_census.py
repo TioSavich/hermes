@@ -1071,8 +1071,12 @@ def build() -> dict[str, object]:
     # extractor is unchanged here; regenerating against the tree as it actually
     # stands finds the module and files it as the orphan it is. The registry now
     # describes the tree it ships with.
-    if len(registry_rows) != 362:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 362")
+    # 348 from 2026-08-15: the grade-8 admission removes 14 orphan_module rows —
+    # the 13 g8_* pilots and g8_quantity_input join the worker's load graph
+    # through the g8_action_pairs adapter, so the registry stops filing them
+    # as orphans.
+    if len(registry_rows) != 348:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 348")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1160,8 +1164,11 @@ def build() -> dict[str, object]:
     # printed-expression reader is the 136th orphan because it is the row the
     # evening ceremony described but did not ship. Nothing imports it; the
     # harness runs it. Quarantine is unchanged.
-    if len(orphan_records) != 136:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 136")
+    # 122 from 2026-08-15: the same 14 modules as the registry pin above —
+    # the grade-8 admission moves the 13 g8_* pilots and g8_quantity_input
+    # into the worker's load graph, so they stop being orphans.
+    if len(orphan_records) != 122:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 122")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

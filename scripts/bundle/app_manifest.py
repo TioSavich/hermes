@@ -102,6 +102,7 @@ KEEP_FILES = [
     "knowledge/strategies/math/statistics_action_pairs.pl",  # registry data actions
     "knowledge/strategies/math/measurement_action_pairs.pl",  # registry measurement actions
     "knowledge/strategies/math/counting_action_pairs.pl",  # registry counting actions
+    "knowledge/strategies/math/g8_action_pairs.pl",  # registry grade-8 actions (2026-08-15 admission)
     "knowledge/strategies/render/render_common.pl",  # shared scene-compiler plumbing
     "knowledge/strategies/render/area_unit_covering_scene.pl",  # unit-square area covering
     "knowledge/strategies/render/measurement_strip_scene.pl",  # lightweight measurement renderer

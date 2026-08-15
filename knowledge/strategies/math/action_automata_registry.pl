@@ -31,6 +31,10 @@
 :- use_module(math(statistics_action_pairs)).
 :- use_module(math(measurement_action_pairs)).
 :- use_module(math(counting_action_pairs)).
+% 2026-08-15 grade-8 wiring wave. The grade 8 machines answer through one
+% adapter beside this file; it holds the only import of a pilot module in the
+% loaded core and computes nothing of its own.
+:- use_module(math(g8_action_pairs)).
 :- use_module(standards(indiana/standard_k_ns_1), []).
 :- use_module(standards(indiana/standard_k_ns_2), []).
 :- use_module(standards(indiana/standard_k_ns_3), []).
@@ -89,6 +93,12 @@ run_action_automaton(measurement, Kind, Measure, Unit, Outcome, Trace) :-
     run_measurement_action(Kind, Measure, Unit, Outcome, Trace).
 run_action_automaton(counting, Kind, Count, Context, Outcome, Trace) :-
     run_counting_action(Kind, Count, Context, Outcome, Trace).
+% 2026-08-15 grade-8 wiring wave. The grade 8 machines take one operand: a
+% `g8_input/2` term the shared decoder produced from a kind-tagged JSON object.
+% The second operand carries nothing, because no grade 8 doing here splits its
+% task across two positions the way an addend pair does.
+run_action_automaton(grade8, Kind, Input, _Unused, Outcome, Trace) :-
+    run_g8_action(Kind, Input, Outcome, Trace).
 
 
 %!  action_automaton_cluster(+Operation, +Kind, -Cluster) is semidet.
@@ -124,6 +134,9 @@ action_automaton_cluster(measurement, Kind, Cluster) :-
     measurement_action_cluster(Kind, Cluster).
 action_automaton_cluster(counting, Kind, Cluster) :-
     counting_action_cluster(Kind, Cluster).
+% 2026-08-15 grade-8 wiring wave.
+action_automaton_cluster(grade8, Kind, Cluster) :-
+    g8_action_cluster(Kind, Cluster).
 
 
 %!  action_automaton_vocabulary(+Operation, +Kind, -Vocabulary) is semidet.
@@ -159,6 +172,9 @@ action_automaton_vocabulary(measurement, Kind, Vocabulary) :-
     measurement_action_vocabulary(Kind, Vocabulary).
 action_automaton_vocabulary(counting, Kind, Vocabulary) :-
     counting_action_vocabulary(Kind, Vocabulary).
+% 2026-08-15 grade-8 wiring wave.
+action_automaton_vocabulary(grade8, Kind, Vocabulary) :-
+    g8_action_vocabulary(Kind, Vocabulary).
 
 
 %!  action_automaton_signature(+Operation, +Kind, -Input, -Output) is semidet.
@@ -1125,6 +1141,173 @@ action_automaton_signature(probability, equiprobable_endpoint_counting,
                            inputs(terminal_path_tree,
                                   stake_value),
                            equiprobable_stake_split).
+
+
+% ------------------------------------------------------------------
+% 2026-08-15 grade-8 wiring wave.
+%
+% Thirty-eight machines that had run 144 attested grade 8 curriculum rows to
+% validity(correct) and were still absent from this table, so nothing could
+% select one. The signatures below are read off each pilot's decoded term and
+% the result functor its run returns, not off its name. Their operand pair is
+% one-sided: the decoded input sits in the first position and the second
+% carries nothing, because no grade 8 doing here splits its task across two
+% positions the way an addend pair does. Vetoable one row at a time; the
+% matching input contracts are in
+% knowledge/strategies/automaton_input_contracts.pl under the same date.
+% ------------------------------------------------------------------
+action_automaton_signature(grade8, association_direction_from_the_fit,
+                           inputs(paired_measurements_with_labels,
+                                  no_second_operand),
+                           association_direction).
+action_automaton_signature(grade8, balance_preserving_two_sided_solution,
+                           inputs(two_sided_linear_equation,
+                                  no_second_operand),
+                           linear_equation_solution_set).
+action_automaton_signature(grade8, bracket_root_between_whole_numbers,
+                           inputs(radicand_and_root_degree,
+                                  no_second_operand),
+                           root_bracket_or_exact_value).
+action_automaton_signature(grade8, classify_number_as_rational_or_irrational,
+                           inputs(written_numeral_text,
+                                  no_second_operand),
+                           rational_or_irrational_verdict).
+action_automaton_signature(grade8, combine_multiples_of_powers_of_ten,
+                           inputs(power_of_ten_multiple_pair_with_operation,
+                                  no_second_operand),
+                           scientific_notation_text).
+action_automaton_signature(grade8, complete_two_way_table,
+                           inputs(two_way_table_with_unknown_cells,
+                                  no_second_operand),
+                           completed_two_way_table).
+action_automaton_signature(grade8, cone_volume_as_third_of_cylinder,
+                           inputs(round_solid_dimensions,
+                                  no_second_operand),
+                           exact_volume_with_unit).
+action_automaton_signature(grade8, copies_around_a_vertex,
+                           inputs(regular_polygon_side_count,
+                                  no_second_operand),
+                           copies_around_a_vertex_count).
+action_automaton_signature(grade8, cylinder_volume_from_base_and_height,
+                           inputs(round_solid_dimensions,
+                                  no_second_operand),
+                           exact_volume_with_unit).
+action_automaton_signature(grade8, decide_exponential_equivalence,
+                           inputs(signed_power_pair,
+                                  no_second_operand),
+                           exponential_equivalence_verdict).
+action_automaton_signature(grade8, decide_whether_the_table_is_a_function,
+                           inputs(input_output_table_rows,
+                                  no_second_operand),
+                           function_verdict).
+action_automaton_signature(grade8, decimal_representation_of_a_rational,
+                           inputs(integer_numerator_and_denominator,
+                                  no_second_operand),
+                           exact_decimal_text).
+action_automaton_signature(grade8, elimination_with_substitution_back,
+                           inputs(two_equation_linear_system,
+                                  no_second_operand),
+                           linear_system_solution_pair).
+action_automaton_signature(grade8, evaluate_rule_at_input,
+                           inputs(input_output_table_rows_with_query,
+                                  no_second_operand),
+                           exact_output_at_input).
+action_automaton_signature(grade8, exact_side_length_from_square_area,
+                           inputs(square_area_with_unit,
+                                  no_second_operand),
+                           exact_side_length).
+action_automaton_signature(grade8, fit_linear_rule_to_table,
+                           inputs(input_output_table_rows,
+                                  no_second_operand),
+                           linear_rule_slope_and_intercept).
+action_automaton_signature(grade8, furthest_point_from_the_fitted_line,
+                           inputs(paired_measurements_with_labels,
+                                  no_second_operand),
+                           labelled_point_and_residual).
+action_automaton_signature(grade8, hemisphere_volume_as_half_sphere,
+                           inputs(round_solid_dimensions,
+                                  no_second_operand),
+                           exact_volume_with_unit).
+action_automaton_signature(grade8, least_squares_line_from_pairs,
+                           inputs(paired_measurements_with_labels,
+                                  no_second_operand),
+                           fitted_line_slope_and_intercept).
+action_automaton_signature(grade8, linear_model_from_rate_and_initial,
+                           inputs(rate_and_initial_value,
+                                  no_second_operand),
+                           linear_model_rate_and_initial).
+action_automaton_signature(grade8, map_figure_through_transformation,
+                           inputs(figure_and_transformation,
+                                  no_second_operand),
+                           image_figure_vertices).
+action_automaton_signature(grade8, numeral_as_multiple_of_a_power_of_ten,
+                           inputs(written_numeral_text,
+                                  no_second_operand),
+                           scientific_notation_text).
+action_automaton_signature(grade8, predict_and_compare_at_queries,
+                           inputs(paired_measurements_with_query_points,
+                                  no_second_operand),
+                           predictions_with_residuals).
+action_automaton_signature(grade8, prism_volume_from_base_area_and_height,
+                           inputs(prism_base_area_and_height,
+                                  no_second_operand),
+                           exact_volume_with_unit).
+action_automaton_signature(grade8, pythagorean_converse_test,
+                           inputs(triangle_three_sides,
+                                  no_second_operand),
+                           right_triangle_verdict).
+action_automaton_signature(grade8, pythagorean_hypotenuse_from_legs,
+                           inputs(right_triangle_two_legs,
+                                  no_second_operand),
+                           exact_hypotenuse_with_unit).
+action_automaton_signature(grade8, pythagorean_leg_from_hypotenuse,
+                           inputs(right_triangle_hypotenuse_and_leg,
+                                  no_second_operand),
+                           exact_leg_with_unit).
+action_automaton_signature(grade8, range_of_each_variable,
+                           inputs(paired_measurements_with_labels,
+                                  no_second_operand),
+                           range_per_variable).
+action_automaton_signature(grade8, rate_of_change_from_two_observations,
+                           inputs(two_observations_on_a_line,
+                                  no_second_operand),
+                           linear_model_rate_and_initial).
+action_automaton_signature(grade8, regular_polygon_interior_angle,
+                           inputs(regular_polygon_side_count,
+                                  no_second_operand),
+                           exact_interior_angle).
+action_automaton_signature(grade8, regular_tessellation_test,
+                           inputs(regular_polygon_side_count,
+                                  no_second_operand),
+                           tessellation_verdict).
+action_automaton_signature(grade8, relative_frequency_by_column,
+                           inputs(two_way_table_counts,
+                                  no_second_operand),
+                           relative_frequencies_by_column).
+action_automaton_signature(grade8, relative_frequency_by_row,
+                           inputs(two_way_table_counts,
+                                  no_second_operand),
+                           relative_frequencies_by_row).
+action_automaton_signature(grade8, relative_frequency_of_whole_table,
+                           inputs(two_way_table_counts,
+                                  no_second_operand),
+                           relative_frequencies_of_whole_table).
+action_automaton_signature(grade8, rewrite_by_exponent_rule,
+                           inputs(power_pair_and_exponent_rule,
+                                  no_second_operand),
+                           single_power_text).
+action_automaton_signature(grade8, sphere_volume_from_radius,
+                           inputs(round_solid_dimensions,
+                                  no_second_operand),
+                           exact_volume_with_unit).
+action_automaton_signature(grade8, squares_between_two_whole_numbers,
+                           inputs(open_interval_bounds,
+                                  no_second_operand),
+                           radicand_window).
+action_automaton_signature(grade8, unknown_angle_from_a_whole,
+                           inputs(whole_angle_and_known_parts,
+                                  no_second_operand),
+                           exact_remaining_angle).
 
 
 %!  action_automaton_pair(+Operation, +ProductiveKind, +DeformationKind, -Family) is semidet.

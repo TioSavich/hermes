@@ -7,7 +7,12 @@ import re
 
 from probe_reader_coverage import sentences
 from probe_task_statements import load_rows
-from pusu_harness import PrologRunner, compare_ground_truth, load_ground_truth
+from pusu_harness import (
+    PrologRunner,
+    compare_ground_truth,
+    load_ground_truth,
+    sentence_source_spans,
+)
 from surface_normalizer import normalize_surface
 
 
@@ -23,7 +28,9 @@ def source_row(record_id: str) -> dict[str, object]:
 def reader_receipt(runner: PrologRunner, record_id: str) -> tuple[dict, dict]:
     row = source_row(record_id)
     normalization = normalize_surface(str(row["complete_statement"]), profile="im")
-    reply = runner.run(sentences(str(normalization["text"])))
+    sentence_texts = sentences(str(normalization["text"]))
+    sentence_spans = sentence_source_spans(sentence_texts, normalization, row)
+    reply = runner.run(sentence_texts, row, sentence_spans)
     return normalization, reply
 
 

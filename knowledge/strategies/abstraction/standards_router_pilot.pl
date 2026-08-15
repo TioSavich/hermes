@@ -13,6 +13,8 @@
  */
 :- module(standards_router_pilot,
           [ route_statement/3,
+            pattern_guards_hold/2,
+            check_pattern_guards/0,
             check_standards_router_pilot/0
           ]).
 
@@ -28,6 +30,10 @@
 :- use_module(standards(standard_doing), [standard_doing/5]).
 :- use_module(strategies(automaton_input_contracts),
               [automaton_input_contract/5]).
+:- use_module('task_pattern_pilot',
+              [ task_pattern/6,
+                task_pattern_witness/5
+              ]).
 
 %!  route_statement(+Program:list, +Lesson:atom, -Route) is det.
 %
@@ -44,12 +50,17 @@ route_statement(Program, Lesson, Route) :-
     route_with_codes(Codes, Program, Lesson, Route),
     !.
 
-route_with_codes([], _Program, Lesson, abstain(no_code, Lesson)).
+route_with_codes([], Program, _Lesson, Route) :-
+    pattern_route(Program, Route).
 route_with_codes(Codes, Program, Lesson, Route) :-
     Codes \= [],
     support_rows(Codes, Rows, Total),
     (   Total < 10
-    ->  Route = abstain(thin_support, codes_total(Codes, Total))
+    ->  pattern_route(Program, PatternRoute),
+        (   PatternRoute = route(_, _, _, _)
+        ->  Route = PatternRoute
+        ;   Route = abstain(thin_support, codes_total(Codes, Total))
+        )
     ;   admissible_operations(Rows, Admissible),
         route_admitted(Program, Lesson, Codes, Rows, Total, Admissible, Route)
     ).
@@ -217,6 +228,424 @@ quantity_value(Program, Referent, Value) :-
     member(quantity(Referent, Value, _Kind), Program),
     !.
 
+%!  pattern_route(+Program:list, -Route) is det.
+%
+%   Use the witnessed task-pattern store as a second licensing source.  The
+%   store's unregistered/no_published_contract row is a sentinel and can only
+%   produce an explicit pattern_unlicensed abstention.
+pattern_route(Program, Route) :-
+    (   program_operation_candidates(Program, Candidates)
+    ->  pattern_route_candidates(Program, Candidates, Route)
+    ;   Route = abstain(no_arithmetic_relation, [])
+    ).
+
+pattern_route_candidates(_Program, _Candidates,
+                         abstain(unsupported_pattern_guard, Guard)) :-
+    unsupported_store_guard(Guard),
+    !.
+pattern_route_candidates(Program, Candidates, Route) :-
+    findall(Match,
+            licensed_pattern_match(Program, Candidates, Match),
+            Licensed0),
+    sort(Licensed0, Licensed),
+    (   Licensed = [_|_]
+    ->  select_pattern_match(Program, Licensed, Route)
+    ;   findall(Id,
+                sentinel_pattern_match(Program, Candidates, Id),
+                SentinelIds0),
+        sort(SentinelIds0, SentinelIds),
+        (   SentinelIds = [Id|_]
+        ->  Route = abstain(pattern_unlicensed, pattern(Id))
+        ;   Route = abstain(no_pattern, candidates(Candidates))
+        )
+    ).
+
+licensed_pattern_match(Program, Candidates,
+                       candidate(Kind, Witnesses, Id, Operation,
+                                 Family, Schema)) :-
+    task_pattern(Id, operation(PatternOperation), base(Base),
+                 constraints(Guards), _Witness,
+                 contract_join(Family, Schema)),
+    \+ sentinel_contract_join(Family, Schema),
+    PatternOperation =.. [Operation|_],
+    memberchk(Operation, Candidates),
+    pattern_operation_bindings(PatternOperation, Base, Program, Bindings),
+    pattern_guards_hold(Guards, Bindings),
+    task_pattern_witness(Id, _Row, _Lesson, machine(Kind),
+                         verified(strategy_trace_correct)),
+    pattern_machine_witness_count(Id, Kind, Witnesses).
+
+sentinel_pattern_match(Program, Candidates, Id) :-
+    task_pattern(Id, operation(PatternOperation), base(Base),
+                 constraints(Guards), _Witness,
+                 contract_join(Family, Schema)),
+    sentinel_contract_join(Family, Schema),
+    PatternOperation =.. [Operation|_],
+    memberchk(Operation, Candidates),
+    pattern_operation_bindings(PatternOperation, Base, Program, Bindings),
+    pattern_guards_hold(Guards, Bindings).
+
+sentinel_contract_join(unregistered, no_published_contract).
+
+pattern_machine_witness_count(Id, Kind, Count) :-
+    findall(Row,
+            task_pattern_witness(Id, Row, _Lesson, machine(Kind),
+                                 verified(strategy_trace_correct)),
+            Rows),
+    length(Rows, Count),
+    Count > 0.
+
+select_pattern_match(Program, Matches, Route) :-
+    findall(N, member(candidate(_, N, _, _, _, _), Matches), Counts),
+    max_list(Counts, TopCount),
+    include(candidate_has_count(TopCount), Matches, TopMatches),
+    findall(Kind,
+            member(candidate(Kind, TopCount, _, _, _, _), TopMatches),
+            TopKinds0),
+    sort(TopKinds0, TopKinds),
+    (   TopKinds = [Kind]
+    ->  include(candidate_has_kind(Kind), TopMatches, KindMatches0),
+        sort(KindMatches0, KindMatches),
+        KindMatches = [candidate(Kind, TopCount, Id, Operation,
+                                 Family, Schema)|_],
+        route_pattern_contract(Operation, Program, Id, Family, Kind, Schema,
+                               TopCount, Route)
+    ;   Route = abstain(undecided(machine), tied(TopKinds))
+    ).
+
+candidate_has_count(Count, candidate(_, Count, _, _, _, _)).
+candidate_has_kind(Kind, candidate(Kind, _, _, _, _, _)).
+
+route_pattern_contract(Operation, Program, Id, Family, Kind, Schema,
+                       Witnesses, Route) :-
+    (   automaton_input_contract(Family, Kind, Schema, _Example,
+                                 verified(strategy_trace_ok))
+    ->  fill_contract(Operation, Program, Schema, Fill),
+        (   Fill = filled(InputJSON)
+        ->  Route = route(Family, Kind, InputJSON,
+                          because(pattern(Id), witnesses(Witnesses)))
+        ;   Fill = underfilled(Detail)
+        ->  Route = abstain(contract_underfilled, Detail)
+        )
+    ;   Route = abstain(no_automaton_for_operation, Operation)
+    ).
+
+%!  pattern_operation_bindings(+PatternOperation, +Base, +Program, -Bindings)
+%   is nondet.
+%
+%   Bind the pattern's numeral-free argument names to values carried by one
+%   relevant arithmetic relation.  A quotient binds divide/2; a missing
+%   factor scale is a different relation shape and does not claim that task
+%   pattern.
+pattern_operation_bindings(PatternOperation, Base, Program, Bindings) :-
+    PatternOperation =.. [Operation|Names],
+    pattern_operation_values(Operation, Names, Program, Values),
+    pairs_keys_values(Pairs, Names, Values),
+    Bindings = [base-Base|Pairs].
+
+pattern_operation_values(add, [a,b], Program, [A,B]) :-
+    arithmetic_binary_values(add, Program, A, B),
+    maplist(integer, [A,B]).
+pattern_operation_values(subtract, [a,b], Program, [A,B]) :-
+    arithmetic_binary_values(subtract, Program, A, B),
+    maplist(integer, [A,B]).
+pattern_operation_values(multiply, [a,b], Program, [A,B]) :-
+    arithmetic_binary_values(multiply, Program, A, B),
+    maplist(integer, [A,B]).
+pattern_operation_values(divide, [a,b], Program, [A,B]) :-
+    arithmetic_binary_values(divide, Program, A, B),
+    maplist(integer, [A,B]).
+pattern_operation_values(decimal_add,
+                         [left_numeral,left_scale,right_numeral,right_scale],
+                         Program, [LeftN,LeftScale,RightN,RightScale]) :-
+    arithmetic_binary_values(add, Program, Left, Right),
+    rational_components(Left, LeftN, LeftScale),
+    rational_components(Right, RightN, RightScale),
+    ( LeftScale > 1 ; RightScale > 1 ).
+pattern_operation_values(Operation, Names, Program, Values) :-
+    memberchk(Operation, [add_fractions,subtract_fractions]),
+    fraction_binary_values(Operation, Program, Left, Right),
+    fraction_pattern_values(Names, Left, Right, Values).
+pattern_operation_values(compare_rectangle_areas,
+                         [rectangles_1_length,rectangles_1_width,
+                          rectangles_2_length,rectangles_2_width],
+                         Program, [L1,W1,L2,W2]) :-
+    member(pattern_instance(compare_rectangle_areas(L1,W1,L2,W2)), Program),
+    maplist(number, [L1,W1,L2,W2]).
+
+arithmetic_binary_values(add, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, sum([Left, Right])),
+    known_quantity(Program, Left, A),
+    known_quantity(Program, Right, B).
+arithmetic_binary_values(add, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, has_part(Whole, Part)),
+    known_quantity(Program, Whole, A),
+    known_quantity(Program, Part, B).
+arithmetic_binary_values(subtract, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, difference(Left, Right)),
+    known_quantity(Program, Left, A),
+    known_quantity(Program, Right, B).
+arithmetic_binary_values(subtract, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, has_part(Whole, Part)),
+    known_quantity(Program, Whole, A),
+    known_quantity(Program, Part, B).
+arithmetic_binary_values(multiply, Program, A, B) :-
+    relevant_arithmetic_relation(Program, Target, scale(Left, Right)),
+    quantity_value(Program, Target, unknown),
+    known_quantity(Program, Left, A),
+    known_quantity(Program, Right, B).
+arithmetic_binary_values(multiply, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, convert(Source, ToKind)),
+    known_quantity(Program, Source, A),
+    quantity_kind(Program, Source, FromKind),
+    member(conversion(FromKind, ToKind, B, _Surface), Program),
+    number(B).
+arithmetic_binary_values(divide, Program, A, B) :-
+    relevant_arithmetic_relation(Program, _Target, quotient(Left, Right)),
+    known_quantity(Program, Left, A),
+    known_quantity(Program, Right, B).
+
+fraction_binary_values(add_fractions, Program, Left, Right) :-
+    arithmetic_binary_values(add, Program, Left, Right),
+    ( \+ integer(Left) ; \+ integer(Right) ).
+fraction_binary_values(subtract_fractions, Program, Left, Right) :-
+    arithmetic_binary_values(subtract, Program, Left, Right),
+    ( \+ integer(Left) ; \+ integer(Right) ).
+
+fraction_pattern_values(Names, Left, Right, Values) :-
+    maplist(fraction_named_value(Names, Left, Right), Names, Values).
+
+fraction_named_value(Names, Left, _Right, left_whole, Whole) :-
+    fraction_mixed_components(Left, Whole, _Numerator, _Denominator),
+    memberchk(left_whole, Names).
+fraction_named_value(Names, Left, _Right, left_n, Numerator) :-
+    (   memberchk(left_whole, Names)
+    ->  fraction_mixed_components(Left, _Whole, Numerator, _Denominator)
+    ;   rational_components(Left, Numerator, _Denominator)
+    ).
+fraction_named_value(_Names, Left, _Right, left_d, Denominator) :-
+    rational_components(Left, _Numerator, Denominator),
+    Denominator > 1.
+fraction_named_value(_Names, _Left, Right, right_n, Numerator) :-
+    rational_components(Right, Numerator, _Denominator).
+fraction_named_value(_Names, _Left, Right, right_d, Denominator) :-
+    rational_components(Right, _Numerator, Denominator),
+    Denominator > 1.
+
+rational_components(Value, Numerator, Denominator) :-
+    rational(Value),
+    Numerator is numerator(Value),
+    Denominator is denominator(Value).
+
+fraction_mixed_components(Value, Whole, Numerator, Denominator) :-
+    rational_components(Value, ImproperNumerator, Denominator),
+    Denominator > 1,
+    Whole is ImproperNumerator // Denominator,
+    Numerator is ImproperNumerator mod Denominator,
+    Whole > 0,
+    Numerator > 0.
+
+%!  pattern_guards_hold(+Guards:list, +Bindings:list) is semidet.
+%
+%   Evaluate every guard.  Unsupported guards and expressions throw a named
+%   error so a generated vocabulary change cannot silently widen a pattern.
+pattern_guards_hold(Guards, Bindings) :-
+    memberchk(base-Base, Bindings),
+    maplist(pattern_guard_holds(Base, Bindings), Guards).
+
+pattern_guard_holds(_Base, Bindings, zero(P)) :-
+    pattern_value(P, Bindings, 0).
+pattern_guard_holds(Base, Bindings, digit(P)) :-
+    pattern_value(P, Bindings, Value),
+    abs(Value) < Base.
+pattern_guard_holds(Base, Bindings, digits(P, Digits)) :-
+    pattern_value(P, Bindings, Value),
+    pattern_digit_count(Value, Base, ActualDigits),
+    ActualDigits =:= Digits.
+pattern_guard_holds(Base, Bindings, multiple_of_base(P)) :-
+    pattern_value(P, Bindings, Value),
+    0 =:= Value mod Base.
+pattern_guard_holds(Base, Bindings, lt(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A < B.
+pattern_guard_holds(Base, Bindings, leq(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A =< B.
+pattern_guard_holds(Base, Bindings, gt(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A > B.
+pattern_guard_holds(Base, Bindings, geq(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A >= B.
+pattern_guard_holds(Base, Bindings, eq(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A =:= B.
+pattern_guard_holds(Base, Bindings, neq(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A =\= B.
+pattern_guard_holds(Base, Bindings, divides(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    A =\= 0,
+    0 =:= B mod A.
+pattern_guard_holds(Base, Bindings, not_divides(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    ( A =:= 0 -> true ; 0 =\= B mod A ).
+pattern_guard_holds(Base, Bindings, remainder(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    B =\= 0,
+    0 =\= A mod B.
+pattern_guard_holds(Base, Bindings, divides_one_way(X, Y)) :-
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    ( A =\= 0, 0 =:= B mod A -> true
+    ; B =\= 0, 0 =:= A mod B
+    ).
+pattern_guard_holds(_Base, Bindings, unit_fraction(Side)) :-
+    atom_concat(Side, '_n', Parameter),
+    pattern_value(Parameter, Bindings, 1).
+pattern_guard_holds(_Base, Bindings, whole_part_present) :-
+    ( memberchk(left_whole-_, Bindings)
+    ; memberchk(right_whole-_, Bindings)
+    ).
+pattern_guard_holds(_Base, Bindings, denominator_absent_on_one_side) :-
+    ( \+ memberchk(left_d-_, Bindings)
+    ; \+ memberchk(right_d-_, Bindings)
+    ).
+pattern_guard_holds(Base, Bindings, scale_is_power_of_base(P)) :-
+    pattern_value(P, Bindings, Value),
+    pattern_power_of(Value, Base).
+pattern_guard_holds(_Base, _Bindings, Guard) :-
+    \+ supported_pattern_guard(Guard),
+    throw(error(unsupported_pattern_guard(Guard), pattern_guards_hold/2)).
+
+pattern_value(Name, Bindings, Value) :-
+    memberchk(Name-Value, Bindings).
+
+pattern_guard_expr(base, Base, _Bindings, Base) :- !.
+pattern_guard_expr(Number, _Base, _Bindings, Number) :- number(Number), !.
+pattern_guard_expr(ones(P), Base, Bindings, Value) :- !,
+    pattern_value(P, Bindings, Number),
+    Value is abs(Number) mod Base.
+pattern_guard_expr(plus(X, Y), Base, Bindings, Value) :- !,
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    Value is A + B.
+pattern_guard_expr(max(X, Y), Base, Bindings, Value) :- !,
+    pattern_guard_expr(X, Base, Bindings, A),
+    pattern_guard_expr(Y, Base, Bindings, B),
+    Value is max(A, B).
+pattern_guard_expr(digits(P), Base, Bindings, Value) :- !,
+    pattern_value(P, Bindings, Number),
+    pattern_digit_count(Number, Base, Value).
+pattern_guard_expr(Name, _Base, Bindings, Value) :-
+    atom(Name),
+    pattern_value(Name, Bindings, Value),
+    !.
+pattern_guard_expr(Expression, _Base, _Bindings, _Value) :-
+    \+ supported_pattern_expr(Expression),
+    throw(error(unsupported_pattern_guard_expression(Expression),
+                pattern_guards_hold/2)).
+
+pattern_digit_count(Value, Base, Digits) :-
+    Absolute is abs(truncate(Value)),
+    (   Absolute =:= 0
+    ->  Digits = 1
+    ;   pattern_digit_count_(Absolute, Base, 0, Digits)
+    ).
+
+pattern_digit_count_(0, _Base, Count, Digits) :-
+    !,
+    Digits = Count.
+pattern_digit_count_(Number, Base, Count0, Count) :-
+    Count1 is Count0 + 1,
+    Next is Number // Base,
+    pattern_digit_count_(Next, Base, Count1, Count).
+
+pattern_power_of(Value, Base) :-
+    Value >= 1,
+    pattern_power_of_(Value, Base).
+
+pattern_power_of_(1, _Base) :- !.
+pattern_power_of_(Value, Base) :-
+    0 =:= Value mod Base,
+    Next is Value // Base,
+    pattern_power_of_(Next, Base).
+
+unsupported_store_guard(Guard) :-
+    task_pattern(_Id, _Operation, _Base, constraints(Guards), _Witness, _Join),
+    member(Guard, Guards),
+    \+ supported_pattern_guard(Guard),
+    !.
+
+supported_pattern_guard(zero(_)).
+supported_pattern_guard(digit(_)).
+supported_pattern_guard(digits(_, _)).
+supported_pattern_guard(multiple_of_base(_)).
+supported_pattern_guard(lt(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(leq(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(gt(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(geq(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(eq(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(neq(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(divides(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(not_divides(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(remainder(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(divides_one_way(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_guard(unit_fraction(_)).
+supported_pattern_guard(whole_part_present).
+supported_pattern_guard(denominator_absent_on_one_side).
+supported_pattern_guard(scale_is_power_of_base(_)).
+
+supported_pattern_expr(base).
+supported_pattern_expr(Value) :- number(Value).
+supported_pattern_expr(Value) :- atom(Value), Value \== base.
+supported_pattern_expr(ones(_)).
+supported_pattern_expr(plus(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_expr(max(X, Y)) :- supported_pattern_expr(X), supported_pattern_expr(Y).
+supported_pattern_expr(digits(_)).
+
+%!  check_pattern_guards is det.
+%
+%   Receipt that this evaluator accepts every generated pattern's own
+%   witness, including the sentinel row, without consulting the generator's
+%   private evaluator.
+check_pattern_guards :-
+    (   unsupported_store_guard(Guard)
+    ->  throw(error(unsupported_pattern_guard(Guard), check_pattern_guards/0))
+    ;   true
+    ),
+    forall(task_pattern(Id, operation(Operation), base(Base),
+                        constraints(Guards), witness(Witness), _Join),
+           check_pattern_guard_witness(Id, Operation, Base, Guards, Witness)),
+    aggregate_all(count, task_pattern(_, _, _, _, _, _), PatternCount),
+    aggregate_all(count,
+                  task_pattern(_, _, _, _, _,
+                               contract_join(unregistered,
+                                             no_published_contract)),
+                  SentinelCount),
+    format('check_pattern_guards: ok patterns=~d sentinels=~d~n',
+           [PatternCount, SentinelCount]).
+
+check_pattern_guard_witness(Id, Operation, Base, Guards, Witness) :-
+    Operation =.. [_|Names],
+    Witness =.. [_|Values],
+    pairs_keys_values(Pairs, Names, Values),
+    Bindings = [base-Base|Pairs],
+    (   pattern_guards_hold(Guards, Bindings)
+    ->  true
+    ;   throw(error(witness_outside_pattern_guards(Id),
+                    check_pattern_guards/0))
+    ).
+
 route_decided(Operation, Program, Lesson, Codes, Rows, Total, Route) :-
     registry_family(Operation, Family),
     operation_rows(Operation, Rows, OperationRows),
@@ -373,11 +802,13 @@ json_dict_string(Dict, JSON) :-
 
 %!  check_standards_router_pilot is det.
 %
-%   Focused deterministic checks for the five examples in design section 3.3.
+%   Focused deterministic checks for the five examples in design section 3.3
+%   plus pattern licensing, refusal, machine-tie, and sentinel receipts.
 %   The fourth check pins the current threshold-three store boundary: its
 %   decimal_add support-two row is absent, so the router refuses before contract
 %   filling instead of manufacturing an admission.
 check_standards_router_pilot :-
+    check_pattern_guards,
     example_route_1(Route1),
     require_route(Route1, addition, count_on_from_larger,
                   '{"a":15, "b":23}'),
@@ -400,7 +831,26 @@ check_standards_router_pilot :-
     require_term(Undecided,
                  abstain(undecided(operation),
                          admissible([add,subtract]))),
-    format('check_standards_router_pilot: ok examples=5 undecided=1~n').
+    pattern_route_example(PatternRoute),
+    require_route(PatternRoute, addition, column_addition_with_carrying,
+                  '{"a":6, "b":8}'),
+    PatternRoute = route(_, _, _, PatternBecause),
+    require_term(PatternBecause,
+                 because(pattern(tp_add_cross_base_a1_b1), witnesses(1))),
+    no_pattern_example(NoPattern),
+    require_term(NoPattern,
+                 abstain(no_pattern,
+                         candidates([add,add_fractions,decimal_add]))),
+    pattern_tie_example(PatternTie),
+    require_term(PatternTie,
+                 abstain(undecided(machine),
+                         tied([column_addition_with_carrying,
+                               take_away_base_ones]))),
+    sentinel_pattern_example(Sentinel),
+    require_term(Sentinel,
+                 abstain(pattern_unlicensed,
+                         pattern(tp_compare_rectangle_areas_r1l1_r1w1_r2l1_r2w1))),
+    format('check_standards_router_pilot: ok examples=5 pattern=4 undecided=2~n').
 
 require_route(route(Family, Kind, JSON, _Because), Family, Kind, ExpectedJSON) :-
     string(JSON),
@@ -472,3 +922,31 @@ undecided_example(Route) :-
                relation(result,has_part(whole,part), ""),
                asks(result,result)],
     route_statement(Program, 'IM-G2-U2-L14', Route).
+
+pattern_route_example(Route) :-
+    Program = [quantity(left,6,item),
+               quantity(right,8,item),
+               quantity(total,unknown,item),
+               relation(total,sum([left,right]), ""),
+               asks(result,total)],
+    route_statement(Program, 'MTB-PATTERN-ADD', Route).
+
+no_pattern_example(Route) :-
+    Program = [quantity(left,12345,item),
+               quantity(right,67890,item),
+               quantity(total,unknown,item),
+               relation(total,sum([left,right]), ""),
+               asks(result,total)],
+    route_statement(Program, 'MTB-NO-PATTERN', Route).
+
+pattern_tie_example(Route) :-
+    Program = [quantity(whole,9,item),
+               quantity(part,4,item),
+               quantity(result,unknown,item),
+               relation(result,has_part(whole,part), ""),
+               asks(result,result)],
+    route_statement(Program, 'MTB-PATTERN-TIE', Route).
+
+sentinel_pattern_example(Route) :-
+    Program = [pattern_instance(compare_rectangle_areas(9,2,4,5))],
+    pattern_route_candidates(Program, [compare_rectangle_areas], Route).

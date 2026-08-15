@@ -60,6 +60,9 @@
 :- use_module(strategies(automaton_input_contracts),
               [ automaton_input_contract/5 ]).
 :- use_module(strategies(automaton_role_input_decoder), []).
+% 2026-08-15 grade-8 wiring wave. Loaded for its decoder only; the run itself
+% goes through action_automata_registry like every other family.
+:- use_module(math(g8_action_pairs), []).
 :- use_module(strategies(hermeneutic_calculator)).
 :- use_module(strategies(visualization)).
 :- use_module(math(algebraic_action_pairs),
@@ -801,6 +804,19 @@ trace_inputs(Input, A, B) :-
     automaton_role_input_decoder:role_input_kind(Kind),
     !,
     automaton_role_input_decoder:decode_role_inputs(Input, A, B).
+% 2026-08-15 grade-8 wiring wave. The grade 8 machines take one operand, the
+% term their own pilot decoder builds; the second position carries nothing.
+% The guard is the decode itself rather than the tag alone, because
+% "angle_parts" names two different objects: the geometry family reads `parts`
+% and the grade 8 pilot reads `known`. An input the pilots refuse falls through
+% to the clauses below and is read exactly as it was before.
+trace_inputs(Input, A, B) :-
+    is_dict(Input),
+    get_dict(kind, Input, Kind),
+    g8_action_pairs:g8_input_kind(Kind, _),
+    g8_action_pairs:g8_decode_input(Input, Decoded),
+    !,
+    A = Decoded, B = grade8_second_operand_unused.
 trace_inputs(Input, A, B) :-
     is_dict(Input), get_dict(kind, Input, "decimal_unit_conversion"), !,
     json_nonnegative_integer_field(Input, count, Count),

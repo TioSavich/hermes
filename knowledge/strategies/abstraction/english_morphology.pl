@@ -31,13 +31,19 @@
 
 :- table em_noun_base/2, em_verb_base/3, em_adjective_base/3.
 
+% A missing lexicon is a legal condition but never a silent one: a run
+% without it read differently on ~106 of 2,129 corpus rows (measured
+% 2026-08-15 in a fresh worktree), so the absence must be identifiable.
 :- prolog_load_context(directory, Here),
    directory_file_path(
        Here,
        '../../../hermes/app/runtime/experiments/language/webster_lexicon.pl',
        Store),
    assertz(webster_store_file(Store)),
-   ( exists_file(Store) -> ensure_loaded(Store) ; true ).
+   ( exists_file(Store) -> ensure_loaded(Store)
+   ; print_message(warning,
+         format("english_morphology: no webster lexicon at ~w; morphology falls back to the supplement alone and harness numbers are not comparable to a run with the lexicon", [Store]))
+   ).
 
 :- use_module('lexicon_supplement_pilot.pl', [ls_word/5]).
 

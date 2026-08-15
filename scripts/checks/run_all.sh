@@ -43,6 +43,7 @@ run sidekick_shadow_scorer.py python3 "$CHECKS_DIR/sidekick_shadow_scorer.py"
 # and vocabulary, M-1 evidence, and built rows. They print SKIP and pass when it is
 # absent, because nothing tracked may hard-require a gitignored input.
 run sidekick_mask          python3 "$CHECKS_DIR/../sidekick/supervision.py"
+run sidekick_wave2_contracts.py python3 "$CHECKS_DIR/sidekick_wave2_contracts.py"
 run sidekick_wave3_decomposition.py python3 "$CHECKS_DIR/sidekick_wave3_decomposition.py"
 run sidekick_dataset       python3 "$CHECKS_DIR/../sidekick/dataset.py" --if-present
 run math_claim_language.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/math_claim_language.pl" -g main -t halt
@@ -59,6 +60,7 @@ run elaboration_queries python3 "$CHECKS_DIR/../bigred/loops/elaboration_queries
 run metaphor_seam_registry.py python3 "$CHECKS_DIR/metaphor_seam_registry.py"
 run automata_compendium.py  python3 "$CHECKS_DIR/automata_compendium.py"
 run automata_vocabulary.py  python3 "$CHECKS_DIR/automata_vocabulary.py"
+run scan_self_certifying.py python3 "$CHECKS_DIR/scan_self_certifying.py"
 run full_graph.py           python3 "$CHECKS_DIR/full_graph.py"
 run graph_quotients.py      python3 "$CHECKS_DIR/graph_quotients.py"
 run vocabulary_licenses.py  python3 "$CHECKS_DIR/vocabulary_licenses.py"
@@ -68,6 +70,7 @@ run corpus_window.py        python3 "$CHECKS_DIR/corpus_window.py"
 run review_surface.py       python3 "$CHECKS_DIR/review_surface.py"
 run automaton_input_contracts.py python3 "$CHECKS_DIR/automaton_input_contracts.py"
 run strategy_trace_worker_guard.py python3 "$CHECKS_DIR/strategy_trace_worker_guard.py"
+run worker_readline_deadline.py python3 "$CHECKS_DIR/worker_readline_deadline.py"
 run shared_role_input_decoder.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/shared_role_input_decoder.pl" -g main -t halt
 run grid_overlays.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -l "$CHECKS_DIR/grid_overlays.pl" -g grid_overlays_check:main -t halt
 run relevance_negation.py   python3 "$CHECKS_DIR/relevance_negation.py"
@@ -76,6 +79,7 @@ run canonical_phrases.py    python3 "$CHECKS_DIR/canonical_phrases.py"
 run utterance_layers.py     python3 "$CHECKS_DIR/utterance_layers.py"
 run attested_phrases.py     python3 "$CHECKS_DIR/attested_phrases.py"
 run recognition_benchmark.py python3 "$CHECKS_DIR/recognition_benchmark.py"
+run too_vague_articulation.py python3 "$CHECKS_DIR/too_vague_articulation.py"
 run prolog_repair.py        python3 "$CHECKS_DIR/prolog_repair.py"
 run test_mtb_prolog_responder python3 -m unittest discover -s "$CHECKS_DIR/../research" -p "test_mtb_prolog_responder.py" -q
 run extract_capability_registry python3 "$CHECKS_DIR/../extract_capability_registry.py" --check
@@ -109,6 +113,7 @@ run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
 run monitoring_route_budget.py python3 "$CHECKS_DIR/monitoring_route_budget.py"
 run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_client_guard.py"
+run coordinate_plane_grapher.py python3 "$CHECKS_DIR/coordinate_plane_grapher.py"
 run lesson_typesetting.py python3 "$CHECKS_DIR/lesson_typesetting.py"
 run lesson_arithmetic_demonstration.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS_DIR/lesson_arithmetic_demonstration.pl" -g main -t halt
 run vertical_slice_build1.py python3 "$CHECKS_DIR/vertical_slice_build1.py"
@@ -127,12 +132,17 @@ run route_behavior.py       python3 "$CHECKS_DIR/route_behavior.py"
 run math_claim_language_check.py python3 "$CHECKS_DIR/math_claim_language_check.py"
 run quantity_claim_check.py python3 "$CHECKS_DIR/quantity_claim_check.py"
 run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
+run check_agreement_scale.py python3 "$CHECKS_DIR/../language/check_agreement_scale.py"
+run check_completion_thesis.py python3 "$CHECKS_DIR/../language/check_completion_thesis.py"
+run check_expression_reader.py python3 "$CHECKS_DIR/../language/check_expression_reader.py" --check
+run check_standards_bridge.py python3 "$CHECKS_DIR/../language/check_standards_bridge.py" --check
 run pusu_schema_translation_fixtures.py python3 "$CHECKS_DIR/../curriculum/pusu_schema_translation_fixtures.py"
 run build_standards_progression_overlay python3 "$CHECKS_DIR/../curriculum/build_standards_progression_overlay.py" --check
 run standards_progression_overlay.py python3 "$CHECKS_DIR/standards_progression_overlay.py"
 run build_im_lesson_capability_census python3 "$CHECKS_DIR/../curriculum/build_im_lesson_capability_census.py" --check
 run build_im_zero_candidate_triage python3 "$CHECKS_DIR/../curriculum/build_im_zero_candidate_triage.py" --check
 run build_im_action_seam_recut python3 "$CHECKS_DIR/../curriculum/build_im_action_seam_recut.py" --check
+run grade8_extraction.py python3 "$CHECKS_DIR/grade8_extraction.py"
 # The two row-to-machine maps are tracked stores that the wave-5 mints read.
 # The pool map is checked first because the grade 8 map joins its rows to the
 # pilot receipts, so a stale pool map would report as a stale grade 8 map.

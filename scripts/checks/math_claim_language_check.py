@@ -75,6 +75,8 @@ def check_reader() -> None:
         ("$2 * 13 = $26", ["arithmetic_equation(2*13,26)"]),
         ("half of 80 is 40", ["fraction_of(80,fraction(1,2),40)"]),
         ("50% of 80 = 40", ["arithmetic_equation(50/100*80,40)"]),
+        ("98 + 3 > 100", ["arithmetic_comparison(98+3,greater,100)"]),
+        ("0.909 > 0.91", ["arithmetic_comparison(0.909,greater,0.91)"]),
     )
     for surface, expected in fixtures:
         actual = claims(surface)
@@ -91,6 +93,9 @@ def check_abstentions() -> None:
         "x + 3 = 7",
         "about 20 + 30 = 50ish",
         ".20*20 = $4.00",
+        "1 ≤ 2",
+        "2 ≥ 1",
+        "1 ≠ 2",
     )
     for surface in fixtures:
         actual = claims(surface)

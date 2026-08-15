@@ -926,11 +926,23 @@ LEGACY_PERTURBED_KINDS = frozenset({
 })
 
 
+# 2026-08-15. A kind tag is not by itself an operand shape. Two families write
+# "angle_parts" and mean different objects: the geometry family lists the parts
+# it knows under `parts`, and the grade 8 polygon pilot lists them under `known`
+# (g8_polygon_angle_and_tessellation.pl:72-78). The encoder below reads `parts`,
+# so the tag alone let a grade 8 example in and then raised KeyError on it. The
+# tag now has to bring the field the encoder actually reads.
+REQUIRED_EXAMPLE_FIELDS = {
+    "angle_parts": ("parts",),
+}
+
+
 def encodable(example: dict[str, object]) -> bool:
     """True when prolog_input can handle this example."""
     kind = example.get("kind")
     if kind in ENCODABLE_KINDS:
-        return True
+        required = REQUIRED_EXAMPLE_FIELDS.get(str(kind), ())
+        return all(field in example for field in required)
     return kind is None and "a" in example and "b" in example
 
 

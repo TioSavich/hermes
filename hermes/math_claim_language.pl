@@ -253,7 +253,7 @@ claim_boundary_symbol('}').
 claim_boundary_symbol('•').
 
 relation_continuation_token(Token) :-
-    memberchk(Token, [is, equals, equal, '=']).
+    memberchk(Token, [is, equals, equal, '=', '>', '<']).
 
 numeric_continuation_separator(',').
 numeric_continuation_separator(':').
@@ -274,6 +274,7 @@ claim_payload(Term, Polarity) -->
     math_clause(Term, Polarity).
 
 term_rank(arithmetic_equation(_, _), 10) :- !.
+term_rank(arithmetic_comparison(_, _, _), 10) :- !.
 term_rank(proportion_statement(_, _), 5) :- !.
 term_rank(ratio_statement(_), 5) :- !.
 term_rank(_, 0).
@@ -455,6 +456,8 @@ argument_roles(arithmetic_equation(_, Right), Count, Roles) :-
     numbered_roles(left_operand, LeftCount, LeftRoles),
     right_roles(RightCount, RightRoles),
     append(LeftRoles, RightRoles, Roles).
+argument_roles(arithmetic_comparison(_,_,_), 2,
+               [left_quantity,right_quantity]) :- !.
 argument_roles(sum(_,_,_), 3, [addend_1,addend_2,total]) :- !.
 argument_roles(subtraction(_,_,_), 3, [minuend,subtrahend,difference]) :- !.
 argument_roles(equivalence(_,_), 2, [left_fraction,right_fraction]) :- !.
@@ -696,6 +699,7 @@ positive_math_claim(Term) --> percentage_of_claim(Term).
 positive_math_claim(Term) --> fraction_of_claim(Term).
 positive_math_claim(Term) --> binary_claim(Term).
 positive_math_claim(Term) --> comparison_claim(Term).
+positive_math_claim(Term) --> expression_comparison(Term).
 positive_math_claim(Term) --> proportion_claim(Term).
 positive_math_claim(Term) --> ratio_claim(Term).
 positive_math_claim(Term) --> equality_claim(Term).
@@ -810,6 +814,10 @@ binary_claim(Term) -->
 comparison_claim(comparison(A, Relation, B)) -->
     value(Left), comparison_link(Relation), value(Right),
     { comparison_operand(Left, A), comparison_operand(Right, B) }.
+
+expression_comparison(arithmetic_comparison(Left, Relation, Right)) -->
+    arithmetic_expression(Left), comparison_link(Relation),
+    arithmetic_expression(Right).
 
 equality_claim(Term) -->
     value(A), equality_link, value(B),
@@ -1082,6 +1090,18 @@ measurement_unit(inch, inch).
 measurement_unit(inches, inch).
 measurement_unit(item, item).
 measurement_unit(items, item).
+% Corpus-attested unit abbreviations (2026-08-15 measurement over the 4,712
+% defrag statements: cm 95, ml 36, km 12, oz 12, min 8, sec 6, kg 6).  The
+% single-letter surfaces `l` and `m` stay out: the same tokens serve as list
+% labels and variable names in the corpus, so a unit reading would misread
+% page furniture as measurement.
+measurement_unit(cm, centimeter).
+measurement_unit(ml, milliliter).
+measurement_unit(km, kilometer).
+measurement_unit(kg, kilogram).
+measurement_unit(oz, ounce).
+measurement_unit(min, minute).
+measurement_unit(sec, second).
 
 activity_word(cleaning).
 activity_word(cooking).

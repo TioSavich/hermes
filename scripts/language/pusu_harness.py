@@ -29,6 +29,7 @@ from surface_normalizer import normalize_surface
 REPO = Path(__file__).resolve().parents[2]
 HARNESS = Path(__file__).resolve()
 RUNNER = REPO / "scripts/language/pusu_harness_runner.pl"
+STANDARDS_ROUTER = REPO / "scripts/language/standards_router_runner.pl"
 SENTENCE_SPLITTER = REPO / "scripts/language/probe_reader_coverage.py"
 TASK_PROBE = REPO / "scripts/language/probe_task_statements.py"
 SOURCE = REPO / "curriculum/im/generated/compiled_defragged_task_instances.pl"
@@ -45,14 +46,33 @@ SATURATOR = REPO / "scripts/sidekick/diagnosis_saturate.pl"
 LEGACY_TRUTH = REPO / "curriculum/im/generated/wave5_row_machine_map.jsonl"
 G8_TRUTH = REPO / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl"
 SURFACE_NORMALIZER = REPO / "scripts/language/surface_normalizer.py"
+# Gitignored runtime stores the readers load if present. Their presence
+# changes what a run measures, so they join the hash set (with an explicit
+# sentinel when absent) and the summary records which condition ran.
+WEBSTER_LEXICON = REPO / "hermes/app/runtime/experiments/language/webster_lexicon.pl"
+LEXICAL_TYPINGS = REPO / "hermes/app/runtime/experiments/language/lexical_typings.pl"
 DEFAULT_OUTPUT = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 DEFAULT_SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
-SCHEMA = "pusu_harness_v6"
+SCHEMA = "pusu_harness_v7"
 EXPECTED_ELIGIBLE = 4712
 
 PLAIN_NUMBER = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$")
 RATIONAL_NUMBER = re.compile(r"^([+-]?\d+)r(\d+)$")
 FRACTION_TEXT = re.compile(r"^([+-]?\d+)\s*/\s*(\d+)$")
+
+ORDER_VERDICT_MAP = {
+    # Fraction and rectangle-area order machines.
+    "less_than": "less_than",
+    "equivalent": "equal_to",
+    "greater_than": "greater_than",
+    # Decimal order machines.
+    "less": "less_than",
+    "equal": "equal_to",
+    "more": "greater_than",
+    # Counting order machines.
+    "fewer": "less_than",
+    "same_number": "equal_to",
+}
 
 
 def file_sha(path: Path) -> str:
@@ -60,11 +80,12 @@ def file_sha(path: Path) -> str:
 
 
 def source_hashes() -> dict[str, str]:
-    return {
+    hashes = {
         path.name: file_sha(path)
         for path in (
             HARNESS,
             RUNNER,
+            STANDARDS_ROUTER,
             SENTENCE_SPLITTER,
             TASK_PROBE,
             SOURCE,
@@ -80,6 +101,12 @@ def source_hashes() -> dict[str, str]:
             G8_TRUTH,
         )
     }
+    # A run without a gitignored store is legal but measures a different
+    # reader; the sentinel makes the two conditions non-resumable into each
+    # other instead of silently mixed.
+    for optional in (WEBSTER_LEXICON, LEXICAL_TYPINGS):
+        hashes[optional.name] = file_sha(optional) if optional.exists() else "absent"
+    return hashes
 
 
 def canonical_line(value: dict[str, Any]) -> str:
@@ -160,10 +187,207 @@ def exact_value(text: str) -> Fraction | None:
     return None
 
 
-def result_value(term: str) -> Fraction | None:
+def normalize_order_verdict(term: str) -> str | None:
+    """Map every registered order-result alphabet to one canonical one."""
+    return ORDER_VERDICT_MAP.get(unquote(term.strip()))
+
+
+# --- The completion guards --------------------------------------------------
+#
+# A completion can be arithmetically consistent and still answer a different
+# question than the one asked. All 19 wrong StepVerify completions measured
+# on 2026-08-15 derived through the rate lane on problems whose stated
+# structure the program had not carried: printed numerals never bound, a
+# stated percent never read, a difference asked and never taken, or a rate
+# answering where an amount was asked. Four derived readings — never stored
+# facts — let the ledger demote such a completion. Every check was verified
+# to fire on all 19 and on zero truth-agreeing corpus completions before it
+# shipped. A silent reading yields no opinion; the guards only ever demote,
+# never create or alter an answer. Lemma-level typings live behind the
+# lexical typing store seam
+# (knowledge/strategies/abstraction/lexical_typing_store.pl); these guards
+# read only the program and the statement's own surface.
+
+# The asked kind is read from the REQUEST — the span from the last
+# interrogative marker to the question mark — never from the whole
+# sentence. "If you fold 5 shirts per minute for 8 minutes, how many
+# shirts will you fold?" states a rate and requests an amount; the first
+# guard shipped read the stated `per` as the request and demoted two
+# truth-agreeing corpus completions before this narrowing (2026-08-15).
+REQUEST_MARKER = re.compile(r"\bhow (?:many|much)\b|\bwhat\b")
+REQUEST_RATE = re.compile(r"\bper\b|\brate\b|^how many times\b")
+ASKED_CHANGE = re.compile(r"\bhow (?:many|much) (?:more|fewer|less)\b")
+REQUEST_AMOUNT = re.compile(
+    r"^how (?:many|much)\b|^what is the (?:total )?(?:cost|price|number|amount)\b"
+)
+RATE_KIND_QUANTITY = re.compile(r"^quantity\((?P<name>[^,]+),[^,]+,rate\(")
+DEFINING_RELATION = re.compile(
+    r"^relation\((?P<name>[^,]+),(?P<recipe>sum|difference|scale|quotient|convert)\("
+)
+QUOTIENT_OPERANDS = re.compile(
+    r"^relation\([^,]+,quotient\((?P<a>[a-z0-9_]+),(?P<b>[a-z0-9_]+)\)"
+)
+KNOWN_QUANTITY = re.compile(r"^quantity\([^,]+,(-?\d+(?:\.\d+)?)")
+TEXT_NUMERAL = re.compile(r"-?\d+(?:\.\d+)?")
+NUMBER_WORDS = {
+    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+    "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+    "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+    "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19,
+    "twenty": 20,
+}
+GUARD_REASONS = {
+    "answer_kind_contradicts_ask_kind",
+    "statement_numerals_unbound",
+    "statement_percent_unread",
+    "change_ask_without_difference",
+}
+
+
+def asked_kind(surface: str | None) -> str | None:
+    """The kind of quantity a question's own request span asks for."""
+    if not surface:
+        return None
+    text = surface.lower().strip()
+    last = None
+    for match in REQUEST_MARKER.finditer(text):
+        last = match
+    if last is None:
+        return None
+    request = text[last.start():]
+    if REQUEST_RATE.search(request):
+        return "rate"
+    if ASKED_CHANGE.search(request):
+        return "change"
+    if REQUEST_AMOUNT.search(request):
+        return "amount"
+    return None
+
+
+def quantity_kind_text(program: list[str], name: str) -> str | None:
+    prefix = f"quantity({name},"
+    for fact in program:
+        if fact.startswith(prefix):
+            return fact[len(prefix):].split(",", 1)[-1].rstrip(")")
+    return None
+
+
+def derived_kind(program: list[str], referent: str) -> str | None:
+    """The kind of quantity a derivation produced, from program structure."""
+    if not referent:
+        return None
+    for fact in program:
+        match = RATE_KIND_QUANTITY.match(fact)
+        if match and match.group("name") == referent:
+            return "rate"
+    for fact in program:
+        match = DEFINING_RELATION.match(fact)
+        if not match or match.group("name") != referent:
+            continue
+        recipe = match.group("recipe")
+        if recipe == "difference":
+            return "change"
+        if recipe in {"sum", "scale"}:
+            return "amount"
+        if recipe == "quotient":
+            operands = QUOTIENT_OPERANDS.match(fact)
+            if operands:
+                left = quantity_kind_text(program, operands.group("a"))
+                right = quantity_kind_text(program, operands.group("b"))
+                if left is not None and left == right:
+                    return "rate"
+            return None
+        return None
+    return None
+
+
+def reading_kinds_contradict(derived: str, asked: str) -> bool:
+    """Only the rate-versus-non-rate cell demotes; amount and change are
+    mutually compatible readings of one counted holding."""
+    non_rate = {"amount", "change"}
+    return (derived == "rate" and asked in non_rate) or (
+        derived in non_rate and asked == "rate"
+    )
+
+
+def statement_numerals(text: str) -> list[Fraction]:
+    """Every numeral the statement prints, digits and small number words."""
+    lowered = text.replace(",", "").lower()
+    values = [Fraction(x) for x in TEXT_NUMERAL.findall(lowered)]
+    values += [
+        Fraction(NUMBER_WORDS[word])
+        for word in re.findall(r"[a-z]+", lowered)
+        if word in NUMBER_WORDS
+    ]
+    return values
+
+
+def unbound_statement_numerals(text: str, program: list[str]) -> list[str]:
+    """Printed numerals no known quantity binds. Ones are exempt: the rate
+    lane legitimately supplies an implicit denominator of one."""
+    bound = [
+        Fraction(match.group(1))
+        for fact in program
+        if (match := KNOWN_QUANTITY.match(fact))
+    ]
+    missing: list[str] = []
+    for value in statement_numerals(text):
+        if value in bound:
+            bound.remove(value)
+        elif abs(value) != 1:
+            missing.append(str(value))
+    return missing
+
+
+def statement_percent_unread(text: str, program: list[str]) -> bool:
+    lowered = text.lower()
+    if "percent" not in lowered and "%" not in lowered:
+        return False
+    return not any("percent" in fact or "hundredth" in fact for fact in program)
+
+
+def scale_derived(answer: dict[str, Any]) -> bool:
+    derivation = str(answer.get("derivation", ""))
+    return derivation.startswith("scale(") or derivation.startswith("invert_scale(")
+
+
+def completion_guard(
+    completion: dict[str, Any],
+    program: list[str],
+    statement_text: str,
+    ask_surface: str | None,
+) -> tuple[str, dict[str, Any]] | None:
+    """The first guard that objects to a single-answer completion, or None."""
+    answer = (completion.get("answers") or [{}])[0]
+    referent = str(answer.get("referent", ""))
+    asked = asked_kind(ask_surface)
+    derived = derived_kind(program, referent)
+    if asked and derived and reading_kinds_contradict(derived, asked):
+        return "answer_kind_contradicts_ask_kind", {
+            "derived": derived, "asked": asked,
+        }
+    if scale_derived(answer):
+        missing = unbound_statement_numerals(statement_text, program)
+        if missing:
+            return "statement_numerals_unbound", {"unbound": missing}
+        if statement_percent_unread(statement_text, program):
+            return "statement_percent_unread", {}
+    if (
+        ask_surface
+        and ASKED_CHANGE.search(ask_surface.lower())
+        and not any(",difference(" in fact for fact in program)
+    ):
+        return "change_ask_without_difference", {}
+    return None
+
+
+def result_value(term: str) -> Fraction | str | None:
     direct = exact_value(term)
     if direct is not None:
         return direct
+    order_verdict = normalize_order_verdict(term)
+    if order_verdict is not None:
+        return order_verdict
     name, arguments = compound(term)
     if name == "fraction" and len(arguments) == 2:
         numerator = exact_value(arguments[0])
@@ -283,14 +507,27 @@ def compare_ground_truth(
     expected_raw = [result_value(row["result_term"]) for row in receipts]
     if any(value is None for value in expected_raw):
         return {**base, "comparable": False, "verdict": "no_ground_truth",
-                "reason": "verified_result_not_exact_scalar"}
-    expected = sorted(set(value for value in expected_raw if value is not None))
-    base["expected_values"] = [fraction_text(value) for value in expected]
-    base["machine_target_class"] = "numeric_scalar"
+                "reason": "verified_result_not_in_consumed_alphabet"}
+    expected_values = [value for value in expected_raw if value is not None]
+    target_classes = {
+        "order" if isinstance(value, str) else "numeric"
+        for value in expected_values
+    }
+    if len(target_classes) != 1:
+        return {**base, "comparable": False, "verdict": "no_ground_truth",
+                "reason": "verified_result_target_class_ambiguous"}
+    target_class = next(iter(target_classes))
+    expected = sorted(set(expected_values))
+    if target_class == "order":
+        base["expected_values"] = expected
+        base["machine_target_class"] = "order_relation"
+    else:
+        base["expected_values"] = [fraction_text(value) for value in expected]
+        base["machine_target_class"] = "numeric_scalar"
     ask_targets = completion.get("ask_targets") or []
     base["ask_targets"] = ask_targets
     if not ask_targets or any(
-        str(target.get("target_kind")) != "numeric" for target in ask_targets
+        str(target.get("target_kind")) != target_class for target in ask_targets
     ):
         return {**base, "comparable": False, "verdict": "no_ground_truth",
                 "reason": "target_kind_mismatch"}
@@ -301,18 +538,31 @@ def compare_ground_truth(
     if len(referent_classes) != 1:
         return {**base, "comparable": False, "verdict": "no_ground_truth",
                 "reason": "target_referent_class_ambiguous"}
-    base["ask_target_class"] = "numeric_scalar"
+    base["ask_target_class"] = (
+        "order_relation" if target_class == "order" else "numeric_scalar"
+    )
     base["ask_referent_class"] = next(iter(referent_classes))
     if completion.get("status") != "completed":
         return {**base, "comparable": True, "verdict": "not_completed",
                 "reason": str(completion.get("reason", "not_completed"))}
     answer_rows = completion.get("answers") or []
-    actual_raw = [exact_value(str(row.get("value", ""))) for row in answer_rows]
+    actual_raw = [result_value(str(row.get("value", ""))) for row in answer_rows]
     if any(value is None for value in actual_raw):
         return {**base, "comparable": True, "verdict": "disagree",
-                "reason": "derived_answer_not_exact"}
-    actual = sorted(set(value for value in actual_raw if value is not None))
-    base["actual_values"] = [fraction_text(value) for value in actual]
+                "reason": "derived_answer_not_in_target_alphabet"}
+    actual_values = [value for value in actual_raw if value is not None]
+    actual_classes = {
+        "order" if isinstance(value, str) else "numeric"
+        for value in actual_values
+    }
+    if actual_classes != {target_class}:
+        return {**base, "comparable": True, "verdict": "disagree",
+                "reason": "derived_answer_target_class_mismatch"}
+    actual = sorted(set(actual_values))
+    if target_class == "order":
+        base["actual_values"] = actual
+    else:
+        base["actual_values"] = [fraction_text(value) for value in actual]
     if actual == expected:
         return {**base, "comparable": True, "verdict": "agree",
                 "reason": "exact_value_sets_match"}
@@ -370,6 +620,50 @@ class PrologRunner:
         if self.process.returncode:
             detail = self.process.stderr.read() if self.process.stderr else ""
             raise RuntimeError(f"PUSU Prolog worker failed: {detail.strip()}")
+
+
+class StandardsRouter:
+    def __init__(self) -> None:
+        self.process = subprocess.Popen(
+            [
+                "swipl", "-q", "-l", str(REPO / "paths.pl"),
+                "-s", str(STANDARDS_ROUTER), "-g", "main", "-t", "halt",
+            ],
+            cwd=REPO,
+            text=True,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            bufsize=1,
+        )
+
+    def run(
+        self, record_id: str, lesson: str, program: list[str]
+    ) -> dict[str, Any]:
+        if self.process.stdin is None or self.process.stdout is None:
+            raise RuntimeError("standards router has no pipes")
+        request = json.dumps(
+            {"id": record_id, "lesson": lesson, "program": program},
+            ensure_ascii=False,
+        )
+        self.process.stdin.write(request + "\n")
+        self.process.stdin.flush()
+        line = self.process.stdout.readline()
+        if not line:
+            detail = self.process.stderr.read() if self.process.stderr else ""
+            raise RuntimeError(f"standards router stopped: {detail.strip()}")
+        reply = json.loads(line)
+        if reply.get("status") == "error":
+            raise RuntimeError(f"standards router error: {reply.get('error')}")
+        return reply
+
+    def close(self) -> None:
+        if self.process.stdin and self.process.poll() is None:
+            self.process.stdin.close()
+        self.process.wait(timeout=30)
+        if self.process.returncode:
+            detail = self.process.stderr.read() if self.process.stderr else ""
+            raise RuntimeError(f"standards router failed: {detail.strip()}")
 
 
 @lru_cache(maxsize=None)
@@ -558,6 +852,7 @@ def output_row(
     normalized_sentences: list[str],
     truth_by_id: dict[str, list[dict[str, Any]]],
     hashes: dict[str, str],
+    route: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     sentence_rows = []
     for sentence_index, (text, receipt) in enumerate(
@@ -582,6 +877,35 @@ def output_row(
     ):
         completion["status"] = "parsed_not_completed"
         completion["reason"] = "answer_echoes_a_given"
+    # The completion guards: demote a sentence-lane completion whose one
+    # answer contradicts the statement's own stated structure. Scoped like
+    # source_statement_carries_no_ask — the sentence lane only — and to
+    # single-answer completions, so a silent reading leaves the completion
+    # alone.
+    if (
+        completion.get("status") == "completed"
+        and str(reply.get("completion_carrier", "")) == "complete_statement"
+        and len(completion.get("answers") or []) == 1
+    ):
+        ask_surface = next(
+            (
+                text
+                for text in reversed(normalized_sentences)
+                if text.rstrip().endswith("?")
+            ),
+            None,
+        )
+        objection = completion_guard(
+            completion,
+            list(reply.get("program") or []),
+            str(source_row["complete_statement"]),
+            ask_surface,
+        )
+        if objection is not None:
+            reason, evidence = objection
+            completion["status"] = "parsed_not_completed"
+            completion["reason"] = reason
+            completion["guard_evidence"] = evidence
     if completion["status"] == "completed":
         completion_class = (
             "completed_full"
@@ -627,6 +951,7 @@ def output_row(
         "program_basis": reply["program_basis"],
         "printed_expression": reply["printed_expression"],
         "completion_carrier": reply["completion_carrier"],
+        "route_basis": (route or {}).get("route_basis"),
         "completion_status": completion_class or completion["status"],
         "completion_class": completion_class,
         "completion_reason": completion["reason"],
@@ -735,6 +1060,19 @@ def metric_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         ),
         "read_in_full_with_routed_sentence": ratio(
             read_in_full_with_routed, count
+        ),
+        # Which optional-store condition this run measured, and how often the
+        # completion guards demoted. A summary without these fields predates
+        # the loud-seam rule; a run with a store absent is not comparable to
+        # one with it present.
+        "webster_lexicon_present": WEBSTER_LEXICON.exists(),
+        "lexical_typing_store_present": LEXICAL_TYPINGS.exists(),
+        "completion_guard_demotions": dict(
+            Counter(
+                str(row.get("completion_reason"))
+                for row in rows
+                if row.get("completion_reason") in GUARD_REASONS
+            )
         ),
     }
 
@@ -862,10 +1200,12 @@ def main() -> int:
 
     mode = "w" if args.restart else "a"
     runner: PrologRunner | None = None
+    router: StandardsRouter | None = None
     rows = list(existing)
     try:
         if len(rows) < len(target):
             runner = PrologRunner()
+            router = StandardsRouter()
             with output.open(mode, encoding="utf-8") as checkpoint:
                 for corpus_index in range(len(rows), len(target)):
                     source_row = target[corpus_index]
@@ -877,9 +1217,13 @@ def main() -> int:
                         sentence_texts, normalization, source_row
                     )
                     reply = runner.run(sentence_texts, source_row, sentence_spans)
+                    route = router.run(
+                        str(source_row["id"]), str(source_row["lesson"]),
+                        list(reply["program"])
+                    )
                     row = output_row(
                         corpus_index, source_row, reply, normalization,
-                        sentence_texts, truth_by_id, hashes
+                        sentence_texts, truth_by_id, hashes, route=route
                     )
                     checkpoint.write(canonical_line(row))
                     checkpoint.flush()
@@ -893,6 +1237,8 @@ def main() -> int:
     finally:
         if runner is not None:
             runner.close()
+        if router is not None:
+            router.close()
 
     summary = build_summary(rows, target, hashes)
     summary_path.write_text(

@@ -22,6 +22,7 @@
 :- use_module(library(lists), [append/2, list_to_set/2]).
 :- use_module(library(porter_stem), [tokenize_atom/2]).
 :- use_module('english_morphology.pl').
+:- use_module('lexical_typing_store.pl', []).
 :- use_module('../../../hermes/math_claim_language.pl', []).
 :- ensure_loaded('../../../scripts/sidekick/diagnosis_saturate.pl').
 
@@ -42,9 +43,14 @@ word_problem_reader_pilot_summary(
                               container_possession, computable_comparison,
                               contextual_group_total_question,
                               amount_question, exact_value_question,
-                              contextual_transfer, unit_rate_question]),
+                              contextual_transfer, unit_rate_question,
+                              declared_comparison, multiplicative_comparison,
+                              open_verb]),
             output_contract(five_form_sidekick_schema),
-            receipt_count(77))).
+            % Measured 2026-08-15 across all five receipt stores: 47 class,
+            % 10 reader, 14 class-negative, 33 question-form, 11
+            % question-negative.
+            receipt_count(115))).
 
 %! word_problem_facts(+Text, -Facts) is semidet.
 %
@@ -273,6 +279,7 @@ lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
     lane_quantity_mentions(Tokens, [mention(OutputNumber,OutputKind)]),
     ( append(_, [each,InputSurface|_], Tokens)
     ; append(_, [every,InputSurface|_], Tokens)
+    ; append(_, [per,InputSurface|_], Tokens)
     ),
     lane_surface_kind(InputSurface, InputKind),
     lane_rate_subject(Tokens, Subject).
@@ -447,6 +454,55 @@ problem_event(comparison(Direction, Subject, Other, Kind, Span)) -->
     { format(string(Span), 'how many ~w ~w does ~w have',
              [Direction, Kind, Subject]) }.
 
+%   A declarative comparison states the gap between two holdings.  It emits
+%   the same difference/2 shape the question-frame comparison emits, with
+%   the gap known instead of asked.
+problem_event(comparison_decl(Subject, Direction, Number, Kind, Other, Span)) -->
+    subject(Subject), stative_verb(_), integer(Number),
+    comparison_direction(Direction), count_noun(Kind), [than],
+    subject(Other), ['.'],
+    { format(string(Span), '~w has ~w ~w ~w than ~w',
+             [Subject, Number, Direction, Kind, Other]) }.
+
+%   A multiplicative comparison states one holding as a multiple of
+%   another.  It emits the existing scale/2 shape; the factor's kind marks
+%   a scale between like kinds.
+problem_event(comparison_times(Subject, Number, Kind, Other, Span)) -->
+    subject(Subject), stative_verb(_), integer(Number),
+    [times, as, many], count_noun(Kind), [as], subject(Other), ['.'],
+    { format(string(Span), '~w has ~w times as many ~w as ~w',
+             [Subject, Number, Kind, Other]) }.
+
+%   The open verb frame.  Any verb the morphology holds may carry a counted
+%   noun; the lemma is recorded rather than tested against a list.  What
+%   the verb does — assert a first state, name a change, name a scale — is
+%   a separate authoring judgment consulted through the lexical typing
+%   seam; a lemma with no typing row compiles to a bare quantity and no
+%   relation, so the number is kept without inventing how it combines.
+%   This clause must stay the LAST problem_event//1 clause in the file:
+%   every closed frame reads first, so a sentence a closed frame accepts
+%   never falls through to this one.
+problem_event(open_verb(Subject, Lemma, Number, Kind, Span)) -->
+    subject(Subject), open_modal, open_verb_lemma(Lemma), integer(Number),
+    count_noun(Kind), open_tail, ['.'],
+    { format(string(Span), '~w ~w ~w ~w', [Subject, Lemma, Number, Kind]) }.
+
+open_modal --> [can], !.
+open_modal --> [].
+
+open_verb_lemma(Lemma) --> [Surface],
+    { atom(Surface), once(em_verb_base(Surface, Lemma, _)) }.
+
+%   One bounded prepositional phrase or one participle; anything longer
+%   refuses, so the frame cannot run away over a sentence it has not
+%   understood.
+open_tail --> [Preposition], optional_determiner, count_noun(_),
+    { memberchk(Preposition, [on, in, at, from, inside, outside, of, for,
+                              to, about]) }, !.
+open_tail --> [Surface],
+    { atom(Surface), once(em_verb_base(Surface, _, ing)) }, !.
+open_tail --> [].
+
 %   A subject was one bare token, so "The Ferris wheel holds 20 people." and
 %   "A teacher prints 720 copies." refused on their determiner alone while the
 %   same sentences with a bare name read. One optional determiner is admitted
@@ -513,16 +569,20 @@ modifier(Modifier) --> [Surface],
 %
 %   The list is the demand the rewrite consultation measured on 2026-08-14.
 %   Of 103 refused restatements with a testable head noun, 86 carried a noun
-%   the reader already counts, so the verb was the gap.  Corpus receipts, one
-%   per admitted verb beyond `have`:
-%     hold     "The Ferris wheel holds 20 people."
+%   the reader already counts, so the verb was the gap.  Corpus receipts,
+%   one per admitted verb beyond `have`, each re-verified reading on
+%   2026-08-15 (four earlier receipts named corpus strings the reader
+%   refused; a docstring receipt that refuses is a defect):
+%     hold     "The swings hold 14 people."
 %     make     "Mai made 8 frogs."
-%     collect  "They collect 48 children's books."
+%     collect  "They collect 27 adult books."
 %     print    "A teacher prints 720 copies."
-%     earn     "Han earns $33.00 for 4 hours."
-%     count    "Noah counts 8 heartbeats in 10 seconds."
-%   `own` and `possess` were already reachable through the lane reader's own
-%   verb list and are named here so the two readers agree.
+%     count    "Clare counts 8 sharks swimming."
+%   `earn` remains in the list for the rate lane's sake, but every corpus
+%   attestation of `earn` carries a currency amount this reader does not
+%   yet quantify, so it has no reading receipt — a named limit, not an
+%   oversight.  `own` and `possess` were already reachable through the lane
+%   reader's own verb list and are named here so the two readers agree.
 stative_verb(Base) --> [Surface],
     { atom(Surface), once(em_verb_base(Surface, Base, _)),
       memberchk(Base, [have, own, possess, hold, contain,
@@ -655,6 +715,9 @@ event_class(question(_,_,_), remaining_question).
 event_class(amount_question(_,_,_,_), amount_question).
 event_class(comparison(_,_,_,_,_), computable_comparison).
 event_class(parts(_,_,_,_,_,_,_,_), partitioned_same_kind).
+event_class(comparison_decl(_,_,_,_,_,_), declared_comparison).
+event_class(comparison_times(_,_,_,_,_), multiplicative_comparison).
+event_class(open_verb(_,_,_,_,_), open_verb).
 
 compile_events([], _States, _Conversions, _ActionIndex, Facts, Facts, []).
 compile_events([lane(vacuous,_,_)|Events], States, Conversions, Index,
@@ -850,11 +913,86 @@ compile_events([comparison(Direction, Subject, Other, Kind, Span)|Events],
     replace_state(Subject, Kind, Result, unknown, States0, States),
     append(Facts0, EventFacts, Facts1),
     compile_events(Events, States, Conversions, Index, Facts1, Facts, Kinds).
+compile_events([comparison_decl(Subject, Direction, Number, Kind, Other, Span)|Events],
+               States0, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
+    declared_state(Subject, Kind, States0, SubjectRef, SubjectFacts),
+    declared_state(Other, Kind, States0, OtherRef, OtherFacts),
+    referent_name(Subject, Kind, comparison_gap, Gap),
+    comparison_decl_operands(Direction, SubjectRef, OtherRef, Minuend, Subtrahend),
+    append(SubjectFacts, OtherFacts, ReferentFacts),
+    append(ReferentFacts,
+           [quantity(Gap, Number, Kind),
+            relation(Gap, difference(Minuend, Subtrahend), Span)],
+           EventFacts),
+    replace_state(Subject, Kind, SubjectRef, unknown, States0, States),
+    append(Facts0, EventFacts, Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, Kinds).
+compile_events([comparison_times(Subject, Number, Kind, Other, Span)|Events],
+               States0, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
+    declared_state(Other, Kind, States0, OtherRef, OtherFacts),
+    referent_name(Subject, Kind, times_result, SubjectRef),
+    referent_name(Subject, Kind, times_factor, Factor),
+    append(OtherFacts,
+           [quantity(Factor, Number, rate(Kind, Kind)),
+            quantity(SubjectRef, unknown, Kind),
+            relation(SubjectRef, scale(OtherRef, Factor), Span)],
+           EventFacts),
+    replace_state(Subject, Kind, SubjectRef, unknown, States0, States),
+    append(Facts0, EventFacts, Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, Kinds).
+compile_events([open_verb(Subject, Lemma, Number, Kind, Span)|Events],
+               States0, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
+    open_verb_compile(Lemma, Subject, Number, Kind, Span, Index,
+                      States0, States, Next, EventFacts),
+    append(Facts0, EventFacts, Facts1),
+    compile_events(Events, States, Conversions, Next, Facts1, Facts, Kinds).
 compile_events([question(Subject, Kind, _Time)|Events],
                States, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
     question_facts(Subject, Kind, States, Conversions, QuestionFacts),
     append(Facts0, QuestionFacts, Facts1),
     compile_events(Events, States, Conversions, Index, Facts1, Facts, Kinds).
+
+%   A referent a comparison talks about: the existing state if one is
+%   threaded, else a fresh unknown the comparison itself licenses.
+declared_state(Subject, Kind, States, Ref, []) :-
+    memberchk(state(Subject, Kind, Ref, _), States), !.
+declared_state(Subject, Kind, _States, Ref, [quantity(Ref, unknown, Kind)]) :-
+    referent_name(Subject, Kind, compared, Ref).
+
+%   `more` states subject minus other; `fewer` states other minus subject.
+comparison_decl_operands(more, SubjectRef, OtherRef, SubjectRef, OtherRef).
+comparison_decl_operands(fewer, SubjectRef, OtherRef, OtherRef, SubjectRef).
+
+%   A gain- or loss-typed lemma compiles through the existing change
+%   emission when a prior state exists.  A first_state typing threads a
+%   first state the way `have` does.  Any other case — no typing row, a
+%   signed verb with no prior state, a transfer or factor typing the open
+%   frame cannot yet witness — keeps the quantity and invents no relation
+%   and no state.
+open_verb_compile(Lemma, Subject, Number, Kind, Span, Index,
+                  States0, States, Next, EventFacts) :-
+    lexical_typing_store:lexical_typing(Lemma, Typing),
+    open_signed_typing(Typing, Number, Signed),
+    memberchk(state(Subject, Kind, Prior, _), States0), !,
+    action_label(Lemma, Index, DeltaStage, ResultStage),
+    referent_name(Subject, Kind, DeltaStage, Delta),
+    referent_name(Subject, Kind, ResultStage, Result),
+    EventFacts = [quantity(Delta, Signed, Kind),
+                  quantity(Result, unknown, Kind),
+                  relation(Result, sum([Prior, Delta]), Span)],
+    replace_state(Subject, Kind, Result, unknown, States0, States),
+    Next is Index + 1.
+open_verb_compile(Lemma, Subject, Number, Kind, _Span, Index,
+                  States0, States, Index, [quantity(Name, Number, Kind)]) :-
+    lexical_typing_store:lexical_typing(Lemma, first_state), !,
+    referent_name(Subject, Kind, Lemma, Name),
+    replace_state(Subject, Kind, Name, Number, States0, States).
+open_verb_compile(Lemma, Subject, Number, Kind, _Span, Index,
+                  States, States, Index, [quantity(Name, Number, Kind)]) :-
+    referent_name(Subject, Kind, Lemma, Name).
+
+open_signed_typing(gain, Number, Number).
+open_signed_typing(loss, Number, Signed) :- Signed is -Number.
 compile_events([amount_question(Kind, Subject, Action, Span)|Events],
                States, Conversions, Index, Facts0, Facts, [Kind|Kinds]) :-
     referent_name(Subject, Kind, amount, Result),
@@ -1056,6 +1194,49 @@ action_label(Action, Index, Delta, Result) :-
 
 referent_name(Subject, Kind, Stage, Name) :-
     atomic_list_concat([Subject, Kind, Stage], '_', Name).
+
+% 2026-08-15 relation-emission receipts: the open verb frame (typed and
+% untyped lemmas), both declarative comparison frames, and `per` supplying
+% the implicit rate denominator.  All five sentences are corpus-attested.
+class_reader_receipt(open_verb, typed_first_state_verb,
+    corpus_lesson('IM-G1-U3-L15'),
+    "She sees 4 orioles.",
+    [quantity(she_oriole_see,4,oriole),discrete_kinds([oriole])]).
+class_reader_receipt(open_verb, untyped_verb_keeps_quantity_only,
+    corpus_lesson('IM-G6-U2-L14'),
+    "The train traveled 1564 miles.",
+    [quantity(train_mile_travel,1564,mile),discrete_kinds([mile])]).
+class_reader_receipt(declared_comparison, fewer_states_the_gap,
+    corpus_lesson('IM-G1-U6-L15'),
+    "Elena has 10 fewer paper stars than Priya.",
+    [quantity(elena_star_compared,unknown,star),
+     quantity(priya_star_compared,unknown,star),
+     quantity(elena_star_comparison_gap,10,star),
+     relation(elena_star_comparison_gap,
+              difference(priya_star_compared,elena_star_compared),
+              "elena has 10 fewer star than priya"),
+     discrete_kinds([star])]).
+class_reader_receipt(multiplicative_comparison, times_as_many,
+    corpus_lesson('IM-G4-U5-L2'),
+    "Jada has 4 times as many cubes as Kiran.",
+    [quantity(kiran_cube_compared,unknown,cube),
+     quantity(jada_cube_times_factor,4,rate(cube,cube)),
+     quantity(jada_cube_times_result,unknown,cube),
+     relation(jada_cube_times_result,
+              scale(kiran_cube_compared,jada_cube_times_factor),
+              "jada has 4 times as many cube as kiran"),
+     discrete_kinds([cube])]).
+class_reader_receipt(rate, per_supplies_the_implicit_one,
+    corpus_span('curriculum/im/generated/compiled_task_instances.pl',
+                bytes(601282,601326)),
+    "A car can travel 35 miles per gallon of gas.",
+    [quantity(lane_car_mile_rate_total,35,mile),
+     quantity(lane_car_gallon_rate_interval,1,gallon),
+     quantity(lane_car_mile_per_gallon,unknown,rate(mile,gallon)),
+     relation(lane_car_mile_rate_total,
+              scale(lane_car_gallon_rate_interval,lane_car_mile_per_gallon),
+              "a car can travel 35 miles per gallon of gas ."),
+     discrete_kinds([])]).
 
 check_word_problem_reader_pilot :-
     forall(reader_receipt(Id, _OldSource, Text, ExpectedFacts, ExpectedName, ExpectedValue),

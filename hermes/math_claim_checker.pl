@@ -490,6 +490,15 @@ check_math_claim(arithmetic_equation(Left, Right), Dict) :-
     !,
     swi_arithmetic_profile(Left, Right, Dict).
 
+% --- SWI arithmetic relational rail: numeric expressions on both sides ---
+% The printed-expression reader supplies the relation; exact_value/2 performs
+% the same exact decimal/rational evaluation used by arithmetic equations.
+% comparison_pred/3 keeps the admitted relation vocabulary shared with the
+% grounded whole-number and fraction comparison clauses.
+check_math_claim(arithmetic_comparison(Left, Relation, Right), Dict) :-
+    !,
+    swi_arithmetic_comparison_profile(Left, Relation, Right, Dict).
+
 % --- fallback ---
 check_math_claim(Claim, Dict) :-
     format(string(ClaimStr), "~w", [Claim]),
@@ -1002,6 +1011,44 @@ swi_arithmetic_profile(Left, Right, Dict) :-
                   adjudication: "not_parseable",
                   reason: "expression could not be evaluated by SWI arithmetic" }
     ).
+
+swi_arithmetic_comparison_profile(Left, Relation, Right, Dict) :-
+    (   comparison_pred(Relation, Predicate, RelationText)
+    ->  (   \+ ground(arithmetic_comparison(Left, Relation, Right))
+        ->  Dict = _{ status: "underdetermined",
+                      claim: "arithmetic_comparison",
+                      checker: "swi_builtin_arithmetic:order",
+                      verdict: "not_checked",
+                      adjudication: "underdetermined",
+                      reason: "arithmetic comparison contains unbound variables" }
+        ;   exact_value(Left, LeftValue), exact_value(Right, RightValue)
+        ->  (   exact_order_holds(Predicate, LeftValue, RightValue)
+            ->  Verdict = "holds"
+            ;   Verdict = "refuted"
+            ),
+            format(string(Trace),
+                   "exact arithmetic compares ~w as ~w ~w ~w as ~w",
+                   [Left, LeftValue, RelationText, Right, RightValue]),
+            Dict = _{ status: "domain_checked",
+                      claim: "arithmetic_comparison",
+                      checker: "swi_builtin_arithmetic:order",
+                      verdict: Verdict,
+                      adjudication: Verdict,
+                      trace: [Trace] }
+        ;   Dict = _{ status: "not_parseable",
+                      claim: "arithmetic_comparison",
+                      checker: "swi_builtin_arithmetic:order",
+                      verdict: "not_checked",
+                      adjudication: "not_parseable",
+                      reason: "comparison operands could not be evaluated exactly" }
+        )
+    ;   not_covered("arithmetic_comparison",
+                    "unrecognized comparison relation", Dict)
+    ).
+
+exact_order_holds(greater_than, Left, Right) :- Left > Right.
+exact_order_holds(smaller_than, Left, Right) :- Left < Right.
+exact_order_holds(equal_to, Left, Right) :- Left =:= Right.
 
 arithmetic_deformation_profile(A+B, Right, "digit_concat", Trace) :-
     integer(A),

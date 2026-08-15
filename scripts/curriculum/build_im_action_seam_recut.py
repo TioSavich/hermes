@@ -102,9 +102,10 @@ def registry_signatures() -> list[dict]:
     keys = [(row["operation"], row["kind"]) for row in rows]
     # Registry ledger (2026-08-03): the orphan reconciliation registered two
     # calculus and two fraction learner actions, moving 219 signatures to 223.
-    # 246 from 2026-08-06: the grade-7 authoring wave adds 23 machines.
-    if len(rows) != 246 or len(keys) != len(set(keys)):
-        fail(f"expected 246 unique signatures, found {len(rows)}")
+    # 284 from 2026-08-15: the grade-8 wiring wave adds 38 signatures
+    # (13 pilot modules and their shared decoder enter the load graph).
+    if len(rows) != 284 or len(keys) != len(set(keys)):
+        fail(f"expected 284 unique signatures, found {len(rows)}")
     return rows
 
 
@@ -135,9 +136,10 @@ def checked_registry_runs() -> dict:
     # verified contracts — every registered signature now traces live.
     # 223 from the orphan reconciliation later that day: the two calculus and
     # two fraction learner actions gained verified boundary examples.
-    # 246 from 2026-08-06, with the wave's 23 contracts live-verified.
-    if payload.get("contracts") != 246 or len(traces) != 246:
-        fail("expected 246 live checked-contract traces")
+    # 284 from 2026-08-15: the grade-8 wiring wave's 38 contracts are
+    # live-verified beside the prior 246.
+    if payload.get("contracts") != 284 or len(traces) != 284:
+        fail("expected 284 live checked-contract traces")
     if any(
         row.get("response", {}).get("ok") is not True
         or not row.get("response", {}).get("steps")
