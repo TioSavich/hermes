@@ -19,6 +19,7 @@ from surface_normalizer import normalize_surface
 PENCILS = "im_defrag_95e6836c2e770aa507544dfc_1"
 PLANE = "im_defrag_2f1df73a1a4681025ce9f31b_1"
 ASK = re.compile(r"^asks\(result,([^()]+)\)$")
+QUANTITY = re.compile(r"^quantity\(([^(),]+),")
 
 
 def source_row(record_id: str) -> dict[str, object]:
@@ -32,6 +33,11 @@ def reader_receipt(runner: PrologRunner, record_id: str) -> tuple[dict, dict]:
     sentence_spans = sentence_source_spans(sentence_texts, normalization, row)
     reply = runner.run(sentence_texts, row, sentence_spans)
     return normalization, reply
+
+
+def quantity_referents(sentence: dict) -> set[str]:
+    return {match.group(1) for fact in sentence["facts"]
+            if (match := QUANTITY.match(fact))}
 
 
 def assert_no_query_seed(program: list[str]) -> None:
@@ -57,22 +63,65 @@ def main() -> int:
                if row["rule"] == "N6"]
     assert n6_rows and all(row["audit_row"] for row in n6_rows)
     assert all(sentence["parsed"] for sentence in plane["sentences"][:2])
-    assert all("labeled_entity_subject" in sentence["rewrite_rules"]
-               for sentence in plane["sentences"][:2])
+    # The labelled subjects stay apart: Plane A and Plane B are read as two
+    # subjects carrying their own numbers, not one subject read twice. Which
+    # reader separates them is not pinned here. The ape rewrite rule
+    # `labeled_entity_subject` did it while the incumbent lane refused these
+    # sentences; the incumbent now reads them as rates and emits no rewrite
+    # rule, so a pin on the rule name reported the arbitration, not the split.
+    plane_a, plane_b = plane["sentences"][0], plane["sentences"][1]
+    assert not quantity_referents(plane_a) & quantity_referents(plane_b)
+    assert any("2800" in fact for fact in plane_a["facts"])
+    assert any("3885" in fact for fact in plane_b["facts"])
 
+    assert plane["completion"]["status"] == "parsed_not_completable"
+    assert plane["completion"]["reason"] == "identity_demand"
+    assert plane["completion"]["answers"] == []
     for receipt in (plane, pencils):
-        assert receipt["completion"]["status"] == "parsed_not_completable"
-        assert receipt["completion"]["reason"] == "identity_demand"
-        assert receipt["completion"]["answers"] == []
         assert_no_query_seed(receipt["program"])
+
+    # The pencils row is one sub-problem of a statement that poses several. Its
+    # `source_statement` stops before the questions and its task is
+    # productive-divide(12,2), so the numeric question is this row's own and the
+    # identity question beside it ("Which drawing matches the situation?")
+    # belongs to a sibling row. The completion is scoped to one question and the
+    # receipt names the scope in `program_basis`; the sibling's ask stays in its
+    # own sentence row. A completion carrying the sibling's identity demand
+    # instead would answer another row's question, which is what the
+    # source-statement binding in pusu_harness_runner.pl:280 exists to prevent.
+    assert pencils["completion"]["ask_targets"] == [
+        {"referent": "lane_question_result",
+         "referent_class": "colored",
+         "target_kind": "numeric"}
+    ]
+    assert pencils["program_basis"]["kind"] == "contextual"
+    assert pencils["program_basis"]["question_index"] == 2
+    sibling = pencils["sentences"][3]
+    assert "asks(result,drawing_1)" in sibling["facts"]
 
     truth = load_ground_truth()
     plane_join = compare_ground_truth(PLANE, plane["completion"], truth)
     pencils_join = compare_ground_truth(PENCILS, pencils["completion"], truth)
+    # An identity demand is never scored against a numeric machine result.
     assert plane_join["verdict"] == "no_ground_truth"
     assert plane_join["reason"] == "target_kind_mismatch"
-    assert pencils_join["verdict"] == "no_ground_truth"
-    assert pencils_join["reason"] == "target_kind_mismatch"
+    # The pencils ask and the machine result share a kind, so the join is
+    # comparable and the completion is scored. The reader lane does not yet
+    # carry the 12 into the answering program, because the sentence holding it
+    # names a person the incumbent lane refuses; the completion says so rather
+    # than answering. Either arm below is honest. An answer that is not the
+    # curriculum's 6 is neither arm, and fails here.
+    assert pencils_join["comparable"] is True
+    assert pencils_join["expected_values"] == ["6"]
+    if pencils["completion"]["status"] == "completed":
+        assert [answer["value"] for answer in
+                pencils["completion"]["answers"]] == ["6"]
+        assert pencils_join["verdict"] == "agree"
+    else:
+        assert pencils["completion"]["status"] == "parsed_not_completed"
+        assert pencils["completion"]["reason"] == "underdetermined"
+        assert pencils["completion"]["answers"] == []
+        assert pencils_join["verdict"] == "not_completed"
 
     synthetic = compare_ground_truth(
         "numeric",

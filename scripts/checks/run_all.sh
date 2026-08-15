@@ -135,6 +135,8 @@ run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
 run check_agreement_scale.py python3 "$CHECKS_DIR/../language/check_agreement_scale.py"
 run check_completion_thesis.py python3 "$CHECKS_DIR/../language/check_completion_thesis.py"
 run check_expression_reader.py python3 "$CHECKS_DIR/../language/check_expression_reader.py" --check
+run check_pusu_fixes.py python3 "$CHECKS_DIR/../language/check_pusu_fixes.py"
+run build_standard_doing.py python3 "$CHECKS_DIR/../language/build_standard_doing.py" --check
 run check_standards_bridge.py python3 "$CHECKS_DIR/../language/check_standards_bridge.py" --check
 run pusu_schema_translation_fixtures.py python3 "$CHECKS_DIR/../curriculum/pusu_schema_translation_fixtures.py"
 run build_standards_progression_overlay python3 "$CHECKS_DIR/../curriculum/build_standards_progression_overlay.py" --check

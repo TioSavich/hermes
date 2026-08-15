@@ -1075,8 +1075,11 @@ def build() -> dict[str, object]:
     # the 13 g8_* pilots and g8_quantity_input join the worker's load graph
     # through the g8_action_pairs adapter, so the registry stops filing them
     # as orphans.
-    if len(registry_rows) != 348:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 348")
+    # 349 from 2026-08-15 (evening): commit e8083d3f tracked the neutral
+    # lexical_typing_store seam module but shipped a registry that did not
+    # name it; the extractor files it as the orphan it is.
+    if len(registry_rows) != 349:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 349")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1167,8 +1170,11 @@ def build() -> dict[str, object]:
     # 122 from 2026-08-15: the same 14 modules as the registry pin above —
     # the grade-8 admission moves the 13 g8_* pilots and g8_quantity_input
     # into the worker's load graph, so they stop being orphans.
-    if len(orphan_records) != 122:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 122")
+    # 123 from 2026-08-15 (evening): the lexical_typing_store seam module,
+    # same row as the registry pin above — tracked by e8083d3f, named by
+    # nothing, filed as the orphan it is.
+    if len(orphan_records) != 123:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 123")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

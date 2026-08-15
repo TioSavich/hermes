@@ -53,8 +53,14 @@ WEBSTER_LEXICON = REPO / "hermes/app/runtime/experiments/language/webster_lexico
 LEXICAL_TYPINGS = REPO / "hermes/app/runtime/experiments/language/lexical_typings.pl"
 DEFAULT_OUTPUT = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 DEFAULT_SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
-SCHEMA = "pusu_harness_v7"
+SCHEMA = "pusu_harness_v8"
 EXPECTED_ELIGIBLE = 4712
+
+JSON_STRING_DECODERS = {"json_string_ascii", "json_string_utf8"}
+NON_BIJECTIVE_DECODERS = {
+    "docling_json_text_v1",
+    "docling_formula_spacing_v1",
+}
 
 PLAIN_NUMBER = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$")
 RATIONAL_NUMBER = re.compile(r"^([+-]?\d+)r(\d+)$")
@@ -683,8 +689,9 @@ def statement_char_anchors(
     synthetic joiner character.  It returns ``None`` for the whole row unless
     the rebuilt text equals ``complete_statement`` exactly and every segment
     hash matches its file slice -- that equality is the gate that keeps every
-    anchor a fact about real bytes.  Rows whose segments need a non-utf8
-    decoder fail the equality and stay unanchored.
+    anchor a fact about real bytes. JSON string segments use the same escape
+    widths that encoded them. Decoders that normalize text non-bijectively
+    stay unanchored.
     """
     spans = source_row.get("statement_spans") or []
     joiner = str(source_row.get("statement_joiner") or " ")
@@ -698,21 +705,56 @@ def statement_char_anchors(
         raw = source_file_bytes(str(span["path"]))[byte_start:int(span["byte_end"])]
         if hashlib.sha256(raw).hexdigest() != str(span.get("sha256", "")):
             return None
+        decoder = str(span.get("decoder", ""))
+        if decoder in NON_BIJECTIVE_DECODERS:
+            return None
         try:
-            text = raw.decode("utf-8")
-        except UnicodeDecodeError:
+            if decoder == "utf8":
+                text = raw.decode("utf-8")
+            elif decoder in JSON_STRING_DECODERS:
+                text = json.loads(b'"' + raw + b'"')
+            else:
+                return None
+        except (UnicodeDecodeError, json.JSONDecodeError):
             return None
         if index:
             anchors.extend([None] * len(joiner))
         byte_cursor = byte_start
         for char in text:
-            width = len(char.encode("utf-8"))
+            if decoder in JSON_STRING_DECODERS:
+                width = len(
+                    json.dumps(
+                        char,
+                        ensure_ascii=(decoder == "json_string_ascii"),
+                    )[1:-1].encode("utf-8")
+                )
+            else:
+                width = len(char.encode("utf-8"))
             anchors.append((index, byte_cursor, byte_cursor + width))
             byte_cursor += width
+        if byte_cursor != int(span["byte_end"]):
+            return None
         pieces.append(text)
     if joiner.join(pieces) != complete:
         return None
     return spans, anchors
+
+
+def mark_non_bijective_anchor_refusals(
+    reply: dict[str, Any], source_row: dict[str, Any]
+) -> None:
+    """Distinguish declared non-bijective decoders from missing byte anchors."""
+    if not any(
+        str(span.get("decoder", "")) in NON_BIJECTIVE_DECODERS
+        for span in source_row.get("statement_spans") or []
+    ):
+        return
+    for sentence in reply.get("sentences") or []:
+        expression_route = (
+            (sentence.get("refusals") or {}).get("expression_route") or {}
+        )
+        if expression_route.get("reason") == "no_sentence_byte_anchor":
+            expression_route["reason"] = "no_bijective_byte_decode"
 
 
 def source_char_indices(
@@ -1090,6 +1132,17 @@ def refusal_census(rows: list[dict[str, Any]]) -> dict[str, Any]:
         (str(sentence["sentence_form"]), str(sentence["force"]))
         for sentence in refused
     )
+    expression_route_reasons = Counter(
+        str(reason)
+        for sentence in refused
+        if (
+            reason := (
+                ((sentence.get("refusals") or {}).get("expression_route") or {}).get(
+                    "reason"
+                )
+            )
+        )
+    )
     bins: Counter[tuple[str, str, str]] = Counter()
     reasons: dict[tuple[str, str, str], Counter[str]] = defaultdict(Counter)
     for sentence in refused:
@@ -1134,6 +1187,7 @@ def refusal_census(rows: list[dict[str, Any]]) -> dict[str, Any]:
             }
             for (form, force), total in sorted(form_force_totals.items())
         ],
+        "expression_route_reasons": dict(sorted(expression_route_reasons.items())),
         "failure_bins": bin_rows,
     }
 
@@ -1217,6 +1271,7 @@ def main() -> int:
                         sentence_texts, normalization, source_row
                     )
                     reply = runner.run(sentence_texts, source_row, sentence_spans)
+                    mark_non_bijective_anchor_refusals(reply, source_row)
                     route = router.run(
                         str(source_row["id"]), str(source_row["lesson"]),
                         list(reply["program"])

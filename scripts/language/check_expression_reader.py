@@ -61,12 +61,14 @@ def load_rows() -> list[dict[str, Any]]:
         "atom_string(Lesson,LessonString),term_string(Task,TaskString,[quoted(true)]),"
         "atom_string(Status,StatusString),"
         "findall(_{id:SourceIdString,path:Path,line_start:LineStart,"
-        "line_end:LineEnd,byte_start:ByteStart,byte_end:ByteEnd,sha256:Sha},"
+        "line_end:LineEnd,byte_start:ByteStart,byte_end:ByteEnd,sha256:Sha,"
+        "decoder:Decoder},"
         "(member(SourceId,SourceIds),atom_string(SourceId,SourceIdString),"
         "member(Segment,Segments),get_dict(id,Segment,SourceIdString),"
         "get_dict(path,Segment,Path),get_dict(line_start,Segment,LineStart),"
         "get_dict(line_end,Segment,LineEnd),get_dict(byte_start,Segment,ByteStart),"
-        "get_dict(byte_end,Segment,ByteEnd),get_dict(sha256,Segment,Sha)),"
+        "get_dict(byte_end,Segment,ByteEnd),get_dict(sha256,Segment,Sha),"
+        "get_dict(decoder,Segment,Decoder)),"
         "SourceSpans)),Rows),json_write_dict(user_output,Rows,[width(0)])"
     )
     completed = subprocess.run(

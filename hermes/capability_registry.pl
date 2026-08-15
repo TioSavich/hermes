@@ -323,6 +323,7 @@ capability('knowledge/strategies/abstraction/k7_equal_share_bars.pl', 'k7_equal_
 capability('knowledge/strategies/abstraction/k7_fraction_number_line.pl', 'k7_fraction_number_line', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/k7_number_line_hops.pl', 'k7_number_line_hops', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/k7_scene_common.pl', 'k7_scene_common', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/lexical_typing_store.pl', 'lexical_typing_store', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl', 'lexicon_loop_admitted_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/lexicon_supplement_pilot.pl', 'lexicon_supplement_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/math_lexicon_pilot.pl', 'math_lexicon_pilot', 'synthesis', [], orphan_module).

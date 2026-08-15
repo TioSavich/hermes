@@ -5,6 +5,11 @@
  * A row is present only when at least one receipt completed correctly.
  * The standard narrows the family and contract genre; the parsed program
  * decides the operation. No predicate in this module computes arithmetic.
+ *
+ * Grade 8 rows carry a cluster as their family, because every grade 8
+ * machine-map row files `curriculum_task` -- a guide position rather than
+ * a doing. Three of the fourteen clusters hold one machine each, so for
+ * those the family and the machine coincide.
  */
 :- module(standard_doing,
           [ standard_doing/5,
@@ -12,6 +17,7 @@
           ]).
 
 :- use_module(library(http/json)).
+:- use_module(library(lists)).
 :- use_module(library(readutil)).
 :- use_module('../strategies/automaton_input_contracts',
               [automaton_input_contract/5]).
@@ -1060,7 +1066,7 @@ standard_doing('4.MD.A.2', subtract,
 
 standard_doing('4.MD.C.5', divide,
                'a|b',
-               support(4, 1, 0.364),
+               support(4, 1, 0.333),
                witness('im_defrag_2be9774b371624d4a2d94eaf_1',
                        long_division,
                        '{"a":180,"b":2}',
@@ -1068,7 +1074,7 @@ standard_doing('4.MD.C.5', divide,
 
 standard_doing('4.MD.C.5', multiply,
                'a|b',
-               support(6, 1, 0.545),
+               support(6, 1, 0.500),
                witness('im_defrag_f4693e7d2c08262d0ab116e4_1',
                        multiplication_fact_retrieval,
                        '{"a":2,"b":45}',
@@ -1314,6 +1320,14 @@ standard_doing('4.OA.C.5', multiply,
                        '{"a":20,"b":3}',
                        '60')).
 
+standard_doing('5.G.A.2', g8_scatter_plots_and_line_fit,
+               'paired_measurements',
+               support(3, 1, 1.000),
+               witness('im_defrag_43bc387461307a4a71bd7989_1',
+                       furthest_point_from_the_fitted_line,
+                       '{"input_name":"weight (kg)","kind":"paired_measurements","labels":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"],"output_name":"fuel efficiency (mpg)","pairs":[[1549,25],[1610,20],[1737,21],[1777,20],[1486,23],[1962,16],[2384,16],[1957,19],[2212,16],[1115,29],[2068,18],[1663,19],[2216,18],[1432,25],[1987,18],[1580,26],[1234,30],[1656,23]]}',
+                       'furthest_point("L","-120033466/36419021")')).
+
 standard_doing('5.G.B.3', divide,
                'a|b',
                support(3, 1, 1.000),
@@ -1380,11 +1394,19 @@ standard_doing('5.NBT.A.1', divide,
 
 standard_doing('5.NBT.A.2', divide,
                'a|b',
-               support(6, 2, 1.000),
+               support(6, 2, 0.500),
                witness('im_defrag_7f845bef4b87ac35215babfd_1',
                        long_division,
                        '{"a":15,"b":10}',
                        'long_division_result(1.5,0)')).
+
+standard_doing('5.NBT.A.2', g8_exponent_rules,
+               'exponent_rewrite',
+               support(3, 1, 0.250),
+               witness('im_defrag_55b10968f233d334f609a72a_1',
+                       rewrite_by_exponent_rule,
+                       '{"kind":"exponent_rewrite","left":{"base":10,"exponent":2},"outer_exponent":-3,"rule":"power_of_power"}',
+                       'rewritten("10^-6")')).
 
 standard_doing('5.NBT.A.3', decimal_value,
                'a|b',
@@ -1698,6 +1720,14 @@ standard_doing('6.RP.A.3.d', divide,
                        '{"a":100,"b":5}',
                        'long_division_result(20,0)')).
 
+standard_doing('7.EE.A', one_variable_linear_equations,
+               'linear_equation',
+               support(5, 1, 0.714),
+               witness('im_defrag_4dfd84b540313b48a86b15dc_1',
+                       balance_preserving_linear_solution,
+                       '{"a":2,"b":8,"c":10,"kind":"linear_equation"}',
+                       'value(1)')).
+
 standard_doing('7.EE.A.2', divide,
                'a|b',
                support(5, 1, 1.000),
@@ -1938,6 +1968,222 @@ standard_doing('7.RP.A.3', divide,
                        '{"a":10,"b":50}',
                        'long_division_result(0.2,0)')).
 
+standard_doing('8.EE.A.1', g8_exponent_rules,
+               'exponent_rewrite',
+               support(7, 3, 0.583),
+               witness('im_defrag_5526b6509b5c911b081b5d30_1',
+                       rewrite_by_exponent_rule,
+                       '{"kind":"exponent_rewrite","left":{"base":10,"exponent":5},"right":{"base":10,"exponent":5},"rule":"product"}',
+                       'rewritten("10^10")')).
+
+standard_doing('8.EE.A.1', g8_exponents_and_scientific_notation,
+               'power_of_ten_numeral',
+               support(3, 2, 0.250),
+               witness('im_defrag_00395cb3f7caf95af823a74f_1',
+                       numeral_as_multiple_of_a_power_of_ten,
+                       '{"kind":"power_of_ten_numeral","numeral":"0.00034"}',
+                       'scientific_notation("3.4 x 10^-4")')).
+
+standard_doing('8.EE.A.2', g8_roots_and_number_class,
+               'root_bracket',
+               support(5, 2, 0.357),
+               witness('im_defrag_2b394054d96217cd5a5c1413_1',
+                       bracket_root_between_whole_numbers,
+                       '{"degree":3,"kind":"root_bracket","radicand":27}',
+                       'exact_whole_number(3)')).
+
+standard_doing('8.EE.A.2', g8_roots_and_number_class,
+               'square_area',
+               support(6, 1, 0.429),
+               witness('im_defrag_9475b9f5d9008b9758f21f59_1',
+                       exact_side_length_from_square_area,
+                       '{"area":16,"kind":"square_area","unit":"square units"}',
+                       'side_length("4")')).
+
+standard_doing('8.EE.A.3', g8_exponents_and_scientific_notation,
+               'power_of_ten_numeral',
+               support(5, 3, 1.000),
+               witness('im_defrag_00395cb3f7caf95af823a74f_1',
+                       numeral_as_multiple_of_a_power_of_ten,
+                       '{"kind":"power_of_ten_numeral","numeral":"0.00034"}',
+                       'scientific_notation("3.4 x 10^-4")')).
+
+standard_doing('8.EE.A.4', g8_exponents_and_scientific_notation,
+               'power_of_ten_numeral',
+               support(3, 2, 1.000),
+               witness('im_defrag_00395cb3f7caf95af823a74f_1',
+                       numeral_as_multiple_of_a_power_of_ten,
+                       '{"kind":"power_of_ten_numeral","numeral":"0.00034"}',
+                       'scientific_notation("3.4 x 10^-4")')).
+
+standard_doing('8.EE.B', g8_linear_relationships_and_slope,
+               'linear_model',
+               support(4, 3, 0.800),
+               witness('im_defrag_47cc876bcdbea9f08714dcb9_1',
+                       rate_of_change_from_two_observations,
+                       '{"first":{"input":11,"output":93.5},"given":"two_observations","input_name":"cars","kind":"linear_model","output_name":"dollars raised","second":{"input":23,"output":195.5}}',
+                       'model("17/2","0")')).
+
+standard_doing('8.EE.C', g8_one_variable_linear_equations,
+               'linear_equation_two_sided',
+               support(8, 3, 0.889),
+               witness('im_defrag_6ffb2e4d64e94d9e6297f34f_1',
+                       balance_preserving_two_sided_solution,
+                       '{"kind":"linear_equation_two_sided","left":{"coefficient":2,"constant":6},"right":{"coefficient":4,"constant":2},"unknown":"x"}',
+                       'one_solution("x","2")')).
+
+standard_doing('8.EE.C.7', g8_one_variable_linear_equations,
+               'linear_equation_two_sided',
+               support(10, 4, 1.000),
+               witness('im_defrag_6ffb2e4d64e94d9e6297f34f_1',
+                       balance_preserving_two_sided_solution,
+                       '{"kind":"linear_equation_two_sided","left":{"coefficient":2,"constant":6},"right":{"coefficient":4,"constant":2},"unknown":"x"}',
+                       'one_solution("x","2")')).
+
+standard_doing('8.F.A.1', g8_function_tables,
+               'input_output_table',
+               support(8, 3, 1.000),
+               witness('im_defrag_9212e8d1736f66695490f7e8_1',
+                       fit_linear_rule_to_table,
+                       '{"kind":"input_output_table","rows":[[0,1],[2,2],[-8,-3],[100,51]]}',
+                       'linear_rule("1/2","1")')).
+
+standard_doing('8.F.B', g8_roots_and_number_class,
+               'square_area',
+               support(6, 1, 0.667),
+               witness('im_defrag_9475b9f5d9008b9758f21f59_1',
+                       exact_side_length_from_square_area,
+                       '{"area":16,"kind":"square_area","unit":"square units"}',
+                       'side_length("4")')).
+
+standard_doing('8.G.A', g8_polygon_angles_and_tessellation,
+               'regular_polygon',
+               support(12, 2, 0.800),
+               witness('im_defrag_b48dfab53db48450ee2efe85_1',
+                       copies_around_a_vertex,
+                       '{"kind":"regular_polygon","name":"equilateral triangle","sides":3}',
+                       'copies(6)')).
+
+standard_doing('8.G.A.1', g8_plane_transformations,
+               'plane_transformation',
+               support(6, 5, 1.000),
+               witness('im_defrag_fdecbab05ecd27849af654b4_1',
+                       map_figure_through_transformation,
+                       '{"figure":{"name":"Left hand","vertices":[{"label":"P","x":1,"y":1},{"label":"Q","x":4,"y":2},{"label":"R","x":2,"y":5}]},"kind":"plane_transformation","line":{"axis":"y"},"transformation":"reflection"}',
+                       'image("Left hand image",["P(-1, 1)","Q(-4, 2)","R(-2, 5)"])')).
+
+standard_doing('8.G.A.2', g8_roots_and_number_class,
+               'square_area',
+               support(6, 1, 0.545),
+               witness('im_defrag_9475b9f5d9008b9758f21f59_1',
+                       exact_side_length_from_square_area,
+                       '{"area":16,"kind":"square_area","unit":"square units"}',
+                       'side_length("4")')).
+
+standard_doing('8.G.A.3', g8_plane_transformations,
+               'plane_transformation',
+               support(3, 2, 1.000),
+               witness('im_defrag_25fcddc4761f571ef533efdb_1',
+                       map_figure_through_transformation,
+                       '{"figure":{"name":"Points O and R","vertices":[{"label":"O","x":0,"y":0},{"label":"R","x":3,"y":2}]},"kind":"plane_transformation","line":{"axis":"x"},"transformation":"reflection"}',
+                       'image("Points O and R image",["O(0, 0)","R(3, -2)"])')).
+
+standard_doing('8.G.A.5', g8_polygon_angles_and_tessellation,
+               'regular_polygon',
+               support(10, 1, 0.909),
+               witness('im_defrag_051ee5df066e75d23420b95c_1',
+                       regular_polygon_interior_angle,
+                       '{"kind":"regular_polygon","name":"octagon","sides":8}',
+                       'interior_angle("135")')).
+
+standard_doing('8.G.B.6 (inferred: Explain a proof of the Pythagorean Theorem)', g8_right_triangle_side_lengths,
+               'right_triangle_sides',
+               support(3, 1, 1.000),
+               witness('im_defrag_030ad6d0a1d3e38a980e1eb8_1',
+                       pythagorean_converse_test,
+                       '{"kind":"right_triangle_sides","known":"three_sides","sides":[7,10,12],"unit":"unit"}',
+                       'not_a_right_triangle')).
+
+standard_doing('8.G.B.7', g8_right_triangle_side_lengths,
+               'right_triangle_sides',
+               support(3, 2, 0.273),
+               witness('im_defrag_1dc1ee52e13e591e0ae61e17_1',
+                       pythagorean_leg_from_hypotenuse,
+                       '{"hypotenuse":11.5,"kind":"right_triangle_sides","known":"hypotenuse_and_leg","leg":4.5,"unit":"m"}',
+                       'other_leg("sqrt(112)","m")')).
+
+standard_doing('8.G.B.7', g8_roots_and_number_class,
+               'square_area',
+               support(6, 1, 0.545),
+               witness('im_defrag_9475b9f5d9008b9758f21f59_1',
+                       exact_side_length_from_square_area,
+                       '{"area":16,"kind":"square_area","unit":"square units"}',
+                       'side_length("4")')).
+
+standard_doing('8.G.B.7 (inferred: Apply the Pythagorean Theorem to right triangles)', g8_right_triangle_side_lengths,
+               'right_triangle_sides',
+               support(3, 1, 1.000),
+               witness('im_defrag_030ad6d0a1d3e38a980e1eb8_1',
+                       pythagorean_converse_test,
+                       '{"kind":"right_triangle_sides","known":"three_sides","sides":[7,10,12],"unit":"unit"}',
+                       'not_a_right_triangle')).
+
+standard_doing('8.G.B.8 (inferred: Apply the Pythagorean Theorem to find distance in coordinate systems)', g8_right_triangle_side_lengths,
+               'right_triangle_sides',
+               support(3, 1, 1.000),
+               witness('im_defrag_030ad6d0a1d3e38a980e1eb8_1',
+                       pythagorean_converse_test,
+                       '{"kind":"right_triangle_sides","known":"three_sides","sides":[7,10,12],"unit":"unit"}',
+                       'not_a_right_triangle')).
+
+standard_doing('8.G.C', g8_round_solid_volume,
+               'round_solid',
+               support(4, 1, 1.000),
+               witness('im_defrag_1e44fea48a27e31352698b15_1',
+                       hemisphere_volume_as_half_sphere,
+                       '{"kind":"round_solid","radius":5,"solid":"hemisphere","unit":"inch"}',
+                       'volume_text("250/3 pi","inch")')).
+
+standard_doing('8.G.C.9', g8_round_solid_volume,
+               'round_solid',
+               support(8, 3, 1.000),
+               witness('im_defrag_da9401d9e55b12a5b9ae7659_1',
+                       cone_volume_as_third_of_cylinder,
+                       '{"height":3,"kind":"round_solid","radius":4,"solid":"cone","unit":"unit"}',
+                       'volume_text("16 pi","unit")')).
+
+standard_doing('8.NS.A.2', g8_roots_and_number_class,
+               'root_bracket',
+               support(5, 2, 0.714),
+               witness('im_defrag_2b394054d96217cd5a5c1413_1',
+                       bracket_root_between_whole_numbers,
+                       '{"degree":3,"kind":"root_bracket","radicand":27}',
+                       'exact_whole_number(3)')).
+
+standard_doing('8.SP.A.1', g8_scatter_plots_and_line_fit,
+               'paired_measurements',
+               support(7, 3, 1.000),
+               witness('im_defrag_6e6162c3162d953d082475ed_1',
+                       association_direction_from_the_fit,
+                       '{"input_name":"length of short side (in)","kind":"paired_measurements","labels":["a","b","c","d","e","f","g","h","i","j"],"output_name":"length of perimeter (in)","pairs":[[0.25,1],[2,7.5],[6.5,22],[3,9.5],[0.5,2],[1.25,3.5],[3.5,12.5],[1.5,5],[4,14],[1,2.5]]}',
+                       'positive_association')).
+
+standard_doing('8.SP.A.3', g8_scatter_plots_and_line_fit,
+               'paired_measurements',
+               support(3, 1, 1.000),
+               witness('im_defrag_43bc387461307a4a71bd7989_1',
+                       furthest_point_from_the_fitted_line,
+                       '{"input_name":"weight (kg)","kind":"paired_measurements","labels":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"],"output_name":"fuel efficiency (mpg)","pairs":[[1549,25],[1610,20],[1737,21],[1777,20],[1486,23],[1962,16],[2384,16],[1957,19],[2212,16],[1115,29],[2068,18],[1663,19],[2216,18],[1432,25],[1987,18],[1580,26],[1234,30],[1656,23]]}',
+                       'furthest_point("L","-120033466/36419021")')).
+
+standard_doing('8.SP.A.4', g8_two_way_tables_and_association,
+               'two_way_table',
+               support(5, 2, 0.714),
+               witness('im_defrag_892c930bab7b2f4969579218_1',
+                       relative_frequency_by_column,
+                       '{"cells":[[285,15],[223,17],[120,80],[195,65]],"columns":["unflawed","flawed"],"kind":"two_way_table","rows":["red","blue","yellow","green"]}',
+                       'relative_frequencies_by_column([["35%","27%","15%","24%"],["8%","10%","45%","37%"]])')).
+
 standard_doing('K.CC.A.1', add,
                'a|b',
                support(4, 3, 0.571),
@@ -2108,7 +2354,19 @@ standard_doing_contract_family(rectangle_perimeter, geometry).
 standard_doing_contract_family(rectangle_side_lengths_for_area, geometry).
 standard_doing_contract_family(unit_cube_volume, geometry).
 standard_doing_contract_family(convert_measurement, measurement).
-
+standard_doing_contract_family(g8_exponent_rules, grade8).
+standard_doing_contract_family(g8_exponents_and_scientific_notation, grade8).
+standard_doing_contract_family(g8_function_tables, grade8).
+standard_doing_contract_family(g8_linear_relationships_and_slope, grade8).
+standard_doing_contract_family(g8_one_variable_linear_equations, grade8).
+standard_doing_contract_family(g8_plane_transformations, grade8).
+standard_doing_contract_family(g8_polygon_angles_and_tessellation, grade8).
+standard_doing_contract_family(g8_right_triangle_side_lengths, grade8).
+standard_doing_contract_family(g8_roots_and_number_class, grade8).
+standard_doing_contract_family(g8_round_solid_volume, grade8).
+standard_doing_contract_family(g8_scatter_plots_and_line_fit, grade8).
+standard_doing_contract_family(g8_two_way_tables_and_association, grade8).
+standard_doing_contract_family(one_variable_linear_equations, algebraic).
 %!  check_standard_doing is det.
 %
 %   Re-read the wave-5 JSONL source and verify every generated witness. The
@@ -2149,13 +2407,26 @@ check_standard_doing_row(Code, Family, Genre, Support, Witness, _WaveRows) :-
                     Code, Family, Genre, Support, Witness),
                 check_standard_doing/0)).
 
+%   Both machine maps are read.  A witness for a grade 8 row is recorded in the
+%   sibling map, so checking against the pool map alone would reject every
+%   grade 8 row for a witness that is present in the tree.
 standard_doing_wave5_rows(Rows) :-
+    findall(MapRows,
+            ( standard_doing_machine_map(Relative),
+              standard_doing_map_rows(Relative, MapRows)
+            ),
+            RowLists),
+    append(RowLists, Rows).
+
+standard_doing_machine_map(
+    '../../curriculum/im/generated/wave5_row_machine_map.jsonl').
+standard_doing_machine_map(
+    '../../curriculum/im/generated/wave5_g8_row_machine_map.jsonl').
+
+standard_doing_map_rows(Relative, Rows) :-
     source_file(standard_doing:standard_doing(_, _, _, _, _), SourceFile),
     file_directory_name(SourceFile, StandardsDirectory),
-    directory_file_path(
-        StandardsDirectory,
-        '../../curriculum/im/generated/wave5_row_machine_map.jsonl',
-        RelativePath),
+    directory_file_path(StandardsDirectory, Relative, RelativePath),
     absolute_file_name(RelativePath, Path, [access(read)]),
     setup_call_cleanup(
         open(Path, read, Stream, [encoding(utf8)]),

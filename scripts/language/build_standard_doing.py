@@ -5,6 +5,15 @@ The CCSS code narrows the admissible wave-5 family and contract genre.  It
 does not select a machine or compute a result.  A generated row is admitted
 only when it has a correct execution witness.  Its support count includes all
 routed executions, including honest magnitude refusals and execution limits.
+
+Two machine maps feed the store.  The pool map carries the arithmetic families
+(`add`, `divide`, ...) for grades K-7.  Grade 8 records its runs in a sibling
+map whose `family` field is `curriculum_task` for every row -- a position in a
+guide rather than a doing -- so the grade 8 family is read from the row's
+`cluster` instead, which groups machines by the doing they perform.  Three of
+the fourteen clusters hold a single machine, so for those the code does reach
+one machine; that is a property of the curriculum, not a narrowing this
+builder performs.
 """
 
 from __future__ import annotations
@@ -22,6 +31,8 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 PUSU_RESULTS = ROOT / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 WAVE5_ROWS = ROOT / "curriculum/im/generated/wave5_row_machine_map.jsonl"
+WAVE5_G8_ROWS = ROOT / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl"
+CONTRACTS = ROOT / "knowledge/strategies/automaton_input_contracts.pl"
 EXPLICIT_STANDARDS = ROOT / "curriculum/im/generated/lesson_standard_anchors.pl"
 VISION_DIGEST = ROOT / "curriculum/im/generated/vision_lesson_digest.pl"
 IM_STANDARDS = ROOT / "knowledge/standards/im"
@@ -33,8 +44,11 @@ DEFAULT_COVERAGE = (
 EXPECTED_STATEMENTS = 4712
 EXPECTED_COVERAGE_BEFORE = 4142
 EXPECTED_COVERAGE_AFTER = 4485
-EXPECTED_FULL_ROWS = 357
-EXPECTED_THRESHOLD3_ROWS = 259
+# 2026-08-15: the grade 8 sibling map joins the pool map as a second source.
+# Full rows 357 -> 432, admitted rows 259 -> 289; measured from this builder,
+# not copied.
+EXPECTED_FULL_ROWS = 432
+EXPECTED_THRESHOLD3_ROWS = 289
 
 STANDARD_RE = re.compile(
     r'^\s*standard_anchor\(\s*([A-Za-z0-9_]+)\s*,\s*ccss\s*,\s*"([^"]+)"',
@@ -55,6 +69,10 @@ VISION_ADDRESSING_RE = re.compile(
     re.MULTILINE,
 )
 LESSON_RE = re.compile(r"^IM-G(K|[0-8])-U(\d+)-L(\d+)$")
+CONTRACT_RE = re.compile(
+    r"^automaton_input_contract\(\s*([a-z0-9_]+)\s*,\s*([a-z0-9_]+)\s*,",
+    re.MULTILINE,
+)
 
 
 @dataclass(frozen=True)
@@ -217,14 +235,58 @@ def correct(row: dict[str, Any]) -> bool:
     return row.get("execution", {}).get("outcome") == "correct"
 
 
+def doing_family(row: dict[str, Any]) -> str:
+    """The row's operation-facing family.
+
+    Every grade 8 row files `curriculum_task` -- a guide position, not a doing
+    -- so its cluster carries the family instead.  The pool map's own family
+    field is already operation-facing and is read unchanged.
+    """
+    if row.get("cluster"):
+        return str(row["cluster"])
+    return str(row["family"])
+
+
 def row_key(row: dict[str, Any], code: str) -> tuple[str, str, str]:
-    return code, row["family"], contract_genre(row["input"])
+    return code, doing_family(row), contract_genre(row["input"])
+
+
+def cluster_contract_families() -> dict[str, str]:
+    """Map each grade 8 cluster to the contract family its machines file.
+
+    Read from the two artifacts and nothing else: the sibling map says which
+    machines a cluster ran, and the contract store says under which family each
+    machine is declared.  A cluster whose machines disagree is an error rather
+    than a choice made here.
+    """
+    contract_family = {
+        machine: family
+        for family, machine in CONTRACT_RE.findall(
+            CONTRACTS.read_text(encoding="utf-8")
+        )
+    }
+    by_cluster: dict[str, set[str]] = defaultdict(set)
+    for row in read_jsonl(WAVE5_G8_ROWS):
+        machine = row.get("machine")
+        if not machine:
+            continue
+        if machine not in contract_family:
+            raise RuntimeError(f"grade 8 machine files no contract: {machine}")
+        by_cluster[doing_family(row)].add(contract_family[machine])
+    resolved: dict[str, str] = {}
+    for cluster, families in sorted(by_cluster.items()):
+        if len(families) != 1:
+            raise RuntimeError(
+                f"cluster spans several contract families: {cluster} {sorted(families)}"
+            )
+        resolved[cluster] = families.pop()
+    return resolved
 
 
 def build_rows(
     lesson_codes: dict[str, set[str]], threshold: int
 ) -> tuple[list[StoreRow], dict[str, Any]]:
-    wave_rows = read_jsonl(WAVE5_ROWS)
+    wave_rows = read_jsonl(WAVE5_ROWS) + read_jsonl(WAVE5_G8_ROWS)
     support: Counter[tuple[str, str, str]] = Counter()
     support_lessons: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     witnesses: dict[tuple[str, str, str], dict[str, Any]] = {}
@@ -288,6 +350,10 @@ def build_rows(
                 ).items()
             )
         ),
+        "grade8_rows": sum(1 for row in rows if row.code.startswith("8.")),
+        "grade8_codes": len(
+            {row.code for row in rows if row.code.startswith("8.")}
+        ),
     }
     return rows, summary
 
@@ -314,15 +380,22 @@ def fact_lines(rows: Iterable[StoreRow]) -> list[str]:
     return lines
 
 
-def generated_source(rows: list[StoreRow], threshold: int) -> bytes:
+def generated_source(
+    rows: list[StoreRow], threshold: int, clusters: dict[str, str]
+) -> bytes:
     header = [
-        "/** <module> Receipt-backed CCSS standard narrowing", 
+        "/** <module> Receipt-backed CCSS standard narrowing",
         " *",
         " * Generated by scripts/language/build_standard_doing.py; do not edit.",
         f" * Admission threshold: support >= {threshold} routed receipts.",
         " * A row is present only when at least one receipt completed correctly.",
         " * The standard narrows the family and contract genre; the parsed program",
         " * decides the operation. No predicate in this module computes arithmetic.",
+        " *",
+        " * Grade 8 rows carry a cluster as their family, because every grade 8",
+        " * machine-map row files `curriculum_task` -- a guide position rather than",
+        " * a doing. Three of the fourteen clusters hold one machine each, so for",
+        " * those the family and the machine coincide.",
         " */",
         ":- module(standard_doing,",
         "          [ standard_doing/5,",
@@ -330,6 +403,7 @@ def generated_source(rows: list[StoreRow], threshold: int) -> bytes:
         "          ]).",
         "",
         ":- use_module(library(http/json)).",
+        ":- use_module(library(lists)).",
         ":- use_module(library(readutil)).",
         ":- use_module('../strategies/automaton_input_contracts',",
         "              [automaton_input_contract/5]).",
@@ -356,7 +430,7 @@ standard_doing_contract_family(rectangle_perimeter, geometry).
 standard_doing_contract_family(rectangle_side_lengths_for_area, geometry).
 standard_doing_contract_family(unit_cube_volume, geometry).
 standard_doing_contract_family(convert_measurement, measurement).
-
+__G8_CONTRACT_FAMILIES__
 %!  check_standard_doing is det.
 %
 %   Re-read the wave-5 JSONL source and verify every generated witness. The
@@ -397,13 +471,26 @@ check_standard_doing_row(Code, Family, Genre, Support, Witness, _WaveRows) :-
                     Code, Family, Genre, Support, Witness),
                 check_standard_doing/0)).
 
+%   Both machine maps are read.  A witness for a grade 8 row is recorded in the
+%   sibling map, so checking against the pool map alone would reject every
+%   grade 8 row for a witness that is present in the tree.
 standard_doing_wave5_rows(Rows) :-
+    findall(MapRows,
+            ( standard_doing_machine_map(Relative),
+              standard_doing_map_rows(Relative, MapRows)
+            ),
+            RowLists),
+    append(RowLists, Rows).
+
+standard_doing_machine_map(
+    '../../curriculum/im/generated/wave5_row_machine_map.jsonl').
+standard_doing_machine_map(
+    '../../curriculum/im/generated/wave5_g8_row_machine_map.jsonl').
+
+standard_doing_map_rows(Relative, Rows) :-
     source_file(standard_doing:standard_doing(_, _, _, _, _), SourceFile),
     file_directory_name(SourceFile, StandardsDirectory),
-    directory_file_path(
-        StandardsDirectory,
-        '../../curriculum/im/generated/wave5_row_machine_map.jsonl',
-        RelativePath),
+    directory_file_path(StandardsDirectory, Relative, RelativePath),
     absolute_file_name(RelativePath, Path, [access(read)]),
     setup_call_cleanup(
         open(Path, read, Stream, [encoding(utf8)]),
@@ -419,6 +506,12 @@ read_standard_doing_jsonl(Stream, Rows) :-
         read_standard_doing_jsonl(Stream, Rest)
     ).
 '''.replace("__THRESHOLD__", str(threshold))
+    used = sorted({row.family for row in rows} & set(clusters))
+    cluster_lines = "".join(
+        f"standard_doing_contract_family({cluster}, {clusters[cluster]}).\n"
+        for cluster in used
+    )
+    footer = footer.replace("__G8_CONTRACT_FAMILIES__\n", cluster_lines)
     return ("\n".join(header + fact_lines(rows)) + footer).encode("utf-8")
 
 
@@ -444,8 +537,9 @@ def main() -> int:
         parser.error("--threshold must be at least 1")
 
     coverage_bytes, lesson_codes = coverage_receipt()
+    clusters = cluster_contract_families()
     rows, summary = build_rows(lesson_codes, args.threshold)
-    store_bytes = generated_source(rows, args.threshold)
+    store_bytes = generated_source(rows, args.threshold, clusters)
     fresh = compare_or_write(args.output, store_bytes, args.check)
     fresh = compare_or_write(args.coverage_output, coverage_bytes, args.check) and fresh
     summary.update(

@@ -416,14 +416,14 @@
       "render": 35,
       "sequent": 14,
       "standards": 23,
-      "synthesis": 65,
+      "synthesis": 66,
       "unclassified": 9,
       "workflow": 27,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 122,
+      "orphan_module": 123,
       "routed_only": 15,
       "routed_paged": 189,
       "unrouted": 12
@@ -435,9 +435,9 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 86
+      "undetermined": 87
     },
-    "total": 348,
+    "total": 349,
     "unrouted": 12
   },
   "generated_by": "scripts/research/build_self_description_census.py",
@@ -1806,6 +1806,20 @@
       "module": "k7_scene_common",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/k7_scene_common.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/lexical_typing_store.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "lexical_typing_store",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/lexical_typing_store.pl",
       "verdict": "undetermined"
     },
     {

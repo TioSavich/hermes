@@ -106,9 +106,26 @@ text_string(Text, String) :- string_codes(String, Text), !.
 text_string(Text, String) :- string_chars(String, Text).
 
 problem_events([Event|Events]) -->
+    leading_adverbial,
     problem_event(Event),
     problem_events(Events).
 problem_events([]) --> [].
+
+% One closed, comma-delimited discourse prefix may introduce each sentence.
+% It contributes no event; the sentence itself must still read in full.
+leading_adverbial --> adverbial, [','], !.
+leading_adverbial --> [].
+
+adverbial --> [so, far].
+adverbial --> [then].
+adverbial --> [next].
+adverbial --> [later].
+adverbial --> [first].
+adverbial --> [finally].
+adverbial --> [now].
+adverbial --> [after, that].
+adverbial --> [yesterday].
+adverbial --> [today].
 
 % Language-lane events consume one whole sentence.  Classification is
 % conservative at the quantity boundary: a vacuous reading is available only
@@ -398,11 +415,11 @@ lane_ask_suffix(Tokens, what_value, value, Tail) :-
     memberchk(Surface, [value,cost,rate,total,difference]), !.
 
 problem_event(has(Subject, Number, Kind, Span)) -->
-    subject(Subject), stative_verb(_Base), integer(Number), count_noun(Kind),
+    subject(Subject), stative_verb(_Base), counted_amount(Number, Kind),
     possession_tail, ['.'],
     { format(string(Span), '~w has ~w ~w', [Subject, Number, Kind]) }.
 problem_event(has(there, Number, Kind, Span)) -->
-    [there], existential_copula, integer(Number), noun_base(Kind),
+    [there], existential_copula, counted_amount(Number, Kind),
     existential_tail, ['.'],
     { format(string(Span), 'there are ~w ~w', [Number, Kind]) }.
 problem_event(parts(Subject, Action, FirstNumber, FirstModifier,
@@ -414,7 +431,7 @@ problem_event(parts(Subject, Action, FirstNumber, FirstModifier,
              [Subject, Action, FirstNumber, FirstModifier, Kind,
               SecondNumber, SecondModifier, Kind]) }.
 problem_event(change(Subject, Action, Number, Kind, Span)) -->
-    subject(Subject), change_verb(Action), integer(Number), noun_base(Kind), ['.'],
+    subject(Subject), change_verb(Action), counted_amount(Number, Kind), ['.'],
     { format(string(Span), '~w ~w ~w ~w', [Subject, Action, Number, Kind]) }.
 problem_event(transfer(Subject, Action, Number, Kind, Recipient, Span)) -->
     transfer_subject(Subject), transfer_verb(Action), integer(Number),
@@ -483,8 +500,8 @@ problem_event(comparison_times(Subject, Number, Kind, Other, Span)) -->
 %   every closed frame reads first, so a sentence a closed frame accepts
 %   never falls through to this one.
 problem_event(open_verb(Subject, Lemma, Number, Kind, Span)) -->
-    subject(Subject), open_modal, open_verb_lemma(Lemma), integer(Number),
-    count_noun(Kind), open_tail, ['.'],
+    subject(Subject), open_modal, open_verb_lemma(Lemma),
+    counted_amount(Number, Kind), open_tail, ['.'],
     { format(string(Span), '~w ~w ~w ~w', [Subject, Lemma, Number, Kind]) }.
 
 open_modal --> [can], !.
@@ -578,15 +595,15 @@ modifier(Modifier) --> [Surface],
 %     collect  "They collect 27 adult books."
 %     print    "A teacher prints 720 copies."
 %     count    "Clare counts 8 sharks swimming."
-%   `earn` remains in the list for the rate lane's sake, but every corpus
-%   attestation of `earn` carries a currency amount this reader does not
-%   yet quantify, so it has no reading receipt — a named limit, not an
-%   oversight.  `own` and `possess` were already reachable through the lane
-%   reader's own verb list and are named here so the two readers agree.
+%     cost     "The football costs $68."
+%     earn     "Clare mowed the lawn of a community center for 2 hours and
+%               earned $30."
+%   `own` and `possess` were already reachable through the lane reader's own
+%   verb list and are named here so the two readers agree.
 stative_verb(Base) --> [Surface],
     { atom(Surface), once(em_verb_base(Surface, Base, _)),
       memberchk(Base, [have, own, possess, hold, contain,
-                       make, collect, print, earn, count]) }.
+                       make, collect, print, cost, earn, count]) }.
 
 %!  locative_tail// is semidet.
 %
@@ -619,6 +636,12 @@ conversion_tail --> [].
 
 count_noun(Kind) --> noun_base(_Modifier), noun_base(Kind).
 count_noun(Kind) --> noun_base(Kind).
+
+counted_amount(Number, Kind) --> integer(Number), count_noun(Kind).
+counted_amount(Number, dollar) --> ['$'], money_number(Number).
+
+money_number(Number) --> [Number],
+    { integer(Number) ; float(Number) }.
 
 measurement_unit(Unit) --> [Surface],
     { atom(Surface),
@@ -692,7 +715,8 @@ question_time(unspecified) --> [].
 
 compile_events(Events, Facts) :-
     compile_events(Events, [], [], 1, [], RawFacts, Kinds0),
-    list_to_set(Kinds0, KindSet),
+    exclude(=(dollar), Kinds0, DiscreteKinds0),
+    list_to_set(DiscreteKinds0, KindSet),
     sort(KindSet, Kinds),
     ( RawFacts == [] -> Facts = []
     ; append(RawFacts, [discrete_kinds(Kinds)], Facts)
@@ -1252,7 +1276,39 @@ check_word_problem_reader_pilot :-
     % Deliberate refusal: wondering whether an amount is enough is outside the
     % admitted sentence classes.
     \+ word_problem_facts("Mia wonders whether nine guavas are enough.", _),
+    check_grammar_slice1,
     writeln('word_problem_reader_pilot: all receipts passed').
+
+check_grammar_slice1 :-
+    grammar_slice1_check(dollar_amount,
+        ( word_problem_reading("Flour costs $8.", _, DollarFacts),
+          member(quantity(_, 8, dollar), DollarFacts),
+          member(discrete_kinds(DollarKinds), DollarFacts),
+          \+ memberchk(dollar, DollarKinds) )),
+    grammar_slice1_check(cost_corpus_receipt,
+        word_problem_reading("The football costs $68.", _, _)),
+    grammar_slice1_check(decimal_money,
+        ( word_problem_reading("Water costs $1.69.", _, DecimalFacts),
+          member(quantity(_, 1.69, dollar), DecimalFacts),
+          maplist(five_form_fact, DecimalFacts) )),
+    grammar_slice1_check(so_far_equivalence,
+        ( word_problem_reading("So far, he has 14 rocks.", Class, Facts),
+          word_problem_reading("He has 14 rocks.", Class, Facts) )),
+    grammar_slice1_check(then_equivalence,
+        ( word_problem_reading("Then, he found 10 more boxes.", FoundClass,
+                               FoundFacts),
+          word_problem_reading("He found 10 more boxes.", FoundClass,
+                               FoundFacts) )),
+    grammar_slice1_check(bare_dollar_refusal,
+        \+ word_problem_reading("Water costs $.", _, _)).
+
+grammar_slice1_check(Id, Goal) :-
+    ( call(Goal)
+    -> true
+    ;  format(user_error, 'word_problem_reader grammar slice check failed: ~q~n',
+              [Id]),
+       fail
+    ).
 
 run_reader_receipt(Id, Text, ExpectedFacts, ExpectedName, ExpectedValue) :-
     ( word_problem_facts(Text, Facts),
@@ -1310,8 +1366,11 @@ run_question_form_receipt(Class, Id, Text) :-
        fail
     ).
 
-five_form_fact(quantity(_Name, Value, _Kind)) :-
-    ( Value == unknown ; number(Value), \+ float(Value) ).
+five_form_fact(quantity(_Name, Value, Kind)) :-
+    ( Value == unknown
+    ; number(Value), \+ float(Value)
+    ; Kind == dollar, float(Value)
+    ).
 five_form_fact(conversion(_FromKind, _ToKind, Factor, Span)) :-
     integer(Factor), string(Span).
 five_form_fact(relation(_Name, Recipe, Span)) :-
