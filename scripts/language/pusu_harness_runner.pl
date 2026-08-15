@@ -41,7 +41,8 @@ prompt_loop :-
 process_line(Line, Reply) :-
     atom_json_dict(Line, Request, []),
     get_dict(sentences, Request, Sentences),
-    read_sentences(Sentences, 0, SentenceRows0, ScopedProgram),
+    request_sentence_spans(Request, Sentences, SentenceSpans),
+    read_sentences(Sentences, SentenceSpans, 0, SentenceRows0, ScopedProgram),
     contextualize_questions(Sentences, SentenceRows0, SentenceRows, Candidates),
     ( get_dict(source_statement, Request, SourceStatement0)
     -> SourceStatement = SourceStatement0
@@ -171,15 +172,30 @@ completion_succeeds(Completion) :-
     get_dict(status, Completion, Status),
     memberchk(Status, [completed,truth_decided]).
 
-read_sentences([], _Index, [], []).
-read_sentences([Text|Texts], Index, [Row|Rows], Program) :-
+% Each sentence may carry the byte spans its surface was decoded from.  The
+% Python harness derives them by rebuilding the complete statement from the
+% row's ordered source segments and mapping each normalized character home;
+% a sentence without a verified anchor arrives as [].
+request_sentence_spans(Request, Sentences, SentenceSpans) :-
+    length(Sentences, Count),
+    ( get_dict(sentence_spans, Request, SentenceSpans0),
+      is_list(SentenceSpans0),
+      length(SentenceSpans0, Count)
+    -> SentenceSpans = SentenceSpans0
+    ;  length(SentenceSpans, Count),
+       maplist(=([]), SentenceSpans)
+    ).
+
+read_sentences([], [], _Index, [], []).
+read_sentences([Text|Texts], [SentenceSpans|SpanRows], Index, [Row|Rows],
+               Program) :-
     sentence_form(Text, Form),
     sentence_force_tag(Text, Force, ForceFrame),
-    arbitration_result(Text, Form, Row0, Facts),
+    arbitration_result(Text, Form, SentenceSpans, Row0, Facts),
     put_dict(_{force:Force, force_frame:ForceFrame}, Row0, Row),
     namespace_facts(Index, Facts, ScopedFacts),
     Next is Index + 1,
-    read_sentences(Texts, Next, Rows, Rest),
+    read_sentences(Texts, SpanRows, Next, Rows, Rest),
     append(ScopedFacts, Rest, Program).
 
 % Re-run the incumbent over a bounded suffix of its accepted quantitative
@@ -337,7 +353,7 @@ last_n(Count, List, Tail) :-
     length(List, Length), Drop is max(0, Length - Count),
     length(Prefix, Drop), append(Prefix, Tail, List).
 
-arbitration_result(Text, Form, Row, Facts) :-
+arbitration_result(Text, Form, SentenceSpans, Row, Facts) :-
     ( word_problem_reader_pilot:word_problem_reading(
           Text, IncumbentClass, IncumbentFacts)
     -> maplist(term_text, IncumbentFacts, FactStrings),
@@ -349,7 +365,8 @@ arbitration_result(Text, Form, Row, Facts) :-
     ; incumbent_entry_token(Text, EntryToken),
       incumbent_refusal(Text, EntryToken, IncumbentRefusal),
       ape_reader_pilot:ape_reader_result(Text, ApeResult),
-      ape_result_row(ApeResult, IncumbentRefusal, Form, Row, Facts)
+      ape_result_row(ApeResult, Text, SentenceSpans, IncumbentRefusal,
+                     Form, Row, Facts)
     ).
 
 incumbent_refusal(Text, EntryToken,
@@ -361,8 +378,8 @@ incumbent_refusal(_Text, EntryToken,
                   _{token:EntryToken,
                     token_basis:sentence_entry_no_failure_api}).
 
-ape_result_row(parsed(Facts, FactSpans, Rules), IncumbentRefusal,
-               Form, Row, Facts) :-
+ape_result_row(parsed(Facts, FactSpans, Rules), _Text, _SentenceSpans,
+               IncumbentRefusal, Form, Row, Facts) :-
     maplist(term_text, Facts, FactStrings),
     findall(_{fact_index:Index,start:Start,end:End,text:Text},
             member(fact_span(Index,Start,End,Text), FactSpans), SpanRows),
@@ -371,14 +388,191 @@ ape_result_row(parsed(Facts, FactSpans, Rules), IncumbentRefusal,
             facts:FactStrings, fact_spans:SpanRows, rewrite_rules:RuleStrings,
             refusals:_{incumbent:IncumbentRefusal}}.
 ape_result_row(refusal(Token,span(Start,End,Surface),Reason,Rules),
-               IncumbentRefusal, Form, Row, []) :-
+               Text, SentenceSpans, IncumbentRefusal, Form, Row, Facts) :-
     term_text(Reason, ReasonString),
     maplist(term_text, Rules, RuleStrings),
+    Refusals = _{incumbent:IncumbentRefusal,
+                 ape:_{token:Token,start:Start,end:End,text:Surface,
+                       reason:ReasonString}},
+    expression_segment_row(Text, SentenceSpans, Refusals, Form, RuleStrings,
+                           Row, Facts).
+
+% ---- Expression-segment routing --------------------------------------------
+%
+% Both prose readers refused the sentence.  When its whole surface lies inside
+% the printed-expression grammar's alphabet, the quarantined pilot reads it
+% and the ledger records what the bytes state.  The policy, pinned by
+% check_expression_routing/0:
+%
+%   - a hole-free expression states a composition: quantity and relation
+%     facts with an unknown root, no ask, no evaluation;
+%   - an equation with exactly one hole writes a demand for the number that
+%     fills its blank: structure facts plus asks/2, and never a fact that the
+%     equation holds, never a value for the hole;
+%   - an equation without a hole is a truth claim; the sentence lane refuses
+%     it because truth verdicts belong to the math-claim checker;
+%   - everything else refuses with a named reason for the census.
+%
+% Routed facts stay out of the statement's answering program in this slice:
+% the third argument of every clause below returns [] to the saturator, so
+% every completion, answer, and verdict keeps its existing carrier.  A routed
+% sentence must also name its own source bytes; without a verified anchor the
+% route refuses rather than borrowing the statement's.
+expression_segment_row(Text, SentenceSpans, Refusals, Form, RuleStrings,
+                       Row, []) :-
+    expression_segment_shaped(Text),
+    expression_segment_reading(Text, SentenceSpans, Class, Ast, SegmentFacts),
+    !,
+    maplist(term_text, SegmentFacts, FactStrings),
+    term_text(Ast, AstString),
+    findall(_{fact_index:Index,fact:FactText,spans:SentenceSpans},
+            ( nth0(Index, SegmentFacts, Fact),
+              term_text(Fact, FactText)
+            ),
+            FactProvenance),
+    Row = _{parsed:true, reader:printed_expression_segment,
+            reader_class:Class, expression_ast:AstString,
+            sentence_form:Form, facts:FactStrings, fact_spans:[],
+            source_spans:SentenceSpans, fact_provenance:FactProvenance,
+            rewrite_rules:RuleStrings, refusals:Refusals}.
+expression_segment_row(Text, SentenceSpans, Refusals0, Form, RuleStrings,
+                       Row, []) :-
+    expression_segment_shaped(Text), !,
+    expression_segment_refusal(Text, SentenceSpans, Reason),
+    term_text(Reason, ReasonString),
+    put_dict(_{expression_route:_{reason:ReasonString}}, Refusals0, Refusals),
     Row = _{parsed:false, reader:both_refused, sentence_form:Form,
             facts:[], fact_spans:[], rewrite_rules:RuleStrings,
-            refusals:_{incumbent:IncumbentRefusal,
-                ape:_{token:Token,start:Start,end:End,text:Surface,
-                      reason:ReasonString}}}.
+            refusals:Refusals}.
+expression_segment_row(_Text, _SentenceSpans, Refusals, Form, RuleStrings,
+                       _{parsed:false, reader:both_refused, sentence_form:Form,
+                         facts:[], fact_spans:[], rewrite_rules:RuleStrings,
+                         refusals:Refusals}, []).
+
+%! expression_segment_shaped(+Text) is semidet.
+%
+%  The sentence carries at least one digit and nothing outside the
+%  printed-expression grammar's surface alphabet.  Prose keeps its existing
+%  refusal receipt untouched; only surfaces the grammar could in principle
+%  read gain an expression_route entry.
+expression_segment_shaped(Text) :-
+    string_codes(Text, Codes),
+    include(digit_code, Codes, [_|_]),
+    forall(member(Code, Codes), expression_surface_code(Code)).
+
+digit_code(Code) :- code_type(Code, digit).
+
+expression_surface_code(Code) :- code_type(Code, digit), !.
+expression_surface_code(Code) :- code_type(Code, space), !.
+expression_surface_code(0'+).
+expression_surface_code(0'-).
+expression_surface_code(0'×).
+expression_surface_code(0'x).
+expression_surface_code(0'X).
+expression_surface_code(0'*).
+expression_surface_code(0'÷).
+expression_surface_code(0'/).
+expression_surface_code(0'=).
+expression_surface_code(0'?).
+expression_surface_code(0'_).
+expression_surface_code(0'().
+expression_surface_code(0')).
+expression_surface_code(0',).
+expression_surface_code(0'.).
+expression_surface_code(0x2022).
+expression_surface_code(0x25e6).
+
+expression_segment_reading(Text, SentenceSpans, Class, Ast, Facts) :-
+    SentenceSpans = [_|_],
+    printed_expression_reader_pilot:printed_expression_ast(Text, Ast),
+    printed_expression_reader_pilot:hole_count(Ast, Holes),
+    expression_segment_compile(Ast, Holes, SentenceSpans, Class, Facts).
+
+% The compile steps below are the pilot's own: one authority describes
+% expression structure, and this router only decides which shapes the
+% sentence lane may carry.  The pilot file itself is unchanged.
+expression_segment_compile(Ast, no_holes, SentenceSpans,
+                           segment_expression, Facts) :-
+    Ast \= equation(_, _),
+    printed_expression_reader_pilot:provenance_term(SentenceSpans, Span),
+    printed_expression_reader_pilot:compile_tree(Ast, expr_1_value, Span,
+                                                 Facts).
+expression_segment_compile(equation(Left, Right), one_hole, SentenceSpans,
+                           segment_equation_one_hole, Facts) :-
+    printed_expression_reader_pilot:provenance_term(SentenceSpans, Span),
+    printed_expression_reader_pilot:compile_missing_equation(
+        Left, Right, Span, Facts, _Target).
+
+expression_segment_refusal(_Text, [], no_sentence_byte_anchor) :- !.
+expression_segment_refusal(Text, _SentenceSpans, Reason) :-
+    ( printed_expression_reader_pilot:printed_expression_ast(Text, Ast)
+    -> printed_expression_reader_pilot:hole_count(Ast, Holes),
+       expression_segment_shape_refusal(Ast, Holes, Reason)
+    ;  Reason = unsupported_expression_syntax
+    ).
+
+expression_segment_shape_refusal(equation(_, _), no_holes,
+                                 equation_without_hole_is_a_truth_claim) :- !.
+expression_segment_shape_refusal(equation(_, _), one_hole,
+                                 hole_position_not_compilable) :- !.
+expression_segment_shape_refusal(_Ast, multiple_holes,
+                                 multiple_holes_underdetermined) :- !.
+expression_segment_shape_refusal(_Ast, one_hole,
+                                 hole_outside_equation_underdetermined) :- !.
+expression_segment_shape_refusal(_Ast, _Holes,
+                                 expression_route_not_compilable).
+
+%! check_expression_routing is det.
+%
+%  Receipts for the routing policy, in both directions.  Run from the
+%  repository root:
+%  `swipl -q -l scripts/language/pusu_harness_runner.pl -g pusu_harness_runner:check_expression_routing -t halt`
+check_expression_routing :-
+    Span = _{path:"guide.md", line_start:4, line_end:4,
+             byte_start:20, byte_end:29, sha256:"abc"},
+    % A bare left-hand side yields operands, a relation with an unknown
+    % result, and the blank's demand -- and no equality fact, no value.
+    expression_segment_reading("15 - 10 =", [Span],
+                               segment_equation_one_hole, _, FactsA),
+    memberchk(quantity(expr_1_missing, unknown, number), FactsA),
+    memberchk(relation(expr_1_missing, difference(_, _), _), FactsA),
+    memberchk(asks(result, expr_1_missing), FactsA),
+    \+ ( member(quantity(expr_1_missing, Value, _), FactsA), number(Value) ),
+    % The bare right-hand side mirrors it.
+    expression_segment_reading("= 13 - 3", [Span],
+                               segment_equation_one_hole, _, FactsB),
+    memberchk(asks(result, expr_1_missing), FactsB),
+    % The other direction: a complete equation is a truth claim and the
+    % sentence lane refuses it.
+    \+ expression_segment_reading("15 - 10 = 5", [Span], _, _, _),
+    expression_segment_refusal("15 - 10 = 5", [Span],
+                               equation_without_hole_is_a_truth_claim),
+    % A hole-free expression emits structure and asks nothing.
+    expression_segment_reading("7 + 1", [Span], segment_expression, _, FactsC),
+    memberchk(relation(expr_1_value, sum([_, _]), _), FactsC),
+    \+ memberchk(asks(_, _), FactsC),
+    % No verified byte anchor, no route.
+    expression_segment_refusal("7 + 1", [], no_sentence_byte_anchor),
+    % Terminal punctuation and item markers stay outside the grammar.
+    expression_segment_refusal("7 + 12.", [Span],
+                               unsupported_expression_syntax),
+    expression_segment_refusal("2.", [Span], unsupported_expression_syntax),
+    % Prose never gains an expression_route entry.
+    \+ expression_segment_shaped("Lin has 7 cubes."),
+    % The routed row itself: parsed, named route, facts present, and a
+    % program contribution of exactly [].
+    arbitration_result("15 - 10 =", declarative, [Span], RowA, ProgramA),
+    ProgramA == [],
+    get_dict(reader, RowA, printed_expression_segment),
+    get_dict(facts, RowA, [_|_]),
+    get_dict(source_spans, RowA, [Span]),
+    % A refused route names its reason beside the prose refusals.
+    arbitration_result("15 - 10 = 5", declarative, [Span], RowB, ProgramB),
+    ProgramB == [],
+    get_dict(refusals, RowB, RefusalsB),
+    get_dict(expression_route, RefusalsB, RouteB),
+    get_dict(reason, RouteB, "equation_without_hole_is_a_truth_claim"),
+    format('check_expression_routing: ok receipts=13 evaluation=none~n').
 
 incumbent_entry_token(Text, TokenString) :-
     string_lower(Text, Lower),

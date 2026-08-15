@@ -17,6 +17,7 @@ import subprocess
 import sys
 from collections import Counter, defaultdict
 from fractions import Fraction
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -46,8 +47,8 @@ G8_TRUTH = REPO / "curriculum/im/generated/wave5_g8_row_machine_map.jsonl"
 SURFACE_NORMALIZER = REPO / "scripts/language/surface_normalizer.py"
 DEFAULT_OUTPUT = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 DEFAULT_SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
-SCHEMA = "pusu_harness_v5"
-EXPECTED_ELIGIBLE = 2129
+SCHEMA = "pusu_harness_v6"
+EXPECTED_ELIGIBLE = 4712
 
 PLAIN_NUMBER = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$")
 RATIONAL_NUMBER = re.compile(r"^([+-]?\d+)r(\d+)$")
@@ -332,13 +333,18 @@ class PrologRunner:
         )
 
     def run(
-        self, sentence_texts: list[str], source_row: dict[str, Any]
+        self,
+        sentence_texts: list[str],
+        source_row: dict[str, Any],
+        sentence_spans: list[list[dict[str, Any]]] | None = None,
     ) -> dict[str, Any]:
         if self.process.stdin is None or self.process.stdout is None:
             raise RuntimeError("PUSU Prolog worker has no pipes")
         request = json.dumps(
             {
                 "sentences": sentence_texts,
+                "sentence_spans": sentence_spans
+                or [[] for _ in sentence_texts],
                 "source_statement": source_row["source_statement"],
                 "complete_statement": source_row["complete_statement"],
                 "referents": source_row["referents"],
@@ -364,6 +370,149 @@ class PrologRunner:
         if self.process.returncode:
             detail = self.process.stderr.read() if self.process.stderr else ""
             raise RuntimeError(f"PUSU Prolog worker failed: {detail.strip()}")
+
+
+@lru_cache(maxsize=None)
+def source_file_bytes(relative_path: str) -> bytes:
+    return (REPO / relative_path).read_bytes()
+
+
+def statement_char_anchors(
+    source_row: dict[str, Any],
+) -> tuple[list[dict[str, Any]], list[tuple[int, int, int] | None]] | None:
+    """Anchor each character of ``complete_statement`` to its file bytes.
+
+    The defrag store records the ordered statement segments and the joiner
+    that composed the complete statement.  This rebuilds the statement from
+    the named bytes and returns one anchor per character: the segment index
+    and the byte range that character was decoded from, or ``None`` for a
+    synthetic joiner character.  It returns ``None`` for the whole row unless
+    the rebuilt text equals ``complete_statement`` exactly and every segment
+    hash matches its file slice -- that equality is the gate that keeps every
+    anchor a fact about real bytes.  Rows whose segments need a non-utf8
+    decoder fail the equality and stay unanchored.
+    """
+    spans = source_row.get("statement_spans") or []
+    joiner = str(source_row.get("statement_joiner") or " ")
+    complete = str(source_row["complete_statement"])
+    if not spans:
+        return None
+    anchors: list[tuple[int, int, int] | None] = []
+    pieces: list[str] = []
+    for index, span in enumerate(spans):
+        byte_start = int(span["byte_start"])
+        raw = source_file_bytes(str(span["path"]))[byte_start:int(span["byte_end"])]
+        if hashlib.sha256(raw).hexdigest() != str(span.get("sha256", "")):
+            return None
+        try:
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            return None
+        if index:
+            anchors.extend([None] * len(joiner))
+        byte_cursor = byte_start
+        for char in text:
+            width = len(char.encode("utf-8"))
+            anchors.append((index, byte_cursor, byte_cursor + width))
+            byte_cursor += width
+        pieces.append(text)
+    if joiner.join(pieces) != complete:
+        return None
+    return spans, anchors
+
+
+def source_char_indices(
+    offset_rows: list[dict[str, Any]], start: int, end: int
+) -> list[int]:
+    """Character indices of ``complete_statement`` behind a normalized range."""
+    indices: set[int] = set()
+    for row in offset_rows:
+        normalized_start = int(row["normalized_start"])
+        normalized_end = int(row["normalized_end"])
+        low = max(start, normalized_start)
+        high = min(end, normalized_end)
+        if low >= high:
+            continue
+        if row["mode"] == "copy":
+            base = int(row["source_start"])
+            indices.update(
+                range(base + (low - normalized_start), base + (high - normalized_start))
+            )
+        else:
+            indices.update(range(int(row["source_start"]), int(row["source_end"])))
+    return sorted(indices)
+
+
+def byte_runs(
+    spans: list[dict[str, Any]],
+    anchors: list[tuple[int, int, int] | None],
+    char_indices: list[int],
+) -> list[dict[str, Any]]:
+    """Contiguous file byte ranges behind the given statement characters."""
+    runs: list[list[int]] = []
+    for char_index in char_indices:
+        if char_index >= len(anchors):
+            continue
+        anchor = anchors[char_index]
+        if anchor is None:
+            continue
+        span_index, byte_start, byte_end = anchor
+        if runs and runs[-1][0] == span_index and runs[-1][2] == byte_start:
+            runs[-1][2] = byte_end
+        else:
+            runs.append([span_index, byte_start, byte_end])
+    out: list[dict[str, Any]] = []
+    for span_index, byte_start, byte_end in runs:
+        if byte_start >= byte_end:
+            continue
+        span = spans[span_index]
+        data = source_file_bytes(str(span["path"]))
+        segment_start = int(span["byte_start"])
+        line_start = int(span["line_start"]) + data.count(
+            b"\n", segment_start, byte_start
+        )
+        line_end = int(span["line_start"]) + data.count(
+            b"\n", segment_start, byte_end - 1
+        )
+        out.append(
+            {
+                "path": str(span["path"]),
+                "line_start": line_start,
+                "line_end": line_end,
+                "byte_start": byte_start,
+                "byte_end": byte_end,
+                "sha256": hashlib.sha256(data[byte_start:byte_end]).hexdigest(),
+            }
+        )
+    return out
+
+
+def sentence_source_spans(
+    sentence_texts: list[str],
+    normalization: dict[str, Any],
+    source_row: dict[str, Any],
+) -> list[list[dict[str, Any]]]:
+    """Name the source bytes each sentence was decoded from, or [] for one
+    whose bytes cannot be named.  The expression route refuses an unanchored
+    sentence, so a missing anchor is a counted refusal, never a guess."""
+    anchored = statement_char_anchors(source_row)
+    if anchored is None:
+        return [[] for _ in sentence_texts]
+    spans, anchors = anchored
+    normalized = str(normalization["text"])
+    offset_rows = normalization["offset_map"]
+    results: list[list[dict[str, Any]]] = []
+    cursor = 0
+    for text in sentence_texts:
+        start = normalized.find(text, cursor)
+        if start < 0:
+            results.append([])
+            continue
+        end = start + len(text)
+        cursor = end
+        char_indices = source_char_indices(offset_rows, start, end)
+        results.append(byte_runs(spans, anchors, char_indices))
+    return results
 
 
 def load_existing(path: Path) -> list[dict[str, Any]]:
@@ -530,6 +679,36 @@ def metric_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
     ]
     agreements = sum(row["ground_truth_verdict"] == "agree" for row in comparisons)
     disagreements = len(comparisons) - agreements
+    admitted = [
+        row for row in rows if row.get("task") == "rule_absent-absent(operation)"
+    ]
+    admitted_completed = [
+        row
+        for row in admitted
+        if row["completion_status"] in {"completed_full", "completed_from_partial"}
+    ]
+    admitted_unverified_answers = [
+        row
+        for row in admitted_completed
+        if row["ground_truth_verdict"] == "no_ground_truth"
+    ]
+    # The expression route reads segments both prose readers refused, so a
+    # routed sentence was factless before routing existed.  A read-in-full
+    # statement carrying one owes that standing to the route; the count sits
+    # beside the total so the routed contribution stays separable.
+    routed_sentences = sum(
+        sentence.get("reader") == "printed_expression_segment"
+        for sentence in sentences_all
+    )
+    read_in_full_with_routed = sum(
+        bool(row["sentences"])
+        and all(has_facts(sentence) for sentence in row["sentences"])
+        and any(
+            sentence.get("reader") == "printed_expression_segment"
+            for sentence in row["sentences"]
+        )
+        for row in rows
+    )
     return {
         "statements": count,
         "fully_parsed": ratio(fully, count),
@@ -546,6 +725,17 @@ def metric_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "agreeing": ratio(agreements, len(comparisons)),
         "disagreeing": ratio(disagreements, len(comparisons)),
         "comparison_coverage": ratio(len(comparisons), completed),
+        "admitted_statements": len(admitted),
+        "admitted_completed": ratio(len(admitted_completed), len(admitted)),
+        "admitted_answered_without_verified_comparison": ratio(
+            len(admitted_unverified_answers), len(admitted_completed)
+        ),
+        "sentences_expression_routed": ratio(
+            routed_sentences, len(sentences_all)
+        ),
+        "read_in_full_with_routed_sentence": ratio(
+            read_in_full_with_routed, count
+        ),
     }
 
 
@@ -683,7 +873,10 @@ def main() -> int:
                         str(source_row["complete_statement"]), profile="im"
                     )
                     sentence_texts = sentences(str(normalization["text"]))
-                    reply = runner.run(sentence_texts, source_row)
+                    sentence_spans = sentence_source_spans(
+                        sentence_texts, normalization, source_row
+                    )
+                    reply = runner.run(sentence_texts, source_row, sentence_spans)
                     row = output_row(
                         corpus_index, source_row, reply, normalization,
                         sentence_texts, truth_by_id, hashes

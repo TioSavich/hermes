@@ -1062,8 +1062,17 @@ def build() -> dict[str, object]:
     # its byte-anchoring pass, the rewrite consultation and its Prolog gate,
     # and the two anchored curriculum stores they produce. All quarantined;
     # the reader emits relations and never evaluates one.
-    if len(registry_rows) != 361:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 361")
+    # 362 from 2026-08-14 night, and this one is a repair rather than a bump.
+    # The comment above claims the printed-expression reader entered at 361. It
+    # did not. Commit 3a3311cc tracks
+    # knowledge/strategies/abstraction/printed_expression_reader_pilot.pl and
+    # ships a registry that does not name it, because that ceremony generated
+    # the registry before the reader landed and pinned the count it saw. The
+    # extractor is unchanged here; regenerating against the tree as it actually
+    # stands finds the module and files it as the orphan it is. The registry now
+    # describes the tree it ships with.
+    if len(registry_rows) != 362:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 362")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1147,8 +1156,12 @@ def build() -> dict[str, object]:
     # Red structure and consultation lanes are orphans in the same quarantine
     # sense. The harness, the router and the slurm jobs run them; nothing
     # loads them into the worker.
-    if len(orphan_records) != 135:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 135")
+    # 136 from 2026-08-14 night: the same repair as the registry pin above. The
+    # printed-expression reader is the 136th orphan because it is the row the
+    # evening ceremony described but did not ship. Nothing imports it; the
+    # harness runs it. Quarantine is unchanged.
+    if len(orphan_records) != 136:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 136")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.

@@ -342,6 +342,7 @@ capability('knowledge/strategies/abstraction/lexicon_supplement_pilot.pl', 'lexi
 capability('knowledge/strategies/abstraction/math_lexicon_pilot.pl', 'math_lexicon_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/metaphor_seam_registry.pl', 'metaphor_seam_registry', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/pedagogy_force_pilot.pl', 'pedagogy_force_pilot', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/printed_expression_reader_pilot.pl', 'printed_expression_reader_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/question_move_pilot.pl', 'question_move_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/standards_router_pilot.pl', 'standards_router_pilot', 'synthesis', [], orphan_module).

@@ -22,7 +22,7 @@ GENERATOR = ROOT / "scripts/curriculum/build_im_defragged_task_instances.py"
 FIXTURES = ROOT / "scripts/checks/fixtures/im_defrag_source_spans.json"
 EXPECTED_STATUS = Counter(
     {
-        "already_complete": 834,
+        "already_complete": 3417,
         "recovered": 1295,
         "recovered_with_referent": 3,
         "blocked_missing_visual": 142,
@@ -31,7 +31,7 @@ EXPECTED_STATUS = Counter(
 )
 EXPECTED_BLOCKERS = Counter(
     {
-        "none": 2132,
+        "none": 4715,
         "required_visual_asset_unresolved": 23,
         "pdf_source_absent_no_unique_markdown_join": 242,
         "joined_source_span_not_complete": 60,
@@ -45,8 +45,8 @@ EXPECTED_BLOCKERS = Counter(
 )
 EXPECTED_REPAIR_CLASSES = Counter(
     {
-        "complete_source": 2296,
-        "source_fragmentary": 94,
+        "complete_source": 4761,
+        "source_fragmentary": 212,
         "span_ends_early": 198,
         "span_starts_mid_sentence": 71,
     }
@@ -215,13 +215,13 @@ def check_provenance(rows: list[dict]) -> None:
 
 def check_identity(rows: list[dict]) -> None:
     facts = scan_compiled_facts()
-    if len(facts) != 2659 or len(rows) != 2659:
-        fail(f"one-to-one row count drift: compiled={len(facts)}, defrag={len(rows)}")
+    if len(facts) != 2659 or len(rows) != 5242:
+        fail(f"row count drift: compiled={len(facts)}, defrag={len(rows)}")
     ids = [row["record_id"] for row in rows]
     if len(ids) != len(set(ids)):
         fail("defrag record IDs are not unique")
     occurrences: Counter[str] = Counter()
-    for row, fact in zip(rows, facts):
+    for row, fact in zip(rows[: len(facts)], facts):
         evidence_sha = hashlib.sha256(fact).hexdigest()
         if evidence_sha != row["evidence_sha256"]:
             fail(f"compiled evidence hash mismatch for {row['record_id']}")
@@ -233,6 +233,16 @@ def check_identity(rows: list[dict]) -> None:
         expected = f"im_defrag_{digest}_{occurrences[digest]}"
         if row["record_id"] != expected:
             fail(f"unstable record ID: expected {expected}, got {row['record_id']}")
+    admitted = rows[len(facts) :]
+    if len(admitted) != 2583:
+        fail(f"admission row count drift: {len(admitted)}")
+    if any(
+        row["task_term"] != "rule_absent-absent(operation)"
+        or "rule(absent)" not in row["evidence_term"]
+        or "admission(unclaimed_student_task_statement)" not in row["evidence_term"]
+        for row in admitted
+    ):
+        fail("an admission row does not record absent rule and operation")
 
 
 def check_census(rows: list[dict]) -> None:
@@ -253,9 +263,9 @@ def check_census(rows: list[dict]) -> None:
             in {"already_complete", "recovered", "recovered_with_referent"}
             for row in rows
         )
-        != 2132
+        != 4715
     ):
-        fail("eligible record count is not 2,132")
+        fail("eligible record count is not 4,715")
     widened = [
         row
         for row in rows
@@ -397,7 +407,8 @@ def main() -> None:
     check_sentence_boundary_repair(rows)
     check_double_generation()
     print(
-        "PASS im defrag: 2,659 rows; 2,132 usable; 22 widened receipts; "
+        "PASS im defrag: 5,242 rows; 4,715 usable; 2,583 unclaimed admissions; "
+        "22 widened receipts; "
         "385 layout blocks; 142 visual blocks; 20 spans; byte provenance and "
         "double generation"
     )

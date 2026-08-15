@@ -18,8 +18,9 @@ OUTPUT = REPO_ROOT / "curriculum" / "im" / "generated" / "wave5_row_machine_map.
 REPORT = REPO_ROOT / "curriculum" / "im" / "generated" / "wave5_row_machine_map_report.json"
 RUNNER = SCRIPT_DIR / "wave5_trace_runner.pl"
 USABLE = {"already_complete", "recovered", "recovered_with_referent"}
-POOL_TOTAL = 2659
-USABLE_TOTAL = 2132
+POOL_TOTAL = 5242
+USABLE_TOTAL = 4715
+VERIFIED_INPUT_TOTAL = 2132
 LEGACY_TOTAL = 1811
 EXPECTED_LEGACY = Counter(correct=1782, magnitude_refused=28, execution_limit=1)
 ORIGINAL_MAGNITUDE_OPERATIONS = {
@@ -230,10 +231,20 @@ def build() -> tuple[bytes, bytes, dict[str, Any]]:
             f"BLOCK pool freeze mismatch: total={len(rows)} usable={len(usable)}; "
             f"expected {POOL_TOTAL}/{USABLE_TOTAL}"
         )
+    verified_inputs = [
+        row
+        for row in usable
+        if row["operation"] != "rule_absent-absent(operation)"
+    ]
+    if len(verified_inputs) != VERIFIED_INPUT_TOTAL:
+        raise RuntimeError(
+            "BLOCK verified-input corpus drift: "
+            f"expected {VERIFIED_INPUT_TOTAL}, found {len(verified_inputs)}"
+        )
     mapped_rows: list[dict[str, Any]] = []
     runner = TraceRunner()
     try:
-        for row in usable:
+        for row in verified_inputs:
             route = mapping(row["operation"])
             record = {**row, **route, "grade": row["lesson"].split("-", 2)[1][1:]}
             if route["machine"]:
@@ -310,6 +321,8 @@ def build() -> tuple[bytes, bytes, dict[str, Any]]:
         "pool_total": len(rows),
         "status_counts": dict(sorted(statuses.items())),
         "usable_total": len(usable),
+        "unverified_admission_total": len(usable) - len(verified_inputs),
+        "verified_input_total": len(verified_inputs),
         "legacy_falsifier": {
             "rows": len(legacy), "correct": legacy_outcomes["correct"],
             "magnitude_refused": legacy_outcomes["magnitude_refused"],

@@ -14,6 +14,7 @@ import re
 import subprocess
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import Match
 
 from build_math_lexicon import (
     DATASET,
@@ -35,6 +36,7 @@ APE_READER = REPO / "knowledge/strategies/abstraction/ape_reader_pilot.pl"
 APE_LEXICON = REPO / "hermes/app/runtime/experiments/language/ape_user_lexicon.pl"
 DATASET_ITEMS = [0, 22, 246, 1250, 1224]
 IM_ITEMS = [56, 510, 985, 1795, 2562]
+ITEM_MARKER = re.compile(r"(?<!\S)(?P<label>\d{1,2}|[a-z])\.(?=\s)")
 
 
 def file_sha(path: Path) -> str:
@@ -68,24 +70,106 @@ def known_surfaces() -> tuple[set[str], set[str], set[str]]:
     return webster, supplement_known, math_known
 
 
+def _marker_value(label: str) -> tuple[str, int]:
+    if label.isdigit():
+        return "numeric", int(label)
+    return "alphabetic", ord(label)
+
+
+def _expression_run_fragment(text: str) -> bool:
+    return (
+        bool(re.search(r"\d", text))
+        and bool(re.search(r"[+\-=×÷*/]", text))
+        and not bool(re.search(r"[A-Za-z]", text))
+    )
+
+
+def _item_segments(text: str) -> list[str]:
+    """Split before item markers and remove the marker from reader input.
+
+    Ascending markers embedded in arithmetic runs carry the only boundary in
+    the flattened corpus. Markers that terminal punctuation already isolates
+    are left to the ordinary splitter, preserving prose-list context.
+    """
+    candidates = list(ITEM_MARKER.finditer(text))
+    selected_indexes: set[int] = set()
+    by_kind: dict[str, list[tuple[int, Match[str], int]]] = defaultdict(list)
+    for index, candidate in enumerate(candidates):
+        kind, value = _marker_value(candidate.group("label"))
+        by_kind[kind].append((index, candidate, value))
+    for same_kind in by_kind.values():
+        for (left_index, left, left_value), (
+            right_index,
+            right,
+            right_value,
+        ) in zip(same_kind, same_kind[1:]):
+            fragment = ITEM_MARKER.sub(" ", text[left.end():right.start()])
+            if right_value == left_value + 1 and _expression_run_fragment(fragment):
+                selected_indexes.update((left_index, right_index))
+
+    selected = [
+        candidate for index, candidate in enumerate(candidates) if index in selected_indexes
+    ]
+
+    if not selected:
+        return [text]
+    segments: list[str] = []
+    cursor = 0
+    for marker in selected:
+        prefix = text[cursor:marker.start()].strip()
+        if prefix:
+            segments.append(prefix)
+        cursor = marker.end()
+    suffix = text[cursor:].strip()
+    if suffix:
+        segments.append(suffix)
+    return segments
+
+
 def sentences(text: str) -> list[str]:
-    """Split at line ends and terminal punctuation, retaining punctuation."""
+    """Split item lists, line ends, and terminal punctuation."""
     result: list[str] = []
-    current: list[str] = []
-    for index, character in enumerate(text):
-        current.append(character)
-        prior_digit = index > 0 and text[index - 1].isdigit()
-        next_digit = index + 1 < len(text) and text[index + 1].isdigit()
-        terminal = character in "!?" or (character == "." and not (prior_digit and next_digit))
-        if character == "\n" or terminal:
-            sentence = "".join(current).strip()
-            if sentence:
-                result.append(sentence)
-            current = []
-    sentence = "".join(current).strip()
-    if sentence:
-        result.append(sentence)
+    for item in _item_segments(text):
+        current: list[str] = []
+        for index, character in enumerate(item):
+            current.append(character)
+            prior_digit = index > 0 and item[index - 1].isdigit()
+            next_digit = index + 1 < len(item) and item[index + 1].isdigit()
+            terminal = character in "!?" or (
+                character == "." and not (prior_digit and next_digit)
+            )
+            if character == "\n" or terminal:
+                sentence = "".join(current).strip()
+                if sentence:
+                    result.append(sentence)
+                current = []
+        sentence = "".join(current).strip()
+        if sentence:
+            result.append(sentence)
     return result
+
+
+def check_sentence_segmentation() -> None:
+    assert sentences("1. 15 - 10 = 2. = 13 - 3") == [
+        "15 - 10 =",
+        "= 13 - 3",
+    ]
+    assert sentences("1. 7 + 1 2. 9 - 2") == ["7 + 1", "9 - 2"]
+    assert sentences("a. 4 + 5 b. 6 + 7") == ["4 + 5", "6 + 7"]
+    assert sentences("There are 3. Students solve the next task.") == [
+        "There are 3.",
+        "Students solve the next task.",
+    ]
+    assert sentences("The measured value is 12. Next, compare it.") == [
+        "The measured value is 12.",
+        "Next, compare it.",
+    ]
+    assert sentences("1. There are 2. Students solve the next task.") == [
+        "1.",
+        "There are 2.",
+        "Students solve the next task.",
+    ]
+    print("sentence_segmentation: marker receipts passed")
 
 
 def parse_flags(all_sentences: list[str]) -> list[bool]:
@@ -191,11 +275,15 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--second-reader", choices=["ape"])
+    parser.add_argument("--check", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    if args.check:
+        check_sentence_segmentation()
+        return 0
     webster, supplement, math_lexicon = known_surfaces()
     records = selected_texts()
     token_rows = swipl_tokens([str(record["text"]) for record in records])

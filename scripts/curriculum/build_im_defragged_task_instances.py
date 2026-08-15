@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build source-sliced IM task records without changing the compiled inputs."""
+"""Build source-sliced IM task records and admit unclaimed guide statements."""
 
 from __future__ import annotations
 
@@ -33,6 +33,8 @@ OUTPUT = ROOT / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 sys.path.insert(0, str(ROOT / "scripts/curriculum"))
 import compile_action_mappings as compiler  # noqa: E402
 import vision_statement_contract  # noqa: E402
+sys.path.insert(0, str(ROOT / "scripts/research"))
+import extract_lesson_context as lesson_context  # noqa: E402
 
 
 EXPECTED_OUTCOMES = Counter(
@@ -206,9 +208,6 @@ def task_core(task: str) -> str:
 
 
 def failed_task_ranges() -> dict[str, list[tuple[int, int]]]:
-    sys.path.insert(0, str(ROOT / "scripts/research"))
-    import extract_lesson_context as context  # noqa: E402
-
     out: dict[str, list[tuple[int, int]]] = defaultdict(list)
     for path in sorted(
         (ROOT / "curriculum/im_teacher_guides").glob("*/unit*/lesson[0-9]*.md")
@@ -216,8 +215,8 @@ def failed_task_ranges() -> dict[str, list[tuple[int, int]]]:
         if not re.fullmatch(r"lesson\d+", path.stem):
             continue
         text = path.read_text(encoding="utf-8")
-        anchor = context.ANCHOR_RE.search(text)
-        raw = context.raw_extract(text)
+        anchor = lesson_context.ANCHOR_RE.search(text)
+        raw = lesson_context.raw_extract(text)
         if not anchor or raw is None:
             continue
         code = anchor.group(1)
@@ -225,17 +224,244 @@ def failed_task_ranges() -> dict[str, list[tuple[int, int]]]:
         current = "Lesson"
         index = 0
         while index < len(lines):
-            major = context.section_heading(lines[index])
+            major = lesson_context.section_heading(lines[index])
             if major:
                 current = major
             if "Student Task Statement" in lines[index]:
-                item, nxt = context.task_statement(lines, index, current)
+                item, nxt = lesson_context.task_statement(lines, index, current)
                 if item is None:
                     out[code].append((index + 1 + offset, max(nxt, index + 1) + offset))
                 index = nxt
                 continue
             index += 1
     return out
+
+
+@dataclass(frozen=True)
+class AdmissionRefusal:
+    lesson: str
+    source: str
+    position: str
+    reason: str
+
+
+def _raw_extract_physical_lines(path: Path) -> tuple[list[str], int] | None:
+    """Return the fenced guide text with physical, rather than splitlines, offsets."""
+    text = path.read_text(encoding="utf-8")
+    marker = "## Full Teacher Guide (raw extract)"
+    marker_at = text.find(marker)
+    if marker_at < 0:
+        return None
+    fence_at = text.find("```", marker_at + len(marker))
+    if fence_at < 0:
+        return None
+    body_at = text.find("\n", fence_at)
+    fence_end = text.find("\n```", body_at)
+    if body_at < 0 or fence_end < 0:
+        return None
+    body_start_line = text.count("\n", 0, body_at + 1) + 1
+    return text[body_at + 1 : fence_end].split("\n"), body_start_line
+
+
+def _admission_statement(
+    lines: list[str], start: int, body_start_line: int
+) -> tuple[compiler.StudentTaskSpan | None, int, str | None]:
+    """Extract one left-column statement and retain its physical source lines."""
+    marker = lines[start]
+    task_column = marker.find("Student Task Statement")
+    launch_column = marker.find(
+        "Launch", task_column + len("Student Task Statement")
+    )
+    boundary = (
+        max(task_column + len("Student Task Statement"), launch_column - 3)
+        if launch_column > task_column
+        else None
+    )
+    parts: list[str] = []
+    mapped_lines: list[tuple[int, str]] = []
+    index = start + 1
+    while index < len(lines):
+        raw = lines[index]
+        if lesson_context.page_furniture(raw):
+            index += 1
+            continue
+        left = raw[:boundary] if boundary is not None else raw
+        cleaned = left.replace("\f", "").strip()
+        if lesson_context.section_heading(raw) or lesson_context.STOP_RE.match(cleaned):
+            break
+        if (
+            "Student Task Statement" in cleaned
+            or "Activity Synthesis" in cleaned
+        ):
+            break
+        parts.append(left)
+        if cleaned:
+            mapped_lines.append((body_start_line + index, cleaned))
+        index += 1
+
+    text = lesson_context.clean_lines(parts)
+    if lesson_context.LAYOUT_FRAGMENT_RE.search(text):
+        return None, max(index, start + 1), "statement_contains_layout_fragment"
+    if not norm(text) or not mapped_lines:
+        return None, max(index, start + 1), "statement_contains_no_curriculum_text"
+    return (
+        compiler.StudentTaskSpan(
+            "",
+            "",
+            body_start_line + start,
+            mapped_lines[-1][0],
+            "",
+            tuple(mapped_lines),
+            compiler.HAND_TEMPLATED_GUIDE_CORPUS,
+        ),
+        index,
+        None,
+    )
+
+
+def _conservative_statement_positions(path: Path) -> dict[str, bool]:
+    """Reproduce the established lesson-context accept/refuse boundary."""
+    raw = lesson_context.raw_extract(path.read_text(encoding="utf-8"))
+    if raw is None:
+        return {}
+    lines, _offset = raw
+    accepted: dict[str, bool] = {}
+    current = "Lesson"
+    statement_number = 0
+    index = 0
+    while index < len(lines):
+        major = lesson_context.section_heading(lines[index])
+        if major:
+            current = major
+        if "Student Task Statement" in lines[index]:
+            statement_number += 1
+            item, next_index = lesson_context.task_statement(lines, index, current)
+            accepted[f"student_task_statement({statement_number})"] = item is not None
+            index = max(next_index, index + 1)
+            continue
+        index += 1
+    return accepted
+
+
+def admission_spans(
+    existing_rows: list[dict],
+) -> tuple[list[compiler.StudentTaskSpan], list[AdmissionRefusal], Counter[str]]:
+    """Return clean, unclaimed hand-guide statements and named refusals."""
+    claimed = {
+        (row["lesson"], position)
+        for row in existing_rows
+        if (position := root_position(row["position"])) is not None
+    }
+    spans: list[compiler.StudentTaskSpan] = []
+    refusals: list[AdmissionRefusal] = []
+    disposition: Counter[str] = Counter()
+    guide_root = ROOT / "curriculum/im_teacher_guides"
+    paths = sorted(guide_root.glob("*/unit*/lesson[0-9]*.md"))
+    for path in paths:
+        source = path.relative_to(ROOT).as_posix()
+        if re.fullmatch(r"lesson\d+", path.stem) is None:
+            refusals.append(
+                AdmissionRefusal("absent", source, "absent", "noncanonical_lesson_filename")
+            )
+            disposition["refused_guide"] += 1
+            continue
+        source_text = path.read_text(encoding="utf-8")
+        anchor = lesson_context.ANCHOR_RE.search(source_text)
+        if anchor is None:
+            refusals.append(
+                AdmissionRefusal("absent", source, "absent", "missing_lesson_anchor")
+            )
+            disposition["refused_guide"] += 1
+            continue
+        lesson = anchor.group(1)
+        raw = _raw_extract_physical_lines(path)
+        if raw is None:
+            refusals.append(
+                AdmissionRefusal(
+                    lesson, source, "absent", "missing_or_unclosed_raw_extract"
+                )
+            )
+            disposition["refused_guide"] += 1
+            continue
+        lines, body_start_line = raw
+        conservative_positions = _conservative_statement_positions(path)
+        statement_number = 0
+        index = 0
+        while index < len(lines):
+            if "Student Task Statement" not in lines[index]:
+                index += 1
+                continue
+            statement_number += 1
+            position = f"student_task_statement({statement_number})"
+            extracted, next_index, reason = _admission_statement(
+                lines, index, body_start_line
+            )
+            key = (lesson, position)
+            if key in claimed:
+                disposition["claimed_by_rule"] += 1
+            elif extracted is None or not conservative_positions.get(position, False):
+                refusals.append(
+                    AdmissionRefusal(
+                        lesson,
+                        source,
+                        position,
+                        reason or "statement_contains_layout_fragment",
+                    )
+                )
+                disposition["refused_statement"] += 1
+            else:
+                spans.append(
+                    compiler.StudentTaskSpan(
+                        lesson,
+                        source,
+                        extracted.heading_line,
+                        extracted.end_line,
+                        position,
+                        extracted.lines,
+                        extracted.source_corpus,
+                    )
+                )
+                disposition["admitted_without_rule"] += 1
+            index = max(next_index, index + 1)
+    return spans, refusals, disposition
+
+
+def admission_records(
+    existing_rows: list[dict],
+) -> tuple[list[dict], list[dict], list[AdmissionRefusal], Counter[str]]:
+    """Render unclaimed statements as absent-rule, absent-operation inputs."""
+    spans, refusals, disposition = admission_spans(existing_rows)
+    rows = []
+    facts = []
+    for span in spans:
+        statement = norm(span.text)
+        start = span.lines[0][0]
+        end = span.lines[-1][0]
+        evidence = (
+            "task_evidence(rule(absent), "
+            f"source({_atom(span.source)}, lines({start}, {end})), "
+            f"position({span.position}), excerpt({json.dumps(statement, ensure_ascii=True)}), "
+            "admission(unclaimed_student_task_statement))"
+        )
+        rows.append(
+            {
+                "lesson": span.code,
+                "task": "rule_absent-absent(operation)",
+                "rule": "absent",
+                "source_kind": "markdown",
+                "source": span.source,
+                "start": start,
+                "end": end,
+                "position": span.position,
+                "excerpt": statement,
+                "evidence_term": evidence,
+                "upstream_status": "complete",
+                "upstream_blocker": "none",
+                "admission_span": span,
+            }
+        )
+        facts.append({"text": evidence, "path": ROOT / span.source})
+    return rows, facts, refusals, disposition
 
 
 def choose_span(
@@ -354,7 +580,9 @@ def classify(rows: list[dict]) -> list[dict]:
     direct = []
     peer_candidates: dict[tuple[str, str], list] = defaultdict(list)
     for row in rows:
-        span = choose_span(row, spans_by_key, recovered_by_key, by_lesson)
+        span = row.get("admission_span") or choose_span(
+            row, spans_by_key, recovered_by_key, by_lesson
+        )
         direct.append(span)
         if span is not None:
             key = (row["lesson"], task_core(row["task"]))
@@ -1334,10 +1562,15 @@ def render(results: list[dict], facts: list[dict]) -> str:
 
 
 def build() -> str:
-    rows = records()
+    existing_rows = records()
     facts = scan_compiled_facts()
-    if len(rows) != len(facts):
+    if len(existing_rows) != len(facts):
         fail("Prolog input rows do not align with compiled fact blocks")
+    admitted_rows, admitted_facts, _refusals, _disposition = admission_records(
+        existing_rows
+    )
+    rows = existing_rows + admitted_rows
+    facts += admitted_facts
     return render(classify(rows), facts)
 
 

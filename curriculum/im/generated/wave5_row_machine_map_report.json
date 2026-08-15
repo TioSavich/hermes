@@ -392,14 +392,16 @@
     "rows": 1811
   },
   "pool": "curriculum/im/generated/compiled_defragged_task_instances.pl",
-  "pool_sha256": "075d90684c8c5bfc5059ee0955e3458c13447e8fe615eef76ba9828c4555b111",
-  "pool_total": 2659,
+  "pool_sha256": "19fe3733174d2972cf6484e72655d52a5e41b2a90325f939ffb3e1c2cc5bf50a",
+  "pool_total": 5242,
   "status_counts": {
-    "already_complete": 834,
+    "already_complete": 3417,
     "blocked_layout": 385,
     "blocked_missing_visual": 142,
     "recovered": 1295,
     "recovered_with_referent": 3
   },
-  "usable_total": 2132
+  "unverified_admission_total": 2583,
+  "usable_total": 4715,
+  "verified_input_total": 2132
 }

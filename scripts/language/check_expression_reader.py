@@ -24,8 +24,8 @@ ROUTER_RUNNER = ROOT / "scripts/language/standards_router_runner.pl"
 SATURATOR = ROOT / "scripts/sidekick/diagnosis_saturate.pl"
 OUTPUT = ROOT / "hermes/app/runtime/experiments/language/expression_reader.json"
 SCHEMA = "printed_expression_reader_v1"
-EXPECTED_ROWS = 2659
-EXPECTED_EXPRESSION_ROWS = 1218
+EXPECTED_ROWS = 5242
+EXPECTED_EXPRESSION_ROWS = 1222
 ROUTED_SAMPLE_SIZE = 160
 
 EXPRESSION_SURFACE = re.compile(r"^[0-9+*/=.,()xX×÷\s-]+$")
@@ -50,15 +50,16 @@ def load_rows() -> list[dict[str, Any]]:
     goal = (
         "use_module(library(http/json)),"
         f"load_files({prolog_atom(SOURCE)},[silent(true)]),"
-        "findall(_{id:IdString,lesson:LessonString,status:StatusString,"
+        "findall(_{id:IdString,lesson:LessonString,task:TaskString,status:StatusString,"
         "source_statement:Source,complete_statement:Complete,referents:Referents,"
         "source_statement_spans:SourceSpans},"
-        "(compiled_defragged_task_instances:defragged_task_instance(Id,Lesson,_,Data),"
+        "(compiled_defragged_task_instances:defragged_task_instance(Id,Lesson,Task,Data),"
         "get_dict(status,Data,Status),get_dict(source_statement,Data,Source),"
         "get_dict(complete_statement,Data,Complete),get_dict(referents,Data,Referents),"
         "get_dict(source_statement_segments,Data,SourceIds),"
         "get_dict(source_segments,Data,Segments),atom_string(Id,IdString),"
-        "atom_string(Lesson,LessonString),atom_string(Status,StatusString),"
+        "atom_string(Lesson,LessonString),term_string(Task,TaskString,[quoted(true)]),"
+        "atom_string(Status,StatusString),"
         "findall(_{id:SourceIdString,path:Path,line_start:LineStart,"
         "line_end:LineEnd,byte_start:ByteStart,byte_end:ByteEnd,sha256:Sha},"
         "(member(SourceId,SourceIds),atom_string(SourceId,SourceIdString),"
@@ -370,6 +371,22 @@ def census(
         "routed" if route["status"] == "routed" else str(route["reason"])
         for route in routes
     )
+    route_by_id = {str(route["id"]): route for route in routes}
+    truth_ids = set(load_truth())
+    admitted = [
+        row for row in rows if row["task"] == "rule_absent-absent(operation)"
+    ]
+    admitted_completed = [
+        row for row in admitted if row["completion"].get("status") == "completed"
+    ]
+    admitted_filled = [
+        row
+        for row in admitted
+        if route_by_id.get(str(row["id"]), {}).get("status") == "routed"
+    ]
+    admitted_filled_and_answered = [
+        row for row in admitted_filled if row["completion"].get("status") == "completed"
+    ]
     return {
         "all_rows": len(rows),
         "expression_surface_rows": len(expression_rows),
@@ -407,6 +424,16 @@ def census(
                         if route_by_id_status(routes, str(row["id"])) == "routed"
                     ).items()
                 )
+            ),
+        },
+        "admitted_without_rule": {
+            "rows": len(admitted),
+            "program_rows": sum(bool(row["expression"]["program"]) for row in admitted),
+            "filled_contracts": len(admitted_filled),
+            "enacted_answers": len(admitted_completed),
+            "filled_contract_and_enacted_answer": len(admitted_filled_and_answered),
+            "answered_without_verified_comparison": sum(
+                str(row["id"]) not in truth_ids for row in admitted_completed
             ),
         },
     }

@@ -59,7 +59,7 @@ RULES = {
     "N9": Rule("N9", f"{AUDIT}-n9", "benchmark-only",
                "attached unit abbreviations and superscripts measured in benchmark/MINT"),
     "N10": Rule("N10", f"{AUDIT}-n10", "IM-only",
-                "IM page furniture and 58,903 measured bullet glyphs"),
+                "IM page furniture; bullets are list boundaries in 903 measured statements"),
     "N11": Rule("N11", f"{AUDIT}-n11", "IM-only",
                 "65,225/249,460 IM lines with an interior four-space gutter"),
     "N12": Rule("N12", f"{AUDIT}-n12", "IM-only",
@@ -169,11 +169,11 @@ class Normalizer:
             # N16 removes authored metadata before any reader can receive it.
             # The edit receipt retains the exact source span and source text.
             self.replace(r"\[[^\[\]]*\]", "", "N16")
-            # N10 removes only the measured guide furniture classes.
+            # N10 removes page furniture but preserves bullet-carried list structure.
             self.replace(r"(?m)^[ \t]*Illustrative Mathematics®[ \t]+\d+[ \t]*$",
                          "", "N10")
             self.replace(r"(?m)^[ \t]*CC BY NC 2024[ \t]*$", "", "N10")
-            self.replace("[•◦▪●]", " ", "N10")
+            self.replace("[•◦▪●]", BOUNDARY, "N10")
             # N11 uses a private boundary so N12 cannot rejoin unrelated columns.
             self.replace(r"(?<=\S)[ \t]{4,}(?=\S)", GUTTER, "N11")
             # N12 joins only hard wraps licensed by the measured continuation head.
@@ -293,13 +293,21 @@ def normalize_surface(text: str, *, profile: str = "im") -> dict[str, object]:
 
 def check_surface_normalizer() -> None:
     im = normalize_surface("• Plane A travels 2,800 miles. It’s 12.50–13.00. 3rd", profile="im")
-    assert im["text"] == " Plane A travels 2800 miles. It's 12.50-13.00. 3rd"
+    assert im["text"] == "\n Plane A travels 2800 miles. It's 12.50-13.00. 3rd"
     applied = {row["rule"] for row in im["applied_rules"]}
     assert {"N3", "N5", "N6", "N10"} <= applied
     terms = {row["term"] for row in im["tokens"]}
     assert {"decimal(12,50,2)", "decimal(13,0,2)", "ordinal(3)"} <= terms
     assert all(row.get("audit_row") for row in im["applied_rules"])
     assert all(row.get("audit_row") for row in im["tokens"])
+    padded = normalize_surface(
+        "Find each value. • 2 + 2 • 5 + 5 • 7 + 7", profile="im"
+    )
+    unpadded = normalize_surface(
+        "Find each value. •2 + 2 •5 + 5 •7 + 7", profile="im"
+    )
+    assert padded["text"] == "Find each value. \n 2 + 2 \n 5 + 5 \n 7 + 7"
+    assert unpadded["text"] == "Find each value. \n2 + 2 \n5 + 5 \n7 + 7"
     benchmark = normalize_surface(r"Step 2 - Find 1,250cm³.\nStep 3 - Stop.",
                                   profile="benchmark")
     assert "Step 2 Find 1250 cm ^ 3." in benchmark["text"]

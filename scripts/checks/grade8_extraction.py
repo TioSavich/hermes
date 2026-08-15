@@ -231,8 +231,8 @@ def check_prolog_loads() -> None:
     )
     prolog(
         "use_module(curriculum/im/generated/compiled_defragged_task_instances,[]),"
-        "compiled_defragged_task_instances:defragged_task_instance_summary(2659,"
-        "counts{already_complete:834,blocked_layout:385,blocked_missing_visual:142,"
+        "compiled_defragged_task_instances:defragged_task_instance_summary(5242,"
+        "counts{already_complete:3417,blocked_layout:385,blocked_missing_visual:142,"
         "recovered:1295,recovered_with_referent:3}),"
         "aggregate_all(count,(compiled_defragged_task_instances:"
         "defragged_task_instance(_,L,curriculum_task(_),D),"
