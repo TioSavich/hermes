@@ -14,7 +14,7 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 5 - 2 chained to 3.",
+                "caption": "Equals read as makes: 5 - 4 chained to 1.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -39,7 +39,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "4",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -57,7 +57,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "3",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -77,12 +77,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(5,-,2,3)"
+                "verb": "operational_equals_chain(5,-,4,1)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(5,-,2,3)"
+              "spec": "operational_equals_chain(5,-,4,1)"
             },
             "result": "unknown"
           }
@@ -99,7 +99,7 @@
             },
             "frames": [
               {
-                "caption": "Mirror-written 5 in 5 - 2 = 3.",
+                "caption": "Mirror-written 5 in 5 - 4 = 1.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -124,7 +124,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "4",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -142,7 +142,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "3",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -156,24 +156,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(5,5,-,2,3)"
+                "verb": "mirror_written(5,5,-,4,1)"
               }
             ],
             "kind": "mirror_written",
             "request": {
-              "spec": "mirror_written(5,5,-,2,3)"
+              "spec": "mirror_written(5,5,-,4,1)"
             },
-            "result": "3"
+            "result": "1"
           }
         }
       ],
-      "equation": "5 - 2 = 3",
+      "equation": "5 - 4 = 1",
       "host": "notation",
       "operands": {
         "a": 5,
-        "b": 2,
+        "b": 4,
         "op": "-",
-        "r": 3
+        "r": 1
       },
       "productive": {
         "canvas": {
@@ -182,7 +182,7 @@
         },
         "frames": [
           {
-            "caption": "Write 5 - 2 = 3.",
+            "caption": "Write 5 - 4 = 1.",
             "scene": {
               "baseline": 40,
               "format": "notation",
@@ -207,7 +207,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "4",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -225,7 +225,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "3",
+                  "ch": "1",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -239,28 +239,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(5,-,2,3)"
+            "verb": "write_equation(5,-,4,1)"
           }
         ],
         "kind": "write_equation",
         "request": {
           "a": 5,
-          "b": 2,
+          "b": 4,
           "op": "-",
-          "r": 3
+          "r": 1
         },
-        "result": "3"
+        "result": "1"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its subtraction operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "This lesson hosts a notation chart through its subtraction operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G1-U2-L22",
   "operation": "subtraction",
-  "representative_equation": "5 - 2 = 3",
+  "representative_equation": "5 - 4 = 1",
   "standards": [],
   "title": "IM-G1-U2-L22"
 }

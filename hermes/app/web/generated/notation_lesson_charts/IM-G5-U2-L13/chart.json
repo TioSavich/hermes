@@ -1,0 +1,380 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "operational_equals_chain",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Equals read as makes: 7 + 4 chained to 11.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "kind": "chain-equals",
+                      "x": 72,
+                      "y": 40
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "operational_equals_chain(7,+,4,11)"
+              }
+            ],
+            "kind": "operational_equals_chain",
+            "request": {
+              "spec": "operational_equals_chain(7,+,4,11)"
+            },
+            "result": "unknown"
+          }
+        },
+        {
+          "deformation": "mirror_written_numeral",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Mirror-written 7 in 7 + 4 = 11.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "7",
+                      "flip": "horizontal",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "mirror_written(7,7,+,4,11)"
+              }
+            ],
+            "kind": "mirror_written",
+            "request": {
+              "spec": "mirror_written(7,7,+,4,11)"
+            },
+            "result": "11"
+          }
+        },
+        {
+          "deformation": "carry_mark",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Dropped carry: 7 + 4 = 11 written as 1 (carry 1 not added).",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "carry": "1",
+                      "kind": "carry",
+                      "status": "dropped",
+                      "x": 96,
+                      "y": 16
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "carry_mark(7,+,4,11)"
+              }
+            ],
+            "kind": "carry_mark",
+            "request": {
+              "spec": "carry_mark(7,+,4,11)"
+            },
+            "result": "unknown"
+          }
+        }
+      ],
+      "equation": "7 + 4 = 11",
+      "host": "notation",
+      "operands": {
+        "a": 7,
+        "b": 4,
+        "op": "+",
+        "r": 11
+      },
+      "productive": {
+        "canvas": {
+          "height": 120,
+          "width": 760
+        },
+        "frames": [
+          {
+            "caption": "Write 7 + 4 = 11.",
+            "scene": {
+              "baseline": 40,
+              "format": "notation",
+              "glyphPitch": 24,
+              "glyphs": [
+                {
+                  "ch": "7",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 0,
+                  "y": 40
+                },
+                {
+                  "ch": "+",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 24,
+                  "y": 40
+                },
+                {
+                  "ch": "4",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 48,
+                  "y": 40
+                },
+                {
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 72,
+                  "y": 40
+                },
+                {
+                  "ch": "1",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 96,
+                  "y": 40
+                },
+                {
+                  "ch": "1",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 120,
+                  "y": 40
+                }
+              ],
+              "marks": [],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "write_equation(7,+,4,11)"
+          }
+        ],
+        "kind": "write_equation",
+        "request": {
+          "a": 7,
+          "b": 4,
+          "op": "+",
+          "r": 11
+        },
+        "result": "11"
+      }
+    }
+  ],
+  "host_note": "This lesson hosts a notation chart through its addition operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
+  "hosts": [
+    "notation"
+  ],
+  "kind": "lesson_notation_chart",
+  "lesson_code": "IM-G5-U2-L13",
+  "operation": "addition",
+  "representative_equation": "7 + 4 = 11",
+  "standards": [],
+  "title": "IM-G5-U2-L13"
+}

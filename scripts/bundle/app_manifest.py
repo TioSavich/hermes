@@ -36,14 +36,20 @@ REPO = Path(__file__).resolve().parents[2]
 # these rationales into the bundle's DIRECTORY_MAP.md.
 KEEP_TREES_RATIONALE = [
     ("hermes", "console app, public web surfaces, representation assets, and root .pl modules (encyclopedia, scoring)"),
-    ("data/asktm", "coded student-work corpus (PNGs + survey text) the gallery serves at /ASKTM_Data/; publicly shared at IU; NSF Grant No. 1561453 acknowledgement in NOTICE.md; coding documents stay in the source project"),
     ("knowledge", "empirically sourced action automata, misconception registry, standards anchors, geometry concepts and corpus, and canonical vocabulary crosswalk"),
     ("curriculum", "IM lesson monitoring KB and attributed teacher-guide inputs"),
     ("formal", "reasoning machinery: sequent and incompatibility engines, dialectic and juncture models, learner models, grounded formalization, PML semantics, and carving/audit tools"),
     ("data/research", "derivative layer of the literature corpus (coded db + bibliography); the copyrighted articles stay in the source project"),
-    ("data/research_assets/research/student_work_figures",
-     "student-work figures excerpted from the coded literature, served by the gallery with citations attached; the articles themselves stay in the source project"),
 ]
+# Student-work images do not ship. Tio's ruling, 2026-08-19: the derivative
+# materials — the visualizers and the misconceptions found by analyzing those
+# images — are the product; the photographs are an input. So `data/asktm` left
+# this list (its survey text still ships through KEEP_MD), and the literature
+# figure tree left it too, restoring `--with-figures` to the gate it was always
+# meant to be. It had been bypassed since the tree was added to KEEP_TREES in
+# ffb81275, which is why the Dockerfile header stopped describing the image it
+# builds.
+
 KEEP_TREES = [tree for tree, _ in KEEP_TREES_RATIONALE]
 
 # Individual files outside the kept trees.

@@ -1208,10 +1208,37 @@ function nearbyStrongLessons(code) {
     .sort((a, b) => (rank(b) - rank(a)) || (lessonSubstance(b) - lessonSubstance(a)))
     .slice(0, 3);
 }
+let DEFORMATION_MANIFEST_PROMISE = null;
+function deformationManifest() {
+  if (!DEFORMATION_MANIFEST_PROMISE) {
+    DEFORMATION_MANIFEST_PROMISE = fetch(
+      'generated/lesson_deformation_charts/manifest.json',
+      { cache: 'no-store' }
+    ).then(response => {
+      if (!response.ok) throw new Error('deformation-chart manifest unavailable');
+      return response.json();
+    });
+  }
+  return DEFORMATION_MANIFEST_PROMISE;
+}
+function lessonChartChip(code, manifest) {
+  if (!manifest) {
+    return '<span class="stance-chip" data-absence-kind="manifest-unavailable">'
+      + 'Wrong-answer pattern chart: availability unavailable</span>';
+  }
+  const lessons = Array.isArray(manifest.lessons) ? manifest.lessons : [];
+  const chart = lessons.find(row => row.code === code);
+  if (!chart) {
+    return '<span class="stance-chip" data-absence-kind="no-lesson-chart">'
+      + 'Wrong-answer pattern chart: not available for this lesson</span>';
+  }
+  return `<a class="stance-chip" href="generated/lesson_deformation_charts/${encodeURIComponent(code)}/index.html" target="_blank" rel="noopener">Wrong-answer pattern chart</a>`;
+}
 async function openLesson(code) {
   const detail = $("#lesson-detail");
   const stopElapsed = startElapsed(detail, "loading lesson context…");
   detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  const chartManifestTask = deformationManifest().catch(() => null);
   let data;
   try { ({ data } = await postJSON('/api/field_context', { lesson_code: code })); }
   catch (error) {
@@ -1237,14 +1264,14 @@ async function openLesson(code) {
     ? `<div class="exp-line"><b>Try these nearby prepared lessons:</b> ${nearby.map(n =>
         `<a href="#" class="nearby-lesson" data-lesson="${escAttr(n.lesson_code)}">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
     : '';
+  const chartChip = lessonChartChip(code, await chartManifestTask);
   detail.innerHTML = `<div class="card"><div class="fc">
     <div class="fc-head"><h3>${esc(lesson.title || code)}</h3>
       <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
       ${briefLine}${nearbyLine}
       <div class="ce-row">
         <a class="stance-chip" href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(code)}">Plan this lesson</a>
-        <a class="stance-chip" href="generated/notation_lesson_charts/index.html" target="_blank" rel="noopener">Notation charts gallery</a>
-        <a class="stance-chip" href="generated/lesson_deformation_charts/index.html" target="_blank" rel="noopener">Wrong-answer pattern charts</a>
+        ${chartChip}
       </div>
     </div>
     <div class="fc-grid">

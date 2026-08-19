@@ -14,7 +14,7 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 3 + 2 chained to 5.",
+                "caption": "Equals read as makes: 3 + 0 chained to 3.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -39,7 +39,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -57,7 +57,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "5",
+                      "ch": "3",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -77,12 +77,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(3,+,2,5)"
+                "verb": "operational_equals_chain(3,+,0,3)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(3,+,2,5)"
+              "spec": "operational_equals_chain(3,+,0,3)"
             },
             "result": "unknown"
           }
@@ -99,7 +99,7 @@
             },
             "frames": [
               {
-                "caption": "Mirror-written 3 in 3 + 2 = 5.",
+                "caption": "Mirror-written 3 in 3 + 0 = 3.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -124,7 +124,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -142,7 +142,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "5",
+                      "ch": "3",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -156,24 +156,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(3,3,+,2,5)"
+                "verb": "mirror_written(3,3,+,0,3)"
               }
             ],
             "kind": "mirror_written",
             "request": {
-              "spec": "mirror_written(3,3,+,2,5)"
+              "spec": "mirror_written(3,3,+,0,3)"
             },
-            "result": "5"
+            "result": "3"
           }
         }
       ],
-      "equation": "3 + 2 = 5",
+      "equation": "3 + 0 = 3",
       "host": "notation",
       "operands": {
         "a": 3,
-        "b": 2,
+        "b": 0,
         "op": "+",
-        "r": 5
+        "r": 3
       },
       "productive": {
         "canvas": {
@@ -182,7 +182,7 @@
         },
         "frames": [
           {
-            "caption": "Write 3 + 2 = 5.",
+            "caption": "Write 3 + 0 = 3.",
             "scene": {
               "baseline": 40,
               "format": "notation",
@@ -207,7 +207,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -225,7 +225,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "5",
+                  "ch": "3",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -239,28 +239,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(3,+,2,5)"
+            "verb": "write_equation(3,+,0,3)"
           }
         ],
         "kind": "write_equation",
         "request": {
           "a": 3,
-          "b": 2,
+          "b": 0,
           "op": "+",
-          "r": 5
+          "r": 3
         },
-        "result": "5"
+        "result": "3"
       }
     }
   ],
-  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation deformation is hosted on an addition lesson and rendered over a representative equation from the lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances.",
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-GK-U6-L2",
   "operation": "addition",
-  "representative_equation": "3 + 2 = 5",
+  "representative_equation": "3 + 0 = 3",
   "standards": [],
   "title": "IM-GK-U6-L2"
 }

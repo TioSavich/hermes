@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 5 - 2 chained to 3.",
+                "caption": "Equals read as makes: 10 - 6 chained to 4.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "5",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -30,21 +30,30 @@
                       "y": 40
                     },
                     {
-                      "ch": "-",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "operator",
+                      "role": "digit",
                       "size": 20,
                       "x": 24,
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "-",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
                       "size": 20,
-                      "x": 48,
+                      "x": 72,
                       "y": 40
                     },
                     {
@@ -53,127 +62,48 @@
                       "ghost": "none",
                       "role": "equals",
                       "size": 20,
-                      "x": 72,
+                      "x": 96,
                       "y": 40
                     },
                     {
-                      "ch": "3",
+                      "ch": "4",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
                       "size": 20,
-                      "x": 96,
+                      "x": 120,
                       "y": 40
                     }
                   ],
                   "marks": [
                     {
                       "kind": "chain-equals",
-                      "x": 72,
-                      "y": 40
-                    }
-                  ],
-                  "version": 1
-                },
-                "sceneChanged": true,
-                "step": 1,
-                "verb": "operational_equals_chain(5,-,2,3)"
-              }
-            ],
-            "kind": "operational_equals_chain",
-            "request": {
-              "spec": "operational_equals_chain(5,-,2,3)"
-            },
-            "result": "unknown"
-          }
-        },
-        {
-          "deformation": "mirror_written_numeral",
-          "family": "notation_error",
-          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
-          "provenance": "literature_only",
-          "scene": {
-            "canvas": {
-              "height": 120,
-              "width": 760
-            },
-            "frames": [
-              {
-                "caption": "Mirror-written 5 in 5 - 2 = 3.",
-                "scene": {
-                  "baseline": 40,
-                  "format": "notation",
-                  "glyphPitch": 24,
-                  "glyphs": [
-                    {
-                      "ch": "5",
-                      "flip": "horizontal",
-                      "ghost": "none",
-                      "role": "deformation",
-                      "size": 20,
-                      "x": 0,
-                      "y": 40
-                    },
-                    {
-                      "ch": "-",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "operator",
-                      "size": 20,
-                      "x": 24,
-                      "y": 40
-                    },
-                    {
-                      "ch": "2",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "digit",
-                      "size": 20,
-                      "x": 48,
-                      "y": 40
-                    },
-                    {
-                      "ch": "=",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "equals",
-                      "size": 20,
-                      "x": 72,
-                      "y": 40
-                    },
-                    {
-                      "ch": "3",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "digit",
-                      "size": 20,
                       "x": 96,
                       "y": 40
                     }
                   ],
-                  "marks": [],
                   "version": 1
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(5,5,-,2,3)"
+                "verb": "operational_equals_chain(10,-,6,4)"
               }
             ],
-            "kind": "mirror_written",
+            "kind": "operational_equals_chain",
             "request": {
-              "spec": "mirror_written(5,5,-,2,3)"
+              "spec": "operational_equals_chain(10,-,6,4)"
             },
-            "result": "3"
+            "result": "unknown"
           }
         }
       ],
-      "equation": "5 - 2 = 3",
+      "equation": "10 - 6 = 4",
       "host": "notation",
       "operands": {
-        "a": 5,
-        "b": 2,
+        "a": 10,
+        "b": 6,
         "op": "-",
-        "r": 3
+        "r": 4
       },
       "productive": {
         "canvas": {
@@ -182,14 +112,14 @@
         },
         "frames": [
           {
-            "caption": "Write 5 - 2 = 3.",
+            "caption": "Write 10 - 6 = 4.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "5",
+                  "ch": "1",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -198,21 +128,30 @@
                   "y": 40
                 },
                 {
-                  "ch": "-",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
-                  "role": "operator",
+                  "role": "digit",
                   "size": 20,
                   "x": 24,
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "-",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 48,
+                  "y": 40
+                },
+                {
+                  "ch": "6",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
                   "size": 20,
-                  "x": 48,
+                  "x": 72,
                   "y": 40
                 },
                 {
@@ -221,16 +160,16 @@
                   "ghost": "none",
                   "role": "equals",
                   "size": 20,
-                  "x": 72,
+                  "x": 96,
                   "y": 40
                 },
                 {
-                  "ch": "3",
+                  "ch": "4",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
                   "size": 20,
-                  "x": 96,
+                  "x": 120,
                   "y": 40
                 }
               ],
@@ -239,28 +178,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(5,-,2,3)"
+            "verb": "write_equation(10,-,6,4)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 5,
-          "b": 2,
+          "a": 10,
+          "b": 6,
           "op": "-",
-          "r": 3
+          "r": 4
         },
-        "result": "3"
+        "result": "4"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its subtraction operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "This lesson hosts a notation chart through its subtraction operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G1-U6-L14",
   "operation": "subtraction",
-  "representative_equation": "5 - 2 = 3",
+  "representative_equation": "10 - 6 = 4",
   "standards": [],
   "title": "IM-G1-U6-L14"
 }

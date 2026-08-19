@@ -6,10 +6,10 @@ are never modified):
 
 1. Prune the bundle's copy of hermes/representation/asset_manifest.json to the
    assets whose image file was actually bundled, and record the exclusion in
-   the manifest's note field. The ASKTM student-work images ship with the
-   repository; coded figures are included, but the fine-grained source coding
-   documents remain in the source project; without pruning, the gallery would
-   render hundreds of image-less cards for those absent documents.
+   the manifest's note field. Student-work images do not ship: the derived
+   coding and misconception records are the product, the photographs are an
+   input. Without pruning, the gallery would render hundreds of image-less
+   cards for them.
 2. Parse every .json file in the bundle so a truncated or malformed data
    file fails the build here, not in a reader's browser.
 3. Write the bundle's README.md: what the package is, how to open it, and
@@ -44,7 +44,7 @@ READMES = {
 Static package of the public Hermes pages reachable from the theory entry page.
 Open it through a local file server: from this directory run `python3 -m http.server 8000`, then go to <http://localhost:8000/more-zeeman/landing.html>. A direct file:// open works only for the pages with embedded data (the monitoring chart, the fraction calculator); the gallery and scoreboard fetch JSON and need the server. The API-backed strategy pages, including machine.html, need the full app server (`python3 -m hermes.app.server`) rather than this static server.
 The scoreboard's deontic and inferential-strength sections ask a live Hermes worker first, fall back to the saved data included here, and name their data source on the page; the drawing pages keep their embedded sample when no worker answers. For live numbers and interactive rendering, clone the full repository and run `bash hermes/app/launch.sh`.
-The ASKTM student-work corpus ships with the repository; the gallery includes coded figures and the survey text. The fine-grained source coding documents remain in the source project. The teaching console reads student work and is deliberately absent from every bundle.
+Student-work images do not ship; the gallery names their absence and keeps the coded records and the survey text. The teaching console reads student work and is deliberately absent from every bundle.
 """,
     "teacher": """\
 # UMEDCTA teacher surfaces — static bundle
@@ -52,7 +52,7 @@ The ASKTM student-work corpus ships with the repository; the gallery includes co
 Static package of the teacher-facing pages: the student-work gallery, the fraction-bars calculator, and the lesson monitoring chart, plus the pages their shared navigation reaches. The Hermes teaching console itself is not here: it needs its Python server and Prolog worker, so it cannot ship as static files.
 Open the bundle through a local file server: from this directory run `python3 -m http.server 8000`, then go to <http://localhost:8000/more-zeeman/gallery.html> (or `monitoring_chart.html`, or `fraction-bars/calculator.html`). The calculator and monitoring chart also draw from a direct file:// open, using their embedded sample data; the gallery needs the server.
 The Calculate and live-refresh buttons need the live application (`bash hermes/app/launch.sh` in the full repository); without it, each drawing page keeps its embedded sample.
-The ASKTM student-work corpus ships with the repository; the gallery includes coded figures and the survey text. The fine-grained source coding documents remain in the source project.
+Student-work images do not ship; the gallery names their absence and keeps the coded records and the survey text.
 """,
 }
 

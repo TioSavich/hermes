@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 3 + 2 chained to 5.",
+                "caption": "Equals read as makes: 4 + 1 chained to 5.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "3",
+                      "ch": "4",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -39,7 +39,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -77,12 +77,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(3,+,2,5)"
+                "verb": "operational_equals_chain(4,+,1,5)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(3,+,2,5)"
+              "spec": "operational_equals_chain(4,+,1,5)"
             },
             "result": "unknown"
           }
@@ -99,17 +99,17 @@
             },
             "frames": [
               {
-                "caption": "Mirror-written 3 in 3 + 2 = 5.",
+                "caption": "Mirror-written 5 in 4 + 1 = 5.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "3",
-                      "flip": "horizontal",
+                      "ch": "4",
+                      "flip": "none",
                       "ghost": "none",
-                      "role": "deformation",
+                      "role": "digit",
                       "size": 20,
                       "x": 0,
                       "y": 40
@@ -124,7 +124,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -143,9 +143,9 @@
                     },
                     {
                       "ch": "5",
-                      "flip": "none",
+                      "flip": "horizontal",
                       "ghost": "none",
-                      "role": "digit",
+                      "role": "deformation",
                       "size": 20,
                       "x": 96,
                       "y": 40
@@ -156,22 +156,22 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(3,3,+,2,5)"
+                "verb": "mirror_written(5,4,+,1,5)"
               }
             ],
             "kind": "mirror_written",
             "request": {
-              "spec": "mirror_written(3,3,+,2,5)"
+              "spec": "mirror_written(5,4,+,1,5)"
             },
             "result": "5"
           }
         }
       ],
-      "equation": "3 + 2 = 5",
+      "equation": "4 + 1 = 5",
       "host": "notation",
       "operands": {
-        "a": 3,
-        "b": 2,
+        "a": 4,
+        "b": 1,
         "op": "+",
         "r": 5
       },
@@ -182,14 +182,14 @@
         },
         "frames": [
           {
-            "caption": "Write 3 + 2 = 5.",
+            "caption": "Write 4 + 1 = 5.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "3",
+                  "ch": "4",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -207,7 +207,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "1",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -239,13 +239,13 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(3,+,2,5)"
+            "verb": "write_equation(4,+,1,5)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 3,
-          "b": 2,
+          "a": 4,
+          "b": 1,
           "op": "+",
           "r": 5
         },
@@ -253,14 +253,14 @@
       }
     }
   ],
-  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation deformation is hosted on an addition lesson and rendered over a representative equation from the lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances.",
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-GK-U8-L18",
   "operation": "addition",
-  "representative_equation": "3 + 2 = 5",
+  "representative_equation": "4 + 1 = 5",
   "standards": [],
   "title": "IM-GK-U8-L18"
 }

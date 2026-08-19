@@ -162,6 +162,14 @@ def regex_cross_checks(runtime: dict[str, set[str]]) -> list[dict[str, int | str
 
 def render_ids() -> dict[str, set[str]]:
     generated = REPO / "hermes/app/web/generated"
+    # A notation chart is charted per lesson and draws the equation the lesson's
+    # own registered task produces, so its presence is lesson-derived and counts.
+    # What it does NOT claim is that the deformation was observed in the lesson:
+    # the deformations are parametric over that equation. The count therefore
+    # reads "a lesson-derived notation chart exists", never "notation errors
+    # occurred here". Before 2026-08-19 the generator filled every hosted lesson
+    # from a shared exemplar, so this same glob returned 519 directories carrying
+    # 24 distinct drawings; that number measured the generator, not the corpus.
     notation = {
         path.name
         for path in (generated / "notation_lesson_charts").glob("IM-*")

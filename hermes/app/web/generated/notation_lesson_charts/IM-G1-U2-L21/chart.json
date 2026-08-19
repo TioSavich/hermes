@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 8 + 4 chained to 12.",
+                "caption": "Equals read as makes: 6 + 4 chained to 10.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -66,7 +66,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -86,12 +86,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(8,+,4,12)"
+                "verb": "operational_equals_chain(6,+,4,10)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(8,+,4,12)"
+              "spec": "operational_equals_chain(6,+,4,10)"
             },
             "result": "unknown"
           }
@@ -108,14 +108,14 @@
             },
             "frames": [
               {
-                "caption": "Digit transposition: 8 + 4 = 12 recorded as 21.",
+                "caption": "Digit transposition: 6 + 4 = 10 recorded as 1.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -151,21 +151,12 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "deformation",
-                      "size": 20,
-                      "x": 96,
-                      "y": 40
-                    },
-                    {
                       "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 120,
+                      "x": 96,
                       "y": 40
                     }
                   ],
@@ -174,17 +165,17 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "digit_transposition(8,+,4,12)"
+                "verb": "digit_transposition(6,+,4,10)"
               }
             ],
             "kind": "write_equation",
             "request": {
-              "a": 8,
+              "a": 6,
               "b": 4,
               "op": "+",
-              "r": 12
+              "r": 10
             },
-            "result": "21"
+            "result": "1"
           }
         },
         {
@@ -199,14 +190,14 @@
             },
             "frames": [
               {
-                "caption": "Place value reversed: 8 + 4 = 12 written as 21.",
+                "caption": "Place value reversed: 6 + 4 = 10 written as 1.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -242,21 +233,12 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "deformation",
-                      "size": 20,
-                      "x": 96,
-                      "y": 40
-                    },
-                    {
                       "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 120,
+                      "x": 96,
                       "y": 40
                     }
                   ],
@@ -265,12 +247,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "place_value_writing_error(8,+,4,12)"
+                "verb": "place_value_writing_error(6,+,4,10)"
               }
             ],
             "kind": "place_value_writing_error",
             "request": {
-              "spec": "place_value_writing_error(8,+,4,12)"
+              "spec": "place_value_writing_error(6,+,4,10)"
             },
             "result": "unknown"
           }
@@ -287,14 +269,14 @@
             },
             "frames": [
               {
-                "caption": "Dropped carry: 8 + 4 = 12 written as 2 (carry 1 not added).",
+                "caption": "Dropped carry: 6 + 4 = 10 written as 0 (carry 1 not added).",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -330,7 +312,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "deformation",
@@ -352,24 +334,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "carry_mark(8,+,4,12)"
+                "verb": "carry_mark(6,+,4,10)"
               }
             ],
             "kind": "carry_mark",
             "request": {
-              "spec": "carry_mark(8,+,4,12)"
+              "spec": "carry_mark(6,+,4,10)"
             },
             "result": "unknown"
           }
         }
       ],
-      "equation": "8 + 4 = 12",
+      "equation": "6 + 4 = 10",
       "host": "notation",
       "operands": {
-        "a": 8,
+        "a": 6,
         "b": 4,
         "op": "+",
-        "r": 12
+        "r": 10
       },
       "productive": {
         "canvas": {
@@ -378,14 +360,14 @@
         },
         "frames": [
           {
-            "caption": "Write 8 + 4 = 12.",
+            "caption": "Write 6 + 4 = 10.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "8",
+                  "ch": "6",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -430,7 +412,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -444,28 +426,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(8,+,4,12)"
+            "verb": "write_equation(6,+,4,10)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 8,
+          "a": 6,
           "b": 4,
           "op": "+",
-          "r": 12
+          "r": 10
         },
-        "result": "12"
+        "result": "10"
       }
     }
   ],
-  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation deformation is hosted on an addition lesson and rendered over a representative equation from the lesson's operation. The chart is a parametric render over that equation, not a count of corpus instances.",
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G1-U2-L21",
   "operation": "addition",
-  "representative_equation": "8 + 4 = 12",
+  "representative_equation": "6 + 4 = 10",
   "standards": [],
   "title": "IM-G1-U2-L21"
 }

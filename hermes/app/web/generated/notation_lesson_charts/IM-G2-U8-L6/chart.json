@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 3 + 2 chained to 5.",
+                "caption": "Equals read as makes: 2 + 2 chained to 4.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "3",
+                      "ch": "2",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -57,7 +57,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "5",
+                      "ch": "4",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -77,103 +77,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(3,+,2,5)"
+                "verb": "operational_equals_chain(2,+,2,4)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(3,+,2,5)"
+              "spec": "operational_equals_chain(2,+,2,4)"
             },
             "result": "unknown"
           }
-        },
-        {
-          "deformation": "mirror_written_numeral",
-          "family": "notation_error",
-          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
-          "provenance": "literature_only",
-          "scene": {
-            "canvas": {
-              "height": 120,
-              "width": 760
-            },
-            "frames": [
-              {
-                "caption": "Mirror-written 3 in 3 + 2 = 5.",
-                "scene": {
-                  "baseline": 40,
-                  "format": "notation",
-                  "glyphPitch": 24,
-                  "glyphs": [
-                    {
-                      "ch": "3",
-                      "flip": "horizontal",
-                      "ghost": "none",
-                      "role": "deformation",
-                      "size": 20,
-                      "x": 0,
-                      "y": 40
-                    },
-                    {
-                      "ch": "+",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "operator",
-                      "size": 20,
-                      "x": 24,
-                      "y": 40
-                    },
-                    {
-                      "ch": "2",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "digit",
-                      "size": 20,
-                      "x": 48,
-                      "y": 40
-                    },
-                    {
-                      "ch": "=",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "equals",
-                      "size": 20,
-                      "x": 72,
-                      "y": 40
-                    },
-                    {
-                      "ch": "5",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "digit",
-                      "size": 20,
-                      "x": 96,
-                      "y": 40
-                    }
-                  ],
-                  "marks": [],
-                  "version": 1
-                },
-                "sceneChanged": true,
-                "step": 1,
-                "verb": "mirror_written(3,3,+,2,5)"
-              }
-            ],
-            "kind": "mirror_written",
-            "request": {
-              "spec": "mirror_written(3,3,+,2,5)"
-            },
-            "result": "5"
-          }
         }
       ],
-      "equation": "3 + 2 = 5",
+      "equation": "2 + 2 = 4",
       "host": "notation",
       "operands": {
-        "a": 3,
+        "a": 2,
         "b": 2,
         "op": "+",
-        "r": 5
+        "r": 4
       },
       "productive": {
         "canvas": {
@@ -182,14 +103,14 @@
         },
         "frames": [
           {
-            "caption": "Write 3 + 2 = 5.",
+            "caption": "Write 2 + 2 = 4.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "3",
+                  "ch": "2",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -225,7 +146,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "5",
+                  "ch": "4",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -239,28 +160,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(3,+,2,5)"
+            "verb": "write_equation(2,+,2,4)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 3,
+          "a": 2,
           "b": 2,
           "op": "+",
-          "r": 5
+          "r": 4
         },
-        "result": "5"
+        "result": "4"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its addition operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "This lesson hosts a notation chart through its addition operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G2-U8-L6",
   "operation": "addition",
-  "representative_equation": "3 + 2 = 5",
+  "representative_equation": "2 + 2 = 4",
   "standards": [],
   "title": "IM-G2-U8-L6"
 }

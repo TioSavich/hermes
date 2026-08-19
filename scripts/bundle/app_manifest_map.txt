@@ -1,8 +1,8 @@
-hermes/	8859
-data/	8179
+hermes/	2480
 curriculum/	972
 knowledge/	310
 formal/	123
+data/	34
 scripts/	10
 docs/	3
 (root)	2

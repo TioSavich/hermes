@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 8 + 4 chained to 12.",
+                "caption": "Equals read as makes: 500650 + 75 chained to 500725.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -30,16 +30,16 @@
                       "y": 40
                     },
                     {
-                      "ch": "+",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "operator",
+                      "role": "digit",
                       "size": 20,
                       "x": 24,
                       "y": 40
                     },
                     {
-                      "ch": "4",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -48,16 +48,16 @@
                       "y": 40
                     },
                     {
-                      "ch": "=",
+                      "ch": "6",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "equals",
+                      "role": "digit",
                       "size": 20,
                       "x": 72,
                       "y": 40
                     },
                     {
-                      "ch": "1",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -66,19 +66,109 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
                       "size": 20,
                       "x": 120,
                       "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 192,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 216,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 240,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 264,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 288,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 312,
+                      "y": 40
+                    },
+                    {
+                      "ch": "2",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 336,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 360,
+                      "y": 40
                     }
                   ],
                   "marks": [
                     {
                       "kind": "chain-equals",
-                      "x": 72,
+                      "x": 216,
                       "y": 40
                     }
                   ],
@@ -86,14 +176,192 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(8,+,4,12)"
+                "verb": "operational_equals_chain(500650,+,75,500725)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(8,+,4,12)"
+              "spec": "operational_equals_chain(500650,+,75,500725)"
             },
             "result": "unknown"
+          }
+        },
+        {
+          "deformation": "mirror_written_numeral",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Mirror-written 5 in 500650 + 75 = 500725.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "5",
+                      "flip": "horizontal",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 192,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 216,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 240,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 264,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 288,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 312,
+                      "y": 40
+                    },
+                    {
+                      "ch": "2",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 336,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 360,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "mirror_written(5,500650,+,75,500725)"
+              }
+            ],
+            "kind": "mirror_written",
+            "request": {
+              "spec": "mirror_written(5,500650,+,75,500725)"
+            },
+            "result": "500725"
           }
         },
         {
@@ -108,14 +376,14 @@
             },
             "frames": [
               {
-                "caption": "Digit transposition: 8 + 4 = 12 recorded as 21.",
+                "caption": "Digit transposition: 500650 + 75 = 500725 recorded as 500752.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -124,16 +392,16 @@
                       "y": 40
                     },
                     {
-                      "ch": "+",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "operator",
+                      "role": "digit",
                       "size": 20,
                       "x": 24,
                       "y": 40
                     },
                     {
-                      "ch": "4",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -142,12 +410,111 @@
                       "y": 40
                     },
                     {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 192,
+                      "y": 40
+                    },
+                    {
                       "ch": "=",
                       "flip": "none",
                       "ghost": "none",
                       "role": "equals",
                       "size": 20,
-                      "x": 72,
+                      "x": 216,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 240,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 264,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 288,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 312,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 336,
                       "y": 40
                     },
                     {
@@ -156,16 +523,7 @@
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 96,
-                      "y": 40
-                    },
-                    {
-                      "ch": "1",
-                      "flip": "none",
-                      "ghost": "none",
-                      "role": "deformation",
-                      "size": 20,
-                      "x": 120,
+                      "x": 360,
                       "y": 40
                     }
                   ],
@@ -174,17 +532,17 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "digit_transposition(8,+,4,12)"
+                "verb": "digit_transposition(500650,+,75,500725)"
               }
             ],
             "kind": "write_equation",
             "request": {
-              "a": 8,
-              "b": 4,
+              "a": 500650,
+              "b": 75,
               "op": "+",
-              "r": 12
+              "r": 500725
             },
-            "result": "21"
+            "result": "500752"
           }
         },
         {
@@ -199,14 +557,14 @@
             },
             "frames": [
               {
-                "caption": "Place value reversed: 8 + 4 = 12 written as 21.",
+                "caption": "Place value reversed: 500650 + 75 = 500725 written as 527005.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -215,16 +573,16 @@
                       "y": 40
                     },
                     {
-                      "ch": "+",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "operator",
+                      "role": "digit",
                       "size": 20,
                       "x": 24,
                       "y": 40
                     },
                     {
-                      "ch": "4",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -233,12 +591,75 @@
                       "y": 40
                     },
                     {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 192,
+                      "y": 40
+                    },
+                    {
                       "ch": "=",
                       "flip": "none",
                       "ghost": "none",
                       "role": "equals",
                       "size": 20,
-                      "x": 72,
+                      "x": 216,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 240,
                       "y": 40
                     },
                     {
@@ -247,16 +668,43 @@
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 96,
+                      "x": 264,
                       "y": 40
                     },
                     {
-                      "ch": "1",
+                      "ch": "7",
                       "flip": "none",
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 120,
+                      "x": 288,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 312,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 336,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 360,
                       "y": 40
                     }
                   ],
@@ -265,12 +713,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "place_value_writing_error(8,+,4,12)"
+                "verb": "place_value_writing_error(500650,+,75,500725)"
               }
             ],
             "kind": "place_value_writing_error",
             "request": {
-              "spec": "place_value_writing_error(8,+,4,12)"
+              "spec": "place_value_writing_error(500650,+,75,500725)"
             },
             "result": "unknown"
           }
@@ -287,14 +735,14 @@
             },
             "frames": [
               {
-                "caption": "Dropped carry: 8 + 4 = 12 written as 2 (carry 1 not added).",
+                "caption": "Dropped carry: 500650 + 75 = 500725 written as 500625 (carry 0 not added).",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "8",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -303,16 +751,16 @@
                       "y": 40
                     },
                     {
-                      "ch": "+",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "operator",
+                      "role": "digit",
                       "size": 20,
                       "x": 24,
                       "y": 40
                     },
                     {
-                      "ch": "4",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -321,12 +769,102 @@
                       "y": 40
                     },
                     {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    },
+                    {
+                      "ch": "7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 168,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 192,
+                      "y": 40
+                    },
+                    {
                       "ch": "=",
                       "flip": "none",
                       "ghost": "none",
                       "role": "equals",
                       "size": 20,
-                      "x": 72,
+                      "x": 216,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 240,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 264,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 288,
+                      "y": 40
+                    },
+                    {
+                      "ch": "6",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 312,
                       "y": 40
                     },
                     {
@@ -335,16 +873,25 @@
                       "ghost": "none",
                       "role": "deformation",
                       "size": 20,
-                      "x": 96,
+                      "x": 336,
+                      "y": 40
+                    },
+                    {
+                      "ch": "5",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 360,
                       "y": 40
                     }
                   ],
                   "marks": [
                     {
-                      "carry": "1",
+                      "carry": "0",
                       "kind": "carry",
                       "status": "dropped",
-                      "x": 96,
+                      "x": 240,
                       "y": 16
                     }
                   ],
@@ -352,24 +899,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "carry_mark(8,+,4,12)"
+                "verb": "carry_mark(500650,+,75,500725)"
               }
             ],
             "kind": "carry_mark",
             "request": {
-              "spec": "carry_mark(8,+,4,12)"
+              "spec": "carry_mark(500650,+,75,500725)"
             },
             "result": "unknown"
           }
         }
       ],
-      "equation": "8 + 4 = 12",
+      "equation": "500650 + 75 = 500725",
       "host": "notation",
       "operands": {
-        "a": 8,
-        "b": 4,
+        "a": 500650,
+        "b": 75,
         "op": "+",
-        "r": 12
+        "r": 500725
       },
       "productive": {
         "canvas": {
@@ -378,14 +925,14 @@
         },
         "frames": [
           {
-            "caption": "Write 8 + 4 = 12.",
+            "caption": "Write 500650 + 75 = 500725.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "8",
+                  "ch": "5",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -394,16 +941,16 @@
                   "y": 40
                 },
                 {
-                  "ch": "+",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
-                  "role": "operator",
+                  "role": "digit",
                   "size": 20,
                   "x": 24,
                   "y": 40
                 },
                 {
-                  "ch": "4",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -412,16 +959,16 @@
                   "y": 40
                 },
                 {
-                  "ch": "=",
+                  "ch": "6",
                   "flip": "none",
                   "ghost": "none",
-                  "role": "equals",
+                  "role": "digit",
                   "size": 20,
                   "x": 72,
                   "y": 40
                 },
                 {
-                  "ch": "1",
+                  "ch": "5",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -430,12 +977,102 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
                   "size": 20,
                   "x": 120,
+                  "y": 40
+                },
+                {
+                  "ch": "+",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 144,
+                  "y": 40
+                },
+                {
+                  "ch": "7",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 168,
+                  "y": 40
+                },
+                {
+                  "ch": "5",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 192,
+                  "y": 40
+                },
+                {
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 216,
+                  "y": 40
+                },
+                {
+                  "ch": "5",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 240,
+                  "y": 40
+                },
+                {
+                  "ch": "0",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 264,
+                  "y": 40
+                },
+                {
+                  "ch": "0",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 288,
+                  "y": 40
+                },
+                {
+                  "ch": "7",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 312,
+                  "y": 40
+                },
+                {
+                  "ch": "2",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 336,
+                  "y": 40
+                },
+                {
+                  "ch": "5",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 360,
                   "y": 40
                 }
               ],
@@ -444,28 +1081,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(8,+,4,12)"
+            "verb": "write_equation(500650,+,75,500725)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 8,
-          "b": 4,
+          "a": 500650,
+          "b": 75,
           "op": "+",
-          "r": 12
+          "r": 500725
         },
-        "result": "12"
+        "result": "500725"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its addition operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "This lesson hosts a notation chart through its addition operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G4-U4-L10",
   "operation": "addition",
-  "representative_equation": "8 + 4 = 12",
+  "representative_equation": "500650 + 75 = 500725",
   "standards": [],
   "title": "IM-G4-U4-L10"
 }

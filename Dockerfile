@@ -8,11 +8,13 @@
 # with `make app-manifest`; `app_manifest.py --verify` proves it covers the
 # worker's real load closure.
 #
-# Gallery figure images (~190 MB) are not baked in; the gallery names the
-# absence, the same way a checkout without local research data does. To serve
-# them, bind-mount the repo's research-assets tree at its stable URL path:
+# Student-work images do not ship. The derived records are the product; the
+# photographs are an input. The gallery names their absence rather than
+# rendering image-less cards. To serve them anyway, bind-mount the trees at
+# their stable URL paths:
 #   docker run --rm -p 8765:8765 \
-#     -v "$PWD/data/research_assets:/app/data/research_assets:ro" umedcta
+#     -v "$PWD/data/research_assets:/app/data/research_assets:ro" \
+#     -v "$PWD/data/asktm:/app/data/asktm:ro" umedcta
 #
 # Build:    docker build -t umedcta .
 # Run:      docker run --rm -p 8765:8765 umedcta

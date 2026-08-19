@@ -65,7 +65,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -133,7 +133,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -157,7 +157,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -278,7 +278,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -303,7 +303,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -329,7 +329,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -354,7 +354,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -378,7 +378,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -427,7 +427,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -453,7 +453,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -480,7 +480,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -505,7 +505,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -531,7 +531,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -579,7 +579,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -628,7 +628,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -653,7 +653,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -677,7 +677,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -702,7 +702,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -727,7 +727,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -872,7 +872,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -907,14 +907,15 @@
       "lesson_number": 21,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "count_all_when_count_on_available",
+        "count_on_from_larger",
         "round_then_adjust"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -1358,7 +1359,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1384,7 +1385,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1408,7 +1409,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1433,7 +1434,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1457,7 +1458,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1481,7 +1482,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1516,13 +1517,14 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "count_all_when_count_on_available"
+        "count_all_when_count_on_available",
+        "count_on_from_larger"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -1540,16 +1542,18 @@
       "lesson_number": 9,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "count_on_from_larger"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1562,14 +1566,15 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "count_all_when_count_on_available",
+        "count_on_from_larger",
         "round_then_adjust"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -1589,11 +1594,12 @@
       "standards_anchor": "lesson",
       "strategy": "compiled",
       "strategy_atoms": [
+        "count_on_from_larger",
         "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -1618,7 +1624,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 2,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -1649,7 +1655,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1674,7 +1680,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1743,7 +1749,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1763,7 +1769,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -1858,7 +1864,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1939,16 +1945,17 @@
       "standards_anchor": "lesson",
       "strategy": "compiled",
       "strategy_atoms": [
-        "count_on_from_larger"
+        "count_on_from_larger",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1973,7 +1980,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -1997,7 +2004,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2022,7 +2029,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2047,7 +2054,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2072,7 +2079,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2097,7 +2104,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2145,7 +2152,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2158,14 +2165,15 @@
       "lesson_number": 2,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "count_all_when_count_on_available",
-        "count_on_from_larger"
+        "count_on_from_larger",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -2220,7 +2228,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2245,7 +2253,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2270,7 +2278,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2295,7 +2303,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2320,7 +2328,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2346,7 +2354,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2396,7 +2404,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2423,7 +2431,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2472,7 +2480,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2521,7 +2529,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2547,7 +2555,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2562,12 +2570,13 @@
       "standards_anchor": "lesson",
       "strategy": "both",
       "strategy_atoms": [
+        "count_on_from_larger",
         "round_then_adjust",
         "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -2599,7 +2608,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2770,16 +2779,18 @@
       "lesson_number": 14,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "take_away_base_ones"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2873,7 +2884,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2893,7 +2904,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -2923,7 +2934,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2947,7 +2958,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -2971,7 +2982,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3063,7 +3074,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3078,16 +3089,17 @@
       "standards_anchor": "lesson",
       "strategy": "compiled",
       "strategy_atoms": [
-        "count_on_from_larger"
+        "count_on_from_larger",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 1,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3112,7 +3124,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3137,7 +3149,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3162,7 +3174,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3178,11 +3190,12 @@
       "strategy": "both",
       "strategy_atoms": [
         "count_on_from_larger",
-        "repeat_equal_groups"
+        "repeat_equal_groups",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 1,
+      "task_instances": 3,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -3212,7 +3225,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3237,7 +3250,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3255,11 +3268,12 @@
         "count_on_from_larger",
         "count_up_missing_addend",
         "make_ten_drop_leftover",
-        "make_ten_split_leftover"
+        "make_ten_split_leftover",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 5,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -3290,7 +3304,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3315,7 +3329,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3341,7 +3355,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3367,7 +3381,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3393,7 +3407,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3420,7 +3434,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3572,7 +3586,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3600,7 +3614,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3739,7 +3753,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 5,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
@@ -3765,7 +3779,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 5,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
@@ -3790,7 +3804,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 4,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
@@ -3818,7 +3832,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 4,
+      "task_instances": 5,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -3836,13 +3850,14 @@
       "lesson_number": 5,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
+        "count_on_from_larger",
         "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 2,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -3899,7 +3914,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -3922,7 +3937,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 2,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -4004,7 +4019,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4056,7 +4071,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4160,7 +4175,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4346,7 +4361,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4462,15 +4477,16 @@
       "lesson_number": 6,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "count_on_from_larger",
         "count_up_missing_addend",
-        "known_fact_retrieval"
+        "known_fact_retrieval",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 4,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
@@ -4500,7 +4516,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4528,7 +4544,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4580,7 +4596,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4602,7 +4618,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 11,
+      "task_instances": 12,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
@@ -4679,13 +4695,14 @@
       "lesson_number": 14,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
+        "count_on_from_larger",
         "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 6,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -4718,7 +4735,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4802,7 +4819,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4886,7 +4903,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -4941,7 +4958,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 5,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -4969,7 +4986,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 6,
+      "task_instances": 9,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -4987,15 +5004,16 @@
       "lesson_number": 25,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "add_instead_of_subtract_column",
         "count_all_when_count_on_available",
-        "count_on_from_larger"
+        "count_on_from_larger",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -5106,7 +5124,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5131,7 +5149,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5156,7 +5174,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5206,7 +5224,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5233,7 +5251,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5258,7 +5276,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5283,7 +5301,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5307,7 +5325,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5382,7 +5400,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 4,
+      "task_instances": 14,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -5443,7 +5461,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5496,7 +5514,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5521,7 +5539,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5576,7 +5594,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5602,7 +5620,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -5656,7 +5674,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6027,7 +6045,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6051,7 +6069,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6245,7 +6263,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6270,7 +6288,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6289,7 +6307,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -6317,7 +6335,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -6348,7 +6366,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6497,7 +6515,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6741,7 +6759,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6937,7 +6955,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -6963,7 +6981,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7100,7 +7118,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7125,7 +7143,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7151,7 +7169,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7229,7 +7247,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7271,17 +7289,18 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "count_all_when_count_on_available",
         "count_on_from_larger",
         "make_ten_drop_leftover",
         "make_ten_split_leftover",
-        "round_then_adjust"
+        "round_then_adjust",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 9,
+      "task_instances": 15,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -7339,7 +7358,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7363,7 +7382,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7482,7 +7501,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7634,7 +7653,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7693,7 +7712,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7917,7 +7936,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -7972,7 +7991,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8079,7 +8098,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8229,7 +8248,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8562,7 +8581,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8609,7 +8628,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8633,7 +8652,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8865,7 +8884,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8878,16 +8897,19 @@
       "lesson_number": 13,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "count_on_from_larger",
+        "count_up_missing_addend"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 3,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8912,7 +8934,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8959,7 +8981,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -8984,7 +9006,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9036,7 +9058,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9085,7 +9107,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9112,7 +9134,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9139,7 +9161,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9164,7 +9186,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9219,7 +9241,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9272,7 +9294,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9297,7 +9319,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9541,7 +9563,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9587,7 +9609,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9634,7 +9656,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9661,7 +9683,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9688,7 +9710,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9792,7 +9814,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -9972,7 +9994,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10136,7 +10158,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10190,7 +10212,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 5,
+      "task_instances": 7,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -10350,13 +10372,14 @@
       "lesson_number": 19,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "make_ten_split_leftover"
+        "make_ten_split_leftover",
+        "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -10385,7 +10408,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10410,7 +10433,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10435,7 +10458,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10488,7 +10511,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10538,7 +10561,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10566,7 +10589,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10591,7 +10614,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10604,13 +10627,14 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
+        "count_on_from_larger",
         "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -10641,7 +10665,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10679,16 +10703,18 @@
       "lesson_number": 13,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "count_on_from_larger"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 3,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10713,7 +10739,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10794,7 +10820,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10821,7 +10847,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10847,7 +10873,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10874,7 +10900,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -10985,7 +11011,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11039,7 +11065,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11184,7 +11210,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11254,7 +11280,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11332,7 +11358,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11463,7 +11489,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11488,7 +11514,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11592,7 +11618,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11619,7 +11645,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11717,7 +11743,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11792,7 +11818,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11818,7 +11844,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -11869,7 +11895,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12001,7 +12027,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12157,7 +12183,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 4,
+      "task_instances": 5,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -12211,7 +12237,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 6,
+      "task_instances": 11,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
@@ -12229,15 +12255,16 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "base_ones_chunking",
         "decompose_base_for_ones",
-        "round_then_adjust"
+        "round_then_adjust",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 4,
+      "task_instances": 8,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -12283,17 +12310,18 @@
       "lesson_number": 12,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "base_ones_chunking",
         "count_up_missing_addend",
         "multiplication_fact_retrieval",
         "repeat_equal_groups",
-        "round_then_adjust"
+        "round_then_adjust",
+        "take_away_base_ones"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 4,
+      "task_instances": 9,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -12323,7 +12351,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12350,7 +12378,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12376,7 +12404,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12425,7 +12453,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12449,7 +12477,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12473,7 +12501,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12498,7 +12526,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12522,7 +12550,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12541,7 +12569,7 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 1,
+      "task_instances": 5,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -12566,12 +12594,12 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 3,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12678,7 +12706,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12756,7 +12784,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12806,7 +12834,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12860,7 +12888,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -12994,12 +13022,12 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -13082,7 +13110,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -13095,19 +13123,20 @@
       "lesson_number": 22,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "fair_share_equal_groups",
+        "measure_groups_of_size",
         "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -13313,7 +13342,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -13907,7 +13936,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14058,7 +14087,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14108,7 +14137,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14134,7 +14163,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14209,7 +14238,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14546,7 +14575,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14572,7 +14601,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14619,7 +14648,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14716,7 +14745,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14741,7 +14770,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14817,7 +14846,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14844,7 +14873,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14936,7 +14965,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -14985,7 +15014,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15085,7 +15114,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15208,7 +15237,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15256,7 +15285,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15280,7 +15309,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15293,19 +15322,20 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
+        "repeat_equal_groups",
         "unit_fraction_iteration",
         "unit_fraction_partition"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 2,
+      "task_instances": 3,
       "deformation_instances": 1,
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15331,7 +15361,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15719,7 +15749,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15907,7 +15937,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15936,7 +15966,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -15962,7 +15992,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16043,7 +16073,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16070,7 +16100,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16098,7 +16128,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16123,7 +16153,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16149,7 +16179,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16176,7 +16206,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16202,7 +16232,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16229,7 +16259,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16313,7 +16343,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16365,7 +16395,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16389,7 +16419,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16414,7 +16444,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16441,7 +16471,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16465,7 +16495,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16489,7 +16519,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16514,7 +16544,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16563,7 +16593,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16658,7 +16688,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16684,7 +16714,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16737,7 +16767,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16813,7 +16843,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16842,7 +16872,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -16891,7 +16921,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17129,13 +17159,14 @@
       "lesson_number": 12,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "base_ones_chunking"
+        "base_ones_chunking",
+        "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -17162,12 +17193,12 @@
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17194,7 +17225,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17223,7 +17254,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17252,7 +17283,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17282,7 +17313,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17335,7 +17366,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17361,7 +17392,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17390,7 +17421,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17490,7 +17521,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17517,7 +17548,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17563,7 +17594,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17758,7 +17789,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -17953,7 +17984,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18023,7 +18054,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18211,7 +18242,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18344,7 +18375,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18371,7 +18402,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18395,7 +18426,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18441,7 +18472,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18543,7 +18574,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18569,7 +18600,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18618,7 +18649,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18691,7 +18722,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18716,7 +18747,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18831,11 +18862,12 @@
       "standards_anchor": "lesson",
       "strategy": "compiled",
       "strategy_atoms": [
+        "fair_share_equal_groups",
         "unit_fraction_iteration"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 0,
+      "task_instances": 1,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
@@ -18915,7 +18947,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -18966,7 +18998,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19066,7 +19098,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19091,7 +19123,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19762,7 +19794,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19866,7 +19898,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19891,7 +19923,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19908,16 +19940,17 @@
       "strategy_atoms": [
         "base_ones_chunking",
         "column_addition_with_carrying",
-        "long_division"
+        "long_division",
+        "measure_groups_of_size"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 1,
+      "task_instances": 2,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19943,7 +19976,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -19972,7 +20005,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20036,8 +20069,9 @@
       "lesson_number": 14,
       "text_source": true,
       "standards_anchor": "lesson",
-      "strategy": "compiled",
+      "strategy": "both",
       "strategy_atoms": [
+        "partial_quotient_chunking",
         "rectangle_missing_side_from_area",
         "rectangular_prism_missing_dimension_from_volume"
       ],
@@ -20072,7 +20106,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20098,7 +20132,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20149,7 +20183,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20223,7 +20257,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20272,7 +20306,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20299,7 +20333,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20324,7 +20358,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20350,7 +20384,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20377,7 +20411,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20403,7 +20437,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20430,7 +20464,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20457,7 +20491,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20484,7 +20518,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20513,7 +20547,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20540,7 +20574,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20567,7 +20601,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20595,7 +20629,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20623,7 +20657,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20647,7 +20681,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20700,7 +20734,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20725,7 +20759,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20742,6 +20776,7 @@
       "strategy_atoms": [
         "base_ones_chunking",
         "decimal_multiplication_rule",
+        "distribute_group_size_split",
         "positional_decimal_reading"
       ],
       "automaton_resolves": true,
@@ -20751,7 +20786,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20776,7 +20811,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20802,7 +20837,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20830,7 +20865,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20857,7 +20892,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20903,7 +20938,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20929,7 +20964,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20955,7 +20990,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -20981,7 +21016,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21006,7 +21041,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21032,7 +21067,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21056,7 +21091,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21372,7 +21407,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21674,7 +21709,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21746,7 +21781,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21762,7 +21797,8 @@
       "strategy": "hand",
       "strategy_atoms": [
         "base_ones_chunking",
-        "column_addition_with_carrying"
+        "column_addition_with_carrying",
+        "distribute_group_size_split"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -21771,7 +21807,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21821,7 +21857,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21846,7 +21882,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21897,7 +21933,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -21922,7 +21958,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -22019,7 +22055,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -22087,7 +22123,7 @@
       "misconception_link": false,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -22112,7 +22148,7 @@
       "misconception_link": true,
       "vision_digest": false,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -22654,16 +22690,17 @@
       "standards_anchor": "unit",
       "strategy": "compiled",
       "strategy_atoms": [
-        "construct_referent_ratio_diagram"
+        "construct_referent_ratio_diagram",
+        "repeat_equal_groups"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
-      "task_instances": 3,
+      "task_instances": 4,
       "deformation_instances": 0,
       "misconception_link": false,
       "vision_digest": true,
       "renders": {
-        "notation_chart": false,
+        "notation_chart": true,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -23036,9 +23073,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "unit_conversion_by_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23082,7 +23121,8 @@
       "standards_anchor": "unit",
       "strategy": "compiled",
       "strategy_atoms": [
-        "scale_ratio_unit"
+        "scale_ratio_unit",
+        "unit_conversion_by_iteration"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -23512,9 +23552,10 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "measure_groups_of_size"
+        "measure_groups_of_size",
+        "shape_classification_by_defining_attributes"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -23608,9 +23649,10 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "fair_share_equal_groups"
+        "fair_share_equal_groups",
+        "measure_groups_of_size"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -23704,9 +23746,11 @@
       "lesson_number": 12,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "measure_groups_of_size"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23750,9 +23794,11 @@
       "lesson_number": 14,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "rectangular_prism_volume_layer_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -23838,10 +23884,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "decimal_add_unaligned_numerals",
         "decimal_addition_by_aligned_units",
+        "decimal_multiplication_rule",
         "decimal_subtract_unaligned_numerals",
         "decimal_subtraction_by_aligned_units"
       ],
@@ -23865,12 +23912,13 @@
       "lesson_number": 2,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
         "decimal_add_unaligned_numerals",
         "decimal_addition_by_aligned_units",
         "decimal_subtract_unaligned_numerals",
-        "decimal_subtraction_by_aligned_units"
+        "decimal_subtraction_by_aligned_units",
+        "positional_decimal_reading"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -23919,8 +23967,9 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
+        "count_up_missing_addend",
         "decimal_add_unaligned_numerals",
         "decimal_addition_by_aligned_units",
         "decimal_subtract_unaligned_numerals",
@@ -23946,9 +23995,12 @@
       "lesson_number": 5,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "decimal_multiplication_rule",
+        "positional_decimal_reading"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 2,
       "deformation_instances": 0,
@@ -23968,9 +24020,10 @@
       "lesson_number": 6,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "decimal_multiplication_rule"
+        "decimal_multiplication_rule",
+        "positional_decimal_reading"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -23992,9 +24045,12 @@
       "lesson_number": 7,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "decimal_multiplication_rule",
+        "positional_decimal_reading"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 3,
       "deformation_instances": 0,
@@ -24014,9 +24070,10 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "decimal_multiplication_rule"
+        "decimal_multiplication_rule",
+        "positional_decimal_reading"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -24060,9 +24117,10 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "partial_quotient_chunking"
+        "partial_quotient_chunking",
+        "recursive_place_value_inscription"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -24084,9 +24142,11 @@
       "lesson_number": 11,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "hand",
+      "strategy": "both",
       "strategy_atoms": [
-        "long_division"
+        "long_division",
+        "partial_quotient_chunking",
+        "recursive_place_value_inscription"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -25018,7 +25078,8 @@
       "standards_anchor": "unit",
       "strategy": "compiled",
       "strategy_atoms": [
-        "common_factor_intersection"
+        "common_factor_intersection",
+        "rectangle_factor_pair_search"
       ],
       "automaton_resolves": true,
       "verbatim_context": true,
@@ -25027,7 +25088,7 @@
       "misconception_link": false,
       "vision_digest": true,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -25051,7 +25112,7 @@
       "misconception_link": false,
       "vision_digest": true,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -25076,7 +25137,7 @@
       "misconception_link": false,
       "vision_digest": true,
       "renders": {
-        "notation_chart": true,
+        "notation_chart": false,
         "deformation_chart": false,
         "filmstrips": false
       },
@@ -25307,6 +25368,7 @@
       "standards_anchor": "unit",
       "strategy": "compiled",
       "strategy_atoms": [
+        "fair_share_equal_groups",
         "mean_as_fair_share"
       ],
       "automaton_resolves": true,
@@ -25546,9 +25608,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "unit_conversion_by_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -25810,9 +25874,11 @@
       "lesson_number": 2,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -25854,9 +25920,11 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -26118,9 +26186,11 @@
       "lesson_number": 3,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "unit_conversion_by_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -26162,9 +26232,11 @@
       "lesson_number": 5,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "unit_conversion_by_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -26404,9 +26476,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "linear_unit_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -26448,9 +26522,11 @@
       "lesson_number": 3,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -26734,9 +26810,11 @@
       "lesson_number": 5,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "positional_decimal_reading"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 11,
       "deformation_instances": 0,
@@ -26822,9 +26900,11 @@
       "lesson_number": 9,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "recursive_place_value_inscription"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 6,
       "deformation_instances": 0,
@@ -27868,9 +27948,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_additive_composition"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -27912,9 +27994,11 @@
       "lesson_number": 3,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -27934,9 +28018,11 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -27956,9 +28042,11 @@
       "lesson_number": 5,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_additive_composition"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -28022,9 +28110,11 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -28044,9 +28134,12 @@
       "lesson_number": 9,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement",
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -28066,9 +28159,12 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement",
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -28220,9 +28316,11 @@
       "lesson_number": 17,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -28880,9 +28978,11 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "linear_unit_iteration"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29012,9 +29112,11 @@
       "lesson_number": 4,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29056,9 +29158,11 @@
       "lesson_number": 6,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29078,9 +29182,11 @@
       "lesson_number": 7,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29100,9 +29206,11 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29144,9 +29252,11 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29254,9 +29364,12 @@
       "lesson_number": 15,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement",
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29276,9 +29389,11 @@
       "lesson_number": 16,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29320,9 +29435,11 @@
       "lesson_number": 1,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -29474,9 +29591,12 @@
       "lesson_number": 8,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "angle_turn_measurement",
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -30970,9 +31090,11 @@
       "lesson_number": 10,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "categorical_frequency_bar_representation"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31190,9 +31312,11 @@
       "lesson_number": 9,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31322,9 +31446,11 @@
       "lesson_number": 15,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "positional_decimal_reading"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31476,9 +31602,11 @@
       "lesson_number": 6,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31586,9 +31714,11 @@
       "lesson_number": 11,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31652,9 +31782,11 @@
       "lesson_number": 14,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31696,9 +31828,11 @@
       "lesson_number": 16,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "positional_decimal_reading"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31740,9 +31874,11 @@
       "lesson_number": 18,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,
@@ -31784,9 +31920,11 @@
       "lesson_number": 2,
       "text_source": true,
       "standards_anchor": "unit",
-      "strategy": "none",
-      "strategy_atoms": [],
-      "automaton_resolves": false,
+      "strategy": "compiled",
+      "strategy_atoms": [
+        "shape_classification_by_defining_attributes"
+      ],
+      "automaton_resolves": true,
       "verbatim_context": true,
       "task_instances": 0,
       "deformation_instances": 0,

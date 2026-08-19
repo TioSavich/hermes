@@ -292,26 +292,10 @@ def build_top_index(records: list, skipped: list) -> str:
                 "max-width:1000px;margin:0 auto;padding:28px'>")
     rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
                 "Notation monitoring charts &mdash; Grades K&ndash;8</h1>")
-    rows.append("<p style='max-width:840px;line-height:1.45'>Each Illustrative "
-                "Mathematics lesson with an encoded addition, subtraction, or "
-                "multiplication attachment hosts one chart. When a lesson has "
-                "several such operations, addition precedes subtraction, which "
-                "precedes multiplication. The deformations are admitted by cited "
-                "evidence through the representation grammar's misconception "
-                "lane and rendered over a representative equation. The companion fraction chart "
-                "(<code>lesson_deformation_chart.pl</code>) is a separate "
-                "pipeline and is untouched.</p>")
-    # The top-level honesty card.
-    rows.append("<div style='max-width:840px;margin:18px 0;padding:14px 16px;"
-                "border:1px solid #b95238;border-left-width:5px;background:#fdf0ec'>"
-                "<strong style='color:#8b1e16'>Honesty card.</strong>"
-                f"<p style='margin:6px 0 0;line-height:1.4'>{html.escape(HOST_NOTE)} "
-                "Provenance travels with every deformation: "
-                "<code>corpus_attested</code> means the violation reason or "
-                "inscription form is attested somewhere in this corpus; "
-                "<code>literature_only</code> means the rendered instance is a "
-                "literature-grounded named misconception rendered parametrically, "
-                "with no instance counted in this corpus.</p></div>")
+    rows.append("<p style='max-width:840px;line-height:1.45'>The written "
+                "inscription a child should produce, beside the deformations to "
+                "watch for on it. Each chart is drawn over one equation the "
+                "lesson\u2019s own operation produces.</p>")
 
     # group records by the grade atom in the lesson code
     grade_records = {grade: [] for grade in GRADE_ORDER}

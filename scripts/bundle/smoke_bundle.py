@@ -577,10 +577,16 @@ def live_probes(tree: Path, python: str, swipl: str | None,
               and isinstance(b.get("result"), dict)
               and bool(b["result"].get("visuals"))
               and len(json.dumps(b["result"])) > 200)
+        # Student-work images are not bundled (Tio's ruling, 2026-08-19: the
+        # derived records are the product, the photographs are an input). The
+        # mount stays so a checkout that bind-mounts the corpus still serves it;
+        # the bundle must answer 404 rather than carry the image. Asserting the
+        # absence keeps this a test of the shipping policy instead of a hole.
         probe(
-            "GET shipped ASKTM PNG",
+            "GET unshipped ASKTM PNG answers 404",
             "/ASKTM_Data/Grade%204_Fine-Grained%20Coding_Second%20Pass/"
             "converted/G4Q1_media/media/image1.png",
+            want=range(404, 405),
         )
 
         # the worker-backed offline path (starts the Prolog worker; slow once)

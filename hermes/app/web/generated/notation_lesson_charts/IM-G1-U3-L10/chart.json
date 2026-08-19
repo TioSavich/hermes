@@ -1,0 +1,420 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "operational_equals_chain",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Equals read as makes: 10 + 4 chained to 14.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "kind": "chain-equals",
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "operational_equals_chain(10,+,4,14)"
+              }
+            ],
+            "kind": "operational_equals_chain",
+            "request": {
+              "spec": "operational_equals_chain(10,+,4,14)"
+            },
+            "result": "unknown"
+          }
+        },
+        {
+          "deformation": "digit_transposition",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Digit transposition: 10 + 4 = 14 recorded as 41.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "digit_transposition(10,+,4,14)"
+              }
+            ],
+            "kind": "write_equation",
+            "request": {
+              "a": 10,
+              "b": 4,
+              "op": "+",
+              "r": 14
+            },
+            "result": "41"
+          }
+        },
+        {
+          "deformation": "place_value_writing_error",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Place value reversed: 10 + 4 = 14 written as 41.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 144,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "place_value_writing_error(10,+,4,14)"
+              }
+            ],
+            "kind": "place_value_writing_error",
+            "request": {
+              "spec": "place_value_writing_error(10,+,4,14)"
+            },
+            "result": "unknown"
+          }
+        }
+      ],
+      "equation": "10 + 4 = 14",
+      "host": "notation",
+      "operands": {
+        "a": 10,
+        "b": 4,
+        "op": "+",
+        "r": 14
+      },
+      "productive": {
+        "canvas": {
+          "height": 120,
+          "width": 760
+        },
+        "frames": [
+          {
+            "caption": "Write 10 + 4 = 14.",
+            "scene": {
+              "baseline": 40,
+              "format": "notation",
+              "glyphPitch": 24,
+              "glyphs": [
+                {
+                  "ch": "1",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 0,
+                  "y": 40
+                },
+                {
+                  "ch": "0",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 24,
+                  "y": 40
+                },
+                {
+                  "ch": "+",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 48,
+                  "y": 40
+                },
+                {
+                  "ch": "4",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 72,
+                  "y": 40
+                },
+                {
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 96,
+                  "y": 40
+                },
+                {
+                  "ch": "1",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "ch": "4",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 144,
+                  "y": 40
+                }
+              ],
+              "marks": [],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "write_equation(10,+,4,14)"
+          }
+        ],
+        "kind": "write_equation",
+        "request": {
+          "a": 10,
+          "b": 4,
+          "op": "+",
+          "r": 14
+        },
+        "result": "14"
+      }
+    }
+  ],
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
+  "hosts": [
+    "notation"
+  ],
+  "kind": "lesson_notation_chart",
+  "lesson_code": "IM-G1-U3-L10",
+  "operation": "addition",
+  "representative_equation": "10 + 4 = 14",
+  "standards": [],
+  "title": "IM-G1-U3-L10"
+}

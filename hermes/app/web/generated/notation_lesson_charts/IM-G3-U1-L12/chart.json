@@ -14,7 +14,7 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 3 * 2 chained to 6.",
+                "caption": "Equals read as makes: 3 * 10 chained to 30.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -39,7 +39,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -48,28 +48,46 @@
                       "y": 40
                     },
                     {
-                      "ch": "=",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "equals",
+                      "role": "digit",
                       "size": 20,
                       "x": 72,
                       "y": 40
                     },
                     {
-                      "ch": "6",
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
                       "size": 20,
-                      "x": 96,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 144,
                       "y": 40
                     }
                   ],
                   "marks": [
                     {
                       "kind": "chain-equals",
-                      "x": 72,
+                      "x": 96,
                       "y": 40
                     }
                   ],
@@ -77,12 +95,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(3,*,2,6)"
+                "verb": "operational_equals_chain(3,*,10,30)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(3,*,2,6)"
+              "spec": "operational_equals_chain(3,*,10,30)"
             },
             "result": "unknown"
           }
@@ -99,7 +117,7 @@
             },
             "frames": [
               {
-                "caption": "Mirror-written 3 in 3 * 2 = 6.",
+                "caption": "Mirror-written 3 in 3 * 10 = 30.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
@@ -124,7 +142,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "1",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -133,21 +151,39 @@
                       "y": 40
                     },
                     {
-                      "ch": "=",
+                      "ch": "0",
                       "flip": "none",
                       "ghost": "none",
-                      "role": "equals",
+                      "role": "digit",
                       "size": 20,
                       "x": 72,
                       "y": 40
                     },
                     {
-                      "ch": "6",
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
                       "size": 20,
-                      "x": 96,
+                      "x": 120,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 144,
                       "y": 40
                     }
                   ],
@@ -156,24 +192,203 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(3,3,*,2,6)"
+                "verb": "mirror_written(3,3,*,10,30)"
               }
             ],
             "kind": "mirror_written",
             "request": {
-              "spec": "mirror_written(3,3,*,2,6)"
+              "spec": "mirror_written(3,3,*,10,30)"
             },
-            "result": "6"
+            "result": "30"
+          }
+        },
+        {
+          "deformation": "digit_transposition",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Digit transposition: 3 * 10 = 30 recorded as 3.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "\u00d7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "digit_transposition(3,*,10,30)"
+              }
+            ],
+            "kind": "write_equation",
+            "request": {
+              "a": 3,
+              "b": 10,
+              "op": "*",
+              "r": 30
+            },
+            "result": "3"
+          }
+        },
+        {
+          "deformation": "place_value_writing_error",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Place value reversed: 3 * 10 = 30 written as 3.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "\u00d7",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "0",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 120,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "place_value_writing_error(3,*,10,30)"
+              }
+            ],
+            "kind": "place_value_writing_error",
+            "request": {
+              "spec": "place_value_writing_error(3,*,10,30)"
+            },
+            "result": "unknown"
           }
         }
       ],
-      "equation": "3 * 2 = 6",
+      "equation": "3 * 10 = 30",
       "host": "notation",
       "operands": {
         "a": 3,
-        "b": 2,
+        "b": 10,
         "op": "*",
-        "r": 6
+        "r": 30
       },
       "productive": {
         "canvas": {
@@ -182,7 +397,7 @@
         },
         "frames": [
           {
-            "caption": "Write 3 * 2 = 6.",
+            "caption": "Write 3 * 10 = 30.",
             "scene": {
               "baseline": 40,
               "format": "notation",
@@ -207,7 +422,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "1",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -216,21 +431,39 @@
                   "y": 40
                 },
                 {
-                  "ch": "=",
+                  "ch": "0",
                   "flip": "none",
                   "ghost": "none",
-                  "role": "equals",
+                  "role": "digit",
                   "size": 20,
                   "x": 72,
                   "y": 40
                 },
                 {
-                  "ch": "6",
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 96,
+                  "y": 40
+                },
+                {
+                  "ch": "3",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
                   "size": 20,
-                  "x": 96,
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "ch": "0",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 144,
                   "y": 40
                 }
               ],
@@ -239,28 +472,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(3,*,2,6)"
+            "verb": "write_equation(3,*,10,30)"
           }
         ],
         "kind": "write_equation",
         "request": {
           "a": 3,
-          "b": 2,
+          "b": 10,
           "op": "*",
-          "r": 6
+          "r": 30
         },
-        "result": "6"
+        "result": "30"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its multiplication operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "This lesson hosts a notation chart through its multiplication operation. Its equation comes from a registered lesson task; each deformation is admitted by cited evidence and is not counted as an instance in this lesson.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-G3-U1-L12",
   "operation": "multiplication",
-  "representative_equation": "3 * 2 = 6",
+  "representative_equation": "3 * 10 = 30",
   "standards": [],
   "title": "IM-G3-U1-L12"
 }

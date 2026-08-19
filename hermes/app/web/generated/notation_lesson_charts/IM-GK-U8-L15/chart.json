@@ -14,14 +14,14 @@
             },
             "frames": [
               {
-                "caption": "Equals read as makes: 3 * 2 chained to 6.",
+                "caption": "Equals read as makes: 2 + 3 chained to 5.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "3",
+                      "ch": "2",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -30,7 +30,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "\u00d7",
+                      "ch": "+",
                       "flip": "none",
                       "ghost": "none",
                       "role": "operator",
@@ -39,7 +39,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
+                      "ch": "3",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -57,7 +57,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "6",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -77,12 +77,12 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "operational_equals_chain(3,*,2,6)"
+                "verb": "operational_equals_chain(2,+,3,5)"
               }
             ],
             "kind": "operational_equals_chain",
             "request": {
-              "spec": "operational_equals_chain(3,*,2,6)"
+              "spec": "operational_equals_chain(2,+,3,5)"
             },
             "result": "unknown"
           }
@@ -99,23 +99,23 @@
             },
             "frames": [
               {
-                "caption": "Mirror-written 3 in 3 * 2 = 6.",
+                "caption": "Mirror-written 3 in 2 + 3 = 5.",
                 "scene": {
                   "baseline": 40,
                   "format": "notation",
                   "glyphPitch": 24,
                   "glyphs": [
                     {
-                      "ch": "3",
-                      "flip": "horizontal",
+                      "ch": "2",
+                      "flip": "none",
                       "ghost": "none",
-                      "role": "deformation",
+                      "role": "digit",
                       "size": 20,
                       "x": 0,
                       "y": 40
                     },
                     {
-                      "ch": "\u00d7",
+                      "ch": "+",
                       "flip": "none",
                       "ghost": "none",
                       "role": "operator",
@@ -124,10 +124,10 @@
                       "y": 40
                     },
                     {
-                      "ch": "2",
-                      "flip": "none",
+                      "ch": "3",
+                      "flip": "horizontal",
                       "ghost": "none",
-                      "role": "digit",
+                      "role": "deformation",
                       "size": 20,
                       "x": 48,
                       "y": 40
@@ -142,7 +142,7 @@
                       "y": 40
                     },
                     {
-                      "ch": "6",
+                      "ch": "5",
                       "flip": "none",
                       "ghost": "none",
                       "role": "digit",
@@ -156,24 +156,24 @@
                 },
                 "sceneChanged": true,
                 "step": 1,
-                "verb": "mirror_written(3,3,*,2,6)"
+                "verb": "mirror_written(3,2,+,3,5)"
               }
             ],
             "kind": "mirror_written",
             "request": {
-              "spec": "mirror_written(3,3,*,2,6)"
+              "spec": "mirror_written(3,2,+,3,5)"
             },
-            "result": "6"
+            "result": "5"
           }
         }
       ],
-      "equation": "3 * 2 = 6",
+      "equation": "2 + 3 = 5",
       "host": "notation",
       "operands": {
-        "a": 3,
-        "b": 2,
-        "op": "*",
-        "r": 6
+        "a": 2,
+        "b": 3,
+        "op": "+",
+        "r": 5
       },
       "productive": {
         "canvas": {
@@ -182,14 +182,14 @@
         },
         "frames": [
           {
-            "caption": "Write 3 * 2 = 6.",
+            "caption": "Write 2 + 3 = 5.",
             "scene": {
               "baseline": 40,
               "format": "notation",
               "glyphPitch": 24,
               "glyphs": [
                 {
-                  "ch": "3",
+                  "ch": "2",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -198,7 +198,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "\u00d7",
+                  "ch": "+",
                   "flip": "none",
                   "ghost": "none",
                   "role": "operator",
@@ -207,7 +207,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "2",
+                  "ch": "3",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -225,7 +225,7 @@
                   "y": 40
                 },
                 {
-                  "ch": "6",
+                  "ch": "5",
                   "flip": "none",
                   "ghost": "none",
                   "role": "digit",
@@ -239,28 +239,28 @@
             },
             "sceneChanged": true,
             "step": 1,
-            "verb": "write_equation(3,*,2,6)"
+            "verb": "write_equation(2,+,3,5)"
           }
         ],
         "kind": "write_equation",
         "request": {
-          "a": 3,
-          "b": 2,
-          "op": "*",
-          "r": 6
+          "a": 2,
+          "b": 3,
+          "op": "+",
+          "r": 5
         },
-        "result": "6"
+        "result": "5"
       }
     }
   ],
-  "host_note": "This lesson hosts a notation chart through its multiplication operation. Each deformation is admitted by cited evidence and rendered over a representative equation, not counted as an instance in this lesson.",
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
   "hosts": [
     "notation"
   ],
   "kind": "lesson_notation_chart",
   "lesson_code": "IM-GK-U8-L15",
-  "operation": "multiplication",
-  "representative_equation": "3 * 2 = 6",
+  "operation": "addition",
+  "representative_equation": "2 + 3 = 5",
   "standards": [],
   "title": "IM-GK-U8-L15"
 }

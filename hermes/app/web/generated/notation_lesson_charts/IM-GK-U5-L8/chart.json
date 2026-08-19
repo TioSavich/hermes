@@ -1,0 +1,266 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "operational_equals_chain",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "corpus_attested",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Equals read as makes: 1 + 3 chained to 4.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [
+                    {
+                      "kind": "chain-equals",
+                      "x": 72,
+                      "y": 40
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "operational_equals_chain(1,+,3,4)"
+              }
+            ],
+            "kind": "operational_equals_chain",
+            "request": {
+              "spec": "operational_equals_chain(1,+,3,4)"
+            },
+            "result": "unknown"
+          }
+        },
+        {
+          "deformation": "mirror_written_numeral",
+          "family": "notation_error",
+          "host_note": "Rendered over a representative equation from the lesson's operation, not a corpus instance of this deformation in this lesson.",
+          "provenance": "literature_only",
+          "scene": {
+            "canvas": {
+              "height": 120,
+              "width": 760
+            },
+            "frames": [
+              {
+                "caption": "Mirror-written 3 in 1 + 3 = 4.",
+                "scene": {
+                  "baseline": 40,
+                  "format": "notation",
+                  "glyphPitch": 24,
+                  "glyphs": [
+                    {
+                      "ch": "1",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 0,
+                      "y": 40
+                    },
+                    {
+                      "ch": "+",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "operator",
+                      "size": 20,
+                      "x": 24,
+                      "y": 40
+                    },
+                    {
+                      "ch": "3",
+                      "flip": "horizontal",
+                      "ghost": "none",
+                      "role": "deformation",
+                      "size": 20,
+                      "x": 48,
+                      "y": 40
+                    },
+                    {
+                      "ch": "=",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "equals",
+                      "size": 20,
+                      "x": 72,
+                      "y": 40
+                    },
+                    {
+                      "ch": "4",
+                      "flip": "none",
+                      "ghost": "none",
+                      "role": "digit",
+                      "size": 20,
+                      "x": 96,
+                      "y": 40
+                    }
+                  ],
+                  "marks": [],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "mirror_written(3,1,+,3,4)"
+              }
+            ],
+            "kind": "mirror_written",
+            "request": {
+              "spec": "mirror_written(3,1,+,3,4)"
+            },
+            "result": "4"
+          }
+        }
+      ],
+      "equation": "1 + 3 = 4",
+      "host": "notation",
+      "operands": {
+        "a": 1,
+        "b": 3,
+        "op": "+",
+        "r": 4
+      },
+      "productive": {
+        "canvas": {
+          "height": 120,
+          "width": 760
+        },
+        "frames": [
+          {
+            "caption": "Write 1 + 3 = 4.",
+            "scene": {
+              "baseline": 40,
+              "format": "notation",
+              "glyphPitch": 24,
+              "glyphs": [
+                {
+                  "ch": "1",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 0,
+                  "y": 40
+                },
+                {
+                  "ch": "+",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "operator",
+                  "size": 20,
+                  "x": 24,
+                  "y": 40
+                },
+                {
+                  "ch": "3",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 48,
+                  "y": 40
+                },
+                {
+                  "ch": "=",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "equals",
+                  "size": 20,
+                  "x": 72,
+                  "y": 40
+                },
+                {
+                  "ch": "4",
+                  "flip": "none",
+                  "ghost": "none",
+                  "role": "digit",
+                  "size": 20,
+                  "x": 96,
+                  "y": 40
+                }
+              ],
+              "marks": [],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "write_equation(1,+,3,4)"
+          }
+        ],
+        "kind": "write_equation",
+        "request": {
+          "a": 1,
+          "b": 3,
+          "op": "+",
+          "r": 4
+        },
+        "result": "4"
+      }
+    }
+  ],
+  "host_note": "The IM K/G1 corpus has no number-writing lessons; this notation chart uses a registered addition task from the lesson. The chart renders that task rather than counting corpus instances of a deformation.",
+  "hosts": [
+    "notation"
+  ],
+  "kind": "lesson_notation_chart",
+  "lesson_code": "IM-GK-U5-L8",
+  "operation": "addition",
+  "representative_equation": "1 + 3 = 4",
+  "standards": [],
+  "title": "IM-GK-U5-L8"
+}

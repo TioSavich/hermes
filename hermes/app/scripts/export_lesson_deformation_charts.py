@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render lesson-specific deformation monitoring charts as SVG.
+"""Render supported lesson deformation charts and their shared SVG drawings.
 
 "Given a lesson charted on 1/N modeled with a circle or a fraction strip, here
 are the student-work errors to watch for, rendered on 1/N."
@@ -16,31 +16,24 @@ export_parametric_deformations.py verbatim):
       -> a monitoring-chart dict (swipl -l paths.pl, json_write_dict) -> here
       -> hermes/web/render/drawer.js buildSvg -> SVG filmstrips.
 
-WHICH fraction is where the honesty lives. Only 3 of the 77 lessons this script
-writes take their hosts and fractions from a teacher guide; the other 74 take
-one fixed default set (chart_provenance/2 in the Prolog module records which).
-Every page written here states its lesson's provenance and what the value means,
-and the top index and manifest carry the census, so no reader can mistake a
-default fill for a reading of the lesson.
+WHICH fraction is where the honesty lives. Only 3 of the 77 enumerated charts
+take their hosts and fractions from a teacher guide. The other 74 take one fixed
+default set (chart_provenance/2 in the Prolog module records which), so this
+exporter withdraws them rather than publishing lesson-named directories.
 
 Logic lives in Prolog; this script is projection plus layout. It does NOT edit
-representation_grammar.pl or drawer.js. Output under
-hermes/app/web/generated/lesson_deformation_charts/<lesson-code>/.
+representation_grammar.pl or drawer.js. The distinct drawings are written once
+under hermes/app/web/generated/lesson_deformation_charts/_shared/. Only
+hand_authored charts receive lesson directories, and their indexes reference
+the shared drawings.
 
 Run: python3 hermes/app/scripts/export_lesson_deformation_charts.py
 
-Lean layout (``--lean``) is for remote, all-lesson generation. Each lesson
-directory contains ``chart.json``, ``index.html``, one representative
-productive filmstrip, and one representative filmstrip for each admitted
-deformation kind. It deliberately does not emit one strip for every chart cell
-or frame; the complete chart remains in ``chart.json``. The layout is bounded
-at 12 files per lesson. Full mode remains the default for the hand galleries.
 """
 from __future__ import annotations
 
 import html
 import sys
-import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
@@ -48,7 +41,6 @@ sys.path.insert(0, str(REPO))
 from hermes.app.scripts import export_engine
 
 OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "lesson_deformation_charts")
-MAX_LEAN_FILES_PER_LESSON = 12
 
 # --- Enumerate and build every chart in one SWI-Prolog process ----------------
 
@@ -100,18 +92,16 @@ def _slug(s: str) -> str:
     )
 
 
-# --- render one lesson's chart -----------------------------------------------
+# --- render one supported lesson chart ---------------------------------------
 
-def export_lesson(out_dir: Path, code: str, chart: dict, *, lean: bool = False) -> dict:
+def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
+                  rendered: set[str]) -> dict:
     lesson_dir = out_dir / code
     lesson_dir.mkdir(parents=True, exist_ok=True)
 
     export_engine.write_json(lesson_dir / "chart.json", chart)
 
     written = [lesson_dir / "chart.json"]
-    if lean:
-        return export_lesson_lean(lesson_dir, code, chart, written)
-
     cell_records = []
     for cell in chart["cells"]:
         host = cell["host"]
@@ -122,14 +112,15 @@ def export_lesson(out_dir: Path, code: str, chart: dict, *, lean: bool = False) 
         # productive scene (B/M/E)
         prod = cell["productive"]
         prod_frames = prod["frames"]
-        prod_file = lesson_dir / f"{host}-{frac_slug}-PRODUCTIVE.svg"
-        render(
-            prod_frames, prod_file,
-            [_verb_label(f) for f in prod_frames],
-            title=f"{host}: correct {frac} (establish - partition - shade)",
-            panel_w=250, panel_h=210,
-        )
-        written.append(prod_file)
+        prod_name = f"{host}-{frac_slug}-PRODUCTIVE.svg"
+        if prod_name not in rendered:
+            render(
+                prod_frames, shared_dir / prod_name,
+                [_verb_label(f) for f in prod_frames],
+                title=f"{host}: correct {frac} (establish - partition - shade)",
+                panel_w=250, panel_h=210,
+            )
+            rendered.add(prod_name)
 
         # deformation scenes (labeled misconceptions only)
         deform_records = []
@@ -138,18 +129,19 @@ def export_lesson(out_dir: Path, code: str, chart: dict, *, lean: bool = False) 
             scene = d["scene"]
             frames = scene["frames"]
             d_slug = _slug(name)
-            d_file = lesson_dir / f"{host}-{frac_slug}-{d_slug}.svg"
-            render(
-                frames, d_file,
-                [_verb_label(f) for f in frames],
-                title=f"WATCH FOR: {name} of {frac} on a {host}",
-                panel_w=300, panel_h=210,
-            )
-            written.append(d_file)
+            drawing_name = f"{host}-{frac_slug}-{d_slug}.svg"
+            if drawing_name not in rendered:
+                render(
+                    frames, shared_dir / drawing_name,
+                    [_verb_label(f) for f in frames],
+                    title=f"WATCH FOR: {name} of {frac} on a {host}",
+                    panel_w=300, panel_h=210,
+                )
+                rendered.add(drawing_name)
             deform_records.append({
                 "deformation": name,
                 "family": d["family"],
-                "file": d_file.name,
+                "file": f"../_shared/{drawing_name}",
                 "frame_count": len(frames),
             })
 
@@ -157,7 +149,7 @@ def export_lesson(out_dir: Path, code: str, chart: dict, *, lean: bool = False) 
             "host": host,
             "fraction": frac,
             "denominator": n,
-            "productive_file": prod_file.name,
+            "productive_file": f"../_shared/{prod_name}",
             "deformations": deform_records,
         })
 
@@ -175,75 +167,6 @@ def export_lesson(out_dir: Path, code: str, chart: dict, *, lean: bool = False) 
         "cell_count": len(cell_records),
         "cells": cell_records,
         "files": [str(w) for w in written],
-        "dir": str(lesson_dir),
-    }
-
-
-def export_lesson_lean(lesson_dir: Path, code: str, chart: dict, written: list[Path]) -> dict:
-    """Render one deterministic representative filmstrip for each chart kind."""
-    cells = chart["cells"]
-    if not cells:
-        raise ValueError(f"{code} has no deformation chart cells")
-
-    productive_cell = cells[0]
-    productive = productive_cell["productive"]
-    productive_file = lesson_dir / "LEAN-PRODUCTIVE.svg"
-    render(
-        productive["frames"], productive_file,
-        [_verb_label(frame) for frame in productive["frames"]],
-        title=(f"Representative productive model: {productive_cell['fraction']} "
-               f"on a {productive_cell['host']}"),
-        panel_w=250, panel_h=210,
-    )
-    written.append(productive_file)
-
-    selected = []
-    seen_kinds = set()
-    for cell in cells:
-        for deformation in cell["deformations"]:
-            name = deformation["deformation"]
-            if name in seen_kinds:
-                continue
-            seen_kinds.add(name)
-            scene = deformation["scene"]
-            deformation_file = lesson_dir / f"LEAN-{_slug(name)}.svg"
-            render(
-                scene["frames"], deformation_file,
-                [_verb_label(frame) for frame in scene["frames"]],
-                title=(f"WATCH FOR: {name} of {cell['fraction']} "
-                       f"on a {cell['host']}"),
-                panel_w=300, panel_h=210,
-            )
-            written.append(deformation_file)
-            selected.append({
-                "deformation": name,
-                "family": deformation["family"],
-                "file": deformation_file.name,
-                "frame_count": len(scene["frames"]),
-                "source_host": cell["host"],
-                "source_fraction": cell["fraction"],
-            })
-
-    export_engine.write_index(
-        lesson_dir,
-        build_lean_lesson_index(chart, productive_cell, productive_file.name, selected),
-    )
-    written.append(lesson_dir / "index.html")
-    if len(written) > MAX_LEAN_FILES_PER_LESSON:
-        raise ValueError(
-            f"{code} lean export produced {len(written)} files; "
-            f"limit is {MAX_LEAN_FILES_PER_LESSON}"
-        )
-    return {
-        "code": code,
-        "title": chart["title"],
-        "standards": chart["standards"],
-        "hosts": chart["hosts"],
-        "fractions": chart["fractions"],
-        "provenance": chart["provenance"],
-        "cell_count": len(cells),
-        "deformation_kinds": [item["deformation"] for item in selected],
-        "files": [str(path) for path in written],
         "dir": str(lesson_dir),
     }
 
@@ -352,91 +275,38 @@ def build_lesson_index(chart: dict, cells: list) -> str:
     return "\n".join(rows)
 
 
-def build_lean_lesson_index(chart: dict, productive_cell: dict, productive_file: str,
-                            deformations: list[dict]) -> str:
-    """Build a compact, explicit index for the remote lean layout."""
-    code = chart["lesson_code"]
-    rows = [
-        "<!doctype html><meta charset=utf-8>",
-        f"<title>{html.escape(code)} - lean deformation chart</title>",
-        "<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
-        "max-width:1180px;margin:0 auto;padding:28px'>",
-        f"<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
-        f"{html.escape(code)}: lean deformation chart</h1>",
-        provenance_banner(chart),
-        "<p style='max-width:820px;line-height:1.45'>This compact remote-export "
-        "layout retains the complete chart in <code>chart.json</code>, one "
-        "representative productive filmstrip, and one representative filmstrip "
-        "for each admitted deformation kind. It is not a cell-by-cell gallery.</p>",
-        "<h2>Representative productive model</h2>",
-        f"<p>{html.escape(productive_cell['fraction'])} on a "
-        f"{html.escape(productive_cell['host'])}</p>",
-        f"<img src='{html.escape(productive_file, quote=True)}' "
-        "style='max-width:420px;border:1px solid #cabf9f;background:#f8f1df'>",
-        "<h2>Admitted deformation kinds</h2>",
-        "<div style='display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start'>",
-    ]
-    for deformation in deformations:
-        rows.append(
-            "<figure style='margin:0'><figcaption style='font-size:13px;"
-            "font-weight:700;color:#8b1e16'>"
-            f"Watch for: {html.escape(deformation['deformation'])} "
-            f"({html.escape(deformation['source_fraction'])} on "
-            f"{html.escape(deformation['source_host'])})</figcaption>"
-            f"<img src='{html.escape(deformation['file'], quote=True)}' "
-            "style='max-width:420px;border:1px solid #cabf9f;background:#f8f1df'></figure>"
-        )
-    rows.extend(["</div>", "</body>"])
-    return "\n".join(rows)
-
-
 # --- the top-level index across all charted lessons ---------------------------
 
-def build_top_index(records: list, *, lean: bool = False) -> str:
+def build_top_index(records: list, shared_drawings: list[str]) -> str:
     rows = []
     rows.append("<!doctype html><meta charset=utf-8>")
-    rows.append("<title>Lesson deformation monitoring charts</title>")
+    rows.append("<title>Lesson deformation charts</title>")
     rows.append("<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
                 "max-width:900px;margin:0 auto;padding:28px'>")
     rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
-                "Lesson deformation monitoring charts</h1>")
-    rows.append("<p style='max-width:760px;line-height:1.45'>For each charted "
-                "Illustrative Mathematics lesson, the productive model for a unit "
-                "fraction beside the student-work deformations to watch for on it. "
-                "The deformations are parametric over the fraction and grounded in "
-                "the corpus-attested transplant and equipartition-failure "
-                "families.</p>")
-    read = sum(1 for r in records if r["provenance"] == "hand_authored")
-    filled = len(records) - read
-    rows.append(
-        "<div style='border-left:4px solid #8b1e16;background:#f7ece9;"
-        "max-width:760px;padding:12px 16px;margin:18px 0;line-height:1.45'>"
-        f"<strong>{read} of these {len(records)} "
-        f"{'chart' if len(records) == 1 else 'charts'} "
-        f"{'takes' if read == 1 else 'take'} their hosts and fractions from a "
-        f"teacher guide. The other {filled} "
-        f"{'takes' if filled == 1 else 'take'} one fixed default set</strong> "
-        "(circle, rectangle, bar; 1/2, 1/3, 1/4, 1/6, 1/8), which reports "
-        "nothing about what those lessons ask children to model. Each chart "
-        "states its own provenance at the top. A lesson appearing on this list "
-        "is not a lesson that was read, so no coverage number may cite it.</div>"
-    )
-    if lean:
-        rows.append("<p><strong>Lean export:</strong> each lesson has one productive "
-                    "filmstrip and one filmstrip for each admitted deformation kind; "
-                    "the complete cell data remains in its chart.json.</p>")
-    rows.append("<ul>")
+                "Lesson deformation charts</h1>")
+    rows.append("<p style='max-width:760px;line-height:1.45'>The productive model "
+                "for a unit fraction, beside the deformations to watch for on it.</p>")
+    rows.append("<h2 style=\"font-family:Georgia,serif;font-size:1.05rem\">Charted lessons</h2>")
+    lesson_items = []
     for r in records:
-        marker = PROVENANCE_LABEL.get(r["provenance"], r["provenance"].replace("_", " "))
-        rows.append(
-            f"<li><a href='{html.escape(r['code'])}/index.html'>"
-            f"{html.escape(r['code'])}: {html.escape(r['title'])}</a> "
-            f"&mdash; {html.escape(', '.join(r['standards']))}; "
-            f"fractions {html.escape(', '.join(r['fractions']))} "
-            f"({html.escape(marker)}); "
-            f"{r['cell_count']} cells</li>"
+        lesson_items.append(
+            "<li style='margin:.45rem 0'>"
+            f"<a href='{html.escape(r['code'], quote=True)}/index.html'>"
+            f"{html.escape(r['code'])}</a> &middot; {html.escape(r['title'])}<br>"
+            "<span style='color:#6b6252;font-size:.88rem'>hosts "
+            f"{html.escape(', '.join(r['hosts']))} &middot; unit fractions "
+            f"{html.escape(', '.join(r['fractions']))}</span></li>"
         )
-    rows.append("</ul>")
+    rows.append("<ul>" + "".join(lesson_items) + "</ul>")
+    rows.append("<h2 style=\"font-family:Georgia,serif;font-size:1.05rem\">The drawings</h2>")
+    rows.append("<p style='max-width:760px;line-height:1.45'>Drawn from the host "
+                "and the unit fraction, not from student work.</p>")
+    rows.append("<ul style='columns:2;font-size:.9rem'>" + "".join(
+        "<li style='margin:.2rem 0'>"
+        f"<a href='_shared/{html.escape(name, quote=True)}'>{html.escape(name)}</a></li>"
+        for name in shared_drawings
+    ) + "</ul>")
     rows.append("</body>")
     return "\n".join(rows)
 
@@ -445,29 +315,44 @@ def main() -> int:
     def configure(parser):
         parser.add_argument("--limit", type=int, default=0,
                             help="Export the first N charted lessons (default: all).")
-        parser.add_argument("--lean", action="store_true",
-                            help="Emit a compact representative gallery for each lesson.")
 
     args = export_engine.parse_args(__doc__, default_out=OUT, configure=configure)
-    started = time.monotonic()
     out_dir = args.out.resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     enumerated = lesson_charts(args.limit)
     charts = {chart["lesson_code"]: chart for chart in enumerated["charts"]}
-    codes = enumerated["codes"]
-    records = [export_lesson(out_dir, code, charts[code], lean=args.lean) for code in codes]
+    codes = [
+        code for code in enumerated["codes"]
+        if charts[code].get("provenance") == "hand_authored"
+    ]
+    withdrawn = sum(
+        chart.get("provenance") != "hand_authored"
+        for chart in enumerated["charts"]
+    )
+    shared_dir = out_dir / "_shared"
+    shared_dir.mkdir(parents=True, exist_ok=True)
+    rendered: set[str] = set()
+    records = [
+        export_lesson(out_dir, shared_dir, code, charts[code], rendered)
+        for code in codes
+    ]
+    shared_drawings = sorted(rendered)
 
-    export_engine.write_index(out_dir, build_top_index(records, lean=args.lean))
+    export_engine.write_index(out_dir, build_top_index(records, shared_drawings))
 
     manifest = {
         "kind": "lesson_deformation_charts",
-        "lean": args.lean,
+        "lean": False,
         "provenance_census": {
-            "hand_authored": sum(1 for r in records if r["provenance"] == "hand_authored"),
-            "default_fill": sum(1 for r in records if r["provenance"] != "hand_authored"),
+            "hand_authored": len(records),
+            "default_fill": 0,
             "total": len(records),
-            "note": "default_fill lessons carry the chart's fixed default hosts and "
-                    "fractions, not quantities read from the lesson. No coverage "
+            "note": "Charted lessons are those whose hosts and unit fractions are "
+                    "read off the lesson's own teacher guide. The "
+                    f"{withdrawn} default_fill lessons were withdrawn on 2026-08-19: "
+                    "they carried the chart's fixed default hosts and fractions, so "
+                    "they said nothing about the lesson they were named for. The "
+                    "drawings they used are kept once each in _shared/. No coverage "
                     "number may cite this manifest.",
         },
         "lessons": [
@@ -486,13 +371,15 @@ def main() -> int:
             }
             for r in records
         ],
+        "shared_drawings": shared_drawings,
     }
     export_engine.write_json(out_dir / "manifest.json", manifest)
 
-    total_files = sum(len(r["files"]) for r in records)
-    elapsed = time.monotonic() - started
-    print(f"Wrote {total_files} files across {len(records)} lessons to {out_dir}")
-    print(f"Enumerated {len(enumerated['all_codes'])} charted lessons; wall time {elapsed:.2f}s")
+    total_files = len(shared_drawings) + sum(len(r["files"]) for r in records)
+    print(f"Wrote {total_files} lesson/shared files across "
+          f"{len(records)} hand-authored lessons to {out_dir}")
+    print(f"Enumerated {len(enumerated['all_codes'])} chart definitions; "
+          f"withdrew {withdrawn} default-fill lesson directories")
     for r in records:
         defs = r.get("deformation_kinds") or sorted({
             d["deformation"]
