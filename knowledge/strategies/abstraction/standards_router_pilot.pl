@@ -2,10 +2,11 @@
 /** <module> Standards-to-doing router pilot
  *
  * This quarantined pilot joins a parsed statement to the receipt-backed CCSS
- * doing store.  The standard rows only narrow the admissible operations.  A
- * relation in the parsed program must decide the operation, and the concrete
- * JSON shape is copied from automaton_input_contract/5 before values are
- * bound into it.  This module does not evaluate an arithmetic relation.
+ * doing store.  Standard rows narrow the admissible operations, witnessed
+ * task patterns license a second path, and decoded table shape licenses the
+ * grade 8 table machines.  Concrete JSON shapes are checked against
+ * automaton_input_contract/5 before values are bound into them.  This module
+ * does not evaluate an arithmetic relation or table cell.
  *
  * Program is a list of Prolog terms, not the JSON strings used to transport
  * those terms in the language experiment artifact.  InputJSON is always a
@@ -15,7 +16,8 @@
           [ route_statement/3,
             pattern_guards_hold/2,
             check_pattern_guards/0,
-            check_standards_router_pilot/0
+            check_standards_router_pilot/0,
+            check_table_routes/0
           ]).
 
 :- use_module(library(http/json)).
@@ -30,6 +32,10 @@
 :- use_module(standards(standard_doing), [standard_doing/5]).
 :- use_module(strategies(automaton_input_contracts),
               [automaton_input_contract/5]).
+:- use_module(strategies('math/g8_action_pairs'),
+              [g8_decode_input/2, run_g8_action/4]).
+:- use_module('serialized_table_reader_pilot',
+              [serialized_table_reading/3, serialized_table_facts/3]).
 :- use_module('task_pattern_pilot',
               [ task_pattern/6,
                 task_pattern_witness/5
@@ -37,10 +43,14 @@
 
 %!  route_statement(+Program:list, +Lesson:atom, -Route) is det.
 %
-%   Route is route(Family, Kind, InputJSON, because(Codes, Support)) or
-%   abstain(Reason, Detail).  In particular, a non-unique program decision is
-%   returned as abstain(undecided(operation), admissible(Families)); support
-%   never breaks an operation tie.
+%   Route is route(Family, Kind, InputJSON, because(License, Support)) or
+%   abstain(Reason, Detail).  A non-unique program decision is returned as an
+%   abstention; support never breaks an operation tie.
+route_statement(Program, _Lesson, Route) :-
+    must_be(list, Program),
+    member(table_layout(_,_,_,_), Program),
+    !,
+    table_route(Program, Route).
 route_statement(Program, Lesson, Route) :-
     must_be(list, Program),
     findall(Code,
@@ -49,6 +59,293 @@ route_statement(Program, Lesson, Route) :-
     sort(Codes0, Codes),
     route_with_codes(Codes, Program, Lesson, Route),
     !.
+
+%! table_route(+Program, -Route) is det.
+%
+%  A decoded table is a third licensing source beside standards codes and
+%  witnessed task patterns.  Shape selects or narrows a registered grade-8
+%  machine; this router only assembles its input object.
+table_route(Program, Route) :-
+    member(table_layout(TableId,columns(Columns),rows(RowCount),
+                        header(Header)), Program),
+    table_rows(Program, TableId, RowCount, Columns, Rows),
+    table_route_for(TableId, Columns, RowCount, Header, Rows, Program, Route),
+    !.
+
+% Input/output is the named function-table genre even when its rectangular
+% shape also meets one of the more general numeric-pair rules.
+table_route_for(TableId, 2, RowCount,
+                [words(InputName),words(OutputName)], Rows, _Program, Route) :-
+    table_label(InputName, "input"),
+    table_label(OutputName, "output"),
+    numeric_or_blank_pairs(Rows),
+    !,
+    ( rows_have_blank(Rows)
+    -> Route = abstain(holes_outside_completion_route,
+                       shape(TableId,columns(2),rows(RowCount)))
+    ; Route = abstain(undecided(machine),
+                      tied([decide_whether_the_table_is_a_function,
+                            fit_linear_rule_to_table]))
+    ).
+table_route_for(TableId, Columns, RowCount, [blank|Headers], Rows,
+                _Program,
+                abstain(measurement_labels_do_not_witness_counts,
+                        shape(TableId,columns(Columns),rows(RowCount),
+                              header([blank|Headers])))) :-
+    Columns >= 3,
+    measurement_labeled_headers(Headers),
+    rows_have_blank(Rows),
+    !.
+table_route_for(TableId, Columns, RowCount, [blank|Headers], Rows,
+                Program, Route) :-
+    Columns >= 3,
+    two_way_shape(Headers, Rows, Shape),
+    two_way_evidence(Headers, Rows, Program, TableId),
+    !,
+    ( table_has_share(Program, TableId)
+    -> Route = abstain(shares_not_counts,
+                       shape(TableId,columns(Columns),rows(RowCount)))
+    ; \+ two_way_count_shape(Shape)
+    -> Route = abstain(no_table_route,
+                       shape(TableId,columns(Columns),rows(RowCount),
+                             counts_not_witnessed))
+    ; table_has_blank_cell(Program, TableId)
+    -> two_way_partial_json(Shape, InputJSON),
+       registered_table_kind(complete_two_way_table),
+       Route = route(grade8, complete_two_way_table, InputJSON,
+                     because(table_reading(TableId),
+                             shape(columns(Columns),rows(RowCount))))
+    ; Route = abstain(undecided(machine),
+                      tied([relative_frequency_by_column,
+                            relative_frequency_by_row,
+                            relative_frequency_of_whole_table]))
+    ).
+table_route_for(TableId, 2, 2, [words(InputName),words(OutputName)], Rows,
+                _Program, Route) :-
+    complete_numeric_pairs(Rows, [[X1,Y1],[X2,Y2]]),
+    !,
+    registered_table_kind(rate_of_change_from_two_observations),
+    Dict = _{kind:"linear_model", given:"two_observations",
+             first:_{input:X1,output:Y1}, second:_{input:X2,output:Y2},
+             input_name:InputName, output_name:OutputName},
+    json_dict_string(Dict, InputJSON),
+    Route = route(grade8, rate_of_change_from_two_observations, InputJSON,
+                  because(table_reading(TableId),
+                          shape(columns(2),rows(2)))).
+table_route_for(_TableId, 2, RowCount,
+                [words(_),words(_)], Rows, _Program,
+                abstain(undecided(machine), tied(Kinds))) :-
+    RowCount >= 3,
+    complete_numeric_pairs(Rows, _),
+    !,
+    scatter_tied_kinds(Kinds).
+table_route_for(_TableId, 3, RowCount,
+                [blank,words(_),words(_)], Rows, _Program,
+                abstain(undecided(machine), tied(Kinds))) :-
+    RowCount >= 3,
+    labeled_numeric_pairs(Rows),
+    !,
+    scatter_tied_kinds(Kinds).
+table_route_for(TableId, Columns, RowCount, Header, _Rows, _Program,
+                abstain(no_table_route,
+                        shape(TableId,columns(Columns),rows(RowCount),
+                              header(Header)))).
+
+registered_table_kind(Kind) :-
+    automaton_input_contract(grade8, Kind, _Schema, _Example,
+                             verified(strategy_trace_ok)).
+
+scatter_tied_kinds([association_direction_from_the_fit,
+                    furthest_point_from_the_fitted_line,
+                    least_squares_line_from_pairs,
+                    range_of_each_variable]).
+
+table_rows(Program, TableId, RowCount, Columns, Rows) :-
+    findall(Row,
+            ( between(1, RowCount, RowIndex),
+              findall(Reading,
+                      ( between(1, Columns, ColIndex),
+                        memberchk(table_cell(TableId,RowIndex,ColIndex,Reading),
+                                  Program)
+                      ),
+                      Row),
+              length(Row, Columns)
+            ),
+            Rows),
+    length(Rows, RowCount).
+
+table_label(Surface, Label) :-
+    string_lower(Surface, Lower),
+    Lower == Label.
+
+measurement_labeled_headers(Headers) :-
+    member(words(Surface), Headers),
+    string_lower(Surface, Lower),
+    measurement_unit(Unit),
+    format(string(Marker), '(~w)', [Unit]),
+    sub_string(Lower, _, _, _, Marker),
+    !.
+
+measurement_unit(inch).
+measurement_unit(inches).
+measurement_unit(cm).
+measurement_unit(centimeter).
+measurement_unit(centimeters).
+measurement_unit(mm).
+measurement_unit(meter).
+measurement_unit(meters).
+measurement_unit(km).
+measurement_unit(kilometer).
+measurement_unit(kilometers).
+measurement_unit(foot).
+measurement_unit(feet).
+measurement_unit(mile).
+measurement_unit(miles).
+measurement_unit(second).
+measurement_unit(seconds).
+measurement_unit(minute).
+measurement_unit(minutes).
+measurement_unit(hour).
+measurement_unit(hours).
+measurement_unit(gram).
+measurement_unit(grams).
+measurement_unit(kilogram).
+measurement_unit(kilograms).
+measurement_unit(pound).
+measurement_unit(pounds).
+measurement_unit(degree).
+measurement_unit(degrees).
+
+numeric_or_blank_pairs(Rows) :-
+    forall(member(Row, Rows),
+           ( Row = [Left,Right],
+             numeric_or_blank(Left), numeric_or_blank(Right) )).
+
+numeric_or_blank(blank).
+numeric_or_blank(numeral(_,_)).
+
+complete_numeric_pairs(Rows, Pairs) :-
+    maplist(numeric_pair, Rows, Pairs).
+
+numeric_pair([numeral(X,_),numeral(Y,_)], [X,Y]).
+
+rows_have_blank(Rows) :-
+    member(Row, Rows),
+    memberchk(blank, Row),
+    !.
+
+labeled_numeric_pairs(Rows) :-
+    forall(member(Row, Rows),
+           Row = [words(_),numeral(_,_),numeral(_,_)]).
+
+table_has_share(Program, TableId) :-
+    member(table_cell(TableId,_,_,share(_,_)), Program),
+    !.
+
+table_has_blank_cell(Program, TableId) :-
+    member(table_cell(TableId,_,_,blank), Program),
+    !.
+
+two_way_evidence(Headers, _Rows, _Program, _TableId) :-
+    member(words(Label), Headers),
+    table_label(Label, "total"),
+    !.
+two_way_evidence(_Headers, Rows, _Program, _TableId) :-
+    member([words(Label)|_], Rows),
+    table_label(Label, "total"),
+    !.
+two_way_evidence(_Headers, Rows, _Program, _TableId) :-
+    length(Rows, 2),
+    !.
+two_way_evidence(_Headers, _Rows, Program, TableId) :-
+    ( table_has_share(Program, TableId)
+    ; table_has_blank_cell(Program, TableId)
+    ),
+    !.
+
+two_way_shape(Headers, Rows,
+              two_way(ColumnNames,RowNames,Cells,RowTotals,
+                      ColumnTotals,GrandTotal)) :-
+    strip_total_header(Headers, ColumnHeaders, HasTotalColumn),
+    length(ColumnHeaders, ColumnCount),
+    ColumnCount >= 2,
+    maplist(words_surface, ColumnHeaders, ColumnNames),
+    strip_total_row(Rows, DataRows, TotalRow),
+    length(DataRows, DataCount),
+    DataCount >= 2,
+    maplist(two_way_data_row(ColumnCount, HasTotalColumn), DataRows,
+            RowNames, Cells, RowTotals),
+    two_way_total_values(ColumnCount, HasTotalColumn, TotalRow,
+                         ColumnTotals, GrandTotal),
+    append(Cells, [RowTotals,ColumnTotals,[GrandTotal]], ReadingGroups),
+    forall((member(Group, ReadingGroups), member(Value, Group)),
+           two_way_reading(Value)).
+
+strip_total_header(Headers, Columns, true) :-
+    append(Columns, [words(Total)], Headers),
+    table_label(Total, "total"),
+    !.
+strip_total_header(Headers, Headers, false).
+
+strip_total_row(Rows, DataRows, TotalValues) :-
+    append(DataRows, [[words(Total)|TotalValues]], Rows),
+    table_label(Total, "total"),
+    !.
+strip_total_row(Rows, Rows, none).
+
+two_way_data_row(ColumnCount, true, [words(Label)|Values], Label,
+                 Cells, RowTotal) :-
+    length(Cells, ColumnCount),
+    append(Cells, [RowTotal], Values).
+two_way_data_row(ColumnCount, false, [words(Label)|Cells], Label,
+                 Cells, blank) :-
+    length(Cells, ColumnCount).
+
+two_way_total_values(ColumnCount, true, Values, ColumnTotals, Grand) :-
+    Values \== none,
+    length(ColumnTotals, ColumnCount),
+    append(ColumnTotals, [Grand], Values),
+    !.
+two_way_total_values(ColumnCount, _HasTotalColumn, Values,
+                     ColumnTotals, blank) :-
+    Values \== none,
+    length(ColumnTotals, ColumnCount),
+    Values = ColumnTotals,
+    !.
+two_way_total_values(ColumnCount, _HasTotalColumn, none,
+                     ColumnTotals, blank) :-
+    length(ColumnTotals, ColumnCount),
+    maplist(=(blank), ColumnTotals).
+
+words_surface(words(Surface), Surface).
+
+count_reading(blank).
+count_reading(numeral(Value,_)) :- integer(Value), Value >= 0.
+
+two_way_reading(blank).
+two_way_reading(numeral(_,_)).
+two_way_reading(share(_,_)).
+
+two_way_count_shape(two_way(_,_,Cells,RowTotals,ColumnTotals,GrandTotal)) :-
+    append(Cells, [RowTotals,ColumnTotals,[GrandTotal]], CountGroups),
+    forall((member(Group, CountGroups), member(Value, Group)),
+           count_reading(Value)).
+
+two_way_partial_json(two_way(ColumnNames,RowNames,Cells0,RowTotals0,
+                             ColumnTotals0,Grand0), InputJSON) :-
+    maplist(count_row_json, Cells0, Cells),
+    maplist(count_json, RowTotals0, RowTotals),
+    maplist(count_json, ColumnTotals0, ColumnTotals),
+    count_json(Grand0, GrandTotal),
+    Dict = _{kind:"two_way_table_partial", rows:RowNames,
+             columns:ColumnNames, cells:Cells,
+             row_totals:RowTotals, column_totals:ColumnTotals,
+             grand_total:GrandTotal},
+    json_dict_string(Dict, InputJSON).
+
+count_row_json(Readings, Values) :- maplist(count_json, Readings, Values).
+count_json(blank, "?").
+count_json(numeral(Value,_), Value).
 
 route_with_codes([], Program, _Lesson, Route) :-
     pattern_route(Program, Route).
@@ -851,6 +1148,109 @@ check_standards_router_pilot :-
                  abstain(pattern_unlicensed,
                          pattern(tp_compare_rectangle_areas_r1l1_r1w1_r2l1_r2w1))),
     format('check_standards_router_pilot: ok examples=5 pattern=4 undecided=2~n').
+
+%! check_table_routes is det.
+%
+%  The table fixtures pin both routing and the two machines this slice may
+%  reach.  The asserted outcomes below were measured through g8_decode_input/2
+%  and run_g8_action/4; no outcome is calculated in this router.
+check_table_routes :-
+    serialized_table_reader_pilot:fixture_f1(F1),
+    fixture_table_facts(F1, Facts1),
+    route_statement(Facts1, 'IM-G8-U3-L3', Route1),
+    require_route(Route1, grade8, rate_of_change_from_two_observations,
+                  '{"kind":"linear_model","given":"two_observations","first":{"input":10,"output":14},"second":{"input":25,"output":35},"input_name":"salt (grams)","output_name":"honey (grams)"}'),
+    run_table_route(Route1, Outcome1),
+    Outcome1 = action_outcome(rate_of_change_from_two_observations, Props1),
+    memberchk(result(model("7/5","0")), Props1),
+    memberchk(model(MeasuredRate,0), Props1),
+    MeasuredRate =:= 7 rdiv 5,
+    memberchk(validity(correct), Props1),
+    serialized_table_reader_pilot:fixture_f2(F2),
+    fixture_table_facts(F2, Facts2),
+    route_statement(Facts2, 'IM-G8-U6-L2', Route2),
+    scatter_tied_kinds(ScatterKinds),
+    require_term(Route2,
+                 abstain(undecided(machine), tied(ScatterKinds))),
+    serialized_table_reader_pilot:fixture_f3(F3),
+    fixture_table_facts(F3, Facts3),
+    route_statement(Facts3, 'IM-G8-U6-L10', Route3),
+    require_route(Route3, grade8, complete_two_way_table,
+                  '{"kind":"two_way_table_partial","rows":["plays sport","does not play sport"],"columns":["plays instrument","does not play instrument"],"cells":[[5,"?"],["?","?"]],"row_totals":[16,"?"],"column_totals":["?",15],"grand_total":25}'),
+    run_table_route(Route3, Outcome3),
+    Outcome3 = action_outcome(complete_two_way_table, Props3),
+    memberchk(result(completed_table([[5,11],[5,4]])), Props3),
+    memberchk(row_totals([16,9]), Props3),
+    memberchk(column_totals([10,15]), Props3),
+    memberchk(grand_total(25,25), Props3),
+    memberchk(validity(correct), Props3),
+    Shares = "| | plays an instrument | does not play an instrument | total | |-----------------------|-----------------------|-------------------------------|---------| | plays a sport | | 89% | 100% | | does not play a sport | 71% | | 100% |",
+    fixture_table_facts(Shares, ShareFacts),
+    route_statement(ShareFacts, 'IM-G8-U6-L10', ShareRoute),
+    require_term(ShareRoute,
+                 abstain(shares_not_counts,
+                         shape(table_1,columns(4),rows(2)))),
+    CompleteTwoWay = "| | red | blue | |---|---|---| | class A | 5 | 6 | | class B | 7 | 8 |",
+    fixture_table_facts(CompleteTwoWay, CompleteTwoWayFacts),
+    route_statement(CompleteTwoWayFacts, 'IM-G8-U6-L3', CompleteTwoWayRoute),
+    require_term(CompleteTwoWayRoute,
+                 abstain(undecided(machine),
+                         tied([relative_frequency_by_column,
+                               relative_frequency_by_row,
+                               relative_frequency_of_whole_table]))),
+    CrashProgram = [
+        table_layout(s2_table_1,columns(3),rows(4),
+                     header([blank,words("height (inches)"),
+                             words("shadow length (inches)")])),
+        table_cell(s2_table_1,1,1,words("younger boy")),
+        table_cell(s2_table_1,1,2,numeral(43,"43")),
+        table_cell(s2_table_1,1,3,numeral(29,"29")),
+        table_cell(s2_table_1,2,1,words("man")),
+        table_cell(s2_table_1,2,2,numeral(72,"72")),
+        table_cell(s2_table_1,2,3,numeral(48,"48")),
+        table_cell(s2_table_1,3,1,words("older boy")),
+        table_cell(s2_table_1,3,2,numeral(51,"51")),
+        table_cell(s2_table_1,3,3,numeral(34,"34")),
+        table_cell(s2_table_1,4,1,words("lamppost")),
+        table_cell(s2_table_1,4,2,blank),
+        table_cell(s2_table_1,4,3,numeral(114,"114"))
+    ],
+    route_statement(CrashProgram, 'IM-G8-U2-L13', CrashRoute),
+    require_term(
+        CrashRoute,
+        abstain(measurement_labels_do_not_witness_counts,
+                shape(s2_table_1,columns(3),rows(4),
+                      header([blank,words("height (inches)"),
+                              words("shadow length (inches)")])))),
+    serialized_table_reader_pilot:fixture_f4(F4),
+    fixture_table_facts(F4, Facts4),
+    findall(TableId,
+            member(table_layout(TableId,_,_,_), Facts4),
+            TableIds),
+    TableIds == [table_1,table_2,table_3],
+    forall(member(TableId, TableIds),
+           ( facts_for_table(Facts4, TableId, TableFacts),
+             route_statement(TableFacts, 'IM-G8-U5-L1', Route4),
+             require_term(Route4,
+                          abstain(holes_outside_completion_route,
+                                  shape(TableId,columns(2),rows(3))))
+           )),
+    format('check_table_routes: ok F1=model(7/5,0) F3=completed_table([[5,11],[5,4]]) abstentions=7~n').
+
+fixture_table_facts(Text, Facts) :-
+    serialized_table_reading(Text, Tables, _Remnants),
+    serialized_table_facts(Tables, Facts, _FactSpans).
+
+run_table_route(route(grade8, Kind, InputJSON, _Because), Outcome) :-
+    atom_json_dict(InputJSON, InputDict, []),
+    g8_decode_input(InputDict, Decoded),
+    run_g8_action(Kind, Decoded, Outcome, _Trace).
+
+facts_for_table(Facts, TableId, TableFacts) :-
+    include(fact_for_table(TableId), Facts, TableFacts).
+
+fact_for_table(TableId, table_layout(TableId,_,_,_)).
+fact_for_table(TableId, table_cell(TableId,_,_,_)).
 
 require_route(route(Family, Kind, JSON, _Because), Family, Kind, ExpectedJSON) :-
     string(JSON),

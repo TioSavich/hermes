@@ -138,6 +138,7 @@ capability('list_strategies', 'hermes_encyclopedia', 'infrastructure', [], route
 capability('lit_search', 'hermes_encyclopedia', 'infrastructure', ['query'], routed_paged).
 capability('magnitude_equivalence_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('material_inference_witness', 'cw_driver', 'crosswalk', ['conclusion', 'inference_id', 'premises', 'source'], routed_paged).
+capability('measurement_strip_render', 'measurement_strip_scene', 'render', [], unrouted).
 capability('media_alignment', 'media_alignment', 'pml', ['segments', 'source'], routed_paged).
 capability('metaphor_break_witness', 'cw_driver', 'crosswalk', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
 capability('misconception_hook_witness', 'cw_driver', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
@@ -161,7 +162,7 @@ capability('orr_entry_witness', 'cw_driver', 'crosswalk', ['source', 'variant'],
 capability('pair_candidate_witness', 'hermes_pair_scoring', 'infrastructure', ['event_a', 'event_b'], routed_paged).
 capability('pair_graph', 'user', 'infrastructure', ['events'], routed_paged).
 capability('pair_score', 'hermes_pair_scoring', 'infrastructure', ['events'], routed_paged).
-capability('pedagogical_questions', 'lesson_monitoring', 'workflow', ['kind', 'query'], unrouted).
+capability('pedagogical_questions', 'lesson_monitoring', 'workflow', ['kind', 'query'], routed_paged).
 capability('place_value_chart_render', 'place_value_chart_scene', 'render', [], routed_paged).
 capability('place_value_number_claim_witness', 'cw_place_value_number_claim', 'render', ['canonical', 'source'], routed_paged).
 capability('pml_score', 'hermes_encyclopedia', 'pml', ['clauses'], routed_paged).
@@ -172,6 +173,7 @@ capability('productive_deformation_witness', 'cw_driver', 'crosswalk', ['deforma
 capability('prolog_query', 'prolog_query', 'infrastructure', [], unrouted).
 capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_only).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
+capability('ratio_diagram_render', 'ratio_diagram_scene', 'render', [], unrouted).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('render_coverage', 'misconception_render_coverage', 'monitoring', [], routed_only).
 capability('reorganize', 'fraction_band_ladder', 'learner', [], routed_paged).
@@ -243,6 +245,7 @@ capability('curriculum/im/generated/grade_7_extracted_guide_questions.pl', 'grad
 capability('curriculum/im/generated/grade_8_extracted_guide_questions.pl', 'grade_8_extracted_guide_questions', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/grade_8_extracted_task_instances.pl', 'grade_8_extracted_task_instances', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/grade_k_extracted_guide_questions.pl', 'grade_k_extracted_guide_questions', 'workflow', [], orphan_module).
+capability('curriculum/im/generated/structure_teacher_question_labels.pl', 'structure_teacher_question_labels', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
 capability('curriculum/im/lesson_enactment.pl', 'lesson_enactment', 'workflow', [], orphan_module).
@@ -328,11 +331,15 @@ capability('knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl', 'l
 capability('knowledge/strategies/abstraction/lexicon_supplement_pilot.pl', 'lexicon_supplement_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/math_lexicon_pilot.pl', 'math_lexicon_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/metaphor_seam_registry.pl', 'metaphor_seam_registry', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/model_analysis_pilot.pl', 'model_analysis_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/pedagogy_force_pilot.pl', 'pedagogy_force_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/printed_expression_reader_pilot.pl', 'printed_expression_reader_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/question_move_pilot.pl', 'question_move_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl', 'rewrite_consultation_admitted_pilot', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/serialized_table_reader_pilot.pl', 'serialized_table_reader_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/standards_router_pilot.pl', 'standards_router_pilot', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/table_ask_binding_pilot.pl', 'table_ask_binding_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/task_pattern_pilot.pl', 'task_pattern_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/word_problem_reader_pilot.pl', 'word_problem_reader_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/action_grammar.pl', 'action_grammar', 'synthesis', [], orphan_module).
@@ -795,6 +802,7 @@ capability_route('orr_entry_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('pair_candidate_witness', 'POST', '/api/pair_candidate').
 capability_route('pair_graph', 'POST', '/api/pair_graph').
 capability_route('pair_score', 'POST', '/api/pair_graph').
+capability_route('pedagogical_questions', 'POST', '/api/pedagogical_questions').
 capability_route('place_value_chart_render', 'POST', '/api/monitoring_visuals').
 capability_route('place_value_chart_render', 'POST', '/api/render').
 capability_route('place_value_number_claim_witness', 'POST', '/api/witness/crosswalk_claim').
@@ -1097,6 +1105,7 @@ capability_page('orr_entry_witness', '/more-zeeman/witnesses.html').
 capability_page('pair_candidate_witness', '/hermes/app/web/discussions.html').
 capability_page('pair_graph', '/hermes/app/web/discussions.html').
 capability_page('pair_score', '/hermes/app/web/discussions.html').
+capability_page('pedagogical_questions', '/hermes/app/web/questions.html').
 capability_page('place_value_chart_render', '/hermes/app/web/discussions.html').
 capability_page('place_value_chart_render', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('place_value_chart_render', '/more-zeeman/monitoring_chart.html').

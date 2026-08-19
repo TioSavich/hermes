@@ -40,6 +40,14 @@ EXPRESSION_READER = (
     REPO
     / "knowledge/strategies/abstraction/printed_expression_reader_pilot.pl"
 )
+SERIALIZED_TABLE_READER = (
+    REPO
+    / "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl"
+)
+TABLE_ASK_BINDING = (
+    REPO
+    / "knowledge/strategies/abstraction/table_ask_binding_pilot.pl"
+)
 APE_LEXICON = REPO / "hermes/app/runtime/experiments/language/ape_user_lexicon.pl"
 MORPHOLOGY = REPO / "knowledge/strategies/abstraction/english_morphology.pl"
 SATURATOR = REPO / "scripts/sidekick/diagnosis_saturate.pl"
@@ -99,6 +107,8 @@ def source_hashes() -> dict[str, str]:
             APE_READER,
             FORCE_PILOT,
             EXPRESSION_READER,
+            SERIALIZED_TABLE_READER,
+            TABLE_ASK_BINDING,
             APE_LEXICON,
             MORPHOLOGY,
             SATURATOR,
@@ -492,6 +502,55 @@ def compare_ground_truth(
     completion_carrier: str = "",
 ) -> dict[str, Any]:
     receipts = truth_by_id.get(record_id, [])
+    if completion_carrier == "table_route":
+        routed_kind = str(completion.get("kind", ""))
+        routed_receipts = [
+            receipt for receipt in receipts
+            if str(receipt.get("machine", "")) == routed_kind
+        ]
+        routed_base: dict[str, Any] = {
+            "available": bool(routed_receipts),
+            "receipts": routed_receipts,
+        }
+        if not routed_receipts:
+            return {
+                **routed_base,
+                "comparable": False,
+                "verdict": "no_ground_truth",
+                "reason": "no_verified_result_for_the_routed_kind",
+            }
+        if completion.get("status") != "completed":
+            return {
+                **routed_base,
+                "comparable": False,
+                "verdict": "no_ground_truth",
+                "reason": str(completion.get("reason", "not_completed")),
+            }
+        answer_rows = completion.get("answers") or []
+        expected_values = [str(row.get("result_term", "")) for row in routed_receipts]
+        routed_base["expected_values"] = expected_values
+        if len(answer_rows) != 1:
+            return {
+                **routed_base,
+                "comparable": True,
+                "verdict": "disagree",
+                "reason": "routed_answer_count_not_one",
+            }
+        actual_value = str(answer_rows[0].get("value", ""))
+        routed_base["actual_values"] = [actual_value]
+        if all(actual_value == expected for expected in expected_values):
+            return {
+                **routed_base,
+                "comparable": True,
+                "verdict": "agree",
+                "reason": "exact_term_match",
+            }
+        return {
+            **routed_base,
+            "comparable": True,
+            "verdict": "disagree",
+            "reason": "exact_term_mismatch",
+        }
     base: dict[str, Any] = {"available": bool(receipts), "receipts": receipts}
     if not receipts:
         return {**base, "comparable": False, "verdict": "no_ground_truth",
@@ -644,12 +703,34 @@ class StandardsRouter:
         )
 
     def run(
-        self, record_id: str, lesson: str, program: list[str]
+        self,
+        record_id: str,
+        lesson: str,
+        program: list[str],
+        sentence_texts: list[str],
+        sentence_receipts: list[dict[str, Any]],
+        sentence_spans: list[list[dict[str, Any]]],
     ) -> dict[str, Any]:
         if self.process.stdin is None or self.process.stdout is None:
             raise RuntimeError("standards router has no pipes")
+        routed_sentences = [
+            {
+                "index": index,
+                "text": text,
+                "form": receipt["sentence_form"],
+                "spans": spans,
+            }
+            for index, (text, receipt, spans) in enumerate(
+                zip(sentence_texts, sentence_receipts, sentence_spans, strict=True)
+            )
+        ]
         request = json.dumps(
-            {"id": record_id, "lesson": lesson, "program": program},
+            {
+                "id": record_id,
+                "lesson": lesson,
+                "program": program,
+                "sentences": routed_sentences,
+            },
             ensure_ascii=False,
         )
         self.process.stdin.write(request + "\n")
@@ -886,6 +967,33 @@ def validate_resume(
             )
 
 
+def adopt_table_route_completion(
+    worker_completion: dict[str, Any],
+    worker_carrier: str,
+    route: dict[str, Any] | None,
+) -> tuple[dict[str, Any], str]:
+    """Adopt an anchored routed-table result only after worker demotions."""
+    if worker_completion.get("status") in {"completed", "truth_decided"}:
+        return worker_completion, worker_carrier
+    route_completion = (route or {}).get("completion")
+    route_ask = (route or {}).get("ask")
+    if not isinstance(route_completion, dict) or not isinstance(route_ask, dict):
+        return worker_completion, worker_carrier
+    completion = dict(route_completion)
+    table_id = str(completion["table_id"])
+    kind = str(completion["kind"])
+    completion["asks"] = [table_id]
+    completion["ask_targets"] = [
+        {
+            "referent": table_id,
+            "target_kind": "table",
+            "referent_class": kind,
+        }
+    ]
+    completion["ask"] = dict(route_ask)
+    return completion, "table_route"
+
+
 def output_row(
     corpus_index: int,
     source_row: dict[str, Any],
@@ -903,6 +1011,7 @@ def output_row(
         sentence_rows.append({"sentence_index": sentence_index, "text": text, **receipt})
     parsed_count = sum(bool(row["parsed"]) for row in sentence_rows)
     completion = dict(reply["completion"])
+    completion_carrier = str(reply.get("completion_carrier", ""))
     # An answer whose whole derivation is `given` is an echo of an input, not a
     # solution. "Han collected 4 leaves. Priya gave him 5 more leaves. How many
     # leaves does Han have now?" returned 4 — the initial state — because the
@@ -948,6 +1057,9 @@ def output_row(
             completion["status"] = "parsed_not_completed"
             completion["reason"] = reason
             completion["guard_evidence"] = evidence
+    completion, completion_carrier = adopt_table_route_completion(
+        completion, completion_carrier, route
+    )
     if completion["status"] == "completed":
         completion_class = (
             "completed_full"
@@ -963,7 +1075,7 @@ def output_row(
         truth_by_id,
         source_statement=str(source_row["source_statement"]),
         program_basis=reply["program_basis"],
-        completion_carrier=str(reply.get("completion_carrier", "")),
+        completion_carrier=completion_carrier,
     )
     return {
         "schema": SCHEMA,
@@ -992,7 +1104,7 @@ def output_row(
         "programs": reply["programs"],
         "program_basis": reply["program_basis"],
         "printed_expression": reply["printed_expression"],
-        "completion_carrier": reply["completion_carrier"],
+        "completion_carrier": completion_carrier,
         "route_basis": (route or {}).get("route_basis"),
         "completion_status": completion_class or completion["status"],
         "completion_class": completion_class,
@@ -1274,7 +1386,8 @@ def main() -> int:
                     mark_non_bijective_anchor_refusals(reply, source_row)
                     route = router.run(
                         str(source_row["id"]), str(source_row["lesson"]),
-                        list(reply["program"])
+                        list(reply["program"]), sentence_texts,
+                        list(reply["sentences"]), sentence_spans
                     )
                     row = output_row(
                         corpus_index, source_row, reply, normalization,

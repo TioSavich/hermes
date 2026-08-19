@@ -141,9 +141,11 @@ load_runtime :-
     % after the base vocabulary layer avoids re-importing predicates the cw
     % families already settled.
     use_module(render(area_model_scene), []),
+    use_module(render(ratio_diagram_scene), []),
     use_module(render(base_ten_scene), []),
     use_module(render(set_grouping_scene), []),
     use_module(render(number_line_scene), []),
+    use_module(render(measurement_strip_scene), []),
     use_module(render(unit_echo_scene), []),
     use_module(render(place_value_chart_scene), []),
     use_module(render(hybridization_scene), []),
@@ -298,6 +300,7 @@ dispatch_irregular(knowledge).
 dispatch_irregular(learner_reset).
 dispatch_irregular(lesson_deformation_chart).
 dispatch_irregular(media_alignment).
+dispatch_irregular(measurement_strip_render).
 dispatch_irregular(misconception_jumps_witness).
 dispatch_irregular(notation_monitoring_chart).
 dispatch_irregular(notation_render).
@@ -308,6 +311,7 @@ dispatch_irregular(place_value_chart_render).
 dispatch_irregular(polyform_tiling_render).
 dispatch_irregular(prolog_query).
 dispatch_irregular(query_misconception).
+dispatch_irregular(ratio_diagram_render).
 dispatch_irregular(reorganize).
 dispatch_irregular(representation_candidates).
 dispatch_irregular(representation_check).
@@ -1000,6 +1004,16 @@ dispatch_request(area_compare, Id, Request, Response) :-
     enrich_render_doc(area_compare, Spec, Dict0, Dict),
     ok_response(Id, Dict, Response).
 
+dispatch_request(ratio_diagram_render, Id, Request, Response) :-
+    (   ratio_diagram_spec(Request, Spec)
+    ->  ratio_diagram_scene:ratio_diagram_render_json(Spec, Dict0),
+        enrich_render_doc(ratio_diagram_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_ratio_diagram_render,
+            "ratio_diagram_render requires two distinct labels and positive counts no greater than 20",
+            Response)
+    ).
+
 dispatch_request(base_ten_render, Id, Request, Response) :-
     base_ten_spec(Request, Spec),
     base_ten_scene:base_ten_render_json(Spec, Dict0),
@@ -1071,6 +1085,16 @@ dispatch_request(number_line_render, Id, Request, Response) :-
     number_line_scene:number_line_render_json(Spec, Dict0),
     enrich_render_doc(number_line_render, Spec, Dict0, Dict),
     ok_response(Id, Dict, Response).
+
+dispatch_request(measurement_strip_render, Id, Request, Response) :-
+    (   measurement_strip_spec(Request, Spec)
+    ->  measurement_strip_scene:measurement_strip_render_json(Spec, Dict0),
+        enrich_render_doc(measurement_strip_render, Spec, Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, invalid_measurement_strip_render,
+            "measurement_strip_render requires positive interval and subdivision counts no greater than 256 plus a named unit",
+            Response)
+    ).
 
 dispatch_request(place_value_chart_render, Id, Request, Response) :-
     place_value_chart_spec(Request, Spec),
@@ -2734,6 +2758,16 @@ area_spec_for(area_compare, _, _, Request, area_compare(NA, DA, NB, DB)) :-
     request_integer(Request, db, 3, DB).
 area_spec_for(_Other, A, B, _, array_multiplication(A, B)).
 
+ratio_diagram_spec(Request,
+                   ratio(FirstLabel, FirstCount,
+                         SecondLabel, SecondCount)) :-
+    request_string_atom(Request, first_label, apples, FirstLabel),
+    request_integer(Request, first_count, 2, FirstCount),
+    request_string_atom(Request, second_label, oranges, SecondLabel),
+    request_integer(Request, second_count, 3, SecondCount),
+    FirstLabel \== SecondLabel,
+    maplist(between(1, 20), [FirstCount, SecondCount]).
+
 %!  balance_spec(+Request, -Spec) is det.
 balance_spec(Request, Spec) :-
     request_string_atom(Request, kind, solve_linear, Kind),
@@ -2825,6 +2859,15 @@ number_line_spec_for(fraction_iteration, Request, Spec) :- !,
 number_line_spec_for(_Jumps, Request, jumps(Strategy, A, B)) :-
     request_string_atom(Request, strategy, 'COBO', Strategy),
     request_integer(Request, a, 28, A), request_integer(Request, b, 47, B).
+
+measurement_strip_spec(Request,
+                       measure(IntervalCount, Subdivisions, Unit)) :-
+    request_integer(Request, interval_count, 5, IntervalCount),
+    request_integer(Request, subdivisions_per_unit, 4, Subdivisions),
+    request_string_atom(Request, unit, meter, Unit),
+    between(1, 256, IntervalCount),
+    between(1, 256, Subdivisions),
+    Unit \== ''.
 
 %!  place_value_chart_spec(+Request, -Spec) is det.
 place_value_chart_spec(Request, Spec) :-

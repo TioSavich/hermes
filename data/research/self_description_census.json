@@ -413,20 +413,20 @@
       "misconceptions": 16,
       "monitoring": 5,
       "pml": 15,
-      "render": 35,
+      "render": 37,
       "sequent": 14,
       "standards": 23,
-      "synthesis": 66,
+      "synthesis": 70,
       "unclassified": 9,
-      "workflow": 27,
+      "workflow": 28,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 10,
-      "orphan_module": 123,
+      "orphan_module": 128,
       "routed_only": 15,
-      "routed_paged": 189,
-      "unrouted": 12
+      "routed_paged": 190,
+      "unrouted": 13
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -435,10 +435,10 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 87
+      "undetermined": 92
     },
-    "total": 349,
-    "unrouted": 12
+    "total": 356,
+    "unrouted": 13
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -702,6 +702,20 @@
       "module": "grade_k_extracted_guide_questions",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "workflow",
+      "evidence": [
+        {
+          "locator": "/** <module> Generated assessing/advancing labels for K-5 teacher questions",
+          "path": "curriculum/im/generated/structure_teacher_question_labels.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "structure_teacher_question_labels",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "curriculum/im/generated/structure_teacher_question_labels.pl",
       "verdict": "undetermined"
     },
     {
@@ -1883,6 +1897,20 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/model_analysis_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "model_analysis_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/model_analysis_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
           "relation": "source inspected"
         }
@@ -1939,6 +1967,34 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "rewrite_consultation_admitted_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "serialized_table_reader_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
           "relation": "source inspected"
         }
@@ -1946,6 +2002,20 @@
       "module": "standards_router_pilot",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
       "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
+      "verdict": "undetermined"
+    },
+    {
+      "capability_class": "synthesis",
+      "evidence": [
+        {
+          "locator": ":- encoding(utf8).",
+          "path": "knowledge/strategies/abstraction/table_ask_binding_pilot.pl",
+          "relation": "source inspected"
+        }
+      ],
+      "module": "table_ask_binding_pilot",
+      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "path": "knowledge/strategies/abstraction/table_ask_binding_pilot.pl",
       "verdict": "undetermined"
     },
     {
@@ -2506,22 +2576,22 @@
       "reason": "The serializer fills the dict shape strategy_trace_dict/3 returns, so an enactment already reaches every consumer a strategy trace reaches. A second route would duplicate a display path rather than add one."
     },
     {
-      "does": "Finds the authored monitoring clusters for a topic, automaton state, or standard, and returns their assessing and advancing questions with the productive core and deformation that license them.",
+      "does": "Draws a measurement-strip scene from a strip specification, returning drawer frames.",
       "evidence": [
         {
-          "locator": "pedagogical_question_clusters",
-          "path": "curriculum/im/lesson_monitoring.pl",
-          "relation": "cluster lookup"
+          "locator": "dispatch_irregular(measurement_strip_render).",
+          "path": "hermes_worker.pl",
+          "relation": "worker dispatch"
         },
         {
-          "locator": "dispatch_spec(pedagogical_questions,",
-          "path": "hermes/dispatch_spec.pl",
-          "relation": "worker dispatch"
+          "locator": "measurement_strip",
+          "path": "knowledge/strategies/render/measurement_strip_scene.pl",
+          "relation": "the scene builder"
         }
       ],
-      "judgement": "A page should route to it.",
-      "name": "pedagogical_questions",
-      "reason": "126 assessing and 85 advancing questions were reachable only through a lesson code before this operation, so a teacher who knew the mathematics but not the IM code could not reach them. A page could now ask from the mathematics."
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "measurement_strip_render",
+      "reason": "The generic render endpoint reaches it by op name, the way every scene op is reached; its 2026-08-18 consumers are the deterministic render-spec ledger and scene requests that name it. A dedicated page per scene op would duplicate the generic path."
     },
     {
       "does": "Runs one caller-supplied Prolog goal against the loaded knowledge base and returns its bindings, after SWI's sandbox accepts the goal's whole call graph.",
@@ -2540,6 +2610,24 @@
       "judgement": "Being unrouted from a web page is correct, and a page would be the wrong shape for it.",
       "name": "prolog_query",
       "reason": "Every other operation is a question shaped in advance with fixed argument slots; 202 of them stand against 81,663 clauses. This one lets a caller ask something nobody wrote an operation for. Its consumer is a program composing a goal, not a person filling a form, and a page would have to invent an input widget for arbitrary Prolog."
+    },
+    {
+      "does": "Draws a ratio-diagram scene (double number line) from a ratio specification, returning drawer frames.",
+      "evidence": [
+        {
+          "locator": "dispatch_irregular(ratio_diagram_render).",
+          "path": "hermes_worker.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "ratio_diagram",
+          "path": "knowledge/strategies/render/ratio_diagram_scene.pl",
+          "relation": "the scene builder"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "ratio_diagram_render",
+      "reason": "The generic render endpoint reaches it by op name, the way every scene op is reached; its 2026-08-18 consumers are the deterministic render-spec ledger and scene requests that name it. A dedicated page per scene op would duplicate the generic path."
     },
     {
       "does": "Returns the candidate building_on-to-addressing progression rows touching a standards code, from the lesson-mediated overlay, each carrying its spine provenance and the learner_reachability false boundary.",

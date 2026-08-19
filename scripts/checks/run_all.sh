@@ -135,6 +135,11 @@ run pusu_calibration.py     python3 "$CHECKS_DIR/pusu_calibration.py"
 run check_agreement_scale.py python3 "$CHECKS_DIR/../language/check_agreement_scale.py"
 run check_completion_thesis.py python3 "$CHECKS_DIR/../language/check_completion_thesis.py"
 run check_expression_reader.py python3 "$CHECKS_DIR/../language/check_expression_reader.py" --check
+run serialized_table_reader.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -l "$CHECKS_DIR/../../knowledge/strategies/abstraction/serialized_table_reader_pilot.pl" -g serialized_table_reader_pilot:check_serialized_table_reader -t halt
+run table_ask_binding.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -l "$CHECKS_DIR/../../knowledge/strategies/abstraction/table_ask_binding_pilot.pl" -g table_ask_binding_pilot:check_table_ask_binding -t halt
+run pusu_sentence_routes.pl swipl -q -l "$CHECKS_DIR/../language/pusu_harness_runner.pl" -g '(pusu_harness_runner:check_expression_routing,pusu_harness_runner:check_serialized_table_routing)' -t halt
+run standards_router_pilot.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -l "$CHECKS_DIR/../../knowledge/strategies/abstraction/standards_router_pilot.pl" -g '(standards_router_pilot:check_standards_router_pilot,standards_router_pilot:check_table_routes)' -t halt
+run standards_router_roundtrip.py python3 "$CHECKS_DIR/../language/check_standards_router_roundtrip.py"
 run check_pusu_fixes.py python3 "$CHECKS_DIR/../language/check_pusu_fixes.py"
 run build_standard_doing.py python3 "$CHECKS_DIR/../language/build_standard_doing.py" --check
 run check_standards_bridge.py python3 "$CHECKS_DIR/../language/check_standards_bridge.py" --check

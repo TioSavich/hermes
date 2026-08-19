@@ -1326,6 +1326,9 @@ class RouteLogic:
     def _handle_trace_adjudication(self, payload: dict) -> None:
         self._forward_op("trace_adjudication", payload)
 
+    def _handle_pedagogical_questions(self, payload: dict) -> None:
+        self._forward_op("pedagogical_questions", payload)
+
     def _handle_unit_coordination_svg(self, query: str) -> None:
         params = urllib.parse.parse_qs(query, keep_blank_values=True)
         try:

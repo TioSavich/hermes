@@ -5,6 +5,12 @@
 :- use_module(library(readutil)).
 :- use_module('../../knowledge/strategies/abstraction/standards_router_pilot',
               [route_statement/3]).
+:- use_module('../../knowledge/strategies/abstraction/table_ask_binding_pilot',
+              [routed_table_completion/3]).
+
+% The 2026-08-18 ask-binding slice interleaves route_dict/4 with the ask and
+% table dict builders it feeds; the clauses are one predicate on purpose.
+:- discontiguous route_dict/4.
 
 main :-
     read_line_to_string(user_input, Line),
@@ -25,6 +31,7 @@ route_line_(Line, Response) :-
     get_dict(id, Request, Id),
     get_dict(lesson, Request, LessonString),
     get_dict(program, Request, ProgramStrings),
+    request_sentences(Request, Sentences),
     atom_string(Lesson, LessonString),
     maplist(program_term, ProgramStrings, Program),
     route_statement(Program, Lesson, Route),
@@ -32,11 +39,117 @@ route_line_(Line, Response) :-
             standards_router_pilot:lesson_ccss_code(Lesson, Code),
             Codes0),
     sort(Codes0, Codes),
-    route_dict(Id, Codes, Route, Response).
+    completion_route(Route, Sentences, ReplyRoute),
+    ( route_dict(Id, Codes, ReplyRoute, Response)
+    -> true
+    ; throw(error(unserializable_route(Route), route_line_/2))
+    ).
 
 program_term(Source, Term) :-
     term_string(Term, Source, [syntax_errors(error)]).
 
+request_sentences(Request, Sentences) :-
+    (   get_dict(sentences, Request, SentenceDicts)
+    ->  maplist(sentence_term, SentenceDicts, Sentences)
+    ;   Sentences = []
+    ).
+
+sentence_term(Dict, sentence(Index, Text, Form, Spans)) :-
+    get_dict(index, Dict, Index),
+    get_dict(text, Dict, Text),
+    get_dict(form, Dict, FormString),
+    get_dict(spans, Dict, Spans),
+    atom_string(Form, FormString).
+
+completion_route(Route, Sentences, ReplyRoute) :-
+    (   Sentences = [_|_],
+        routed_table_completion(Route, Sentences, Completion)
+    ->  ReplyRoute = route_with_table_completion(Route, Completion)
+    ;   ReplyRoute = Route
+    ).
+
+route_dict(Id, ResolvedCodes,
+           route_with_table_completion(
+               route(Family, Kind, InputJSON,
+                     because(table_reading(TableId), Shape)),
+               table_completion(completed, Ask, Kind, TableId, Payload)),
+           Response) :-
+    table_route_dict(Id, ResolvedCodes,
+                     route(Family, Kind, InputJSON,
+                           because(table_reading(TableId), Shape)),
+                     Base),
+    ask_dict(Ask, AskDict),
+    atom_string(Kind, KindString),
+    atom_string(TableId, TableIdString),
+    term_string(Payload, PayloadText, [quoted(true),numbervars(true)]),
+    term_string(run_g8_action(Kind), DerivationText,
+                [quoted(true),numbervars(true)]),
+    Completion = _{
+        status:"completed",
+        reason:"answered_by_routed_machine",
+        kind:KindString,
+        table_id:TableIdString,
+        answers:[_{referent:TableIdString,
+                   value:PayloadText,
+                   derivation:DerivationText}]
+    },
+    put_dict(_{ask:AskDict,completion:Completion}, Base, Response).
+route_dict(Id, ResolvedCodes,
+           route_with_table_completion(
+               route(Family, Kind, InputJSON,
+                     because(table_reading(TableId), Shape)),
+               table_completion(refused, Ask, Kind, TableId, Reason)),
+           Response) :-
+    table_route_dict(Id, ResolvedCodes,
+                     route(Family, Kind, InputJSON,
+                           because(table_reading(TableId), Shape)),
+                     Base),
+    ask_dict(Ask, AskDict),
+    atom_string(Kind, KindString),
+    atom_string(TableId, TableIdString),
+    term_string(Reason, ReasonText, [quoted(true),numbervars(true)]),
+    Completion = _{
+        status:"parsed_not_completed",
+        reason:ReasonText,
+        kind:KindString,
+        table_id:TableIdString
+    },
+    put_dict(_{ask:AskDict,completion:Completion}, Base, Response).
+
+ask_dict(ask(Index, Surface, Spans),
+         _{sentence_index:Index,surface:Surface,spans:Spans}).
+
+route_dict(Id, ResolvedCodes,
+           route(Family, Kind, InputJSON,
+                 because(table_reading(TableId),
+                         shape(columns(Columns),rows(Rows)))),
+           Response) :-
+    table_route_dict(
+        Id, ResolvedCodes,
+        route(Family, Kind, InputJSON,
+              because(table_reading(TableId),
+                      shape(columns(Columns),rows(Rows)))),
+        Response).
+
+table_route_dict(Id, ResolvedCodes,
+                 route(Family, Kind, InputJSON,
+                       because(table_reading(TableId),
+                               shape(columns(Columns),rows(Rows)))),
+                 _{id:Id,
+                   status:"routed",
+                   route_basis:"table",
+                   family:FamilyString,
+                   kind:KindString,
+                   input_json:InputJSON,
+                   input:Input,
+                   codes:CodeStrings,
+                   table_id:TableIdString,
+                   shape:_{columns:Columns,rows:Rows}}) :-
+    atom_string(Family, FamilyString),
+    atom_string(Kind, KindString),
+    atom_string(TableId, TableIdString),
+    maplist(atom_string, ResolvedCodes, CodeStrings),
+    atom_json_dict(InputJSON, Input, [value_string_as(string)]).
 route_dict(Id, _ResolvedCodes,
            route(Family, Kind, InputJSON,
                  because(Codes,

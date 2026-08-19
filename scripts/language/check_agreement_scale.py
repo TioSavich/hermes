@@ -151,10 +151,22 @@ def check_full_artifacts() -> None:
     # agreeing, two without comparable truth) and two partial promotions;
     # measured from the final-tree harness pass, agreement rate unchanged
     # at 0.9913.
-    assert totals["completed_full"]["numerator"] == 907
-    assert totals["completed_from_partial"]["numerator"] == 163
-    assert totals["agreeing"]["numerator"] == 1029
-    assert totals["agreeing"]["denominator"] == 1038
+    # 2026-08-18: the G2 pricing/rate slice adds two completions, both
+    # measured from the final-tree harness pass. The flour row agrees
+    # (4/5). The Han babysitting row is an adjudicated FALSE disagreement:
+    # the reader answers the statement's ask (7 hours at the rate,
+    # 231/4 = 7 x 33/4) while the wave5 map receipt (line 1518) verifies
+    # only the intermediate division 33/4 - a map row answering its own
+    # sub-problem, the pattern the 08-15 session named. Agreement reads
+    # 1030/1040 = 0.9904 with that one row recorded, not repaired.
+    # 2026-08-18 (later): the G8 ask-binding slice adds one completion -
+    # the U6-L10 two-way table, completed_from_partial, agreeing with its
+    # wave5 receipt - the first grade-8 completion (0/321 -> 1/321).
+    # Measured from the final-tree harness pass; zero prior answers moved.
+    assert totals["completed_full"]["numerator"] == 909
+    assert totals["completed_from_partial"]["numerator"] == 164
+    assert totals["agreeing"]["numerator"] == 1031
+    assert totals["agreeing"]["denominator"] == 1041
 
 
 def main() -> int:

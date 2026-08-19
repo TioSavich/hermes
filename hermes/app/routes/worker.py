@@ -65,6 +65,7 @@ _HANDLERS = (
     ("/api/benny_demo", "_handle_benny_demo"),
     ("/api/review_queue", "_handle_review_queue"),
     ("/api/review_decide", "_handle_review_decide"),
+    ("/api/pedagogical_questions", "_handle_pedagogical_questions"),
 )
 
 _WITNESS_HANDLERS = (

@@ -65,10 +65,12 @@
   var PAGE = {
     console:        { theme: "norms",        lede: "Bring a mathematical discussion, computation, or lesson to the local workbench." },
     discussions:    { theme: "norms",        lede: "Build a claim-checked account of a discussion and keep the evidence attached." }, // R? recollection
+    sidekick:       { theme: "norms",        lede: "Chat with the local tuned model while every Hermes consultation it runs is listed beside the reply." },
     visualizations: { theme: "objects",      lede: "Run a representation filmstrip, then change its inputs when a worker is available." },
     "strategy-machine": { theme: "objects", lede: "Invoke one registered automaton runner by family and kind, then read its runtime trace." },
     witnesses:      { theme: "recollection", lede: "Query the finite witness families gathered from the loaded knowledge base." },
     monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
+    questions:      { theme: "norms",        lede: "Query the authored assessing and advancing questions by topic, automaton state, or standard." },
     review:         { theme: "norms",        lede: "Judge one generated proposal at a time with its recorded warrant and machine actions." },
     gallery:        { theme: "objects",      lede: "Browse coded representation samples from the local asset manifest." },
     landing:        { theme: "recollection", lede: "Choose a door into Hermes or follow the theory journey from its shared entry." },
@@ -105,10 +107,12 @@
       ["console",     "Console",          app("console.html")],
       ["explore",     "Explore lessons",  app("console.html#explore")],
       ["discussions", "Discussions",      app("discussions.html")],
+      ["sidekick",    "Sidekick chat",    app("sidekick.html")],
       ["visualizations", "Visualizers",   mz("visualizations.html")],
       ["strategy-machine", "Automaton runner", mz("strategies/machine.html")],
       ["witnesses",   "Witnesses",        mz("witnesses.html")],
       ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
+      ["questions",   "Questions",        app("questions.html")],
       ["review",      "Proposal review",  mz("review.html")],
       ["gallery",     "Gallery",          mz("gallery.html")],
       ["unit-echo",   "Unit echo",        mz("unit-echo/index.html")],
@@ -146,6 +150,8 @@
     var file = (path.split("/").pop() || "index.html").toLowerCase();
     var byFile = {
       "discussions.html": "discussions", "console.html": "console",
+      "sidekick.html": "sidekick",
+      "questions.html": "questions",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
       "machine.html": "strategy-machine",
       "atlas.html": "atlas", "witnesses.html": "witnesses", "review.html": "review",

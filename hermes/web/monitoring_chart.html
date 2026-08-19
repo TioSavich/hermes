@@ -116,6 +116,10 @@
    background:var(--surface,#fff);overflow-x:auto}
  .viz .stage{min-height:0;max-height:60vh;aspect-ratio:auto}
  .viz .stage svg{width:100%;height:auto;max-height:60vh}
+ /* An annotation-only reply draws nothing; the region collapses to its line. */
+ .viz.annotation-only .controls,.viz.annotation-only .caption{display:none}
+ .annotation-note{margin:.2rem 0;padding:.5rem .7rem;border-left:3px solid var(--gold-deep);
+   background:var(--paper-cool);color:var(--muted);font-size:.9rem}
  .viz .calc-note{white-space:normal;overflow-wrap:anywhere}
  .viz .caption{display:block}
  .viz .band:empty,.viz .verbs:empty,.viz .tuple:empty{display:none}
@@ -274,8 +278,9 @@ trace.</p>
   </div>
   <p id='caption' class='caption'></p>
   <div class='calc-bar'>
-    <label>a <input data-arg='a' type='number' value='28'></label>
-    <label>b <input data-arg='b' type='number' value='34'></label>
+    <input type='hidden' data-arg='kind' id='calc-kind' value='add_with_carry'>
+    <label id='calc-label-a'>a <input data-arg='a' type='number' value='28'></label>
+    <label id='calc-label-b'>b <input data-arg='b' type='number' value='34'></label>
     <button id='calculate'>Recalculate</button>
     <span class='calc-note'>POSTs to /api/render; draws the returned trace.
     Needs the app running (hermes/app/launch.sh).</span>
@@ -302,6 +307,29 @@ trace.</p>
 
     var d = HermesDrawer.create({ op: 'base_ten_render', endpoint: '/api/render',
       defaultView: 'freshman' });
+    // An annotation-only reply (every frame sceneChanged:false) draws
+    // nothing, yet the canvas would still reserve its full height. Collapse
+    // it to the annotation's own sentence; a later drawable reply restores
+    // the stage.
+    var ingestDrawnDoc = d.ingest.bind(d);
+    d.ingest = function (doc) {
+      ingestDrawnDoc(doc);
+      var frames = (doc && doc.frames) || [];
+      var annotationOnly = frames.length > 0 && frames.every(function (f) {
+        return f && f.sceneChanged === false;
+      });
+      var viz = el('viz');
+      if (viz) viz.classList.toggle('annotation-only', annotationOnly);
+      if (!annotationOnly) return;
+      var stage = el('stage');
+      if (!stage) return;
+      while (stage.firstChild) stage.removeChild(stage.firstChild);
+      var note = document.createElement('p');
+      note.className = 'annotation-note';
+      note.textContent = (frames[0] && frames[0].caption)
+        || 'The app returned an annotation without a drawable scene.';
+      stage.appendChild(note);
+    };
     var DEMONSTRATION_LESSON = 'IM-G1-U3-L17';
     var productiveDemoDrawer = HermesDrawer.createDetached({
       stage: 'student-work-productive-stage', isolated: true,
@@ -656,7 +684,19 @@ trace.</p>
       if (!strategies.length) { var none = document.createElement('li'); none.textContent = 'No approaches are prepared for this lesson yet.'; list.appendChild(none); }
       approaches.appendChild(list); body.appendChild(approaches);
       var trouble = (chart.teacher_misconceptions || [])[0];
-      body.appendChild(cardSection('Likely trouble spot', trouble ? plainName(trouble.name || trouble.re_anchoring_move || 'A documented wrong turn') : 'No likely trouble spot is prepared for this lesson yet.'));
+      var troubleFromResonance = false;
+      if (!trouble) {
+        var resonantTrouble = (Array.isArray(chart.resonant_misconceptions) ? chart.resonant_misconceptions : [])
+          .filter(function (m) { return m && m.diagnosable !== false; })
+          .sort(function (a, b) { return (b.score || 0) - (a.score || 0); });
+        if (resonantTrouble.length) { trouble = resonantTrouble[0]; troubleFromResonance = true; }
+      }
+      var troubleText = 'No likely trouble spot is prepared for this lesson yet.';
+      if (trouble) {
+        troubleText = plainName(trouble.name || trouble.re_anchoring_move || 'A documented wrong turn') + '.';
+        if (troubleFromResonance) troubleText += ' Retrieved by resonance from documented misconceptions near this content, not lesson-encoded.';
+      }
+      body.appendChild(cardSection('Likely trouble spot', troubleText));
       if (chart.lesson_code !== DEMONSTRATION_LESSON) {
         body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
         body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
@@ -689,6 +729,45 @@ trace.</p>
       document.body.classList.add('load-failed');
     }
 
+    // Provenance stays reachable, never paraded: the visible reference is
+    // the human one (teacher guide, grade, unit, lesson); the exact file
+    // path and line ride on the element's title, ready under the pointer.
+    function humanSourceRef(sourceGuide) {
+      var text = String(sourceGuide || '');
+      var im = /IM-G(\d+|K)-U(\d+)-L(\d+)/i.exec(text);
+      if (im) return 'Teacher guide, grade ' + im[1].toUpperCase() + ', unit ' + im[2] + ', lesson ' + im[3];
+      var docling = /Grade(\d+)-(\d+)-(\d+)/.exec(text);
+      if (docling) return 'Teacher guide, grade ' + docling[1] + ', unit ' + docling[2] + ', lesson ' + docling[3];
+      var grade = /grade[_\s-]?(\d+|k)\b/i.exec(text);
+      var unit = /unit[_\s-]?(\d+)\b/i.exec(text);
+      var lesson = /lesson[_\s-]?(\d+)\b/i.exec(text);
+      if (grade || unit || lesson) {
+        var bits = ['Teacher guide'];
+        if (grade) bits.push('grade ' + grade[1].toUpperCase());
+        if (unit) bits.push('unit ' + unit[1]);
+        if (lesson) bits.push('lesson ' + lesson[1]);
+        return bits.join(', ');
+      }
+      return 'teacher guide on file';
+    }
+
+    function setSourceRef(node, sourceGuide, suffix) {
+      node.textContent = humanSourceRef(sourceGuide);
+      node.title = String(sourceGuide || 'source guide') + (suffix || '');
+    }
+
+    // The committed snapshot bakes raw path strings into its .guide-source
+    // spans; rewrite them the same way at load.
+    function humanizeSnapshotSources() {
+      document.querySelectorAll('.guide-source').forEach(function (span) {
+        if (span.title) return;
+        var text = span.textContent.trim();
+        if (text.indexOf('/') === -1) return;
+        var match = /^(.*?)(,\s*line\s+\d+)?$/.exec(text);
+        setSourceRef(span, match[1], match[2] || '');
+      });
+    }
+
     function renderGuideItems(targetId, items, missingText) {
       var target = el(targetId);
       target.textContent = '';
@@ -708,8 +787,8 @@ trace.</p>
         article.appendChild(body);
         var source = document.createElement('span');
         source.className = 'guide-source';
-        source.textContent = (item.source_guide || 'source guide')
-          + (typeof item.line === 'number' ? ', line ' + item.line : '');
+        setSourceRef(source, item.source_guide,
+          typeof item.line === 'number' ? ', line ' + item.line : '');
         article.appendChild(source);
         target.appendChild(article);
       });
@@ -738,6 +817,7 @@ trace.</p>
     }
 
     normalizeSnapshotLessonText();
+    humanizeSnapshotSources();
     window.addEventListener('load', function () {
       HermesLessonTypesetting.typeset(el('lesson-task'));
       HermesLessonTypesetting.typeset(el('lesson-sequence'));
@@ -771,19 +851,20 @@ trace.</p>
           var span = item.source_span || {};
           var meta = document.createElement('p');
           meta.className = 'guide-question-meta';
-          meta.textContent = (item.source_guide || 'source guide')
-            + (typeof span.start === 'number' && typeof span.end === 'number'
-              ? ':' + span.start + '-' + span.end : '')
+          meta.textContent = humanSourceRef(item.source_guide)
             + ' | ' + (item.activity_location || 'lesson location unavailable')
             + ' | label origin: ' + (item.label_origin || 'unavailable')
             + ' | review status: ' + (item.review_status || 'unavailable');
+          meta.title = (item.source_guide || 'source guide')
+            + (typeof span.start === 'number' && typeof span.end === 'number'
+              ? ':' + span.start + '-' + span.end : '');
           card.appendChild(meta);
           var evidence = item.review_evidence || {};
           if (evidence.kind === 'author_heading') {
             var origin = document.createElement('p');
             origin.className = 'guide-question-meta';
-            origin.textContent = 'Authored heading: ' + (evidence.heading || '')
-              + (typeof evidence.line === 'number' ? ', line ' + evidence.line : '');
+            origin.textContent = 'Authored heading: ' + (evidence.heading || '');
+            if (typeof evidence.line === 'number') origin.title = 'line ' + evidence.line;
             card.appendChild(origin);
           }
           target.appendChild(card);
@@ -807,7 +888,7 @@ trace.</p>
         article.appendChild(body);
         var source = document.createElement('span');
         source.className = 'guide-source';
-        source.textContent = item.source || 'registered source';
+        setSourceRef(source, item.source || 'registered source', '');
         article.appendChild(source);
         target.appendChild(article);
       });
@@ -863,7 +944,7 @@ trace.</p>
         });
         var source = document.createElement('span');
         source.className = 'guide-source';
-        source.textContent = item.source || 'compiled defragged lesson source';
+        setSourceRef(source, item.source || 'compiled defragged lesson source', '');
         article.appendChild(source);
         target.appendChild(article);
       });
@@ -1143,11 +1224,32 @@ trace.</p>
         if (typeof window.bindDeformationLesson === 'function') window.bindDeformationLesson(code, deformationChart);
         return;
       }
-      var addSub = strand === 'addition' || strand === 'subtraction';
-      var inputA = document.querySelector("[data-arg='a']");
-      var inputB = document.querySelector("[data-arg='b']");
-      if (inputA) inputA.value = addSub ? 28 : 4;
-      if (inputB) inputB.value = addSub ? 34 : 3;
+      // The render request names the move the strand can draw. With kind
+      // unset the worker defaulted every non-additive strand to make_ten —
+      // a whole-number move that cannot stand for a division lesson, and
+      // whose crossing-ten witness fails on the old fixed 4+3, leaving an
+      // annotation-only canvas.
+      var RENDER_PLAN = {
+        addition: { kind: 'add_with_carry', argA: 'a', a: 28, argB: 'b', b: 34 },
+        subtraction: { kind: 'subtract_with_borrow', argA: 'a', a: 53, argB: 'b', b: 27 },
+        multiplication: { kind: 'array_multiplication', argA: 'a', a: 4, argB: 'b', b: 6 },
+        division: { kind: 'fair_share', argA: 'total', a: 12, argB: 'groups', b: 3 }
+      };
+      var plan = RENDER_PLAN[strand];
+      var inputA = document.querySelector("[data-arg='a'],[data-arg='total']");
+      var inputB = document.querySelector("[data-arg='b'],[data-arg='groups']");
+      var kindInput = el('calc-kind');
+      if (plan && inputA && inputB) {
+        inputA.setAttribute('data-arg', plan.argA);
+        inputA.value = plan.a;
+        inputB.setAttribute('data-arg', plan.argB);
+        inputB.value = plan.b;
+        var labelA = el('calc-label-a');
+        if (labelA) labelA.firstChild.textContent = plan.argA + ' ';
+        var labelB = el('calc-label-b');
+        if (labelB) labelB.firstChild.textContent = plan.argB + ' ';
+        if (kindInput) kindInput.value = plan.kind;
+      }
       if (appReachable && typeof d.calculate === 'function') d.calculate();
 
       shownLesson = code;
@@ -1193,9 +1295,9 @@ trace.</p>
       }
       var first = (task.sources || [])[0] || {};
       var lines = first.lines || {};
-      source.textContent = (first.source || 'compiled lesson source')
-        + (lines.start ? ', lines ' + lines.start + '-' + lines.end : '')
-        + (first.excerpt ? ': ' + first.excerpt : '');
+      setSourceRef(source, first.source || 'compiled lesson source',
+        lines.start ? ', lines ' + lines.start + '-' + lines.end : '');
+      if (first.excerpt) source.textContent += ': ' + first.excerpt;
       source.hidden = false;
     });
     el('student-work-form').addEventListener('submit', function (event) {

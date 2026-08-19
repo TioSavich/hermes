@@ -66,6 +66,7 @@ CORE_TO_WORKER = {
     "lesson_enactment_run": "lesson_enactment_run",
     "diagnose_error": "diagnose_error",
     "abduce_error": "abduce_error",
+    "pedagogical_questions": "pedagogical_questions",
 }
 
 TOOL_BUNDLES = {
@@ -111,6 +112,7 @@ CORE_STANDALONE_TOOLS = (
     ("list_strategies", "List registered strategy names with their operation, cluster, and whether a worked input is recorded. Every name returned is a name strategy_trace accepts, so this is the discovery step for a caller whose strategy_trace declaration arrived without its name list. Filter by operation or by a name substring; results are paged. Expected time: a few seconds on the first call while the worker starts.", ("operation", "contains", "limit", "offset")),
     ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
     ("lesson_arithmetic_demonstration", "List the four compiled IM-G1-U3-L17 addition tasks or run one selected task against an observed whole-number answer. The result returns productive and dropped-leftover traces, a candidate match or explicit abstention, and never diagnoses the student. Work transcription remains request-local and is not returned or persisted.", ("lesson", "task_id", "observed_answer", "work_transcription")),
+    ("pedagogical_questions", "Return assessing and advancing questions — questions that ask students to explain or extend their thinking — from monitoring-chart clusters matched by topic, automaton state, standard, or the whole corpus, without requiring an IM lesson code. The 42 clusters are hand-authored from monitoring-chart provenance (126 assessing questions, 85 advancing questions total), not drawn from student data; coverage is thematic, not per-lesson, so a real topic can still abstain with zero matches. kind sets the match basis: topic ranks clusters by shared whole-word tokens and is the default; automaton_state and standard require an exact match; all returns every cluster and ignores query. Expected time: a few seconds after worker startup.", ("query", "kind")),
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
     ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
     ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
@@ -296,6 +298,15 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "task_id": {"type": "string", "minLength": 1, "description": "A task_id returned by a catalog call with lesson only."},
             "observed_answer": {"type": "integer", "description": "The teacher-entered observed whole-number answer."},
             "work_transcription": {"type": "string", "description": "Optional request-local transcription; it is neither returned nor persisted."},
+        }
+    elif name == "pedagogical_questions":
+        properties = {
+            "query": {"type": "string", "minLength": 1, "description": "Text to match: a topic phrase, an automaton-state name, or a standard code, depending on kind. Ignored when kind is all."},
+            "kind": {
+                "type": "string",
+                "enum": ["topic", "automaton_state", "standard", "all"],
+                "description": "Match basis. topic (default) ranks clusters by shared whole-word tokens. automaton_state and standard require an exact normalized match. all returns every cluster and ignores query.",
+            },
         }
     elif name == "graph_machine":
         properties = {

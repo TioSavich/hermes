@@ -11,6 +11,7 @@
 <script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="discussions"></script>
 <script defer src="../more-zeeman/render/drawer.js"></script>
 <script src="../more-zeeman/render/request.js"></script>
+<script src="../more-zeeman/render/discourse_viz.js"></script>
 <style>
   * { box-sizing: border-box; }
   body { font-family: var(--serif, Georgia, serif); background: var(--paper, #f4ead6);
@@ -64,6 +65,9 @@
   .card.prepared { background: var(--paper-cool, #ede4cf); }
   .card.prepared .kicker { color: var(--teal-deep, #2c5e66); }
   .card.prepared .go { color: var(--teal-deep, #2c5e66); }
+  .card .abstain-note { font-size: .76rem; font-style: italic; color: var(--muted, #665f4f);
+    margin-top: 5px; line-height: 1.35; }
+  .card .abstain-note:empty { display: none; }
 
   /* report */
   .report { background: rgba(255,253,247,.7); border: 1px solid var(--line, rgba(13,12,8,.16));
@@ -101,6 +105,13 @@
   .work-card { border: 1px solid var(--line, rgba(13,12,8,.16)); border-radius: 8px; padding: 10px 12px; font-size: .86rem; line-height: 1.45; }
   .work-card h3 { margin: 0 0 6px; font: .78rem var(--mono, monospace); color: var(--gold-deep, #a97c24); }
   .work-card p { margin: .35em 0; white-space: pre-wrap; }
+
+  /* The drawn-analysis and structural-payload styles come with
+     render/discourse_viz.js, which injects them once for every page that
+     consumes the renderer. */
+  details.event-tools > summary { cursor: pointer; }
+  details.event-tools > summary .sec { display: inline-flex; margin: 0 0 4px; }
+  details.event-tools > summary .sec-hint { display: block; margin: .1rem 0 0 2.1rem; }
 </style>
 </head>
 <body>
@@ -173,6 +184,16 @@
 
   <div id="report"></div>
 
+  <!-- ============ MEASURED TALK-MOVE CROSSTABS ============ -->
+  <section class="measured-crosstabs">
+    <h2 class="sec">Talk moves &times; PML operators, measured</h2>
+    <p class="sec-hint">Where a coded transcript has both a TalkMoves gold label and this
+      project's PML reading for the same utterance, the two codings stand beside each other
+      as counts. The gold labels never entered any model prompt; the alignment is computed
+      locally after each run.</p>
+    <div id="crosstab-host"><span class="status">Looking for the measured artifact…</span></div>
+  </section>
+
   <section class="event-tools">
     <h2 class="sec"><span class="num">3</span>Discourse evidence</h2>
     <p class="sec-hint">These four deterministic routes use the transcript above. Features and
@@ -191,11 +212,17 @@
       <button class="btn ghost" data-discourse-route="/api/trace_adjudication">Trace adjudication</button>
       <span class="status" id="discourse-status"></span>
     </div>
-    <pre id="discourse-output"></pre>
+    <div id="discourse-output" class="payload-view"></div>
   </section>
 
-  <section class="event-tools">
-    <h2 class="sec"><span class="num">4</span>Blinded event scoring</h2>
+  <details class="event-tools">
+    <summary>
+      <h2 class="sec"><span class="num">4</span>Blinded event scoring</h2>
+      <span class="sec-hint">A research probe, closed by default: it scores pseudonymized
+        event records against the worker's deterministic routes. Building and reading
+        discussion reports never requires it. Open only if you work with the raw scoring
+        routes.</span>
+    </summary>
     <p class="sec-hint">Paste a pseudonymized canonical event object or an array of events.
       Do not put student work in this field. Speaker-connection requests require the verified gate;
       unsafe fields and locked requests are reported without a substitute result.</p>
@@ -209,8 +236,8 @@
       <button class="btn ghost" id="pair-candidate">Attest pair candidate</button>
       <span class="status" id="event-status"></span>
     </div>
-    <pre id="event-output"></pre>
-  </section>
+    <div id="event-output" class="payload-view"></div>
+  </details>
 </main>
 
 <script>
@@ -238,7 +265,9 @@ async function runEventRoute(path){
   } catch (e) { status.textContent = "The request failed: the app did not answer, or answered with something other than JSON."; status.className = "status err"; return; }
   status.textContent = response.ok ? "Request completed." : "Request rejected with HTTP " + response.status + ".";
   status.className = response.ok ? "status" : "status err";
-  output.textContent = JSON.stringify(data, null, 2) || "The route returned an empty reply.";
+  if (data === undefined) { output.textContent = "The route returned an empty reply."; return; }
+  if (window.HermesDiscourseViz) HermesDiscourseViz.renderPayload(output, data);
+  else output.textContent = JSON.stringify(data, null, 2);
 }
 
 function discourseUtterances(){
@@ -266,7 +295,15 @@ async function runDiscourseRoute(path){
     if(path==="/api/trace_adjudication") payload.ledger={proposals:[],adjudications:[]};
   } catch(e) {status.textContent=e.message;status.className="status err";return;}
   status.textContent="Requesting…";status.className="status";output.textContent="";
-  try {const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const data=await response.json();status.textContent=response.ok?"Request completed.":"Request rejected with HTTP "+response.status+".";status.className=response.ok?"status":"status err";output.textContent=JSON.stringify(data.result||data,null,2)}
+  try {
+    const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    const data=await response.json();
+    status.textContent=response.ok?"Request completed.":"Request rejected with HTTP "+response.status+".";
+    status.className=response.ok?"status":"status err";
+    const payloadOut = data.result || data;
+    if (window.HermesDiscourseViz) HermesDiscourseViz.renderPayload(output, payloadOut);
+    else output.textContent = JSON.stringify(payloadOut, null, 2);
+  }
   catch(e){status.textContent="The discourse request failed: "+e.message;status.className="status err";}
 }
 
@@ -404,6 +441,41 @@ $("file-input").onchange = () => {
   $("status").className = "status";
 })();
 
+/* -------- measured talk-move crosstabs (tracked derived counts) -------- */
+async function loadCrosstabs(){
+  const host = $("crosstab-host");
+  let data;
+  try {
+    const resp = await fetch("/generated/talkmoves_charts/alignment_counts.json");
+    if (!resp.ok) throw new Error(String(resp.status));
+    data = await resp.json();
+  } catch (_e) {
+    host.innerHTML = `<p class="fmt-note">The measured talk-moves artifact is not present on this machine.</p>`;
+    return;
+  }
+  if (!window.HermesDiscourseViz || !HermesDiscourseViz.heatmap) return;
+  host.textContent = "";
+  const ids = [];
+  for (const t of (data.transcripts || [])) {
+    ids.push(`${t.transcript_id} (${t.lesson || "lesson unrecorded"}, ${t.model || "model unrecorded"})`);
+    for (const tab of (t.tables || [])) {
+      const head = document.createElement("h3");
+      head.style.cssText = "font: .72rem var(--mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px;";
+      head.textContent = `${tab.title} · ${t.transcript_id} · ${tab.source_run}`;
+      host.appendChild(head);
+      const fig = HermesDiscourseViz.heatmap({
+        columns: tab.columns, rows: tab.rows,
+        ariaLabel: `${tab.title} for ${t.transcript_id}`
+      });
+      if (fig) host.appendChild(fig);
+    }
+  }
+  const note = document.createElement("p");
+  note.className = "viz-note";
+  note.textContent = `These counts come from ${ids.length} coded transcript run(s) — ${ids.join("; ")} — not from the TalkMoves corpus at large, and they license no claim beyond the runs they count. TalkMoves (Sumner lab), CC BY-NC-SA 4.0: derived counts only; no transcript text crosses into this page's data.`;
+  host.appendChild(note);
+}
+
 /* -------- prepared transcripts (app) -------- */
 async function loadPrepared(){
   try {
@@ -413,10 +485,22 @@ async function loadPrepared(){
          <span class="kicker">prepared · rerun live</span>
          <b>${esc(e.id)}</b>
          <span class="desc">${esc(e.headline)}</span>
+         <span class="abstain-note" data-abstain="${esc(e.id)}"></span>
          <span class="go">Open the report &rarr;</span>
        </button>`).join("");
     document.querySelectorAll("[data-report]").forEach(btn => {
       btn.onclick = () => openReport(btn.dataset.report);
+    });
+    // A zero-claim headline is honest abstention, and the card carries the
+    // report's own stated reason (its first caveat, verbatim) rather than
+    // a bare zero.
+    idx.filter(e => /^0 mathematical claims heard/.test(e.headline || "")).forEach(async e => {
+      try {
+        const r = await (await fetch(`/generated/talkmoves_reports/${e.id}.json`)).json();
+        const caveat = (r.caveats || [])[0];
+        const slot = document.querySelector(`[data-abstain="${e.id}"]`);
+        if (caveat && slot) slot.textContent = caveat;
+      } catch (_) { /* the card stands without the note */ }
     });
     if (idx.length) openReport(idx[0].id);
   } catch (e) {
@@ -428,7 +512,13 @@ async function loadPrepared(){
 }
 
 /* -------- report rendering -------- */
-function findingClass(f){ if (f==="holds") return "ok"; if (f==="refuted") return "bad"; return "na"; }
+/* Two verdict vocabularies reach this page: live runs say holds/refuted,
+   the prepared reports say checks out / does not check out. */
+function findingClass(f){
+  if (f==="holds" || f==="checks out") return "ok";
+  if (f==="refuted" || f==="does not check out") return "bad";
+  return "na";
+}
 
 function renderReport(r, note){
   const anyPics = (r.claims||[]).some(c => c.render);
@@ -463,13 +553,15 @@ function renderReport(r, note){
       <h3>Conflicts between speakers</h3><ul>${tensions}</ul>
       <h3>Repairs</h3><ul>${arcs}</ul>
       <h3>Notable moves and how the class responded</h3><ul>${moves}</ul>
+      <div id="machine-views"></div>
       <div class="caveats"><ul>${caveats}</ul><p>${esc(r.attribution || "")}</p></div>
       ${r.transcript ? `<details><summary>The blinded transcript</summary><pre>${esc(r.transcript)}</pre></details>` : ""}
-      <details><summary>Sources and details</summary><pre>${esc(JSON.stringify(r.machine || {}, null, 1))}</pre></details>
+      <details class="raw-toggle"><summary>The machine record (raw JSON)</summary><pre>${esc(JSON.stringify(r.machine || {}, null, 1))}</pre></details>
       ${r.transcript ? `<button class="btn ghost" onclick="rerun()">Run this transcript again</button>` : ""}
     </div>`;
   window._current = r;
   drawClaimPictures(r);
+  drawMachineViews(r);
   $("report").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -507,6 +599,34 @@ async function drawClaimPictures(r){
         : (last.caption || doc.result || "");
       cell.appendChild(note);
     } catch (e) { /* no picture beats a broken row */ }
+  }
+}
+
+/* Drawn analysis of the machine record: a posture/operator strip and a
+   tension/repair map. Both draw only what the report already carries —
+   nothing is recomputed — and the full record stays reachable behind the
+   raw-JSON toggle below them. When the primitives fail to load, the
+   toggle still carries the record. */
+function drawMachineViews(r){
+  const host = document.getElementById("machine-views");
+  if (!host || !window.HermesDiscourseViz) return;
+  const strip = HermesDiscourseViz.postureStrip(r);
+  if (strip) {
+    host.insertAdjacentHTML("beforeend", "<h3>Postures and operators, drawn</h3>");
+    host.appendChild(strip);
+    const note = document.createElement("p");
+    note.className = "viz-note";
+    note.textContent = "The strip draws only utterances the record anchors — a claim, a posture, or a reading; unanchored talk is absent. Claim verdicts are computed; posture and operator readings are interpretive. Hold the pointer over a mark for its wording.";
+    host.appendChild(note);
+  }
+  const map = HermesDiscourseViz.tensionRepairMap(r);
+  if (map) {
+    host.insertAdjacentHTML("beforeend", "<h3>Tensions and repairs, mapped</h3>");
+    host.appendChild(map);
+    const note = document.createElement("p");
+    note.className = "viz-note";
+    note.textContent = "Each arc joins speakers whose anchored utterances a tension or repair names; the sentence itself rides on the arc. Anchors that name no recorded speaker are counted in the legend, not drawn.";
+    host.appendChild(note);
   }
 }
 
@@ -616,6 +736,7 @@ document.querySelectorAll("[data-discourse-route]").forEach(function(button){but
 
 renderSampleCards();
 loadPrepared();
+loadCrosstabs();
 </script>
 </body>
 </html>

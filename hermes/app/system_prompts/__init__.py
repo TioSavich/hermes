@@ -16,6 +16,8 @@ REQUIRED_SYSTEM_PROMPTS = (
     "score.md",
     "transcribe.md",
     "transcribe_timed.md",
+    "sidekick_routed.md",
+    "sidekick_menu.md",
 )
 
 

@@ -1,0 +1,223 @@
+{
+ "attribution": {
+  "corpus": "TalkMoves (Sumner lab, CU Boulder)",
+  "license": "CC BY-NC-SA 4.0",
+  "treatment": "derived counts only; no transcript text, no utterances",
+  "gold_labels": "never entered any model prompt; alignment computed locally after each run"
+ },
+ "builder": "scripts/research/build_talkmoves_charts.py",
+ "operators": [
+  "comp_nec",
+  "comp_poss",
+  "exp_nec",
+  "exp_poss"
+ ],
+ "transcripts": [
+  {
+   "transcript_id": "tm_0007",
+   "source_run": "lesson_run3",
+   "source_sha256": "2ee7b47fb04c57b267a16fe2349418a0b98b6811739c0f3d54122b051e9cccaf",
+   "alignment_note": "Alignment check: 470 answer-key rows for 470 numbered utterances; 0/40 sampled sentences differ textually (in-text blinding accounts for small differences).",
+   "tables": [
+    {
+     "title": "Teacher talk moves × PML operator",
+     "kind": "crosstab",
+     "columns": [
+      "comp_nec",
+      "comp_poss",
+      "exp_nec",
+      "exp_poss"
+     ],
+     "rows": [
+      {
+       "label": "1 - none",
+       "counts": [
+        28,
+        6,
+        4,
+        5
+       ]
+      },
+      {
+       "label": "2 - keeping everyone together",
+       "counts": [
+        1,
+        1,
+        0,
+        0
+       ]
+      },
+      {
+       "label": "5 - revoicing",
+       "counts": [
+        1,
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "label": "7 - context",
+       "counts": [
+        0,
+        2,
+        0,
+        0
+       ]
+      },
+      {
+       "label": "9 - press for reasoning",
+       "counts": [
+        0,
+        0,
+        3,
+        0
+       ]
+      }
+     ],
+     "source_run": "lesson_run3"
+    },
+    {
+     "title": "Student talk moves × PML operator",
+     "kind": "crosstab",
+     "columns": [
+      "comp_nec",
+      "comp_poss",
+      "exp_nec",
+      "exp_poss"
+     ],
+     "rows": [
+      {
+       "label": "1 - none",
+       "counts": [
+        0,
+        1,
+        0,
+        0
+       ]
+      },
+      {
+       "label": "2 - relating to another student",
+       "counts": [
+        0,
+        1,
+        0,
+        0
+       ]
+      },
+      {
+       "label": "4 - making a claim",
+       "counts": [
+        2,
+        13,
+        0,
+        1
+       ]
+      },
+      {
+       "label": "5 - providing evidence/providing reasoning",
+       "counts": [
+        1,
+        11,
+        0,
+        1
+       ]
+      }
+     ],
+     "source_run": "lesson_run3"
+    },
+    {
+     "title": "Whole-transcript talk-move distribution (context)",
+     "kind": "distribution",
+     "columns": [
+      "Utterances"
+     ],
+     "rows": [
+      {
+       "label": "1 - none",
+       "counts": [
+        347
+       ]
+      },
+      {
+       "label": "2 - keeping everyone together",
+       "counts": [
+        27
+       ]
+      },
+      {
+       "label": "4 - making a claim",
+       "counts": [
+        26
+       ]
+      },
+      {
+       "label": "5 - providing evidence/providing reasoning",
+       "counts": [
+        21
+       ]
+      },
+      {
+       "label": "8 - press for  accuracy",
+       "counts": [
+        18
+       ]
+      },
+      {
+       "label": "9 - press for reasoning",
+       "counts": [
+        12
+       ]
+      },
+      {
+       "label": "3 - asking for more information",
+       "counts": [
+        9
+       ]
+      },
+      {
+       "label": "5 - revoicing",
+       "counts": [
+        4
+       ]
+      },
+      {
+       "label": "7 - context",
+       "counts": [
+        3
+       ]
+      },
+      {
+       "label": "1",
+       "counts": [
+        3
+       ]
+      },
+      {
+       "label": "2 - relating to another student",
+       "counts": [
+        1
+       ]
+      },
+      {
+       "label": "4 - restating",
+       "counts": [
+        1
+       ]
+      },
+      {
+       "label": "2",
+       "counts": [
+        1
+       ]
+      }
+     ],
+     "source_run": "lesson_run3"
+    }
+   ],
+   "model": "gemma-4-31B-it",
+   "lesson": "IM-G6-U4-L10",
+   "gold_labels_in_prompts": false
+  }
+ ]
+}

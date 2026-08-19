@@ -125,9 +125,13 @@
  * every grounded operation in the alphabet asserted a direction the table
  * declines to assert. apply_quantity_change now names the direction-neutral
  * doing, which is what recording the remainder was for. The remainder that
- * stands open is on the other side: 24 of the 85 edges in
+ * stands open is on the other side: 26 of the 85 edges in
  * commitment_automata.pl carry provenance(authored(unmodelled(_))), meaning
- * the literature names that step and no predicate here runs it yet.
+ * the literature or the owner's own tutoring practice names that step and
+ * no predicate here runs it yet. (2026-08-18: was 24 of 85; the two
+ * name_the_incompatible_token edges demoted from a grounded citation of
+ * action_grammar.pl:interruption_license/6, a predicate removed by design
+ * in 0f494531 and never restored at that arity.)
  */
 :- module(action_vocabulary_map,
           [ canonical_action/3,
@@ -281,7 +285,7 @@ canonical_action(misread_intermediate_value, gloss("Read a value the computation
 canonical_action(name_result, gloss("Say which quantity the answer is."),
                  coined("house name; the tables distinguish naming the answer from writing it and from releasing it")).
 canonical_action(name_the_incompatible_token, gloss("Name the word in the utterance whose use in this context is what will not go through."),
-                 coined("house name for the owner's tutoring move; the verdicts it consults are knowledge/strategies/action_grammar.pl:interruption_license/6")).
+                 coined("house name for the owner's tutoring move; naming the token is the practice this repository records (commitment_automata.pl, provenance unmodelled since 2026-08-18), not a computation any predicate here performs")).
 canonical_action(omit_required_step, gloss("Skip a step the viable strategy needs."),
                  coined("house name for the omission edge; the tables carry these as omit_* and skip_* labels")).
 canonical_action(omit_vindication_task, gloss("Assert and decline the task-responsibility the assertion carries."),

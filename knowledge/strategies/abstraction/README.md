@@ -3,10 +3,9 @@
 Candidate structure over the automata corpus, from the regularization
 conversation of 2026-08-03
 (`docs/research/2026-08-03-automata-abstraction-conversation.txt`).
-Every module here is quarantined in the same sense as
-`action_vocabulary_map.pl`: nothing imports it, it renames nothing, and
-its rows are authored and vetoable one by one. These are pilots of a
-possible reorganization, not the reorganization.
+The early modules began quarantined in the same sense as
+`action_vocabulary_map.pl`; the entries below state when a later seam imports
+one. These are pilots of a possible reorganization, not the reorganization.
 
 ## What it holds
 
@@ -30,6 +29,14 @@ possible reorganization, not the reorganization.
   collapsed in a child's articulation channel), with a discrimination
   test that separates channel errors from license errors by their
   distribution. Check: `check_channel_collapse/0`.
+- `serialized_table_reader_pilot.pl` — recovers rectangular cell rows from
+  flattened Markdown table bytes, retains character spans for every emitted
+  layout or cell fact, and leaves filling and evaluation to licensed grade 8
+  machines. Check: `check_serialized_table_reader/0`.
+- `table_ask_binding_pilot.pl` — binds an anchored directive or question to
+  the answer genre of a routed table machine, then delegates decoding and
+  execution to `g8_action_pairs.pl`. It reads no sentence into facts and
+  computes no cell. Check: `check_table_ask_binding/0`.
 
 ## The grade 8 pilots (`g8_*`)
 

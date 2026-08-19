@@ -4,22 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>The Unit Coordinator &amp; Fractalizer (Unified Canvas)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hermes-tokens-dark.css">
   <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="coordination"></script>
   <style>
     :root {
-      --bg: #07060b;
-      --surface: #100f1d;
-      --surface-raised: #16152a;
-      --border: #211e3f;
-      --border-highlight: #3b3773;
-      --text: #e2e8f0;
-      --muted: #7d7c93;
-      --amber: #f59e0b;
-      --emerald: #10b981;
-      --blue: #3b82f6;
-      --sans: system-ui, -apple-system, sans-serif;
-      --mono: "SF Mono", "Fira Code", monospace;
+      /* The page draws from the shared dark sheet (hermes-tokens-dark.css);
+         only names the sheet does not carry are mapped here, onto its
+         tokens, so this page reads like every other dark page. */
+      --border-highlight: var(--snap, #e8a84c);
+      --amber: var(--snap, #e8a84c);
+      --emerald: var(--stable, #6b9e8c);
+      --blue: var(--release, #5b9eae);
+      --sans: 'IBM Plex Serif', Georgia, serif;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
     }
 
     *, *::before, *::after {
@@ -65,7 +64,7 @@
       font-size: 1.3rem;
       font-weight: 850;
       letter-spacing: 0.05em;
-      color: #fff;
+      color: var(--snap, #e8a84c);
     }
 
     .title-area p {
@@ -116,7 +115,7 @@
     }
 
     input, select, button {
-      background: #050409;
+      background: var(--bg, #110f08);
       border: 1px solid var(--border);
       color: var(--text);
       padding: 0.45rem 0.6rem;
@@ -133,7 +132,7 @@
 
     button {
       background: var(--blue);
-      color: #fff;
+      color: var(--bg, #110f08);
       font-weight: 700;
       cursor: pointer;
       border: none;
@@ -173,15 +172,15 @@
     .btn-base.active {
       background: var(--blue);
       border-color: var(--blue);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+      color: var(--bg, #110f08);
+      box-shadow: 0 0 10px rgba(91, 158, 174, 0.4);
     }
 
     /* Single Unified Canvas Container */
     .canvas-container {
       width: 100%;
       aspect-ratio: 12 / 5.2;
-      background: #030206;
+      background: var(--bg, #110f08);
       border: 1.5px solid var(--border);
       border-radius: 12px;
       position: relative;
@@ -289,9 +288,9 @@
       transition: all 0.15s ease;
     }
     .step-item.active {
-      background: rgba(59, 130, 246, 0.12);
+      background: rgba(91, 158, 174, 0.12);
       border-left-color: var(--blue);
-      color: #fff;
+      color: var(--text, #d4cfc0);
       font-weight: 600;
     }
 
@@ -307,7 +306,7 @@
     }
 
     .prolog-svg-display {
-      background: #030206;
+      background: var(--bg, #110f08);
       border: 1.5px solid var(--border);
       border-radius: 8px;
       height: 220px;
@@ -329,12 +328,12 @@
     }
 
     .explanation-card {
-      background: #110f22;
+      background: var(--surface-raised, #242014);
       border-left: 4px solid var(--amber);
       padding: 1rem 1.25rem;
       border-radius: 0 8px 8px 0;
       font-size: 0.85rem;
-      color: #9ca3af;
+      color: var(--text, #d4cfc0);
     }
 
     .explanation-card h3 {
@@ -588,7 +587,7 @@
         ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.size, this.size);
         
-        ctx.strokeStyle = this.glowing ? '#fff' : 'rgba(0,0,0,0.5)';
+        ctx.strokeStyle = this.glowing ? '#e8a84c' : 'rgba(0,0,0,0.5)';
         ctx.lineWidth = this.glowing ? 2.5 : 1;
         ctx.strokeRect(this.x, this.y, this.size, this.size);
         ctx.restore();
@@ -1235,12 +1234,13 @@
       }
 
       draw(ctx) {
-        // Draw compartments backgrounds
-        ctx.fillStyle = '#0a0914';
+        // Draw compartments backgrounds (canvas needs literal colors; these
+        // are the shared dark sheet's surface and border values)
+        ctx.fillStyle = '#14110a';
         
         // Ace of Base backing
         ctx.fillRect(40, 80, 520, 390);
-        ctx.strokeStyle = '#1b1836';
+        ctx.strokeStyle = '#3a3428';
         ctx.lineWidth = 1;
         ctx.strokeRect(40, 80, 520, 390);
 
@@ -1249,8 +1249,8 @@
         ctx.strokeRect(680, 80, 500, 390);
 
         // Subtitles/Labels
-        ctx.fillStyle = '#fff';
-        ctx.font = 'bold 9.5pt system-ui, sans-serif';
+        ctx.fillStyle = '#d4cfc0';
+        ctx.font = 'bold 9.5pt "IBM Plex Mono", ui-monospace, monospace';
         ctx.textAlign = 'center';
         ctx.fillText("ACE OF BASE: UNIT COORDINATING", 300, 115);
         ctx.fillText("FRACTION BARS: UNIT PARTITIONING", 930, 115);

@@ -19,6 +19,7 @@
 :- use_module('../../knowledge/strategies/abstraction/ape_reader_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/pedagogy_force_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/printed_expression_reader_pilot.pl').
+:- use_module('../../knowledge/strategies/abstraction/serialized_table_reader_pilot.pl').
 :- use_module('../../knowledge/strategies/abstraction/english_morphology.pl', []).
 :- use_module('../../hermes/math_claim_language.pl', []).
 :- use_module('../../hermes/math_claim_checker.pl', []).
@@ -360,6 +361,18 @@ last_n(Count, List, Tail) :-
     length(Prefix, Drop), append(Prefix, Tail, List).
 
 arbitration_result(Text, Form, SentenceSpans, Row, Facts) :-
+    table_segment_shaped(Text),
+    !,
+    ( table_segment_row(Text, Form, SentenceSpans, Row, Facts)
+    -> true
+    ; table_segment_refusal(Text, SentenceSpans, Reason),
+      arbitration_result_after_table(Text, Form, SentenceSpans, Row0, Facts),
+      attach_table_refusal(Row0, Reason, Row)
+    ).
+arbitration_result(Text, Form, SentenceSpans, Row, Facts) :-
+    arbitration_result_after_table(Text, Form, SentenceSpans, Row, Facts).
+
+arbitration_result_after_table(Text, Form, SentenceSpans, Row, Facts) :-
     ( word_problem_reader_pilot:word_problem_reading(
           Text, IncumbentClass, IncumbentFacts)
     -> maplist(term_text, IncumbentFacts, FactStrings),
@@ -374,6 +387,79 @@ arbitration_result(Text, Form, SentenceSpans, Row, Facts) :-
       ape_result_row(ApeResult, Text, SentenceSpans, IncumbentRefusal,
                      Form, Row, Facts)
     ).
+
+%! table_segment_shaped(+Text) is semidet.
+%
+%  The guard is structural and disposition-free: one separator cell must be
+%  bounded by table pipes.  A lone prose pipe does not enter this lane.
+table_segment_shaped(Text) :-
+    serialized_table_reader_pilot:table_segment_surface(Text).
+
+table_segment_row(Text, Form, SentenceSpans, Row, Facts) :-
+    SentenceSpans = [_|_],
+    serialized_table_reader_pilot:serialized_table_reading(
+        Text, Tables, Remnants),
+    serialized_table_reader_pilot:serialized_table_facts(
+        Tables, Facts, FactSpans),
+    maplist(term_text, Facts, FactStrings),
+    findall(_{fact_index:Index,start:Start,end:End,text:Surface},
+            member(fact_span(Index,Start,End,Surface), FactSpans),
+            SpanRows),
+    findall(_{fact_index:Index,fact:FactText,spans:SentenceSpans},
+            ( nth0(Index, Facts, Fact),
+              term_text(Fact, FactText)
+            ),
+            ProvenanceRows),
+    table_reader_class(Facts, ReaderClass),
+    Row0 = _{parsed:true, reader:serialized_table_segment,
+             reader_class:ReaderClass, sentence_form:Form,
+             facts:FactStrings, fact_spans:SpanRows,
+             source_spans:SentenceSpans, fact_provenance:ProvenanceRows,
+             rewrite_rules:[], refusals:_{}},
+    ( Remnants == []
+    -> Row = Row0
+    ; findall(_{start:Start,end:End,text:Surface},
+              member(remnant(Start,End,Surface), Remnants),
+              RemnantRows),
+      put_dict(remnants, Row0, RemnantRows, Row)
+    ).
+
+table_segment_refusal(_Text, [], unanchored_table_sentence) :- !.
+table_segment_refusal(Text, _SentenceSpans, Reason) :-
+    ( serialized_table_reader_pilot:serialized_table_refusal(Text, Reason)
+    -> true
+    ;  Reason = cell_stream_not_rectangular
+    ).
+
+attach_table_refusal(Row0, Reason, Row) :-
+    term_text(Reason, ReasonString),
+    get_dict(refusals, Row0, Refusals0),
+    put_dict(table_route, Refusals0, _{reason:ReasonString}, Refusals),
+    put_dict(refusals, Row0, Refusals, Row).
+
+table_reader_class(Facts, table_transposed) :-
+    member(table_layout(_,columns(Columns),_,_), Facts),
+    Columns >= 5,
+    !.
+table_reader_class(Facts, table_two_way) :-
+    member(table_layout(TableId,_,_,header([blank|Headers])), Facts),
+    ( member(words(Header), Headers), table_label_total(Header)
+    ; member(table_cell(TableId,_,1,words(RowLabel)), Facts),
+      table_label_total(RowLabel)
+    ),
+    !.
+table_reader_class(Facts, table_labeled_rows) :-
+    member(table_layout(TableId,_,_,header([blank|_])), Facts),
+    member(table_cell(TableId,_,1,words(_)), Facts),
+    !.
+table_reader_class(Facts, table_relation) :-
+    member(table_layout(_,columns(2),_,_), Facts),
+    !.
+table_reader_class(_Facts, table_fragment).
+
+table_label_total(Surface) :-
+    string_lower(Surface, Lower),
+    Lower == "total".
 
 incumbent_refusal(Text, EntryToken,
                   _{token:EntryToken,reason:ReasonString,
@@ -637,6 +723,36 @@ check_expression_routing :-
     get_dict(reason, RouteB, "equation_without_hole_is_a_truth_claim"),
     format('check_expression_routing: ok receipts=18 evaluation=checker_only~n').
 
+check_serialized_table_routing :-
+    Span = _{path:"serialized-table-fixture.md", line_start:1, line_end:1,
+             byte_start:0, byte_end:92, sha256:"fixture"},
+    serialized_table_reader_pilot:fixture_f1(F1),
+    arbitration_result(F1, declarative, [Span], Row1, Facts1),
+    get_dict(reader, Row1, serialized_table_segment),
+    get_dict(reader_class, Row1, table_relation),
+    get_dict(facts, Row1, [_|_]),
+    get_dict(source_spans, Row1, [Span]),
+    \+ member(quantity(_,_,_), Facts1),
+    \+ member(relation(_,_,_), Facts1),
+    \+ member(asks(_,_), Facts1),
+    completion_receipt(Facts1, Completion1),
+    get_dict(status, Completion1, parsed_not_completed),
+    get_dict(reason, Completion1, no_ask),
+    namespace_facts(2, Facts1, Scoped1),
+    memberchk(table_layout(s2_table_1,columns(2),rows(2),_), Scoped1),
+    memberchk(table_cell(s2_table_1,1,1,numeral(10,"10")), Scoped1),
+    arbitration_result(F1, declarative, [], Row2, _),
+    get_dict(refusals, Row2, Refusals2),
+    get_dict(table_route, Refusals2, TableRefusal2),
+    get_dict(reason, TableRefusal2, "unanchored_table_sentence"),
+    serialized_table_reader_pilot:fixture_f5(F5),
+    arbitration_result(F5, declarative, [Span], Row5, _),
+    get_dict(refusals, Row5, Refusals5),
+    get_dict(table_route, Refusals5, TableRefusal5),
+    get_dict(reason, TableRefusal5, "labels_without_cells"),
+    \+ table_segment_shaped("A prose sentence with one | typo."),
+    format('check_serialized_table_routing: ok anchored=1 unanchored=1 fragment=1 inert=no_ask~n').
+
 incumbent_entry_token(Text, TokenString) :-
     string_lower(Text, Lower),
     tokenize_atom(Lower, Tokens),
@@ -681,6 +797,12 @@ namespace_fact(Index, asks(result,Name), asks(result,Scoped)) :- !,
 namespace_fact(Index, relation(Name,Recipe,Span), relation(Scoped,ScopedRecipe,Span)) :- !,
     scoped_name(Index, Name, Scoped),
     namespace_recipe(Index, Recipe, ScopedRecipe).
+namespace_fact(Index, table_layout(TableId,Columns,Rows,Header),
+               table_layout(Scoped,Columns,Rows,Header)) :- !,
+    scoped_name(Index, TableId, Scoped).
+namespace_fact(Index, table_cell(TableId,Row,Col,Reading),
+               table_cell(Scoped,Row,Col,Reading)) :- !,
+    scoped_name(Index, TableId, Scoped).
 namespace_fact(_Index, Fact, Fact).
 
 namespace_recipe(Index, convert(Source,Kind), convert(Scoped,Kind)) :- !,

@@ -19,7 +19,7 @@
             check_word_problem_reader_pilot/0
           ]).
 
-:- use_module(library(lists), [append/2, list_to_set/2]).
+:- use_module(library(lists), [append/2, list_to_set/2, selectchk/3]).
 :- use_module(library(porter_stem), [tokenize_atom/2]).
 :- use_module('english_morphology.pl').
 :- use_module('lexical_typing_store.pl', []).
@@ -36,7 +36,8 @@
 word_problem_reader_pilot_summary(
     summary(role(orphan_seam_reader),
             accepted_classes([vacuous, possession, rate, payment_exchange,
-                              motion_work_interval, acquire_remove,
+                              exchange_price, motion_work_interval,
+                              acquire_remove,
                               change, conversion, remaining_question,
                               equal_group_conversion, existential_quantity,
                               partitioned_same_kind, measured_dimension,
@@ -47,7 +48,7 @@ word_problem_reader_pilot_summary(
                               declared_comparison, multiplicative_comparison,
                               open_verb]),
             output_contract(five_form_sidekick_schema),
-            % Measured 2026-08-15 across all five receipt stores: 47 class,
+            % Measured 2026-08-18 across all five receipt stores: 47 class,
             % 10 reader, 14 class-negative, 33 question-form, 11
             % question-negative.
             receipt_count(115))).
@@ -83,6 +84,12 @@ word_problem_reading(Text, classes(Classes), Facts) :-
 %
 %  Named language-lane refusals remain metadata.  They never enter the fact
 %  stream and never imply that an arithmetic machine exists.
+word_problem_refusal(Text, rate_subject_not_witnessed) :-
+    text_string(Text, String0), string_lower(String0, String),
+    tokenize_atom(String, Surface), append(Tokens, ['.'], Surface),
+    append(_, [each], Tokens),
+    lane_quantity_mentions(Tokens, [mention(_,dollar)]),
+    \+ lane_leading_noun_kind(Tokens, _), !.
 word_problem_refusal(Text, comparison_ask) :-
     refusal_tokens(Text, Tokens),
     ( append(_, [are,there,more|_], Tokens)
@@ -163,6 +170,11 @@ lane_event(Tokens, '.', lane(possession, Possession, Span)) :-
 lane_event(Tokens, '.', lane(acquire_remove, Change, Span)) :-
     \+ lane_legacy_change_or_transfer(Tokens),
     lane_acquire_remove(Tokens, Change),
+    lane_span(Tokens, '.', Span), !.
+lane_event(Tokens, '.', lane(exchange_price, price(Subject, Number), Span)) :-
+    lane_verb_position(Tokens, [sell,pay], Subject, _After),
+    lane_quantity_mentions(Tokens, [mention(Number,dollar)]),
+    memberchk(for, Tokens),
     lane_span(Tokens, '.', Span), !.
 lane_event(Tokens, End, lane(vacuous, vacuous_sentence, Span)) :-
     End \== '?', lane_vacuous(Tokens),
@@ -248,7 +260,8 @@ lane_rate(Tokens,
 lane_rate(Tokens,
           rate(payment_exchange,Subject,OutputNumber,OutputKind,
                InputNumber,InputKind)) :-
-    lane_verb_position(Tokens, [pay,earn,buy,sell], Subject, _After),
+    lane_verb_position(Tokens, [pay,earn,buy,sell,raise,share,worth],
+                       Subject, _After),
     lane_payment_pair(Tokens, OutputNumber, OutputKind, InputNumber, InputKind), !.
 lane_rate(Tokens,
           rate(motion_work_interval,Subject,OutputNumber,OutputKind,
@@ -264,8 +277,11 @@ lane_rate(Tokens,
     lane_rate_marker(Tokens),
     lane_rate_subject(Tokens, Subject),
     lane_quantity_mentions(Tokens, Mentions),
-    lane_ordered_rate_pair(Tokens, Mentions,
-                           OutputNumber,OutputKind,InputNumber,InputKind), !.
+    ( lane_dollar_rate_pair(Mentions,
+                            OutputNumber,OutputKind,InputNumber,InputKind)
+    ; lane_ordered_rate_pair(Tokens, Mentions,
+                             OutputNumber,OutputKind,InputNumber,InputKind)
+    ), !.
 lane_rate(Tokens,
           rate(rate,Subject,OutputNumber,OutputKind,1,InputKind)) :-
     lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind).
@@ -292,6 +308,25 @@ lane_ordered_rate_pair(_Tokens,
                         mention(InputNumber,InputKind)|_],
                        OutputNumber,OutputKind,InputNumber,InputKind).
 
+lane_dollar_rate_pair(Mentions, OutN, dollar, InN, InKind) :-
+    selectchk(mention(OutN,dollar), Mentions, Rest),
+    \+ memberchk(mention(_,dollar), Rest),
+    member(mention(InN,InKind), Rest), InKind \== dollar, !.
+
+lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
+    lane_quantity_mentions(Tokens, [mention(OutputNumber,dollar)]),
+    append(_, [each], Tokens),
+    lane_leading_noun_kind(Tokens, InputKind),
+    OutputKind = dollar,
+    lane_rate_subject(Tokens, Subject).
+lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
+    append(_, ['$',OutputNumber,Article,InputSurface|_], Tokens),
+    memberchk(Article, [a,an]),
+    number(OutputNumber),
+    lane_surface_kind(InputSurface, InputKind),
+    lane_quantity_mentions(Tokens, [mention(OutputNumber,dollar)]),
+    OutputKind = dollar,
+    lane_rate_subject(Tokens, Subject).
 lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
     lane_quantity_mentions(Tokens, [mention(OutputNumber,OutputKind)]),
     ( append(_, [each,InputSurface|_], Tokens)
@@ -307,6 +342,32 @@ lane_each_rate(Tokens, Subject, OutputNumber, OutputKind, InputKind) :-
     lane_quantity_mentions(Tokens, [mention(OutputNumber,OutputKind)]),
     Subject = InputKind.
 
+lane_leading_noun_kind(Tokens, Kind) :-
+    lane_leading_nouns(Tokens, Nouns),
+    Nouns = [_|_], append(_, [Surface], Nouns),
+    lane_surface_kind(Surface, Kind).
+
+lane_leading_nouns([Surface|Tokens], [Surface|Nouns]) :-
+    \+ lane_closed_class_token(Surface),
+    em_category(Surface, noun), !,
+    lane_leading_nouns(Tokens, Nouns).
+lane_leading_nouns(_Tokens, []).
+
+% Webster holds obscure noun senses for some function words.  A surface with
+% any closed-class role cannot witness a quantity kind.  These inventories are
+% already owned here by lane_rate_marker/1 (per/each/every/for),
+% existential_copula//0 (are/is), optional_determiner//0, and the preposition
+% sets in locative_tail//0, possession_tail//0, and purpose_pp//0.
+% em_category(_, adjective) exposes the spurious Webster adjective rows for
+% the quantifier determiners some, any, few, most, and both.
+lane_closed_class_tokens([per,each,every,for,some,any,few,most,both,
+                          are,is,
+                          the,a,an,his,her,their,its,
+                          on,in,at,from,inside,outside,of,about,to,with]).
+
+lane_closed_class_token(Token) :-
+    lane_closed_class_tokens(Tokens), memberchk(Token, Tokens).
+
 lane_rate_marker(Tokens) :-
     memberchk(per, Tokens), !.
 lane_rate_marker(Tokens) :-
@@ -318,8 +379,8 @@ lane_rate_marker(Tokens) :-
 
 lane_rate_subject(Tokens, Subject) :-
     lane_verb_position(Tokens,
-                       [represent,use,cost,pay,earn,buy,sell,travel,run,print,
-                        type,read,work,mow,fill,produce],
+                       [represent,use,cost,pay,earn,buy,sell,raise,share,worth,
+                        travel,run,print,type,read,work,mow,fill,produce],
                        Subject, _After), !.
 lane_rate_subject(_Tokens, rate_context).
 
@@ -344,7 +405,7 @@ lane_subject_label(Before, Subject) :-
     member(Surface, Reversed), atom(Surface),
     \+ memberchk(Surface, [a,an,the,to,can,will,would,could,should,is,are,was,
                            were,has,have,had,of,for,in,at,on,from,and,or,her,
-                           his,their,he,she,they,it,each,every]),
+                           his,their,he,she,they,it,each,every,usually]),
     lane_surface_kind(Surface, Subject), !.
 lane_subject_label(_Before, subject).
 
@@ -360,7 +421,7 @@ lane_quantity_mentions([_|Tokens], Mentions) :-
     lane_quantity_mentions(Tokens, Mentions).
 
 lane_quantity_start(['$',Number|Rest], mention(Number,dollar), Rest) :-
-    number(Number), \+ float(Number), !.
+    number(Number), !.
 lane_quantity_start(Tokens, mention(Number,Kind), Rest) :-
     phrase(integer(Number), Tokens, AfterNumber),
     number(Number), \+ float(Number),
@@ -368,17 +429,20 @@ lane_quantity_start(Tokens, mention(Number,Kind), Rest) :-
 
 lane_quantity_kind([Modifier,Surface|Rest], Kind, Rest) :-
     em_category(Modifier, adjective), lane_surface_kind(Surface, Kind), !.
+lane_quantity_kind(['-',Surface|Rest], Kind, Rest) :-
+    lane_surface_kind(Surface, Kind).
 lane_quantity_kind([Surface|Rest], Kind, Rest) :-
     lane_surface_kind(Surface, Kind).
 
 lane_surface_kind(Surface, Kind) :-
-    atom(Surface),
+    atom(Surface), \+ lane_closed_class_token(Surface),
     ( once(math_claim_language:measurement_unit(Surface, Kind))
     ; preferred_noun_base(Surface, Kind)
     ).
 lane_surface_kind(ml, milliliter) :- !.
 lane_surface_kind(Surface, Kind) :-
-    atom(Surface), \+ lane_kind_stopword(Surface),
+    atom(Surface), \+ lane_closed_class_token(Surface),
+    \+ lane_kind_stopword(Surface),
     atom_chars(Surface, Chars), Chars \== [],
     maplist(lane_alpha_char, Chars),
     ( atom_concat(Singular, s, Surface), Singular \== '' -> Kind = Singular
@@ -480,6 +544,11 @@ problem_event(comparison_decl(Subject, Direction, Number, Kind, Other, Span)) --
     subject(Other), ['.'],
     { format(string(Span), '~w has ~w ~w ~w than ~w',
              [Subject, Number, Direction, Kind, Other]) }.
+problem_event(comparison_decl(Subject, Direction, Number, dollar, Other, Span)) -->
+    subject(Subject), stative_verb(_), ['$'], money_number(Number),
+    money_comparison_direction(Direction), [than], subject(Other), ['.'],
+    { format(string(Span), '~w has ~w dollar ~w than ~w',
+             [Subject, Number, Direction, Other]) }.
 
 %   A multiplicative comparison states one holding as a multiple of
 %   another.  It emits the existing scale/2 shape; the factor's kind marks
@@ -577,6 +646,27 @@ modifier(Modifier) --> [Surface],
       ),
       Modifier = Surface }.
 
+%   A descriptive modifier is a dictionary adjective that can sit between
+%   a determiner or numeral and the noun it describes without changing
+%   what is counted: "3 rectangular prisms" counts prisms. Three
+%   refusals bound it. A token with any closed-class role cannot be a
+%   modifier (the shared boundary, extended above — Webster gives
+%   adjective senses to the quantifier determiners). A comparative or
+%   superlative degree cannot be a modifier: "4 fewer stickers" anchors
+%   a comparison this position cannot witness, and the comparison
+%   frames read it instead. A token with any noun sense cannot take
+%   this path: it already rides the compound clause unchanged, so no
+%   homograph ever has two readings here. Number words (hundred,
+%   thousand) all carry Webster noun senses, so the noun-sense refusal
+%   covers them; if a number word without a noun sense ever enters the
+%   lexicon, this guard must learn it. Unlike modifier//1, which binds
+%   its surface into a parts event, this guarded surface is discarded.
+descriptive_modifier(Surface) --> [Surface],
+    { atom(Surface),
+      \+ lane_closed_class_token(Surface),
+      em_adjective_base(Surface, _, positive),
+      \+ em_noun_base(Surface, _) }.
+
 %!  stative_verb(-Base)// is semidet.
 %
 %   A verb that asserts what a subject stands in relation to, rather than a
@@ -622,7 +712,29 @@ optional_determiner --> [].
 possession_tail --> [of], noun_base(_), !.
 possession_tail --> [for], noun_base(_), !.
 possession_tail --> [about], noun_base(_), !.
+possession_tail --> [to], verb_base(_), purpose_object, purpose_pp.
 possession_tail --> locative_tail.
+
+purpose_object --> optional_determiner, purpose_count_noun(_), !.
+purpose_object --> [this], purpose_noun_base(_), !.
+purpose_object --> [].
+
+purpose_pp --> [P], optional_determiner, purpose_count_noun(_),
+    { memberchk(P, [at, for, in, on]) }, !.
+purpose_pp --> [].
+
+% The purpose tail uses its own guarded compound path.  A token that already
+% has a closed-class role cannot become either noun in the compound merely
+% because Webster also records an obscure noun sense for it.
+purpose_count_noun(Kind) --> purpose_noun_base(First),
+    purpose_noun_continuation(First, Kind).
+
+purpose_noun_continuation(_First, Kind) --> purpose_noun_base(Kind), !.
+purpose_noun_continuation(Kind, Kind) --> [].
+
+purpose_noun_base(Kind) --> [Surface],
+    { \+ lane_closed_class_token(Surface),
+      preferred_noun_base(Surface, Kind) }.
 
 existential_copula --> [are].
 existential_copula --> [is].
@@ -636,6 +748,7 @@ conversion_tail --> [].
 
 count_noun(Kind) --> noun_base(_Modifier), noun_base(Kind).
 count_noun(Kind) --> noun_base(Kind).
+count_noun(Kind) --> descriptive_modifier(_), noun_base(Kind).
 
 counted_amount(Number, Kind) --> integer(Number), count_noun(Kind).
 counted_amount(Number, dollar) --> ['$'], money_number(Number).
@@ -677,6 +790,9 @@ generic_question_time(unspecified) --> [].
 
 comparison_direction(more) --> [more].
 comparison_direction(fewer) --> [fewer].
+
+money_comparison_direction(less) --> [less].
+money_comparison_direction(more) --> [more].
 
 comparison_other(Other) --> [than], subject(Other), !.
 comparison_other(implicit) --> [].
@@ -754,6 +870,12 @@ compile_events([lane(possession,possession(Subject,Number,Kind),_)|Events],
     append(Facts0, [quantity(Name,Number,Kind)], Facts1),
     compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
     lane_discrete_kinds([Kind], Marks), append(Marks, TailKinds, Kinds).
+compile_events([lane(exchange_price,price(Subject,Number),_)|Events],
+               States, Conversions, Index, Facts0, Facts, Kinds) :-
+    lane_name(Subject, dollar, exchange_price, Name),
+    append(Facts0, [quantity(Name,Number,dollar)], Facts1),
+    compile_events(Events, States, Conversions, Index, Facts1, Facts, TailKinds),
+    lane_discrete_kinds([dollar], Marks), append(Marks, TailKinds, Kinds).
 compile_events([lane(Class,
                           rate(Class,Subject,OutputNumber,OutputKind,
                                InputNumber,InputKind),Span)|Events],
@@ -986,6 +1108,7 @@ declared_state(Subject, Kind, _States, Ref, [quantity(Ref, unknown, Kind)]) :-
 %   `more` states subject minus other; `fewer` states other minus subject.
 comparison_decl_operands(more, SubjectRef, OtherRef, SubjectRef, OtherRef).
 comparison_decl_operands(fewer, SubjectRef, OtherRef, OtherRef, SubjectRef).
+comparison_decl_operands(less, SubjectRef, OtherRef, OtherRef, SubjectRef).
 
 %   A gain- or loss-typed lemma compiles through the existing change
 %   emission when a prior state exists.  A first_state typing threads a
@@ -1277,6 +1400,8 @@ check_word_problem_reader_pilot :-
     % admitted sentence classes.
     \+ word_problem_facts("Mia wonders whether nine guavas are enough.", _),
     check_grammar_slice1,
+    check_grammar_slice2,
+    check_grammar_slice3,
     writeln('word_problem_reader_pilot: all receipts passed').
 
 check_grammar_slice1 :-
@@ -1306,6 +1431,247 @@ grammar_slice1_check(Id, Goal) :-
     ( call(Goal)
     -> true
     ;  format(user_error, 'word_problem_reader grammar slice check failed: ~q~n',
+              [Id]),
+       fail
+    ).
+
+check_grammar_slice2 :-
+    grammar_slice2_check(decimal_grapes,
+        grammar_slice2_rate("Grapes cost $2.39 per pound.", 2.39, 1, pound)),
+    grammar_slice2_check(decimal_papayas,
+        grammar_slice2_rate("Papayas cost $1.34 per pound.", 1.34, 1, pound)),
+    grammar_slice2_check(decimal_earn,
+        grammar_slice2_rate("Han earns $33.00 for babysitting for 4 hours.",
+                            33.0, 4, hour)),
+    grammar_slice2_check(final_each_ticket,
+        grammar_slice2_rate("Tickets for the museum are $18 each.",
+                            18, 1, ticket)),
+    grammar_slice2_check(final_each_movie_ticket,
+        grammar_slice2_rate("Movie tickets are $9 each.", 9, 1, ticket)),
+    grammar_slice2_check(article_rate,
+        grammar_slice2_rate("Entry to the fair is $9 a person.",
+                            9, 1, person)),
+    grammar_slice2_check(adverb_skip,
+        grammar_slice2_rate(
+            "Bottles of sparkling water usually cost $1.69 each.",
+            1.69, 1, bottle)),
+    grammar_slice2_check(dollar_orientation,
+        grammar_slice2_rate("Store Y: 5 cans for $3.00.", 3.0, 5, can)),
+    grammar_slice2_check(share_exchange,
+        grammar_slice2_rate(
+            "Four students share a $271 prize from a science competition.",
+            271, 4, student)),
+    grammar_slice2_check(worth_exchange,
+        grammar_slice2_rate("1 ton of clear glass is worth $25.",
+                            25, 1, ton)),
+    grammar_slice2_check(raise_exchange,
+        grammar_slice2_rate(
+            "After 11 cars, they raised a total of $93.50.",
+            93.5, 11, car)),
+    grammar_slice2_check(sell_integer_price,
+        grammar_slice2_price("School A sells the books for $12.", 12)),
+    grammar_slice2_check(sell_decimal_price,
+        grammar_slice2_price("School B sells the books for $12.90 1.", 12.9)),
+    grammar_slice2_check(pay_price,
+        grammar_slice2_price(
+            "A sixth-grade science club needs $180 to pay for the tickets to a science museum.",
+            180)),
+    grammar_slice2_check(hyphenated_pound,
+        grammar_slice2_rate("A 10-pound sack of flour costs $8.",
+                            8, 10, pound)),
+    grammar_slice2_check(hyphenated_pound_about,
+        grammar_slice2_rate("A 150-pound bag of sand costs about $12.",
+                            12, 150, pound)),
+    grammar_slice2_check(purpose_market,
+        grammar_slice2_possession(
+            "Noah has $10 to spend at the produce market.", 10)),
+    grammar_slice2_check(purpose_tickets,
+        grammar_slice2_possession(
+            "Teachers have $900 to buy tickets for the trip.", 900)),
+    grammar_slice2_check(purpose_this,
+        grammar_slice2_possession("Han has $40 to spend this weekend.", 40)),
+    grammar_slice2_check(money_less,
+        grammar_slice2_money_less("Diego has $16 less than Mai.", 16)),
+    grammar_slice2_check(unchanged_clare_paid,
+        grammar_slice2_unchanged(
+            "Clare is paid $90 for 5 hours of work.",
+            [quantity(lane_clare_dollar_rate_total,90,dollar),
+             quantity(lane_clare_hour_rate_interval,5,hour),
+             quantity(lane_clare_dollar_per_hour,unknown,rate(dollar,hour)),
+             relation(lane_clare_dollar_rate_total,
+                      scale(lane_clare_hour_rate_interval,
+                            lane_clare_dollar_per_hour),
+                      "clare is paid $ 90 for 5 hours of work ."),
+             discrete_kinds([])])),
+    grammar_slice2_check(unchanged_neon_cost,
+        grammar_slice2_unchanged(
+            "Neon bracelets cost $1 for 4.",
+            [quantity(lane_bracelet_dollar_rate_total,1,dollar),
+             quantity(lane_bracelet_bracelet_rate_interval,4,bracelet),
+             quantity(lane_bracelet_dollar_per_bracelet,unknown,
+                      rate(dollar,bracelet)),
+             relation(lane_bracelet_dollar_rate_total,
+                      scale(lane_bracelet_bracelet_rate_interval,
+                            lane_bracelet_dollar_per_bracelet),
+                      "neon bracelets cost $ 1 for 4 ."),
+             discrete_kinds([bracelet])])),
+    grammar_slice2_check(unchanged_grapes_cost,
+        grammar_slice2_unchanged(
+            "Grapes cost $2 per pound.",
+            [quantity(lane_grape_dollar_rate_total,2,dollar),
+             quantity(lane_grape_pound_rate_interval,1,pound),
+             quantity(lane_grape_dollar_per_pound,unknown,
+                      rate(dollar,pound)),
+             relation(lane_grape_dollar_rate_total,
+                      scale(lane_grape_pound_rate_interval,
+                            lane_grape_dollar_per_pound),
+                      "grapes cost $ 2 per pound ."),
+             discrete_kinds([])])),
+    grammar_slice2_check(bare_dollar_refusal,
+        \+ word_problem_reading("Water costs $.", _, _)),
+    grammar_slice2_check(conditional_refusal,
+        \+ word_problem_reading(
+            "If someone saves $35 on a laptop, what was its original cost?",
+            _, _)),
+    grammar_slice2_check(coordination_refusal,
+        \+ word_problem_reading(
+            "Han spends $11 on rides, $8 on face painting, and $4 on snacks.",
+            _, _)),
+    grammar_slice2_check(cent_refusal,
+        \+ word_problem_reading("Priya has $1 and 18¢ in her pocket.", _, _)),
+    grammar_slice2_check(closed_class_kind_refusal,
+        grammar_slice2_closed_class_refusal).
+
+grammar_slice2_rate(Text, DollarNumber, IntervalNumber, IntervalKind) :-
+    word_problem_reading(Text, _, Facts),
+    member(quantity(_, DollarNumber, dollar), Facts),
+    member(quantity(_, IntervalNumber, IntervalKind), Facts),
+    member(quantity(Rate, unknown, rate(dollar,IntervalKind)), Facts),
+    grammar_slice2_lane_span(Text, Span),
+    member(relation(_, scale(_,Rate), Span), Facts).
+
+grammar_slice2_price(Text, Number) :-
+    word_problem_reading(Text, classes([exchange_price]), Facts),
+    member(quantity(_, Number, dollar), Facts),
+    \+ member(quantity(_, unknown, rate(_,_)), Facts).
+
+grammar_slice2_possession(Text, Number) :-
+    word_problem_reading(Text, classes([possession]), Facts),
+    member(quantity(_, Number, dollar), Facts),
+    \+ member(quantity(_, unknown, rate(_,_)), Facts).
+
+grammar_slice2_money_less(Text, Number) :-
+    word_problem_reading(Text, classes([declared_comparison]), Facts),
+    member(quantity(_, Number, dollar), Facts),
+    member(relation(_, difference(_,_), _), Facts).
+
+grammar_slice2_lane_span(Text, Span) :-
+    text_string(Text, String0), string_lower(String0, String),
+    tokenize_atom(String, Surface), append(Tokens, [End], Surface),
+    lane_span(Tokens, End, Span).
+
+grammar_slice2_unchanged(Text, ExpectedFacts) :-
+    word_problem_reading(Text, _, Facts), Facts == ExpectedFacts.
+
+grammar_slice2_closed_class_refusal :-
+    lane_closed_class_tokens(Closed),
+    forall(member(Token, Closed), \+ lane_surface_kind(Token, _)),
+    \+ word_problem_reading("For $18 each.", _, _),
+    word_problem_refusal("For $18 each.", rate_subject_not_witnessed).
+
+grammar_slice2_check(Id, Goal) :-
+    ( call(Goal)
+    -> true
+    ;  format(user_error, 'word_problem_reader grammar slice 2 check failed: ~q~n',
+              [Id]),
+       fail
+    ).
+
+check_grammar_slice3 :-
+    % Corpus im_defrag_038aeb3382b5853a5cf74667_1, grade 5.
+    grammar_slice3_check(rectangular_prisms,
+        grammar_slice3_quantity(
+            "Here are 3 rectangular prisms.", 3, prism)),
+    % Corpus im_defrag_ff5cb3b54429179cbb379277_1, grade 1.
+    grammar_slice3_check(red_table_glue_sticks,
+        grammar_slice3_quantity(
+            "Clare gets 8 glue sticks from the red table.", 8, stick)),
+    % Synthesized from the rectangular-prisms corpus surface to exercise the
+    % possession frame.
+    grammar_slice3_check(possession_rectangular_prisms,
+        grammar_slice3_quantity("Han has 3 rectangular prisms.", 3, prism)),
+    grammar_slice3_check(unchanged_comparison,
+        grammar_slice3_unchanged(
+            "Mai has 4 fewer stickers than Noah.",
+            [quantity(mai_sticker_compared,unknown,sticker),
+             quantity(noah_sticker_compared,unknown,sticker),
+             quantity(mai_sticker_comparison_gap,4,sticker),
+             relation(mai_sticker_comparison_gap,
+                      difference(noah_sticker_compared,
+                                 mai_sticker_compared),
+                      "mai has 4 fewer sticker than noah"),
+             discrete_kinds([sticker])])),
+    grammar_slice3_check(unchanged_parts,
+        grammar_slice3_unchanged(
+            "She has 5 yellow apples and 2 red apples.",
+            [quantity(she_apple_yellow_part,5,apple),
+             quantity(she_apple_red_part,2,apple),
+             quantity(she_apple_total,unknown,apple),
+             relation(she_apple_total,
+                      sum([she_apple_yellow_part,she_apple_red_part]),
+                      "she have 5 yellow apple and 2 red apple"),
+             discrete_kinds([apple])])),
+    grammar_slice3_check(unchanged_compound,
+        grammar_slice3_unchanged(
+            "Han has 15 glue sticks.",
+            [quantity(han_stick_initial,15,stick),
+             discrete_kinds([stick])])),
+    % Corpus im_defrag_2bba5a45a198399cb60267ff_1, grade 1. The open frame
+    % reads one bounded participial tail, not this longer tail.
+    grammar_slice3_check(participial_tail_refusal,
+        \+ word_problem_reading(
+            "He has 19 game pieces arranged like this in his bin.", _, _)),
+    % Corpus im_defrag_822e026ea9fc84f664eaadf6_1, grade 1. No frame
+    % witnesses two-kind coordination in a stated holding.
+    grammar_slice3_check(two_kind_coordination_refusal,
+        \+ word_problem_reading(
+            "There are 8 glue sticks and 3 scissors at the art station.",
+            _, _)),
+    % Corpus im_defrag_b7a7f6bad42d8c949368268a_1, grade 8. No frame
+    % witnesses this instruction to act, whose count names types.
+    grammar_slice3_check(instruction_refusal,
+        \+ word_problem_reading(
+            "Draw 3 different types of triangles.", _, _)),
+    % Corpus im_defrag_02c050451023457b96f769cf_1, grade 1. The lexicon has
+    % no noun form for the supplement named entity bingo, so the frame
+    % declines to read it as a modifier.
+    grammar_slice3_check(unknown_modifier_refusal,
+        \+ word_problem_reading(
+            "Lin has 5 bingo chips on her board.", _, _)),
+    % Closed-class and comparative tokens cannot witness a descriptive
+    % modifier in this frame.
+    grammar_slice3_check(descriptive_modifier_guard,
+        grammar_slice3_modifier_leaks([])).
+
+grammar_slice3_quantity(Text, Value, Kind) :-
+    word_problem_reading(Text, _, Facts),
+    member(quantity(_, Value, Kind), Facts),
+    member(discrete_kinds([Kind]), Facts).
+
+grammar_slice3_unchanged(Text, ExpectedFacts) :-
+    word_problem_reading(Text, _, Facts), Facts == ExpectedFacts.
+
+grammar_slice3_modifier_leaks(Leaks) :-
+    findall(Token,
+            ( member(Token, [some,any,few,most,both,each,every,
+                             fewer,more,less]),
+              phrase(descriptive_modifier(_), [Token]) ),
+            Leaks).
+
+grammar_slice3_check(Id, Goal) :-
+    ( call(Goal)
+    -> true
+    ;  format(user_error, 'word_problem_reader grammar slice 3 check failed: ~q~n',
               [Id]),
        fail
     ).

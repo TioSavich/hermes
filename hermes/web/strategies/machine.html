@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="../hermes-tokens.css">
   <link rel="stylesheet" href="strategy_shell.css">
   <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="strategy-machine"></script>
+  <style>
+    svg[hidden] { display: none; }
+    .deformation-framing { margin: 0 0 10px; padding: 10px 12px;
+      border-left: 3px solid var(--rust, #b95238); background: var(--paper-cool, #ede4cf);
+      color: var(--ink-soft, #1b1810); }
+    .deformation-framing code { overflow-wrap: anywhere; }
+    .term-raw { margin-top: 8px; font-size: .82rem; }
+    .term-raw summary { cursor: pointer; color: var(--muted, #665f4f);
+      font: .78rem var(--mono, ui-monospace, monospace); }
+    .term-raw code { display: block; margin-top: 4px; overflow-wrap: anywhere;
+      background: var(--paper-cool, #ede4cf); padding: 8px; border-radius: 6px; }
+  </style>
 </head>
 <body>
 <main class="container machine-page">
@@ -64,7 +76,15 @@
     familyId: 'machine-family', kindId: 'machine-kind', editorId: 'machine-input',
     runId: 'machine-run', retryId: 'machine-retry', statusId: 'machine-status', outcomeId: 'machine-outcome',
     stepsId: 'machine-steps', jumpsId: 'machine-jumps', topologyId: 'machine-topology',
-    svgId: 'machine-diagram'
+    svgId: 'machine-diagram',
+    // First-load selection: a commonly taught productive machine, so the
+    // first run a colleague performs is not an unframed wrong-answer
+    // pattern. The catalog's alphabetical first entry is one.
+    preferredDefaults: [
+      { family: 'addition', kind: 'count_on_from_larger' },
+      { family: 'addition', kind: 'column_addition_with_carrying' },
+      { family: 'addition', kind: 'known_fact_retrieval' }
+    ]
   });
 </script>
 </body>

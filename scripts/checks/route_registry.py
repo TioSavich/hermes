@@ -90,6 +90,7 @@ POST /api/balance_solve public worker
 POST /api/benny_demo public worker
 POST /api/review_queue public worker
 POST /api/review_decide public worker
+POST /api/pedagogical_questions public worker
 POST /api/discourse_features verified worker
 POST /api/discourse_pragmatics verified worker
 POST /api/gesture_alignment verified worker
@@ -110,6 +111,8 @@ POST /api/score verified workflow
 POST /api/metrics verified workflow
 POST /api/work_read verified workflow
 POST /api/work_refine verified workflow
+GET /api/sidekick/status public sidekick
+POST /api/sidekick_chat public sidekick
 """
 EXPECTED = tuple(tuple(line.split()) for line in EXPECTED_TEXT.splitlines() if line.strip())
 

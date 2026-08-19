@@ -46,6 +46,10 @@ def main() -> int:
     base = f"http://127.0.0.1:{port}"
     env = os.environ.copy()
     env.update({"HERMES_GATE": "1", "HERMES_GATE_OVERRIDE": "0", "REALLMS_API_KEY": ""})
+    # The sidekick fixtures assert the model-offline path. A llama-server may
+    # genuinely be running on the default port 8080 on a dev machine, so the
+    # spawned server is pointed at a just-freed port instead.
+    env["HERMES_SIDEKICK_PORT"] = str(free_port())
     process = subprocess.Popen(
         [sys.executable, "-m", "hermes.app.server", "--host", "127.0.0.1", "--port", str(port)],
         cwd=ROOT, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
@@ -119,6 +123,16 @@ def main() -> int:
                  },
              },
              "200 with the registered structured example"),
+            ("pedagogical_questions", "/api/pedagogical_questions", {
+                "query": "adding fractions unlike denominators", "kind": "topic",
+             },
+             lambda body: body.get("ok") is True
+             and body.get("result", {}).get("status") == "matched"
+             and isinstance(body["result"].get("matches"), list)
+             and bool(body["result"]["matches"])
+             and isinstance(body["result"]["matches"][0].get("assessing_questions"), list)
+             and isinstance(body["result"]["matches"][0].get("advancing_questions"), list),
+             "200 with ok:true and matched clusters carrying both question lists"),
         ]
         for name, path, payload, check, expected_shape in worker_fixtures:
             status, body = request(base, "POST", path, payload, timeout=300)
@@ -144,13 +158,34 @@ def main() -> int:
             failures.append(("coordination_query", (200, "raw <svg"),
                              (status, str(body[:80]))))
 
+        # Sidekick lane: in the check environment no llama-server runs, so the
+        # status reports offline and a chat turn answers from the knowledge
+        # base with the model_offline fallback. The first turn boots the
+        # lane's own Prolog worker; allow it time.
+        status, body = request(base, "GET", "/api/sidekick/status", timeout=30)
+        if status != 200 or not isinstance(body, dict) \
+                or not isinstance(body.get("model"), dict) \
+                or body["model"].get("online") is not False:
+            failures.append(("sidekick_status", (200, "model.online == false"),
+                             (status, str(body)[:160])))
+        status, body = request(base, "POST", "/api/sidekick_chat",
+                               {"message": "What does the knowledge base hold "
+                                           "about counting strategies?"},
+                               timeout=120)
+        if status != 200 or not isinstance(body, dict) \
+                or (body.get("fallback") or {}).get("kind") != "model_offline" \
+                or not str(body.get("reply") or "").strip():
+            failures.append(("sidekick_chat_offline",
+                             (200, "fallback.kind == model_offline, non-empty reply"),
+                             (status, str(body)[:160])))
+
         if failures:
             for name, expected, actual in failures:
                 print(f"{name}: expected {expected!r}, got {actual!r}", file=sys.stderr)
             return 1
         print(f"route behavior: {len(fixtures)} status+JSON fixtures "
               f"+ {len(worker_fixtures)} worker route fixtures "
-              "+ 2 query-GET shape fixtures PASS")
+              "+ 2 query-GET shape fixtures + 2 sidekick fixtures PASS")
         return 0
     finally:
         process.terminate()

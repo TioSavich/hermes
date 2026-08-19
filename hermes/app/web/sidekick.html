@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-hermes-base="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes — Sidekick chat</title>
+<link rel="icon" type="image/svg+xml" href="hermes_logo.svg" />
+<link rel="stylesheet" href="../more-zeeman/hermes-tokens.css" />
+<script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="sidekick"></script>
+<style>
+html.hshell-ready .shell { height: 100%; }
+</style>
+<style>
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; color: var(--ink);
+  background:
+    radial-gradient(900px 600px at 92% -8%, rgba(212,167,71,0.18), transparent 70%),
+    radial-gradient(740px 520px at -10% 104%, rgba(63,127,137,0.12), transparent 68%),
+    var(--paper);
+  font: 16px/1.5 var(--serif);
+}
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+.shell { position: relative; z-index: 1; display: grid; grid-template-rows: auto auto 1fr; min-height: 100vh; }
+
+.statusbar {
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center;
+  padding: 0.55rem 1.3rem; border-bottom: 1px solid var(--line);
+  background: rgba(244,234,214,0.82); font-size: 0.88rem;
+}
+.dot { display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; margin-right: 0.35em; background: var(--line); }
+.dot.on  { background: #3f7f56; }
+.dot.off { background: #a4432e; }
+.modes { display: flex; gap: 1rem; align-items: baseline; padding: 0.6rem 1.3rem; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.modes label { display: inline-flex; gap: 0.35rem; align-items: baseline; font-weight: 600; }
+.modes .caption { font-size: 0.85rem; opacity: 0.85; max-width: 46rem; }
+.measured { font-size: 0.8rem; opacity: 0.8; }
+
+.main { display: grid; grid-template-columns: minmax(20rem, 3fr) minmax(22rem, 2fr); gap: 0; min-height: 0; }
+@media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+.chatcol { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--line); }
+.stream { flex: 1; overflow-y: auto; padding: 1rem 1.3rem; }
+.turn { margin: 0 0 1rem; }
+.turn .who { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+.turn .said { margin: 0.15rem 0 0; white-space: pre-wrap; }
+.turn.notice .said { border-left: 3px solid var(--gold, #b58a2a); padding-left: 0.7rem; font-size: 0.92rem; opacity: 0.9; }
+.honesty {
+  margin: 0 1.3rem 0.6rem; padding: 0.5rem 0.8rem; font-size: 0.82rem;
+  border: 1px solid var(--line); border-left: 3px solid var(--gold, #b58a2a);
+  background: rgba(255,252,244,0.65);
+}
+.askrow { display: flex; gap: 0.6rem; padding: 0 1.3rem 1rem; }
+.askrow textarea { flex: 1; min-height: 3.2rem; padding: 0.55rem 0.7rem; border: 1px solid var(--line); background: rgba(255,252,244,0.8); resize: vertical; }
+.askrow button { padding: 0.5rem 1.1rem; border: 1px solid var(--line); background: var(--gold, #b58a2a); color: #fff; border-radius: 4px; }
+.askrow button[disabled] { opacity: 0.5; cursor: default; }
+
+.panel { display: flex; flex-direction: column; min-height: 0; }
+.panel h2 { margin: 0; padding: 0.8rem 1.1rem 0.3rem; font-size: 0.95rem; }
+.panel .panelnote { padding: 0 1.1rem 0.5rem; font-size: 0.8rem; opacity: 0.75; }
+.calls { flex: 1; overflow-y: auto; padding: 0 1.1rem 1rem; }
+.call { border: 1px solid var(--line); background: rgba(255,252,244,0.6); margin: 0 0 0.7rem; padding: 0.5rem 0.7rem; font-size: 0.85rem; }
+.call .head { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: baseline; }
+.call .tool { font-family: var(--mono, ui-monospace, monospace); font-weight: 700; }
+.chip { font-size: 0.72rem; padding: 0.06rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); }
+.chip.route { background: rgba(47,95,158,0.12); }
+.chip.model { background: rgba(169,124,36,0.14); }
+.chip.result { background: rgba(63,127,86,0.16); }
+.chip.refusal { background: rgba(164,67,46,0.16); }
+.chip.abstention { background: rgba(120,120,120,0.14); }
+.chip.dropped { background: rgba(0,0,0,0.06); font-style: italic; }
+.call pre { margin: 0.4rem 0 0; padding: 0.4rem 0.5rem; overflow-x: auto; background: rgba(0,0,0,0.045); font-size: 0.78rem; }
+.call details { margin-top: 0.35rem; }
+.call summary { cursor: pointer; font-size: 0.78rem; opacity: 0.8; }
+.fallbackline { font-size: 0.82rem; margin: 0.2rem 0 0.8rem; opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="statusbar" id="statusbar">
+    <span><span class="dot" id="model-dot"></span>model: <span id="model-state">checking</span></span>
+    <span><span class="dot" id="worker-dot"></span>knowledge base: <span id="worker-state">cold</span></span>
+    <span id="gguf-state"></span>
+    <span class="measured" id="measured"></span>
+  </div>
+
+  <div class="modes">
+    <label><input type="radio" name="mode" value="routed" checked /> Route decides</label>
+    <label><input type="radio" name="mode" value="model" /> Model decides</label>
+    <span class="caption" id="mode-caption"></span>
+  </div>
+
+  <div class="main">
+    <div class="chatcol">
+      <div class="stream" id="stream"></div>
+      <div class="honesty">
+        Everything on this page runs on this machine; no network call leaves it.
+        The model never receives student names unless they are pasted here.
+        An abstention row in the panel means the knowledge base holds nothing
+        for that ask, and the reply must say so. The first consultation boots a
+        Prolog worker and can take about eleven seconds.
+      </div>
+      <div class="askrow">
+        <textarea id="ask" placeholder="Bring a claim, a lesson code, or something a student did."></textarea>
+        <button id="send">Send</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Consultations this turn</h2>
+      <div class="panelnote">Each row is one tool call: who chose it, the
+        arguments sent, and what came back — a result, a refusal, or an
+        abstention. Payloads over 4&nbsp;KB are cut and marked. Raw payloads
+        expand below each row.</div>
+      <div class="calls" id="calls"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CAPTIONS = {
+    routed: "The page decides when a tool runs and which one. The model writes only the tool's arguments and the reply.",
+    model: "The model receives the same eight tools and decides alone. Measured on its own, this model class calls a tool when asked to and does not decide that it needs one; this mode lets you watch that."
+  };
+  var stream = document.getElementById("stream");
+  var callsBox = document.getElementById("calls");
+  var ask = document.getElementById("ask");
+  var send = document.getElementById("send");
+  var caption = document.getElementById("mode-caption");
+
+  function mode() {
+    var checked = document.querySelector('input[name="mode"]:checked');
+    return checked ? checked.value : "routed";
+  }
+  function setCaption() { caption.textContent = CAPTIONS[mode()]; }
+  Array.prototype.forEach.call(document.querySelectorAll('input[name="mode"]'), function (r) {
+    r.addEventListener("change", setCaption);
+  });
+  setCaption();
+
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function addTurn(who, text, extraClass) {
+    var turn = el("div", "turn" + (extraClass ? " " + extraClass : ""));
+    turn.appendChild(el("div", "who", who));
+    turn.appendChild(el("div", "said", text));
+    stream.appendChild(turn);
+    stream.scrollTop = stream.scrollHeight;
+    return turn;
+  }
+
+  function chip(cls, text) { return el("span", "chip " + cls, text); }
+
+  function renderCalls(rows) {
+    callsBox.textContent = "";
+    if (!rows || !rows.length) {
+      callsBox.appendChild(el("div", "panelnote", "No consultation ran this turn."));
+      return;
+    }
+    rows.forEach(function (row) {
+      var box = el("div", "call");
+      var head = el("div", "head");
+      head.appendChild(el("span", "tool", row.tool || "(unnamed)"));
+      head.appendChild(chip(row.chooser === "route" ? "route" : "model",
+                            row.chooser === "route" ? "route chose" : "model chose"));
+      if (row.executed) {
+        head.appendChild(chip(row.response_class || "", row.response_class || ""));
+      } else {
+        head.appendChild(chip("dropped", "not run: " + (row.dropped_reason || "")));
+      }
+      if (row.elapsed_ms) head.appendChild(el("span", "measured", row.elapsed_ms + " ms"));
+      box.appendChild(head);
+      var args = el("pre");
+      args.textContent = JSON.stringify(row.arguments, null, 1);
+      box.appendChild(args);
+      if (row.executed && row.result_trimmed) {
+        var details = document.createElement("details");
+        var summary = el("summary", "", "payload" + (row.trimmed ? " (cut at 4 KB)" : ""));
+        details.appendChild(summary);
+        var pre = el("pre");
+        pre.textContent = row.result_trimmed;
+        details.appendChild(pre);
+        box.appendChild(details);
+      }
+      callsBox.appendChild(box);
+    });
+  }
+
+  function fmtRate(value) {
+    return (value === null || value === undefined) ? "–" : Number(value).toFixed(2);
+  }
+
+  function refreshStatus() {
+    fetch("/api/sidekick/status").then(function (r) {
+      if (!r.ok) throw new Error("status route answered " + r.status);
+      return r.json();
+    }).then(function (s) {
+      var modelDot = document.getElementById("model-dot");
+      var workerDot = document.getElementById("worker-dot");
+      var online = s.model && s.model.online;
+      modelDot.className = "dot " + (online ? "on" : "off");
+      document.getElementById("model-state").textContent = online ? "running" :
+        "not running — replies come from the knowledge base only. Start it with hermes/app/launch_sidekick.sh";
+      var warm = s.worker || "cold";
+      workerDot.className = "dot " + (warm === "warm" ? "on" : (warm.indexOf("failed") === 0 ? "off" : ""));
+      document.getElementById("worker-state").textContent = warm;
+      document.getElementById("gguf-state").textContent =
+        (s.model && s.model.gguf_present) ? "model file present" : "model file absent (SIDEKICK.md says how to place it)";
+      var measured = document.getElementById("measured");
+      if (s.measured && s.measured.arms && s.measured.arms.length) {
+        var parts = [];
+        s.measured.arms.forEach(function (arm) {
+          Object.keys(arm.cuts || {}).forEach(function (cut) {
+            var c = arm.cuts[cut];
+            if (c.call_when_needed !== null && c.call_when_needed !== undefined) {
+              parts.push(arm.arm + "/" + cut + ": calls-when-needed " + fmtRate(c.call_when_needed));
+            }
+          });
+        });
+        measured.textContent = "measured (" + s.measured.artifact + ", " + (s.measured.model || "") + "): " +
+          (parts.length ? parts.slice(0, 3).join("; ") : "recorded arms carry no pooled rates");
+      } else {
+        measured.textContent = "no measurement loaded on this machine";
+      }
+    }).catch(function (err) {
+      document.getElementById("model-dot").className = "dot off";
+      document.getElementById("model-state").textContent =
+        "status request failed (" + err.message + ") — if the console server predates this page, restart it";
+      document.getElementById("worker-state").textContent = "unknown";
+      document.getElementById("gguf-state").textContent = "";
+      document.getElementById("measured").textContent = "";
+    });
+  }
+
+  function sendTurn() {
+    var message = ask.value.trim();
+    if (!message) return;
+    ask.value = "";
+    send.disabled = true;
+    addTurn("teacher", message);
+    var pending = addTurn("sidekick", "…", "notice");
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 180000);
+    fetch("/api/sidekick_chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: message, mode: mode() }),
+      signal: controller.signal
+    }).then(function (r) { return r.json(); }).then(function (body) {
+      clearTimeout(timer);
+      pending.remove();
+      addTurn(body.busy ? "page" : "sidekick", body.reply || body.error || "(empty reply)",
+              body.fallback || body.busy ? "notice" : "");
+      if (body.fallback) {
+        stream.appendChild(el("div", "fallbackline",
+          "fallback " + body.fallback.kind + ": " + body.fallback.detail));
+      }
+      if (body.flags && body.flags.indexOf("model_declined_consult") >= 0) {
+        stream.appendChild(el("div", "fallbackline",
+          "The model chose no consultation for this turn."));
+      }
+      if (body.rejected_reply) {
+        var det = document.createElement("details");
+        det.appendChild(el("summary", "", "the reply the filter replaced"));
+        var pre = el("pre");
+        pre.textContent = body.rejected_reply;
+        det.appendChild(pre);
+        stream.appendChild(det);
+      }
+      renderCalls(body.calls);
+      stream.scrollTop = stream.scrollHeight;
+      send.disabled = false;
+      refreshStatus();
+    }).catch(function (err) {
+      clearTimeout(timer);
+      pending.remove();
+      addTurn("page", err && err.name === "AbortError"
+        ? "The turn passed its 180 s budget and was stopped."
+        : "The request failed: " + err, "notice");
+      send.disabled = false;
+      refreshStatus();
+    });
+  }
+
+  send.addEventListener("click", sendTurn);
+  ask.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) sendTurn();
+  });
+
+  refreshStatus();
+})();
+</script>
+</body>
+</html>

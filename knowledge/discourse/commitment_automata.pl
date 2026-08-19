@@ -186,13 +186,23 @@ automaton_tuple(discourse, tutorial_interruption_on_incompatible_token, states([
 automaton_tuple(discourse, utterance_run_to_its_loss, states([q_start, q_attending, q_named, q_ran, q_accept]), actions([attend_to_utterance, name_the_incompatible_token, let_the_utterance_run_on, record_deontic_incoherence]), start(q_start), accepting([q_accept])).
 
 automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_start, attend_to_utterance, q_attending, provenance(authored(unmodelled('Brandom, Making It Explicit, ch. 3: the scorekeeper attends before the utterance is complete')))).
-automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_attending, name_the_incompatible_token, q_named, provenance(authored(grounded('knowledge/strategies/action_grammar.pl:interruption_license/6')))).
+% 2026-08-18: demoted from grounded. This edge cited
+% action_grammar.pl:interruption_license/6, a predicate that never existed
+% at that arity; its /5 counterpart (a per-token stop/watch/continue
+% verdict) was removed by design in 0f494531 and replaced by
+% interruption_trigger/4, which the grammar's own check now forbids from
+% emitting a verdict at all. The naming move is the owner's tutoring
+% practice this file records, not a step any predicate here computes.
+automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_attending, name_the_incompatible_token, q_named, provenance(authored(unmodelled('the owner tutoring practice this file records: naming the token whose use in this context has already lost the relation, before compatibility is tested')))).
 automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_named, test_compatibility, q_tested, provenance(authored(grounded('formal/learner/deontic_scorekeeper.pl:incompatible/2')))).
 automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_tested, interrupt_before_completion, q_interrupted, provenance(authored(unmodelled('the owner tutoring practice this file records: stopping at the token rather than after the conclusion')))).
 automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_interrupted, repair_the_commitment, q_repaired, provenance(authored(unmodelled('Brandom, Making It Explicit, ch. 3')))).
 automaton_transition(discourse, tutorial_interruption_on_incompatible_token, q_repaired, record_deontic_score, q_accept, provenance(authored(grounded('formal/learner/deontic_scorekeeper.pl:scorecard/2')))).
 
 automaton_transition(discourse, utterance_run_to_its_loss, q_start, attend_to_utterance, q_attending, provenance(authored(unmodelled('Brandom, Making It Explicit, ch. 3')))).
-automaton_transition(discourse, utterance_run_to_its_loss, q_attending, name_the_incompatible_token, q_named, provenance(authored(grounded('knowledge/strategies/action_grammar.pl:interruption_license/6')))).
+% 2026-08-18: same demotion as tutorial_interruption_on_incompatible_token
+% above -- interruption_license was removed by design in 0f494531; see that
+% comment for the full rationale.
+automaton_transition(discourse, utterance_run_to_its_loss, q_attending, name_the_incompatible_token, q_named, provenance(authored(unmodelled('the owner tutoring practice this file records: naming the token whose use in this context has already lost the relation, before compatibility is tested')))).
 automaton_transition(discourse, utterance_run_to_its_loss, q_named, let_the_utterance_run_on, q_ran, provenance(authored(unmodelled('the counterpart of the interruption: the token is recognized and the utterance is allowed to reach the conclusion the token had already lost')))).
 automaton_transition(discourse, utterance_run_to_its_loss, q_ran, record_deontic_incoherence, q_accept, provenance(authored(grounded('formal/learner/deontic_scorekeeper.pl:crisis_from_deontic_incoherence/3')))).

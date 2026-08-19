@@ -676,24 +676,47 @@ UNROUTED = {
             )
         ],
     },
-    "pedagogical_questions": {
-        "does": "Finds the authored monitoring clusters for a topic, automaton state, or "
-        "standard, and returns their assessing and advancing questions with the "
-        "productive core and deformation that license them.",
-        "judgement": "A page should route to it.",
-        "reason": "126 assessing and 85 advancing questions were reachable only through a "
-        "lesson code before this operation, so a teacher who knew the mathematics but not "
-        "the IM code could not reach them. A page could now ask from the mathematics.",
+    # 2026-08-18: pedagogical_questions left this table — the questions page
+    # and its POST route landed, so the registry now reads it routed_paged.
+    "measurement_strip_render": {
+        "does": "Draws a measurement-strip scene from a strip specification, "
+        "returning drawer frames.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The generic render endpoint reaches it by op name, the way "
+        "every scene op is reached; its 2026-08-18 consumers are the "
+        "deterministic render-spec ledger and scene requests that name it. "
+        "A dedicated page per scene op would duplicate the generic path.",
         "evidence": [
             evidence(
-                "curriculum/im/lesson_monitoring.pl",
-                "pedagogical_question_clusters",
-                "cluster lookup",
+                "hermes_worker.pl",
+                "dispatch_irregular(measurement_strip_render).",
+                "worker dispatch",
             ),
             evidence(
-                "hermes/dispatch_spec.pl",
-                "dispatch_spec(pedagogical_questions,",
+                "knowledge/strategies/render/measurement_strip_scene.pl",
+                "measurement_strip",
+                "the scene builder",
+            ),
+        ],
+    },
+    "ratio_diagram_render": {
+        "does": "Draws a ratio-diagram scene (double number line) from a ratio "
+        "specification, returning drawer frames.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The generic render endpoint reaches it by op name, the way "
+        "every scene op is reached; its 2026-08-18 consumers are the "
+        "deterministic render-spec ledger and scene requests that name it. "
+        "A dedicated page per scene op would duplicate the generic path.",
+        "evidence": [
+            evidence(
+                "hermes_worker.pl",
+                "dispatch_irregular(ratio_diagram_render).",
                 "worker dispatch",
+            ),
+            evidence(
+                "knowledge/strategies/render/ratio_diagram_scene.pl",
+                "ratio_diagram",
+                "the scene builder",
             ),
         ],
     },
@@ -1078,8 +1101,15 @@ def build() -> dict[str, object]:
     # 349 from 2026-08-15 (evening): commit e8083d3f tracked the neutral
     # lexical_typing_store seam module but shipped a registry that did not
     # name it; the extractor files it as the orphan it is.
-    if len(registry_rows) != 349:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 349")
+    # 351 from 2026-08-18: the two scene builders the draw-task census found
+    # unwired (ratio_diagram_render, measurement_strip_render) entered the
+    # worker's dispatch and the registry with them. 356 the same day, at
+    # ceremony: five stores the day authored became tracked modules — the
+    # serialized-table reader, the ask-binding lane, the rewrite-consultation
+    # admitted store, the model-analysis store, and the labeled
+    # teacher-question store.
+    if len(registry_rows) != 356:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 356")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1173,16 +1203,25 @@ def build() -> dict[str, object]:
     # 123 from 2026-08-15 (evening): the lexical_typing_store seam module,
     # same row as the registry pin above — tracked by e8083d3f, named by
     # nothing, filed as the orphan it is.
-    if len(orphan_records) != 123:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 123")
+    # 128 from 2026-08-18 (ceremony): the day's five authored stores enter
+    # tracked and unimported, orphans by the same convention as their
+    # siblings — serialized_table_reader_pilot, table_ask_binding_pilot,
+    # rewrite_consultation_admitted_pilot, model_analysis_pilot, and
+    # structure_teacher_question_labels.
+    if len(orphan_records) != 128:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 128")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.
     # 12 from 2026-08-08: standards_progression_candidates joins the
     # unrouted set with its authored judgement (candidates never read
     # as a learning order).
-    if len(unrouted) != 12:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 12")
+    # 13 from 2026-08-18: pedagogical_questions LEAVES the set (the questions
+    # page and its route landed), and the two newly wired scene ops
+    # (ratio_diagram_render, measurement_strip_render) join it with authored
+    # judgements — the generic render endpoint is their route.
+    if len(unrouted) != 13:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 13")
 
     return {
         "schema": "self_description_census_v1",

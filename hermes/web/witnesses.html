@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="hermes-tokens.css">
   <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="witnesses"></script>
   <script src="render/request.js"></script>
+  <script src="render/discourse_viz.js"></script>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper, #f4ead6); color: var(--ink, #0d0c08);
@@ -546,8 +547,13 @@
           timeoutMs: HermesFetch.HEAVY_PROLOG_TIMEOUT_MS
         });
         if (result.kind === "ok" && result.data.ok) {
-          output.className = "";
-          output.textContent = JSON.stringify(displayReply(result.data.result), null, 2);
+          // Labeled rows first; the raw reply stays behind the toggle the
+          // renderer appends. If the renderer did not load, the JSON text
+          // still answers.
+          output.className = "payload-view";
+          var shown = displayReply(result.data.result);
+          if (window.HermesDiscourseViz) HermesDiscourseViz.renderPayload(output, shown);
+          else output.textContent = JSON.stringify(shown, null, 2);
           return;
         }
         if (result.kind === "ok" || result.kind === "http-error") {

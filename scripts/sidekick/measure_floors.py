@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import http.client
 import json
 import re
 import sys
@@ -45,6 +46,14 @@ from hermes.mcp.server import HermesMCPServer  # noqa: E402
 
 DEFAULT_PROBE = RUNTIME / "probes" / "probe-v1.jsonl"
 DEFAULT_OUTPUT = RUNTIME / "floors"
+
+# Everything a dead or dying server can raise through urllib. URLError,
+# TimeoutError, and ConnectionError are OSError subclasses;
+# http.client.RemoteDisconnected reaches here both as BadStatusLine
+# (HTTPException) and ConnectionResetError (OSError). The 2026-08-18 local
+# run crashed at item 107/156 on an uncaught RemoteDisconnected and lost
+# three hours of per-call data that existed only in memory.
+TRANSPORT_ERRORS = (OSError, http.client.HTTPException, json.JSONDecodeError)
 ENDPOINT = "http://127.0.0.1:11434/api/chat"
 BACKEND = "http://127.0.0.1:11434"
 MODEL = "gemma4:e2b"
@@ -198,7 +207,7 @@ def backend_fingerprint(model: str, timeout: float = 30.0) -> dict[str, Any]:
                 "capabilities": shown.get("capabilities"),
             }
         )
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+    except TRANSPORT_ERRORS as exc:
         fingerprint["show_failed"] = f"{type(exc).__name__} {exc}"
     if not fingerprint.get("digest"):
         # /api/show reports the modelfile and the details; the digest lives in
@@ -211,12 +220,12 @@ def backend_fingerprint(model: str, timeout: float = 30.0) -> dict[str, Any]:
                         fingerprint["size_bytes"] = entry.get("size")
                         fingerprint["modified_at"] = entry.get("modified_at")
                         break
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+        except TRANSPORT_ERRORS as exc:
             fingerprint["tags_failed"] = f"{type(exc).__name__} {exc}"
     try:
         with urllib.request.urlopen(f"{BACKEND}/api/version", timeout=timeout) as response:
             fingerprint["backend_version"] = json.loads(response.read()).get("version")
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+    except TRANSPORT_ERRORS as exc:
         fingerprint["version_failed"] = f"{type(exc).__name__} {exc}"
     if not fingerprint.get("digest"):
         # An unpinned run is still worth recording; it is not worth recording
@@ -260,7 +269,7 @@ def chat(
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             payload = json.loads(response.read())
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+    except TRANSPORT_ERRORS as exc:
         return {}, time.time() - started, f"transport_failed: {type(exc).__name__} {exc}"
     if backend == "ollama":
         return payload.get("message", {}), time.time() - started, "ok"
@@ -597,6 +606,17 @@ def main() -> int:
     parser.add_argument("--backend", choices=("ollama", "openai"), default="ollama")
     parser.add_argument("--label", default="", help="names this run in the summary")
     parser.add_argument(
+        "--checkpoint",
+        type=Path,
+        default=None,
+        help=(
+            "per-item ledger this run appends to and resumes from; defaults to "
+            "floors-checkpoint-<label>.jsonl in the output directory. A restart "
+            "skips items the ledger already holds with transport ok and retries "
+            "the rest. Delete the file (or change --label) to force a fresh run."
+        ),
+    )
+    parser.add_argument(
         "--rescore",
         type=Path,
         help="score an existing transcript again without calling the model",
@@ -650,20 +670,50 @@ def main() -> int:
     declarations = {tool["name"]: tool for tool in server._public_tools}
     attempts: list[Attempt] = []
     arguments.output.mkdir(parents=True, exist_ok=True)
+    # The per-item ledger is the cluster law: a run over thirty minutes
+    # checkpoints per item and resumes, or it does not run. Attempts whose
+    # transport failed are re-run on resume rather than carried — a resume
+    # usually happens exactly because the serving process died, and keeping
+    # its trailing failures would freeze the outage into the numbers.
+    checkpoint = arguments.checkpoint or (
+        arguments.output / f"floors-checkpoint-{arguments.label or 'run'}.jsonl"
+    )
+    finished: set[tuple[str, str]] = set()
+    if checkpoint.exists():
+        retried = 0
+        for line in checkpoint.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            recorded = Attempt(**json.loads(line))
+            if recorded.transport == "ok":
+                attempts.append(recorded)
+                finished.add((recorded.arm, recorded.item))
+            else:
+                retried += 1
+        print(
+            f"resuming from {checkpoint}: {len(attempts)} items kept, "
+            f"{retried} transport failures queued for retry",
+            flush=True,
+        )
     try:
-        for arm in arguments.arms:
-            started = time.time()
-            for index, row in enumerate(rows, start=1):
-                attempt = run_item(row, arm, server, declarations, arguments.model,
-                                   arguments.timeout, arguments.endpoint, arguments.backend)
-                attempts.append(attempt)
-                print(
-                    f"{arm:9s} {index:3d}/{len(rows)} {row.id:18s} class={row.row_class} "
-                    f"called={attempt.called} unsupported={len(attempt.unsupported)} "
-                    f"{attempt.latency_s:5.1f}s",
-                    flush=True,
-                )
-            print(f"{arm} finished in {time.time() - started:.0f}s", flush=True)
+        with checkpoint.open("a", encoding="utf-8") as ledger:
+            for arm in arguments.arms:
+                started = time.time()
+                for index, row in enumerate(rows, start=1):
+                    if (arm, row.id) in finished:
+                        continue
+                    attempt = run_item(row, arm, server, declarations, arguments.model,
+                                       arguments.timeout, arguments.endpoint, arguments.backend)
+                    attempts.append(attempt)
+                    ledger.write(json.dumps(attempt.to_dict(), ensure_ascii=False) + "\n")
+                    ledger.flush()
+                    print(
+                        f"{arm:9s} {index:3d}/{len(rows)} {row.id:18s} class={row.row_class} "
+                        f"called={attempt.called} unsupported={len(attempt.unsupported)} "
+                        f"{attempt.latency_s:5.1f}s",
+                        flush=True,
+                    )
+                print(f"{arm} finished in {time.time() - started:.0f}s", flush=True)
     finally:
         server.close()
 

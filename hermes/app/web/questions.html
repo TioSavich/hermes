@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-hermes-base="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes — Questions</title>
+<link rel="icon" type="image/svg+xml" href="hermes_logo.svg" />
+<link rel="stylesheet" href="../more-zeeman/hermes-tokens.css" />
+<script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="questions"></script>
+<style>
+html.hshell-ready .shell { height: 100%; }
+</style>
+<style>
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; color: var(--ink);
+  background:
+    radial-gradient(900px 600px at 92% -8%, rgba(212,167,71,0.18), transparent 70%),
+    radial-gradient(740px 520px at -10% 104%, rgba(63,127,137,0.12), transparent 68%),
+    var(--paper);
+  font: 16px/1.5 var(--serif);
+}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.shell { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; }
+.wrap { max-width: 62rem; margin: 0 auto; padding: 1.2rem 1.3rem 3rem; width: 100%; }
+
+.intro { font-size: 0.92rem; max-width: 46rem; }
+.intro .cite { font-size: 0.82rem; opacity: 0.8; }
+
+.askrow { display: flex; gap: 0.6rem; margin: 1rem 0 0.4rem; flex-wrap: wrap; }
+.askrow input { flex: 1; min-width: 16rem; padding: 0.5rem 0.7rem; border: 1px solid var(--line); background: rgba(255,252,244,0.8); }
+.askrow select { padding: 0.5rem; border: 1px solid var(--line); background: rgba(255,252,244,0.8); }
+.askrow button { padding: 0.5rem 1.1rem; border: 1px solid var(--line); background: var(--gold, #b58a2a); color: #fff; border-radius: 4px; }
+.askrow button[disabled] { opacity: 0.5; cursor: default; }
+.kindnote { font-size: 0.8rem; opacity: 0.75; margin: 0 0 0.8rem; }
+
+.honesty {
+  margin: 0.8rem 0 1.2rem; padding: 0.55rem 0.8rem; font-size: 0.84rem;
+  border: 1px solid var(--line); border-left: 3px solid var(--gold, #b58a2a);
+  background: rgba(255,252,244,0.65); max-width: 46rem;
+}
+
+.statusline { font-size: 0.88rem; margin: 0.6rem 0; }
+.cluster { border: 1px solid var(--line); background: rgba(255,252,244,0.6); margin: 0 0 1.1rem; padding: 0.8rem 1rem; }
+.cluster h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.cluster .core { margin: 0.15rem 0 0.5rem; font-size: 0.9rem; }
+.cluster .hook {
+  margin: 0.4rem 0 0.6rem; padding: 0.4rem 0.7rem; font-size: 0.86rem;
+  border-left: 3px solid var(--rust, #a4432e); background: rgba(164,67,46,0.05);
+}
+.cluster .hook .label { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; display: block; }
+.qcols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.6rem 0 0.4rem; }
+@media (max-width: 700px) { .qcols { grid-template-columns: 1fr; } }
+.qcol h4 { margin: 0 0 0.3rem; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.qcol.assessing h4 { color: var(--teal-deep, #2c6d78); }
+.qcol.advancing h4 { color: var(--gold-deep, #8a6516); }
+.qcol ul { margin: 0; padding-left: 1.1rem; font-size: 0.92rem; }
+.qcol li { margin: 0 0 0.35rem; }
+.meta { font-size: 0.78rem; opacity: 0.8; margin-top: 0.4rem; }
+.meta code { font-family: var(--mono, ui-monospace, monospace); }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="wrap">
+    <p class="intro">
+      Assessing questions ask a student to say what they did and how they were
+      thinking; advancing questions press the thinking toward the mathematical
+      goal. <span class="cite">The frame is Smith &amp; Stein's Five Practices,
+      which subdivides monitoring into tracking, assessing, and advancing.</span>
+    </p>
+
+    <div class="askrow">
+      <input id="query" placeholder="A topic (unit fractions on a number line), an automaton state, or a standard code" />
+      <select id="kind">
+        <option value="topic" selected>topic</option>
+        <option value="automaton_state">automaton state</option>
+        <option value="standard">standard</option>
+        <option value="all">all clusters</option>
+      </select>
+      <button id="go">Query</button>
+    </div>
+    <p class="kindnote">Topic ranks clusters by shared whole words. Automaton
+      state and standard need an exact match. "All clusters" returns every
+      cluster and ignores the query text.</p>
+
+    <div class="honesty">
+      What answers here: 42 hand-authored monitoring-chart clusters carrying
+      211 questions (126 assessing, 85 advancing). Coverage is thematic, not
+      per-lesson, so a real topic can come back with zero matches — that
+      abstention is an answer, not an error. What exists but is not served
+      here: a machine-labeled store of 9,246 IM teacher questions (2,606
+      assessing, 6,640 advancing) awaits human review before anything serves
+      it. The review gate is deliberate, and this page does not reach around it.
+    </div>
+
+    <div id="status" class="statusline"></div>
+    <div id="results"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var query = document.getElementById("query");
+  var kind = document.getElementById("kind");
+  var go = document.getElementById("go");
+  var status = document.getElementById("status");
+  var results = document.getElementById("results");
+
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function questionColumn(label, cls, items) {
+    var col = el("div", "qcol " + cls);
+    col.appendChild(el("h4", "", label));
+    if (!items || !items.length) {
+      col.appendChild(el("p", "meta", "This cluster records none."));
+      return col;
+    }
+    var list = el("ul");
+    items.forEach(function (q) { list.appendChild(el("li", "", q)); });
+    col.appendChild(list);
+    return col;
+  }
+
+  function renderCluster(c) {
+    var box = el("div", "cluster");
+    box.appendChild(el("h3", "", c.title || c.cluster_id || "(untitled cluster)"));
+    if (c.productive_core) box.appendChild(el("p", "core", c.productive_core));
+    if (c.deformation) {
+      var hook = el("div", "hook");
+      var label = el("span", "label", "what goes wrong here — what an assessing question probes");
+      hook.appendChild(label);
+      hook.appendChild(document.createTextNode(c.deformation));
+      box.appendChild(hook);
+    }
+    var cols = el("div", "qcols");
+    cols.appendChild(questionColumn("Assessing", "assessing", c.assessing_questions));
+    cols.appendChild(questionColumn("Advancing", "advancing", c.advancing_questions));
+    box.appendChild(cols);
+    var metaParts = [];
+    if (c.standards && c.standards.length) metaParts.push("standards: " + c.standards.join(", "));
+    if (c.im_anchors && c.im_anchors.length) metaParts.push("IM anchors: " + c.im_anchors.join(", "));
+    if (c.automaton_states && c.automaton_states.length) metaParts.push("automaton states: " + c.automaton_states.join(", "));
+    if (metaParts.length) box.appendChild(el("p", "meta", metaParts.join(" · ")));
+    return box;
+  }
+
+  function runQuery() {
+    var text = query.value.trim();
+    var kindValue = kind.value;
+    if (!text && kindValue !== "all") {
+      status.textContent = "Type a query, or switch to “all clusters”.";
+      return;
+    }
+    go.disabled = true;
+    status.textContent = "Querying…";
+    results.textContent = "";
+    fetch("/api/pedagogical_questions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: text || "all", kind: kindValue })
+    }).then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+      .then(function (out) {
+        go.disabled = false;
+        if (out.status === 404) {
+          status.textContent = "The question route answered 404 — if the " +
+            "console server predates this page, restart it.";
+          return;
+        }
+        if (out.status !== 200 || !out.body.ok) {
+          status.textContent = "The request was not accepted: " +
+            ((out.body && out.body.error) || ("status " + out.status));
+          return;
+        }
+        var result = out.body.result || {};
+        var matches = result.matches || [];
+        if (result.status === "abstained" || !matches.length) {
+          status.textContent = "No cluster matched “" + text +
+            "”. The 42 authored clusters cover themes, not every topic; " +
+            "this abstention is the honest answer.";
+          return;
+        }
+        status.textContent = matches.length + " cluster" +
+          (matches.length === 1 ? "" : "s") + " matched (" + result.status + ").";
+        matches.forEach(function (c) { results.appendChild(renderCluster(c)); });
+      })
+      .catch(function (err) {
+        go.disabled = false;
+        status.textContent = "The request failed: " + err +
+          ". If the console server predates this page, restart it.";
+      });
+  }
+
+  go.addEventListener("click", runQuery);
+  query.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") runQuery();
+  });
+})();
+</script>
+</body>
+</html>

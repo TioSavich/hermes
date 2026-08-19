@@ -163,6 +163,7 @@ KEEP_FILES = [
 # used to generate monitoring visuals.
 KEEP_MD = {
     "hermes/app/QUICKSTART.md",
+    "hermes/app/SIDEKICK.md",
     "hermes/app/system_prompts/help.md",
     "docs/research/2026-07-01-talkmoves-pass1-math-prompt.md",
     "docs/research/2026-07-01-talkmoves-pass2-posture-prompt.md",

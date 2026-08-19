@@ -268,19 +268,93 @@
     return envelope && envelope.ok ? envelope.result : envelope;
   }
 
+  // Split a Prolog term "functor(a1,a2(...),a3)" into its functor and
+  // top-level arguments. Rendering only; nothing is evaluated.
+  function splitTerm(text) {
+    const match = /^([a-z][A-Za-z0-9_]*)\((.*)\)$/.exec(String(text || '').trim());
+    if (!match) return null;
+    const args = [];
+    let depth = 0, current = '';
+    for (const ch of match[2]) {
+      if (ch === '(') depth += 1;
+      if (ch === ')') depth -= 1;
+      if (ch === ',' && depth === 0) { args.push(current.trim()); current = ''; continue; }
+      current += ch;
+    }
+    if (current.trim()) args.push(current.trim());
+    return { functor: match[1], args: args };
+  }
+
+  // A viability term reads viability(Verdict, condition(...), expected(...),
+  // produced(...), validity(...)); each argument becomes its own labeled row.
+  function viabilityRows(term) {
+    const parsed = splitTerm(term);
+    if (!parsed || parsed.functor !== 'viability' || !parsed.args.length) return null;
+    return parsed.args.map(function (arg) {
+      const inner = splitTerm(arg);
+      return inner && inner.args.length
+        ? { key: inner.functor, value: inner.args.join(', ') }
+        : { key: 'verdict', value: arg };
+    });
+  }
+
+  function viabilityValue(rows, key) {
+    const row = rows && rows.find(function (entry) { return entry.key === key; });
+    return row ? row.value : '';
+  }
+
   function outcomeMarkup(data) {
+    const viabilityTerm = data.viability_context || data.viability;
+    const rows = viabilityRows(viabilityTerm);
     const fields = [
       ['Result', data.result],
       ['Expected', data.expected],
-      ['Validity', data.validity],
-      ['Viability context', data.viability_context || data.viability]
-    ].filter(function (entry) {
+      ['Validity', data.validity]
+    ];
+    if (rows) {
+      rows.forEach(function (row) {
+        if (row.key === 'expected' || row.key === 'produced' || row.key === 'validity') return;
+        fields.push(['Viability ' + row.key.replace(/_/g, ' '), row.value]);
+      });
+    } else if (viabilityTerm) {
+      fields.push(['Viability context', viabilityTerm]);
+    }
+    const cells = fields.filter(function (entry) {
       return entry[1] !== undefined && entry[1] !== null && entry[1] !== '';
-    });
-    return fields.map(function (entry) {
+    }).map(function (entry) {
       const value = typeof entry[1] === 'object' ? JSON.stringify(entry[1]) : entry[1];
       return `<div><dt>${escapeHtml(entry[0])}</dt><dd><code>${escapeHtml(value)}</code></dd></div>`;
     }).join('');
+    const rawTerm = rows
+      ? `<details class="term-raw"><summary>the exact viability term</summary><code>${escapeHtml(viabilityTerm)}</code></details>`
+      : '';
+    return { cells: cells, rawTerm: rawTerm, rows: rows };
+  }
+
+  // A run of a wrong-answer-pattern automaton is the machine doing what it
+  // does; the framing says so in the trace's own vocabulary instead of
+  // leaving a bare "incorrect".
+  function outcomeFraming(data, rows) {
+    const verdict = viabilityValue(rows, 'verdict');
+    if (verdict === 'fails_in_context') {
+      const condition = viabilityValue(rows, 'condition');
+      return '<p class="deformation-framing">This automaton models a documented '
+        + 'wrong-answer pattern, and this run is that pattern doing what it does. '
+        + (condition
+          ? 'The recorded condition <code>' + escapeHtml(condition) + '</code> names how the '
+            + 'produced result departs from the expected one in this context.'
+          : 'The viability term below names how the produced result departs from the expected one in this context.')
+        + '</p>';
+    }
+    if (verdict) {
+      return '<p class="deformation-framing">The recorded viability verdict for this input is '
+        + '<code>' + escapeHtml(verdict) + '</code>; the rows below carry its terms.</p>';
+    }
+    if (data.validity === 'incorrect') {
+      return '<p class="deformation-framing">The produced result departs from the expected one '
+        + 'for this input; the runtime trace records each move.</p>';
+    }
+    return '';
   }
 
   // Wire the all-kinds automaton page. It shares the established trace,
@@ -369,6 +443,9 @@
       topologyEl.innerHTML = '';
       svgEl.innerHTML = '';
       svgEl.hidden = true;
+      // hidden alone does not collapse an SVG element in every browser;
+      // the display rule keeps the empty region from reserving its box.
+      svgEl.style.display = 'none';
       let stopElapsed = function () {};
       try {
         await requestClientReady;
@@ -381,7 +458,10 @@
           throw new Error((data && data.note) || 'The automaton runner did not return a runtime trace.');
         }
 
-        outcomeEl.innerHTML = `<dl class="outcome-fields">${outcomeMarkup(data)}</dl>`;
+        const outcome = outcomeMarkup(data);
+        outcomeEl.innerHTML = outcomeFraming(data, outcome.rows)
+          + `<dl class="outcome-fields">${outcome.cells}</dl>`
+          + outcome.rawTerm;
         (data.steps || []).forEach(function (step) {
           const li = document.createElement('li');
           li.textContent = step.value ? `${step.label} — ${step.value}` : step.label;
@@ -398,6 +478,7 @@
           const first = jumps[0];
           const last = jumps[jumps.length - 1];
           svgEl.hidden = false;
+          svgEl.style.display = '';
           drawNumberLine(cfg.svgId, first.from, jumps, last.to);
           jumpsEl.innerHTML = `<p class="meta">${jumps.length} numeric jump(s) were extracted from the runtime trace.</p>`;
         } else {
@@ -450,9 +531,25 @@
           familyEl.appendChild(option);
         });
         const params = new URLSearchParams(window.location.search);
-        const requestedKind = params.get('kind') || '';
+        let requestedKind = params.get('kind') || '';
         const requestedEntry = strategies.find(function (entry) { return entry.kind === requestedKind; });
-        const requestedFamily = params.get('family') || (requestedEntry && requestedEntry.operation) || '';
+        let requestedFamily = params.get('family') || (requestedEntry && requestedEntry.operation) || '';
+        // With no URL selection, prefer the page's named default machines
+        // over the catalog's alphabetical first entry (which is a
+        // wrong-answer-pattern automaton).
+        if (!requestedKind && !requestedFamily && Array.isArray(cfg.preferredDefaults)) {
+          const preferred = cfg.preferredDefaults
+            .map(function (wanted) {
+              return strategies.find(function (entry) {
+                return entry.operation === wanted.family && entry.kind === wanted.kind;
+              });
+            })
+            .find(Boolean);
+          if (preferred) {
+            requestedFamily = preferred.operation;
+            requestedKind = preferred.kind;
+          }
+        }
         if (requestedFamily && families.indexOf(requestedFamily) !== -1) familyEl.value = requestedFamily;
         fillKinds(requestedKind);
         familyEl.disabled = false;
