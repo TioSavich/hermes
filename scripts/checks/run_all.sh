@@ -35,6 +35,7 @@ run static_route_containment.py python3 "$CHECKS_DIR/static_route_containment.py
 run hermes_shell_page_context.py python3 "$CHECKS_DIR/hermes_shell_page_context.py"
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_description_counts.py python3 "$CHECKS_DIR/mcp_description_counts.py"
+run fraction_comparison_scene.py python3 "$CHECKS_DIR/fraction_comparison_scene.py"
 run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
 run mcp_full_graph.py       python3 "$CHECKS_DIR/mcp_full_graph.py"
 run task_240_branch_agents.py python3 "$CHECKS_DIR/task_240_branch_agents.py"
@@ -53,6 +54,9 @@ run strategy_recognizer.pl  swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$CHECKS
 run mobius_band_readers.py  python3 "$CHECKS_DIR/mobius_band_readers.py"
 run transition_tables.py    python3 "$CHECKS_DIR/transition_tables.py"
 run deformation_validity.py python3 "$CHECKS_DIR/deformation_validity.py"
+run vision_fraction_recovery.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/vision_fraction_recovery.pl -g vision_fraction_recovery:check_vision_fraction_recovery -t halt
+run lesson_representation_evidence.py python3 "$CHECKS_DIR/lesson_representation_evidence.py"
+run lesson_deformation_chart_evidence.py python3 "$CHECKS_DIR/lesson_deformation_chart_evidence.py"
 run build_admitted_edges python3 "$CHECKS_DIR/../bigred/loops/build_admitted_edges.py" --check
 run admitted_bridges_store.py python3 "$CHECKS_DIR/admitted_bridges_store.py"
 run build_kernel_dependency_overlay python3 "$CHECKS_DIR/../bigred/loops/build_kernel_dependency_overlay.py" --check
@@ -103,6 +107,10 @@ run equation_verification_witness.py python3 "$CHECKS_DIR/equation_verification_
 run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusal.py"
 run im_defragged_task_instances.py python3 "$CHECKS_DIR/im_defragged_task_instances.py"
 run k7_guide_questions.py python3 "$CHECKS_DIR/k7_guide_questions.py"
+run assessing_advancing_labels.py python3 "$CHECKS_DIR/assessing_advancing_labels.py"
+run admitted_question_stores.py python3 "$CHECKS_DIR/admitted_question_stores.py"
+run admitted_question_labels.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/admitted_teacher_question_labels.pl -g admitted_teacher_question_labels:check_admitted_question_labels -t halt
+run admitted_guide_questions.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/admitted_guide_questions.pl -g admitted_guide_questions:check_admitted_guide_questions -t halt
 run extract_vision_lesson_digest_audit python3 "$CHECKS_DIR/../extract_vision_lesson_digest_audit.py" --check
 run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 # After the census: the census writes a docs/research report, and the measurement

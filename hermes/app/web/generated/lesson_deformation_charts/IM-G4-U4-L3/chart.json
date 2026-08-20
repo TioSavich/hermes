@@ -1,0 +1,789 @@
+{
+  "cells": [
+    {
+      "comparison_family": "number_line_fraction_comparison",
+      "deformations": [
+        {
+          "deformation": "number_line_count_marks_not_intervals",
+          "family": "comparison_deformation",
+          "scene": {
+            "expected": "less_than",
+            "frames": [
+              {
+                "caption": "init: init(fraction(1,10),fraction(8,10)).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "q_init"
+              },
+              {
+                "caption": "identify unit: unit interval(0,1).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 2,
+                "verb": "q_identify_unit"
+              },
+              {
+                "caption": "partition interval: partitions(fraction(1,10),trace steps(13),fraction(8,10),trace steps(13)).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 3,
+                "verb": "q_partition_interval"
+              },
+              {
+                "caption": "count marks not intervals: overcount(origin mark included,fraction(1,10),mark count(recollection(trace steps(2))),trace steps(4),fraction(8,10),mark count(recollection(trace steps(9))),trace steps(11)).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 4,
+                "verb": "q_count_marks_not_intervals"
+              },
+              {
+                "caption": "locate endpoint: mislocated endpoints(mark count(recollection(trace steps(2)),10),mark count(recollection(trace steps(9)),10)).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 5,
+                "verb": "q_locate_endpoint"
+              },
+              {
+                "caption": "measure with unit fraction: co measure(unit fraction(1,100),trace steps(13),position(mark count(recollection(trace steps(2)),10),20,trace steps(5)),position(mark count(recollection(trace steps(9)),10),90,trace steps(12))).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 6,
+                "verb": "q_measure_with_unit_fraction"
+              },
+              {
+                "caption": "compare positions: compare(20,90,less than).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 7,
+                "verb": "q_compare_positions"
+              },
+              {
+                "caption": "emit: emit(less than).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 8,
+                "verb": "q_emit"
+              },
+              {
+                "caption": "accept: accept(less than).",
+                "scene": {
+                  "axis": {
+                    "max": 100,
+                    "min": 0,
+                    "ticks": [
+                      0,
+                      20,
+                      90,
+                      100
+                    ]
+                  },
+                  "coordinateDenominator": 100,
+                  "format": "number-line",
+                  "jumps": [],
+                  "marks": [
+                    {
+                      "at": 20,
+                      "label": "fraction(1,10)",
+                      "role": "deformation"
+                    },
+                    {
+                      "at": 90,
+                      "label": "fraction(8,10)",
+                      "role": "deformation"
+                    }
+                  ],
+                  "mode": "fraction-comparison",
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 9,
+                "verb": "q_accept"
+              }
+            ],
+            "result": "less_than",
+            "trace": [
+              "hist(q_init,init(fraction(1,10),fraction(8,10)))",
+              "hist(q_identify_unit,unit_interval(0,1))",
+              "hist(q_partition_interval,partitions(fraction(1,10),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 6 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 7 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 8 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 9 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 10 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],fraction(8,10),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 6 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 7 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 8 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 9 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 10 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+              "hist(q_count_marks_not_intervals,overcount(origin_mark_included,fraction(1,10),mark_count(recollection([tally,tally])),[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Iterate connected copy 1 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)],fraction(8,10),mark_count(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally])),[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Iterate connected copy 1 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 3 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 4 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 5 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 6 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 7 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 8 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 9 of 9.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)]))",
+              "hist(q_locate_endpoint,mislocated_endpoints(mark_count(recollection([tally,tally]),10),mark_count(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),10)))",
+              "hist(q_measure_with_unit_fraction,co_measure(unit_fraction(1,100),[step(state(q_init_calc,10,10,0,10),[],Initializing iterative calculation.),step(state(q_loop_calc,10,10,0,10),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,10,10,10,9),[],Iterate: Added 10. Total = 20.),step(state(q_loop_calc,10,10,20,8),[],Iterate: Added 10. Total = 30.),step(state(q_loop_calc,10,10,30,7),[],Iterate: Added 10. Total = 40.),step(state(q_loop_calc,10,10,40,6),[],Iterate: Added 10. Total = 50.),step(state(q_loop_calc,10,10,50,5),[],Iterate: Added 10. Total = 60.),step(state(q_loop_calc,10,10,60,4),[],Iterate: Added 10. Total = 70.),step(state(q_loop_calc,10,10,70,3),[],Iterate: Added 10. Total = 80.),step(state(q_loop_calc,10,10,80,2),[],Iterate: Added 10. Total = 90.),step(state(q_loop_calc,10,10,90,1),[],Iterate: Added 10. Total = 100.),step(state(q_loop_calc,10,10,100,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,10,10,100,0),[],Calculation complete. Result = 100.)],position(mark_count(recollection([tally,tally]),10),20,[step(state(q_init_calc,2,10,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,10,0,2),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,2,10,10,1),[],Iterate: Added 10. Total = 20.),step(state(q_loop_calc,2,10,20,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,10,20,0),[],Calculation complete. Result = 20.)]),position(mark_count(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),10),90,[step(state(q_init_calc,9,10,0,9),[],Initializing iterative calculation.),step(state(q_loop_calc,9,10,0,9),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,9,10,10,8),[],Iterate: Added 10. Total = 20.),step(state(q_loop_calc,9,10,20,7),[],Iterate: Added 10. Total = 30.),step(state(q_loop_calc,9,10,30,6),[],Iterate: Added 10. Total = 40.),step(state(q_loop_calc,9,10,40,5),[],Iterate: Added 10. Total = 50.),step(state(q_loop_calc,9,10,50,4),[],Iterate: Added 10. Total = 60.),step(state(q_loop_calc,9,10,60,3),[],Iterate: Added 10. Total = 70.),step(state(q_loop_calc,9,10,70,2),[],Iterate: Added 10. Total = 80.),step(state(q_loop_calc,9,10,80,1),[],Iterate: Added 10. Total = 90.),step(state(q_loop_calc,9,10,90,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,9,10,90,0),[],Calculation complete. Result = 90.)])))",
+              "hist(q_compare_positions,compare(20,90,less_than))",
+              "hist(q_emit,emit(less_than))",
+              "hist(q_accept,accept(less_than))"
+            ],
+            "validity": "contextually_correct"
+          }
+        }
+      ],
+      "denominator": 10,
+      "evidence": {
+        "fractions": [
+          {
+            "excerpt": "Prior to this lesson, students made sense of tenths and hundredths in decimal notation. They also analyzed and wrote",
+            "form": "denominator_word",
+            "fraction": "1/10",
+            "source": {
+              "line": 35,
+              "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+            }
+          },
+          {
+            "excerpt": "\u25e6 Change the 80/10 to 8/10 or 80/100.",
+            "form": "numeral",
+            "fraction": "8/10",
+            "source": {
+              "line": 108,
+              "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+            }
+          }
+        ],
+        "host": {
+          "excerpt": "# Decimals on Number Lines",
+          "host": "number_line",
+          "source": {
+            "line": 1,
+            "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+          }
+        }
+      },
+      "fraction": "1/10 vs 8/10",
+      "fractions": [
+        "1/10",
+        "8/10"
+      ],
+      "host": "number_line",
+      "numerator": 1,
+      "pair_note": "Both fractions come from this lesson's evidence.",
+      "productive": {
+        "expected": "less_than",
+        "frames": [
+          {
+            "caption": "init: init(fraction(1,10),fraction(8,10)).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "q_init"
+          },
+          {
+            "caption": "identify unit: unit interval(0,1).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 2,
+            "verb": "q_identify_unit"
+          },
+          {
+            "caption": "partition interval: partitions(fraction(1,10),trace steps(13),fraction(8,10),trace steps(13)).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 3,
+            "verb": "q_partition_interval"
+          },
+          {
+            "caption": "mark off lengths: iterations(fraction(1,10),unit(divaded(recollection(trace steps(10)),unit interval(0,1))),trace steps(1),trace steps(3),fraction(8,10),unit(divaded(recollection(trace steps(10)),unit interval(0,1))),trace steps(8),trace steps(10)).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 4,
+            "verb": "q_mark_off_lengths"
+          },
+          {
+            "caption": "locate endpoint: endpoints(fraction(1,10),fraction(8,10)).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 5,
+            "verb": "q_locate_endpoint"
+          },
+          {
+            "caption": "measure with unit fraction: co measure(unit fraction(1,100),trace steps(13),position(fraction(1,10),10,trace steps(4)),position(fraction(8,10),80,trace steps(11))).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 6,
+            "verb": "q_measure_with_unit_fraction"
+          },
+          {
+            "caption": "compare positions: compare(10,80,less than).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 7,
+            "verb": "q_compare_positions"
+          },
+          {
+            "caption": "emit: emit(less than).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 8,
+            "verb": "q_emit"
+          },
+          {
+            "caption": "accept: accept(less than).",
+            "scene": {
+              "axis": {
+                "max": 100,
+                "min": 0,
+                "ticks": [
+                  0,
+                  10,
+                  80,
+                  100
+                ]
+              },
+              "coordinateDenominator": 100,
+              "format": "number-line",
+              "jumps": [],
+              "marks": [
+                {
+                  "at": 10,
+                  "label": "fraction(1,10)",
+                  "role": "highlight"
+                },
+                {
+                  "at": 80,
+                  "label": "fraction(8,10)",
+                  "role": "highlight"
+                }
+              ],
+              "mode": "fraction-comparison",
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 9,
+            "verb": "q_accept"
+          }
+        ],
+        "result": "less_than",
+        "trace": [
+          "hist(q_init,init(fraction(1,10),fraction(8,10)))",
+          "hist(q_identify_unit,unit_interval(0,1))",
+          "hist(q_partition_interval,partitions(fraction(1,10),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 6 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 7 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 8 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 9 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 10 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],fraction(8,10),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 6 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 7 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 8 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 9 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 10 of 10.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+          "hist(q_mark_off_lengths,iterations(fraction(1,10),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)],fraction(8,10),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([]),[]),Iterate connected copy 1 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 3 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 4 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 5 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 6 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 7 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 8 of 8.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally,tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)]))",
+          "hist(q_locate_endpoint,endpoints(fraction(1,10),fraction(8,10)))",
+          "hist(q_measure_with_unit_fraction,co_measure(unit_fraction(1,100),[step(state(q_init_calc,10,10,0,10),[],Initializing iterative calculation.),step(state(q_loop_calc,10,10,0,10),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,10,10,10,9),[],Iterate: Added 10. Total = 20.),step(state(q_loop_calc,10,10,20,8),[],Iterate: Added 10. Total = 30.),step(state(q_loop_calc,10,10,30,7),[],Iterate: Added 10. Total = 40.),step(state(q_loop_calc,10,10,40,6),[],Iterate: Added 10. Total = 50.),step(state(q_loop_calc,10,10,50,5),[],Iterate: Added 10. Total = 60.),step(state(q_loop_calc,10,10,60,4),[],Iterate: Added 10. Total = 70.),step(state(q_loop_calc,10,10,70,3),[],Iterate: Added 10. Total = 80.),step(state(q_loop_calc,10,10,80,2),[],Iterate: Added 10. Total = 90.),step(state(q_loop_calc,10,10,90,1),[],Iterate: Added 10. Total = 100.),step(state(q_loop_calc,10,10,100,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,10,10,100,0),[],Calculation complete. Result = 100.)],position(fraction(1,10),10,[step(state(q_init_calc,1,10,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,10,0,1),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,1,10,10,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,10,10,0),[],Calculation complete. Result = 10.)]),position(fraction(8,10),80,[step(state(q_init_calc,8,10,0,8),[],Initializing iterative calculation.),step(state(q_loop_calc,8,10,0,8),[],Iterate: Added 10. Total = 10.),step(state(q_loop_calc,8,10,10,7),[],Iterate: Added 10. Total = 20.),step(state(q_loop_calc,8,10,20,6),[],Iterate: Added 10. Total = 30.),step(state(q_loop_calc,8,10,30,5),[],Iterate: Added 10. Total = 40.),step(state(q_loop_calc,8,10,40,4),[],Iterate: Added 10. Total = 50.),step(state(q_loop_calc,8,10,50,3),[],Iterate: Added 10. Total = 60.),step(state(q_loop_calc,8,10,60,2),[],Iterate: Added 10. Total = 70.),step(state(q_loop_calc,8,10,70,1),[],Iterate: Added 10. Total = 80.),step(state(q_loop_calc,8,10,80,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,8,10,80,0),[],Calculation complete. Result = 80.)])))",
+          "hist(q_compare_positions,compare(10,80,less_than))",
+          "hist(q_emit,emit(less_than))",
+          "hist(q_accept,accept(less_than))"
+        ],
+        "validity": "correct"
+      },
+      "render_status": "drawn"
+    }
+  ],
+  "fractions": [
+    "1/10",
+    "8/10",
+    "80/10",
+    "1/100"
+  ],
+  "hosts": [
+    "number_line"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G4-U4-L3",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": "Prior to this lesson, students made sense of tenths and hundredths in decimal notation. They also analyzed and wrote",
+        "form": "denominator_word",
+        "fraction": "1/10",
+        "source": {
+          "line": 35,
+          "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+        }
+      },
+      {
+        "excerpt": "\u25e6 Change the 80/10 to 8/10 or 80/100.",
+        "form": "numeral",
+        "fraction": "8/10",
+        "source": {
+          "line": 108,
+          "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+        }
+      },
+      {
+        "excerpt": "\u25e6 Change the 80/10 to 8/10 or 80/100.",
+        "form": "numeral",
+        "fraction": "80/10",
+        "source": {
+          "line": 108,
+          "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+        }
+      },
+      {
+        "excerpt": "- Explain (orally) strategies for comparing decimals to hundredths and express comparisons using >, <, =.",
+        "form": "denominator_word",
+        "fraction": "1/100",
+        "source": {
+          "line": 5,
+          "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "# Decimals on Number Lines",
+        "host": "number_line",
+        "source": {
+          "line": 1,
+          "path": "curriculum/im_teacher_guides/grade4/unit4/lesson3.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "4.NF.C.7",
+    "4.NS.4",
+    "4.NS.6",
+    "IM-G4-U4-L3"
+  ],
+  "title": "IM Grade4 U4 L3: Decimals on Number Lines"
+}

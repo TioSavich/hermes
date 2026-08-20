@@ -65,6 +65,7 @@ capability('field_context', 'field_context', 'monitoring', ['lesson_code'], rout
 capability('fraction_cgi_addition', 'fraction_cgi_dispatch', 'render', ['d', 'kind', 'na', 'nb'], routed_paged).
 capability('fraction_claim_witness', 'cw_fraction_claim', 'render', ['canonical', 'source'], routed_paged).
 capability('fraction_compare', 'fraction_bars_scene', 'render', ['a', 'b', 'kind'], routed_paged).
+capability('fraction_comparison_compare', 'fraction_comparison_scene', 'render', ['d1', 'd2', 'family', 'n1', 'n2'], routed_paged).
 capability('fraction_extra_claim_witness', 'cw_driver', 'render', ['canonical', 'source'], routed_paged).
 capability('fraction_render', 'hermes_worker', 'render', ['kind'], routed_paged).
 capability('fsm_engine_witness', 'cw_driver', 'crosswalk', ['descriptor', 'source'], routed_paged).
@@ -112,6 +113,7 @@ capability('grounding_for', 'hermes_encyclopedia', 'infrastructure', ['operation
 capability('grounding_inference_witness', 'grounding_metaphors', 'synthesis', ['inference', 'metaphor'], routed_paged).
 capability('grounding_metaphor_witness', 'cw_driver', 'crosswalk', ['anchor', 'metaphor', 'source'], routed_paged).
 capability('grounding_metaphors', 'hermes_encyclopedia', 'infrastructure', [], routed_paged).
+capability('guide_question_labels', 'lesson_monitoring', 'workflow', ['label', 'lane', 'lesson', 'limit'], routed_paged).
 capability('health', 'capability_registry', 'infrastructure', [], routed_paged).
 capability('hybridization_render', 'hybridization_scene', 'render', [], routed_paged).
 capability('hyperedges', 'hermes_worker', 'incompatibility', ['kind'], routed_paged).
@@ -146,6 +148,7 @@ capability('misconception_incompatibility_witness', 'misconception_registry', 'm
 capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_only).
 capability('misconception_pml_map', 'user', 'misconceptions', ['misconception'], routed_only).
 capability('modal_context_witness', 'cw_driver', 'crosswalk', ['context', 'source', 'term'], routed_paged).
+capability('model_analysis_lookup', 'hermes_worker', 'synthesis', ['lesson_code', 'limit', 'offset', 'statement_id'], unrouted).
 capability('monitoring_chart_export', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('mua_coherence_witness', 'cw_driver', 'crosswalk', ['input', 'source', 'subject'], routed_paged).
 capability('mua_kind_coherence_witness', 'cw_driver', 'crosswalk', ['kind', 'row_text'], routed_paged).
@@ -245,7 +248,7 @@ capability('curriculum/im/generated/grade_7_extracted_guide_questions.pl', 'grad
 capability('curriculum/im/generated/grade_8_extracted_guide_questions.pl', 'grade_8_extracted_guide_questions', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/grade_8_extracted_task_instances.pl', 'grade_8_extracted_task_instances', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/grade_k_extracted_guide_questions.pl', 'grade_k_extracted_guide_questions', 'workflow', [], orphan_module).
-capability('curriculum/im/generated/structure_teacher_question_labels.pl', 'structure_teacher_question_labels', 'workflow', [], orphan_module).
+capability('curriculum/im/generated/vision_fraction_recovery.pl', 'vision_fraction_recovery', 'workflow', [], orphan_module).
 capability('curriculum/im/generated/vision_lesson_digest.pl', 'vision_lesson_digest', 'workflow', [], orphan_module).
 capability('curriculum/im/im_glossary.pl', 'im_glossary', 'workflow', [], orphan_module).
 capability('curriculum/im/lesson_enactment.pl', 'lesson_enactment', 'workflow', [], orphan_module).
@@ -331,7 +334,7 @@ capability('knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl', 'l
 capability('knowledge/strategies/abstraction/lexicon_supplement_pilot.pl', 'lexicon_supplement_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/math_lexicon_pilot.pl', 'math_lexicon_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/metaphor_seam_registry.pl', 'metaphor_seam_registry', 'synthesis', [], orphan_module).
-capability('knowledge/strategies/abstraction/model_analysis_pilot.pl', 'model_analysis_pilot', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/abstraction/model_analysis_pilot.pl', 'model_analysis_pilot', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/abstraction/pedagogy_force_pilot.pl', 'pedagogy_force_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/printed_expression_reader_pilot.pl', 'printed_expression_reader_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/question_move_pilot.pl', 'question_move_pilot', 'synthesis', [], orphan_module).
@@ -421,6 +424,11 @@ capability_parameter('executable_practice_witness', 'source', null, true, null).
 capability_parameter('field_context', 'lesson_code', 'string', true, null).
 capability_parameter('fraction_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('fraction_claim_witness', 'source', 'string', true, null).
+capability_parameter('fraction_comparison_compare', 'd1', 'integer', true, 3).
+capability_parameter('fraction_comparison_compare', 'd2', 'integer', true, 5).
+capability_parameter('fraction_comparison_compare', 'family', 'string', true, "number_line_fraction_comparison").
+capability_parameter('fraction_comparison_compare', 'n1', 'integer', true, 1).
+capability_parameter('fraction_comparison_compare', 'n2', 'integer', true, 2).
 capability_parameter('fraction_extra_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('fraction_extra_claim_witness', 'source', 'string', true, null).
 capability_parameter('fsm_engine_witness', 'descriptor', null, true, null).
@@ -485,6 +493,10 @@ capability_parameter('grounding_inference_witness', 'inference', null, true, nul
 capability_parameter('grounding_metaphor_witness', 'metaphor', null, true, null).
 capability_parameter('grounding_metaphor_witness', 'anchor', null, true, null).
 capability_parameter('grounding_metaphor_witness', 'source', null, true, null).
+capability_parameter('guide_question_labels', 'lesson', 'string', false, null).
+capability_parameter('guide_question_labels', 'label', 'string', false, null).
+capability_parameter('guide_question_labels', 'lane', 'string', false, null).
+capability_parameter('guide_question_labels', 'limit', 'integer', false, null).
 capability_parameter('image_schema', 'practice', 'string', true, null).
 capability_parameter('incoherent_witness', 'context', null, true, null).
 capability_parameter('incompatibility_contexts', 'context', 'string', false, null).
@@ -532,6 +544,10 @@ capability_parameter('misconception_pml_map', 'misconception', null, false, null
 capability_parameter('modal_context_witness', 'term', null, true, null).
 capability_parameter('modal_context_witness', 'context', null, true, null).
 capability_parameter('modal_context_witness', 'source', null, true, null).
+capability_parameter('model_analysis_lookup', 'lesson_code', 'string', false, null).
+capability_parameter('model_analysis_lookup', 'limit', 'integer', false, null).
+capability_parameter('model_analysis_lookup', 'offset', 'integer', false, null).
+capability_parameter('model_analysis_lookup', 'statement_id', 'string', false, null).
 capability_parameter('monitoring_chart_export', 'lesson_code', 'string', true, "IM-G3-U5-L2").
 capability_parameter('mua_coherence_witness', 'subject', null, true, null).
 capability_parameter('mua_coherence_witness', 'input', 'object', true, null).
@@ -703,6 +719,7 @@ capability_route('fraction_compare', 'GET', '/api/fraction/compare').
 capability_route('fraction_compare', 'GET', '/api/fraction/render').
 capability_route('fraction_compare', 'POST', '/api/chat').
 capability_route('fraction_compare', 'POST', '/api/render').
+capability_route('fraction_comparison_compare', 'POST', '/api/render').
 capability_route('fraction_extra_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('fraction_render', 'GET', '/api/fraction/compare').
 capability_route('fraction_render', 'GET', '/api/fraction/render').
@@ -754,6 +771,7 @@ capability_route('grounding_for', 'POST', '/api/grounding').
 capability_route('grounding_inference_witness', 'POST', '/api/witness/grounding').
 capability_route('grounding_metaphor_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('grounding_metaphors', 'POST', '/api/grounding').
+capability_route('guide_question_labels', 'POST', '/api/guide_question_labels').
 capability_route('health', 'GET', '/api/capabilities').
 capability_route('hybridization_render', 'POST', '/api/monitoring_visuals').
 capability_route('hybridization_render', 'POST', '/api/render').
@@ -980,6 +998,12 @@ capability_page('fraction_compare', '/more-zeeman/monitoring_chart.html').
 capability_page('fraction_compare', '/more-zeeman/unit-echo/index.html').
 capability_page('fraction_compare', '/more-zeeman/visualizations.html').
 capability_page('fraction_compare', '/more-zeeman/witnesses.html').
+capability_page('fraction_comparison_compare', '/hermes/app/web/discussions.html').
+capability_page('fraction_comparison_compare', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('fraction_comparison_compare', '/more-zeeman/monitoring_chart.html').
+capability_page('fraction_comparison_compare', '/more-zeeman/unit-echo/index.html').
+capability_page('fraction_comparison_compare', '/more-zeeman/visualizations.html').
+capability_page('fraction_comparison_compare', '/more-zeeman/witnesses.html').
 capability_page('fraction_extra_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('fraction_render', '/hermes/app/web/discussions.html').
 capability_page('fraction_render', '/more-zeeman/fraction-bars/calculator.html').
@@ -1044,6 +1068,7 @@ capability_page('grounding_inference_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphor_witness', '/more-zeeman/witnesses.html').
 capability_page('grounding_metaphors', '/hermes/app/web/breaks.html').
 capability_page('grounding_metaphors', '/hermes/app/web/console.html').
+capability_page('guide_question_labels', '/hermes/app/web/questions.html').
 capability_page('health', '/hermes/app/web/breaks.html').
 capability_page('health', '/hermes/app/web/console.html').
 capability_page('health', '/more-zeeman/atlas.html').
@@ -1268,5 +1293,6 @@ capability_lazy_via('formal/learner/reorg_domains/fraction_improper.pl', 'reorga
 capability_lazy_via('formal/learner/reorg_domains/fraction_of_fraction.pl', 'reorganize').
 capability_lazy_via('formal/learner/reorg_domains/fraction_splitting.pl', 'reorganize').
 capability_lazy_via('formal/tools/axiom_toggle.pl', 'axiom_toggle').
+capability_lazy_via('knowledge/strategies/abstraction/model_analysis_pilot.pl', 'model_analysis_lookup').
 capability_lazy_via('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_svg').
 capability_lazy_via('knowledge/strategies/math/unit_coordination_viz.pl', 'visualize_coordination').

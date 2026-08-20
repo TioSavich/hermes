@@ -600,6 +600,12 @@ dispatch_spec(pedagogical_questions,
     call(lesson_monitoring:pedagogical_question_clusters,
          [kind, query, out(dict)]),
     raw(malformed_pedagogical_questions)).
+dispatch_spec(guide_question_labels,
+    [lesson-default(atom, all), label-default(filter, all),
+     lane-default(filter, labels), limit-default(int(1, 100), 20)],
+    call(lesson_monitoring:guide_question_labels_dict,
+         [lesson, label, lane, limit, out(dict)]),
+    raw(malformed_guide_question_labels)).
 dispatch_spec(corpus_grammar_summary,
     [],
     call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
@@ -810,6 +816,10 @@ dispatch_message(lesson_enactment_run, no_result, "lesson_enactment_run found no
 dispatch_message(lesson_enactment_run, malformed, "lesson_enactment_run requires lesson").
 dispatch_message(lesson_arithmetic_demonstration, malformed,
     "lesson_arithmetic_demonstration requires lesson and accepts task_id, observed_answer, and work_transcription.").
+dispatch_message(model_analysis_lookup, no_result,
+    "model_analysis_lookup found no stored analysis for those filters").
+dispatch_message(model_analysis_lookup, malformed,
+    "model_analysis_lookup accepts optional lesson_code and statement_id strings, limit from 1 through 50, and a nonnegative offset").
 dispatch_message(grounding_for, malformed, "grounding_for requires operation").
 dispatch_message(ground, malformed, "knowledge lookup requires query").
 dispatch_message(lit_search, malformed, "lit_search requires query").
@@ -1006,6 +1016,7 @@ dispatch_message(commitment_match, malformed, "commitment_match requires non-emp
 dispatch_message(check_math_claim, malformed, "check_math_claim requires a safely parsed typed claim term using a registered claim shape").
 dispatch_message(check_solution_steps, malformed, "check_solution_steps requires non-empty numbered solution text").
 dispatch_message(pedagogical_questions, malformed, "pedagogical_questions requires a non-empty query and accepts kind topic, automaton_state, standard, or all (all returns every cluster and ignores the query)").
+dispatch_message(guide_question_labels, malformed, "guide_question_labels accepts optional lesson, label or printed region identity, lane labels or guide, and limit 1 through 100").
 dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary found no matching summary").
 dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no matching metaphor-grounding result").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").

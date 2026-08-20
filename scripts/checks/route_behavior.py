@@ -133,6 +133,19 @@ def main() -> int:
              and isinstance(body["result"]["matches"][0].get("assessing_questions"), list)
              and isinstance(body["result"]["matches"][0].get("advancing_questions"), list),
              "200 with ok:true and matched clusters carrying both question lists"),
+            ("guide_question_labels", "/api/guide_question_labels", {
+                "lane": "labels", "label": "advancing", "limit": 1,
+             },
+             lambda body: body.get("ok") is True
+             and body.get("result", {}).get("admission_warrants", {}).get(
+                 "im_author_heading") == 1013
+             and body["result"].get("admission_warrants", {}).get(
+                 "printed_region") == 8081
+             and len(body["result"].get("rows", [])) == 1
+             and body["result"]["rows"][0].get("status") == "mechanically_admitted"
+             and body["result"]["rows"][0].get("admission", {}).get(
+                 "warrant") == "im_author_heading",
+             "200 with current warrant counts and an author-heading admitted row"),
         ]
         for name, path, payload, check, expected_shape in worker_fixtures:
             status, body = request(base, "POST", path, payload, timeout=300)

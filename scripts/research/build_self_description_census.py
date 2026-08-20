@@ -524,6 +524,28 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "model_analysis_lookup": {
+        "does": "Returns the 739 admitted model-authored story-problem analyses "
+        "by lesson code or statement id, each row carrying its statement, "
+        "anchor, the five analysis fields, and its testimony and receipt.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The rows are attributed research records for analysis "
+        "clients and the MCP interface. The 0820E brief declined a web page "
+        "deliberately; a page would put model-authored analyses beside "
+        "teacher-facing lesson material without a serving warrant.",
+        "evidence": [
+            evidence(
+                "hermes/mcp/server.py",
+                '"model_analysis_lookup"',
+                "MCP exposure",
+            ),
+            evidence(
+                "hermes_worker.pl",
+                "dispatch_request(model_analysis_lookup, Id, Request, Response)",
+                "worker dispatch",
+            ),
+        ],
+    },
     "standards_progression_candidates": {
         "does": "Returns the candidate building_on-to-addressing progression "
         "rows touching a standards code, from the lesson-mediated overlay, "
@@ -1108,8 +1130,17 @@ def build() -> dict[str, object]:
     # serialized-table reader, the ask-binding lane, the rewrite-consultation
     # admitted store, the model-analysis store, and the labeled
     # teacher-question store.
-    if len(registry_rows) != 356:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 356")
+    # 358 from 2026-08-20: the comparison-gallery op (fraction_comparison_compare)
+    # and the admitted-question op (guide_question_labels) entered routed; the
+    # MCP-only model_analysis_lookup entered unrouted; model_analysis_pilot
+    # moved orphan to lazy_reachable; and structure_teacher_question_labels
+    # left the orphan set because the admission pipeline now consumes it as a
+    # build input.
+    # 359 late 2026-08-20: vision_fraction_recovery.pl — the attributed store
+    # of PDF-recovered fraction operands — enters as the orphan it is (a build
+    # input to the evidence builder, loaded by no runtime path).
+    if len(registry_rows) != 359:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 359")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1208,8 +1239,12 @@ def build() -> dict[str, object]:
     # siblings — serialized_table_reader_pilot, table_ask_binding_pilot,
     # rewrite_consultation_admitted_pilot, model_analysis_pilot, and
     # structure_teacher_question_labels.
-    if len(orphan_records) != 128:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 128")
+    # 126 from 2026-08-20: structure_teacher_question_labels left the orphan
+    # set (the admission pipeline consumes it as a build input) and
+    # model_analysis_pilot moved to lazy_reachable behind model_analysis_lookup.
+    # 127 late 2026-08-20: vision_fraction_recovery joins (see the 359 note).
+    if len(orphan_records) != 127:
+        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 127")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.
@@ -1220,8 +1255,10 @@ def build() -> dict[str, object]:
     # page and its route landed), and the two newly wired scene ops
     # (ratio_diagram_render, measurement_strip_render) join it with authored
     # judgements — the generic render endpoint is their route.
-    if len(unrouted) != 13:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 13")
+    # 14 from 2026-08-20: model_analysis_lookup joins with an authored
+    # judgement — the MCP core is its route; the 0820E brief declined a page.
+    if len(unrouted) != 14:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 14")
 
     return {
         "schema": "self_description_census_v1",

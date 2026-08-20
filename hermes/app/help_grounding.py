@@ -42,6 +42,7 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "unit-echo": {"theme": "Objects", "lede": "Run base regrouping beside fraction iteration at the same arity.", "path": "/more-zeeman/unit-echo/index.html", "theory": "/more-zeeman/coordination.html"},
     "fraction-bars": {"theme": "Objects", "lede": "Draw a fraction operation step by step and change the operands.", "path": "/more-zeeman/fraction-bars/calculator.html", "theory": "/more-zeeman/boundary.html"},
     "fraction-compare": {"theme": "Objects", "lede": "Compare a productive fraction strategy with an altered step and locate the divergence.", "path": "/more-zeeman/fraction-bars/compare.html", "theory": "/more-zeeman/boundary.html"},
+    "fraction-comparison": {"theme": "Objects", "lede": "Run six fraction comparison strategies beside their paired deformations on the same inputs.", "path": "/more-zeeman/fraction-comparison/compare.html", "theory": "/more-zeeman/boundary.html"},
 }
 
 PAGE_READMES: dict[str, tuple[str, ...]] = {
@@ -76,6 +77,7 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "unit-echo": ("knowledge/strategies/render/README.md",),
     "fraction-bars": ("knowledge/strategies/render/README.md",),
     "fraction-compare": ("knowledge/strategies/render/README.md",),
+    "fraction-comparison": ("knowledge/strategies/render/README.md",),
 }
 
 PAGE_BACKING: dict[str, tuple[str, ...]] = {

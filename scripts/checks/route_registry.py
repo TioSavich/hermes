@@ -91,6 +91,7 @@ POST /api/benny_demo public worker
 POST /api/review_queue public worker
 POST /api/review_decide public worker
 POST /api/pedagogical_questions public worker
+POST /api/guide_question_labels public worker
 POST /api/discourse_features verified worker
 POST /api/discourse_pragmatics verified worker
 POST /api/gesture_alignment verified worker

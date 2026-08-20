@@ -1,0 +1,4498 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(vertical)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 2,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_vertical_partition",
+            "foreignRule": "vertical",
+            "frames": [
+              {
+                "caption": "Choose a circle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(circle)"
+              },
+              {
+                "caption": "The vertical-strip partition rule is licensed inside the rectangle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "columns": 2,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "role": "iterated",
+                      "shade": [
+                        1
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(vertical,rectangle)"
+              },
+              {
+                "caption": "Transplant the vertical-strip partition rule onto the circle, cut into 2: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(vertical,circle,2)"
+              },
+              {
+                "caption": "Hybridized model of 1/2: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(vertical,circle),2)"
+              }
+            ],
+            "host": "circle",
+            "illicitHost": "circle_region",
+            "kind": "transplant_vertical_on_circle_1_over_2",
+            "licensedHome": "rectangle_area_model",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_vertical_on_circle_1_over_2"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(rectangle_vertical_partition, rectangle_area_model, circle_region) at unit_fraction(1,2)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "transplant(grid)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 2,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_grid_partition",
+            "foreignRule": "grid",
+            "frames": [
+              {
+                "caption": "Choose a circle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(circle)"
+              },
+              {
+                "caption": "The rectangular grid partition rule is licensed inside the area's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "columns": 2,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "role": "iterated",
+                      "shade": [
+                        1
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(grid,area)"
+              },
+              {
+                "caption": "Transplant the rectangular grid partition rule onto the circle, cut into 2: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(grid,circle,2)"
+              },
+              {
+                "caption": "Hybridized model of 1/2: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(grid,circle),2)"
+              }
+            ],
+            "host": "circle",
+            "illicitHost": "circle_region",
+            "kind": "transplant_grid_on_circle_1_over_2",
+            "licensedHome": "rectangle_area_model",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_grid_on_circle_1_over_2"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(rectangle_grid_partition, rectangle_area_model, circle_region) at unit_fraction(1,2)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/2",
+              "denominator": 2,
+              "family": "equipartition_failure",
+              "host": "circle",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole. One region, not yet partitioned.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "label": "1 whole (target: thirds-style 2 equal parts)",
+                      "r": 84
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Cut the circle with equal-width vertical strips. The strips look even but the pieces are not equal areas.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "2 vertical strips: equal WIDTH, unequal AREA",
+                      "r": 84,
+                      "role": "deformation"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some strips. Because the strips are unequal, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "columns": 2,
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "shaded 1 of 2 unequal strips: not 1/2",
+                      "r": 84,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "circle",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/2",
+              "denominator_drawn": 3,
+              "denominator_intended": 2,
+              "family": "equipartition_failure",
+              "host": "circle",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole. One region, not yet partitioned.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "label": "1 whole (target: thirds-style 2 equal parts)",
+                      "r": 84
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Cut the circle into equal sectors, but count the cuts rather than the regions: one too many.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "drew 3 sectors for a 2-part task (off by one)",
+                      "r": 84,
+                      "role": "deformation",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted figure. The denominator is off by one.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "read 1/3 off a 3-part figure (wanted /2)",
+                      "r": 84,
+                      "role": "deformation",
+                      "segments": 3,
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "circle",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "excerpt": "1/2   tsp. How can Noah make this recipe using these 2         challenge. Think about how you might solve the",
+          "form": "numeral",
+          "fraction": "1/2",
+          "source": {
+            "line": 223,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+          }
+        },
+        "host": {
+          "excerpt": "\u2022 \u201cThis image is of a baker making a pie crust. What",
+          "host": "circle",
+          "source": {
+            "line": 106,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+          }
+        }
+      },
+      "fraction": "1/2",
+      "host": "circle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 2,
+        "frames": [
+          {
+            "caption": "Establish one whole as a circle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(circle)"
+          },
+          {
+            "caption": "Apply the circle's own radial partition rule into 2 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                },
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "host": "circle",
+                  "kind": "radial-partition",
+                  "label": "",
+                  "r": 94,
+                  "role": "iterated",
+                  "segments": 2
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(radial,2)"
+          },
+          {
+            "caption": "Shade one part: this is 1/2.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                },
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "host": "circle",
+                  "kind": "radial-partition",
+                  "label": "",
+                  "r": 94,
+                  "role": "iterated",
+                  "segments": 2
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(2)"
+          }
+        ],
+        "host": "circle",
+        "kind": "productive_circle_1_over_2",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_circle_1_over_2"
+        },
+        "result": "productive",
+        "rule": "radial",
+        "tuple": "productive_partition(circle, unit_fraction(1,2))"
+      }
+    },
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(vertical)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 4,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_vertical_partition",
+            "foreignRule": "vertical",
+            "frames": [
+              {
+                "caption": "Choose a circle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(circle)"
+              },
+              {
+                "caption": "The vertical-strip partition rule is licensed inside the rectangle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "columns": 4,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "role": "iterated",
+                      "shade": [
+                        1
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(vertical,rectangle)"
+              },
+              {
+                "caption": "Transplant the vertical-strip partition rule onto the circle, cut into 4: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(vertical,circle,4)"
+              },
+              {
+                "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(vertical,circle),4)"
+              }
+            ],
+            "host": "circle",
+            "illicitHost": "circle_region",
+            "kind": "transplant_vertical_on_circle_1_over_4",
+            "licensedHome": "rectangle_area_model",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_vertical_on_circle_1_over_4"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(rectangle_vertical_partition, rectangle_area_model, circle_region) at unit_fraction(1,4)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "transplant(grid)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 4,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "rectangle_grid_partition",
+            "foreignRule": "grid",
+            "frames": [
+              {
+                "caption": "Choose a circle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(circle)"
+              },
+              {
+                "caption": "The rectangular grid partition rule is licensed inside the area's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "columns": 4,
+                      "h": 190,
+                      "host": "rectangle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "role": "iterated",
+                      "shade": [
+                        1
+                      ],
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(grid,area)"
+              },
+              {
+                "caption": "Transplant the rectangular grid partition rule onto the circle, cut into 4: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(grid,circle,4)"
+              },
+              {
+                "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(grid,circle),4)"
+              }
+            ],
+            "host": "circle",
+            "illicitHost": "circle_region",
+            "kind": "transplant_grid_on_circle_1_over_4",
+            "licensedHome": "rectangle_area_model",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_grid_on_circle_1_over_4"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(rectangle_grid_partition, rectangle_area_model, circle_region) at unit_fraction(1,4)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/4",
+              "denominator": 4,
+              "family": "equipartition_failure",
+              "host": "circle",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 4
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole. One region, not yet partitioned.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "label": "1 whole (target: thirds-style 4 equal parts)",
+                      "r": 84
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Cut the circle with equal-width vertical strips. The strips look even but the pieces are not equal areas.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "4 vertical strips: equal WIDTH, unequal AREA",
+                      "r": 84,
+                      "role": "deformation"
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some strips. Because the strips are unequal, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "columns": 4,
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "vertical-partition",
+                      "label": "shaded 1 of 4 unequal strips: not 1/4",
+                      "r": 84,
+                      "role": "deformation",
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "circle",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/4",
+              "denominator_drawn": 5,
+              "denominator_intended": 4,
+              "family": "equipartition_failure",
+              "host": "circle",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 4
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole. One region, not yet partitioned.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "label": "1 whole (target: thirds-style 4 equal parts)",
+                      "r": 84
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Cut the circle into equal sectors, but count the cuts rather than the regions: one too many.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "drew 5 sectors for a 4-part task (off by one)",
+                      "r": 84,
+                      "role": "deformation",
+                      "segments": 5
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted figure. The denominator is off by one.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "kind": "host-circle",
+                      "r": 84
+                    },
+                    {
+                      "cx": 130,
+                      "cy": 110,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "read 1/5 off a 5-part figure (wanted /4)",
+                      "r": 84,
+                      "role": "deformation",
+                      "segments": 5,
+                      "shade": [
+                        1
+                      ]
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "circle",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "excerpt": "this recipe. He only has a 1/4 cup measuring cup and         \u2022 \u201cTake a moment to read about Noah\u2019s recipe",
+          "form": "numeral",
+          "fraction": "1/4",
+          "source": {
+            "line": 222,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+          }
+        },
+        "host": {
+          "excerpt": "\u2022 \u201cThis image is of a baker making a pie crust. What",
+          "host": "circle",
+          "source": {
+            "line": 106,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+          }
+        }
+      },
+      "fraction": "1/4",
+      "host": "circle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 4,
+        "frames": [
+          {
+            "caption": "Establish one whole as a circle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(circle)"
+          },
+          {
+            "caption": "Apply the circle's own radial partition rule into 4 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                },
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "host": "circle",
+                  "kind": "radial-partition",
+                  "label": "",
+                  "r": 94,
+                  "role": "iterated",
+                  "segments": 4
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(radial,4)"
+          },
+          {
+            "caption": "Shade one part: this is 1/4.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "kind": "host-circle",
+                  "label": "one whole",
+                  "r": 94,
+                  "role": "whole"
+                },
+                {
+                  "cx": 260,
+                  "cy": 181,
+                  "host": "circle",
+                  "kind": "radial-partition",
+                  "label": "",
+                  "r": 94,
+                  "role": "iterated",
+                  "segments": 4
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(4)"
+          }
+        ],
+        "host": "circle",
+        "kind": "productive_circle_1_over_4",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_circle_1_over_4"
+        },
+        "result": "productive",
+        "rule": "radial",
+        "tuple": "productive_partition(circle, unit_fraction(1,4))"
+      }
+    },
+    {
+      "comparison_family": "set_model_fraction_comparison",
+      "deformations": [
+        {
+          "deformation": "set_model_subset_size_focus",
+          "family": "comparison_deformation",
+          "scene": {
+            "expected": "greater_than",
+            "frames": [
+              {
+                "caption": "init: init(fraction(1,2),fraction(1,4)).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "q_init"
+              },
+              {
+                "caption": "unitize set: collections as single wholes(first,second).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 2,
+                "verb": "q_unitize_set"
+              },
+              {
+                "caption": "verify same whole: commensurable collections not checked.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 3,
+                "verb": "q_verify_same_whole"
+              },
+              {
+                "caption": "partition set: equal share structure ignored.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 4,
+                "verb": "q_partition_set"
+              },
+              {
+                "caption": "count equal sets: confuse counters with share name(2,4).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 5,
+                "verb": "q_count_equal_sets"
+              },
+              {
+                "caption": "disembed subset: focus on subset counts(1,1).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 6,
+                "verb": "q_disembed_subset"
+              },
+              {
+                "caption": "subset size focus: subset count replaces fractional share.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 7,
+                "verb": "q_subset_size_focus"
+              },
+              {
+                "caption": "compare relative size: compare raw subset sizes(1,1,equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 8,
+                "verb": "q_compare_relative_size"
+              },
+              {
+                "caption": "emit: emit(equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 9,
+                "verb": "q_emit"
+              },
+              {
+                "caption": "accept: accept(equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 80,
+                      "label": "1/2; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 80,
+                      "label": "1/4; 1 counters selected",
+                      "role": "neutral",
+                      "w": 296,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 10,
+                "verb": "q_accept"
+              }
+            ],
+            "result": "equivalent",
+            "trace": [
+              "hist(q_init,init(fraction(1,2),fraction(1,4)))",
+              "hist(q_unitize_set,collections_as_single_wholes(first,second))",
+              "hist(q_verify_same_whole,commensurable_collections_not_checked)",
+              "hist(q_partition_set,equal_share_structure_ignored)",
+              "hist(q_count_equal_sets,confuse_counters_with_share_name(2,4))",
+              "hist(q_disembed_subset,focus_on_subset_counts(1,1))",
+              "hist(q_subset_size_focus,subset_count_replaces_fractional_share)",
+              "hist(q_compare_relative_size,compare_raw_subset_sizes(1,1,equivalent))",
+              "hist(q_emit,emit(equivalent))",
+              "hist(q_accept,accept(equivalent))"
+            ],
+            "validity": "incorrect"
+          }
+        }
+      ],
+      "denominator": 2,
+      "evidence": {
+        "fractions": [
+          {
+            "excerpt": "1/2   tsp. How can Noah make this recipe using these 2         challenge. Think about how you might solve the",
+            "form": "numeral",
+            "fraction": "1/2",
+            "source": {
+              "line": 223,
+              "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+            }
+          },
+          {
+            "excerpt": "this recipe. He only has a 1/4 cup measuring cup and         \u2022 \u201cTake a moment to read about Noah\u2019s recipe",
+            "form": "numeral",
+            "fraction": "1/4",
+            "source": {
+              "line": 222,
+              "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+            }
+          }
+        ],
+        "host": {
+          "excerpt": "limited set of measuring tools. They have to look for relationships between the amounts that need to be measured and",
+          "host": "set",
+          "source": {
+            "line": 215,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+          }
+        }
+      },
+      "fraction": "1/2 vs 1/4",
+      "fractions": [
+        "1/2",
+        "1/4"
+      ],
+      "host": "set",
+      "numerator": 1,
+      "pair_note": "Both fractions come from this lesson's evidence.",
+      "productive": {
+        "expected": "greater_than",
+        "frames": [
+          {
+            "caption": "init: init(fraction(1,2),fraction(1,4)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "q_init"
+          },
+          {
+            "caption": "unitize set: collections as single wholes(first,second).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 2,
+            "verb": "q_unitize_set"
+          },
+          {
+            "caption": "verify same whole: commensurable collections certified.",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 3,
+            "verb": "q_verify_same_whole"
+          },
+          {
+            "caption": "partition set: equal shares(first,2,trace steps(5),second,4,trace steps(7)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 4,
+            "verb": "q_partition_set"
+          },
+          {
+            "caption": "count equal sets: denominator counts(2,4).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 5,
+            "verb": "q_count_equal_sets"
+          },
+          {
+            "caption": "disembed subset: selected shares(first,trace steps(1),trace steps(2),trace steps(3),second,trace steps(1),trace steps(2),trace steps(3)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 6,
+            "verb": "q_disembed_subset"
+          },
+          {
+            "caption": "compare relative size: co measure(cross products(4,trace steps(4),2,trace steps(4)),greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 7,
+            "verb": "q_compare_relative_size"
+          },
+          {
+            "caption": "emit: emit(greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 8,
+            "verb": "q_emit"
+          },
+          {
+            "caption": "accept: accept(greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 80,
+                  "label": "1/2; 4 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 80,
+                  "label": "1/4; 2 counters selected",
+                  "role": "neutral",
+                  "w": 296,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 9,
+            "verb": "q_accept"
+          }
+        ],
+        "result": "greater_than",
+        "trace": [
+          "hist(q_init,init(fraction(1,2),fraction(1,4)))",
+          "hist(q_unitize_set,collections_as_single_wholes(first,second))",
+          "hist(q_verify_same_whole,commensurable_collections_certified)",
+          "hist(q_partition_set,equal_shares(first,2,[step(q_start,state(q_start,collection(first),recollection([tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,collection(first),recollection([tally,tally]),recollection([]),[]),Cut equal part 1 of 2.),step(q_partition,state(q_partition,collection(first),recollection([tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally]),collection(first)))]),Cut equal part 2 of 2.),step(q_partition,state(q_partition,collection(first),recollection([tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally]),collection(first))),unit(divaded(recollection([tally,tally]),collection(first)))]),All D equal parts cut.),step(q_verify,state(q_verify,collection(first),recollection([tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally]),collection(first))),unit(divaded(recollection([tally,tally]),collection(first)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],second,4,[step(q_start,state(q_start,collection(second),recollection([tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 4.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),Cut equal part 2 of 4.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),Cut equal part 3 of 4.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),Cut equal part 4 of 4.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),All D equal parts cut.),step(q_verify,state(q_verify,collection(second),recollection([tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+          "hist(q_count_equal_sets,denominator_counts(2,4))",
+          "hist(q_disembed_subset,selected_shares(first,[unit(divaded(recollection([tally,tally]),collection(first)))],[step(q_embedded,unit(divaded(recollection([tally,tally]),collection(first))),Part is inside the partitioned whole.),step(q_disembedded,unit(divaded(recollection([tally,tally]),collection(first))),Part taken out without destroying the whole; now iterable.)],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally]),collection(first))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally]),collection(first))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally]),collection(first))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally]),collection(first)))]),N connected copies made; the iterated quantity is complete.)],second,[unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))],[step(q_embedded,unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),Part is inside the partitioned whole.),step(q_disembedded,unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),Part taken out without destroying the whole; now iterable.)],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally]),collection(second)))]),N connected copies made; the iterated quantity is complete.)]))",
+          "hist(q_compare_relative_size,co_measure(cross_products(4,[step(state(q_init_calc,1,4,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,4,0,1),[],Iterate: Added 4. Total = 4.),step(state(q_loop_calc,1,4,4,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,4,4,0),[],Calculation complete. Result = 4.)],2,[step(state(q_init_calc,1,2,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,2,0,1),[],Iterate: Added 2. Total = 2.),step(state(q_loop_calc,1,2,2,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,2,2,0),[],Calculation complete. Result = 2.)]),greater_than))",
+          "hist(q_emit,emit(greater_than))",
+          "hist(q_accept,accept(greater_than))"
+        ],
+        "validity": "correct"
+      },
+      "render_status": "drawn"
+    }
+  ],
+  "fractions": [
+    "1/2",
+    "1/4",
+    "2/4",
+    "3/4"
+  ],
+  "hosts": [
+    "circle",
+    "set"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G5-U3-L20",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": "1/2   tsp. How can Noah make this recipe using these 2         challenge. Think about how you might solve the",
+        "form": "numeral",
+        "fraction": "1/2",
+        "source": {
+          "line": 223,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      },
+      {
+        "excerpt": "this recipe. He only has a 1/4 cup measuring cup and         \u2022 \u201cTake a moment to read about Noah\u2019s recipe",
+        "form": "numeral",
+        "fraction": "1/4",
+        "source": {
+          "line": 222,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      },
+      {
+        "excerpt": "because 2 \u00d7 1/4 is 2/4 or 1/2. He can use the 1/2teaspoon for       Activity Synthesis",
+        "form": "numeral",
+        "fraction": "2/4",
+        "source": {
+          "line": 254,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      },
+      {
+        "excerpt": "\u2022   3/4   cup brown sugar                              \u2022 10\u201312 minutes: small-group work time",
+        "form": "numeral",
+        "fraction": "3/4",
+        "source": {
+          "line": 234,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "\u2022 \u201cThis image is of a baker making a pie crust. What",
+        "host": "circle",
+        "source": {
+          "line": 106,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      },
+      {
+        "excerpt": "limited set of measuring tools. They have to look for relationships between the amounts that need to be measured and",
+        "host": "set",
+        "source": {
+          "line": 215,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson20.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "5.CA.7",
+    "5.CA.8",
+    "5.NF.B.6",
+    "5.NF.B.7",
+    "IM-G5-U3-L20"
+  ],
+  "title": "IM Grade5 U3 L20: Recipes and Fractions"
+}

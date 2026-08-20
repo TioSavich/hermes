@@ -1329,6 +1329,9 @@ class RouteLogic:
     def _handle_pedagogical_questions(self, payload: dict) -> None:
         self._forward_op("pedagogical_questions", payload)
 
+    def _handle_guide_question_labels(self, payload: dict) -> None:
+        self._forward_op("guide_question_labels", payload)
+
     def _handle_unit_coordination_svg(self, query: str) -> None:
         params = urllib.parse.parse_qs(query, keep_blank_values=True)
         try:
@@ -1467,7 +1470,8 @@ class RouteLogic:
         document. Whitelisted ops only — this is a public KB surface, no student
         data. Lets every visualizer page draw against this same origin."""
         allowed = {
-            "fraction_render", "fraction_compare", "area_render", "area_compare",
+            "fraction_render", "fraction_compare", "fraction_comparison_compare",
+            "area_render", "area_compare",
             "base_ten_render", "ace_of_bases_render", "base_ten_compare", "set_grouping_render",
             "unit_echo_render",
             "set_grouping_compare", "number_line_render", "number_line_compare",

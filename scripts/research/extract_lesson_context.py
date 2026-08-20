@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Compile verbatim activity prompts, sequences, and reviewed guide questions.
+"""Compile verbatim activity prompts, sequences, and attributed guide questions.
 
 The K-5 teacher guides are fixed-width Markdown extracts of two-column PDFs.
 The grade 6-8 guides are linear Docling Markdown.  Prompt and sequence
 extraction only accepts the labelled ``Student Task Statement``, ``Activity
 Synthesis``, and ``Lesson Synthesis`` regions.  Guide questions are a separate,
-narrow reviewed input: their exact text, source span, authored location, label
-origin, and review status are checked against the source guide before emission.
+narrow attributed input: their exact text, source span, authored location,
+label origin, and admission status are checked against the source guide before
+emission. Human-reviewed and mechanically admitted warrants stay distinct.
 """
 
 from __future__ import annotations
@@ -14,12 +15,20 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
+import sys
+import tempfile
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.curriculum import structure_to_task_rows as anchoring  # noqa: E402
+
+
 GUIDES = ROOT / "curriculum/im_teacher_guides"
 MIDDLE_GUIDES = (
     ROOT
@@ -97,6 +106,12 @@ class GuideQuestion:
     author_heading: str | None = None
     author_heading_line: int | None = None
     reviewer: str | None = None
+    mechanical_builder: str | None = None
+    mechanical_date: str | None = None
+    mechanical_warrant: str | None = None
+    region_identity: str | None = None
+    region_identity_kind: str | None = None
+    held_reason: str | None = None
 
 
 @dataclass(frozen=True)
@@ -112,6 +127,169 @@ class GuideQuestionAbsence:
     purpose: str
     source: str
     reason: str
+
+
+def _admission_store_dump_script() -> str:
+    """Return a Prolog reader for the two generated admission stores.
+
+    The stores, rather than the stage-0 candidate file, are the serving
+    authority. Reading them through SWI-Prolog also preserves the C1 emitter's
+    widened labels id key and exact-duplicate collapse: the compiled cache gets
+    one row for every emitted admitted/held row, never a second reconstruction
+    of the candidate-id rules.
+    """
+    return r'''
+:- use_module(library(http/json)).
+:- use_module(curriculum/im/generated/admitted_teacher_question_labels, []).
+:- use_module(curriculum/im/generated/admitted_guide_questions, []).
+:- initialization(main).
+
+origin_fields(machine_classification, machine_classification, none).
+origin_fields(author_heading(Title), author_heading, Title).
+
+write_row(Tag, Dict) :-
+    format('~w ', [Tag]),
+    json_write_dict(current_output, Dict, [width(0)]),
+    nl.
+
+main :-
+    set_stream(user_output, encoding(utf8)),
+    forall(
+        admitted_teacher_question_labels:admitted_question_label(
+            Lesson, Label, Text,
+            anchor(source_path(Source), source_file_sha256(SourceSha),
+                   char_span(Start, End), region_type(RegionType),
+                   label_origin(author_heading(Heading)), warrant(im_author_heading)),
+            testimony(im_author_heading(Heading), extraction(Builder), date(Date)), _),
+        write_row('LABEL',
+                    _{lesson:Lesson, label:Label, text:Text, source:Source,
+                      source_sha256:SourceSha,
+                      char_start:Start, char_end:End, region_type:RegionType,
+                      label_origin:author_heading, origin_title:Heading,
+                      warrant:im_author_heading, region_identity:none,
+                      status:mechanically_admitted, heading:Heading,
+                      builder:Builder, date:Date, held_reason:none})),
+    forall(
+        admitted_teacher_question_labels:admitted_question_label(
+            Lesson, region(Region), Text,
+            anchor(source_path(Source), source_file_sha256(SourceSha),
+                   char_span(Start, End), region_type(RegionType),
+                   label_origin(machine_classification),
+                   warrant(printed_region(Region))),
+            testimony(extraction(Builder), date(Date)), _),
+        write_row('LABEL',
+                    _{lesson:Lesson, label:Region, text:Text, source:Source,
+                      source_sha256:SourceSha,
+                      char_start:Start, char_end:End, region_type:RegionType,
+                      label_origin:machine_classification, origin_title:none,
+                      warrant:printed_region, region_identity:Region,
+                      status:mechanically_admitted, heading:none,
+                      builder:Builder, date:Date, held_reason:none})),
+    forall(
+        admitted_teacher_question_labels:held_question_label(
+            Lesson, Label, Text,
+            anchor(source_path(Source), source_file_sha256(SourceSha),
+                   char_span(Start, End), region_type(RegionType),
+                   label_origin(Origin), warrant(none)), _, held(HeldReason)),
+        ( origin_fields(Origin, OriginKind, OriginTitle),
+          term_string(HeldReason, HeldText, [quoted(false)]),
+          write_row('LABEL',
+                    _{lesson:Lesson, label:Label, text:Text, source:Source,
+                      source_sha256:SourceSha,
+                      char_start:Start, char_end:End, region_type:RegionType,
+                      label_origin:OriginKind, origin_title:OriginTitle,
+                      warrant:none, region_identity:RegionType,
+                      status:mechanically_held, heading:none,
+                      builder:none, date:none, held_reason:HeldText})
+        )),
+    forall(
+        admitted_guide_questions:admitted_guide_question(
+            Lesson, Label, Text,
+            anchor(source_guide(Source), doc_sha256(DocSha), line_span(Start, End),
+                   activity_location(Location), label_origin(author_heading(Heading)),
+                   warrant(im_author_heading)),
+            testimony(im_author_heading(Heading), extraction(Builder), date(Date)), _),
+        write_row('GUIDE',
+                    _{lesson:Lesson, label:Label, text:Text, source:Source,
+                      doc_sha256:DocSha,
+                      line_start:Start, line_end:End, activity_location:Location,
+                      label_origin:author_heading, origin_title:Heading,
+                      warrant:im_author_heading, region_identity:none,
+                      status:mechanically_admitted, heading:Heading,
+                      builder:Builder, date:Date, held_reason:none})),
+    forall(
+        admitted_guide_questions:admitted_guide_question(
+            Lesson, region(Region), Text,
+            anchor(source_guide(Source), doc_sha256(DocSha), line_span(Start, End),
+                   activity_location(Location), label_origin(machine_classification),
+                   warrant(printed_region(Region))),
+            testimony(extraction(Builder), date(Date)), _),
+        write_row('GUIDE',
+                    _{lesson:Lesson, label:Region, text:Text, source:Source,
+                      doc_sha256:DocSha,
+                      line_start:Start, line_end:End, activity_location:Location,
+                      label_origin:machine_classification, origin_title:none,
+                      warrant:printed_region, region_identity:Region,
+                      status:mechanically_admitted, heading:none,
+                      builder:Builder, date:Date, held_reason:none})),
+    forall(
+        admitted_guide_questions:held_guide_question(
+            Lesson, Label, Text,
+            anchor(source_guide(Source), doc_sha256(DocSha), line_span(Start, End),
+                   activity_location(Location), label_origin(Origin),
+                   warrant(none)), _, held(HeldReason)),
+        ( origin_fields(Origin, OriginKind, OriginTitle),
+          term_string(HeldReason, HeldText, [quoted(false)]),
+          write_row('GUIDE',
+                    _{lesson:Lesson, label:Label, text:Text, source:Source,
+                      doc_sha256:DocSha,
+                      line_start:Start, line_end:End, activity_location:Location,
+                      label_origin:OriginKind, origin_title:OriginTitle,
+                      warrant:none, region_identity:Location,
+                      status:mechanically_held, heading:none,
+                      builder:none, date:none, held_reason:HeldText})
+        )),
+    halt.
+'''
+
+
+def admission_store_rows() -> tuple[list[dict], list[dict]]:
+    """Read every emitted admitted/held row through its Prolog module."""
+    with tempfile.NamedTemporaryFile(
+        "w", suffix=".pl", delete=False, encoding="utf-8"
+    ) as handle:
+        handle.write(_admission_store_dump_script())
+        script_path = Path(handle.name)
+    try:
+        completed = subprocess.run(
+            ["swipl", "-q", "-l", "paths.pl", "-l", str(script_path)],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    finally:
+        script_path.unlink(missing_ok=True)
+    if completed.returncode != 0:
+        raise RuntimeError(
+            "admission-store read failed: " + (completed.stderr or completed.stdout)
+        )
+    labels: list[dict] = []
+    guide: list[dict] = []
+    for line in completed.stdout.splitlines():
+        if line.startswith("LABEL "):
+            labels.append(json.loads(line[6:]))
+        elif line.startswith("GUIDE "):
+            guide.append(json.loads(line[6:]))
+        elif line.strip():
+            raise RuntimeError(f"unrecognized admission-store line: {line[:120]!r}")
+    if not labels or not guide:
+        raise RuntimeError(
+            f"admission stores came back too small: labels={len(labels)} guide={len(guide)}"
+        )
+    return labels, guide
 
 
 # This is intentionally not a corpus classifier.  It is the reviewed L17 input
@@ -754,9 +932,188 @@ def cited_span_contains(question_text: str, cited_lines: list[str]) -> bool:
     )
 
 
+REGION_DISPLAY_TITLES = {
+    "building_on_student_thinking": "Building on Student Thinking",
+    "responding_to_student_thinking": "Responding to Student Thinking",
+    "launch": "Launch",
+    "activity_narrative": "Activity Narrative",
+    "math_community": "Math Community",
+    "consider_asking": "Consider Asking",
+    "discuss_with_students": "Discuss with Students",
+    "activity_synthesis": "Activity Synthesis",
+    "lesson_synthesis": "Lesson Synthesis",
+    "more_chances": "More Chances",
+    "advancing_student_thinking": "Advancing Student Thinking",
+}
+
+
+def _line_span_from_char_span(content: str, start: int, end: int) -> tuple[int, int]:
+    if not (0 <= start <= end <= len(content)):
+        raise ValueError(f"admission char span is outside its source: {start}-{end}")
+    line_start = content.count("\n", 0, start) + 1
+    last_char = start if end == start else end - 1
+    line_end = content.count("\n", 0, last_char) + 1
+    return line_start, line_end
+
+
+def _author_heading_line(
+    content: str, heading: str, before_line: int, source: str
+) -> int:
+    lines = content.split("\n")
+    for index in range(min(before_line, len(lines)), 0, -1):
+        if heading in lines[index - 1]:
+            return index
+    raise ValueError(
+        f"author heading {heading!r} is absent before admitted row in {source}"
+    )
+
+
+def _label_store_question(row: dict) -> GuideQuestion:
+    source = row["source"]
+    content = (ROOT / source).read_text(encoding="utf-8")
+    line_start, line_end = _line_span_from_char_span(
+        content, row["char_start"], row["char_end"]
+    )
+    reproduced_span = anchoring.find_verbatim(content, row["text"])
+    if reproduced_span != (row["char_start"], row["char_end"]):
+        raise ValueError(
+            f"admitted labels text is absent at its char span: {source}:"
+            f"{row['char_start']}-{row['char_end']}"
+        )
+    origin = row["label_origin"]
+    heading = row["origin_title"] if origin == "author_heading" else None
+    # The attributed store carries the author title but not its source line.
+    # Some fixed-width guide extracts split that heading across columns, so the
+    # compiled row does not invent a line number. The store check re-derives the
+    # exact author-heading origin; this builder re-derives the question span.
+    heading_line = None
+    status = row["status"]
+    return GuideQuestion(
+        code=row["lesson"],
+        purpose=row["label"],
+        text=row["text"],
+        source=source,
+        line_start=line_start,
+        line_end=line_end,
+        activity_location=REGION_DISPLAY_TITLES.get(
+            row["region_type"], row["region_type"].replace("_", " ").title()
+        ),
+        label_origin=origin,
+        review_status=status,
+        author_heading=heading,
+        author_heading_line=heading_line,
+        mechanical_builder=row["builder"] if status == "mechanically_admitted" else None,
+        mechanical_date=row["date"] if status == "mechanically_admitted" else None,
+        mechanical_warrant=(
+            row["warrant"] if status == "mechanically_admitted" else None
+        ),
+        region_identity=(
+            row["region_identity"]
+            if row["warrant"] == "printed_region"
+            else None
+        ),
+        region_identity_kind=(
+            "atom" if row["warrant"] == "printed_region" else None
+        ),
+        held_reason=row["held_reason"] if status == "mechanically_held" else None,
+    )
+
+
+def _guide_admission_key(row: dict) -> tuple[str, int, str, str]:
+    return (
+        row["source"], row["line_start"], row["text"], row["activity_location"]
+    )
+
+
+def _question_admission_key(question: GuideQuestion) -> tuple[str, int, str, str]:
+    return (
+        question.source,
+        question.line_start,
+        question.text,
+        question.activity_location,
+    )
+
+
+def join_mechanical_admission(
+    extracted: list[GuideQuestion], guide_rows: list[dict]
+) -> tuple[GuideQuestion, ...]:
+    """Join every extracted guide candidate to one emitted disposition."""
+    by_key: dict[tuple[str, int, str, str], list[dict]] = {}
+    for row in guide_rows:
+        by_key.setdefault(_guide_admission_key(row), []).append(row)
+
+    joined: list[GuideQuestion] = []
+    for question in extracted:
+        key = _question_admission_key(question)
+        matches = by_key.get(key, [])
+        if len(matches) != 1:
+            raise ValueError(
+                "guide-question admission join expected one emitted row, "
+                f"found {len(matches)} for {key!r}"
+            )
+        row = matches.pop()
+        if not matches:
+            del by_key[key]
+        status = row["status"]
+        joined.append(
+            replace(
+                question,
+                label_origin=row["label_origin"],
+                review_status=status,
+                author_heading=(
+                    row["origin_title"]
+                    if row["label_origin"] == "author_heading"
+                    else None
+                ),
+                author_heading_line=None,
+                reviewer=None,
+                mechanical_builder=(
+                    row["builder"] if status == "mechanically_admitted" else None
+                ),
+                mechanical_date=(
+                    row["date"] if status == "mechanically_admitted" else None
+                ),
+                mechanical_warrant=(
+                    row["warrant"] if status == "mechanically_admitted" else None
+                ),
+                region_identity=(
+                    row["region_identity"]
+                    if row["warrant"] == "printed_region"
+                    else None
+                ),
+                region_identity_kind=(
+                    "string" if row["warrant"] == "printed_region" else None
+                ),
+                held_reason=(
+                    row["held_reason"] if status == "mechanically_held" else None
+                ),
+            )
+        )
+    leftovers = sum(len(rows) for rows in by_key.values())
+    if leftovers:
+        sample = next(iter(by_key))
+        raise ValueError(
+            f"guide admission store has {leftovers} unmatched emitted row(s); "
+            f"first key {sample!r}"
+        )
+    return tuple(joined)
+
+
 def validate_guide_question(question: GuideQuestion) -> None:
-    if question.code == L17_CODE and question.source == L17_SOURCE:
-        pass
+    tracked_match = re.fullmatch(
+        r"curriculum/im_teacher_guides/(?P<band>kindergarten|grade[1-8])/"
+        r"unit(?P<unit>\d+)/lesson(?P<lesson>\d+)\.md",
+        question.source,
+    )
+    if tracked_match is not None:
+        band = tracked_match.group("band")
+        grade = "K" if band == "kindergarten" else band.removeprefix("grade")
+        expected_code = (
+            f"IM-G{grade}-U{int(tracked_match.group('unit'))}-"
+            f"L{int(tracked_match.group('lesson'))}"
+        )
+        if question.code != expected_code:
+            raise ValueError("guide-question lesson identity does not match its source")
     else:
         match = re.fullmatch(
             r"hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
@@ -774,7 +1131,10 @@ def validate_guide_question(question: GuideQuestion) -> None:
         )
         if question.code != expected_code:
             raise ValueError("guide-question lesson identity does not match its source")
-    if question.purpose not in {"assessing", "advancing"}:
+    if (
+        question.mechanical_warrant != "printed_region"
+        and question.purpose not in {"assessing", "advancing"}
+    ):
         raise ValueError(f"unsupported guide-question purpose: {question.purpose}")
     if question.label_origin not in {
         "author_heading",
@@ -784,10 +1144,65 @@ def validate_guide_question(question: GuideQuestion) -> None:
         raise ValueError(
             f"unsupported guide-question label origin: {question.label_origin}"
         )
-    if question.review_status not in {"approved", "pending_human_review", "culled_by_reviewer"}:
+    if question.review_status not in {
+        "approved",
+        "pending_human_review",
+        "culled_by_reviewer",
+        "mechanically_admitted",
+        "mechanically_held",
+    }:
         raise ValueError(
             f"unsupported guide-question review status: {question.review_status}"
         )
+
+    if question.review_status == "mechanically_admitted":
+        if question.mechanical_builder is None or question.mechanical_date is None:
+            raise ValueError("mechanical admission requires extraction and date evidence")
+        if question.held_reason is not None or question.reviewer is not None:
+            raise ValueError("mechanically admitted rows cannot carry held or review evidence")
+        if question.mechanical_warrant == "im_author_heading":
+            if question.label_origin != "author_heading" or question.author_heading is None:
+                raise ValueError("author-heading admission requires its heading origin")
+            if question.region_identity is not None or question.region_identity_kind is not None:
+                raise ValueError("author-heading admission cannot carry a region label")
+        elif question.mechanical_warrant == "printed_region":
+            if question.label_origin != "machine_classification":
+                raise ValueError("printed-region admission requires machine_classification origin")
+            if question.region_identity is None:
+                raise ValueError("printed-region admission requires a region identity")
+            if question.region_identity_kind not in {"atom", "string"}:
+                raise ValueError("printed-region admission requires a region term kind")
+            if question.author_heading is not None:
+                raise ValueError("printed-region admission cannot claim an author label")
+        else:
+            raise ValueError("mechanical admission requires a recognized warrant")
+    elif question.review_status == "mechanically_held":
+        if question.held_reason is None:
+            raise ValueError("mechanically held rows require a named reason")
+        if any(
+            value is not None
+            for value in (
+                question.mechanical_builder,
+                question.mechanical_date,
+                question.mechanical_warrant,
+                question.region_identity,
+                question.region_identity_kind,
+                question.reviewer,
+            )
+        ):
+            raise ValueError("mechanically held rows cannot carry admission or review evidence")
+    elif any(
+        value is not None
+        for value in (
+            question.mechanical_builder,
+            question.mechanical_date,
+            question.mechanical_warrant,
+            question.region_identity,
+            question.region_identity_kind,
+            question.held_reason,
+        )
+    ):
+        raise ValueError("human/pending rows cannot carry mechanical evidence")
 
     source_path = ROOT / question.source
     try:
@@ -802,23 +1217,30 @@ def validate_guide_question(question: GuideQuestion) -> None:
             f"{question.source}:{question.line_start}-{question.line_end}"
         )
     cited_lines = source_lines[question.line_start - 1 : question.line_end]
-    if not cited_span_contains(question.text, cited_lines):
+    tracked_mechanical = (
+        tracked_match is not None
+        and question.review_status in {"mechanically_admitted", "mechanically_held"}
+    )
+    if not tracked_mechanical and not cited_span_contains(question.text, cited_lines):
         raise ValueError(
             f"guide-question text is absent from its cited span: "
             f"{question.source}:{question.line_start}-{question.line_end}"
         )
 
     if question.label_origin == "author_heading":
-        if question.author_heading is None or question.author_heading_line is None:
-            raise ValueError("author_heading origin requires an exact heading and line")
-        if not (1 <= question.author_heading_line <= len(source_lines)):
-            raise ValueError("author heading line is outside the guide source")
-        heading_line = source_lines[question.author_heading_line - 1]
-        if question.author_heading not in heading_line:
-            raise ValueError(
-                f"claimed author heading is absent at {question.source}:"
-                f"{question.author_heading_line}"
-            )
+        if question.author_heading is None:
+            raise ValueError("author_heading origin requires an exact heading")
+        if question.review_status in {"approved", "culled_by_reviewer"}:
+            if question.author_heading_line is None:
+                raise ValueError("human author_heading origin requires its source line")
+            if not (1 <= question.author_heading_line <= len(source_lines)):
+                raise ValueError("author heading line is outside the guide source")
+            heading_line = source_lines[question.author_heading_line - 1]
+            if question.author_heading not in heading_line:
+                raise ValueError(
+                    f"claimed author heading is absent at {question.source}:"
+                    f"{question.author_heading_line}"
+                )
         if question.review_status == "culled_by_reviewer":
             # Culling is a review act on serving suitability, not a claim
             # about label provenance; it is the one author-heading state
@@ -856,6 +1278,27 @@ def list_term(items: tuple[Item, ...]) -> str:
 
 
 def review_evidence_term(question: GuideQuestion) -> str:
+    if question.review_status == "mechanically_admitted":
+        assert question.mechanical_builder is not None
+        assert question.mechanical_date is not None
+        if question.mechanical_warrant == "im_author_heading":
+            assert question.author_heading is not None
+            warrant_term = (
+                f"im_author_heading({prolog_string(question.author_heading)})"
+            )
+        elif question.mechanical_warrant == "printed_region":
+            warrant_term = f"printed_region({region_identity_term(question)})"
+        else:
+            raise ValueError("mechanical admission has no supported warrant")
+        return (
+            "mechanical_admission("
+            f"{warrant_term}, "
+            f"extraction({prolog_atom(question.mechanical_builder)}), "
+            f"date({prolog_atom(question.mechanical_date)}))"
+        )
+    if question.review_status == "mechanically_held":
+        assert question.held_reason is not None
+        return f"held({question.held_reason})"
     if question.label_origin == "author_heading":
         assert question.author_heading is not None
         assert question.author_heading_line is not None
@@ -868,10 +1311,24 @@ def review_evidence_term(question: GuideQuestion) -> str:
     return "none"
 
 
+def region_identity_term(question: GuideQuestion) -> str:
+    assert question.region_identity is not None
+    if question.region_identity_kind == "atom":
+        return prolog_atom(question.region_identity)
+    if question.region_identity_kind == "string":
+        return prolog_string(question.region_identity)
+    raise ValueError("region identity is missing its Prolog term kind")
+
+
 def guide_question_term(question: GuideQuestion) -> str:
+    purpose_term = (
+        f"region({region_identity_term(question)})"
+        if question.mechanical_warrant == "printed_region"
+        else question.purpose
+    )
     return (
         "guide_question("
-        f"{question.purpose}, {prolog_string(question.text)}, "
+        f"{purpose_term}, {prolog_string(question.text)}, "
         f"source_guide({prolog_atom(question.source)}), "
         f"source_span({question.line_start}, {question.line_end}), "
         f"activity_location({prolog_string(question.activity_location)}), "
@@ -1012,7 +1469,20 @@ def compile_cache() -> tuple[
         )
         extracted_questions.extend(guide_questions)
         question_absences.extend(guide_absences)
-    questions = (*validated_guide_questions(), *extracted_questions)
+    labels_admission_rows, guide_admission_rows = admission_store_rows()
+    labels_questions = tuple(
+        _label_store_question(row) for row in labels_admission_rows
+    )
+    joined_guide_questions = join_mechanical_admission(
+        extracted_questions, guide_admission_rows
+    )
+    questions = (
+        *validated_guide_questions(),
+        *labels_questions,
+        *joined_guide_questions,
+    )
+    for question in (*labels_questions, *joined_guide_questions):
+        validate_guide_question(question)
     source_count = len(guides) + len(middle_guides)
     return (
         render(

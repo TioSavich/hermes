@@ -1,0 +1,5306 @@
+{
+  "cells": [
+    {
+      "comparison_family": "set_model_fraction_comparison",
+      "deformations": [
+        {
+          "deformation": "set_model_subset_size_focus",
+          "family": "comparison_deformation",
+          "scene": {
+            "expected": "greater_than",
+            "frames": [
+              {
+                "caption": "init: init(fraction(1,3),fraction(1,5)).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "q_init"
+              },
+              {
+                "caption": "unitize set: collections as single wholes(first,second).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 2,
+                "verb": "q_unitize_set"
+              },
+              {
+                "caption": "verify same whole: commensurable collections not checked.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 3,
+                "verb": "q_verify_same_whole"
+              },
+              {
+                "caption": "partition set: equal share structure ignored.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 4,
+                "verb": "q_partition_set"
+              },
+              {
+                "caption": "count equal sets: confuse counters with share name(3,5).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 5,
+                "verb": "q_count_equal_sets"
+              },
+              {
+                "caption": "disembed subset: focus on subset counts(1,1).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 6,
+                "verb": "q_disembed_subset"
+              },
+              {
+                "caption": "subset size focus: subset count replaces fractional share.",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 7,
+                "verb": "q_subset_size_focus"
+              },
+              {
+                "caption": "compare relative size: compare raw subset sizes(1,1,equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 8,
+                "verb": "q_compare_relative_size"
+              },
+              {
+                "caption": "emit: emit(equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 9,
+                "verb": "q_emit"
+              },
+              {
+                "caption": "accept: accept(equivalent).",
+                "scene": {
+                  "bins": [
+                    {
+                      "h": 114,
+                      "label": "1/3; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 40,
+                      "y": 40
+                    },
+                    {
+                      "h": 114,
+                      "label": "1/5; 1 counters selected",
+                      "role": "neutral",
+                      "w": 364,
+                      "x": 480,
+                      "y": 40
+                    }
+                  ],
+                  "dots": [
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 234,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 268,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 302,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 336,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 370,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 64,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 98,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 132,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 166,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 200,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "deformation",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 674,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 708,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 742,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 776,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 810,
+                      "y": 62
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 504,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 538,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 572,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 606,
+                      "y": 96
+                    },
+                    {
+                      "group": 0,
+                      "r": 11,
+                      "role": "whole",
+                      "tag": "counter",
+                      "x": 640,
+                      "y": 96
+                    }
+                  ],
+                  "format": "set-grouping",
+                  "frames10": [],
+                  "pairLines": [],
+                  "version": 2
+                },
+                "sceneChanged": false,
+                "step": 10,
+                "verb": "q_accept"
+              }
+            ],
+            "result": "equivalent",
+            "trace": [
+              "hist(q_init,init(fraction(1,3),fraction(1,5)))",
+              "hist(q_unitize_set,collections_as_single_wholes(first,second))",
+              "hist(q_verify_same_whole,commensurable_collections_not_checked)",
+              "hist(q_partition_set,equal_share_structure_ignored)",
+              "hist(q_count_equal_sets,confuse_counters_with_share_name(3,5))",
+              "hist(q_disembed_subset,focus_on_subset_counts(1,1))",
+              "hist(q_subset_size_focus,subset_count_replaces_fractional_share)",
+              "hist(q_compare_relative_size,compare_raw_subset_sizes(1,1,equivalent))",
+              "hist(q_emit,emit(equivalent))",
+              "hist(q_accept,accept(equivalent))"
+            ],
+            "validity": "incorrect"
+          }
+        }
+      ],
+      "denominator": 3,
+      "evidence": {
+        "fractions": [
+          {
+            "excerpt": ". Sample response:          is greater than 1 because there are a lot more than one thirds in 5.          is less than 1",
+            "form": "denominator_word",
+            "fraction": "1/3",
+            "source": {
+              "line": 283,
+              "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+            }
+          },
+          {
+            "excerpt": "Estimation Exploration: How Many One Fifths?",
+            "form": "denominator_word",
+            "fraction": "1/5",
+            "source": {
+              "line": 73,
+              "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+            }
+          }
+        ],
+        "host": {
+          "excerpt": "that          is less than         because there are more groups of 2 in 48 than groups of 4.          is less than",
+          "host": "set",
+          "source": {
+            "line": 41,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+          }
+        }
+      },
+      "fraction": "1/3 vs 1/5",
+      "fractions": [
+        "1/3",
+        "1/5"
+      ],
+      "host": "set",
+      "numerator": 1,
+      "pair_note": "Both fractions come from this lesson's evidence.",
+      "productive": {
+        "expected": "greater_than",
+        "frames": [
+          {
+            "caption": "init: init(fraction(1,3),fraction(1,5)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "q_init"
+          },
+          {
+            "caption": "unitize set: collections as single wholes(first,second).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 2,
+            "verb": "q_unitize_set"
+          },
+          {
+            "caption": "verify same whole: commensurable collections certified.",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 3,
+            "verb": "q_verify_same_whole"
+          },
+          {
+            "caption": "partition set: equal shares(first,3,trace steps(6),second,5,trace steps(8)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 4,
+            "verb": "q_partition_set"
+          },
+          {
+            "caption": "count equal sets: denominator counts(3,5).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 5,
+            "verb": "q_count_equal_sets"
+          },
+          {
+            "caption": "disembed subset: selected shares(first,trace steps(1),trace steps(2),trace steps(3),second,trace steps(1),trace steps(2),trace steps(3)).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 6,
+            "verb": "q_disembed_subset"
+          },
+          {
+            "caption": "compare relative size: co measure(cross products(5,trace steps(4),3,trace steps(4)),greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 7,
+            "verb": "q_compare_relative_size"
+          },
+          {
+            "caption": "emit: emit(greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 8,
+            "verb": "q_emit"
+          },
+          {
+            "caption": "accept: accept(greater than).",
+            "scene": {
+              "bins": [
+                {
+                  "h": 114,
+                  "label": "1/3; 5 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 40,
+                  "y": 40
+                },
+                {
+                  "h": 114,
+                  "label": "1/5; 3 counters selected",
+                  "role": "neutral",
+                  "w": 364,
+                  "x": 480,
+                  "y": 40
+                }
+              ],
+              "dots": [
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 234,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 268,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 302,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 336,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 370,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 64,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 98,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 132,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 166,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 200,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "highlight",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 674,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 708,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 742,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 776,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 810,
+                  "y": 62
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 504,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 538,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 572,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 606,
+                  "y": 96
+                },
+                {
+                  "group": 0,
+                  "r": 11,
+                  "role": "whole",
+                  "tag": "counter",
+                  "x": 640,
+                  "y": 96
+                }
+              ],
+              "format": "set-grouping",
+              "frames10": [],
+              "pairLines": [],
+              "version": 2
+            },
+            "sceneChanged": false,
+            "step": 9,
+            "verb": "q_accept"
+          }
+        ],
+        "result": "greater_than",
+        "trace": [
+          "hist(q_init,init(fraction(1,3),fraction(1,5)))",
+          "hist(q_unitize_set,collections_as_single_wholes(first,second))",
+          "hist(q_verify_same_whole,commensurable_collections_certified)",
+          "hist(q_partition_set,equal_shares(first,3,[step(q_start,state(q_start,collection(first),recollection([tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,collection(first),recollection([tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 3.),step(q_partition,state(q_partition,collection(first),recollection([tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),collection(first)))]),Cut equal part 2 of 3.),step(q_partition,state(q_partition,collection(first),recollection([tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally]),collection(first))),unit(divaded(recollection([tally,tally,tally]),collection(first)))]),Cut equal part 3 of 3.),step(q_partition,state(q_partition,collection(first),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),collection(first))),unit(divaded(recollection([tally,tally,tally]),collection(first))),unit(divaded(recollection([tally,tally,tally]),collection(first)))]),All D equal parts cut.),step(q_verify,state(q_verify,collection(first),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),collection(first))),unit(divaded(recollection([tally,tally,tally]),collection(first))),unit(divaded(recollection([tally,tally,tally]),collection(first)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],second,5,[step(q_start,state(q_start,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 5.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),Cut equal part 2 of 5.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),Cut equal part 3 of 5.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),Cut equal part 4 of 5.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),Cut equal part 5 of 5.),step(q_partition,state(q_partition,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),All D equal parts cut.),step(q_verify,state(q_verify,collection(second),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+          "hist(q_count_equal_sets,denominator_counts(3,5))",
+          "hist(q_disembed_subset,selected_shares(first,[unit(divaded(recollection([tally,tally,tally]),collection(first)))],[step(q_embedded,unit(divaded(recollection([tally,tally,tally]),collection(first))),Part is inside the partitioned whole.),step(q_disembedded,unit(divaded(recollection([tally,tally,tally]),collection(first))),Part taken out without destroying the whole; now iterable.)],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally]),collection(first))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),collection(first))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),collection(first))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),collection(first)))]),N connected copies made; the iterated quantity is complete.)],second,[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))],[step(q_embedded,unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),Part is inside the partitioned whole.),step(q_disembedded,unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),Part taken out without destroying the whole; now iterable.)],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),collection(second)))]),N connected copies made; the iterated quantity is complete.)]))",
+          "hist(q_compare_relative_size,co_measure(cross_products(5,[step(state(q_init_calc,1,5,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,5,0,1),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,1,5,5,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,5,5,0),[],Calculation complete. Result = 5.)],3,[step(state(q_init_calc,1,3,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,3,0,1),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,1,3,3,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,3,3,0),[],Calculation complete. Result = 3.)]),greater_than))",
+          "hist(q_emit,emit(greater_than))",
+          "hist(q_accept,accept(greater_than))"
+        ],
+        "validity": "correct"
+      },
+      "render_status": "drawn"
+    }
+  ],
+  "fractions": [
+    "1/3",
+    "1/5"
+  ],
+  "hosts": [
+    "set"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G5-U3-L16",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": ". Sample response:          is greater than 1 because there are a lot more than one thirds in 5.          is less than 1",
+        "form": "denominator_word",
+        "fraction": "1/3",
+        "source": {
+          "line": 283,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+        }
+      },
+      {
+        "excerpt": "Estimation Exploration: How Many One Fifths?",
+        "form": "denominator_word",
+        "fraction": "1/5",
+        "source": {
+          "line": 73,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "that          is less than         because there are more groups of 2 in 48 than groups of 4.          is less than",
+        "host": "set",
+        "source": {
+          "line": 41,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson16.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "5.NF.B.7",
+    "IM-G5-U3-L16"
+  ],
+  "title": "IM Grade5 U3 L16: Reason about Quotients"
+}

@@ -1,0 +1,1209 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 2,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 2: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,2)"
+              },
+              {
+                "caption": "Hybridized model of 1/2: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),2)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_2",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_2"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,2)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 0,
+              "attested_pattern": "none_in_corpus",
+              "correct_task": "1/2",
+              "denominator": 2,
+              "family": "equipartition_failure",
+              "host": "bar",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "fraction_bars",
+              "violated_blend_entailment": "common_partitioned_whole",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole bar. One length, not yet partitioned.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "1 whole (target: 2 equal parts)",
+                      "splits": [],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the bar into parts of different sizes. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "2 unequal parts (no equipartition)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "w": 160.0,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 160.0,
+                          "x": 160.0,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts are unequal, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "shaded 1 of 2 unequal parts: not 1/2",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "role": "deformation",
+                          "w": 160.0,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 160.0,
+                          "x": 160.0,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "bar",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 0,
+              "attested_pattern": "none_in_corpus",
+              "correct_task": "1/2",
+              "denominator_drawn": 3,
+              "denominator_intended": 2,
+              "family": "equipartition_failure",
+              "host": "bar",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "fraction_bars",
+              "violated_blend_entailment": "common_partitioned_whole",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole bar. One length, not yet partitioned.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "1 whole (target: 2 equal parts)",
+                      "splits": [],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the bar into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "drew 3 equal parts for a 2-part task (off by one)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "w": 106.66666666666667,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 106.66666666666667,
+                          "x": 106.66666666666669,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 106.66666666666667,
+                          "x": 213.33333333333337,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted bar. The denominator is off by one.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "read 1/3 off a 3-part bar (wanted /2)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "role": "deformation",
+                          "w": 106.66666666666667,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 106.66666666666667,
+                          "x": 106.66666666666669,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 106.66666666666667,
+                          "x": 213.33333333333337,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "bar",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "excerpt": "- The fractional measurement is indicated on the bar as \"22 1/2 cups.\" This means that the bar represents 22 and a half cups.",
+          "form": "denominator_word",
+          "fraction": "1/2",
+          "source": {
+            "line": 130,
+            "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+          }
+        },
+        "host": {
+          "excerpt": "- Create a tape diagram to represent and solve a problem asking 'How many groups?' in which the number of groups is a fraction less than 1.",
+          "host": "bar",
+          "source": {
+            "line": 10,
+            "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+          }
+        }
+      },
+      "fraction": "1/2",
+      "host": "bar",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 2,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 2 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 2,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,2)"
+          },
+          {
+            "caption": "Shade one part: this is 1/2.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 2,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(2)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_2",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_2"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,2))"
+      }
+    },
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 3,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 3: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,3)"
+              },
+              {
+                "caption": "Hybridized model of 1/3: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),3)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_3",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_3"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,3)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 0,
+              "attested_pattern": "none_in_corpus",
+              "correct_task": "1/3",
+              "denominator": 3,
+              "family": "equipartition_failure",
+              "host": "bar",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "fraction_bars",
+              "violated_blend_entailment": "common_partitioned_whole",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 3
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole bar. One length, not yet partitioned.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "1 whole (target: 3 equal parts)",
+                      "splits": [],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the bar into parts of different sizes. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "3 unequal parts (no equipartition)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "w": 131.76470588235296,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 56.470588235294116,
+                          "x": 131.76470588235296,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 131.76470588235296,
+                          "x": 188.23529411764707,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts are unequal, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "shaded 1 of 3 unequal parts: not 1/3",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "role": "deformation",
+                          "w": 131.76470588235296,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 56.470588235294116,
+                          "x": 131.76470588235296,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 131.76470588235296,
+                          "x": 188.23529411764707,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "bar",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 0,
+              "attested_pattern": "none_in_corpus",
+              "correct_task": "1/3",
+              "denominator_drawn": 4,
+              "denominator_intended": 3,
+              "family": "equipartition_failure",
+              "host": "bar",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "fraction_bars",
+              "violated_blend_entailment": "common_partitioned_whole",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 3
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole bar. One length, not yet partitioned.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "1 whole (target: 3 equal parts)",
+                      "splits": [],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the bar into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "drew 4 equal parts for a 3-part task (off by one)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 80,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 160,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 240,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted bar. The denominator is off by one.",
+                "scene": {
+                  "bars": [
+                    {
+                      "h": 76,
+                      "label": "read 1/4 off a 4-part bar (wanted /3)",
+                      "splits": [
+                        {
+                          "h": 76,
+                          "role": "deformation",
+                          "w": 80,
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 80,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 160,
+                          "y": 0
+                        },
+                        {
+                          "h": 76,
+                          "w": 80,
+                          "x": 240,
+                          "y": 0
+                        }
+                      ],
+                      "w": 320,
+                      "x": 30,
+                      "y": 70
+                    }
+                  ],
+                  "format": "fraction-bars",
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "bar",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 3,
+      "evidence": {
+        "fraction": {
+          "excerpt": "- The first section is labeled \"1 batch\" and represents 1/3 of the whole.",
+          "form": "numeral",
+          "fraction": "1/3",
+          "source": {
+            "line": 384,
+            "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+          }
+        },
+        "host": {
+          "excerpt": "- Create a tape diagram to represent and solve a problem asking 'How many groups?' in which the number of groups is a fraction less than 1.",
+          "host": "bar",
+          "source": {
+            "line": 10,
+            "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+          }
+        }
+      },
+      "fraction": "1/3",
+      "host": "bar",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 3,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 3 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 3,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,3)"
+          },
+          {
+            "caption": "Shade one part: this is 1/3.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 3,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(3)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_3",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_3"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,3))"
+      }
+    }
+  ],
+  "fractions": [
+    "1/2",
+    "3/2",
+    "5/2",
+    "13/2",
+    "1/3",
+    "2/3"
+  ],
+  "hosts": [
+    "bar"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G6-U4-L7",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": "- The fractional measurement is indicated on the bar as \"22 1/2 cups.\" This means that the bar represents 22 and a half cups.",
+        "form": "denominator_word",
+        "fraction": "1/2",
+        "source": {
+          "line": 130,
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      },
+      {
+        "excerpt": "divide(3/4,1/2) = 3/2",
+        "form": "computation",
+        "fraction": "3/2",
+        "source": {
+          "page": "139",
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      },
+      {
+        "excerpt": "divide(22.5,9) = 5/2",
+        "form": "computation",
+        "fraction": "5/2",
+        "source": {
+          "page": "130",
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      },
+      {
+        "excerpt": "divide(13/2,3/4) = 26/3",
+        "form": "computation",
+        "fraction": "13/2",
+        "source": {
+          "page": "141",
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      },
+      {
+        "excerpt": "- The first section is labeled \"1 batch\" and represents 1/3 of the whole.",
+        "form": "numeral",
+        "fraction": "1/3",
+        "source": {
+          "line": 384,
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      },
+      {
+        "excerpt": "divide(6,9) = 2/3",
+        "form": "computation",
+        "fraction": "2/3",
+        "source": {
+          "page": "130",
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "- Create a tape diagram to represent and solve a problem asking 'How many groups?' in which the number of groups is a fraction less than 1.",
+        "host": "bar",
+        "source": {
+          "line": 10,
+          "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-4-7-Lesson-teacher-guide-/document.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "6.G.A.2",
+    "6.GM.4",
+    "6.NS.A.1",
+    "IM-G6-U4",
+    "IM-G6-U4-L1",
+    "IM-G6-U4-L10",
+    "IM-G6-U4-L11",
+    "IM-G6-U4-L12",
+    "IM-G6-U4-L13",
+    "IM-G6-U4-L14",
+    "IM-G6-U4-L15",
+    "IM-G6-U4-L16",
+    "IM-G6-U4-L17",
+    "IM-G6-U4-L2",
+    "IM-G6-U4-L3",
+    "IM-G6-U4-L4",
+    "IM-G6-U4-L5",
+    "IM-G6-U4-L6",
+    "IM-G6-U4-L7",
+    "IM-G6-U4-L8",
+    "IM-G6-U4-L9"
+  ],
+  "title": "What Fraction of a Group?"
+}

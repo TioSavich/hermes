@@ -238,12 +238,21 @@ def check_prolog_loads() -> None:
         "defragged_task_instance(_,L,curriculum_task(_),D),"
         "sub_atom(L,0,5,_,'IM-G8'),get_dict(status,D,_)),513)"
     )
+    # The 268 G8 machine-classified rows admitted under printed_region when
+    # the positional-serving ruling landed (2026-08-20); the source store
+    # above is unchanged.
     prolog(
         "use_module(curriculum/im/generated/compiled_lesson_context,[]),"
         "aggregate_all(count,(compiled_lesson_context:compiled_lesson_guide_question(L,"
         "guide_question(_,_,_,_,_,label_origin(machine_classification),"
-        "review_status(pending_human_review),review_evidence(none))),"
+        "review_status(mechanically_admitted),_)),"
         "sub_atom(L,0,5,_,'IM-G8')),268)"
+    )
+    prolog(
+        "use_module(curriculum/im/generated/compiled_lesson_context,[]),"
+        "aggregate_all(count,(compiled_lesson_context:compiled_lesson_guide_question(L,"
+        "guide_question(_,_,_,_,_,_,review_status(pending_human_review),_)),"
+        "sub_atom(L,0,5,_,'IM-G8')),0)"
     )
     prolog(
         "use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]),"

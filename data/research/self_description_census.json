@@ -413,20 +413,20 @@
       "misconceptions": 16,
       "monitoring": 5,
       "pml": 15,
-      "render": 37,
+      "render": 38,
       "sequent": 14,
       "standards": 23,
-      "synthesis": 70,
+      "synthesis": 71,
       "unclassified": 9,
-      "workflow": 28,
+      "workflow": 29,
       "zeeman": 4
     },
     "by_status": {
-      "lazy_reachable": 10,
-      "orphan_module": 128,
+      "lazy_reachable": 11,
+      "orphan_module": 127,
       "routed_only": 15,
-      "routed_paged": 190,
-      "unrouted": 13
+      "routed_paged": 192,
+      "unrouted": 14
     },
     "orphan_verdicts": {
       "consumed_by_builder": 2,
@@ -435,10 +435,10 @@
       "include_active": 21,
       "stalled_input": 3,
       "superseded": 0,
-      "undetermined": 92
+      "undetermined": 91
     },
-    "total": 356,
-    "unrouted": 13
+    "total": 359,
+    "unrouted": 14
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -708,14 +708,14 @@
       "capability_class": "workflow",
       "evidence": [
         {
-          "locator": "/** <module> Generated assessing/advancing labels for K-5 teacher questions",
-          "path": "curriculum/im/generated/structure_teacher_question_labels.pl",
+          "locator": "/** <module> Vision-recovered fraction operands",
+          "path": "curriculum/im/generated/vision_fraction_recovery.pl",
           "relation": "source inspected"
         }
       ],
-      "module": "structure_teacher_question_labels",
+      "module": "vision_fraction_recovery",
       "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
-      "path": "curriculum/im/generated/structure_teacher_question_labels.pl",
+      "path": "curriculum/im/generated/vision_fraction_recovery.pl",
       "verdict": "undetermined"
     },
     {
@@ -1897,20 +1897,6 @@
       "evidence": [
         {
           "locator": ":- encoding(utf8).",
-          "path": "knowledge/strategies/abstraction/model_analysis_pilot.pl",
-          "relation": "source inspected"
-        }
-      ],
-      "module": "model_analysis_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
-      "path": "knowledge/strategies/abstraction/model_analysis_pilot.pl",
-      "verdict": "undetermined"
-    },
-    {
-      "capability_class": "synthesis",
-      "evidence": [
-        {
-          "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
           "relation": "source inspected"
         }
@@ -2592,6 +2578,24 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "measurement_strip_render",
       "reason": "The generic render endpoint reaches it by op name, the way every scene op is reached; its 2026-08-18 consumers are the deterministic render-spec ledger and scene requests that name it. A dedicated page per scene op would duplicate the generic path."
+    },
+    {
+      "does": "Returns the 739 admitted model-authored story-problem analyses by lesson code or statement id, each row carrying its statement, anchor, the five analysis fields, and its testimony and receipt.",
+      "evidence": [
+        {
+          "locator": "\"model_analysis_lookup\"",
+          "path": "hermes/mcp/server.py",
+          "relation": "MCP exposure"
+        },
+        {
+          "locator": "dispatch_request(model_analysis_lookup, Id, Request, Response)",
+          "path": "hermes_worker.pl",
+          "relation": "worker dispatch"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct.",
+      "name": "model_analysis_lookup",
+      "reason": "The rows are attributed research records for analysis clients and the MCP interface. The 0820E brief declined a web page deliberately; a page would put model-authored analyses beside teacher-facing lesson material without a serving warrant."
     },
     {
       "does": "Runs one caller-supplied Prolog goal against the loaded knowledge base and returns its bindings, after SWI's sandbox accepts the goal's whole call graph.",

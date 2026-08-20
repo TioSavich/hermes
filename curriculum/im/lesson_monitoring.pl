@@ -15,6 +15,7 @@
             lesson_misconception/4,
             lesson_resonant_misconceptions/2,
             lesson_guide_context_dict/2,
+            guide_question_labels_dict/5,
             vision_lesson_strategy/4,
             cluster_lesson_strategy/4,
             cluster_lesson_misconception/4,
@@ -49,6 +50,9 @@
               [ compiled_lesson_context/4,
                 compiled_lesson_guide_question/2
               ]).
+:- use_module('generated/admitted_teacher_question_labels', []).
+:- use_module('generated/admitted_guide_questions', []).
+:- use_module('generated/structure_teacher_question_labels', []).
 :- use_module(incompat(incompatibility_discovery),
               [ classify_candidate_set/3
               ]).
@@ -174,9 +178,10 @@ monitoring_chart_export(Code,
 
 %!  lesson_guide_context_dict(+LessonCode, -Dict) is semidet.
 %
-%   Verbatim prompt and synthesis excerpts plus reviewed guide-question
-%   records from the attributed teacher guide. Pending human classifications
-%   are compiled for review but are never included in this served dictionary.
+%   Verbatim prompt and synthesis excerpts plus attributed guide-question
+%   records from the teacher guide. Human approval and mechanical admission
+%   remain distinct statuses and evidence shapes. Held rows never enter this
+%   served dictionary.
 %   A field is omitted when the compiler recovered no honest excerpt for it.
 lesson_guide_context_dict(Code, Dict) :-
     compiled_lesson_context(Code, Prompts, Sequences, source(Source)),
@@ -208,32 +213,333 @@ served_guide_question_dict(
                        source_span(Start, End),
                        activity_location(ActivityLocation),
                        label_origin(LabelOrigin),
-                       review_status(approved),
+                       review_status(Status),
                        review_evidence(ReviewEvidence)),
-        _{ purpose: Purpose,
+        _{ purpose: ServedPurpose,
+           label_kind: LabelKind,
            text: Text,
            source_guide: SourceText,
            source_span: _{start: Start, end: End},
            activity_location: ActivityLocation,
            label_origin: LabelOrigin,
-           review_status: approved,
+           review_status: Status,
            review_evidence: ReviewEvidenceDict
          }) :-
-    memberchk(Purpose, [assessing, advancing]),
+    served_question_identity(Purpose, ServedPurpose, LabelKind),
+    memberchk(Status, [approved, mechanically_admitted]),
     atom(Source),
     sub_atom(Source, 0, _, _, 'curriculum/im_teacher_guides/'),
     Start =< End,
-    served_review_evidence(LabelOrigin, ReviewEvidence, ReviewEvidenceDict),
+    served_review_evidence(Status, LabelOrigin, Purpose,
+                           ReviewEvidence, ReviewEvidenceDict),
     atom_string(Source, SourceText).
 
-served_review_evidence(author_heading,
+served_question_identity(Purpose, Purpose, explicit_label) :-
+    memberchk(Purpose, [assessing, advancing]).
+served_question_identity(region(Region), RegionText, printed_region) :-
+    region_identity_text(Region, RegionText).
+
+region_identity_text(Region, Region) :- string(Region), !.
+region_identity_text(Region, RegionText) :-
+    atom(Region), atom_string(Region, RegionText).
+
+served_review_evidence(approved, author_heading, _Purpose,
                        author_heading(Heading, line(Line)),
                        _{kind: author_heading, heading: Heading, line: Line}).
-served_review_evidence(human_classification,
+served_review_evidence(approved, human_classification, _Purpose,
                        human_review(Reviewer),
                        _{kind: human_review, reviewer: Reviewer}) :-
     string(Reviewer),
     Reviewer \== "".
+served_review_evidence(mechanically_admitted, author_heading, Purpose,
+                       mechanical_admission(
+                           im_author_heading(Heading),
+                           extraction(Builder),
+                           date(Date)),
+                       _{kind: mechanical_admission,
+                         warrant: im_author_heading,
+                         heading: Heading,
+                         extraction: BuilderText,
+                         date: DateText}) :-
+    memberchk(Purpose, [assessing, advancing]),
+    string(Heading), atom(Builder), atom(Date),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText).
+served_review_evidence(mechanically_admitted, machine_classification,
+                       region(Region),
+                       mechanical_admission(
+                           printed_region(EvidenceRegion),
+                           extraction(Builder), date(Date)),
+                       _{kind: mechanical_admission,
+                         warrant: printed_region,
+                         region: RegionText,
+                         extraction: BuilderText,
+                         date: DateText}) :-
+    Region == EvidenceRegion,
+    region_identity_text(Region, RegionText),
+    atom(Builder), atom(Date),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText).
+
+
+%!  guide_question_labels_dict(+Lesson, +Label, +Lane, +Limit, -Dict) is semidet.
+%
+%   Query admitted rows from the two attributed stores directly. The response
+%   carries each lane's complete summary and held census, but held rows do not
+%   enter the served row list. Admitted rows name either IM's author-heading
+%   label or the verified printed region that occupies the label position.
+guide_question_labels_dict(Lesson, Label, Lane, Limit, Dict) :-
+    valid_question_label_filter(Label),
+    valid_question_lane_filter(Lane),
+    valid_question_lesson_filter(Lesson),
+    integer(Limit), Limit >= 1, Limit =< 100,
+    admitted_teacher_question_labels:admitted_question_labels_summary(LabelsSummary),
+    admitted_guide_questions:admitted_guide_questions_summary(GuideSummary),
+    structure_teacher_question_labels:teacher_question_label_summary(SourceSummary),
+    findall(Row,
+            ( attributed_question_row(Row),
+              get_dict(status, Row, mechanically_admitted),
+              question_row_matches(Row, Lesson, Label, Lane)
+            ),
+            Rows0),
+    take_question_rows(Limit, Rows0, Rows),
+    length(Rows0, MatchedCount),
+    get_dict(admitted, LabelsSummary, LabelsAdmitted),
+    get_dict(admitted_im_author_heading, LabelsSummary, LabelsAuthorHeading),
+    get_dict(admitted_printed_region, LabelsSummary, LabelsPrintedRegion),
+    get_dict(held, LabelsSummary, LabelsHeld),
+    get_dict(held_by_class, LabelsSummary, LabelsHeldByClass),
+    get_dict(pilot_or_full_agreement, LabelsSummary, LabelsAttempt),
+    get_dict(kappa, LabelsAttempt, LabelsKappa),
+    get_dict(n_judged, LabelsAttempt, LabelsJudged),
+    get_dict(labeled_rows, SourceSummary, LabelsSourceRows),
+    get_dict(admitted, GuideSummary, GuideAdmitted),
+    get_dict(admitted_im_author_heading, GuideSummary, GuideAuthorHeading),
+    get_dict(admitted_printed_region, GuideSummary, GuidePrintedRegion),
+    get_dict(held, GuideSummary, GuideHeld),
+    get_dict(held_by_class, GuideSummary, GuideHeldByClass),
+    get_dict(pilot_or_full_agreement, GuideSummary, GuideAttempt),
+    get_dict(kappa, GuideAttempt, GuideKappa),
+    get_dict(n_judged, GuideAttempt, GuideJudged),
+    PilotN is LabelsJudged + GuideJudged,
+    LabelsEmitted is LabelsAdmitted + LabelsHeld,
+    GuideEmitted is GuideAdmitted + GuideHeld,
+    CandidateCount is LabelsEmitted + GuideEmitted,
+    AdmittedCount is LabelsAdmitted + GuideAdmitted,
+    AuthorHeadingCount is LabelsAuthorHeading + GuideAuthorHeading,
+    PrintedRegionCount is LabelsPrintedRegion + GuidePrintedRegion,
+    Dict = _{
+        filters: _{lesson: Lesson, label: Label, lane: Lane, limit: Limit},
+        matched_count: MatchedCount,
+        rows: Rows,
+        summary: _{
+            labels: _{source_rows: LabelsSourceRows,
+                      emitted_rows: LabelsEmitted,
+                      admitted: LabelsAdmitted, held: LabelsHeld},
+            guide: _{source_rows: GuideEmitted,
+                     emitted_rows: GuideEmitted,
+                     admitted: GuideAdmitted, held: GuideHeld}
+        },
+        held_census: _{labels: LabelsHeldByClass, guide: GuideHeldByClass},
+        candidates: CandidateCount,
+        admitted: AdmittedCount,
+        admission_warrants: _{im_author_heading: AuthorHeadingCount,
+                              printed_region: PrintedRegionCount},
+        corroboration_history: _{status: voided, reason: low_signal,
+                                  pilot_n: PilotN,
+                                  labels_kappa: LabelsKappa,
+                                  guide_kappa: GuideKappa}
+    }.
+
+valid_question_label_filter(Label) :- atom(Label).
+
+valid_question_lane_filter(all).
+valid_question_lane_filter(labels).
+valid_question_lane_filter(guide).
+
+valid_question_lesson_filter(all).
+valid_question_lesson_filter(Lesson) :-
+    atom(Lesson),
+    Lesson \== all.
+
+question_row_matches(Row, Lesson, Label, Lane) :-
+    ( Lesson == all
+    ; get_dict(lesson, Row, LessonText), atom_string(Lesson, LessonText)
+    ),
+    row_matches_label(Row, Label),
+    ( Lane == all ; get_dict(lane, Row, Lane) ).
+
+row_matches_label(_Row, all) :- !.
+row_matches_label(Row, Label) :-
+    question_filter_key(Label, Wanted),
+    ( get_dict(label, Row, RowLabel), question_filter_key(RowLabel, Wanted)
+    -> true
+    ; get_dict(section_name, Row, Section), question_filter_key(Section, Wanted)
+    ).
+
+question_filter_key(Value, Key) :-
+    ( atom(Value) -> atom_string(Value, Text0) ; Text0 = Value ),
+    string_lower(Text0, Text1),
+    string_chars(Text1, Chars0),
+    maplist(question_filter_char, Chars0, Chars1),
+    string_chars(Text2, Chars1),
+    split_string(Text2, "", " \t\r\n", [Trimmed]),
+    atom_string(Key, Trimmed).
+
+question_filter_char(' ', '_') :- !.
+question_filter_char('-', '_') :- !.
+question_filter_char(Char, Char).
+
+region_display_name(advancing_student_thinking, "Advancing Student Thinking") :- !.
+region_display_name(activity_synthesis, "Activity Synthesis") :- !.
+region_display_name(lesson_synthesis, "Lesson Synthesis") :- !.
+region_display_name(building_on_student_thinking, "Building on Student Thinking") :- !.
+region_display_name(responding_to_student_thinking, "Responding to Student Thinking") :- !.
+region_display_name(activity_narrative, "Activity Narrative") :- !.
+region_display_name(math_community, "Math Community") :- !.
+region_display_name(consider_asking, "Consider Asking") :- !.
+region_display_name(discuss_with_students, "Discuss with Students") :- !.
+region_display_name(more_chances, "More Chances") :- !.
+region_display_name(launch, "Launch") :- !.
+region_display_name(Region, Display) :-
+    atom(Region), atom_string(Region, Text0),
+    split_string(Text0, "_", "", Words),
+    maplist(string_title, Words, TitleWords),
+    atomic_list_concat(TitleWords, ' ', Display).
+
+string_title(Word, Title) :-
+    string_chars(Word, [First|Rest]),
+    upcase_atom(First, Upper),
+    string_chars(Title, [Upper|Rest]).
+
+take_question_rows(Limit, Rows0, Rows) :-
+    length(Rows0, Count),
+    ( Count =< Limit
+    -> Rows = Rows0
+    ;  length(Rows, Limit), append(Rows, _, Rows0)
+    ).
+
+attributed_question_row(Row) :-
+    admitted_teacher_question_labels:admitted_question_label(
+        Lesson, Label, Text,
+        anchor(source_path(Source), source_file_sha256(_), char_span(Start, End),
+               region_type(Region), label_origin(author_heading(Heading)),
+               warrant(im_author_heading)),
+        testimony(im_author_heading(Heading), extraction(Builder), date(Date)), _),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText),
+    Row = _{lane: labels, lesson: LessonText, label: Label,
+            label_kind: explicit_label, label_chip: Label,
+            section_name: Heading, text: Text,
+            status: mechanically_admitted,
+            source_guide: SourceText,
+            char_span: _{start: Start, end: End},
+            region_type: Region,
+            label_origin: author_heading,
+            admission: _{warrant: im_author_heading, heading: Heading,
+                         extraction: BuilderText, date: DateText}}.
+attributed_question_row(Row) :-
+    admitted_teacher_question_labels:admitted_question_label(
+        Lesson, region(Region), Text,
+        anchor(source_path(Source), source_file_sha256(_), char_span(Start, End),
+               region_type(RegionType), label_origin(machine_classification),
+               warrant(printed_region(Region))),
+        testimony(extraction(Builder), date(Date)), _),
+    region_display_name(Region, SectionName),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    atom_string(Region, RegionText),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText),
+    Row = _{lane: labels, lesson: LessonText, label: RegionText,
+            label_kind: printed_region, section_name: SectionName, text: Text,
+            status: mechanically_admitted,
+            source_guide: SourceText,
+            char_span: _{start: Start, end: End},
+            region_type: RegionType,
+            label_origin: machine_classification,
+            admission: _{warrant: printed_region, region: RegionText,
+                         extraction: BuilderText, date: DateText}}.
+attributed_question_row(Row) :-
+    admitted_guide_questions:admitted_guide_question(
+        Lesson, Label, Text,
+        anchor(source_guide(Source), doc_sha256(_), line_span(Start, End),
+               activity_location(Location), label_origin(author_heading(Heading)),
+               warrant(im_author_heading)),
+        testimony(im_author_heading(Heading), extraction(Builder), date(Date)), _),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText),
+    Row = _{lane: guide, lesson: LessonText, label: Label,
+            label_kind: explicit_label, label_chip: Label,
+            section_name: Heading, text: Text,
+            status: mechanically_admitted,
+            source_guide: SourceText,
+            source_span: _{start: Start, end: End},
+            activity_location: Location,
+            label_origin: author_heading,
+            admission: _{warrant: im_author_heading, heading: Heading,
+                         extraction: BuilderText, date: DateText}}.
+attributed_question_row(Row) :-
+    admitted_guide_questions:admitted_guide_question(
+        Lesson, region(Region), Text,
+        anchor(source_guide(Source), doc_sha256(_), line_span(Start, End),
+               activity_location(Location), label_origin(machine_classification),
+               warrant(printed_region(Region))),
+        testimony(extraction(Builder), date(Date)), _),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    region_identity_text(Region, RegionText),
+    atom_string(Builder, BuilderText),
+    atom_string(Date, DateText),
+    Row = _{lane: guide, lesson: LessonText, label: RegionText,
+            label_kind: printed_region, section_name: RegionText, text: Text,
+            status: mechanically_admitted,
+            source_guide: SourceText,
+            source_span: _{start: Start, end: End},
+            activity_location: Location,
+            label_origin: machine_classification,
+            admission: _{warrant: printed_region, region: RegionText,
+                         extraction: BuilderText, date: DateText}}.
+attributed_question_row(Row) :-
+    admitted_teacher_question_labels:held_question_label(
+        Lesson, Label, Text,
+        anchor(source_path(Source), source_file_sha256(_), char_span(Start, End),
+               region_type(Region), label_origin(Origin), warrant(none)),
+        _, held(Reason)),
+    region_display_name(Region, SectionName),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    term_string(Origin, OriginText, [quoted(false)]),
+    term_string(Reason, ReasonText, [quoted(false)]),
+    Row = _{lane: labels, lesson: LessonText, label: SectionName,
+            label_kind: held_form, source_label: Label,
+            section_name: SectionName, text: Text,
+            status: mechanically_held, held_reason: ReasonText,
+            source_guide: SourceText,
+            char_span: _{start: Start, end: End},
+            region_type: Region, label_origin: OriginText}.
+attributed_question_row(Row) :-
+    admitted_guide_questions:held_guide_question(
+        Lesson, Label, Text,
+        anchor(source_guide(Source), doc_sha256(_), line_span(Start, End),
+               activity_location(Location), label_origin(Origin), warrant(none)),
+        _, held(Reason)),
+    atom_string(Lesson, LessonText),
+    atom_string(Source, SourceText),
+    term_string(Origin, OriginText, [quoted(false)]),
+    term_string(Reason, ReasonText, [quoted(false)]),
+    Row = _{lane: guide, lesson: LessonText, label: Location,
+            label_kind: held_form, source_label: Label,
+            section_name: Location, text: Text,
+            status: mechanically_held, held_reason: ReasonText,
+            source_guide: SourceText,
+            source_span: _{start: Start, end: End},
+            activity_location: Location,
+            label_origin: OriginText}.
 
 put_context_field(_Key, [], Dict, Dict) :- !.
 put_context_field(Key, Items, Dict0, Dict) :-

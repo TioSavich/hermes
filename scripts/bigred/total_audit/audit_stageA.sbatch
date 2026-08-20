@@ -57,8 +57,12 @@ probe() {
 }
 
 sweep() {
+  # Run-2 widening (task 0820D): default max-per-op is 3000 in sweep_driver.py
+  # itself now (item 12); passed explicitly here too so the sbatch file
+  # states its own contract rather than relying on a script default it
+  # doesn't show.
   "$HERMES_PYTHON" -u scripts/bigred/total_audit/sweep_driver.py \
-    --out "$RUN" --max-per-op 2000 --item-timeout 180
+    --out "$RUN" --max-per-op 3000 --item-timeout 180
   [ -s "$RUN/sweep_results.jsonl" ]
 }
 

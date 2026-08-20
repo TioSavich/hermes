@@ -102,12 +102,18 @@ def check_guide_question_payload(worker: PersistentPrologWorker) -> None:
     assert response["ok"] is True, response
     result = response["result"]
     questions = result.get("guide_questions", [])
-    assert len(questions) == 4
-    assert {question["purpose"] for question in questions} == {"assessing", "advancing"}
+    # Since 2026-08-20 the served dict carries the mechanically admitted rows
+    # beside the four human-approved ones; the approved subset keeps its exact
+    # structure and the admitted rows carry the mechanical_admission evidence.
+    approved = [q for q in questions if q["review_status"] == "approved"]
+    admitted = [q for q in questions if q["review_status"] == "mechanically_admitted"]
+    assert len(approved) == 4
+    assert len(admitted) >= 1
+    assert len(approved) + len(admitted) == len(questions)
+    assert {question["purpose"] for question in approved} == {"assessing", "advancing"}
     assert "culled_by_reviewer" not in str(result)
-    assert all(question["review_status"] == "approved" for question in questions)
     by_purpose = {
-        purpose: [q for q in questions if q["purpose"] == purpose]
+        purpose: [q for q in approved if q["purpose"] == purpose]
         for purpose in ("assessing", "advancing")
     }
     assert all(q["label_origin"] == "author_heading" for q in by_purpose["assessing"])
@@ -116,9 +122,14 @@ def check_guide_question_payload(worker: PersistentPrologWorker) -> None:
         and (q.get("review_evidence") or {}).get("reviewer")
         for q in by_purpose["advancing"]
     )
+    assert all(
+        (q.get("review_evidence") or {}).get("kind") == "mechanical_admission"
+        and q["purpose"]
+        for q in admitted
+    )
     assert all("im_teacher_guides" in question["source_guide"] for question in questions)
     assert "pending_human_review" not in str(result)
-    assert four_component_receipt(questions) == 4
+    assert four_component_receipt(approved) == 4
 
 
 def check_guide_question_source_contract() -> None:
@@ -170,7 +181,8 @@ def check_synthetic_approved_receipt() -> None:
         "lesson_monitoring:lesson_guide_context_dict('IM-G1-U3-L17',D),"
         "get_dict(guide_questions,D,Qs),"
         "findall(P,(member(Q,Qs),get_dict(purpose,Q,P)),Ps),"
-        "sort(Ps,[advancing,assessing])"
+        "sort(Ps,Sorted),subset([advancing,assessing],Sorted),"
+        "once((member(Q,Qs),get_dict(text,Q,\"Synthetic reviewed fixture\")))"
     )
     completed = subprocess.run(
         ["swipl", "-q", "-l", "paths.pl", "-g", goal, "-t", "halt"],

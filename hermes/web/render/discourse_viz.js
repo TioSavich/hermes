@@ -5,7 +5,7 @@
      postureStrip(report)     -> Node|null  utterance × speaker strip of postures and PML operators
      tensionRepairMap(report) -> Node|null  speaker arc map of tensions (above) and repairs (below)
      structuralView(value)    -> Node       generic labeled rendering of a JSON payload
-     renderPayload(el, data)  -> void       structural view + raw JSON behind a toggle
+     renderPayload(el, data)  -> void       teacher summary + shape-specific view
      heatmap(spec)            -> Node|null  shaded count table (columns x labeled rows)
    New chart kinds should reuse svgEl/withTitle from here rather than
    re-rolling helpers. */
@@ -31,6 +31,12 @@
       ".viz-tension { color: var(--rust, #b95238); }",
       ".viz-repair { color: var(--teal-deep, #2c5e66); }",
       ".viz-note { font-size: .78rem; color: var(--muted, #665f4f); border-left: 3px solid var(--line, rgba(13,12,8,.2)); padding-left: 10px; margin: 6px 0 0; }",
+      ".viz-summary { max-width: 76ch; padding: .7rem .8rem; border: 1px solid var(--line, rgba(13,12,8,.15)); border-radius: 8px; background: var(--paper-cool, #ede4cf); }",
+      ".viz-summary h3, .viz-section-title { margin: 0 0 .35rem; font-size: .88rem; }",
+      ".viz-summary p { margin: .2rem 0; line-height: 1.45; }",
+      ".viz-summary ul { margin: .3rem 0 0; padding-left: 1.2rem; }",
+      ".viz-summary li { margin: .18rem 0; }",
+      ".viz-section-title { margin-top: .8rem; }",
       ".payload-view { margin-top: 10px; font-size: .84rem; overflow-x: auto; }",
       "table.struct { width: auto; max-width: none; border-collapse: collapse; font-size: .8rem; margin: 4px 0; }",
       "table.struct th { font: .74rem var(--mono, monospace); color: var(--muted, #665f4f); font-weight: 500; text-align: left; vertical-align: top; padding: 3px 10px 3px 0; min-width: 12ch; }",
@@ -88,6 +94,9 @@
     const extractions = (r.machine && r.machine.extractions) || [];
 
     const speakerOf = new Map(); // utterance id -> speaker
+    (r.utterances || []).forEach(u => {
+      if (u && u.id && u.speaker) speakerOf.set(u.id, u.speaker);
+    });
     claims.forEach(c => { if (c.utterance && c.speaker) speakerOf.set(c.utterance, c.speaker); });
     postures.forEach(p => (p.utterances || []).forEach(u => {
       if (!speakerOf.has(u) && p.speaker) speakerOf.set(u, p.speaker);
@@ -534,21 +543,197 @@
     return table;
   }
 
-  /* Structural rendering first; the raw reply stays reachable behind a
-     toggle — the rendering compresses, the record does not. */
+  function recordShape(data) {
+    if (!isPlainObject(data)) return "unknown";
+    const utterances = Array.isArray(data.utterances) ? data.utterances : [];
+    if (utterances.some(u => isPlainObject(u) && Array.isArray(u.features))) {
+      return "surface_features";
+    }
+    if (utterances.some(u => isPlainObject(u) && Array.isArray(u.atoms))) {
+      return "pragmatic_candidates";
+    }
+    if (["claims", "postures", "tensions", "repair_arcs"].some(k => Array.isArray(data[k]))) {
+      return "discussion_report";
+    }
+    return "unknown";
+  }
+
+  function words(value) {
+    return String(value || "recorded item").replace(/_/g, " ");
+  }
+
+  function countedKinds(rows, childKey) {
+    const counts = new Map();
+    (rows || []).forEach(row => (row[childKey] || []).forEach(item => {
+      const key = words(item.kind || item.subtype);
+      const amount = Number.isFinite(Number(item.count)) ? Number(item.count) : 1;
+      counts.set(key, (counts.get(key) || 0) + amount);
+    }));
+    return Array.from(counts.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  }
+
+  function countSentence(rows, emptyText) {
+    if (!rows.length) return emptyText;
+    return rows.map(([name, count]) => `${count} ${name}`).join(", ") + ".";
+  }
+
+  function addSummaryLine(host, text) {
+    host.appendChild(htmlEl("p", null, text));
+  }
+
+  function addSummaryList(host, rows) {
+    if (!rows.length) return;
+    const list = htmlEl("ul");
+    rows.slice(0, 8).forEach(text => list.appendChild(htmlEl("li", null, text)));
+    if (rows.length > 8) list.appendChild(htmlEl("li", null, `${rows.length - 8} more in the full record.`));
+    host.appendChild(list);
+  }
+
+  function anchorsOverlap(left, right) {
+    const rightSet = new Set(right || []);
+    return (left || []).some(anchor => rightSet.has(anchor));
+  }
+
+  function discussionSummary(data) {
+    const host = htmlEl("section", "viz-summary");
+    host.appendChild(htmlEl("h3", null, "What the record says"));
+    const claims = Array.isArray(data.claims) ? data.claims : [];
+    const postures = Array.isArray(data.postures) ? data.postures : [];
+    const tensions = Array.isArray(data.tensions) ? data.tensions : [];
+    const repairs = Array.isArray(data.repair_arcs) ? data.repair_arcs : [];
+
+    const postureClause = `${postures.length} posture${postures.length === 1 ? "" : "s"} ${postures.length === 1 ? "appears" : "appear"}.`;
+    addSummaryLine(host, claims.length
+      ? `${claims.length} mathematical claim${claims.length === 1 ? "" : "s"} appear; ${postureClause}`
+      : `No mathematical claim appears; ${postureClause}`);
+    addSummaryList(host, claims.map(claim =>
+      `${claim.speaker || "Speaker unrecorded"}: “${claim.said || "claim wording absent"}”; ${claim.finding || "finding not recorded"}.`));
+    addSummaryList(host, postures.map(posture =>
+      `${posture.speaker || "Speaker unrecorded"} ${posture.move || "has a recorded posture"}${posture.response ? "; " + posture.response : ""}.`));
+
+    if (!tensions.length) {
+      addSummaryLine(host, "No tension is recorded.");
+    } else {
+      const tensionLines = tensions.map(tension => {
+        const repaired = repairs.some(repair => anchorsOverlap(tension.anchors, repair.anchors));
+        return `${repaired ? "Repaired tension" : "Open tension"}: ${tension.sentence || "wording absent"}`;
+      });
+      addSummaryList(host, tensionLines);
+    }
+    const unmatchedRepairs = repairs.filter(repair =>
+      !tensions.some(tension => anchorsOverlap(tension.anchors, repair.anchors)));
+    addSummaryList(host, unmatchedRepairs.map(repair =>
+      `Repair recorded without a matching tension row: ${repair.sentence || "wording absent"}`));
+    return host;
+  }
+
+  function featureSummary(data, childKey) {
+    const isPragmatic = childKey === "atoms";
+    const host = htmlEl("section", "viz-summary");
+    host.appendChild(htmlEl("h3", null, "What the record says"));
+    const utterances = Array.isArray(data.utterances) ? data.utterances : [];
+    const kinds = countedKinds(utterances, childKey);
+    addSummaryLine(host, `${utterances.length} utterance${utterances.length === 1 ? "" : "s"} were checked.`);
+    addSummaryLine(host, countSentence(kinds,
+      isPragmatic ? "No pragmatic candidate form was found." : "No listed surface feature was found."));
+    const relations = Array.isArray(data.relations) ? data.relations : [];
+    const relationCounts = new Map();
+    relations.forEach(row => {
+      const key = words(row.kind);
+      relationCounts.set(key, (relationCounts.get(key) || 0) + 1);
+    });
+    addSummaryLine(host, countSentence(
+      Array.from(relationCounts.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])),
+      isPragmatic ? "No pragmatic relation candidate was found." : "No surface relation candidate was found."
+    ));
+    addSummaryLine(host, isPragmatic
+      ? "These are candidates; this record assigns no commitment, uptake, settlement, posture, or tension."
+      : "These are surface findings; this record assigns no posture or tension.");
+    return host;
+  }
+
+  function utteranceHeatmap(data, childKey, label) {
+    const utterances = Array.isArray(data.utterances) ? data.utterances : [];
+    const columns = [];
+    utterances.forEach(row => (row[childKey] || []).forEach(item => {
+      const key = words(item.kind || item.subtype);
+      if (!columns.includes(key)) columns.push(key);
+    }));
+    columns.sort();
+    if (!columns.length) return null;
+    return heatmap({
+      columns,
+      rows: utterances.map(row => {
+        const byKind = Object.fromEntries(columns.map(column => [column, 0]));
+        (row[childKey] || []).forEach(item => {
+          const key = words(item.kind || item.subtype);
+          byKind[key] += Number.isFinite(Number(item.count)) ? Number(item.count) : 1;
+        });
+        return {
+          label: [row.id, row.speaker].filter(Boolean).join(" · ") || "utterance",
+          counts: columns.map(column => byKind[column])
+        };
+      }),
+      ariaLabel: label
+    });
+  }
+
+  function pragmaticPostureReport(data) {
+    const utterances = Array.isArray(data.utterances) ? data.utterances : [];
+    const byId = new Map(utterances.map(row => [row.id, row]));
+    const postures = (data.relations || []).filter(row =>
+      row && ["named_stance_candidate", "adjacent_stance_candidate"].includes(row.kind)
+    ).map(row => ({
+      speaker: (byId.get(row.utterance_id) || {}).speaker,
+      utterances: [row.target_utterance_id, row.utterance_id].filter(Boolean),
+      move: `${words(row.stance)} candidate`,
+      register: "surface wording",
+      response: "interaction not assigned"
+    }));
+    return { utterances, claims: [], postures, machine: { readings: [], extractions: [] } };
+  }
+
+  function addView(container, title, node) {
+    if (!node) return;
+    container.appendChild(htmlEl("h3", "viz-section-title", title));
+    container.appendChild(node);
+  }
+
+  function fullRecord(data) {
+    const details = htmlEl("details", "raw-toggle");
+    details.appendChild(htmlEl("summary", null, "Full record"));
+    details.appendChild(structuralView(data));
+    return details;
+  }
+
+  /* Recognized replies lead with the conclusions their fields license.
+     Machine-register fields remain available in the collapsed full record. */
   function renderPayload(container, data) {
     container.textContent = "";
-    container.appendChild(structuralView(data));
-    const details = htmlEl("details", "raw-toggle");
-    details.appendChild(htmlEl("summary", null, "The raw reply (JSON)"));
-    const pre = htmlEl("pre");
-    pre.textContent = JSON.stringify(data, null, 2);
-    details.appendChild(pre);
-    container.appendChild(details);
+    const shape = recordShape(data);
+    if (shape === "unknown") {
+      container.appendChild(structuralView(data));
+      return;
+    }
+    if (shape === "discussion_report") {
+      container.appendChild(discussionSummary(data));
+      addView(container, "Claims and postures", postureStrip(data));
+      addView(container, "Tensions and repairs", tensionRepairMap(data));
+    } else if (shape === "surface_features") {
+      container.appendChild(featureSummary(data, "features"));
+      addView(container, "Surface features by utterance",
+        utteranceHeatmap(data, "features", "surface-feature counts by utterance"));
+    } else if (shape === "pragmatic_candidates") {
+      container.appendChild(featureSummary(data, "atoms"));
+      addView(container, "Stance candidates", postureStrip(pragmaticPostureReport(data)));
+      addView(container, "Candidate forms by utterance",
+        utteranceHeatmap(data, "atoms", "pragmatic candidate counts by utterance"));
+    }
+    container.appendChild(fullRecord(data));
   }
 
   window.HermesDiscourseViz = {
     postureStrip, tensionRepairMap, heatmap, structuralView, renderPayload,
-    _internal: { svgEl, indexReport, anchorsToSpeakers, operatorGlyph }
+    _internal: { svgEl, indexReport, anchorsToSpeakers, operatorGlyph, recordShape }
   };
 })();

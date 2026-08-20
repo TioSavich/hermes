@@ -60,6 +60,7 @@ CORE_TO_WORKER = {
     "strategy_trace": "strategy_trace",
     "list_strategies": "list_strategies",
     "lesson_arithmetic_demonstration": "lesson_arithmetic_demonstration",
+    "model_analysis_lookup": "model_analysis_lookup",
     "strategy_recognize": "strategy_recognize",
     "incompatibility_contexts": "incompatibility_contexts",
     "lesson_enactment_list": "lesson_enactment_list",
@@ -67,6 +68,8 @@ CORE_TO_WORKER = {
     "diagnose_error": "diagnose_error",
     "abduce_error": "abduce_error",
     "pedagogical_questions": "pedagogical_questions",
+    "guide_question_labels": "guide_question_labels",
+    "fraction_comparison_compare": "fraction_comparison_compare",
 }
 
 TOOL_BUNDLES = {
@@ -85,8 +88,8 @@ TOOL_BUNDLES = {
 CORE_TOOLS = (
     ("monitoring_chart", "Return a compact monitoring-chart inventory for an IM lesson code. Use monitoring_chart_detail for one named section; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
     ("monitoring_chart_detail", "Return one named section from a monitoring chart. Call monitoring_chart first to obtain the section inventory. Expected time: a few seconds.", ("code", "section")),
-    ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. Read provenance before reading the chart: of the 78 lesson codes this tool serves, 3 take their hosts and fractions from a teacher guide and a fourth, a division lesson, takes compiled tasks from its guide (all 4 report provenance hand_authored); the other 74 take one fixed default set of circle/rectangle/bar and 1/2, 1/3, 1/4, 1/6, 1/8 (default_fill), which reports nothing about what that lesson asks children to model. A lesson is charted when its coverage row carries a unit-fraction partition or iteration strategy, or when it is a grade 6 unit 4 fraction-division lesson whose guide attests a tape-diagram scene; neither arm decides anything about the fill. Every reply carries provenance and provenance_note. No coverage number may cite this chart. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
-    ("lesson_deformation_chart_detail", "Return one identified scene or frame from a deformation chart, with the chart's provenance and provenance_note attached. Call lesson_deformation_chart first to obtain its inventory. A default_fill scene is drawn on the fixed default fraction set, not on the lesson's own quantities. Expected time: a few seconds.", ("code", "id")),
+    ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. The tool serves 77 codes: 3 hand-authored fraction charts, 73 evidence-joined fraction charts, and 1 compiled division chart. It refuses 0 eligible codes with fraction_operands_unrecoverable and 1 with no_deformation_chart, the one lesson whose guide carries no host or fraction evidence. Five of the evidence-joined charts carry fractions recovered from the source PDF pages, each anchored to the lesson's own surviving guide text. Evidence-joined hosts and fractions cite the lesson's own guide text or compiled evidence rows. Circle, rectangle, and bar cells draw licensed partition deformations; number-line and set cells use paired comparison scenes, with text-only output when a pair has no honest layout. Every reply carries provenance and provenance_note. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
+    ("lesson_deformation_chart_detail", "Return one identified scene or frame from a deformation chart, with the chart's provenance, provenance_note, and evidence citations attached. Call lesson_deformation_chart first to obtain its inventory. Expected time: a few seconds.", ("code", "id")),
     ("check_math_claim", "Parse and check an explicit mathematical claim in symbolic or ordinary classroom language. The reader covers registered arithmetic, fraction, comparison, and same-unit total forms; it preserves modality, polarity, reports, questions, and quotation separately and abstains on implied operations.", ("term",)),
     ("deontic_scorecard", "Return the ephemeral scorecard for stated commitment and entitlement terms.", ("agent", "commitments", "entitlements")),
     ("deontic_consequences", "Return consequences licensed by stated commitment terms.", ("agent", "commitments")),
@@ -109,16 +112,79 @@ CORE_TOOLS = (
 # catalog. They are available to MCP callers without changing the branch-agent
 # carving.
 CORE_STANDALONE_TOOLS = (
+    ("fraction_comparison_compare", "Run one paired comparison from number_line_fraction_comparison, area_model_fraction_comparison, set_model_fraction_comparison, benchmark_fraction_comparison, common_unit_fraction_comparison, or decimal_fraction_place_value_comparison. Supply family and four integers as n1, d1, n2, and d2; for the decimal family these are numeral and scale pairs. Both members of the pair execute as automata, and the reply carries both traces and both frame lists. The gap-thinking and decimal-scale-loss deformations also return a viability record naming the inputs on which their comparison is contextually correct.", ("family", "n1", "d1", "n2", "d2")),
     ("list_strategies", "List registered strategy names with their operation, cluster, and whether a worked input is recorded. Every name returned is a name strategy_trace accepts, so this is the discovery step for a caller whose strategy_trace declaration arrived without its name list. Filter by operation or by a name substring; results are paged. Expected time: a few seconds on the first call while the worker starts.", ("operation", "contains", "limit", "offset")),
     ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
     ("lesson_arithmetic_demonstration", "List the four compiled IM-G1-U3-L17 addition tasks or run one selected task against an observed whole-number answer. The result returns productive and dropped-leftover traces, a candidate match or explicit abstention, and never diagnoses the student. Work transcription remains request-local and is not returned or persisted.", ("lesson", "task_id", "observed_answer", "work_transcription")),
+    ("model_analysis_lookup", "Look up the 739 stored model-authored analyses that passed the repository's verification gates, by statement_id, lesson_code, or a bounded list. Each analysis/5 row carries quantities, the ask, arithmetic steps, the answer, and missing_doing, together with its testimony and receipt attribution. The source ledger holds 21 additional oracle_mismatched_held rows that the store excludes. Results are paged with limit and offset; limit defaults to 20 and cannot exceed 50.", ("lesson_code", "statement_id", "limit", "offset")),
     ("pedagogical_questions", "Return assessing and advancing questions — questions that ask students to explain or extend their thinking — from monitoring-chart clusters matched by topic, automaton state, standard, or the whole corpus, without requiring an IM lesson code. The 42 clusters are hand-authored from monitoring-chart provenance (126 assessing questions, 85 advancing questions total), not drawn from student data; coverage is thematic, not per-lesson, so a real topic can still abstain with zero matches. kind sets the match basis: topic ranks clusters by shared whole-word tokens and is the default; automaton_state and standard require an exact match; all returns every cluster and ignores query. Expected time: a few seconds after worker startup.", ("query", "kind")),
+    ("guide_question_labels", "Return Illustrative Mathematics teacher-guide questions grouped by their printed section: {total_admitted:,} of {candidate_count:,} candidate rows are mechanically admitted. Warrant provenance: {author_heading_admitted:,} im_author_heading rows retain IM's explicit advancing label; {printed_region_admitted:,} printed_region rows carry the verified section identity. Filter by lesson, label or region, lane, and limit. Guide-lane sources use a local research corpus.", ("lesson", "label", "lane", "limit")),
     ("prolog_query", "Run one caller-supplied Prolog goal against the loaded knowledge base after SWI's sandbox accepts its complete call graph. Calls are read-only, capped at 100 solutions, and limited to 2 seconds. Call with goal to query. Call without goal to list loaded knowledge predicates; narrow that listing with a name substring, a knowledge-relative file substring, or an exact arity, then use a module-qualified predicate from the result.", ("goal", "name", "file", "arity")),
     ("graph_overview", "Return the full computational graph's scope, authored level ladder, counts, and per-family inventory. The level ladder is authored rather than derived from the transition tables. This reads the shipped JSON artifact without starting the Prolog worker.", ()),
     ("graph_machine", "Return one machine's states, transitions, and shared canonical-action summary from the full computational graph. A borrow records a shared canonical action name; it does not assert that two machines, transitions, or mathematical practices are equivalent.", ("family", "kind")),
     ("graph_borrows", "Return borrow pairs for one canonical action or one family-and-kind machine. A borrow records only that transition edges share a canonical action name. It does not assert equivalence, prerequisite order, or a learner relation. Results are paged; cross_family_only restricts pairs before paging.", ("canonical_action", "family", "kind", "cross_family_only", "limit", "offset")),
     ("graph_quotient", "Return a summary and a page of edges from a family, domain ego, canonical-action, or authored-ladder quotient. Domain requires one exact family. Results retain member-level stance, validity, carrier-machine, and source-edge evidence; each view states the limit of its relation.", ("view", "family", "limit", "offset")),
 )
+
+
+def question_admission_counts(root: Path) -> dict[str, int]:
+    """Read the generated summary facts used in the public tool description."""
+    paths = {
+        "labels": root / "curriculum/im/generated/admitted_teacher_question_labels.pl",
+        "guide": root / "curriculum/im/generated/admitted_guide_questions.pl",
+    }
+    counts: dict[str, int] = {}
+    for lane, path in paths.items():
+        text = path.read_text(encoding="utf-8")
+        block_match = re.search(
+            r"admitted_(?:question_labels|guide_questions)_summary\(\s*"
+            r"summary\{(?P<body>.*?)\}\s*\)\.",
+            text,
+            flags=re.DOTALL,
+        )
+        if block_match is None:
+            raise ToolCallError(
+                f"question admission summary is missing from {path}",
+                kind="worker_failure",
+            )
+        body = block_match.group("body")
+        for field in (
+            "admitted", "admitted_im_author_heading",
+            "admitted_printed_region", "held",
+        ):
+            field_match = re.search(rf"\b{field}:\s*(\d+)", body)
+            if field_match is None:
+                raise ToolCallError(
+                    f"question admission summary field {field} is missing from {path}",
+                    kind="worker_failure",
+                )
+            counts[f"{lane}_{field}"] = int(field_match.group(1))
+    counts["guide_total"] = counts["guide_admitted"] + counts["guide_held"]
+    counts["total_admitted"] = counts["labels_admitted"] + counts["guide_admitted"]
+    counts["candidate_count"] = (
+        counts["labels_admitted"] + counts["labels_held"]
+        + counts["guide_admitted"] + counts["guide_held"]
+    )
+    counts["author_heading_admitted"] = (
+        counts["labels_admitted_im_author_heading"]
+        + counts["guide_admitted_im_author_heading"]
+    )
+    counts["printed_region_admitted"] = (
+        counts["labels_admitted_printed_region"]
+        + counts["guide_admitted_printed_region"]
+    )
+    return counts
+
+
+def standalone_tool_rows(root: Path) -> tuple[tuple[str, str, tuple[str, ...]], ...]:
+    """Fill store-backed description counts when MCP registers its tools."""
+    counts = question_admission_counts(root)
+    rows = []
+    for name, description, parameters in CORE_STANDALONE_TOOLS:
+        if name == "guide_question_labels":
+            description = description.format(**counts)
+        rows.append((name, description, parameters))
+    return tuple(rows)
 
 
 class ToolCallError(ValueError):
@@ -252,7 +318,7 @@ def tool(name: str, description: str, parameters: tuple[str, ...] | list[str]) -
 
 def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy_contracts: list[dict[str, Any]]) -> dict[str, Any]:
     """Hand-authored tools can state the few JSON shapes their worker accepts."""
-    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer", "cross_family_only": "boolean", "observed_answer": "integer"}
+    kinds = {"commitments": "array", "entitlements": "array", "input": "object", "k": "integer", "limit": "integer", "offset": "integer", "full": "boolean", "arity": "integer", "cross_family_only": "boolean", "observed_answer": "integer", "n1": "integer", "d1": "integer", "n2": "integer", "d2": "integer"}
     properties: dict[str, dict[str, Any]] = {}
     for parameter in parameters:
         kind = kinds.get(parameter, "string")
@@ -299,6 +365,13 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "observed_answer": {"type": "integer", "description": "The teacher-entered observed whole-number answer."},
             "work_transcription": {"type": "string", "description": "Optional request-local transcription; it is neither returned nor persisted."},
         }
+    elif name == "model_analysis_lookup":
+        properties = {
+            "lesson_code": {"type": "string", "minLength": 1, "description": "Exact lesson code. It may be combined with statement_id to verify that row's lesson attribution."},
+            "statement_id": {"type": "string", "minLength": 1, "description": "Exact model_analysis_row record id."},
+            "limit": {"type": "integer", "minimum": 1, "maximum": 50, "description": "Rows to return; defaults to 20 and cannot exceed 50."},
+            "offset": {"type": "integer", "minimum": 0, "description": "Zero-based row offset; defaults to 0."},
+        }
     elif name == "pedagogical_questions":
         properties = {
             "query": {"type": "string", "minLength": 1, "description": "Text to match: a topic phrase, an automaton-state name, or a standard code, depending on kind. Ignored when kind is all."},
@@ -307,6 +380,13 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
                 "enum": ["topic", "automaton_state", "standard", "all"],
                 "description": "Match basis. topic (default) ranks clusters by shared whole-word tokens. automaton_state and standard require an exact normalized match. all returns every cluster and ignores query.",
             },
+        }
+    elif name == "guide_question_labels":
+        properties = {
+            "lesson": {"type": "string", "minLength": 1, "description": "Optional exact IM lesson code. Omit for all lessons."},
+            "label": {"type": "string", "minLength": 1, "description": "Explicit label or printed section identity, such as advancing, launch, or Activity Synthesis. Defaults to all."},
+            "lane": {"type": "string", "enum": ["labels", "guide", "all"], "description": "Attributed store lane; defaults to labels. guide citations use the local research corpus."},
+            "limit": {"type": "integer", "minimum": 1, "maximum": 100, "description": "Rows to return; defaults to 20 and cannot exceed 100."},
         }
     elif name == "graph_machine":
         properties = {
@@ -419,7 +499,10 @@ class HermesMCPServer:
             tools = registry_tools(root) if mode == "registry" else [core_tool(*row, self._strategy_contracts) for row in CORE_TOOLS]
             public_tools = list(tools)
             if mode == "core":
-                public_tools.extend(core_tool(*row, self._strategy_contracts) for row in CORE_STANDALONE_TOOLS)
+                public_tools.extend(
+                    core_tool(*row, self._strategy_contracts)
+                    for row in standalone_tool_rows(root)
+                )
         except ToolCallError as exc:
             self._startup_error = exc
             tools = []
@@ -1293,6 +1376,7 @@ class HermesMCPServer:
             # chart at all.
             "provenance": chart.get("provenance"),
             "provenance_note": chart.get("provenance_note"),
+            "provenance_evidence": chart.get("provenance_evidence"),
             "inventory": [
                 {**row, "detail_tool": "lesson_deformation_chart_detail"}
                 for row in self._deformation_items(chart)
@@ -1313,6 +1397,7 @@ class HermesMCPServer:
             "id": identifier,
             "provenance": chart.get("provenance"),
             "provenance_note": chart.get("provenance_note"),
+            "provenance_evidence": chart.get("provenance_evidence"),
             "data": item,
         }
 

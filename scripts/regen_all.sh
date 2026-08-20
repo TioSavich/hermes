@@ -125,6 +125,7 @@ add_tail() {
     # the builder sat outside every chain until then).
     add_python scripts/language/build_standard_doing.py
     add_python scripts/extract_capability_registry.py
+    add_python scripts/research/build_data_store_index.py
     add_python scripts/research/build_self_description_census.py
     add_python scripts/extract_research_measurement_registry.py
     add_python scripts/extract_data_consumption_manifest.py

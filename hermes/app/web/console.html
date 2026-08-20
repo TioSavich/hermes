@@ -193,6 +193,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .lesson-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,12,8,0.14); border-color: var(--gold-deep); }
 .lesson-card .code { font: 0.82rem var(--mono); font-weight: 600; }
 .lesson-card .ttl { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 0.15rem; line-height: 1.3; }
+.lesson-card .capability-line { display: block; margin-top: 0.35rem; color: var(--ink-soft); font: 0.7rem/1.35 var(--mono); }
 .badge { display: inline-block; margin-top: 0.4rem; font: 0.64rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 0.1rem 0.4rem; border-radius: 999px; border: 1px solid; }
 .badge.ready { color: var(--ok); border-color: var(--ok); }
 .badge.thin { color: var(--thin); border-color: var(--thin); }
@@ -1129,17 +1130,25 @@ $("#results-refresh").addEventListener('click', loadResults);
 /* ---------- explore: lesson catalog ---------- */
 let catalogLoaded = false, ALL_LESSONS = [], READY_LESSONS = [];
 let CATALOG_DEFAULT = { rows: [], label: "Ready exemplars" };
+let CATALOG_CHARTS = new Map();
+let CATALOG_CHARTS_COMPLETE = false;
 function lessonSubstance(row) {
   const c = (row && row.counts) || {};
   return (c.strategies || 0) + (c.misconceptions || 0);
 }
 function lessonCard(row) {
   const code = row.lesson_code || '';
+  const counts = row.counts || {};
   const ready = (row.status === 'fully_connected');
   const usable = (row.coverage_status === 'usable');
   const badge = ready ? 'Prepared for classroom use' : (usable ? 'Partial notes' : 'Not prepared yet');
   const title = row.title ? `<span class="ttl">${esc(row.title)}</span>` : '';
-  return `<button class="lesson-card" data-lesson="${escAttr(code)}"><span class="code">${esc(code)}</span>${title}<span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></button>`;
+  const charts = CATALOG_CHARTS.get(code) || [];
+  const chartText = charts.length
+    ? `${charts.join(' + ')} chart${charts.length === 1 ? '' : 's'}`
+    : (CATALOG_CHARTS_COMPLETE ? 'no chart' : 'chart availability unavailable');
+  const capability = `${counts.strategies || 0} strategies · ${counts.misconceptions || 0} misconceptions · ${chartText}`;
+  return `<button class="lesson-card" data-lesson="${escAttr(code)}"><span class="code">${esc(code)}</span>${title}<span class="capability-line">${esc(capability)}</span><span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></button>`;
 }
 function renderCatalog(rows, heading) {
   return `<div class="catalog-section"><h3>${esc(heading)}</h3><div class="catalog-grid">${rows.map(lessonCard).join('') || '<span class="muted-inline">none</span>'}</div></div>`;
@@ -1151,8 +1160,16 @@ async function loadCatalog() {
   catalogLoaded = true;
   const catalog = $("#catalog");
   const stopElapsed = startElapsed(catalog, "loading the lesson catalog…");
-  let data;
-  try { ({ data } = await postJSON('/api/field_connectivity_audit', {})); }
+  let data, manifests;
+  try {
+    [data, manifests] = await Promise.all([
+      postJSON('/api/field_connectivity_audit', {}).then(result => result.data),
+      Promise.all([
+        deformationManifest().catch(() => null),
+        notationManifest().catch(() => null)
+      ])
+    ]);
+  }
   catch (error) {
     catalogLoaded = false;
     setRequestFailure(catalog, error);
@@ -1163,6 +1180,9 @@ async function loadCatalog() {
   const s = r.summary || {};
   ALL_LESSONS = r.lessons || [];
   READY_LESSONS = (r.connected_examples || []);
+  const chartInventory = catalogChartIndex(manifests[0], manifests[1]);
+  CATALOG_CHARTS = chartInventory.index;
+  CATALOG_CHARTS_COMPLETE = chartInventory.complete;
   if (READY_LESSONS.length) {
     CATALOG_DEFAULT = { rows: READY_LESSONS.slice(0, 24), label: "Prepared lessons" };
   } else {
@@ -1259,6 +1279,21 @@ function notationChartChip(code, manifest) {
       + 'Notation chart: not available for this lesson</span>';
   }
   return `<a class="stance-chip" href="generated/notation_lesson_charts/${encodeURIComponent(code)}/index.html" target="_blank" rel="noopener">Notation chart</a>`;
+}
+function catalogChartIndex(deformation, notation) {
+  const index = new Map();
+  const add = (manifest, label) => {
+    const lessons = manifest && Array.isArray(manifest.lessons) ? manifest.lessons : [];
+    lessons.forEach(row => {
+      if (!row || !row.code) return;
+      const labels = index.get(row.code) || [];
+      if (!labels.includes(label)) labels.push(label);
+      index.set(row.code, labels);
+    });
+  };
+  add(deformation, 'wrong-answer pattern');
+  add(notation, 'notation');
+  return { index, complete: Boolean(deformation && notation) };
 }
 async function openLesson(code) {
   const detail = $("#lesson-detail");

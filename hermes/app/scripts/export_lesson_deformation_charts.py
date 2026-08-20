@@ -1,31 +1,27 @@
 #!/usr/bin/env python3
-"""Render supported lesson deformation charts and their shared SVG drawings.
-
-"Given a lesson charted on 1/N modeled with a circle or a fraction strip, here
-are the student-work errors to watch for, rendered on 1/N."
+"""Render lesson-owned deformation charts and shared SVG drawings.
 
 The wire (the established render pattern, reusing the node drawer.js harness from
 export_parametric_deformations.py verbatim):
 
   curriculum/im/lesson_deformation_chart.pl
-      decides WHICH deformations to watch for, on WHICH fraction, for each
-      charted IM lesson -- every deformation gated through the grammar's
+      decides which deformations to watch for on each charted IM lesson. Each
+      conventional-host deformation is gated through the grammar's
       misconception lane (representation_grammar:deformation_spec_evidence/4 and
       parametric_fraction_errors:error_evidence/4), so it is a labeled
       misconception, never an unlabeled productive diagram.
       -> a monitoring-chart dict (swipl -l paths.pl, json_write_dict) -> here
       -> hermes/web/render/drawer.js buildSvg -> SVG filmstrips.
 
-WHICH fraction is where the honesty lives. Only 3 of the 77 enumerated charts
-take their hosts and fractions from a teacher guide. The other 74 take one fixed
-default set (chart_provenance/2 in the Prolog module records which), so this
-exporter withdraws them rather than publishing lesson-named directories.
+Each evidence chart carries its host and fraction citations. Number-line and
+set hosts use comparison scenes; a pair that cannot draw retains its named
+deformation as text.
 
 Logic lives in Prolog; this script is projection plus layout. It does NOT edit
 representation_grammar.pl or drawer.js. The distinct drawings are written once
-under hermes/app/web/generated/lesson_deformation_charts/_shared/. Only
-hand_authored charts receive lesson directories, and their indexes reference
-the shared drawings.
+under hermes/app/web/generated/lesson_deformation_charts/_shared/. Every served
+fraction chart receives a lesson directory whose index references the shared
+drawings.
 
 Run: python3 hermes/app/scripts/export_lesson_deformation_charts.py
 
@@ -113,7 +109,8 @@ def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
         prod = cell["productive"]
         prod_frames = prod["frames"]
         prod_name = f"{host}-{frac_slug}-PRODUCTIVE.svg"
-        if prod_name not in rendered:
+        prod_file = None
+        if prod_frames and prod_name not in rendered:
             render(
                 prod_frames, shared_dir / prod_name,
                 [_verb_label(f) for f in prod_frames],
@@ -121,6 +118,8 @@ def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
                 panel_w=250, panel_h=210,
             )
             rendered.add(prod_name)
+        if prod_frames:
+            prod_file = f"../_shared/{prod_name}"
 
         # deformation scenes (labeled misconceptions only)
         deform_records = []
@@ -130,7 +129,8 @@ def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
             frames = scene["frames"]
             d_slug = _slug(name)
             drawing_name = f"{host}-{frac_slug}-{d_slug}.svg"
-            if drawing_name not in rendered:
+            drawing_file = None
+            if frames and drawing_name not in rendered:
                 render(
                     frames, shared_dir / drawing_name,
                     [_verb_label(f) for f in frames],
@@ -138,18 +138,21 @@ def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
                     panel_w=300, panel_h=210,
                 )
                 rendered.add(drawing_name)
+            if frames:
+                drawing_file = f"../_shared/{drawing_name}"
             deform_records.append({
                 "deformation": name,
                 "family": d["family"],
-                "file": f"../_shared/{drawing_name}",
+                "file": drawing_file,
                 "frame_count": len(frames),
+                "note": scene.get("note"),
             })
 
         cell_records.append({
             "host": host,
             "fraction": frac,
             "denominator": n,
-            "productive_file": f"../_shared/{prod_name}",
+            "productive_file": prod_file,
             "deformations": deform_records,
         })
 
@@ -175,24 +178,23 @@ def export_lesson(out_dir: Path, shared_dir: Path, code: str, chart: dict,
 
 PROVENANCE_LABEL = {
     "hand_authored": "read from the teacher guide",
-    "default_fill": "fixed default set, not read from this lesson",
+    "evidence": "cited lesson evidence",
 }
 
-# Default fill covers most of the gallery, so the banner carries the warmer
-# colour and the body copy changes with the provenance rather than describing
-# quantities the chart does not have.
+# Both provenance classes report lesson-owned quantities, so they use the same
+# banner treatment.
 PROVENANCE_BANNER_STYLE = {
     "hand_authored": "border-left:4px solid #365f6b;background:#eef3f4",
-    "default_fill": "border-left:4px solid #8b1e16;background:#f7ece9",
+    "evidence": "border-left:4px solid #365f6b;background:#eef3f4",
 }
 
 
 def provenance_banner(chart: dict) -> str:
     """A block that states the chart's provenance in the module's own words."""
-    provenance = chart.get("provenance", "default_fill")
+    provenance = chart.get("provenance", "evidence")
     note = chart.get("provenance_note", "")
     label = PROVENANCE_LABEL.get(provenance, provenance.replace("_", " "))
-    style = PROVENANCE_BANNER_STYLE.get(provenance, PROVENANCE_BANNER_STYLE["default_fill"])
+    style = PROVENANCE_BANNER_STYLE.get(provenance, PROVENANCE_BANNER_STYLE["evidence"])
     return (
         f"<div style='{style};max-width:820px;padding:12px 16px;margin:18px 0;"
         "line-height:1.45'>"
@@ -204,28 +206,17 @@ def provenance_banner(chart: dict) -> str:
 
 def chart_body_copy(chart: dict) -> str:
     """What the chart reports, worded to the provenance it actually has."""
-    if chart.get("provenance") == "hand_authored":
-        opening = (
-            "This is the monitoring chart for the lesson: the <em>productive</em> "
-            "model for each fraction the teacher guide names, beside the "
-            "<em>likely student-work deformations</em> to watch for on each "
-            "representation, drawn on that same fraction."
-        )
-    else:
-        opening = (
-            "The hosts and fractions below are the chart's fixed default set, "
-            "handed to every lesson that was not read. Each pair is the "
-            "<em>productive</em> model for a default fraction beside the "
-            "<em>likely student-work deformations</em> on that representation. "
-            "The pairs report the deformation families; they do not report what "
-            "this lesson asks children to model."
-        )
+    opening = (
+        "This monitoring chart places a <em>productive</em> model beside the "
+        "<em>student-work deformations</em> to watch for. The chart payload "
+        "carries the lesson citations for each host and fraction."
+    )
     return (
         "<p style='max-width:820px;line-height:1.45'>" + opening +
-        " The deformations are parametric: the same error rule regenerates for "
-        "any fraction handed to it. Each deformation is a labeled misconception, "
-        "gated through the representation grammar's misconception lane &mdash; "
-        "never an unlabeled productive diagram. Logic in "
+        " Conventional-host deformations are generated from the charted unit "
+        "fraction. Number-line and set cells compare the lesson's evidenced "
+        "fractions. Each deformation is labeled and gated by its source rule. "
+        "Logic in "
         "<code>curriculum/im/lesson_deformation_chart.pl</code>; render "
         "projected through <code>hermes/web/render/drawer.js</code>.</p>"
     )
@@ -258,17 +249,24 @@ def build_lesson_index(chart: dict, cells: list) -> str:
         for c in host_cells:
             rows.append(f"<h3>{html.escape(c['fraction'])} on a {html.escape(host)}</h3>")
             rows.append("<div style='display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start'>")
-            rows.append("<figure style='margin:0'>"
-                        "<figcaption style='font-size:13px;font-weight:700;color:#365f6b'>"
-                        "Productive (the lesson's correct model)</figcaption>"
-                        f"<img src='{html.escape(c['productive_file'], quote=True)}' "
-                        "style='max-width:420px;border:1px solid #cabf9f;background:#f8f1df'></figure>")
-            for d in c["deformations"]:
+            if c["productive_file"]:
                 rows.append("<figure style='margin:0'>"
-                            "<figcaption style='font-size:13px;font-weight:700;color:#8b1e16'>"
-                            f"Watch for: {html.escape(d['deformation'])}</figcaption>"
-                            f"<img src='{html.escape(d['file'], quote=True)}' "
+                            "<figcaption style='font-size:13px;font-weight:700;color:#365f6b'>"
+                            "Productive (the lesson's correct model)</figcaption>"
+                            f"<img src='{html.escape(c['productive_file'], quote=True)}' "
                             "style='max-width:420px;border:1px solid #cabf9f;background:#f8f1df'></figure>")
+            for d in c["deformations"]:
+                if d["file"]:
+                    rows.append("<figure style='margin:0'>"
+                                "<figcaption style='font-size:13px;font-weight:700;color:#8b1e16'>"
+                                f"Watch for: {html.escape(d['deformation'])}</figcaption>"
+                                f"<img src='{html.escape(d['file'], quote=True)}' "
+                                "style='max-width:420px;border:1px solid #cabf9f;background:#f8f1df'></figure>")
+                else:
+                    note = d.get("note") or "This pair has no drawable layout."
+                    rows.append("<p style='max-width:420px;border-left:4px solid #8b1e16;padding:10px'>"
+                                f"<strong>Watch for:</strong> {html.escape(d['deformation'])}. "
+                                f"{html.escape(note)}</p>")
             rows.append("</div>")
 
     rows.append("</body>")
@@ -286,7 +284,7 @@ def build_top_index(records: list, shared_drawings: list[str]) -> str:
     rows.append("<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
                 "Lesson deformation charts</h1>")
     rows.append("<p style='max-width:760px;line-height:1.45'>The productive model "
-                "for a unit fraction, beside the deformations to watch for on it.</p>")
+                "for a cited lesson fraction, beside the deformations to watch for.</p>")
     rows.append("<h2 style=\"font-family:Georgia,serif;font-size:1.05rem\">Charted lessons</h2>")
     lesson_items = []
     for r in records:
@@ -295,13 +293,13 @@ def build_top_index(records: list, shared_drawings: list[str]) -> str:
             f"<a href='{html.escape(r['code'], quote=True)}/index.html'>"
             f"{html.escape(r['code'])}</a> &middot; {html.escape(r['title'])}<br>"
             "<span style='color:#6b6252;font-size:.88rem'>hosts "
-            f"{html.escape(', '.join(r['hosts']))} &middot; unit fractions "
+            f"{html.escape(', '.join(r['hosts']))} &middot; fractions "
             f"{html.escape(', '.join(r['fractions']))}</span></li>"
         )
     rows.append("<ul>" + "".join(lesson_items) + "</ul>")
     rows.append("<h2 style=\"font-family:Georgia,serif;font-size:1.05rem\">The drawings</h2>")
-    rows.append("<p style='max-width:760px;line-height:1.45'>Drawn from the host "
-                "and the unit fraction, not from student work.</p>")
+    rows.append("<p style='max-width:760px;line-height:1.45'>Drawn from the cited "
+                "host and fraction, not from student work.</p>")
     rows.append("<ul style='columns:2;font-size:.9rem'>" + "".join(
         "<li style='margin:.2rem 0'>"
         f"<a href='_shared/{html.escape(name, quote=True)}'>{html.escape(name)}</a></li>"
@@ -321,14 +319,7 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     enumerated = lesson_charts(args.limit)
     charts = {chart["lesson_code"]: chart for chart in enumerated["charts"]}
-    codes = [
-        code for code in enumerated["codes"]
-        if charts[code].get("provenance") == "hand_authored"
-    ]
-    withdrawn = sum(
-        chart.get("provenance") != "hand_authored"
-        for chart in enumerated["charts"]
-    )
+    codes = list(enumerated["codes"])
     shared_dir = out_dir / "_shared"
     shared_dir.mkdir(parents=True, exist_ok=True)
     rendered: set[str] = set()
@@ -344,16 +335,10 @@ def main() -> int:
         "kind": "lesson_deformation_charts",
         "lean": False,
         "provenance_census": {
-            "hand_authored": len(records),
-            "default_fill": 0,
+            "hand_authored": sum(r["provenance"] == "hand_authored" for r in records),
+            "evidence": sum(r["provenance"] == "evidence" for r in records),
             "total": len(records),
-            "note": "Charted lessons are those whose hosts and unit fractions are "
-                    "read off the lesson's own teacher guide. The "
-                    f"{withdrawn} default_fill lessons were withdrawn on 2026-08-19: "
-                    "they carried the chart's fixed default hosts and fractions, so "
-                    "they said nothing about the lesson they were named for. The "
-                    "drawings they used are kept once each in _shared/. No coverage "
-                    "number may cite this manifest.",
+            "note": "Hosts and fractions are lesson-owned and retain their citations in chart.json.",
         },
         "lessons": [
             {
@@ -377,9 +362,8 @@ def main() -> int:
 
     total_files = len(shared_drawings) + sum(len(r["files"]) for r in records)
     print(f"Wrote {total_files} lesson/shared files across "
-          f"{len(records)} hand-authored lessons to {out_dir}")
-    print(f"Enumerated {len(enumerated['all_codes'])} chart definitions; "
-          f"withdrew {withdrawn} default-fill lesson directories")
+          f"{len(records)} evidence-backed lessons to {out_dir}")
+    print(f"Enumerated {len(enumerated['all_codes'])} served fraction charts")
     for r in records:
         defs = r.get("deformation_kinds") or sorted({
             d["deformation"]

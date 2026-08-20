@@ -113,6 +113,10 @@ PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
         "input": "frac(1,9)-frac(1,9)",
         "got": "frac(1,18)",
     },
+    "fraction_comparison_compare": {
+        "family": "number_line_fraction_comparison",
+        "n1": 1, "d1": 3, "n2": 2, "d2": 5,
+    },
 }
 
 OPERATION_DESCRIPTIONS = {
@@ -146,6 +150,17 @@ IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
         "got": ("string", True),
     },
     "lesson_deformation_chart": {"code": ("string", True)},
+    "fraction_comparison_compare": {
+        "family": ("string", True),
+        "n1": ("integer", True), "d1": ("integer", True),
+        "n2": ("integer", True), "d2": ("integer", True),
+    },
+    "model_analysis_lookup": {
+        "lesson_code": ("string", False),
+        "statement_id": ("string", False),
+        "limit": ("integer", False),
+        "offset": ("integer", False),
+    },
     "deontic_scorecard": {
         "agent": ("string", False), "commitments": ("array", False),
         "entitlements": ("array", False),
@@ -164,8 +179,10 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
     ("batch_event_score", "infrastructure"),
     ("benny_demo", "misconceptions"),
     ("check_math_claim", "misconceptions"),
+    ("model_analysis_lookup", "synthesis"),
     ("commitment_match", "misconceptions"),
     ("elaborations", "synthesis"),
+    ("fraction_comparison_compare", "render"),
     ("image_schema", "render"),
     ("inferential_strength", "synthesis"),
     ("lesson_deformation_chart", "workflow"),

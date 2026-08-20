@@ -379,6 +379,20 @@
         }
       ],
       "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/2",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "rectangle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/2",
       "host": "rectangle",
       "numerator": 1,
@@ -895,6 +909,20 @@
         }
       ],
       "denominator": 3,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/3",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "rectangle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/3",
       "host": "rectangle",
       "numerator": 1,
@@ -1435,6 +1463,20 @@
         }
       ],
       "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/4",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "rectangle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/4",
       "host": "rectangle",
       "numerator": 1,
@@ -2023,6 +2065,20 @@
         }
       ],
       "denominator": 6,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/6",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "rectangle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/6",
       "host": "rectangle",
       "numerator": 1,
@@ -2659,6 +2715,20 @@
         }
       ],
       "denominator": 8,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/8",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "rectangle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/8",
       "host": "rectangle",
       "numerator": 1,
@@ -3295,6 +3365,20 @@
         }
       ],
       "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/2",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/2",
       "host": "circle",
       "numerator": 1,
@@ -3920,6 +4004,20 @@
         }
       ],
       "denominator": 3,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/3",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/3",
       "host": "circle",
       "numerator": 1,
@@ -4545,6 +4643,20 @@
         }
       ],
       "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/4",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/4",
       "host": "circle",
       "numerator": 1,
@@ -5170,6 +5282,20 @@
         }
       ],
       "denominator": 6,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/6",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/6",
       "host": "circle",
       "numerator": 1,
@@ -5795,6 +5921,20 @@
         }
       ],
       "denominator": 8,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/8",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/8",
       "host": "circle",
       "numerator": 1,
@@ -6302,6 +6442,20 @@
         }
       ],
       "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/2",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/2",
       "host": "bar",
       "numerator": 1,
@@ -6844,6 +6998,20 @@
         }
       ],
       "denominator": 3,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/3",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/3",
       "host": "bar",
       "numerator": 1,
@@ -7410,6 +7578,20 @@
         }
       ],
       "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/4",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/4",
       "host": "bar",
       "numerator": 1,
@@ -8024,6 +8206,20 @@
         }
       ],
       "denominator": 6,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/6",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/6",
       "host": "bar",
       "numerator": 1,
@@ -8686,6 +8882,20 @@
         }
       ],
       "denominator": 8,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/8",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/8",
       "host": "bar",
       "numerator": 1,

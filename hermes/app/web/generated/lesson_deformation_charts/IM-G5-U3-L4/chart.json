@@ -1,0 +1,2381 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 2,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 2: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,2)"
+              },
+              {
+                "caption": "Hybridized model of 1/2: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 2
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),2)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_2",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_2"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,2)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/2",
+              "denominator": 2,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 2 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into parts of different areas. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "2 unequal parts (no equipartition)",
+                      "rows": 1,
+                      "w": 110.0,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 110.0,
+                      "x": 140.0,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts have different areas, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "shaded 1 of 2 unequal parts: not 1/2",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 110.0,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 110.0,
+                      "x": 140.0,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/2",
+              "denominator_drawn": 3,
+              "denominator_intended": 2,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 2
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 2 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 3,
+                      "h": 110,
+                      "label": "drew 3 equal parts for a 2-part task (off by one)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted region. The denominator is off by one.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "read 1/3 off a 3-part region (wanted /2)",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 73.33333333333333,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 73.33333333333333,
+                      "x": 103.33333333333333,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 73.33333333333333,
+                      "x": 176.66666666666666,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 2,
+      "evidence": {
+        "fraction": {
+          "excerpt": "\u2022    : I know half of a half is one fourth.                       \u2022 Repeat with each expression.",
+          "form": "denominator_word",
+          "fraction": "1/2",
+          "source": {
+            "line": 100,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        },
+        "host": {
+          "excerpt": "If students diagram only shows a rectangle, consider asking:",
+          "host": "rectangle",
+          "source": {
+            "line": 195,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        }
+      },
+      "fraction": "1/2",
+      "host": "rectangle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 2,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 2 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 2,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,2)"
+          },
+          {
+            "caption": "Shade one part: this is 1/2.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 2,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(2)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_2",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_2"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,2))"
+      }
+    },
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 3,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 3: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,3)"
+              },
+              {
+                "caption": "Hybridized model of 1/3: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 3
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),3)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_3",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_3"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,3)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/3",
+              "denominator": 3,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 3
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 3 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into parts of different areas. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "3 unequal parts (no equipartition)",
+                      "rows": 1,
+                      "w": 90.58823529411765,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 38.82352941176471,
+                      "x": 120.58823529411765,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 90.58823529411765,
+                      "x": 159.41176470588238,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts have different areas, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "shaded 1 of 3 unequal parts: not 1/3",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 90.58823529411765,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 38.82352941176471,
+                      "x": 120.58823529411765,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 90.58823529411765,
+                      "x": 159.41176470588238,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/3",
+              "denominator_drawn": 4,
+              "denominator_intended": 3,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 3
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 3 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 4,
+                      "h": 110,
+                      "label": "drew 4 equal parts for a 3-part task (off by one)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted region. The denominator is off by one.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "read 1/4 off a 4-part region (wanted /3)",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 55,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 55,
+                      "x": 85,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 55,
+                      "x": 140,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 55,
+                      "x": 195,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 3,
+      "evidence": {
+        "fraction": {
+          "excerpt": "students to divide the square in thirds, vertically or horizontally. Then students divide the two thirds that represent the",
+          "form": "denominator_word",
+          "fraction": "1/3",
+          "source": {
+            "line": 124,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        },
+        "host": {
+          "excerpt": "If students diagram only shows a rectangle, consider asking:",
+          "host": "rectangle",
+          "source": {
+            "line": 195,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        }
+      },
+      "fraction": "1/3",
+      "host": "rectangle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 3,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 3 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 3,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,3)"
+          },
+          {
+            "caption": "Shade one part: this is 1/3.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 3,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(3)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_3",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_3"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,3))"
+      }
+    },
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 4,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 4
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 4: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 4
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,4)"
+              },
+              {
+                "caption": "Hybridized model of 1/4: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 4
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),4)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_4",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_4"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,4)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/4",
+              "denominator": 4,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 4
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 4 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into parts of different areas. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "4 unequal parts (no equipartition)",
+                      "rows": 1,
+                      "w": 67.94117647058823,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 42.05882352941177,
+                      "x": 97.94117647058823,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 42.05882352941176,
+                      "x": 140.0,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 67.94117647058823,
+                      "x": 182.05882352941177,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts have different areas, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "shaded 1 of 4 unequal parts: not 1/4",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 67.94117647058823,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 42.05882352941177,
+                      "x": 97.94117647058823,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 42.05882352941176,
+                      "x": 140.0,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 67.94117647058823,
+                      "x": 182.05882352941177,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/4",
+              "denominator_drawn": 5,
+              "denominator_intended": 4,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 4
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 4 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 5,
+                      "h": 110,
+                      "label": "drew 5 equal parts for a 4-part task (off by one)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted region. The denominator is off by one.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "read 1/5 off a 5-part region (wanted /4)",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 44,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 44,
+                      "x": 74,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 44,
+                      "x": 118,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 44,
+                      "x": 162,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 44,
+                      "x": 206,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "excerpt": "\u2022    : I know half of a half is one fourth.                       \u2022 Repeat with each expression.",
+          "form": "denominator_word",
+          "fraction": "1/4",
+          "source": {
+            "line": 100,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        },
+        "host": {
+          "excerpt": "If students diagram only shows a rectangle, consider asking:",
+          "host": "rectangle",
+          "source": {
+            "line": 195,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        }
+      },
+      "fraction": "1/4",
+      "host": "rectangle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 4,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 4 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 4,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,4)"
+          },
+          {
+            "caption": "Shade one part: this is 1/4.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 4,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(4)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_4",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_4"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,4))"
+      }
+    },
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 10,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 10
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 10: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 10
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,10)"
+              },
+              {
+                "caption": "Hybridized model of 1/10: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 10
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),10)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_10",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_10"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,10)",
+            "violation": "object_language_binding_violation"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(unequal_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "unequal_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/10",
+              "denominator": 10,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "unequal_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "parts_not_equal_so_no_unit_fraction"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 10
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 10 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into parts of different areas. There is no unit fraction because the parts are unequal.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "10 unequal parts (no equipartition)",
+                      "rows": 1,
+                      "w": 29.48936170212766,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 25.744680851063833,
+                      "x": 59.48936170212766,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 22.0,
+                      "x": 85.2340425531915,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 18.25531914893617,
+                      "x": 107.2340425531915,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 14.510638297872338,
+                      "x": 125.48936170212767,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 14.510638297872338,
+                      "x": 140.0,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 18.25531914893617,
+                      "x": 154.51063829787233,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 22.0,
+                      "x": 172.7659574468085,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 25.744680851063833,
+                      "x": 194.7659574468085,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 29.48936170212766,
+                      "x": 220.51063829787233,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade some parts. Because the parts have different areas, the shaded amount is not the intended fraction.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "shaded 1 of 10 unequal parts: not 1/10",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 29.48936170212766,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 25.744680851063833,
+                      "x": 59.48936170212766,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 22.0,
+                      "x": 85.2340425531915,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 18.25531914893617,
+                      "x": 107.2340425531915,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 14.510638297872338,
+                      "x": 125.48936170212767,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 14.510638297872338,
+                      "x": 140.0,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 18.25531914893617,
+                      "x": 154.51063829787233,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 22.0,
+                      "x": 172.7659574468085,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 25.744680851063833,
+                      "x": 194.7659574468085,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 29.48936170212766,
+                      "x": 220.51063829787233,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        },
+        {
+          "deformation": "equipartition_failure(miscount_partition)",
+          "family": "equipartition_failure",
+          "scene": {
+            "canvas": {
+              "height": 220,
+              "width": 760
+            },
+            "error_type": "miscount_partition",
+            "evidence": {
+              "attested_figure_count": 4,
+              "attested_pattern": "unspecified_error",
+              "correct_task": "1/10",
+              "denominator_drawn": 11,
+              "denominator_intended": 10,
+              "family": "equipartition_failure",
+              "host": "area",
+              "misconception": "miscount_partition",
+              "mode": "misconception",
+              "representation": "area_model",
+              "violated_blend_entailment": "multiplicative_measure_region",
+              "violation": "counts_the_cuts_not_the_regions_off_by_one"
+            },
+            "family": "equipartition_failure",
+            "fraction": {
+              "m": 1,
+              "n": 10
+            },
+            "frames": [
+              {
+                "caption": "Establish the whole region. One area, not yet partitioned.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "1 whole (target: 10 equal parts)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole"
+              },
+              {
+                "caption": "Partition the region into equal parts, but make the wrong number: count the cuts, not the regions.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 11,
+                      "h": 110,
+                      "label": "drew 11 equal parts for a 10-part task (off by one)",
+                      "rows": 1,
+                      "w": 220,
+                      "x": 30,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "apply_partition"
+              },
+              {
+                "caption": "Shade and read the fraction off the miscounted region. The denominator is off by one.",
+                "scene": {
+                  "format": "area-model",
+                  "rects": [
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "label": "read 1/11 off a 11-part region (wanted /10)",
+                      "role": "deformation",
+                      "rows": 1,
+                      "w": 20,
+                      "x": 30,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 50,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 70,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 90,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 110,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 130,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 150,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 170,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 190,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 210,
+                      "y": 60
+                    },
+                    {
+                      "cols": 1,
+                      "h": 110,
+                      "rows": 1,
+                      "w": 20,
+                      "x": 230,
+                      "y": 60
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "shade_parts"
+              }
+            ],
+            "host": "area",
+            "kind": "parametric_fraction_error"
+          }
+        }
+      ],
+      "denominator": 10,
+      "evidence": {
+        "fraction": {
+          "excerpt": "\u201cWhat patterns do you notice in the equations?\u201d (Each part of the park is a certain amount of tenths. If we multiply the",
+          "form": "denominator_word",
+          "fraction": "1/10",
+          "source": {
+            "line": 300,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        },
+        "host": {
+          "excerpt": "If students diagram only shows a rectangle, consider asking:",
+          "host": "rectangle",
+          "source": {
+            "line": 195,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+          }
+        }
+      },
+      "fraction": "1/10",
+      "host": "rectangle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 10,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 10 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 10,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,10)"
+          },
+          {
+            "caption": "Shade one part: this is 1/10.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 10,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(10)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_10",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_10"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,10))"
+      }
+    }
+  ],
+  "fractions": [
+    "1/2",
+    "1/3",
+    "1/4",
+    "1/10"
+  ],
+  "hosts": [
+    "rectangle"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G5-U3-L4",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": "\u2022    : I know half of a half is one fourth.                       \u2022 Repeat with each expression.",
+        "form": "denominator_word",
+        "fraction": "1/2",
+        "source": {
+          "line": 100,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+        }
+      },
+      {
+        "excerpt": "students to divide the square in thirds, vertically or horizontally. Then students divide the two thirds that represent the",
+        "form": "denominator_word",
+        "fraction": "1/3",
+        "source": {
+          "line": 124,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+        }
+      },
+      {
+        "excerpt": "\u2022    : I know half of a half is one fourth.                       \u2022 Repeat with each expression.",
+        "form": "denominator_word",
+        "fraction": "1/4",
+        "source": {
+          "line": 100,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+        }
+      },
+      {
+        "excerpt": "\u201cWhat patterns do you notice in the equations?\u201d (Each part of the park is a certain amount of tenths. If we multiply the",
+        "form": "denominator_word",
+        "fraction": "1/10",
+        "source": {
+          "line": 300,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "If students diagram only shows a rectangle, consider asking:",
+        "host": "rectangle",
+        "source": {
+          "line": 195,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson4.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "5.CA.5",
+    "5.NF.B.4",
+    "IM-G5-U3-L4"
+  ],
+  "title": "IM Grade5 U3 L4: Situations about Multiplying Fractions"
+}

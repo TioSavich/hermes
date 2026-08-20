@@ -453,6 +453,20 @@
         }
       ],
       "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/4",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/4",
       "host": "bar",
       "numerator": 1,
@@ -1067,6 +1081,20 @@
         }
       ],
       "denominator": 6,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/6",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "bar",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/6",
       "host": "bar",
       "numerator": 1,
@@ -1703,6 +1731,20 @@
         }
       ],
       "denominator": 4,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/4",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/4",
       "host": "circle",
       "numerator": 1,
@@ -2328,6 +2370,20 @@
         }
       ],
       "denominator": 6,
+      "evidence": {
+        "fraction": {
+          "fraction": "1/6",
+          "source": {
+            "class": "hand_authored"
+          }
+        },
+        "host": {
+          "host": "circle",
+          "source": {
+            "class": "hand_authored"
+          }
+        }
+      },
       "fraction": "1/6",
       "host": "circle",
       "numerator": 1,

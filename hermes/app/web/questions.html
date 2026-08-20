@@ -60,6 +60,19 @@ button { cursor: pointer; }
 .qcol li { margin: 0 0 0.35rem; }
 .meta { font-size: 0.78rem; opacity: 0.8; margin-top: 0.4rem; }
 .meta code { font-family: var(--mono, ui-monospace, monospace); }
+.admission { margin-top: 2.2rem; padding-top: 1.2rem; border-top: 2px solid var(--line); }
+.admission h2 { margin: 0 0 0.35rem; font-size: 1.25rem; }
+.admission .warrant { max-width: 48rem; font-size: 0.88rem; }
+.admission-row { border: 1px solid var(--line); padding: 0.65rem 0.8rem; margin: 0 0 0.65rem; background: rgba(255,252,244,0.55); }
+.admission-row p { margin: 0.15rem 0; }
+.admission-row .status { font: 0.75rem var(--mono, ui-monospace, monospace); opacity: 0.78; }
+.admission-group { margin: 1.1rem 0 1.5rem; }
+.admission-group h3 { margin: 0 0 0.55rem; font-size: 1.05rem; }
+.label-chip {
+  display: inline-block; margin-left: 0.45rem; padding: 0.08rem 0.38rem;
+  border: 1px solid var(--gold-deep, #8a6516); border-radius: 999px;
+  color: var(--gold-deep, #8a6516); font: 0.7rem var(--mono, ui-monospace, monospace);
+}
 </style>
 </head>
 <body>
@@ -90,14 +103,35 @@ button { cursor: pointer; }
       What answers here: 42 hand-authored monitoring-chart clusters carrying
       211 questions (126 assessing, 85 advancing). Coverage is thematic, not
       per-lesson, so a real topic can come back with zero matches — that
-      abstention is an answer, not an error. What exists but is not served
-      here: a machine-labeled store of 9,246 IM teacher questions (2,606
-      assessing, 6,640 advancing) awaits human review before anything serves
-      it. The review gate is deliberate, and this page does not reach around it.
+      abstention is an answer, not an error. These authored clusters remain
+      separate from the attributed curriculum rows below because their warrants
+      differ.
     </div>
 
     <div id="status" class="statusline"></div>
     <div id="results"></div>
+
+    <section class="admission" aria-labelledby="admission-title">
+      <h2 id="admission-title">Questions from IM teacher guides</h2>
+      <p class="warrant">
+        Browse 9,094 mechanically admitted questions by the section where IM
+        prints them. The 1,013 author-heading rows retain IM's explicit
+        advancing label; 8,081 printed-region rows carry their IM section
+        identity.
+      </p>
+      <div class="askrow">
+        <input id="admission-lesson" placeholder="Optional lesson code, for example IM-G3-U1-L7" />
+        <input id="admission-label" placeholder="Section name or explicit label (optional)" />
+        <select id="admission-lane">
+          <option value="labels" selected>labels lane</option>
+          <option value="guide">guide lane</option>
+          <option value="all">both lanes</option>
+        </select>
+        <button id="admission-go">Query attributed rows</button>
+      </div>
+      <div id="admission-status" class="statusline"></div>
+      <div id="admission-results"></div>
+    </section>
   </div>
 </div>
 
@@ -109,6 +143,12 @@ button { cursor: pointer; }
   var go = document.getElementById("go");
   var status = document.getElementById("status");
   var results = document.getElementById("results");
+  var admissionLesson = document.getElementById("admission-lesson");
+  var admissionLabel = document.getElementById("admission-label");
+  var admissionLane = document.getElementById("admission-lane");
+  var admissionGo = document.getElementById("admission-go");
+  var admissionStatus = document.getElementById("admission-status");
+  var admissionResults = document.getElementById("admission-results");
 
   function el(tag, cls, text) {
     var node = document.createElement(tag);
@@ -199,9 +239,84 @@ button { cursor: pointer; }
       });
   }
 
+  function renderAdmissionRow(row) {
+    var box = el("div", "admission-row");
+    var statusLine = el("p", "status", row.lane + " · " + row.lesson +
+      " · " + row.status);
+    if (row.label_chip) statusLine.appendChild(el("span", "label-chip", row.label_chip));
+    box.appendChild(statusLine);
+    box.appendChild(el("p", "", row.text));
+    if (row.status === "mechanically_admitted") {
+      var warrant = row.admission && row.admission.warrant;
+      box.appendChild(el("p", "meta", warrant === "im_author_heading"
+        ? "Warrant: IM author heading"
+        : "Warrant: printed IM region"));
+    } else {
+      box.appendChild(el("p", "meta", "held reason: " + (row.held_reason || "named in store")));
+    }
+    return box;
+  }
+
+  function renderAdmissionGroups(rows) {
+    var groups = {};
+    rows.forEach(function (row) {
+      var section = row.section_name || row.label || "Other";
+      if (!groups[section]) groups[section] = [];
+      groups[section].push(row);
+    });
+    Object.keys(groups).sort().forEach(function (section) {
+      var group = el("section", "admission-group");
+      group.appendChild(el("h3", "", section));
+      groups[section].forEach(function (row) {
+        group.appendChild(renderAdmissionRow(row));
+      });
+      admissionResults.appendChild(group);
+    });
+  }
+
+  function runAdmissionQuery() {
+    var payload = {
+      label: admissionLabel.value.trim() || "all",
+      lane: admissionLane.value,
+      limit: 20
+    };
+    var lesson = admissionLesson.value.trim();
+    if (lesson) payload.lesson = lesson;
+    admissionGo.disabled = true;
+    admissionStatus.textContent = "Querying attributed stores…";
+    admissionResults.textContent = "";
+    fetch("/api/guide_question_labels", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json().then(function (b) { return { status: r.status, body: b }; }); })
+      .then(function (out) {
+        admissionGo.disabled = false;
+        if (out.status !== 200 || !out.body.ok) {
+          admissionStatus.textContent = "The request was not accepted: " +
+            ((out.body && out.body.error) || ("status " + out.status));
+          return;
+        }
+        var result = out.body.result || {};
+        var rows = result.rows || [];
+        admissionStatus.textContent = result.matched_count + " row" +
+          (result.matched_count === 1 ? " matches" : "s match") +
+          "; showing " + rows.length + " grouped by IM section.";
+        renderAdmissionGroups(rows);
+      })
+      .catch(function (err) {
+        admissionGo.disabled = false;
+        admissionStatus.textContent = "The request failed: " + err;
+      });
+  }
+
   go.addEventListener("click", runQuery);
   query.addEventListener("keydown", function (event) {
     if (event.key === "Enter") runQuery();
+  });
+  admissionGo.addEventListener("click", runAdmissionQuery);
+  admissionLesson.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") runAdmissionQuery();
   });
 })();
 </script>

@@ -94,7 +94,8 @@
     reorganization: { theme: "learner",      lede: "Give the learner a fraction task, then test the strategy it builds after getting stuck." },
     "unit-echo":    { theme: "objects",      lede: "Run base regrouping beside fraction iteration at the same arity." },
     "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation step by step and change the operands." },
-    "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with an altered step and locate the divergence." }
+    "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with an altered step and locate the divergence." },
+    "fraction-comparison": { theme: "objects", lede: "Run six fraction comparison strategies beside their paired deformations on the same inputs." }
   };
 
   // mz(x) -> hermes/web file ; app(x) -> console/server-root file

@@ -1,0 +1,337 @@
+{
+  "cells": [
+    {
+      "deformations": [
+        {
+          "deformation": "transplant(radial)",
+          "family": "transplant_deformation",
+          "scene": {
+            "canvas": {
+              "height": 420,
+              "width": 760
+            },
+            "denominator": 30,
+            "family": "transplant_deformation",
+            "foreignPrimitive": "circle_radial_partition",
+            "foreignRule": "radial",
+            "frames": [
+              {
+                "caption": "Choose a rectangle as the host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 1,
+                "verb": "establish_whole(rectangle)"
+              },
+              {
+                "caption": "The radial partition rule is licensed inside the circle's own vocabulary.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "kind": "host-circle",
+                      "label": "one whole",
+                      "r": 94,
+                      "role": "whole"
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "circle",
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 94,
+                      "role": "iterated",
+                      "segments": 30
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 2,
+                "verb": "licensed_home(radial,circle)"
+              },
+              {
+                "caption": "Transplant the radial partition rule onto the rectangle, cut into 30: the pieces are unequal.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 30
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 3,
+                "verb": "apply_foreign_partition(radial,rectangle,30)"
+              },
+              {
+                "caption": "Hybridized model of 1/30: a foreign partition rule on an illicit host.",
+                "scene": {
+                  "format": "hybridization-model",
+                  "primitives": [
+                    {
+                      "h": 190,
+                      "kind": "host-rect",
+                      "label": "one whole",
+                      "role": "whole",
+                      "w": 300,
+                      "x": 110,
+                      "y": 86
+                    },
+                    {
+                      "cx": 260,
+                      "cy": 181,
+                      "host": "rectangle",
+                      "hostH": 190,
+                      "hostW": 300,
+                      "hostX": 110,
+                      "hostY": 86,
+                      "kind": "radial-partition",
+                      "label": "",
+                      "r": 110,
+                      "role": "deformation",
+                      "segments": 30
+                    }
+                  ],
+                  "version": 1
+                },
+                "sceneChanged": true,
+                "step": 4,
+                "verb": "hybrid_result(transplant(radial,rectangle),30)"
+              }
+            ],
+            "host": "rectangle",
+            "illicitHost": "rectangle_area_model",
+            "kind": "transplant_radial_on_rectangle_1_over_30",
+            "licensedHome": "circle_region",
+            "mode": "misconception",
+            "request": {
+              "spec": "transplant_radial_on_rectangle_1_over_30"
+            },
+            "result": "misconception",
+            "tuple": "hybridization(circle_radial_partition, circle_region, rectangle_area_model) at unit_fraction(1,30)",
+            "violation": "object_language_binding_violation"
+          }
+        }
+      ],
+      "denominator": 30,
+      "evidence": {
+        "fraction": {
+          "excerpt": "pieces shaded and each piece is      of the square.)",
+          "form": "vision_recovery",
+          "fraction": "1/30",
+          "source": {
+            "line": 162,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson6.md"
+          }
+        },
+        "host": {
+          "excerpt": "The purpose of this lesson is for students to calculate areas of rectangles where both side lengths are non-unit fractions.",
+          "host": "rectangle",
+          "source": {
+            "line": 12,
+            "path": "curriculum/im_teacher_guides/grade5/unit3/lesson6.md"
+          }
+        }
+      },
+      "fraction": "1/30",
+      "host": "rectangle",
+      "numerator": 1,
+      "productive": {
+        "canvas": {
+          "height": 420,
+          "width": 760
+        },
+        "denominator": 30,
+        "frames": [
+          {
+            "caption": "Establish one whole as a rectangle.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 1,
+            "verb": "establish_whole(rectangle)"
+          },
+          {
+            "caption": "Apply the rectangle's own vertical-strip partition rule into 30 equal parts.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 30,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 2,
+            "verb": "apply_partition(vertical,30)"
+          },
+          {
+            "caption": "Shade one part: this is 1/30.",
+            "scene": {
+              "format": "hybridization-model",
+              "primitives": [
+                {
+                  "h": 190,
+                  "kind": "host-rect",
+                  "label": "one whole",
+                  "role": "whole",
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                },
+                {
+                  "columns": 30,
+                  "h": 190,
+                  "host": "rectangle",
+                  "kind": "vertical-partition",
+                  "label": "",
+                  "role": "iterated",
+                  "shade": [
+                    1
+                  ],
+                  "w": 300,
+                  "x": 110,
+                  "y": 86
+                }
+              ],
+              "version": 1
+            },
+            "sceneChanged": true,
+            "step": 3,
+            "verb": "shade_unit_part(30)"
+          }
+        ],
+        "host": "rectangle",
+        "kind": "productive_rectangle_1_over_30",
+        "mode": "productive",
+        "request": {
+          "spec": "productive_rectangle_1_over_30"
+        },
+        "result": "productive",
+        "rule": "vertical",
+        "tuple": "productive_partition(rectangle, unit_fraction(1,30))"
+      }
+    }
+  ],
+  "fractions": [
+    "1/30",
+    "8/30"
+  ],
+  "hosts": [
+    "rectangle"
+  ],
+  "kind": "lesson_deformation_chart",
+  "lesson_code": "IM-G5-U3-L6",
+  "provenance": "evidence",
+  "provenance_evidence": {
+    "fractions": [
+      {
+        "excerpt": "pieces shaded and each piece is      of the square.)",
+        "form": "vision_recovery",
+        "fraction": "1/30",
+        "source": {
+          "line": 162,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson6.md"
+        }
+      },
+      {
+        "excerpt": "Student Response                                                  \u2022 \u201cHow does      represent the diagram?\u201d (There are 8",
+        "form": "vision_recovery",
+        "fraction": "8/30",
+        "source": {
+          "line": 161,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson6.md"
+        }
+      }
+    ],
+    "hosts": [
+      {
+        "excerpt": "The purpose of this lesson is for students to calculate areas of rectangles where both side lengths are non-unit fractions.",
+        "host": "rectangle",
+        "source": {
+          "line": 12,
+          "path": "curriculum/im_teacher_guides/grade5/unit3/lesson6.md"
+        }
+      }
+    ]
+  },
+  "provenance_note": "Hosts and fractions cite this lesson's guide text or its compiled evidence rows.",
+  "standards": [
+    "5.CA.5",
+    "5.NF.B.4",
+    "IM-G5-U3-L6"
+  ],
+  "title": "IM Grade5 U3 L6: Multiply Fractions"
+}

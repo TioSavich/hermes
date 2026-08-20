@@ -64,6 +64,7 @@ load_runtime :-
     use_module(index(index_query), []),
     use_module(math(state_vocabulary), []),
     use_module(render(fraction_bars_scene)),
+    use_module(render(fraction_comparison_scene), []),
     use_module(render(balance_scale_scene)),
     use_module(render(misconception_render_coverage), []),
     use_module(formalization(grounded_arithmetic),
@@ -288,6 +289,7 @@ dispatch_irregular(discourse_features).
 dispatch_irregular(discourse_pragmatics).
 dispatch_irregular(fraction_cgi_addition).
 dispatch_irregular(fraction_compare).
+dispatch_irregular(fraction_comparison_compare).
 dispatch_irregular(fraction_render).
 dispatch_irregular(geometry).
 dispatch_irregular(gesture_alignment).
@@ -302,6 +304,7 @@ dispatch_irregular(lesson_deformation_chart).
 dispatch_irregular(media_alignment).
 dispatch_irregular(measurement_strip_render).
 dispatch_irregular(misconception_jumps_witness).
+dispatch_irregular(model_analysis_lookup).
 dispatch_irregular(notation_monitoring_chart).
 dispatch_irregular(notation_render).
 dispatch_irregular(number_line_compare).
@@ -969,6 +972,54 @@ dispatch_request(fraction_compare, Id, Request, Response) :-
             "fraction_compare requires kind", Response)
     ).
 
+dispatch_request(fraction_comparison_compare, Id, Request, Response) :-
+    (   get_dict(family, Request, Family0),
+        catch(string_or_atom_to_atom(Family0, Family), _, fail)
+    ->  (   fraction_comparison_family(Family)
+        ->  (   request_strict_integer(Request, n1, N1),
+                request_strict_integer(Request, d1, D1),
+                request_strict_integer(Request, n2, N2),
+                request_strict_integer(Request, d2, D2)
+            ->  Spec = compare_spec(Family, N1, D1, N2, D2),
+                fraction_comparison_scene:fraction_comparison_compare_json(
+                    Spec, Dict0),
+                (   get_dict(errorCode, Dict0, "malformed_inputs")
+                ->  error_response(Id, malformed_inputs,
+                        "fraction_comparison_compare rejected the four integer inputs",
+                        Response)
+                ;   json_safe(Dict0, Dict),
+                    ok_response(Id, Dict, Response)
+                )
+            ;   error_response(Id, malformed_inputs,
+                    "fraction_comparison_compare requires integer n1, d1, n2, and d2",
+                    Response)
+            )
+        ;   error_response(Id, unknown_family,
+                "fraction_comparison_compare received an unknown comparison family",
+                Response)
+        )
+    ;   error_response(Id, malformed_inputs,
+            "fraction_comparison_compare requires family and integer n1, d1, n2, and d2",
+            Response)
+    ).
+
+fraction_comparison_family(number_line_fraction_comparison).
+fraction_comparison_family(area_model_fraction_comparison).
+fraction_comparison_family(set_model_fraction_comparison).
+fraction_comparison_family(benchmark_fraction_comparison).
+fraction_comparison_family(common_unit_fraction_comparison).
+fraction_comparison_family(decimal_fraction_place_value_comparison).
+
+request_strict_integer(Request, Key, N) :-
+    get_dict(Key, Request, Value),
+    (   integer(Value)
+    ->  N = Value
+    ;   string(Value)
+    ->  catch(number_string(N, Value), _, fail), integer(N)
+    ;   atom(Value)
+    ->  catch(atom_number(Value, N), _, fail), integer(N)
+    ).
+
 % =============================================================================
 % Visualization render ops (Goal H / Gate E seam).
 %
@@ -1327,26 +1378,17 @@ dispatch_request(fraction_cgi_addition, Id, Request, Response) :-
             Response)
     ).
 
-% Parametric deformation chart for one IM lesson. A code outside coverage fails
-% the handler, which surfaces honestly as op_failed. Coverage is not a reading:
-% three charted lessons take their hosts and fractions from a teacher guide
-% (IM-G3-U5-L1/L2/L15) and the division chart IM-G6-U4-L10 takes compiled task
-% instances from its own guide; the other 74 take the fixed default set. Every
-% payload carries provenance and provenance_note from
-% lesson_deformation_chart:chart_provenance/2, so no consumer has to guess.
+% Lesson deformation chart with lesson-owned host and fraction evidence.
 dispatch_request(lesson_deformation_chart, Id, Request, Response) :-
     (   get_dict(code, Request, Code0)
     ->  atom_string(Code, Code0),
         (   lesson_deformation_chart:monitoring_chart(Code, Chart)
         ->  json_safe(Chart, Safe),
             ok_response(Id, Safe, Response)
+        ;   lesson_deformation_chart:chart_refusal(Code, Reason, Message)
+        ->  error_response(Id, Reason, Message, Response)
         ;   error_response(Id, no_deformation_chart,
-                "lesson_deformation_chart charts a lesson when its coverage row \c
-                 carries a unit-fraction partition or iteration strategy, or when \c
-                 it is a grade 6 unit 4 fraction-division lesson whose guide \c
-                 attests a tape-diagram scene. No chart for that code. Being \c
-                 charted settles only that a chart was assembled, not that the \c
-                 lesson's own quantities were read.",
+                "No deformation chart is available for this lesson code.",
                 Response)
         )
     ;   error_response(Id, missing_code,
@@ -1824,6 +1866,25 @@ carving_strategy_proof_dispatch_dict(Op, X, Y, Z, Dict) :-
 % Authored table dispatch. The 28 render-role operations and 55 irregular operations
 % remain bespoke by design; spec-backed operations commit here before the
 % catch-all.
+dispatch_request(model_analysis_lookup, Id, Request, Response) :-
+    !,
+    ensure_model_analysis_loaded,
+    (   request_model_analysis_code(Request, lesson_code, Lesson),
+        request_model_analysis_code(Request, statement_id, StatementId),
+        request_model_analysis_integer(Request, limit, 20, 1, 50, Limit),
+        request_model_analysis_integer(Request, offset, 0, 0, inf, Offset)
+    ->  (   model_analysis_lookup_dict(
+                Lesson, StatementId, Limit, Offset, Dict)
+        ->  json_safe(Dict, Safe),
+            ok_response(Id, Safe, Response)
+        ;   dispatch_message(model_analysis_lookup, no_result, Message),
+            error_response(Id, no_model_analysis, Message, Response)
+        )
+    ;   dispatch_message(model_analysis_lookup, malformed, Message),
+        error_response(Id, malformed_model_analysis_lookup_request,
+                       Message, Response)
+    ).
+
 dispatch_request(Op, Id, Request, Response) :-
     dispatch_spec(Op, Inputs, Call, Result),
     !,
@@ -3294,10 +3355,9 @@ deformation_chart_scope_export(Code, Dict) :-
             request_op: "lesson_deformation_chart",
             covered_lesson_codes: CodeStrings,
             provenance_census: Census,
-            note: "No deformation chart for that code. A code on the covered \c
-                   list is not a lesson that was read: provenance_census counts \c
-                   how many charted lessons take their hosts and fractions from \c
-                   a teacher guide and how many take the fixed default set."
+            note: "No deformation chart is available for that code. The \c
+                   provenance census counts hand-authored, evidence-joined, \c
+                   and compiled division charts."
         }
     ).
 
@@ -4392,6 +4452,155 @@ classifier_emergent(Context, Set) :-
 
 incoherent_outcome(incoherent) :- !.
 incoherent_outcome(incoherent(_)).
+
+%!  ensure_model_analysis_loaded is det.
+%
+%   Load the attributed model-analysis store only when a caller asks for it.
+%   The store is generated and large enough that it does not belong on the
+%   worker's boot path.
+ensure_model_analysis_loaded :-
+    (   current_predicate(model_analysis_pilot:model_analysis_row/6)
+    ->  true
+    ;   with_output_to(user_error,
+            use_module(strategies('abstraction/model_analysis_pilot'), []))
+    ).
+
+request_model_analysis_code(Request, Key, Code) :-
+    (   get_dict_opt(Key, Request, Value)
+    ->  Value \== "",
+        string_or_atom_to_atom(Value, Code)
+    ;   var(Code)
+    ).
+
+request_model_analysis_integer(Request, Key, Default, Low, High, Integer) :-
+    (   get_dict_opt(Key, Request, Value)
+    ->  dispatch_integer(Value, Integer),
+        Integer >= Low,
+        ( High == inf -> true ; Integer =< High )
+    ;   Integer = Default
+    ).
+
+%!  model_analysis_lookup_dict(+Lesson, +StatementId, +Limit, +Offset, -Dict)
+%   is semidet.
+%
+%   Page the generated store. Either filter may be absent; when both are
+%   supplied, the statement must belong to the supplied lesson.
+model_analysis_lookup_dict(Lesson, StatementId, Limit, Offset, Dict) :-
+    model_analysis_lookup_filter(Lesson, StatementId, Mode, Query),
+    findall(row(Id, Text, Analysis, Anchor, Testimony, Receipt),
+            model_analysis_matching_row(
+                Lesson, StatementId,
+                Id, Text, Analysis, Anchor, Testimony, Receipt),
+            StoredRows),
+    StoredRows \== [],
+    length(StoredRows, Total),
+    model_analysis_page(StoredRows, Offset, Limit, PageRows),
+    maplist(model_analysis_row_dict, PageRows, Rows),
+    length(Rows, Returned),
+    model_analysis_summary_dict(Summary),
+    Dict = _{mode: Mode,
+             query: Query,
+             total: Total,
+             limit: Limit,
+             offset: Offset,
+             returned: Returned,
+             summary: Summary,
+             rows: Rows}.
+
+model_analysis_lookup_filter(Lesson, StatementId, statement_in_lesson,
+        _{lesson_code: Lesson, statement_id: StatementId}) :-
+    nonvar(Lesson),
+    nonvar(StatementId),
+    !.
+model_analysis_lookup_filter(_Lesson, StatementId, statement,
+        _{statement_id: StatementId}) :-
+    nonvar(StatementId),
+    !.
+model_analysis_lookup_filter(Lesson, _StatementId, lesson,
+        _{lesson_code: Lesson}) :-
+    nonvar(Lesson),
+    !.
+model_analysis_lookup_filter(_Lesson, _StatementId, list, _{}).
+
+model_analysis_matching_row(Lesson, StatementId,
+        Id, Text, Analysis, Anchor, Testimony, Receipt) :-
+    model_analysis_pilot:model_analysis_row(
+        Id, Text, Analysis, Anchor, Testimony, Receipt),
+    model_analysis_filter_value(StatementId, Id),
+    Anchor = anchor(lesson(RowLesson), _, _, _),
+    model_analysis_filter_value(Lesson, RowLesson).
+
+model_analysis_filter_value(Filter, _Value) :-
+    var(Filter),
+    !.
+model_analysis_filter_value(Filter, Value) :-
+    Filter == Value.
+
+model_analysis_page(Rows, Offset, Limit, Page) :-
+    length(Rows, Total),
+    (   Offset >= Total
+    ->  Page = []
+    ;   length(Prefix, Offset),
+        append(Prefix, Rest, Rows),
+        Remaining is Total - Offset,
+        PageLength is min(Limit, Remaining),
+        length(Page, PageLength),
+        append(Page, _, Rest)
+    ).
+
+model_analysis_summary_dict(
+        _{row_count: RowCount,
+          held_excluded: HeldCount,
+          by_tier: TierRows,
+          by_grade: GradeRows}) :-
+    model_analysis_pilot:model_analysis_summary(
+        summary(row_count(RowCount), held_excluded(HeldCount),
+                by_tier(TierPairs), by_grade(GradePairs))),
+    maplist(model_analysis_tier_count_dict, TierPairs, TierRows),
+    maplist(model_analysis_grade_count_dict, GradePairs, GradeRows).
+
+model_analysis_tier_count_dict(Tier-Count, _{tier: Tier, count: Count}).
+model_analysis_grade_count_dict(Grade-Count, _{grade: Grade, count: Count}).
+
+model_analysis_row_dict(
+        row(Id, Text,
+            analysis(quantities(Quantities), ask(Ask), steps(Steps),
+                     answer(AnswerValue, AnswerKind),
+                     missing_doing(MissingDoing)),
+            anchor(lesson(Lesson), grade(Grade), record_id(Id),
+                   statement_sha(StatementSha)),
+            testimony(model(Model), backend(Backend),
+                      job(source_file(SourceFile)), date(Date), tier(Tier)),
+            receipt(swipl_test(Checks))),
+        _{statement_id: Id,
+          statement: Text,
+          analysis: _{quantities: QuantityRows,
+                      ask: Ask,
+                      arithmetic_steps: StepRows,
+                      answer: _{value: AnswerValue, kind: AnswerKind},
+                      missing_doing: MissingDoing},
+          anchor: _{lesson_code: Lesson,
+                    grade: Grade,
+                    record_id: Id,
+                    statement_sha: StatementSha},
+          testimony: _{model: Model,
+                       backend: Backend,
+                       source_file: SourceFile,
+                       date: Date,
+                       tier: Tier},
+          receipt: _{swipl_test: Checks}}) :-
+    maplist(model_analysis_quantity_dict, Quantities, QuantityRows),
+    maplist(model_analysis_step_dict, Steps, StepRows).
+
+model_analysis_quantity_dict(
+        quantity(Value, UnitOrKind, VerbatimSpan),
+        _{value: Value,
+          unit_or_kind: UnitOrKind,
+          verbatim_span: VerbatimSpan}).
+
+model_analysis_step_dict(
+        step(Operation, Operands, Result),
+        _{operation: Operation, operands: Operands, result: Result}).
 
 % The Lakoff & Nunez catalogue row a content set compiles from, when one
 % matches exactly; null otherwise. Computed, not hand-tagged, so the

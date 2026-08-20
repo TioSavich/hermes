@@ -12,6 +12,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SERVER = ROOT / "hermes/mcp/server.py"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 
 class CheckFailure(AssertionError):
@@ -35,6 +37,14 @@ def descriptions() -> dict[str, str]:
             result[name] = description
     if not result:
         fail("description_parse", "CORE_TOOLS descriptions were not found")
+    # guide_question_labels is the one store-counted description. MCP fills
+    # its placeholders from the generated summary facts at registration time;
+    # check the same registered text rather than the inert template literal.
+    from hermes.mcp import server as mcp_server
+
+    for name, description, _parameters in mcp_server.standalone_tool_rows(ROOT):
+        if name == "guide_question_labels":
+            result[name] = description
     return result
 
 
@@ -53,47 +63,32 @@ def expect_equal(name: str, claimed: int | float, measured: int | float) -> None
 def check_deformation_chart(description: str) -> None:
     claim = match_claim(
         "lesson_deformation_chart",
-        r"of the (?P<total>\d+) lesson codes.*?, (?P<guide>\d+) take their hosts"
-        r".*?\(all (?P<hand_authored>\d+) report provenance hand_authored\);"
-        r" the other (?P<default_fill>\d+) take one fixed default set",
+        r"serves (?P<total>\d+) codes: (?P<hand_authored>\d+) hand-authored"
+        r" fraction charts, (?P<evidence>\d+) evidence-joined fraction charts,"
+        r" and (?P<division>\d+) compiled division chart.*?refuses"
+        r" (?P<fraction_refusal>\d+) eligible codes with fraction_operands_unrecoverable"
+        r" and (?P<host_refusal>\d+) with no_deformation_chart",
         description,
     )
-    chart_source = (
-        ROOT / "curriculum/im/lesson_deformation_chart.pl"
-    ).read_text(encoding="utf-8")
-    default_source = (
-        ROOT / "curriculum/im/generated/default_fill_lessons.pl"
-    ).read_text(encoding="utf-8")
-    guide_codes = set(re.findall(
-        r"^hand_authored_chart_lesson\('([^']+)'",
-        chart_source,
-        flags=re.MULTILINE,
-    ))
-    division_codes = set(re.findall(
-        r"^division_chart_lesson\('([^']+)'\)\.",
-        chart_source,
-        flags=re.MULTILINE,
-    ))
-    generated_codes = set(re.findall(
-        r"^default_fill_lesson\('([^']+)'\)\.",
-        default_source,
-        flags=re.MULTILINE,
-    ))
-    default_codes = generated_codes - guide_codes
-    hand_authored_codes = guide_codes | division_codes
-    all_codes = hand_authored_codes | default_codes
-    expect_equal("lesson_deformation_chart.total", int(claim["total"]), len(all_codes))
-    expect_equal("lesson_deformation_chart.guide", int(claim["guide"]), len(guide_codes))
-    expect_equal(
-        "lesson_deformation_chart.hand_authored",
-        int(claim["hand_authored"]),
-        len(hand_authored_codes),
+    goal = (
+        "use_module(library(http/json)),"
+        "use_module(lessons('im/lesson_deformation_chart')),"
+        "chart_provenance_census(Census),"
+        "findall(Code,default_fill_lessons:default_fill_lesson(Code),Codes0),sort(Codes0,Codes),"
+        "aggregate_all(count,(member(Code,Codes),chart_refusal(Code,fraction_operands_unrecoverable,_)),FractionRefusal),"
+        "aggregate_all(count,(member(Code,Codes),chart_refusal(Code,no_deformation_chart,_)),HostRefusal),"
+        "put_dict(_{fraction_refusal:FractionRefusal,host_refusal:HostRefusal},Census,Out),"
+        "json_write_dict(current_output,Out),halt."
     )
-    expect_equal(
-        "lesson_deformation_chart.default_fill",
-        int(claim["default_fill"]),
-        len(default_codes),
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", goal],
+        cwd=ROOT, text=True, capture_output=True, timeout=60, check=False,
     )
+    if completed.returncode != 0:
+        fail("lesson_deformation_chart.source", completed.stderr.strip())
+    measured = json.loads(completed.stdout)
+    for field in ("total", "hand_authored", "evidence", "division", "fraction_refusal", "host_refusal"):
+        expect_equal(f"lesson_deformation_chart.{field}", int(claim[field]), int(measured[field]))
 
 
 def check_pedagogical_questions(description: str) -> None:
@@ -116,6 +111,46 @@ def check_pedagogical_questions(description: str) -> None:
     }
     for field, count in measured.items():
         expect_equal(f"pedagogical_questions.{field}", int(claim[field]), count)
+
+
+def check_guide_question_labels(description: str) -> None:
+    claim = match_claim(
+        "guide_question_labels",
+        r"(?P<admitted>[\d,]+) of (?P<candidates>[\d,]+) candidate rows are mechanically admitted\."
+        r" Warrant provenance: (?P<author>[\d,]+) im_author_heading rows.*?;"
+        r" (?P<printed>[\d,]+) printed_region rows",
+        description,
+    )
+    from hermes.mcp import server as mcp_server
+
+    measured = mcp_server.question_admission_counts(ROOT)
+    expect_equal(
+        "guide_question_labels.total_admitted",
+        int(claim["admitted"].replace(",", "")),
+        measured["total_admitted"],
+    )
+    expect_equal(
+        "guide_question_labels.candidate_count",
+        int(claim["candidates"].replace(",", "")),
+        measured["candidate_count"],
+    )
+    expect_equal(
+        "guide_question_labels.author_heading_admitted",
+        int(claim["author"].replace(",", "")),
+        measured["author_heading_admitted"],
+    )
+    expect_equal(
+        "guide_question_labels.printed_region_admitted",
+        int(claim["printed"].replace(",", "")),
+        measured["printed_region_admitted"],
+    )
+    for phrase in ("im_author_heading", "printed_region"):
+        if phrase not in description:
+            fail("guide_question_labels.warrant", f"missing phrase {phrase!r}")
+    lowered = description.lower()
+    for forbidden in ("void", "student or moment", "fits a particular"):
+        if forbidden in lowered:
+            fail("guide_question_labels.copy", f"forbidden surface phrase {forbidden!r}")
 
 
 def swipl_integer(name: str, goal: str) -> int:
@@ -190,6 +225,35 @@ def check_arithmetic_demonstration(description: str) -> None:
     expect_equal("lesson_arithmetic_demonstration.count", claimed, len(tasks))
 
 
+def check_model_analysis_lookup(description: str) -> None:
+    claim = match_claim(
+        "model_analysis_lookup",
+        r"the (?P<rows>\d+) stored model-authored analyses.*?source ledger holds"
+        r" (?P<held>\d+) additional oracle_mismatched_held rows",
+        description,
+    )
+    goal = (
+        "use_module(library(http/json)),"
+        "use_module(strategies('abstraction/model_analysis_pilot'),[]),"
+        "model_analysis_pilot:model_analysis_summary("
+        "summary(row_count(Rows),held_excluded(Held),by_tier(_),by_grade(_))),"
+        "json_write_dict(current_output,_{rows:Rows,held:Held}),halt."
+    )
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", goal],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        timeout=30,
+        check=False,
+    )
+    if completed.returncode != 0:
+        fail("model_analysis_lookup.source", completed.stderr.strip())
+    measured = json.loads(completed.stdout)
+    expect_equal("model_analysis_lookup.rows", int(claim["rows"]), int(measured["rows"]))
+    expect_equal("model_analysis_lookup.held", int(claim["held"]), int(measured["held"]))
+
+
 def check_prolog_query(description: str) -> None:
     claim = match_claim(
         "prolog_query",
@@ -216,9 +280,11 @@ def main() -> int:
         rows = descriptions()
         check_deformation_chart(rows["lesson_deformation_chart"])
         check_pedagogical_questions(rows["pedagogical_questions"])
+        check_guide_question_labels(rows["guide_question_labels"])
         check_strategy_recognize(rows["strategy_recognize"])
         check_incompatibility_contexts(rows["incompatibility_contexts"])
         check_arithmetic_demonstration(rows["lesson_arithmetic_demonstration"])
+        check_model_analysis_lookup(rows["model_analysis_lookup"])
         check_prolog_query(rows["prolog_query"])
     except (CheckFailure, KeyError, OSError, json.JSONDecodeError, subprocess.TimeoutExpired) as exc:
         print(f"FAIL mcp_description_counts: {exc}", file=sys.stderr)
