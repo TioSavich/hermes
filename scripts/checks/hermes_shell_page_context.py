@@ -25,6 +25,20 @@ TEMPLATE_ROOTS = (
     ROOT / "formal" / "learner",
 )
 ACTIVE_RE = re.compile(r"\bdata-active\s*=\s*([\"'])([^\"']+)\1")
+SHELL_PATH = ROOT / "hermes" / "web" / "render" / "hermes-shell.js"
+NAV_BLOCK_RE = re.compile(r"\bvar NAV = \[(.*?)\n  \];", re.DOTALL)
+NAV_SECTION_RE = re.compile(
+    r'\{ title: "([^"]+)", kind: "([^"]+)", base: "([^"]+)", items: \[(.*?)\]\s*\}',
+    re.DOTALL,
+)
+NAV_ITEM_RE = re.compile(r'\["([^"]+)",\s*"([^"]+)",\s*([^\]]+?)\],')
+EXPECTED_NAV = (
+    ("explore", "Lessons", 'app("console.html#explore")'),
+    ("discussions", "Discussions", 'app("discussions.html")'),
+    ("visualizations", "Math tools", 'mz("visualizations.html")'),
+    ("landing", "Journey", 'mz("landing.html")'),
+    ("research", "Research", 'mz("research.html")'),
+)
 
 
 def template_active_ids() -> dict[str, list[Path]]:
@@ -68,6 +82,38 @@ def report_strategy_machine_backing() -> int:
     return 0
 
 
+def report_nav() -> int:
+    source = SHELL_PATH.read_text(encoding="utf-8")
+    block_match = NAV_BLOCK_RE.search(source)
+    if not block_match:
+        print("Hermes shell NAV block is missing")
+        return 1
+    sections = NAV_SECTION_RE.findall(block_match.group(1))
+    if len(sections) != 1:
+        print(f"Hermes shell NAV has {len(sections)} sections; expected one")
+        return 1
+    title, kind, base, item_source = sections[0]
+    if (title, kind, base) != ("Hermes", "practice", "light"):
+        print(
+            "Hermes shell NAV section differs: "
+            f"{(title, kind, base)!r}"
+        )
+        return 1
+    items = tuple(
+        (page_id, label, href.strip())
+        for page_id, label, href in NAV_ITEM_RE.findall(item_source)
+    )
+    if items != EXPECTED_NAV:
+        print("Hermes shell NAV entries differ")
+        print("expected:", *EXPECTED_NAV, sep="\n")
+        print("actual:", *items, sep="\n")
+        return 1
+    if 'brand.href = app("");' not in source:
+        print("Hermes shell brand does not link to the app root")
+        return 1
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -82,6 +128,7 @@ def main() -> int:
         template_ids.add("synthetic-orphan")
     failed = report_orphans(template_ids, set(PAGE_CONTEXT))
     failed |= report_strategy_machine_backing()
+    failed |= report_nav()
     if failed:
         return 1
     print(

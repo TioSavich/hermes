@@ -7,6 +7,10 @@ automata, a misconception registry compiled from the research literature,
 CCSS and Indiana standards, and lesson monitoring charts for the
 Illustrative Mathematics curriculum.
 
+Hermes augments the Illustrative Mathematics curriculum rather than
+reproducing it: what ships are the derived records and charts, not the
+curriculum itself.
+
 Everything runs on your own machine at `http://127.0.0.1:8765`. Nothing is
 published anywhere by starting it.
 
@@ -46,7 +50,9 @@ flash-drive bundle with its galleries already present.
 
 Hermes also offers a local, standard-input/output MCP server for tool-capable
 clients. It needs no Python package installation and does not open a network
-port. See [the MCP setup guide](hermes/mcp/SETUP.md) for the checked local
+port. A tool-capable model can reach more of the knowledge base than the
+console surfaces currently expose, so this is the recommended interface for
+now. See [the MCP setup guide](hermes/mcp/SETUP.md) for the checked local
 setup, client registration, and the first three calls to try.
 
 **With Docker.**

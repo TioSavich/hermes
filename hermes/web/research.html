@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-page-id="research" data-hermes-base="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Hermes</title>
+  <link rel="stylesheet" href="hermes-tokens.css">
+  <link rel="stylesheet" href="render/host.css">
+  <script defer src="render/hermes-shell.js" data-root="./" data-app="/" data-active="research"></script>
+  <style>
+    body { margin: 0; color: var(--ink); background: var(--paper); }
+    .research-index { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .research-index > p { max-width: 660px; color: var(--muted); }
+    .research-index h2 { margin: 2rem 0 .75rem; font-size: 1.2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .9rem; }
+    a.card { display: block; padding: 1rem 1.05rem; color: inherit; text-decoration: none;
+      background: var(--paper-cool); border: 1px solid var(--line); border-radius: 8px; }
+    a.card:hover { border-color: var(--gold-deep, #a97c24); box-shadow: 0 4px 14px rgba(13,12,8,.14); }
+    a.card h3 { margin: 0 0 .25rem; font-size: 1.08rem; }
+    a.card p { margin: 0; color: var(--ink-soft, #1b1810); font-size: .88rem; }
+  </style>
+</head>
+<body data-hshell-doc="1">
+  <main class="research-index">
+    <h1>Research</h1>
+    <p>Choose an argument, formal instrument, or system page.</p>
+
+    <h2>Research arguments</h2>
+    <div class="grid">
+      <a class="card" href="bridge.html"><h3>The Bridge</h3><p>Work through a learner's move from a resource limit to a revised strategy.</p></a>
+      <a class="card" href="/no.html"><h3>Two ways to say no</h3><p>Compare a failed calculation with a rule that no longer applies.</p></a>
+      <a class="card" href="/breaks.html"><h3>Where it breaks</h3><p>Test where a mathematical grounding or incompatibility reaches its boundary.</p></a>
+      <a class="card" href="incompatibility-entailment.html"><h3>Entailment order</h3><p>Work through declared incompatibilities and the entailments they support.</p></a>
+      <a class="card" href="muds.html"><h3>Meaning-Use Diagrams</h3><p>Trace relations between mathematical uses and their vocabularies.</p></a>
+    </div>
+
+    <h2>Formal instruments</h2>
+    <div class="grid">
+      <a class="card" href="coordination.html"><h3>Unit coordination</h3><p>Test how units are composed, repeated, and treated as new units.</p></a>
+      <a class="card" href="/learner/reorg_demo.html"><h3>Reorganization</h3><p>Give the learner a fraction task and test the strategy it builds after getting stuck.</p></a>
+      <a class="card" href="scoreboard.html"><h3>Scoreboard</h3><p>Work with commitments, entitlements, and inferential strength.</p></a>
+    </div>
+
+    <h2>System</h2>
+    <div class="grid">
+      <a class="card" href="atlas.html"><h3>Capability Atlas</h3><p>Find what Hermes can do and open the page for each capability.</p></a>
+      <a class="card" href="review.html"><h3>Proposal review</h3><p>Review one proposal with its warrant and recorded actions.</p></a>
+      <a class="card" href="/sidekick.html"><h3>Sidekick chat</h3><p>Ask the local model a question and review the consultations used in its reply.</p></a>
+      <a class="card" href="gallery.html"><h3>Gallery</h3><p>Browse coded samples of mathematical representations.</p></a>
+    </div>
+  </main>
+</body>
+</html>

@@ -1234,11 +1234,38 @@ function lessonChartChip(code, manifest) {
   }
   return `<a class="stance-chip" href="generated/lesson_deformation_charts/${encodeURIComponent(code)}/index.html" target="_blank" rel="noopener">Wrong-answer pattern chart</a>`;
 }
+let NOTATION_MANIFEST_PROMISE = null;
+function notationManifest() {
+  if (!NOTATION_MANIFEST_PROMISE) {
+    NOTATION_MANIFEST_PROMISE = fetch(
+      'generated/notation_lesson_charts/manifest.json',
+      { cache: 'no-store' }
+    ).then(response => {
+      if (!response.ok) throw new Error('notation-chart manifest unavailable');
+      return response.json();
+    });
+  }
+  return NOTATION_MANIFEST_PROMISE;
+}
+function notationChartChip(code, manifest) {
+  if (!manifest) {
+    return '<span class="stance-chip" data-absence-kind="manifest-unavailable">'
+      + 'Notation chart: availability unavailable</span>';
+  }
+  const lessons = Array.isArray(manifest.lessons) ? manifest.lessons : [];
+  const chart = lessons.find(row => row.code === code);
+  if (!chart) {
+    return '<span class="stance-chip" data-absence-kind="no-lesson-chart">'
+      + 'Notation chart: not available for this lesson</span>';
+  }
+  return `<a class="stance-chip" href="generated/notation_lesson_charts/${encodeURIComponent(code)}/index.html" target="_blank" rel="noopener">Notation chart</a>`;
+}
 async function openLesson(code) {
   const detail = $("#lesson-detail");
   const stopElapsed = startElapsed(detail, "loading lesson context…");
   detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   const chartManifestTask = deformationManifest().catch(() => null);
+  const notationManifestTask = notationManifest().catch(() => null);
   let data;
   try { ({ data } = await postJSON('/api/field_context', { lesson_code: code })); }
   catch (error) {
@@ -1265,6 +1292,7 @@ async function openLesson(code) {
         `<a href="#" class="nearby-lesson" data-lesson="${escAttr(n.lesson_code)}">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
     : '';
   const chartChip = lessonChartChip(code, await chartManifestTask);
+  const notationChip = notationChartChip(code, await notationManifestTask);
   detail.innerHTML = `<div class="card"><div class="fc">
     <div class="fc-head"><h3>${esc(lesson.title || code)}</h3>
       <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
@@ -1272,6 +1300,7 @@ async function openLesson(code) {
       <div class="ce-row">
         <a class="stance-chip" href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(code)}">Plan this lesson</a>
         ${chartChip}
+        ${notationChip}
       </div>
     </div>
     <div class="fc-grid">

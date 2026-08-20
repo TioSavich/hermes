@@ -264,7 +264,10 @@ def check_page_contract() -> None:
         "guide_questions",
         "setDemoStep",
         "questions.hidden = active",
-        "chart.lesson_code !== DEMONSTRATION_LESSON",
+        # The Tomorrow card carried the old chart.lesson_code guard; after its
+        # removal (2026-08-19) the demonstration lesson's reviewed-guide-question
+        # preference lives in the strategy-question renderer.
+        "code !== DEMONSTRATION_LESSON || guideAssess.length",
     )
     for token in required:
         assert token in page, token

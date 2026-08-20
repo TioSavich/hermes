@@ -63,37 +63,38 @@
     learner:      { label: "The learner",        light: "#2c7d78", dark: "#5bb4ae", lightInk: "#0d0c08" }
   };
   var PAGE = {
-    console:        { theme: "norms",        lede: "Bring a mathematical discussion, computation, or lesson to the local workbench." },
-    discussions:    { theme: "norms",        lede: "Build a claim-checked account of a discussion and keep the evidence attached." }, // R? recollection
-    sidekick:       { theme: "norms",        lede: "Chat with the local tuned model while every Hermes consultation it runs is listed beside the reply." },
-    visualizations: { theme: "objects",      lede: "Run a representation filmstrip, then change its inputs when a worker is available." },
-    "strategy-machine": { theme: "objects", lede: "Invoke one registered automaton runner by family and kind, then read its runtime trace." },
-    witnesses:      { theme: "recollection", lede: "Query the finite witness families gathered from the loaded knowledge base." },
+    console:        { theme: "norms",        lede: "Work with a mathematical discussion, computation, or lesson." },
+    discussions:    { theme: "norms",        lede: "Check the mathematical claims in a discussion and keep the evidence with each finding." }, // R? recollection
+    sidekick:       { theme: "norms",        lede: "Ask the local model a question and review the consultations used in its reply." },
+    visualizations: { theme: "objects",      lede: "Choose a mathematical representation, run its worked example, and change the inputs." },
+    "strategy-machine": { theme: "objects", lede: "Choose an automaton, run it with your inputs, and follow its actions." },
+    witnesses:      { theme: "recollection", lede: "Find finite examples that support a mathematical, curricular, or formal claim." },
     monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
-    questions:      { theme: "norms",        lede: "Query the authored assessing and advancing questions by topic, automaton state, or standard." },
-    review:         { theme: "norms",        lede: "Judge one generated proposal at a time with its recorded warrant and machine actions." },
-    gallery:        { theme: "objects",      lede: "Browse coded representation samples from the local asset manifest." },
-    landing:        { theme: "recollection", lede: "Choose a door into Hermes or follow the theory journey from its shared entry." },
-    no:             { theme: "negation",     lede: "Being wrong has structure: a rule, its domain, and the collision beyond that domain." },
-    breaks:         { theme: "negation",     lede: "Run where a grounding metaphor or incompatibility relation reaches its boundary." },
-    "incompatibility-entailment": { theme: "negation", lede: "Inspect the finite register of declared incompatibility hyperedges and its earned entailment relation." },
+    questions:      { theme: "norms",        lede: "Find assessing and advancing questions by topic, strategy state, or standard." },
+    review:         { theme: "norms",        lede: "Review one proposal with its warrant and recorded actions." },
+    gallery:        { theme: "objects",      lede: "Browse coded samples of mathematical representations." },
+    landing:        { theme: "recollection", lede: "Choose a Hermes surface or follow the eight-chapter journey." },
+    research:       { theme: "recollection", lede: "Choose a research argument, formal instrument, or system page." },
+    no:             { theme: "negation",     lede: "Work through how a rule succeeds in one domain and fails beyond it." },
+    breaks:         { theme: "negation",     lede: "Test where a grounding metaphor or incompatibility relation reaches its boundary." },
+    "incompatibility-entailment": { theme: "negation", lede: "Work through declared incompatibilities and the entailments they support." },
     snap:           { theme: "body",         lede: "Drag the disc until accumulated tension produces a snap into another strategy." },
-    counting:       { theme: "objects",      lede: "Counting by ones is correct and, past a point, unaffordable; follow the cost tally by tally." },
+    counting:       { theme: "objects",      lede: "Follow the cost of counting by ones as the quantities grow." },
     crisis:         { theme: "body",         lede: "Work 38 + 55 by counting and mark the point where that method stops paying." },
     strategies:     { theme: "objects",      lede: "Run counting-on, COBO, and RMB as successively shorter strategic actions." },
-    fractal:        { theme: "objects",      lede: "Run the nested strategy machines and change the conditions that propagate a snap." }, // R? body
+    fractal:        { theme: "objects",      lede: "Change the conditions in nested strategy machines and follow how a snap propagates." }, // R? body
     playground:     { theme: "body",         lede: "Drag one node and test when enough local snaps produce a new strategy ring." },
     boundary:       { theme: "objects",      lede: "Test what the action model handles at the boundary between counting and fractions." }, // R? negation
     matrix:         { theme: "body",         lede: "Follow each snap as it grows the memory grid and reorganizes repeated tallies." }, // R? objects
-    muds:           { theme: "recollection", lede: "Trace the recorded relations between mathematical uses and their vocabularies." }, // R? negation
-    scoreboard:     { theme: "norms",        lede: "Query commitments, entitlements, and inferential-strength records on one scoreboard." },
-    atlas:          { theme: "recollection", lede: "Find each capability, the route that reaches it, and the page that calls it." },
-    bridge:         { theme: "learner",      lede: "Run the formal bridge from a resource limit through consultation to a revised strategy." },
+    muds:           { theme: "recollection", lede: "Trace relations between mathematical uses and their vocabularies." }, // R? negation
+    scoreboard:     { theme: "norms",        lede: "Work with commitments, entitlements, and inferential strength on one scoreboard." },
+    atlas:          { theme: "recollection", lede: "Find what Hermes can do and open the page for each capability." },
+    bridge:         { theme: "learner",      lede: "Work through a learner's move from a resource limit to a revised strategy." },
     coordination:   { theme: "learner",      lede: "Test how units are composed, repeated, and treated as new units." }, // R? objects
     reorganization: { theme: "learner",      lede: "Give the learner a fraction task, then test the strategy it builds after getting stuck." },
     "unit-echo":    { theme: "objects",      lede: "Run base regrouping beside fraction iteration at the same arity." },
-    "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation from its action trace and change the operands." },
-    "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with its documented deformation." }
+    "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation step by step and change the operands." },
+    "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with an altered step and locate the divergence." }
   };
 
   // mz(x) -> hermes/web file ; app(x) -> console/server-root file
@@ -103,43 +104,12 @@
   // ---- the app map -------------------------------------------------------
   // Each item: [id, label, href]. Sections group them.
   var NAV = [
-    { title: "Practice", kind: "practice", base: "light", items: [
-      ["console",     "Console",          app("console.html")],
-      ["explore",     "Explore lessons",  app("console.html#explore")],
+    { title: "Hermes", kind: "practice", base: "light", items: [
+      ["explore",     "Lessons",          app("console.html#explore")],
       ["discussions", "Discussions",      app("discussions.html")],
-      ["sidekick",    "Sidekick chat",    app("sidekick.html")],
-      ["visualizations", "Visualizers",   mz("visualizations.html")],
-      ["strategy-machine", "Automaton runner", mz("strategies/machine.html")],
-      ["witnesses",   "Witnesses",        mz("witnesses.html")],
-      ["monitoring",  "Monitoring chart", mz("monitoring_chart.html")],
-      ["questions",   "Questions",        app("questions.html")],
-      ["review",      "Proposal review",  mz("review.html")],
-      ["gallery",     "Gallery",          mz("gallery.html")],
-      ["unit-echo",   "Unit echo",        mz("unit-echo/index.html")],
-      ["fraction-bars", "Fraction bars",  mz("fraction-bars/calculator.html")],
-      ["fraction-compare", "Fraction compare", mz("fraction-bars/compare.html")],
-    ]},
-    { title: "Theory", kind: "theory", base: "dark", items: [
-      ["landing",    "The journey — overview", mz("landing.html")],
-      ["no",         "Two ways to say no",   app("no.html")],
-      ["breaks",     "Where it breaks",      app("breaks.html")],
-      ["incompatibility-entailment", "Entailment order", mz("incompatibility-entailment.html")],
-      ["snap",       "The Snap",    mz("index.html")],
-      ["counting",   "Counting",    mz("counting.html")],
-      ["crisis",     "Crisis",      mz("crisis.html")],
-      ["strategies", "Strategies",  mz("strategies.html")],
-      ["fractal",    "The Fractal", mz("fractal.html")],
-      ["playground", "Playground",  mz("playground.html")],
-      ["boundary",   "Boundary",    mz("boundary.html")],
-      ["matrix",     "The Matrix",  mz("matrix.html")],
-      ["muds",       "Meaning-Use Diagrams", mz("muds.html")],
-      ["scoreboard", "Scoreboard",  mz("scoreboard.html")],
-      ["atlas",      "Capability Atlas", mz("atlas.html")],
-    ]},
-    { title: "Research wing", kind: "research", base: "dark", items: [
-      ["bridge",       "The Bridge",       mz("bridge.html")],
-      ["coordination", "Unit coordination", mz("coordination.html")],
-      ["reorganization", "Reorganization", "/learner/reorg_demo.html"],
+      ["visualizations", "Math tools",      mz("visualizations.html")],
+      ["landing",     "Journey",          mz("landing.html")],
+      ["research",    "Research",         mz("research.html")],
     ]},
   ];
 
@@ -156,7 +126,8 @@
       "machine.html": "strategy-machine",
       "atlas.html": "atlas", "witnesses.html": "witnesses", "review.html": "review",
       "gallery.html": "gallery",
-      "landing.html": "landing", "index.html": "snap", "counting.html": "counting",
+      "landing.html": "landing", "research.html": "research",
+      "index.html": "snap", "counting.html": "counting",
       "crisis.html": "crisis", "strategies.html": "strategies",
       "playground.html": "playground", "bridge.html": "bridge",
       "coordination.html": "coordination", "reorg_demo.html": "reorganization",
@@ -454,7 +425,7 @@
 
     // brand
     var brand = h("a", "hshell-brand");
-    brand.href = mz("landing.html");
+    brand.href = app("");
     brand.title = "Hermes home";
     brand.innerHTML = '<img src="' + MARK + '" alt="">' +
       '<span class="txt"><span class="nm">Hermes</span>' +

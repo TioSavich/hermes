@@ -22,9 +22,6 @@
  h1{font-size:1.5rem;margin-bottom:.2rem}
  h2{font-size:1.1rem;margin-top:2rem;border-bottom:1px solid var(--line);padding-bottom:.3rem}
  .code{color:var(--muted);font-family:ui-monospace,monospace;margin-top:0}
- .register{background:var(--paper-warm);border:1px solid var(--gold-pale);border-radius:6px;
-   padding:.7rem .9rem;font-size:.9rem;color:var(--gold-deep)}
- .why-link{display:block;width:fit-content;margin:.35rem 0 1rem;font:12px/1.4 ui-monospace,monospace;color:var(--gold-deep,var(--release,#a97c24))}
  ul{padding-left:1.2rem} .fw{color:var(--muted);font-size:.8rem}
  .chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
  .chips li{background:var(--paper-cool);border:1px solid var(--line);border-radius:4px;
@@ -84,12 +81,7 @@
  .strategy-list{display:grid;gap:.65rem;padding:0;list-style:none}
  .strategy-list li{border-left:3px solid var(--gold);padding:.35rem .65rem;background:var(--paper-cool)}
 .strategy-name{font-weight:700}.strategy-cue,.strategy-question{display:block;font-size:.86rem;color:var(--muted)}
-.tomorrow-card{max-width:860px;margin:1rem auto;padding:1.15rem 1.3rem;border:2px solid var(--gold);border-radius:10px;background:var(--surface,#fff)}
-.tomorrow-card h2{margin:.2rem 0 .8rem}.tomorrow-card h3{font-size:.9rem;margin:1rem 0 .35rem}.tomorrow-card ul{margin:.3rem 0;padding-left:1.2rem}
-.tomorrow-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.25rem}.tomorrow-grid section{break-inside:avoid}
-.tomorrow-visual{max-width:100%;max-height:180px;display:block;border:1px solid var(--line);border-radius:6px}
-.print-card{margin:.2rem 0 .8rem}.chart-error{max-width:860px;margin:1rem auto;padding:1rem 1.2rem;border:2px solid #a33;border-radius:10px;background:#fff5f3;color:#541d15}
-.load-failed .teacher-detail{display:none}
+.chart-error{max-width:860px;margin:1rem auto;padding:1rem 1.2rem;border:2px solid #a33;border-radius:10px;background:#fff5f3;color:#541d15}
  .visual-pairs{display:grid;gap:1rem}.visual-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
  .visual-pair figure{max-width:none}.visual-pair img{width:100%;max-height:360px;object-fit:contain}
  .student-work-demo{border:2px solid var(--gold);border-radius:10px;padding:1rem 1.1rem;margin:1.4rem 0;background:var(--surface,#fff)}
@@ -123,46 +115,17 @@
  .viz .calc-note{white-space:normal;overflow-wrap:anywhere}
  .viz .caption{display:block}
  .viz .band:empty,.viz .verbs:empty,.viz .tuple:empty{display:none}
- /* Classroom printing: drop the interactive visualizer controls, force a
-    grayscale-legible palette, and keep each section/card off a page seam. */
- @media print{
-   body{max-width:none;margin:0;color:#000;background:#fff}
-   nav,.controls,.calc-bar,.calc-note,#download,#play,#prev,#next,#seek,.student-work-form,.demo-controls,
-   .meta-line,.picker,.picker-note,.source-line,.live-state{display:none}
-   .teacher-detail,details,.register,.why-link,#chart-error{display:none!important}
-   .tomorrow-card{border:0;margin:0;padding:0;max-width:none}.tomorrow-grid{gap:.4rem 1rem}
-   a[href]::after{content:""}
-   h2:not(:first-of-type){break-before:page}
-   h1{break-after:avoid}
-   .misc,figure,.viz{break-inside:avoid}
-   .register{background:#fff;border-color:#000;color:#000}
-   .op,.badge.gold,.badge.reject,.badge.unreviewed,.badge.corpus{
-     background:#000;color:#fff}
-   .chips li,.misc,figure,.viz{background:#fff;border-color:#000}
-   figure.reject{opacity:1}
-   figure.gold{box-shadow:none;border-color:#000}
-   .note,.why,.cite,figcaption,.fw,.code{color:#333}
- }
 </style></head><body class="view-freshman">
 <div id="chart-error" class="chart-error" hidden role="alert"></div>
-<section id="tomorrow-card" class="tomorrow-card">
-  <button class="print-card" type="button" id="print-card">Print / save PDF</button>
-  <h2>Tomorrow card</h2>
-  <p id="card-goal">Loading the lesson card…</p>
-  <div id="card-body" class="tomorrow-grid"></div>
-  <details><summary>Sources and details</summary><p>Lesson notes and visual details remain available below.</p></details>
-</section>
 <div class="teacher-detail">
 <h1 id='chart-title'>Monitoring chart &mdash; IM Grade2 U2 L2: Find the Unknown Addend</h1>
 <p class="code" id='chart-code'>IM-G2-U2-L2</p>
-<p class="register">Every picture on this chart is drawn by the app from this lesson's own numerals; the visualizer recalculates from the app's trace. Documented student work from the research literature lives in the <a href="gallery.html">gallery</a>.</p>
-<a class="why-link" href="scoreboard.html">Why this exists &rarr;</a>
 <div class='picker'>
   <label>lesson <input id='lesson-pick' list='lesson-code-list' value='IM-G2-U2-L2'></label>
   <datalist id='lesson-code-list'></datalist>
   <button id='lesson-load' type='button'>load chart</button>
 </div>
-<p class='picker-note'>Choose an IM lesson to make its Tomorrow card.</p>
+<p class='picker-note'>Choose an IM lesson to load its monitoring chart.</p>
 <p class='picker-note'>Any of the <span id='lesson-count'>&hellip;</span> lessons
 with encoded strategies or misconceptions can be loaded here. The list is built
 into this page from the lesson encodings in <code>curriculum/im</code> (the app has
@@ -233,7 +196,6 @@ How are the tools alike? How are they different?
 </div>
 
 <h2>Standards</h2><ul id='standards-list'>
-<li><b>IM-G2-U2-L2</b> <span class='fw'>im_lesson</span><br>IM Grade2 Unit 2 Lesson 2: Find the Unknown Addend. The purpose of this lesson is for students to find the value of unknown addends by adding or subtracting within 100. Goals: Explain (orally) representations and strategies used to find an unknown addend, including those based on place value.</li>
 <li><b>2.NBT.A.2</b> <span class='fw'>ccss</span><br>Count within 1000; skip-count by 5s, 10s, and 100s.</li>
 <li><b>2.NBT.B.5</b> <span class='fw'>ccss</span><br>Fluently add and subtract within 100 using strategies based on place value, properties of operations, and/or the relationship between addition and subtraction.</li>
 <li><b>2.CA.2</b> <span class='fw'>in_indiana</span><br>Using number sense and place value strategies, add and subtract within 1,000, including composing and decomposing tens and hundreds. Use models, drawings, and strategies based on place value, properties of operations, and/or the relationship between addition and subtraction; describe the strategy and explain the reasoning used.</li>
@@ -638,95 +600,10 @@ trace.</p>
       return p;
     }
 
-    function cardSection(title, text) {
-      var section = document.createElement('section');
-      var heading = document.createElement('h3');
-      heading.textContent = title;
-      var body = document.createElement('div');
-      HermesLessonTypesetting.renderInto(body, text || 'Not included in the lesson notes.');
-      section.appendChild(heading);
-      section.appendChild(body);
-      return section;
-    }
-
-    function renderTomorrowCard(chart, context) {
-      context = context || {};
-      var goal = el('lesson-goal').textContent;
-      var displayTasks = Array.isArray(chart.display_task_instances) ? chart.display_task_instances : [];
-      var registeredTasks = Array.isArray(chart.registered_task_instances) ? chart.registered_task_instances : [];
-      var tasks = displayTasks.length ? displayTasks : registeredTasks;
-      var task = tasks.length ? (tasks[0].statement || tasks[0].excerpt || tasks[0].task || '') : '';
-      if (!task && Array.isArray(chart.activity_prompt) && chart.activity_prompt.length) task = chart.activity_prompt[0].text || '';
-      var strategies = (context.strategies || chart.anticipated_strategies || []).slice(0, 3);
-      var clusters = context.monitoring_clusters || [];
-      var assess = [], advance = [];
-      clusters.forEach(function (cluster) {
-        assess = assess.concat(cluster.assessing_questions || []);
-        advance = advance.concat(cluster.advancing_questions || []);
-      });
-      var guideQuestions = Array.isArray(chart.guide_questions) ? chart.guide_questions : [];
-      var guideAssess = guideQuestions.filter(function (item) { return item.purpose === 'assessing'; });
-      var guideAdvance = guideQuestions.filter(function (item) { return item.purpose === 'advancing'; });
-      var body = el('card-body');
-      body.textContent = '';
-      body.appendChild(cardSection('Lesson goal', goal));
-      body.appendChild(cardSection('Task', task || 'Open the teacher guide for the task prompt.'));
-      var approaches = document.createElement('section');
-      var heading = document.createElement('h3'); heading.textContent = 'Approaches to listen for'; approaches.appendChild(heading);
-      var list = document.createElement('ul');
-      strategies.forEach(function (strategy) {
-        var item = document.createElement('li');
-        var cue = strategy.vocabulary || strategy.where_to_spot || [];
-        if (typeof cue === 'string') cue = cue.replace(/^\[|\]$/g, '').split(',');
-        item.textContent = plainName(strategy.kind || strategy.name || 'Approach') + (cue.length ? ': listen for ' + cue.map(plainName).join(', ') + '.' : '.');
-        list.appendChild(item);
-      });
-      if (!strategies.length) { var none = document.createElement('li'); none.textContent = 'No approaches are prepared for this lesson yet.'; list.appendChild(none); }
-      approaches.appendChild(list); body.appendChild(approaches);
-      var trouble = (chart.teacher_misconceptions || [])[0];
-      var troubleFromResonance = false;
-      if (!trouble) {
-        var resonantTrouble = (Array.isArray(chart.resonant_misconceptions) ? chart.resonant_misconceptions : [])
-          .filter(function (m) { return m && m.diagnosable !== false; })
-          .sort(function (a, b) { return (b.score || 0) - (a.score || 0); });
-        if (resonantTrouble.length) { trouble = resonantTrouble[0]; troubleFromResonance = true; }
-      }
-      var troubleText = 'No likely trouble spot is prepared for this lesson yet.';
-      if (trouble) {
-        troubleText = plainName(trouble.name || trouble.re_anchoring_move || 'A documented wrong turn') + '.';
-        if (troubleFromResonance) troubleText += ' Retrieved by resonance from documented misconceptions near this content, not lesson-encoded.';
-      }
-      body.appendChild(cardSection('Likely trouble spot', troubleText));
-      if (chart.lesson_code !== DEMONSTRATION_LESSON) {
-        body.appendChild(cardSection('Assess question', assess[0] || 'No assess question is attached to this lesson yet.'));
-        body.appendChild(cardSection('Advance question', advance[0] || 'No advance question is attached to this lesson yet.'));
-      } else {
-        guideAssess.forEach(function (item) {
-          body.appendChild(cardSection('Reviewed guide assess question', item.text));
-        });
-        guideAdvance.forEach(function (item) {
-          body.appendChild(cardSection('Reviewed guide advance question', item.text));
-        });
-      }
-      var visual = document.querySelector('#monitoring-visuals img');
-      if (visual) {
-        var visualSection = document.createElement('section');
-        var visualHeading = document.createElement('h3'); visualHeading.textContent = 'Visual or representation';
-        var image = visual.cloneNode(true); image.className = 'tomorrow-visual';
-        visualSection.appendChild(visualHeading); visualSection.appendChild(image); body.appendChild(visualSection);
-      }
-      el('card-goal').textContent = chart.lesson_code + ' — ' + goal;
-      document.body.classList.remove('load-failed');
-      el('chart-error').hidden = true;
-    }
-
     function showChartError(code, error) {
       var message = error && error.message ? error.message : String(error || 'The lesson could not load.');
-      el('chart-error').textContent = 'Could not load ' + code + '. No lesson card is shown. ' + message;
+      el('chart-error').textContent = 'Could not load ' + code + '. ' + message;
       el('chart-error').hidden = false;
-      el('card-goal').textContent = 'Lesson card unavailable';
-      el('card-body').textContent = '';
-      document.body.classList.add('load-failed');
     }
 
     // Provenance stays reachable, never paraded: the visible reference is
@@ -993,6 +870,7 @@ trace.</p>
     function renderLiveChart(chart, context) {
       var code = chart.lesson_code;
       context = context || {};
+      el('chart-error').hidden = true;
       var title = (context.lesson && context.lesson.title) || TITLE_BY_CODE[code] || code;
       document.title = 'Monitoring chart — ' + code;
       el('chart-title').textContent = 'Monitoring chart — ' + title;
@@ -1053,7 +931,14 @@ trace.</p>
 
       var std = el('standards-list');
       std.textContent = '';
-      var standards = context.standards || [];
+      var seenStandardCodes = {};
+      var standards = (context.standards || []).filter(function (standard) {
+        if (standard.framework === 'im_lesson') return false;
+        var code = standard.code || '';
+        if (seenStandardCodes[code]) return false;
+        seenStandardCodes[code] = true;
+        return true;
+      });
       if (!standards.length) std.appendChild(noteP('No standards rows are present in the live lesson context.'));
       standards.forEach(function (standard) {
         var li = document.createElement('li');
@@ -1174,10 +1059,8 @@ trace.</p>
       renderFigureCoverage(chart.figures);
       var deformationChart = chart.deformation_chart && chart.deformation_chart.chart;
       renderMonitoringVisuals(code, deformationChart);
-      renderTomorrowCard(chart, context);
       HermesLessonTypesetting.typeset(el('lesson-task'));
       HermesLessonTypesetting.typeset(el('lesson-sequence'));
-      HermesLessonTypesetting.typeset(el('card-body'));
 
       // Point the drawer at the live lesson's leading strand: the first
       // operation in STRAND_ORDER that any of its strategies carries.
@@ -1284,7 +1167,6 @@ trace.</p>
     el('lesson-pick').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') loadLesson();
     });
-    el('print-card').addEventListener('click', function () { window.print(); });
     el('student-work-task').addEventListener('change', function () {
       var task = demoTasks[this.value];
       var source = el('student-work-task-source');
@@ -1370,25 +1252,6 @@ trace.</p>
       }
     });
 
-    // ---- footer claim about the corpus-figure manifest (checked, not assumed).
-    // hermes/representation/asset_manifest.json is tracked, but a partial deploy can
-    // drop it; when it is missing, the footer says so by name instead of
-    // pointing at a file that is not there. A local file view cannot run this
-    // check, so the build-time sentence stands there.
-    if (location.protocol === 'http:' || location.protocol === 'https:') {
-      // no-store: a browser-cached copy must not vouch for a deployment that
-      // no longer carries the file.
-      HermesFetch.requestJSON('../representation/asset_manifest.json', { cache: 'no-store' })
-        .then(function (result) { if (result.kind !== 'ok') throw new Error(HermesFetch.messageFor(result)); })
-        .catch(function () {
-          el('manifest-line').textContent = 'Corpus figures: '
-            + 'representation/asset_manifest.json is not present in this '
-            + 'deployment; its upstream classifications come from a local '
-            + 'research corpus that is not distributed. Misconception text on '
-            + 'this chart comes from the lesson data in Prolog and does not '
-            + 'depend on that manifest.';
-        });
-    }
   })();
 </script>
 
@@ -1400,7 +1263,7 @@ trace.</p>
 </div>
 <div class='misc'>
 <div class='misc-head'><span class='op'>subtraction</span> <b>add_instead_of_subtract_column</b> <span class='cite'>Ebby, 2005</span></div>
-<p class='note'>operation_direction_reversal: The student incorrectly executed the subtraction algorithm, adding instead of subtracting in the tens place or subtracting the smaller digit from the larger, losing sight of the problem&#x27;s contextual meaning. | adding instead of subtracting; adding instead of subtracting in the tens place; adding instead of subtracting in the; incorrectly executed the subtraction algorithm; losing sight | The student incorrectly executed the subtraction algorithm, adding instead of subtracting in the tens place or subtracting the smaller digit from the larger, losing sight of the problem&#x27;s contextual meaning.</p>
+<p class='note'>The student incorrectly executed the subtraction algorithm, adding instead of subtracting in the tens place or subtracting the smaller digit from the larger, losing sight of the problem&#x27;s contextual meaning.</p>
 </div>
 </div>
 <p class='fig-coverage' id='figure-coverage' hidden></p>
@@ -1483,10 +1346,5 @@ trace.</p>
       They are described here as monitoring inputs and audits; the console worker does not load them.</p>
   </details>
 </details>
-<hr><p class="register">Lesson data: /api/monitoring_chart_export, from
-curriculum/im/lesson_monitoring.pl. Live picture: hermes/web/render/drawer.js via
-/api/render. Misconception join: curriculum/im/lesson_monitoring_figures.pl.
-<span id='manifest-line'>Corpus figures: representation/asset_manifest.json (the
-gallery's source).</span></p>
 </div>
 </body></html>
