@@ -63,8 +63,6 @@ _HANDLERS = (
     ("/api/carving_operation_summary", "_handle_carving_operation_summary"),
     ("/api/balance_solve", "_handle_balance_solve"),
     ("/api/benny_demo", "_handle_benny_demo"),
-    ("/api/review_queue", "_handle_review_queue"),
-    ("/api/review_decide", "_handle_review_decide"),
     ("/api/pedagogical_questions", "_handle_pedagogical_questions"),
     ("/api/guide_question_labels", "_handle_guide_question_labels"),
 )
@@ -104,12 +102,6 @@ ROUTES = (
     Route("GET", "/api/base", base),
     Route("GET", "/api/diagnostics", diagnostics),
     *(Route("POST", path, _post(method)) for path, method in _HANDLERS),
-    # Discourse ops are declared student-data in gate.py: transcripts carry
-    # utterance text, and client-side speaker blinding cannot strip names
-    # spoken inside an utterance. The verified access class makes the FERPA
-    # gate the ops already claim actually fire on gated deployments; loopback
-    # launches (gate off by default) are unaffected.
-    *(Route("POST", path, _post(method), access="verified")
-      for path, method in _DISCOURSE_HANDLERS),
+    *(Route("POST", path, _post(method)) for path, method in _DISCOURSE_HANDLERS),
     *(Route("POST", path, _post_witness(family)) for path, family in _WITNESS_HANDLERS),
 )

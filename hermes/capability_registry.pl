@@ -47,6 +47,8 @@ capability('critique_bad_infinite', 'critique', 'dialectic', ['proof'], routed_p
 capability('data_display_render', 'data_display_scene', 'render', [], routed_paged).
 capability('decimal_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('defeasible_classify', 'defeasible_inference', 'incompatibility', ['defeater_set', 'inference_id'], routed_paged).
+capability('deformation_compare', 'deformation_comparison_scene', 'render', ['cols', 'degrees', 'family', 'long_length', 'pairs', 'piece', 'rows', 'short_length', 'solid', 'vertices', 'x', 'y'], routed_paged).
+capability('deformation_visualizer_catalog', 'hermes_worker', 'render', [], unrouted).
 capability('deontic_consequences', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments'], routed_only).
 capability('deontic_crisis', 'deontic_scorekeeper', 'sequent', ['agent', 'commitments', 'entitlements'], routed_paged).
 capability('deontic_requires_entitlement', 'deontic_scorekeeper', 'sequent', ['proposition'], routed_paged).
@@ -175,6 +177,7 @@ capability('primitive_for_practice', 'user', 'render', ['practice'], routed_page
 capability('productive_deformation_witness', 'cw_driver', 'crosswalk', ['deformation', 'family', 'operation', 'productive', 'source'], routed_paged).
 capability('prolog_query', 'prolog_query', 'infrastructure', [], unrouted).
 capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_only).
+capability('question_moves', 'question_move_pilot', 'synthesis', ['lesson', 'limit'], unrouted).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
 capability('ratio_diagram_render', 'ratio_diagram_scene', 'render', [], unrouted).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
@@ -184,8 +187,6 @@ capability('representation_candidates', 'hermes_worker', 'crosswalk', ['misconce
 capability('representation_check', 'hermes_worker', 'crosswalk', ['mode', 'representation'], routed_only).
 capability('representation_spec_check', 'hermes_worker', 'crosswalk', ['representation'], routed_only).
 capability('representation_spine_witness', 'user', 'crosswalk', ['concept'], routed_paged).
-capability('review_decide', 'review_queue', 'infrastructure', ['item_id', 'note', 'shown', 'source', 'verdict'], routed_paged).
-capability('review_queue', 'review_queue', 'infrastructure', ['offset', 'source'], routed_paged).
 capability('rhythm_transition_witness', 'sequent_engine', 'sequent', ['from', 'to'], routed_paged).
 capability('rigid_motion_render', 'rigid_motion_scene', 'render', [], routed_paged).
 capability('robinson_axiom_witness', 'sequent_engine', 'sequent', ['axiom', 'claim'], routed_paged).
@@ -194,6 +195,7 @@ capability('sequent_proof_witness', 'cw_driver', 'sequent', ['sequent', 'source'
 capability('set_base', 'cgi_base', 'infrastructure', ['base'], routed_paged).
 capability('set_grouping_compare', 'set_grouping_scene', 'render', ['a', 'b'], routed_paged).
 capability('set_grouping_render', 'set_grouping_scene', 'render', [], routed_paged).
+capability('signature_anchors', 'index_query', 'unclassified', ['family', 'signature'], unrouted).
 capability('solid_net_render', 'solid_net_scene', 'render', [], routed_paged).
 capability('standard_1_ca_1_making_ten_witness', 'standard_1_ca_1', 'standards', ['a', 'b'], routed_paged).
 capability('standard_1_ca_3_add_by_place_value_witness', 'standard_1_ca_3', 'standards', ['a', 'b'], routed_paged).
@@ -337,7 +339,6 @@ capability('knowledge/strategies/abstraction/metaphor_seam_registry.pl', 'metaph
 capability('knowledge/strategies/abstraction/model_analysis_pilot.pl', 'model_analysis_pilot', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/abstraction/pedagogy_force_pilot.pl', 'pedagogy_force_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/printed_expression_reader_pilot.pl', 'printed_expression_reader_pilot', 'synthesis', [], orphan_module).
-capability('knowledge/strategies/abstraction/question_move_pilot.pl', 'question_move_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/refusal_genesis_sketch.pl', 'refusal_genesis_sketch', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl', 'rewrite_consultation_admitted_pilot', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/abstraction/serialized_table_reader_pilot.pl', 'serialized_table_reader_pilot', 'synthesis', [], orphan_module).
@@ -353,6 +354,7 @@ capability('knowledge/strategies/machine_typology.pl', 'machine_typology', 'synt
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/render/misconception_render_link.pl', 'misconception_render_link', 'render', [], orphan_module).
 capability('knowledge/strategies/transition_tables/addition.pl', 'addition', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/algebraic.pl', 'algebraic', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/calculus.pl', 'calculus', 'synthesis', [], orphan_module).
@@ -403,6 +405,18 @@ capability_parameter('decimal_claim_witness', 'canonical', 'string', true, null)
 capability_parameter('decimal_claim_witness', 'source', 'string', true, null).
 capability_parameter('defeasible_classify', 'inference_id', null, true, null).
 capability_parameter('defeasible_classify', 'defeater_set', 'array', true, null).
+capability_parameter('deformation_compare', 'cols', 'integer', false, 5).
+capability_parameter('deformation_compare', 'degrees', 'integer', false, 60).
+capability_parameter('deformation_compare', 'family', 'string', true, "quadrant_sign_error").
+capability_parameter('deformation_compare', 'long_length', 'integer', false, 240).
+capability_parameter('deformation_compare', 'pairs', 'array', false, [_{category: "red", count: 4}, _{category: "blue", count: 6}]).
+capability_parameter('deformation_compare', 'piece', 'string', false, "l").
+capability_parameter('deformation_compare', 'rows', 'integer', false, 5).
+capability_parameter('deformation_compare', 'short_length', 'integer', false, 120).
+capability_parameter('deformation_compare', 'solid', 'string', false, "cube").
+capability_parameter('deformation_compare', 'vertices', 'array', false, [[0, 0], [4, 0], [4, 3], [0, 3]]).
+capability_parameter('deformation_compare', 'x', 'integer', false, -3).
+capability_parameter('deformation_compare', 'y', 'integer', false, 2).
 capability_parameter('deontic_consequences', 'agent', 'string', false, "student").
 capability_parameter('deontic_consequences', 'commitments', 'array', false, []).
 capability_parameter('deontic_scorecard', 'agent', 'string', false, "student").
@@ -581,23 +595,20 @@ capability_parameter('productive_deformation_witness', 'productive', 'string', t
 capability_parameter('productive_deformation_witness', 'deformation', 'string', true, null).
 capability_parameter('productive_deformation_witness', 'family', 'string', true, null).
 capability_parameter('productive_deformation_witness', 'source', 'string', true, null).
+capability_parameter('question_moves', 'lesson', 'string', false, null).
+capability_parameter('question_moves', 'limit', 'integer', false, null).
 capability_parameter('ranked_figures', 'lesson_code', 'string', true, null).
 capability_parameter('ratio_proportion_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('ratio_proportion_claim_witness', 'source', 'string', true, null).
 capability_parameter('representation_spine_witness', 'concept', 'string', false, null).
-capability_parameter('review_decide', 'source', 'string', true, null).
-capability_parameter('review_decide', 'item_id', 'string', true, null).
-capability_parameter('review_decide', 'verdict', 'string', true, null).
-capability_parameter('review_decide', 'note', 'string', false, null).
-capability_parameter('review_decide', 'shown', 'object', true, null).
-capability_parameter('review_queue', 'source', 'string', true, null).
-capability_parameter('review_queue', 'offset', 'integer', false, null).
 capability_parameter('rhythm_transition_witness', 'from', null, true, null).
 capability_parameter('rhythm_transition_witness', 'to', null, true, null).
 capability_parameter('robinson_axiom_witness', 'axiom', null, true, null).
 capability_parameter('robinson_axiom_witness', 'claim', null, true, null).
 capability_parameter('semantic_material_witness', 'from', null, true, null).
 capability_parameter('semantic_material_witness', 'to', null, true, null).
+capability_parameter('signature_anchors', 'family', 'string', false, null).
+capability_parameter('signature_anchors', 'signature', 'string', false, null).
 capability_parameter('standard_1_ca_1_making_ten_witness', 'a', null, false, null).
 capability_parameter('standard_1_ca_1_making_ten_witness', 'b', null, false, null).
 capability_parameter('standard_1_ca_3_add_by_place_value_witness', 'a', null, false, null).
@@ -698,6 +709,7 @@ capability_route('critique_bad_infinite', 'POST', '/api/witness/formal').
 capability_route('data_display_render', 'POST', '/api/render').
 capability_route('decimal_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('defeasible_classify', 'POST', '/api/witness/formal').
+capability_route('deformation_compare', 'POST', '/api/render').
 capability_route('deontic_consequences', 'POST', '/api/deontic_consequences').
 capability_route('deontic_crisis', 'POST', '/api/crisis').
 capability_route('deontic_requires_entitlement', 'POST', '/api/deontic_requires_entitlement').
@@ -838,8 +850,6 @@ capability_route('representation_candidates', 'POST', '/api/monitoring_visuals')
 capability_route('representation_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spec_check', 'POST', '/api/monitoring_visuals').
 capability_route('representation_spine_witness', 'POST', '/api/witness/grounding').
-capability_route('review_decide', 'POST', '/api/review_decide').
-capability_route('review_queue', 'POST', '/api/review_queue').
 capability_route('rhythm_transition_witness', 'POST', '/api/witness/formal').
 capability_route('rigid_motion_render', 'POST', '/api/render').
 capability_route('robinson_axiom_witness', 'POST', '/api/witness/formal').
@@ -975,6 +985,12 @@ capability_page('data_display_render', '/more-zeeman/visualizations.html').
 capability_page('data_display_render', '/more-zeeman/witnesses.html').
 capability_page('decimal_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('defeasible_classify', '/hermes/app/web/breaks.html').
+capability_page('deformation_compare', '/hermes/app/web/discussions.html').
+capability_page('deformation_compare', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('deformation_compare', '/more-zeeman/monitoring_chart.html').
+capability_page('deformation_compare', '/more-zeeman/unit-echo/index.html').
+capability_page('deformation_compare', '/more-zeeman/visualizations.html').
+capability_page('deformation_compare', '/more-zeeman/witnesses.html').
 capability_page('deontic_crisis', '/hermes/app/web/breaks.html').
 capability_page('deontic_requires_entitlement', '/hermes/app/web/breaks.html').
 capability_page('deontic_scorecard', '/hermes/app/web/breaks.html').
@@ -1152,8 +1168,6 @@ capability_page('ranked_figures', '/more-zeeman/scoreboard.html').
 capability_page('ratio_proportion_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('reorganize', '/more-zeeman/bridge.html').
 capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
-capability_page('review_decide', '/more-zeeman/review.html').
-capability_page('review_queue', '/more-zeeman/review.html').
 capability_page('rhythm_transition_witness', '/hermes/app/web/breaks.html').
 capability_page('rigid_motion_render', '/hermes/app/web/discussions.html').
 capability_page('rigid_motion_render', '/more-zeeman/fraction-bars/calculator.html').
@@ -1232,9 +1246,6 @@ capability_page('validate_reader_axioms', '/more-zeeman/witnesses.html').
 capability_page('viability_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_addsub_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('whole_number_claim_witness', '/more-zeeman/witnesses.html').
-capability_page('curriculum/im/generated/vision_lesson_digest.pl', '/more-zeeman/monitoring_chart.html').
-capability_page('curriculum/im/im_glossary.pl', '/more-zeeman/monitoring_chart.html').
-capability_page('curriculum/im_harness.pl', '/more-zeeman/monitoring_chart.html').
 capability_page('formal/formalization/axioms_geometry.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/axioms_number_theory.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/axioms_robinson.pl', '/hermes/app/web/breaks.html').

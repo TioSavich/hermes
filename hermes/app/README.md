@@ -7,16 +7,15 @@ Prolog or Python background.
 
 ## The server
 
-`server.py` owns the mutable server state for the gate, worker, and cache behind an immutable
+`server.py` owns the mutable server state for TLS preflight, workers, and caches behind an immutable
 route registry and hands each request a per-request context. `routes/registry.py`
 holds the `Route` record and `build_router`, which aggregates the `ROUTES` tuples
-from `static`, `gate`, `runtime`, `analysis`, `llm`, `monitoring`, `worker`, and
-`workflow` (about 43 routes). Each route declares an access level: `public`,
-`unlocked`, or `verified`. `routes/logic.py` carries the request handling.
+from `static`, `runtime`, `analysis`, `llm`, `monitoring`, `worker`, and
+`workflow`. `routes/logic.py` carries the request handling.
 
 - `worker.py` — keeps one SWI-Prolog worker alive and speaks newline-delimited
   JSON to `hermes_worker.pl`, so the symbolic layer reads the live KB.
-- `gate.py` — the FERPA gate; `llm.py` — the REALLMS client; `root.py` — resolves
+- `llm.py` — the REALLMS client and secure preflight; `root.py` — resolves
   and validates the repository root.
 - `workflow/` — the two-pass discussion report (`parse`, `draft`, `grade`,
   `profile`, `content`, `metrics`).
@@ -28,5 +27,4 @@ from `static`, `gate`, `runtime`, `analysis`, `llm`, `monitoring`, `worker`, and
 
 The LLM surfaces need an IU REALLMS key and answer only from the IU network;
 without a key each says so. Student data stays in `app/runtime/`, which git
-ignores. The FERPA gate is off for loopback launches by default; launch with
-`HERMES_GATE=on` to restore the lock.
+ignores.

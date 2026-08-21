@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assert the approved method/path/access/module registry and duplicate guard."""
+"""Assert the approved method/path/module registry and duplicate guard."""
 from __future__ import annotations
 
 import sys
@@ -11,109 +11,103 @@ sys.path.insert(0, str(ROOT))
 from hermes.app.routes.registry import DuplicateRouteError, Route, Router, build_router  # noqa: E402
 
 EXPECTED_TEXT = """
-GET / public static
-GET /api/quickstart public static
-GET /api/sample public static
-GET /api/inputs public static
-GET /api/fraction/render public static
-GET /api/fraction/compare public static
-GET /api/mode public gate
-GET /api/preflight public gate
-POST /api/mode public gate
-POST /api/override public gate
-POST /api/preflight public gate
-POST /api/reset public gate
-POST /api/set_key public gate
-GET /api/models public runtime
-POST /api/input unlocked runtime
-POST /api/results/list unlocked runtime
-POST /api/results/get unlocked runtime
-GET /api/knowledge public analysis
-GET /api/visualize/coordination public analysis
-GET /api/unit_coordination.svg public analysis
-GET /api/reorganize public analysis
-POST /api/compute public analysis
-POST /api/learner/reset public analysis
-POST /api/analyze unlocked analysis
-POST /api/event_score verified analysis
-POST /api/pair_graph verified analysis
-POST /api/pair_candidate verified analysis
-POST /api/chat public llm
-POST /api/help public llm
-POST /api/transcript_report public llm
-POST /api/media_transcribe public llm
-POST /api/pml_score public llm
-POST /api/misconception_search public misconception_search
-GET /api/lesson_visual public monitoring
-POST /api/field_context public monitoring
-POST /api/monitoring_chart_export public monitoring
-POST /api/ranked_figures public monitoring
-POST /api/monitoring_visuals public monitoring
-POST /api/lesson_arithmetic_demonstration public monitoring
-POST /api/field_connectivity_audit public monitoring
-POST /api/render_coverage public monitoring
-GET /api/capabilities public worker
-GET /api/base public worker
-GET /api/diagnostics public worker
-POST /api/base public worker
-POST /api/render public worker
-POST /api/inferential_strength public worker
-POST /api/strategies public worker
-POST /api/strategy_trace public worker
-POST /api/input_contract public worker
-POST /api/deontic_scorecard public worker
-POST /api/crisis public worker
-POST /api/deontic_consequences public worker
-POST /api/deontic_up_level public worker
-POST /api/deontic_requires_entitlement public worker
-POST /api/sequent_proof public worker
-POST /api/misconceptions public worker
-POST /api/standards public worker
-POST /api/grounding public worker
-POST /api/geometry public worker
-POST /api/canonical_contract public worker
-POST /api/canonical_check public worker
-POST /api/diagnose_error public worker
-POST /api/query_misconception public worker
-POST /api/literature public worker
-POST /api/notation_render public worker
-POST /api/fraction_cgi_addition public worker
-POST /api/lesson_deformation_chart public worker
-POST /api/notation_monitoring_chart public worker
-POST /api/brandom_backstop public worker
-POST /api/brandomian_check public worker
-POST /api/hyperedges public worker
-POST /api/axiom_toggle public worker
-POST /api/carving_strategy_proof public worker
-POST /api/carving_operation_summary public worker
-POST /api/balance_solve public worker
-POST /api/benny_demo public worker
-POST /api/review_queue public worker
-POST /api/review_decide public worker
-POST /api/pedagogical_questions public worker
-POST /api/guide_question_labels public worker
-POST /api/discourse_features verified worker
-POST /api/discourse_pragmatics verified worker
-POST /api/gesture_alignment verified worker
-POST /api/trace_adjudication verified worker
-POST /api/witness/crosswalk_claim public worker
-POST /api/witness/geometry public worker
-POST /api/witness/standards public worker
-POST /api/witness/formal public worker
-POST /api/witness/pml public worker
-POST /api/witness/grounding public worker
-POST /api/witness/misconception public worker
-POST /api/parse verified workflow
-POST /api/content verified workflow
-POST /api/profile verified workflow
-POST /api/draft verified workflow
-POST /api/grade verified workflow
-POST /api/score verified workflow
-POST /api/metrics verified workflow
-POST /api/work_read verified workflow
-POST /api/work_refine verified workflow
-GET /api/sidekick/status public sidekick
-POST /api/sidekick_chat public sidekick
+GET / static
+GET /api/quickstart static
+GET /api/sample static
+GET /api/inputs static
+GET /api/fraction/render static
+GET /api/fraction/compare static
+GET /api/models runtime
+POST /api/input runtime
+POST /api/results/list runtime
+POST /api/results/get runtime
+GET /api/knowledge analysis
+GET /api/visualize/coordination analysis
+GET /api/unit_coordination.svg analysis
+GET /api/reorganize analysis
+POST /api/compute analysis
+POST /api/learner/reset analysis
+POST /api/analyze analysis
+POST /api/event_score analysis
+POST /api/pair_graph analysis
+POST /api/pair_candidate analysis
+GET /api/preflight llm
+POST /api/preflight llm
+POST /api/set_key llm
+POST /api/chat llm
+POST /api/help llm
+POST /api/transcript_report llm
+POST /api/media_transcribe llm
+POST /api/pml_score llm
+POST /api/misconception_search misconception_search
+GET /api/lesson_visual monitoring
+POST /api/field_context monitoring
+POST /api/monitoring_chart_export monitoring
+POST /api/ranked_figures monitoring
+POST /api/monitoring_visuals monitoring
+POST /api/lesson_arithmetic_demonstration monitoring
+POST /api/field_connectivity_audit monitoring
+POST /api/render_coverage monitoring
+GET /api/capabilities worker
+GET /api/base worker
+GET /api/diagnostics worker
+POST /api/base worker
+POST /api/render worker
+POST /api/inferential_strength worker
+POST /api/strategies worker
+POST /api/strategy_trace worker
+POST /api/input_contract worker
+POST /api/deontic_scorecard worker
+POST /api/crisis worker
+POST /api/deontic_consequences worker
+POST /api/deontic_up_level worker
+POST /api/deontic_requires_entitlement worker
+POST /api/sequent_proof worker
+POST /api/misconceptions worker
+POST /api/standards worker
+POST /api/grounding worker
+POST /api/geometry worker
+POST /api/canonical_contract worker
+POST /api/canonical_check worker
+POST /api/diagnose_error worker
+POST /api/query_misconception worker
+POST /api/literature worker
+POST /api/notation_render worker
+POST /api/fraction_cgi_addition worker
+POST /api/lesson_deformation_chart worker
+POST /api/notation_monitoring_chart worker
+POST /api/brandom_backstop worker
+POST /api/brandomian_check worker
+POST /api/hyperedges worker
+POST /api/axiom_toggle worker
+POST /api/carving_strategy_proof worker
+POST /api/carving_operation_summary worker
+POST /api/balance_solve worker
+POST /api/benny_demo worker
+POST /api/pedagogical_questions worker
+POST /api/guide_question_labels worker
+POST /api/discourse_features worker
+POST /api/discourse_pragmatics worker
+POST /api/gesture_alignment worker
+POST /api/trace_adjudication worker
+POST /api/witness/crosswalk_claim worker
+POST /api/witness/geometry worker
+POST /api/witness/standards worker
+POST /api/witness/formal worker
+POST /api/witness/pml worker
+POST /api/witness/grounding worker
+POST /api/witness/misconception worker
+POST /api/parse workflow
+POST /api/content workflow
+POST /api/profile workflow
+POST /api/draft workflow
+POST /api/grade workflow
+POST /api/score workflow
+POST /api/metrics workflow
+POST /api/work_read workflow
+POST /api/work_refine workflow
+GET /api/sidekick/status sidekick
+POST /api/sidekick_chat sidekick
 """
 EXPECTED = tuple(tuple(line.split()) for line in EXPECTED_TEXT.splitlines() if line.strip())
 
@@ -124,13 +118,13 @@ def noop(_context: object) -> None:
 
 def main() -> int:
     router = build_router()
-    actual = tuple((route.method, route.path, route.access, route.module) for route in router.routes)
+    actual = tuple((route.method, route.path, route.module) for route in router.routes)
     if actual != EXPECTED:
         print("route registry mismatch", file=sys.stderr)
         print("expected:", *EXPECTED, sep="\n", file=sys.stderr)
         print("actual:", *actual, sep="\n", file=sys.stderr)
         return 1
-    duplicate = Route("GET", "/api/mode", noop)
+    duplicate = Route("GET", "/api/preflight", noop)
     try:
         Router((*router.routes, duplicate), noop)
     except DuplicateRouteError:

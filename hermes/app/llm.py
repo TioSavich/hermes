@@ -488,13 +488,12 @@ def make_client(pack_root: Path) -> dict:
 def build_secure_ssl_context(*, warn_on_error: bool = False) -> ssl.SSLContext:
     """A CA-verified context that ignores REALLMS_INSECURE.
 
-    Used by the campus/home gate: a successful secure connection is the proof
-    that the machine is on the IU network, so the preflight must never relax
-    verification regardless of how the renderer is configured.
+    Secure preflight must never relax verification regardless of how the
+    renderer is configured.
 
     `warn_on_error` mirrors `build_ssl_context`'s stderr warning on a CA-bundle
-    `OSError`; it defaults off to keep the gate preflight's frequent mode
-    switches quiet. The workflow LLM client passes `warn_on_error=True`.
+    `OSError`; it defaults off to keep preflight quiet. The workflow LLM client
+    passes `warn_on_error=True`.
     """
     ctx = ssl.create_default_context()
     ctx.check_hostname = True
@@ -520,13 +519,13 @@ def _preflight_request(api_url: str, headers: dict, ssl_ctx: ssl.SSLContext, tim
 
 
 def secure_preflight(*, api_key: str, api_url: str, timeout: int = 10) -> tuple[bool, str]:
-    """Return (on_campus, reason). True only if a CA-VERIFIED connection succeeds."""
+    """Return (ok, reason). True only if a CA-verified connection succeeds."""
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
     ctx = build_secure_ssl_context()
     try:
         code = _preflight_request(api_url, headers, ctx, timeout=timeout)
-    except Exception as e:  # noqa: BLE001 — any TLS/DNS failure means "not verified / not on campus"
+    except Exception as e:  # noqa: BLE001 — any TLS/DNS failure means not verified
         if _looks_like_cert_error(e):
-            return False, "secure TLS verification failed — not on the IU network (or CA bundle missing)"
+            return False, "secure TLS verification failed (the CA bundle may be missing)"
         return False, f"could not reach REALLMS over verified TLS: {e}"
     return True, f"verified secure connection (HTTP {code})"

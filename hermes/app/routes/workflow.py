@@ -1,9 +1,9 @@
-"""Verified in-process workflow routes."""
+"""In-process workflow routes."""
 from __future__ import annotations
 
 from typing import Any, Callable
 
-from hermes.app import gate, llm
+from hermes.app import llm
 from hermes.app.routes.logic import RouteLogic
 from hermes.app.routes.registry import Route
 from hermes.app.workflow import service
@@ -11,18 +11,12 @@ from hermes.app.workflow import service
 COMMANDS = ("parse", "content", "profile", "draft", "grade", "score", "metrics", "work_read", "work_refine")
 
 
-def _tls_insecure(state: gate.GateState) -> bool:
-    """Only an explicit user debugging opt-in, and never in campus mode."""
-    return llm.insecure_tls_requested() and state.mode != gate.CAMPUS
-
-
 def _workflow(command: str) -> Callable[[Any], None]:
     def handle(ctx: Any) -> None:
-        state = ctx.services.gate.state
         workflow_context = service.WorkflowContext(
             pack_root=ctx.app_dir,
             llm_client=service.WorkflowLLMClient(
-                llm, insecure=_tls_insecure(state)
+                llm, insecure=llm.insecure_tls_requested()
             ),
             worker_request=ctx.services.worker.request,
             emit=lambda _text: None,
@@ -40,6 +34,6 @@ def _workflow(command: str) -> Callable[[Any], None]:
 
 
 ROUTES = tuple(
-    Route("POST", f"/api/{command}", _workflow(command), access="verified")
+    Route("POST", f"/api/{command}", _workflow(command))
     for command in COMMANDS
 )

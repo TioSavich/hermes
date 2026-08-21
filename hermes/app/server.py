@@ -1,6 +1,6 @@
 """Hermes local teaching console HTTP transport.
 
-The server owns mutable gate, worker, and cache state. Endpoint behavior lives
+The server owns mutable TLS, worker, and cache state. Endpoint behavior lives
 behind an immutable declarative registry and receives a per-request context.
 """
 from __future__ import annotations
@@ -9,7 +9,6 @@ import argparse
 import importlib.util
 import json
 import mimetypes
-import os
 import sys
 import threading
 import urllib.parse
@@ -24,7 +23,7 @@ from typing import Any
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from hermes.app import gate, llm, worker
+from hermes.app import llm, worker
 from hermes.app.field_context_cache import load_field_context_cache
 from hermes.app.routes.misconception_search import EmbeddingIndex, load_index as load_misconception_embedding_index
 from hermes.app.routes.logic import RouteLogic
@@ -43,11 +42,6 @@ STATIC_MOUNTS = {
     "docs": REPO_ROOT / "docs",
     "docs/research_assets": REPO_ROOT / "data" / "research_assets",
 }
-
-OVERRIDE_ALLOWED = os.environ.get("HERMES_GATE_OVERRIDE", "").strip().lower() in ("1", "true", "yes")
-INITIAL_GATE_ENABLED = gate.gate_enabled_for_launch(
-    os.environ.get("HERMES_HOST", "127.0.0.1"), os.environ.get("HERMES_GATE")
-)
 
 _WORKER_TRANSPORT_MARKERS = ("pipe closed", "malformed json", "worker exited")
 _WORKER_TIMEOUT = 300.0
@@ -99,23 +93,11 @@ class WorkerService:
 
 
 @dataclass(slots=True)
-class GateService:
-    """Mutable launch gate state and its unchanged preflight policy."""
+class TLSService:
+    """Retain the latest CA-verified REALLMS preflight result."""
 
     runtime: Path
-    enabled: bool = INITIAL_GATE_ENABLED
-    override_allowed: bool = OVERRIDE_ALLOWED
-    state: gate.GateState = field(default_factory=lambda: gate.GateState(override=OVERRIDE_ALLOWED))
     last_preflight: "PreflightResult | None" = None
-
-    def mode_payload(self) -> dict[str, Any]:
-        return {
-            "mode": self.state.mode,
-            "verified": self.state.verified,
-            "override": self.state.override,
-            "override_allowed": self.override_allowed,
-            "gate_enabled": self.enabled,
-        }
 
     def run_preflight(self) -> tuple[bool, str]:
         key = llm.load_key(self.runtime)
@@ -145,7 +127,7 @@ class AppServices:
 
     worker: WorkerService
     monitoring_export_worker: WorkerService
-    gate: GateService
+    tls: TLSService
     field_context_cache: dict[str, dict[str, Any]] = field(default_factory=dict)
     misconception_embedding_index: EmbeddingIndex | None = None
     field_audit_cache: Any | None = None
@@ -171,7 +153,7 @@ SYSTEM_PROMPTS = MappingProxyType(load_required_system_prompts())
 SERVICES = AppServices(
     WorkerService(),
     WorkerService(timeout=_MONITORING_EXPORT_TIMEOUT),
-    GateService(RUNTIME),
+    TLSService(RUNTIME),
     field_context_cache=load_field_context_cache(REPO_ROOT),
     misconception_embedding_index=load_misconception_embedding_index(REPO_ROOT),
 )
@@ -214,27 +196,6 @@ class RequestContext:
 
     def prompt(self, name: str) -> str:
         return self.prompts[name]
-
-    def _gate_or_423(self, op_name: str) -> bool:
-        service = self.services.gate
-        if not service.enabled:
-            return True
-        allowed, reason = gate.check_op_allowed(op_name, service.state)
-        if not allowed:
-            self._send_json({"error": reason, "error_type": "locked"}, status=423)
-            return False
-        return True
-
-    def _require_unlocked(self) -> bool:
-        service = self.services.gate
-        if not service.enabled or gate.student_data_unlocked(service.state):
-            return True
-        self._send_json(
-            {"error": "results are student data — unlock the gate (campus + verified, or testing override)",
-             "error_type": "locked"},
-            status=423,
-        )
-        return False
 
     def _send_file(self, path: Path) -> None:
         self.handler._send_file(path)
@@ -365,7 +326,6 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
 
-    SERVICES.gate.enabled = gate.gate_enabled_for_launch(args.host, os.environ.get("HERMES_GATE"))
     httpd = ThreadingHTTPServer((args.host, args.port), HermesHandler)
 
     def warm_field_audit_cache() -> None:
@@ -377,11 +337,7 @@ def main(argv: list[str] | None = None) -> int:
             pass
 
     threading.Thread(target=warm_field_audit_cache, daemon=True).start()
-    state = SERVICES.gate.state
     print(f"Hermes console: http://{args.host}:{args.port}")
-    print(f"Mode: {state.mode}  (student data {'unlocked' if gate.student_data_unlocked(state) else 'locked'})")
-    if SERVICES.gate.override_allowed:
-        print("*** TESTING OVERRIDE ON (HERMES_GATE_OVERRIDE) — gate open; use synthetic/public data only ***")
     print(f"Default model: {llm.DEFAULT_MODEL}")
     try:
         httpd.serve_forever()

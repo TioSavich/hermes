@@ -62,7 +62,7 @@
   }
 
   // Render one side's frame into its stage element via the shared drawer geometry.
-  function drawSide(stageId, frames, canvas, index) {
+  function drawSide(stageId, frames, bounds, index) {
     var stage = el(stageId);
     if (!stage) return;
     clear(stage);
@@ -71,29 +71,59 @@
       return;
     }
     var clamped = Math.max(0, Math.min(index, frames.length - 1));
-    var bounds = DRAW.documentBounds(frames, canvas);
     var svg = DRAW.buildSvg(frames[clamped], bounds);
     stage.appendChild(svg);
   }
 
   function caption(frames, index) {
     if (!Array.isArray(frames) || frames.length === 0) return '';
+    var finished = index >= frames.length;
     var f = frames[Math.max(0, Math.min(index, frames.length - 1))];
-    return (f && f.caption) || '';
+    var text = (f && f.caption) || '';
+    return finished ? 'This side has finished. ' + text : text;
+  }
+
+  function plainName(value) {
+    var text = String(value || '').replace(/_/g, ' ').trim();
+    return text ? text.charAt(0).toUpperCase() + text.slice(1) : '';
+  }
+
+  function researchValue(value) {
+    if (value === undefined || value === null) return '';
+    if (typeof value === 'string' || typeof value === 'number') return String(value);
+    return JSON.stringify(value);
+  }
+
+  function setBoundary(message) {
+    var note = el('boundaryNote');
+    if (!note) return;
+    note.textContent = message || '';
+    note.hidden = !message;
   }
 
   function render() {
     var doc = state.doc;
     if (!doc) return;
     setText(el('result'), '');
-    setText(el('context'), (doc.productiveKind || '') +
-      (doc.deformationKind ? ' vs ' + doc.deformationKind : ''));
-    setText(el('prodKind'), doc.productiveKind || '');
-    setText(el('defKind'), doc.deformationKind || '');
+    setBoundary('');
+    setText(el('context'), plainName(doc.productiveKind) +
+      (doc.deformationKind ? ' vs ' + plainName(doc.deformationKind) : ''));
+    setText(el('prodKind'), plainName(doc.productiveKind));
+    setText(el('defKind'), plainName(doc.deformationKind));
     setText(el('teacherNote'), doc.note || '');
     setText(el('formalNote'),
       (doc.productiveKind || '?') + ' → ' + (doc.deformationKind || '?') +
       (doc.family ? '  (family: ' + doc.family + ')' : ''));
+    setText(el('divergenceNote'), doc.divergence
+      ? 'Divergence for these inputs: productive result ' +
+        researchValue(doc.divergence.productiveResult) + '; deformation result ' +
+        researchValue(doc.divergence.deformationResult) + '.'
+      : 'Divergence for these inputs: the two result fields agree.');
+    setText(el('viabilityNote'), doc.viability
+      ? 'Viability: ' + plainName(doc.viability.status) + '. Condition: ' +
+        plainName(doc.viability.condition) + '. Validity: ' +
+        plainName(doc.viability.validity) + '.'
+      : 'No viability record is available for this comparison.');
     setText(el('compareNote'), doc.note || '');
 
     // An honest "not yet drawable as a 1-D bar divergence" pair: the worker
@@ -101,13 +131,19 @@
     var prod = (doc.productive && doc.productive.frames) || [];
     var def = (doc.deformation && doc.deformation.frames) || [];
     if (doc.error && prod.length === 0 && def.length === 0) {
-      showStageError('prodStage', doc.error);
-      showStageError('defStage', doc.error);
+      state.steps = 0;
+      clear(el('prodStage'));
+      clear(el('defStage'));
+      setBoundary(doc.error);
       setText(el('prodCap'), '');
       setText(el('defCap'), '');
       setText(el('counter'), '');
       var slider0 = el('seek');
       if (slider0) { slider0.max = '0'; slider0.value = '0'; }
+      var prev0 = el('prev');
+      var next0 = el('next');
+      if (prev0) prev0.disabled = true;
+      if (next0) next0.disabled = true;
       return;
     }
 
@@ -115,8 +151,9 @@
     if (state.index >= state.steps) state.index = state.steps - 1;
     if (state.index < 0) state.index = 0;
 
-    drawSide('prodStage', prod, doc.canvas, state.index);
-    drawSide('defStage', def, doc.canvas, state.index);
+    var bounds = DRAW.documentBounds(prod.concat(def), doc.canvas);
+    drawSide('prodStage', prod, bounds, state.index);
+    drawSide('defStage', def, bounds, state.index);
     setText(el('prodCap'), caption(prod, state.index));
     setText(el('defCap'), caption(def, state.index));
     setText(el('counter'), state.steps ? ('step ' + (state.index + 1) + ' of ' + state.steps) : '');
@@ -158,6 +195,7 @@
     var out = {};
     var inputs = document.querySelectorAll('[data-arg]');
     Array.prototype.forEach.call(inputs, function (node) {
+      if (node.disabled || node.closest('[hidden]')) return;
       var key = node.getAttribute('data-arg');
       out[key] = (node.type === 'number') ? Number(node.value) : node.value;
     });

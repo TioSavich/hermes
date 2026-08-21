@@ -65,6 +65,7 @@ load_runtime :-
     use_module(math(state_vocabulary), []),
     use_module(render(fraction_bars_scene)),
     use_module(render(fraction_comparison_scene), []),
+    use_module(render(deformation_comparison_scene), []),
     use_module(render(balance_scale_scene)),
     use_module(render(misconception_render_coverage), []),
     use_module(formalization(grounded_arithmetic),
@@ -278,6 +279,8 @@ dispatch_irregular(capability_atlas).
 dispatch_irregular(compute).
 dispatch_irregular(coordinate_plane_render).
 dispatch_irregular(data_display_render).
+dispatch_irregular(deformation_compare).
+dispatch_irregular(deformation_visualizer_catalog).
 dispatch_irregular(deontic_consequences).
 dispatch_irregular(deontic_crisis).
 dispatch_irregular(deontic_requires_entitlement).
@@ -976,10 +979,7 @@ dispatch_request(fraction_comparison_compare, Id, Request, Response) :-
     (   get_dict(family, Request, Family0),
         catch(string_or_atom_to_atom(Family0, Family), _, fail)
     ->  (   fraction_comparison_family(Family)
-        ->  (   request_strict_integer(Request, n1, N1),
-                request_strict_integer(Request, d1, D1),
-                request_strict_integer(Request, n2, N2),
-                request_strict_integer(Request, d2, D2)
+        ->  (   fraction_comparison_inputs(Family, Request, N1, D1, N2, D2)
             ->  Spec = compare_spec(Family, N1, D1, N2, D2),
                 fraction_comparison_scene:fraction_comparison_compare_json(
                     Spec, Dict0),
@@ -991,7 +991,7 @@ dispatch_request(fraction_comparison_compare, Id, Request, Response) :-
                     ok_response(Id, Dict, Response)
                 )
             ;   error_response(Id, malformed_inputs,
-                    "fraction_comparison_compare requires integer n1, d1, n2, and d2",
+                    "fraction_comparison_compare requires the integer inputs used by this family",
                     Response)
             )
         ;   error_response(Id, unknown_family,
@@ -999,9 +999,26 @@ dispatch_request(fraction_comparison_compare, Id, Request, Response) :-
                 Response)
         )
     ;   error_response(Id, malformed_inputs,
-            "fraction_comparison_compare requires family and integer n1, d1, n2, and d2",
+            "fraction_comparison_compare requires a family and that family's integer inputs",
             Response)
     ).
+
+fraction_comparison_inputs(positional_decimal_reading, Request,
+                           N1, D1, 0, 1) :-
+    !,
+    request_strict_integer(Request, n1, N1),
+    request_strict_integer(Request, d1, D1).
+fraction_comparison_inputs(decimal_place_unit_regrouping, Request,
+                           N1, D1, N2, 1) :-
+    !,
+    request_strict_integer(Request, n1, N1),
+    request_strict_integer(Request, d1, D1),
+    request_strict_integer(Request, n2, N2).
+fraction_comparison_inputs(_Family, Request, N1, D1, N2, D2) :-
+    request_strict_integer(Request, n1, N1),
+    request_strict_integer(Request, d1, D1),
+    request_strict_integer(Request, n2, N2),
+    request_strict_integer(Request, d2, D2).
 
 fraction_comparison_family(number_line_fraction_comparison).
 fraction_comparison_family(area_model_fraction_comparison).
@@ -1009,6 +1026,134 @@ fraction_comparison_family(set_model_fraction_comparison).
 fraction_comparison_family(benchmark_fraction_comparison).
 fraction_comparison_family(common_unit_fraction_comparison).
 fraction_comparison_family(decimal_fraction_place_value_comparison).
+fraction_comparison_family(positional_decimal_reading).
+fraction_comparison_family(decimal_comparison_by_aligned_units).
+fraction_comparison_family(decimal_addition_by_aligned_units).
+fraction_comparison_family(decimal_subtraction_by_aligned_units).
+fraction_comparison_family(decimal_place_unit_regrouping).
+fraction_comparison_family(decimal_multiplication_rule).
+
+dispatch_request(deformation_compare, Id, Request, Response) :-
+    (   get_dict(family, Request, Family0),
+        catch(string_or_atom_to_atom(Family0, Family), _, fail)
+    ->  (   deformation_compare_family(Family)
+        ->  (   deformation_compare_spec(Family, Request, Spec),
+                deformation_comparison_scene:deformation_compare_json(
+                    Family, Spec, Dict0)
+            ->  json_safe(Dict0, Dict),
+                ok_response(Id, Dict, Response)
+            ;   error_response(Id, malformed_inputs,
+                    "deformation_compare rejected the inputs for this family",
+                    Response)
+            )
+        ;   error_response(Id, unknown_family,
+                "deformation_compare received an unknown comparison family",
+                Response)
+        )
+    ;   error_response(Id, malformed_inputs,
+            "deformation_compare requires a family and that family's inputs",
+            Response)
+    ).
+
+deformation_compare_family(quadrant_sign_error).
+deformation_compare_family(reflection_by_rotation).
+deformation_compare_family(flip_needed).
+deformation_compare_family(unfillable_by_parity).
+deformation_compare_family(angle_confused_with_ray_length).
+deformation_compare_family(bar_histogram_conflation).
+deformation_compare_family(net_fold_failure).
+deformation_compare_family(boundary_peg_as_interior).
+
+dispatch_request(deformation_visualizer_catalog, Id, _Request, Response) :-
+    findall(_{family:Family, op:"deformation_compare",
+              page:"/more-zeeman/deformation-comparison/compare.html"},
+            deformation_compare_family(Family),
+            RepresentationComparisons),
+    findall(_{family:Family, op:"fraction_comparison_compare",
+              page:"/more-zeeman/fraction-comparison/compare.html"},
+            decimal_visualizer_family(Family),
+            DecimalComparisons),
+    findall(Gallery,
+            deformation_gallery_entry(Gallery),
+            Galleries),
+    json_safe(_{representationComparisons:RepresentationComparisons,
+                decimalComparisons:DecimalComparisons,
+                galleries:Galleries}, Dict),
+    ok_response(Id, Dict, Response).
+
+decimal_visualizer_family(decimal_fraction_place_value_comparison).
+decimal_visualizer_family(positional_decimal_reading).
+decimal_visualizer_family(decimal_comparison_by_aligned_units).
+decimal_visualizer_family(decimal_addition_by_aligned_units).
+decimal_visualizer_family(decimal_subtraction_by_aligned_units).
+decimal_visualizer_family(decimal_place_unit_regrouping).
+decimal_visualizer_family(decimal_multiplication_rule).
+
+deformation_gallery(misconception_demos, math_tools).
+deformation_gallery(real_transplants, research).
+deformation_gallery(parametric_fraction_errors, math_tools).
+deformation_gallery(parametric_deformations, math_tools).
+deformation_gallery(fraction_cliff_demos, math_tools).
+deformation_gallery('best_IM_scenes', math_tools).
+deformation_gallery(fractal_loops, research).
+
+deformation_gallery_entry(_{gallery:Gallery, audience:Audience,
+                            page:Page, fileCount:FileCount}) :-
+    deformation_gallery(Gallery, Audience),
+    worker_root(Root),
+    format(atom(Relative), 'hermes/app/web/generated/~w', [Gallery]),
+    directory_file_path(Root, Relative, Directory),
+    directory_files(Directory, Names),
+    include(public_gallery_file(Directory), Names, Files),
+    length(Files, FileCount),
+    format(string(Page), '/generated/~w/index.html', [Gallery]).
+
+public_gallery_file(Directory, Name) :-
+    \+ sub_atom(Name, 0, 1, _, '.'),
+    directory_file_path(Directory, Name, Path),
+    exists_file(Path).
+
+deformation_compare_spec(quadrant_sign_error, Request,
+                         quadrant_sign_compare(X, Y)) :-
+    request_strict_integer(Request, x, X),
+    request_strict_integer(Request, y, Y),
+    between(-50, 50, X), between(-50, 50, Y).
+deformation_compare_spec(reflection_by_rotation, Request,
+                         reflection_by_rotation(Vertices)) :-
+    request_json_array(Request, vertices, [], Raw),
+    length_between(Raw, 3, 12),
+    maplist(scene_lattice_point(-50, 50), Raw, Vertices).
+deformation_compare_spec(flip_needed, Request, flip_needed_compare(Piece)) :-
+    get_dict(piece, Request, Piece0),
+    string_or_atom_to_atom(Piece0, Piece),
+    memberchk(Piece, [l, f, n, p, y, z]).
+deformation_compare_spec(unfillable_by_parity, Request,
+                         unfillable_by_parity_compare(cols(Columns), rows(Rows))) :-
+    request_strict_integer(Request, cols, Columns),
+    request_strict_integer(Request, rows, Rows),
+    between(2, 20, Columns), between(2, 20, Rows).
+deformation_compare_spec(angle_confused_with_ray_length, Request,
+                         angle_length_compare(Degrees, ShortLength, LongLength)) :-
+    request_strict_integer(Request, degrees, Degrees),
+    request_strict_integer(Request, short_length, ShortLength),
+    request_strict_integer(Request, long_length, LongLength),
+    between(1, 360, Degrees),
+    between(1, 500, ShortLength),
+    between(1, 500, LongLength).
+deformation_compare_spec(bar_histogram_conflation, Request,
+                         bar_histogram_conflation(Pairs)) :-
+    request_json_array(Request, pairs, [], Raw),
+    length_between(Raw, 1, 12),
+    maplist(scene_category_count, Raw, Pairs).
+deformation_compare_spec(net_fold_failure, Request, net_fold_compare(Solid)) :-
+    get_dict(solid, Request, Solid0),
+    string_or_atom_to_atom(Solid0, Solid),
+    Solid == cube.
+deformation_compare_spec(boundary_peg_as_interior, Request,
+                         geoboard_pick_compare(Vertices)) :-
+    request_json_array(Request, vertices, [], Raw),
+    length_between(Raw, 3, 12),
+    maplist(scene_lattice_point(-20, 20), Raw, Vertices).
 
 request_strict_integer(Request, Key, N) :-
     get_dict(Key, Request, Value),
@@ -3050,7 +3195,7 @@ request_json_array(Request, Key, Default, Values) :-
 json_array_value(Value, Value) :- is_list(Value), !.
 json_array_value(Value, List) :-
     ( string(Value) ; atom(Value) ),
-    catch(atom_json_term(Value, List, [value_string_as(string)]), _, fail),
+    catch(atom_json_dict(Value, List, [value_string_as(string)]), _, fail),
     is_list(List).
 
 scene_lattice_point(Low, High, [X,Y], X-Y) :-

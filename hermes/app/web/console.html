@@ -50,7 +50,6 @@ button { cursor: pointer; }
 .pill { font: 0.64rem/1 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; padding: 0.34rem 0.55rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-cool); white-space: nowrap; }
 .pill.ok { border-color: var(--teal); color: var(--teal); }
 .pill.warn { border-color: var(--rust); color: var(--rust); }
-.pill.gate-off { border-color: var(--gold-deep); color: var(--gold-deep); }
 .btn { border: 1px solid var(--gold-deep); background: var(--gold); color: var(--ink); border-radius: 7px; padding: 0.42rem 0.75rem; font-size: 0.9rem; transition: transform 0.08s ease, box-shadow 0.12s ease; }
 .btn:hover { box-shadow: 0 2px 10px rgba(169,124,36,0.3); transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
@@ -69,7 +68,6 @@ button { cursor: pointer; }
 .tab.active { color: var(--ink); font-weight: 600; border-bottom-color: var(--gold-deep); }
 .tab .glyph { font: 0.7rem var(--mono); opacity: 0.7; margin-right: 0.35rem; }
 .tabnav .spacer { flex: 1; }
-.gate-toggle { display: flex; align-items: center; gap: 0.4rem; font: 0.72rem var(--mono); color: var(--muted); }
 
 /* ---- audience-view toggle (matches the drawer's body-class contract: §5) ---- */
 .view-toggle { display: flex; align-items: center; gap: 0.3rem; }
@@ -654,13 +652,9 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
     </div>
     <div class="modal-body">
       <section aria-label="Status and settings" class="qs-settings">
-        <span id="gate-pill" class="pill" hidden>gate</span>
         <span id="model-pill" class="pill">model …</span>
         <span id="key-pill" class="pill">key …</span>
         <button class="btn ghost" id="set-key-btn">Set key</button>
-        <label class="gate-toggle" id="gate-toggle" hidden>
-          <input type="checkbox" id="mode-check" /> student-data gate open (campus)
-        </label>
       </section>
       <hr>
       <section aria-labelledby="quickstart-boundaries-title">
@@ -762,7 +756,6 @@ function setRequestFailure(element, error) {
   HermesFetch.setState(element, requestFailureState(error), error.message);
 }
 
-let MODE = { mode: "home", verified: false, gate_enabled: true };
 const WORKER_READINESS_TIMEOUT_MS = HermesFetch.WORKER_READINESS_TIMEOUT_MS;
 const WORKER_READINESS_INITIAL_BACKOFF_MS = 750;
 const WORKER_READINESS_MAX_BACKOFF_MS = 5000;
@@ -805,25 +798,12 @@ function selectTab(name) {
 }
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => selectTab(t.dataset.tab)));
 
-/* ---------- mode / models / gate ---------- */
-async function refreshMode() {
+/* ---------- app / models ---------- */
+async function refreshAppStatus() {
   const state = $("#app-request-status");
   HermesFetch.setState(state, "pending", "Checking the app…");
-  let data;
-  try { ({ data } = await getJSON('/api/mode')); }
-  catch (error) {
-    HermesFetch.setState(state, error.kind === "offline" || error.kind === "timeout" ? "offline" : "broken", error.message);
-    return;
-  }
-  MODE = data;
   if (!await waitForWorkerReadiness(state)) return;
   HermesFetch.setState(state, "ready", "Symbolic worker ready");
-  const gateOff = data.gate_enabled === false;
-  $("#gate-pill").hidden = false;
-  $("#gate-pill").textContent = gateOff ? "FERPA gate: off" : (data.mode === "campus" && data.verified ? "campus · unlocked" : "student data locked");
-  $("#gate-pill").className = "pill " + (gateOff ? "gate-off" : (data.mode === "campus" && data.verified ? "ok" : "warn"));
-  $("#gate-toggle").hidden = gateOff;            // toggle only matters when the gate is on
-  $("#mode-check").checked = (data.mode === "campus");
 }
 async function refreshModels() {
   let data;
@@ -837,11 +817,6 @@ async function refreshModels() {
   $("#key-pill").textContent = data.key_configured ? "key set" : "no key";
   $("#key-pill").className = "pill " + (data.key_configured ? "ok" : "warn");
 }
-$("#mode-check").addEventListener('change', async e => {
-  const { data } = await postJSON('/api/mode', { mode: e.target.checked ? "campus" : "home" });
-  MODE = data; refreshMode();
-});
-
 /* ---------- data zone ---------- */
 function loadTextIntoData(text, name) {
   $("#data-input").value = text;
@@ -1041,7 +1016,6 @@ document.querySelectorAll('.step .step-head').forEach(h => h.addEventListener('c
 }));
 function showOut(id, res) {
   const el = $("#" + id); el.hidden = false; el.classList.remove('locked');
-  if (res.status === 423) { el.classList.add('locked'); el.textContent = "LOCKED: " + (res.data.error || ""); return; }
   const d = res.data;
   const hint = d.hint || (d.error_type ? d.error : "");
   const ok = d.ok === true && !hint;
@@ -1100,7 +1074,6 @@ async function loadResults() {
   let status, data;
   try { ({ status, data } = await postJSON('/api/results/list', {})); }
   catch (e) { list.innerHTML = "<em class='muted-inline'>× The app isn't answering.</em>"; return; }
-  if (status === 423) { list.innerHTML = "<em class='muted-inline'>Locked — open the gate to view results.</em>"; return; }
   if (status !== 200 || !data || !data.sections) { list.innerHTML = `<em class='muted-inline'>Couldn't load results (status ${status}).</em>`; return; }
   const labels = Object.fromEntries(data.sections);
   let html = "";
@@ -2161,7 +2134,7 @@ window.addEventListener("unhandledrejection", function (event) {
   HermesFetch.setState($("#app-request-status"), reason && (reason.kind === "offline" || reason.kind === "timeout") ? "offline" : "broken", message);
 });
 
-refreshMode(); refreshModels(); populateInputPicker();
+refreshAppStatus(); refreshModels(); populateInputPicker();
 </script>
 </body>
 </html>

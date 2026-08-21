@@ -90,7 +90,7 @@ angle_circular_render_json(angle(Degrees), Dict) :-
                  frames: Frames }
     ;  Dict = _{ kind: "angle",
                  request: _{ degrees: Degrees },
-                 error: "An angle needs a whole-number degree measure in 1..360.",
+                 error: "An angle needs a whole-number degree measure from 1 through 360.",
                  frames: [] }
     ).
 angle_circular_render_json(sector(Degrees), Dict) :-
@@ -106,7 +106,7 @@ angle_circular_render_json(sector(Degrees), Dict) :-
                  frames: Frames }
     ;  Dict = _{ kind: "sector",
                  request: _{ degrees: Degrees },
-                 error: "A sector needs a whole-number degree measure in 1..360.",
+                 error: "A sector needs a whole-number degree measure from 1 through 360.",
                  frames: [] }
     ).
 angle_circular_render_json(Spec, Dict) :-
@@ -151,7 +151,7 @@ angle_circular_compare_json(angle_length_compare(Degrees, ShortLen, LongLen), Di
                  deformation: _{ frames: DefFrames } }
     ;  Dict = _{ kind: "angle_vs_ray_length_stretched_angle",
                  request: _{ degrees: Degrees },
-                 error: "Ray-length comparison needs a valid angle (1..360 deg) and a longer draw length than the reference.",
+                 error: "Ray-length comparison needs a whole-number angle from 1 through 360 degrees and a longer draw length than the reference.",
                  productive: _{ frames: [] },
                  deformation: _{ frames: [] } }
     ).

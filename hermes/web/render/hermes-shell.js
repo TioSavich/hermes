@@ -95,7 +95,8 @@
     "unit-echo":    { theme: "objects",      lede: "Run base regrouping beside fraction iteration at the same arity." },
     "fraction-bars":{ theme: "objects",      lede: "Draw a fraction operation step by step and change the operands." },
     "fraction-compare": { theme: "objects",  lede: "Compare a productive fraction strategy with an altered step and locate the divergence." },
-    "fraction-comparison": { theme: "objects", lede: "Run six fraction comparison strategies beside their paired deformations on the same inputs." }
+    "fraction-comparison": { theme: "objects", lede: "Run fraction and decimal strategies beside their paired deformations on the same quantities." },
+    "deformation-comparison": { theme: "objects", lede: "Run a representation beside a deformation that changes what its marks can support." }
   };
 
   // mz(x) -> hermes/web file ; app(x) -> console/server-root file
@@ -125,7 +126,7 @@
       "questions.html": "questions",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
       "machine.html": "strategy-machine",
-      "atlas.html": "atlas", "witnesses.html": "witnesses", "review.html": "review",
+      "atlas.html": "atlas", "witnesses.html": "witnesses",
       "gallery.html": "gallery",
       "landing.html": "landing", "research.html": "research",
       "index.html": "snap", "counting.html": "counting",

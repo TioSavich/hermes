@@ -117,6 +117,15 @@ PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
         "family": "number_line_fraction_comparison",
         "n1": 1, "d1": 3, "n2": 2, "d2": 5,
     },
+    "deformation_compare": {
+        "family": "quadrant_sign_error", "x": -3, "y": 2,
+        "vertices": [[0, 0], [4, 0], [4, 3], [0, 3]],
+        "piece": "l", "cols": 5, "rows": 5,
+        "degrees": 60, "short_length": 120, "long_length": 240,
+        "pairs": [{"category": "red", "count": 4},
+                  {"category": "blue", "count": 6}],
+        "solid": "cube",
+    },
 }
 
 OPERATION_DESCRIPTIONS = {
@@ -155,6 +164,16 @@ IRREGULAR_PARAMETER_METADATA: dict[str, dict[str, tuple[str, bool]]] = {
         "n1": ("integer", True), "d1": ("integer", True),
         "n2": ("integer", True), "d2": ("integer", True),
     },
+    "deformation_compare": {
+        "family": ("string", True),
+        "x": ("integer", False), "y": ("integer", False),
+        "vertices": ("array", False), "piece": ("string", False),
+        "cols": ("integer", False), "rows": ("integer", False),
+        "degrees": ("integer", False),
+        "short_length": ("integer", False),
+        "long_length": ("integer", False),
+        "pairs": ("array", False), "solid": ("string", False),
+    },
     "model_analysis_lookup": {
         "lesson_code": ("string", False),
         "statement_id": ("string", False),
@@ -181,6 +200,8 @@ ROLE_PREFIXES: tuple[tuple[str, str], ...] = (
     ("check_math_claim", "misconceptions"),
     ("model_analysis_lookup", "synthesis"),
     ("commitment_match", "misconceptions"),
+    ("deformation_compare", "render"),
+    ("deformation_visualizer_catalog", "render"),
     ("elaborations", "synthesis"),
     ("fraction_comparison_compare", "render"),
     ("image_schema", "render"),
@@ -297,6 +318,11 @@ def prolog_json_value(value: object | None) -> str:
         return '"' + value.replace('"', '\\"') + '"'
     if isinstance(value, list):
         return "[" + ", ".join(prolog_json_value(item) for item in value) + "]"
+    if isinstance(value, dict):
+        pairs = ", ".join(
+            f"{key}: {prolog_json_value(item)}" for key, item in sorted(value.items())
+        )
+        return "_{" + pairs + "}"
     raise TypeError(f"unsupported registry example value: {value!r}")
 
 
@@ -500,7 +526,8 @@ def extract_operations(text: str) -> list[Operation]:
         body = code_without_comments(dispatch_body(text, match.end()))
         module_match = MODULE_CALL_RE.search(body)
         name = match.group(1)
-        inputs = input_keys(body, match.group(2))
+        inputs = tuple(sorted(set(input_keys(body, match.group(2))) |
+                              set(IRREGULAR_PARAMETER_METADATA.get(name, {}))))
         operations.append(Operation(
             name=name,
             module=module_match.group(1) if module_match else "hermes_worker",

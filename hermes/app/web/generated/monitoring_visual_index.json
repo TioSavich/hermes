@@ -1,0 +1,85 @@
+{
+  "generated_from": [
+    "hermes/app/web/generated/monitoring_visuals/docs.json",
+    "hermes/app/web/generated/monitoring_visuals_breadth/docs.json",
+    "hermes/app/web/generated/monitoring_visuals_hybridization/docs.json"
+  ],
+  "lessons": {
+    "BALANCE-DEMO": [
+      {
+        "correct": "/generated/monitoring_visuals_breadth/BALANCE-DEMO-correct-filmstrip.svg",
+        "correct_label": "Preserve equality by making the same move on both pans.",
+        "expression": "2x + 3 = 11",
+        "incorrect": "/generated/monitoring_visuals_breadth/BALANCE-DEMO-incorrect-filmstrip.svg",
+        "incorrect_label": "Treat the equals sign as a command and change only one side.",
+        "source": "monitoring_visuals_breadth"
+      }
+    ],
+    "FRACTION-DEMO": [
+      {
+        "correct": "/generated/monitoring_visuals_breadth/FRACTION-DEMO-correct-filmstrip.svg",
+        "correct_label": "Measure both fractions in a shared unit before combining.",
+        "expression": "1/3 + 1/4",
+        "incorrect": "/generated/monitoring_visuals_breadth/FRACTION-DEMO-incorrect-filmstrip.svg",
+        "incorrect_label": "Add the visible numerator and denominator components as if they were independent counts.",
+        "source": "monitoring_visuals_breadth"
+      }
+    ],
+    "HYBRID-DEMO": [
+      {
+        "correct": "/generated/monitoring_visuals_breadth/HYBRID-DEMO-correct-filmstrip.svg",
+        "correct_label": "Partition the rectangular area model by its own part-of-part vocabulary.",
+        "expression": "circle partition transplanted onto a rectangle",
+        "incorrect": "/generated/monitoring_visuals_breadth/HYBRID-DEMO-incorrect-filmstrip.svg",
+        "incorrect_label": "Move the circle's radial partition rule onto the rectangle host.",
+        "source": "monitoring_visuals_breadth"
+      },
+      {
+        "correct": "/generated/monitoring_visuals_hybridization/HYBRID-DEMO-correct-filmstrip.svg",
+        "correct_label": "Partition the rectangular area model by its own part-of-part vocabulary.",
+        "expression": "circle partition transplanted onto a rectangle",
+        "incorrect": "/generated/monitoring_visuals_hybridization/HYBRID-DEMO-incorrect-filmstrip.svg",
+        "incorrect_label": "Move the circle's radial partition rule onto the rectangle host.",
+        "source": "monitoring_visuals_hybridization"
+      }
+    ],
+    "IM-G1-U3-L17": [
+      {
+        "correct": "/generated/monitoring_visuals/IM-G1-U3-L17-correct-filmstrip.svg",
+        "correct_label": "Make a ten, then preserve the leftover.",
+        "expression": "9 + 5",
+        "incorrect": "/generated/monitoring_visuals/IM-G1-U3-L17-incorrect-filmstrip.svg",
+        "incorrect_label": "Make a ten, then drop the leftover.",
+        "source": "monitoring_visuals"
+      }
+    ],
+    "IM-G2-U2-L7": [
+      {
+        "correct": "/generated/monitoring_visuals/IM-G2-U2-L7-correct-filmstrip.svg",
+        "correct_label": "Decompose one ten and reduce the tens place.",
+        "expression": "62 - 43",
+        "incorrect": "/generated/monitoring_visuals/IM-G2-U2-L7-incorrect-filmstrip.svg",
+        "incorrect_label": "Add ten ones but leave the tens place unchanged.",
+        "source": "monitoring_visuals"
+      }
+    ],
+    "IM-G4-U4-L20": [
+      {
+        "correct": null,
+        "correct_label": "Base-ten blocks do not provide a productive physical vocabulary for this magnitude.",
+        "expression": "268,322 - 72,145",
+        "incorrect": null,
+        "incorrect_label": "Base-ten blocks do not provide a productive physical vocabulary for this magnitude.",
+        "source": "monitoring_visuals"
+      },
+      {
+        "correct": "/generated/monitoring_visuals/IM-G4-U4-L20-2-correct-filmstrip.svg",
+        "correct_label": "Use a scalable number-line measure model for the large magnitude.",
+        "expression": "142,571 + 10,909",
+        "incorrect": null,
+        "incorrect_label": "Base-ten blocks stop being a productive physical vocabulary here; a collapsed-cube picture would be a labeled misconception, not a calculator answer.",
+        "source": "monitoring_visuals"
+      }
+    ]
+  }
+}

@@ -3,8 +3,8 @@
             dispatch_message/3
           ]).
 
-:- use_module(hermes(review_queue), []).
 :- use_module(hermes(solution_step_check), []).
+:- use_module(strategies('abstraction/question_move_pilot'), []).
 :- use_module(strategies(automaton_input_contracts),
               [ automaton_input_contract/5 ]).
 :- use_module(library(http/json), [ atom_json_dict/3 ]).
@@ -12,17 +12,6 @@
 % dispatch_spec(Op, Inputs, Call, Result).
 % Inputs are Key-Converter pairs. Call arguments name bound keys, mark ignored
 % outputs as drop, and name retained outputs with out(Name).
-
-dispatch_spec(review_queue,
-    [source-atom, offset-default(int(0, inf), 0)],
-    call(review_queue:review_queue_dict, [source, offset, out(dict)]),
-    raw(no_review_queue_item, malformed_review_queue_request)).
-dispatch_spec(review_decide,
-    [source-atom, item_id-string, verdict-atom,
-     note-default(string, ""), shown-dict],
-    call(review_queue:review_decide_dict,
-         [source, item_id, verdict, note, shown, out(dict)]),
-    raw(no_review_decision, malformed_review_decide_request)).
 
 % The index subtraction: which machines survive a topic, and evidence for a
 % sample of those removed. Fails for a topic no exclusion rule keys on, so a
@@ -606,6 +595,16 @@ dispatch_spec(guide_question_labels,
     call(lesson_monitoring:guide_question_labels_dict,
          [lesson, label, lane, limit, out(dict)]),
     raw(malformed_guide_question_labels)).
+dispatch_spec(question_moves,
+    [lesson-default(atom, all), limit-default(int(1, 100), 20)],
+    call(question_move_pilot:question_moves_dict,
+         [lesson, limit, out(dict)]),
+    raw(no_question_moves, malformed_question_moves)).
+dispatch_spec(signature_anchors,
+    [family-default(atom, all), signature-default(atom, all)],
+    call(index_query:signature_anchors_dict,
+         [family, signature, out(dict)]),
+    raw(no_signature_anchor, malformed_signature_anchors)).
 dispatch_spec(corpus_grammar_summary,
     [],
     call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
@@ -1017,6 +1016,10 @@ dispatch_message(check_math_claim, malformed, "check_math_claim requires a safel
 dispatch_message(check_solution_steps, malformed, "check_solution_steps requires non-empty numbered solution text").
 dispatch_message(pedagogical_questions, malformed, "pedagogical_questions requires a non-empty query and accepts kind topic, automaton_state, standard, or all (all returns every cluster and ignores the query)").
 dispatch_message(guide_question_labels, malformed, "guide_question_labels accepts optional lesson, label or printed region identity, lane labels or guide, and limit 1 through 100").
+dispatch_message(question_moves, no_result, "question_moves found no mechanically admitted move for that lesson").
+dispatch_message(question_moves, malformed, "question_moves accepts an optional lesson atom and limit 1 through 100").
+dispatch_message(signature_anchors, no_result, "signature_anchors found no mechanically admitted corpus anchor for that filter").
+dispatch_message(signature_anchors, malformed, "signature_anchors accepts optional family and signature atoms").
 dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary found no matching summary").
 dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no matching metaphor-grounding result").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").
@@ -1029,11 +1032,6 @@ dispatch_message(misconception_incompatibility_witness, no_witness, "misconcepti
 dispatch_message(misconception_incompatibility_witness, malformed, "misconception_incompatibility_witness requires move and conflict").
 dispatch_message(lesson_misconception_incompatibility_witness, no_witness, "lesson_misconception_incompatibility_witness found no matching lesson recorded example").
 dispatch_message(lesson_misconception_incompatibility_witness, malformed, "lesson_misconception_incompatibility_witness requires lesson_code and name").
-dispatch_message(review_queue, no_result, "review_queue found no matching valid proposal queue for the requested source").
-dispatch_message(review_queue, malformed, "review_queue requires source unit_recognition_set or signature_anchor and a non-negative offset").
-dispatch_message(review_decide, no_result, "review_decide found no matching first verdict for that queue item").
-dispatch_message(review_decide, malformed, "review_decide requires source, item_id, a verdict valid for that review mode, shown item text, and an optional note").
-
 input_contract_dict(Operation, Kind, _{
         operation: OperationString,
         kind: KindString,

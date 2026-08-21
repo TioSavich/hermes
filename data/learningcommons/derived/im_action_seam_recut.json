@@ -32377,7 +32377,8 @@
        }
       ],
       "strategy": "decimal_whole_number_reading",
-      "validity": "incorrect"
+      "validity": "incorrect",
+      "viability": "viability(fails_in_context,condition(omitting_decimal_scale_changes_the_value),expected(decimal(3,fractional_digits(47,2),hundredths)),produced(whole_number(347)),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -33222,7 +33223,8 @@
        }
       ],
       "strategy": "change_decimal_place_name_without_regrouping",
-      "validity": "incorrect"
+      "validity": "incorrect",
+      "viability": "viability(fails_in_context,condition(changing_the_unit_name_without_regrouping_changes_the_quantity),expected(equivalent_decimal_units(70,unit_fraction(1,100))),produced(equivalent_decimal_units(7,unit_fraction(1,100))),validity(incorrect))"
      }
     },
     "direct_runs": [],
@@ -33371,7 +33373,8 @@
        }
       ],
       "strategy": "decimal_point_rule_misapplication",
-      "validity": "incorrect"
+      "validity": "incorrect",
+      "viability": "viability(fails_in_context,condition(using_the_larger_place_count_changes_the_product_scale),expected(decimal(0,fractional_digits(75,2),hundredths)),produced(decimal(7,fractional_digits(5,1),tenths)),validity(incorrect))"
      }
     },
     "direct_runs": [],

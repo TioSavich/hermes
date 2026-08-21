@@ -70,6 +70,8 @@ CORE_TO_WORKER = {
     "pedagogical_questions": "pedagogical_questions",
     "guide_question_labels": "guide_question_labels",
     "fraction_comparison_compare": "fraction_comparison_compare",
+    "deformation_compare": "deformation_compare",
+    "deformation_visualizer_catalog": "deformation_visualizer_catalog",
 }
 
 TOOL_BUNDLES = {
@@ -112,7 +114,9 @@ CORE_TOOLS = (
 # catalog. They are available to MCP callers without changing the branch-agent
 # carving.
 CORE_STANDALONE_TOOLS = (
-    ("fraction_comparison_compare", "Run one paired comparison from number_line_fraction_comparison, area_model_fraction_comparison, set_model_fraction_comparison, benchmark_fraction_comparison, common_unit_fraction_comparison, or decimal_fraction_place_value_comparison. Supply family and four integers as n1, d1, n2, and d2; for the decimal family these are numeral and scale pairs. Both members of the pair execute as automata, and the reply carries both traces and both frame lists. The gap-thinking and decimal-scale-loss deformations also return a viability record naming the inputs on which their comparison is contextually correct.", ("family", "n1", "d1", "n2", "d2")),
+    ("fraction_comparison_compare", "Run one paired strategy and deformation. family accepts number_line_fraction_comparison, area_model_fraction_comparison, set_model_fraction_comparison, benchmark_fraction_comparison, common_unit_fraction_comparison, decimal_fraction_place_value_comparison, positional_decimal_reading, decimal_comparison_by_aligned_units, decimal_addition_by_aligned_units, decimal_subtraction_by_aligned_units, decimal_place_unit_regrouping, or decimal_multiplication_rule. Supply four integers as n1, d1, n2, and d2. Decimal pairs use numeral and scale fields; positional reading uses n1 and d1; decimal regrouping uses n1 as the count, d1 as the starting scale, and n2 as the target scale. Both actions execute, and the reply carries both traces and frame lists plus any recorded viability condition.", ("family", "n1", "d1", "n2", "d2")),
+    ("deformation_compare", "Run one representation beside its deformation. family accepts quadrant_sign_error, reflection_by_rotation, flip_needed, unfillable_by_parity, angle_confused_with_ray_length, bar_histogram_conflation, net_fold_failure, or boundary_peg_as_interior. Supply only that family's fields: x and y; polygon vertices; a chiral pentomino piece; cols and rows; degrees with short_length and long_length; category-count pairs; or solid. The reply carries both frame lists and the emitter's named boundary when the requested deformation does not arise.", ("family", "x", "y", "vertices", "piece", "cols", "rows", "degrees", "short_length", "long_length", "pairs", "solid")),
+    ("deformation_visualizer_catalog", "List the callable representation and decimal deformation comparisons together with the generated gallery entrances. Gallery rows report file counts from the live generated directories and identify whether the public card is on Math tools or Research.", ()),
     ("list_strategies", "List registered strategy names with their operation, cluster, and whether a worked input is recorded. Every name returned is a name strategy_trace accepts, so this is the discovery step for a caller whose strategy_trace declaration arrived without its name list. Filter by operation or by a name substring; results are paged. Expected time: a few seconds on the first call while the worker starts.", ("operation", "contains", "limit", "offset")),
     ("abduce_error", "Run the closed registry of arithmetic misconception rules on one ground input and return the candidate rules that reproduce got, with their recorded db_row citations. Results are candidates rather than learner diagnoses; an empty list is an abstention.", ("domain", "input", "got")),
     ("lesson_arithmetic_demonstration", "List the four compiled IM-G1-U3-L17 addition tasks or run one selected task against an observed whole-number answer. The result returns productive and dropped-leftover traces, a candidate match or explicit abstention, and never diagnoses the student. Work transcription remains request-local and is not returned or persisted.", ("lesson", "task_id", "observed_answer", "work_transcription")),
@@ -326,7 +330,22 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
         if kind == "array":
             item["items"] = {"type": "string"}
         properties[parameter] = item
-    if name == "strategy_trace":
+    if name == "deformation_compare":
+        properties = {
+            "family": {"type": "string", "enum": ["quadrant_sign_error", "reflection_by_rotation", "flip_needed", "unfillable_by_parity", "angle_confused_with_ray_length", "bar_histogram_conflation", "net_fold_failure", "boundary_peg_as_interior"]},
+            "x": {"type": "integer", "minimum": -50, "maximum": 50},
+            "y": {"type": "integer", "minimum": -50, "maximum": 50},
+            "vertices": {"type": "array", "minItems": 3, "maxItems": 12, "items": {"type": "array", "prefixItems": [{"type": "integer"}, {"type": "integer"}], "minItems": 2, "maxItems": 2}},
+            "piece": {"type": "string", "enum": ["l", "f", "n", "p", "y", "z"]},
+            "cols": {"type": "integer", "minimum": 2, "maximum": 20},
+            "rows": {"type": "integer", "minimum": 2, "maximum": 20},
+            "degrees": {"type": "integer", "minimum": 1, "maximum": 360},
+            "short_length": {"type": "integer", "minimum": 1, "maximum": 500},
+            "long_length": {"type": "integer", "minimum": 1, "maximum": 500},
+            "pairs": {"type": "array", "minItems": 2, "maxItems": 12, "items": {"type": "object", "required": ["category", "count"], "properties": {"category": {"type": "string"}, "count": {"type": "integer", "minimum": 0, "maximum": 1000}}, "additionalProperties": False}},
+            "solid": {"type": "string", "enum": ["cube"]},
+        }
+    elif name == "strategy_trace":
         properties["strategy"] = {
             "oneOf": [
                 {
@@ -410,7 +429,9 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
             "offset": {"type": "integer", "minimum": 0, "description": "Zero-based bundle-edge offset; defaults to 0."},
         }
     required: list[str] = []
-    if name in {"diagnose_error", "abduce_error"}:
+    if name in {"fraction_comparison_compare", "deformation_compare"}:
+        required = ["family"]
+    elif name in {"diagnose_error", "abduce_error"}:
         required = ["domain", "input", "got"]
         properties["domain"] = {"type": "string", "minLength": 1, "description": "Registered misconception domain, such as fraction."}
         properties["input"] = {"type": "string", "minLength": 1, "description": "Problem input in the worker's term-form text."}

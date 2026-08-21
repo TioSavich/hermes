@@ -131,11 +131,12 @@ solid_net_compare_json(net_fold_compare(Solid), Dict) :-
        bad_frames(Solid, BadFaces, BadCreases, DefFrames),
        length(GoodFaces, FaceCount),
        solid_string(BadName, BadNameStr),
-       compare_note(SolidStr, BadNameStr, FaceCount, Note),
+       format(string(ProductiveKind), "~w_net", [SolidStr]),
+       compare_note(SolidStr, FaceCount, Note),
        canvas_dict(Canvas),
        Dict = _{ kind: "net_vs_unfoldable_arrangement",
                  request: _{ solid: SolidStr },
-                 productiveKind: "net_of",
+                 productiveKind: ProductiveKind,
                  deformationKind: "net_does_not_fold",
                  family: "net_fold_failure",
                  solid: SolidStr,
@@ -420,13 +421,12 @@ bad_arrangement(cube, two_by_three_block, Faces, Creases) :-
         crease(220, 160, 300, 160)
     ].
 
-compare_note(SolidStr, BadNameStr, FaceCount, Note) :-
+compare_note(SolidStr, FaceCount, Note) :-
     format(string(Note),
-           "The ~w-face arrangement ~w carries the right number of faces for a ~w, \
+           "The ~w-face 2-by-3 arrangement carries the right number of faces for a ~w, \
 but it cannot fold to one: it holds a 2-by-2 sub-square, and folding lands two faces \
-on the same side. The faces are all present; the arrangement is not foldable. \
-(net_faces_do_not_fold_to_solid.)",
-           [FaceCount, BadNameStr, SolidStr]).
+on the same side. The faces are all present; the arrangement is not foldable.",
+           [FaceCount, SolidStr]).
 
 
 % =============================================================================

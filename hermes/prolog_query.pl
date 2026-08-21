@@ -265,7 +265,6 @@ forbidden_mutation_name(disable_axiom_pack).
 forbidden_mutation_name(restore_axiom_packs).
 forbidden_mutation_name(add_incompatible_set).
 forbidden_mutation_name(remove_incompatible_set).
-forbidden_mutation_name(review_decide_dict).
 
 
 % The persistent worker also owns application and learner state. The generated

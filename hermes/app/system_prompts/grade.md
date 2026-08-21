@@ -42,7 +42,7 @@ is 0 to 3.
 - Do not reward copied prompt language unless the student uses it to make their
   own point.
 - If the prompt text is missing or the parsed posts are confusing, still give
-  the best draft grade you can, but set `needs_human_review` to true.
+  the best draft grade you can from the available evidence.
 - Feedback should be usable by a student right now: specific, brief, and
   actionable. Avoid research jargon and avoid vague praise.
 
@@ -64,8 +64,7 @@ Use this schema:
   "missing_requirements": ["short concrete item"],
   "evidence": ["short phrase naming what in the response supports the grade"],
   "feedback_to_student": "80-140 words addressed directly to the student.",
-  "note_to_instructor": "One sentence explaining the grade in plain language.",
-  "needs_human_review": false
+  "note_to_instructor": "One sentence explaining the grade in plain language."
 }
 
 The four score_breakdown numbers must sum to `points`, and `points` must be an

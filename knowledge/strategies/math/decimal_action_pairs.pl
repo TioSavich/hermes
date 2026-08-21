@@ -97,6 +97,7 @@ run_decimal_action(positional_decimal_reading, Numeral, Scale, Outcome, Trace) :
 run_decimal_action(decimal_whole_number_reading, Numeral, Scale, Outcome, Trace) :-
     decimal_components(Numeral, Scale, Whole, FractionalDigits, Places, PlaceUnit, Expected),
     Result = whole_number(Numeral),
+    decimal_reading_viability(Numeral, Expected, Result, Viability),
     Outcome = action_outcome(
                   decimal_whole_number_reading,
                   [ classification(deformation),
@@ -110,7 +111,8 @@ run_decimal_action(decimal_whole_number_reading, Numeral, Scale, Outcome, Trace)
                     components(decimal_whole_number_components(Numeral, Scale, Whole,
                                                                FractionalDigits, Places, PlaceUnit)),
                     deformation_of(positional_decimal_reading),
-                    misconception_family(decimal_whole_number_reading)
+                    misconception_family(decimal_whole_number_reading),
+                    viability(Viability)
                   ]),
     Trace = [ see_digits_as_whole_number_string(Numeral),
               ignore_decimal_mark(scale(Scale)),
@@ -400,6 +402,7 @@ run_decimal_action(change_decimal_place_name_without_regrouping, Conversion,
     Expected = equivalent_decimal_units(
                    EquivalentCount, unit_fraction(1, ToScale)),
     Result = equivalent_decimal_units(Count, unit_fraction(1, ToScale)),
+    decimal_regrouping_viability(Count, Expected, Result, Viability),
     Outcome = action_outcome(
                   change_decimal_place_name_without_regrouping,
                   [ classification(deformation),
@@ -411,7 +414,8 @@ run_decimal_action(change_decimal_place_name_without_regrouping, Conversion,
                     operands(Conversion), components(Components),
                     deformation_of(decimal_place_unit_regrouping),
                     misconception_family(
-                        change_decimal_place_name_without_regrouping)
+                        change_decimal_place_name_without_regrouping),
+                    viability(Viability)
                   ]),
     Trace = [ identify_nested_decimal_units(FromScale, ToScale),
               change_decimal_unit_name(FromScale, ToScale),
@@ -465,6 +469,7 @@ run_decimal_action(decimal_point_rule_misapplication, Pair, ignored, Outcome, Tr
     MaxFrac is ProductNumeral mod MaxScale,
     Expected = decimal(WholeOut, fractional_digits(FracOut, SummedPlaces), PlaceUnitOut),
     Result = decimal(MaxWhole, fractional_digits(MaxFrac, MaxPlaces), MaxPlaceUnit),
+    decimal_multiplication_viability(ProductNumeral, Expected, Result, Viability),
     Outcome = action_outcome(
                   decimal_point_rule_misapplication,
                   [ classification(deformation),
@@ -479,7 +484,8 @@ run_decimal_action(decimal_point_rule_misapplication, Pair, ignored, Outcome, Tr
                     operands(decimal_pair(N1, S1, N2, S2)),
                     components(Components),
                     deformation_of(decimal_multiplication_rule),
-                    misconception_family(decimal_point_rule_misapplication)
+                    misconception_family(decimal_point_rule_misapplication),
+                    viability(Viability)
                   ]),
     Trace = [ identify_operand_place_counts(Places1, Places2),
               multiply_integer_numerals(N1, N2, ProductNumeral),
@@ -869,6 +875,36 @@ decimal_operation_viability(Expected, Produced,
                                       condition(unaligned_decimal_operation_diverges_from_decimal_value_operation),
                                       expected(Expected), produced(Produced),
                                       validity(incorrect))).
+
+decimal_reading_viability(0, _Expected, _Produced,
+                          viability(contextual_success,
+                                    condition(zero_keeps_its_value_when_decimal_scale_is_omitted),
+                                    validity(contextually_correct))) :- !.
+decimal_reading_viability(_Numeral, Expected, Produced,
+                          viability(fails_in_context,
+                                    condition(omitting_decimal_scale_changes_the_value),
+                                    expected(Expected), produced(Produced),
+                                    validity(incorrect))).
+
+decimal_regrouping_viability(0, _Expected, _Produced,
+                             viability(contextual_success,
+                                       condition(zero_keeps_its_value_when_the_unit_name_changes),
+                                       validity(contextually_correct))) :- !.
+decimal_regrouping_viability(_Count, Expected, Produced,
+                             viability(fails_in_context,
+                                       condition(changing_the_unit_name_without_regrouping_changes_the_quantity),
+                                       expected(Expected), produced(Produced),
+                                       validity(incorrect))).
+
+decimal_multiplication_viability(0, _Expected, _Produced,
+                                 viability(contextual_success,
+                                           condition(a_zero_product_keeps_its_value_under_the_wrong_scale),
+                                           validity(contextually_correct))) :- !.
+decimal_multiplication_viability(_ProductNumeral, Expected, Produced,
+                                 viability(fails_in_context,
+                                           condition(using_the_larger_place_count_changes_the_product_scale),
+                                           expected(Expected), produced(Produced),
+                                           validity(incorrect))).
 
 
 decimal_scale(Scale, Places, PlaceUnit) :-

@@ -45,7 +45,7 @@ def main() -> int:
     port = free_port()
     base = f"http://127.0.0.1:{port}"
     env = os.environ.copy()
-    env.update({"HERMES_GATE": "1", "HERMES_GATE_OVERRIDE": "0", "REALLMS_API_KEY": ""})
+    env["REALLMS_API_KEY"] = ""
     # The sidekick fixtures assert the model-offline path. A llama-server may
     # genuinely be running on the default port 8080 on a dev machine, so the
     # spawned server is pointed at a just-freed port instead.
@@ -58,7 +58,7 @@ def main() -> int:
         deadline = time.monotonic() + 20
         while True:
             try:
-                request(base, "GET", "/api/mode")
+                request(base, "GET", "/api/preflight")
                 break
             except OSError:
                 if process.poll() is not None:
@@ -69,22 +69,22 @@ def main() -> int:
                 time.sleep(0.1)
 
         fixtures = [
-            ("success", "GET", "/api/mode", None, 200, {
-                "mode": "home", "verified": False, "override": False,
-                "override_allowed": False, "gate_enabled": True,
+            ("preflight_without_key", "GET", "/api/preflight", None, 200, {
+                "ok": False,
+                "reason": "no REALLMS_API_KEY configured (set it in the app or runtime/.env)",
+                "key_configured": False,
             }),
             ("validation", "POST", "/api/compute", {}, 400, {
                 "error": "operation must be add, subtract, multiply, or divide",
             }),
-            ("gate_locked", "POST", "/api/input", {"key": "examples/All_Discussions.txt"}, 423, {
-                "error": "results are student data — unlock the gate (campus + verified, or testing override)",
-                "error_type": "locked",
-            }),
-            ("pair_candidate_gate_locked", "POST", "/api/pair_candidate", {
-                "event_a": {}, "event_b": {},
-            }, 423, {
-                "error": "student data is locked in home mode; switch to campus mode on the IU network",
-                "error_type": "locked",
+            ("input_open", "POST", "/api/input", {"key": "examples/roster.csv"}, 200, {
+                "text": (
+                    "Sortable Name,User Login\n"
+                    "\"Rivera, Maria\",mrivera\n"
+                    "\"Chen, David\",dchen\n"
+                    "\"Okafor, Ada\",aokafor\n"
+                    "\"Bauer, Liam\",lbauer\n"
+                ),
             }),
             ("no_key", "POST", "/api/pml_score", {"text": "A square is a rectangle."}, 503, {
                 "error": "No REALLMS API key is set. Click “Set key” (top-right) and paste your key, or add it to hermes/app/runtime/.env. See QUICKSTART.md, step 2.",

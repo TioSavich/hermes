@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deformation comparison lab</title>
+  <link rel="stylesheet" href="../hermes-tokens.css">
+  <link rel="stylesheet" href="../render/host.css">
+  <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="deformation-comparison"></script>
+  <style>
+    .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px; }
+    .col h2 { font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; margin:0 0 2px; }
+    .col.prod h2 { color:var(--fig-inner,#2f7d6e); }
+    .col.def h2 { color:var(--fig-deformation,#b5563f); }
+    .kind { font:.78rem ui-monospace,monospace; color:var(--muted,#665f4f); margin-bottom:6px; }
+    .cap { font-size:.92rem; margin-top:8px; min-height:3.2em; }
+    .compare-note { background:var(--paper-warm,#efe6d2); border:1px solid var(--line,#cdbfa2); border-left:3px solid var(--teal,#2f7d6e); border-radius:6px; padding:12px 14px; margin-top:18px; font-size:.92rem; }
+    .boundary-note { background:var(--paper-warm,#efe6d2); border:1px solid var(--line,#cdbfa2); border-radius:6px; color:var(--ink,#28251f); padding:12px 14px; margin:12px 0; font:inherit; }
+    .initial { color:var(--muted,#665f4f); padding:24px; }
+    .family-input[hidden] { display:none; }
+    .calc-bar textarea { min-width:18rem; min-height:3rem; font:12px ui-monospace,monospace; }
+    @media (max-width:720px) { .cols { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="view-freshman">
+  <div class="wrap">
+    <header class="host-head">
+      <div>
+        <h1>Deformation comparison lab</h1>
+        <p class="subhead">Run a representation beside a deformation that changes what its marks can support.</p>
+      </div>
+      <nav class="view-toggle" aria-label="audience">
+        <button data-view="freshman" class="active">student</button>
+        <button data-view="teacher">teacher</button>
+        <button data-view="philosopher">researcher</button>
+      </nav>
+    </header>
+
+    <div class="meta-line"><span id="context"></span><span id="result"></span></div>
+    <div class="cols">
+      <div class="col prod">
+        <h2>Productive representation</h2><div id="prodKind" class="kind"></div>
+        <div id="prodStage" class="stage"><p class="initial">Choose a family and run the comparison.</p></div>
+        <div id="prodCap" class="cap only-freshman"></div>
+      </div>
+      <div class="col def">
+        <h2>Deformation</h2><div id="defKind" class="kind"></div>
+        <div id="defStage" class="stage"><p class="initial">Both sides will use the same inputs.</p></div>
+        <div id="defCap" class="cap only-freshman"></div>
+      </div>
+    </div>
+    <div id="boundaryNote" class="boundary-note" hidden></div>
+
+    <div class="controls">
+      <button id="prev">&larr; Prev</button><input id="seek" type="range" min="0" max="0" value="0">
+      <button id="next">Next &rarr;</button><span id="counter" class="counter"></span>
+      <span id="annotation-flag" class="annot">annotation only</span>
+    </div>
+    <section class="panel only-teacher"><h2>Teacher layer</h2><div id="teacherNote" class="band"></div></section>
+    <section class="panel only-philosopher"><h2>Formal signature</h2><div id="formalNote" class="band"></div><div id="divergenceNote" class="band"></div><div id="viabilityNote" class="band"></div></section>
+
+    <section class="calc-bar">
+      <label>family
+        <select id="family" data-arg="family">
+          <option value="quadrant_sign_error">coordinate sign</option>
+          <option value="reflection_by_rotation">reflection by rotation</option>
+          <option value="flip_needed">polyform flip</option>
+          <option value="unfillable_by_parity">polyform parity</option>
+          <option value="angle_confused_with_ray_length">angle and ray length</option>
+          <option value="bar_histogram_conflation">bar chart and histogram</option>
+          <option value="net_fold_failure">solid net</option>
+          <option value="boundary_peg_as_interior">geoboard boundary peg</option>
+        </select>
+      </label>
+      <span class="family-input" data-families="quadrant_sign_error">
+        <label>x <input data-arg="x" type="number" value="-3"></label>
+        <label>y <input data-arg="y" type="number" value="2"></label>
+      </span>
+      <label class="family-input" data-families="reflection_by_rotation boundary_peg_as_interior">
+        <span id="vertices-label">vertices as JSON pairs</span>
+        <textarea id="vertices" data-arg="vertices">[[0,0],[4,0],[4,3],[0,3]]</textarea>
+      </label>
+      <label class="family-input" data-families="flip_needed">piece
+        <select data-arg="piece"><option>l</option><option>f</option><option>n</option><option>p</option><option>y</option><option>z</option></select>
+      </label>
+      <span class="family-input" data-families="unfillable_by_parity">
+        <label>columns <input data-arg="cols" type="number" value="5" min="2" max="20"></label>
+        <label>rows <input data-arg="rows" type="number" value="5" min="2" max="20"></label>
+      </span>
+      <span class="family-input" data-families="angle_confused_with_ray_length">
+        <label>degrees <input data-arg="degrees" type="number" value="60" min="1" max="360"></label>
+        <label>reference length <input data-arg="short_length" type="number" value="120" min="1"></label>
+        <label>longer length <input data-arg="long_length" type="number" value="240" min="2"></label>
+      </span>
+      <label class="family-input" data-families="bar_histogram_conflation">category counts as JSON
+        <textarea data-arg="pairs">[{"category":"red","count":4},{"category":"blue","count":6}]</textarea>
+      </label>
+      <label class="family-input" data-families="net_fold_failure">solid
+        <select data-arg="solid"><option value="cube">cube</option></select>
+      </label>
+      <button id="calculate">Run comparison</button>
+    </section>
+    <div id="compareNote" class="compare-note only-freshman">Step both sides together to compare their actions.</div>
+  </div>
+
+  <script>
+    window.HermesCompare = { op: 'deformation_compare' };
+    document.addEventListener('DOMContentLoaded', function () {
+      var family = document.getElementById('family');
+      var vertices = document.getElementById('vertices');
+      function configureInputs() {
+        var value = family.value;
+        document.querySelectorAll('.family-input').forEach(function (node) {
+          node.hidden = node.getAttribute('data-families').split(' ').indexOf(value) < 0;
+        });
+        if (value === 'reflection_by_rotation') {
+          vertices.value = '[[0,0],[4,0],[4,1],[2,1],[2,3],[0,3]]';
+          document.getElementById('vertices-label').textContent = 'chiral polygon vertices as JSON pairs';
+        } else if (value === 'boundary_peg_as_interior') {
+          vertices.value = '[[0,0],[4,0],[4,3],[0,3]]';
+          document.getElementById('vertices-label').textContent = 'lattice polygon vertices as JSON pairs';
+        }
+      }
+      family.addEventListener('change', configureInputs);
+      configureInputs();
+    });
+  </script>
+  <script src="../render/drawer.js"></script>
+  <script src="../render/compare.js"></script>
+</body>
+</html>

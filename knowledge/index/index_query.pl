@@ -19,6 +19,7 @@
             machines_for_topic/3,      % +Topic, -Machines, -Excluded
             topic_subtraction/2,       % +Topic, -Counts
             topic_subtraction_dict/2,  % +Topic, -Dict
+            signature_anchors_dict/3, % +Family, +Signature, -Dict
             standards_progression_candidates_dict/2, % +Code, -Dict
             index_topic/1              % ?Topic
           ]).
@@ -30,6 +31,7 @@
 :- ensure_loaded(index('relevance_negation')).
 :- use_module(index(standards_progression_overlay),
               [ standards_progression_candidates_dict/2 ]).
+:- use_module(index(admitted_review_proposals), []).
 
 %!  window_of(?Machine, -Row) is nondet.
 %
@@ -125,3 +127,51 @@ machine_atom(Family/Signature, Name) :-
 exclusion_pair(excluded(Machine, Reason), pair{machine: Name, reason: Text}) :-
     machine_atom(Machine, Name),
     format(atom(Text), '~w', [Reason]).
+
+
+%!  signature_anchors_dict(+Family, +Signature, -Dict) is semidet.
+%
+%   Return corpus rows admitted as signature anchors by the retired review
+%   queue's deterministic strong-band rule. Held proposals do not enter this
+%   serving result; they remain queryable in admitted_review_proposals.pl.
+signature_anchors_dict(Family, Signature, Dict) :-
+    atom(Family), atom(Signature),
+    findall(Row,
+            ( admitted_review_proposals:admitted_signature_anchor(
+                  RowFamily, RowSignature, RowType, RowId, Role,
+                  evidence(Evidence),
+                  anchor(source_file(Source), source_sha256(SourceSha),
+                         diagnostic_file(Diagnostics),
+                         diagnostic_sha256(DiagnosticSha), score(Score),
+                         score_band(Band), citation(Citation), excerpt(Excerpt)),
+                  testimony(scoring(Scorer), triage(Triage), Date), Receipt),
+              ( Family == all ; Family == RowFamily ),
+              ( Signature == all ; Signature == RowSignature ),
+              atom_string(RowFamily, FamilyText),
+              atom_string(RowSignature, SignatureText),
+              atom_string(RowType, RowTypeText),
+              atom_string(Role, RoleText),
+              atom_string(Citation, CitationText),
+              atom_string(Band, BandText),
+              term_string(Date, DateText, [quoted(false)]),
+              term_string(Receipt, ReceiptText, [quoted(false)]),
+              Row = _{family: FamilyText, signature: SignatureText,
+                      corpus_row: _{type: RowTypeText, id: RowId},
+                      role: RoleText, evidence: Evidence,
+                      score: Score, score_band: BandText,
+                      citation: CitationText, excerpt: Excerpt,
+                      anchor: _{source: Source, source_sha256: SourceSha,
+                                diagnostics: Diagnostics,
+                                diagnostics_sha256: DiagnosticSha},
+                      testimony: _{scoring: Scorer, triage: Triage,
+                                   date: DateText, receipt: ReceiptText}}
+            ),
+            Rows),
+    Rows = [_|_],
+    length(Rows, Count),
+    Dict = signature_anchors{
+        filters: _{family: Family, signature: Signature},
+        count: Count,
+        admission: mechanical_strong_band,
+        rows: Rows
+    }.

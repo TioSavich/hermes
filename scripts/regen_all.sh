@@ -106,6 +106,13 @@ add_loops_lane() {
 }
 
 add_registry_lane() {
+    # Public render galleries and lesson charts settle before their indexes and
+    # the later prebake drift check read them.
+    add_python hermes/app/scripts/export_fraction_cliff.py
+    add_python hermes/app/scripts/export_parametric_deformations.py
+    add_python hermes/app/scripts/export_parametric_fraction_errors.py
+    add_python hermes/app/scripts/export_lesson_deformation_charts.py
+    add_python scripts/generate_visual_surface_indexes.py
     add_python scripts/extract_a_fortiori_context_closure.py
     add_python scripts/extract_coverage_absence_registry.py
     add_python scripts/extract_error_rule_incompatibility.py
@@ -117,6 +124,8 @@ add_registry_lane() {
     add_python scripts/research/build_attested_phrases.py
     add_python scripts/research/build_recognition_benchmark.py
     add_python scripts/research/build_relevance_negation.py
+    add_python scripts/questions/build_question_move_pilot.py
+    add_python scripts/research/promote_review_proposals.py
 }
 
 add_tail() {

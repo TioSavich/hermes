@@ -2,12 +2,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Literal, TYPE_CHECKING
+from typing import Callable, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from hermes.app.server import RequestContext
 
-Access = Literal["public", "unlocked", "verified"]
 Handler = Callable[["RequestContext"], None]
 
 
@@ -16,7 +15,6 @@ class Route:
     method: str
     path: str
     handler: Handler
-    access: Access = "public"
 
     @property
     def module(self) -> str:
@@ -57,19 +55,14 @@ class Router:
             else:
                 context._send_json({"error": "not found"}, status=404)
             return
-        if route.access == "unlocked" and not context._require_unlocked():
-            return
-        if route.access == "verified" and not context._gate_or_423(route.path.rsplit("/", 1)[-1]):
-            return
         route.handler(context)
 
 
 def build_router() -> Router:
-    from hermes.app.routes import analysis, gate, llm, misconception_search, monitoring, runtime, sidekick, static, worker, workflow
+    from hermes.app.routes import analysis, llm, misconception_search, monitoring, runtime, sidekick, static, worker, workflow
 
     routes = (
         *static.ROUTES,
-        *gate.ROUTES,
         *runtime.ROUTES,
         *analysis.ROUTES,
         *llm.ROUTES,

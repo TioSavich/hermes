@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise all six fraction-comparison scenes through the JSONL worker."""
+"""Exercise every fraction and decimal comparison through the JSONL worker."""
 from __future__ import annotations
 
 import copy
@@ -21,12 +21,18 @@ DRAWER_FORMATS = {
     "geoboard",
 }
 CASES = (
-    ("number_line_fraction_comparison", (1, 3, 2, 5), "number-line", False),
-    ("area_model_fraction_comparison", (1, 3, 2, 5), "area-model", False),
-    ("set_model_fraction_comparison", (1, 3, 2, 5), "set-grouping", False),
-    ("benchmark_fraction_comparison", (1, 3, 2, 5), "fraction-bars", True),
-    ("common_unit_fraction_comparison", (1, 3, 2, 5), "fraction-bars", False),
-    ("decimal_fraction_place_value_comparison", (9, 10, 10, 100), "number-line", True),
+    ("number_line_fraction_comparison", (1, 3, 2, 5), "number-line", True, True),
+    ("area_model_fraction_comparison", (1, 3, 2, 5), "area-model", True, True),
+    ("set_model_fraction_comparison", (1, 3, 2, 5), "set-grouping", True, True),
+    ("benchmark_fraction_comparison", (1, 3, 2, 5), "fraction-bars", True, True),
+    ("common_unit_fraction_comparison", (1, 3, 2, 5), "fraction-bars", True, True),
+    ("decimal_fraction_place_value_comparison", (9, 10, 10, 100), "number-line", True, True),
+    ("positional_decimal_reading", (37, 100, 0, 1), "number-line", True, False),
+    ("decimal_comparison_by_aligned_units", (9, 10, 10, 100), "number-line", True, False),
+    ("decimal_addition_by_aligned_units", (12, 10, 3, 100), "number-line", True, False),
+    ("decimal_subtraction_by_aligned_units", (12, 10, 3, 100), "number-line", True, False),
+    ("decimal_place_unit_regrouping", (3, 10, 100, 0), "number-line", True, False),
+    ("decimal_multiplication_rule", (12, 10, 3, 10), "number-line", True, False),
 )
 
 
@@ -74,7 +80,10 @@ def stop_worker(process: subprocess.Popen[str]) -> None:
         process.wait(timeout=2.0)
 
 
-def assert_drawn(doc: dict[str, Any], expected_format: str, needs_viability: bool) -> None:
+def assert_drawn(
+    doc: dict[str, Any], expected_format: str, needs_viability: bool,
+    comparison_result: bool = True,
+) -> None:
     if doc.get("error"):
         productive = doc.get("productive", {}).get("frames", [])
         deformation = doc.get("deformation", {}).get("frames", [])
@@ -89,8 +98,10 @@ def assert_drawn(doc: dict[str, Any], expected_format: str, needs_viability: boo
         frames = side.get("frames")
         if not isinstance(frames, list) or not frames:
             raise AssertionError(f"{side_name} frames are empty")
-        if side.get("result") not in LEGAL_RESULTS:
+        if comparison_result and side.get("result") not in LEGAL_RESULTS:
             raise AssertionError(f"{side_name} result is not a legal comparison atom")
+        if not comparison_result and (side.get("result") is None or side.get("result") == ""):
+            raise AssertionError(f"{side_name} result is empty")
         trace = side.get("trace")
         if not isinstance(trace, list) or not trace:
             raise AssertionError(f"{side_name} trace is empty")
@@ -143,7 +154,46 @@ def assert_worker_error(reply: dict[str, Any], expected_type: str) -> None:
         raise AssertionError(f"expected {expected_type}, received {reply!r}")
 
 
+def assert_scene_determinism() -> None:
+    goal = (
+        "use_module(strategies(render/fraction_comparison_scene)), "
+        "aggregate_all(count, "
+        "fraction_comparison_scene:fraction_comparison_compare_json("
+        "compare_spec(number_line_fraction_comparison,1,3,2,5),_), FC), "
+        "aggregate_all(count, "
+        "fraction_comparison_scene:fraction_comparison_compare_json("
+        "compare_spec(decimal_comparison_by_aligned_units,9,10,10,100),_), DC), "
+        "format('~w ~w~n',[FC,DC]), halt"
+    )
+    completed = subprocess.run(
+        ["swipl", "-q", "-l", str(ROOT / "paths.pl"), "-g", goal],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    if completed.returncode != 0:
+        raise AssertionError(f"determinism probe failed: {completed.stderr[-2000:]}")
+    counts = completed.stdout.strip().split()
+    if counts != ["1", "1"]:
+        raise AssertionError(
+            f"fraction comparison is nondeterministic: expected 1 1, received {counts!r}"
+        )
+
+
 def main() -> int:
+    assert_scene_determinism()
+    page = (ROOT / "hermes/web/fraction-comparison/compare.html").read_text(
+        encoding="utf-8"
+    )
+    if 'data-input-field="d2"' not in page or "d2Input.disabled = d2Unused" not in page:
+        raise AssertionError("unused decimal input is not hidden and disabled")
+    if "[data-input-field][hidden] { display: none; }" not in page:
+        raise AssertionError("flex layout overrides the hidden decimal input")
+    compare_host = (ROOT / "hermes/web/render/compare.js").read_text(encoding="utf-8")
+    if "node.disabled || node.closest('[hidden]')" not in compare_host:
+        raise AssertionError("hidden comparison inputs can still enter the POST payload")
+    for field in ("divergenceNote", "viabilityNote"):
+        if f'id="{field}"' not in page:
+            raise AssertionError(f"researcher panel does not surface {field}")
+
     env = os.environ.copy()
     env["UMEDCTA_ROOT"] = str(ROOT)
     process = subprocess.Popen(
@@ -157,16 +207,22 @@ def main() -> int:
             raise AssertionError(f"worker boot failed: {boot!r}")
 
         first_doc: dict[str, Any] | None = None
-        for family, values, expected_format, needs_viability in CASES:
+        for family, values, expected_format, needs_viability, comparison_result in CASES:
             n1, d1, n2, d2 = values
-            reply = send(process, {
+            payload = {
                 "id": family, "op": "fraction_comparison_compare",
                 "family": family, "n1": n1, "d1": d1, "n2": n2, "d2": d2,
-            })
+            }
+            if family in {"positional_decimal_reading", "decimal_place_unit_regrouping"}:
+                del payload["d2"]
+            reply = send(process, payload)
             doc = reply.get("result")
             if reply.get("ok") is not True or not isinstance(doc, dict):
                 raise AssertionError(f"{family} lacked a result document: {reply!r}")
-            assert_drawn(doc, expected_format, needs_viability)
+            assert_drawn(doc, expected_format, needs_viability, comparison_result)
+            note = doc.get("note")
+            if not isinstance(note, str) or "_" in note or not note.endswith("."):
+                raise AssertionError(f"{family} lacks an authored sentence note: {note!r}")
             if first_doc is None:
                 first_doc = doc
 
@@ -183,8 +239,9 @@ def main() -> int:
         }), "malformed_inputs")
 
         print(
-            "PASS fraction comparison scene: 6 worker-path families drawn; "
-            "results, traces, formats, viability, errors, and mutation guards checked"
+            f"PASS fraction comparison scene: {len(CASES)} worker-path families drawn; "
+            "fraction/decimal determinism, results, traces, formats, viability, "
+            "errors, and mutation guards checked"
         )
         return 0
     finally:

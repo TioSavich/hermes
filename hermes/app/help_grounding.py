@@ -18,7 +18,6 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "witnesses": {"theme": "Recollection", "lede": "Find finite examples that support a mathematical, curricular, or formal claim.", "path": "/more-zeeman/witnesses.html", "theory": "/more-zeeman/landing.html"},
     "monitoring": {"theme": "Norms & curriculum", "lede": "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions.", "path": "/more-zeeman/monitoring_chart.html", "theory": "/more-zeeman/scoreboard.html"},
     "questions": {"theme": "Norms & curriculum", "lede": "Find assessing and advancing questions by topic, strategy state, or standard.", "path": "/hermes/app/web/questions.html", "theory": "/more-zeeman/scoreboard.html"},
-    "review": {"theme": "Norms & curriculum", "lede": "Review one proposal with its warrant and recorded actions.", "path": "/more-zeeman/review.html", "theory": "/more-zeeman/scoreboard.html"},
     "gallery": {"theme": "Objects", "lede": "Browse coded samples of mathematical representations.", "path": "/more-zeeman/gallery.html", "theory": "/more-zeeman/landing.html"},
     "landing": {"theme": "Recollection", "lede": "Choose a Hermes surface or follow the eight-chapter journey.", "path": "/more-zeeman/landing.html", "theory": "/more-zeeman/landing.html"},
     "research": {"theme": "Recollection", "lede": "Choose a research argument, formal instrument, or system page.", "path": "/more-zeeman/research.html", "theory": "/more-zeeman/landing.html"},
@@ -42,7 +41,8 @@ PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "unit-echo": {"theme": "Objects", "lede": "Run base regrouping beside fraction iteration at the same arity.", "path": "/more-zeeman/unit-echo/index.html", "theory": "/more-zeeman/coordination.html"},
     "fraction-bars": {"theme": "Objects", "lede": "Draw a fraction operation step by step and change the operands.", "path": "/more-zeeman/fraction-bars/calculator.html", "theory": "/more-zeeman/boundary.html"},
     "fraction-compare": {"theme": "Objects", "lede": "Compare a productive fraction strategy with an altered step and locate the divergence.", "path": "/more-zeeman/fraction-bars/compare.html", "theory": "/more-zeeman/boundary.html"},
-    "fraction-comparison": {"theme": "Objects", "lede": "Run six fraction comparison strategies beside their paired deformations on the same inputs.", "path": "/more-zeeman/fraction-comparison/compare.html", "theory": "/more-zeeman/boundary.html"},
+    "fraction-comparison": {"theme": "Objects", "lede": "Run fraction and decimal strategies beside their paired deformations on the same quantities.", "path": "/more-zeeman/fraction-comparison/compare.html", "theory": "/more-zeeman/boundary.html"},
+    "deformation-comparison": {"theme": "Objects", "lede": "Run a representation beside a deformation that changes what its marks can support.", "path": "/more-zeeman/deformation-comparison/compare.html", "theory": "/more-zeeman/boundary.html"},
 }
 
 PAGE_READMES: dict[str, tuple[str, ...]] = {
@@ -53,7 +53,6 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "witnesses": ("knowledge/crosswalk/README.md", "knowledge/standards/README.md", "formal/pml/README.md", "knowledge/geometry/README.md"),
     "monitoring": ("curriculum/im/README.md",),
     "questions": ("curriculum/im/README.md",),
-    "review": ("hermes/README.md",),
     "gallery": ("hermes/representation/README.md",),
     "landing": ("hermes/web/README.md",),
     "research": ("hermes/web/README.md",),
@@ -78,6 +77,7 @@ PAGE_READMES: dict[str, tuple[str, ...]] = {
     "fraction-bars": ("knowledge/strategies/render/README.md",),
     "fraction-compare": ("knowledge/strategies/render/README.md",),
     "fraction-comparison": ("knowledge/strategies/render/README.md",),
+    "deformation-comparison": ("knowledge/strategies/render/README.md",),
 }
 
 PAGE_BACKING: dict[str, tuple[str, ...]] = {

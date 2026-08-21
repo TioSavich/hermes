@@ -524,6 +524,73 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
 
 
 UNROUTED = {
+    "question_moves": {
+        "does": "Returns the 163 mechanically admitted question moves with "
+        "their licensed from/template/effect fields and evidence; the recorded "
+        "assessing/advancing annotation travels as source_annotation with "
+        "function_claim not_asserted.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The moves serve analysis clients and the MCP; the Questions "
+        "page already carries the admitted question stores, and a second page "
+        "for moves would assert a function surface the kappa-0.02 void ruled "
+        "out.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(question_moves,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/strategies/abstraction/question_move_pilot.pl",
+                "question_moves_dict",
+                "serving predicate",
+            ),
+        ],
+    },
+    "signature_anchors": {
+        "does": "Returns the two strong-band admitted signature anchors from "
+        "the retired review queue's mechanical promotion, each with its "
+        "corpus-row identity and receipts; the 537 held proposals stay "
+        "queryable in the attributed store.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "Two rows do not warrant a page; the anchors serve the index "
+        "and the MCP, and the held census is research material behind the "
+        "data-store index.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(signature_anchors,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/admitted_review_proposals.pl",
+                "check_admitted_review_proposals",
+                "attributed store",
+            ),
+        ],
+    },
+    "deformation_visualizer_catalog": {
+        "does": "Lists the callable comparison families (representation and "
+        "decimal) and the generated gallery directories with live file counts "
+        "and audience placement, for a frontier model choosing a drawing "
+        "surface.",
+        "judgement": "Being unrouted from a web page is correct.",
+        "reason": "The catalog is an MCP-side directory of what the drawing "
+        "surfaces already are; the Math tools page IS the human version of "
+        "the same listing, so a page for the catalog would duplicate it.",
+        "evidence": [
+            evidence(
+                "hermes/mcp/server.py",
+                '"deformation_visualizer_catalog"',
+                "MCP exposure",
+            ),
+            evidence(
+                "hermes_worker.pl",
+                "dispatch_request(deformation_visualizer_catalog, Id, _Request, Response)",
+                "worker dispatch",
+            ),
+        ],
+    },
     "model_analysis_lookup": {
         "does": "Returns the 739 admitted model-authored story-problem analyses "
         "by lesson code or statement id, each row carrying its statement, "
@@ -1139,8 +1206,12 @@ def build() -> dict[str, object]:
     # 359 late 2026-08-20: vision_fraction_recovery.pl — the attributed store
     # of PDF-recovered fraction operands — enters as the orphan it is (a build
     # input to the evidence builder, loaded by no runtime path).
-    if len(registry_rows) != 359:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 359")
+    # 361 late 2026-08-20 (second wave): the eight-lane deformation_compare op
+    # (routed, with its page) and the MCP-side deformation_visualizer_catalog
+    # (unrouted, with an authored judgement) enter as the nineteen unsurfaced
+    # visualizers reach the Math tools page and the MCP.
+    if len(registry_rows) != 361:
+        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 361")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1257,8 +1328,12 @@ def build() -> dict[str, object]:
     # judgements — the generic render endpoint is their route.
     # 14 from 2026-08-20: model_analysis_lookup joins with an authored
     # judgement — the MCP core is its route; the 0820E brief declined a page.
-    if len(unrouted) != 14:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 14")
+    # 15 late 2026-08-20: deformation_visualizer_catalog joins the same way.
+    # 17 at the night ceremony: question_moves and signature_anchors join with
+    # authored judgements as the release wave lands and the review queue
+    # retires.
+    if len(unrouted) != 17:
+        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 17")
 
     return {
         "schema": "self_description_census_v1",

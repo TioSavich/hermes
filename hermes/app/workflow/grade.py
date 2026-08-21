@@ -11,7 +11,7 @@ Usage:
 Reads `output/parsed/<prompt_id>.json`. For each student and prompt, writes a
 colleague-friendly draft grade out of 10 plus short feedback. The default mode
 uses Gemma through reallms. `--offline` uses a transparent completion heuristic
-when you want quick, no-API output; those rows are marked for human review.
+when you want quick, no-API output.
 
 Output:
     output/grades/<prompt_id>/grades.csv
@@ -262,7 +262,6 @@ def normalize_record(
         "evidence": listify(rec.get("evidence")),
         "feedback_to_student": feedback,
         "note_to_instructor": note,
-        "needs_human_review": bool(rec.get("needs_human_review", False)),
         "mode": mode,
         "_input_hash": input_hash,
     }
@@ -296,7 +295,6 @@ def absent_record(
                 "the instructor to review the original Canvas record."
             ),
             "note_to_instructor": "No attributed post was found for this student in the parsed JSON.",
-            "needs_human_review": False,
         },
         prompt_id=prompt_id,
         raw_header=raw_header,
@@ -434,7 +432,6 @@ def offline_grade(
             ],
             "feedback_to_student": " ".join(feedback_bits),
             "note_to_instructor": "Offline heuristic grade based on completion, length, prompt overlap, and reply/return evidence.",
-            "needs_human_review": True,
         },
         prompt_id=prompt_id,
         raw_header=raw_header,
@@ -486,7 +483,6 @@ def render_student_markdown(record: dict) -> str:
 
 **Draft grade:** {record['points']}/10
 **Followed prompt:** {record['followed_prompt']}
-**Human review:** {"yes" if record.get("needs_human_review") else "no"}
 
 **Breakdown.** Prompt requirements {breakdown.get('prompt_requirements', 0)}/4; substance {breakdown.get('substance', 0)}/3; peer engagement {breakdown.get('peer_engagement', 0)}/2; clarity and care {breakdown.get('clarity_and_care', 0)}/1.
 
@@ -511,7 +507,6 @@ def write_prompt_feedback(records: list[dict], path: Path) -> None:
         sections.append(
             f"## {rec['student_name']} ({rec['points']}/10)\n\n"
             f"**Followed prompt:** {rec['followed_prompt']}  \n"
-            f"**Human review:** {'yes' if rec.get('needs_human_review') else 'no'}\n\n"
             f"{rec['feedback_to_student']}\n\n"
             f"**Instructor note.** {rec['note_to_instructor']}\n"
         )
@@ -527,7 +522,6 @@ def flatten_row(record: dict) -> dict:
         "student_name": record.get("student_name", ""),
         "points": record.get("points", ""),
         "followed_prompt": record.get("followed_prompt", ""),
-        "needs_human_review": "yes" if record.get("needs_human_review") else "no",
         "prompt_requirements": breakdown.get("prompt_requirements", ""),
         "substance": breakdown.get("substance", ""),
         "peer_engagement": breakdown.get("peer_engagement", ""),
@@ -546,7 +540,7 @@ def write_csv(records: list[dict], path: Path) -> None:
         return
     fields = [
         "prompt_id", "raw_header", "student_id", "student_name", "points",
-        "followed_prompt", "needs_human_review", "prompt_requirements",
+        "followed_prompt", "prompt_requirements",
         "substance", "peer_engagement", "clarity_and_care", "requirements_met",
         "missing_requirements", "evidence", "feedback_to_student",
         "note_to_instructor", "mode",
@@ -565,7 +559,7 @@ def _main(argv: list[str] | None = None) -> None:
     )
     ap.add_argument("--only", help="Only grade one prompt_id.")
     ap.add_argument("--force", action="store_true", help="Re-grade even if cached JSON exists.")
-    ap.add_argument("--offline", action="store_true", help="Use no-API heuristic grading and mark rows for human review.")
+    ap.add_argument("--offline", action="store_true", help="Use no-API heuristic grading.")
     ap.add_argument("--include-absent", dest="include_absent", action="store_true", default=True,
                     help="Include roster students with no parsed posts as 0-point rows (default when roster.csv exists).")
     ap.add_argument("--no-absent", dest="include_absent", action="store_false",
@@ -687,7 +681,6 @@ def _main(argv: list[str] | None = None) -> None:
                                 "Your instructor should check the original Canvas post."
                             ),
                             "note_to_instructor": f"Grade pass failed to parse: {e}",
-                            "needs_human_review": True,
                         },
                         prompt_id=prompt_id,
                         raw_header=raw_header,

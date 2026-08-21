@@ -59,7 +59,6 @@ KEEP_FILES = [
     "hermes/capability_registry.pl",   # generated worker capability inventory
     "hermes/dispatch_spec.pl",         # authored generic-dispatch identity + behavior
     "hermes/prolog_query.pl",          # sandboxed caller-supplied goals over the knowledge base
-    "hermes/review_queue.pl",          # durable proposal-review queue operations
     "data/learningcommons/derived/im_standards_progression_overlay.json",  # candidate-only standards query data
     "hermes/app/Hermes.command",       # double-click local app launcher
     "hermes/app/Hermes.svg",           # launcher icon asset
@@ -75,7 +74,6 @@ KEEP_FILES = [
     "hermes/web/contact-sheets/goal-e-scoreboard.png",
     "hermes/web/contact-sheets/goal-e-visualizations.png",
     "hermes/web/atlas.html",          # generated capability inventory surface
-    "hermes/web/review.html",         # one-at-a-time proposal review surface
     "scripts/talkmoves_two_pass.py",   # imported by server.py for masking
     # /api/transcript_report chain: talkmoves_two_pass._load_scorer()
     # path-loads the blind-corpus scorer for transcript numbering.

@@ -258,10 +258,8 @@ def build_index(repl_ns, pairs, equi, dashed) -> str:
                 "reproduces. The deformations here are functions of the fraction. "
                 "The same vertical-strip rule transplanted onto a circle botches "
                 "the model of 1/4, 1/5, 1/6, and 1/8 the same way, differing only "
-                "in the denominator. Logic in Prolog "
-                "(<code>knowledge/strategies/render/parametric_partition_deformation.pl</code>, "
-                "<code>parametric_fraction_errors.pl</code>); render projected "
-                "through <code>hermes/web/render/drawer.js</code>.</p>")
+                "in the denominator. The scene compiler supplies the frames, and "
+                "the shared renderer projects them into these filmstrips.</p>")
 
     rows.append("<h2>The headline: one deformation, four denominators</h2>")
     check = ", ".join(f"1/{n} drew {d} interior cuts (expected {n-1})"

@@ -51,7 +51,7 @@ def results_get(ctx: Any) -> None:
 
 ROUTES = (
     Route("GET", "/api/models", models),
-    Route("POST", "/api/input", input_file, access="unlocked"),
-    Route("POST", "/api/results/list", results_list, access="unlocked"),
-    Route("POST", "/api/results/get", results_get, access="unlocked"),
+    Route("POST", "/api/input", input_file),
+    Route("POST", "/api/results/list", results_list),
+    Route("POST", "/api/results/get", results_get),
 )

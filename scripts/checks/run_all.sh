@@ -36,6 +36,8 @@ run hermes_shell_page_context.py python3 "$CHECKS_DIR/hermes_shell_page_context.
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_description_counts.py python3 "$CHECKS_DIR/mcp_description_counts.py"
 run fraction_comparison_scene.py python3 "$CHECKS_DIR/fraction_comparison_scene.py"
+run deformation_compare_scene.py python3 "$CHECKS_DIR/deformation_compare_scene.py"
+run visual_surface_indexes.py python3 "$CHECKS_DIR/visual_surface_indexes.py"
 run mcp_search_rows.py      python3 "$CHECKS_DIR/mcp_search_rows.py"
 run mcp_full_graph.py       python3 "$CHECKS_DIR/mcp_full_graph.py"
 run task_240_branch_agents.py python3 "$CHECKS_DIR/task_240_branch_agents.py"
@@ -57,6 +59,7 @@ run deformation_validity.py python3 "$CHECKS_DIR/deformation_validity.py"
 run vision_fraction_recovery.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/vision_fraction_recovery.pl -g vision_fraction_recovery:check_vision_fraction_recovery -t halt
 run lesson_representation_evidence.py python3 "$CHECKS_DIR/lesson_representation_evidence.py"
 run lesson_deformation_chart_evidence.py python3 "$CHECKS_DIR/lesson_deformation_chart_evidence.py"
+run misconception_render_link.py python3 "$CHECKS_DIR/misconception_render_link.py"
 run build_admitted_edges python3 "$CHECKS_DIR/../bigred/loops/build_admitted_edges.py" --check
 run admitted_bridges_store.py python3 "$CHECKS_DIR/admitted_bridges_store.py"
 run build_kernel_dependency_overlay python3 "$CHECKS_DIR/../bigred/loops/build_kernel_dependency_overlay.py" --check
@@ -72,7 +75,8 @@ run vocabulary_licenses.py  python3 "$CHECKS_DIR/vocabulary_licenses.py"
 run action_vocabulary_map.py python3 "$CHECKS_DIR/action_vocabulary_map.py"
 run action_grammar.py       python3 "$CHECKS_DIR/action_grammar.py"
 run corpus_window.py        python3 "$CHECKS_DIR/corpus_window.py"
-run review_surface.py       python3 "$CHECKS_DIR/review_surface.py"
+run promote_review_proposals.py python3 "$CHECKS_DIR/../research/promote_review_proposals.py" --check
+run admitted_review_proposals.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s knowledge/index/admitted_review_proposals.pl -g admitted_review_proposals:check_admitted_review_proposals -t halt
 run automaton_input_contracts.py python3 "$CHECKS_DIR/automaton_input_contracts.py"
 run strategy_trace_worker_guard.py python3 "$CHECKS_DIR/strategy_trace_worker_guard.py"
 run worker_readline_deadline.py python3 "$CHECKS_DIR/worker_readline_deadline.py"

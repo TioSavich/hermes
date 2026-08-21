@@ -221,10 +221,6 @@ def build() -> dict[Path, bytes]:
             # gained rows after the manifest was frozen; these wait for the
             # next split rather than being guessed into one.
             failing.append("outside_the_frozen_split")
-        approved = row["review_status"] == "approved"
-        verified = row["link_verification"]["state"] == "verified"
-        if not (approved or verified):
-            failing.append("unreviewed_and_unverified")
         if row["review_status"] == "culled_by_reviewer":
             failing.append("culled_by_reviewer")
         row["admitted_for_training"] = not failing

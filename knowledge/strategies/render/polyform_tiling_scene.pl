@@ -85,9 +85,10 @@ polyform_tiling_render_json(tile_region(cols(C), rows(R), Pieces), Dict) :-
        covered_cells(Clean, Covered), length(Covered, NCov),
        Total is C * R,
        length(Clean, NPieces),
+       plural_word(NPieces, "piece", "pieces", PieceWord),
        format(string(ResultStr),
-              "~w piece(s) placed; ~w of ~w cells covered on a ~wx~w region",
-              [NPieces, NCov, Total, C, R]),
+              "~w ~s placed; ~w of ~w cells covered on a ~wx~w region",
+              [NPieces, PieceWord, NCov, Total, C, R]),
        canvas_dict(Canvas),
        region_request(C, R, Clean, Request),
        Dict = _{ kind: "tile_region",
@@ -237,11 +238,12 @@ tr_frames([placed(Id, Cells)|Rest], C, R, All, Step, Acc, [Frame|Frames]) :-
     region_label(C, R, Label),
     scene_dict(C, R, CellDicts, Holes, Label, Scene),
     length(Cells, NCells),
+    plural_word(NCells, "cell", "cells", CellWord),
     length(Covered, NCov),
     Total is C * R,
     format(string(Caption),
-           "Place piece ~w (~w cell(s)) edge to edge; ~w of ~w cells covered.",
-           [Id, NCells, NCov, Total]),
+           "Place piece ~w (~w ~s) edge to edge; ~w of ~w cells covered.",
+           [Id, NCells, CellWord, NCov, Total]),
     format(string(Verb), "place(~w)", [Id]),
     Frame = _{ step: Step, verb: Verb, caption: Caption,
                sceneChanged: true, scene: Scene },
@@ -273,9 +275,10 @@ ta_frames(Row, C, R, All, Acc, [Frame|Frames]) :-
     scene_dict(C, R, CellDicts, Holes, Label, Scene),
     length(Acc1, Filled),
     Total is C * R,
+    plural_word(C, "unit cell", "unit cells", UnitCellWord),
     format(string(Caption),
-           "Tile row ~w with ~w unit cell(s); ~w of ~w cells covered.",
-           [Row, C, Filled, Total]),
+           "Tile row ~w with ~w ~s; ~w of ~w cells covered.",
+           [Row, C, UnitCellWord, Filled, Total]),
     format(string(Verb), "tile_row(~w)", [Row]),
     Frame = _{ step: Row, verb: Verb, caption: Caption,
                sceneChanged: true, scene: Scene },
@@ -327,9 +330,11 @@ flip_deformation_frames(Piece, Mirror, Rot, Cols, Rows, [F1, F2],
     append(MatchedDicts, OverhangDicts, Cells2),
     hole_dicts(Uncovered, UncoveredHoles),
     scene_dict(Cols, Rows, Cells2, UncoveredHoles, Label, Scene2),
+    plural_word(NMatched, "cell", "cells", MatchedWord),
+    plural_word(NOverhang, "cell", "cells", OverhangWord),
     format(string(Cap2),
-           "A rotation lands ~w cell(s) but pushes ~w cell(s) outside the footprint: no rotation mirrors a chiral piece. Only the Flip button reaches it.",
-           [NMatched, NOverhang]),
+           "A rotation lands ~w ~s but pushes ~w ~s outside the footprint: no rotation mirrors a chiral piece. Only the Flip button reaches it.",
+           [NMatched, MatchedWord, NOverhang, OverhangWord]),
     F2 = _{ step: 2, verb: "rotate_attempt", caption: Cap2,
             sceneChanged: true, scene: Scene2 }.
 
@@ -390,9 +395,10 @@ parity_deformation_frames(C, R, Reserved, Dominoes, [F1, F2, F3], NResidue) :-
     append(DominoDicts, ReservedDicts, Cells2),
     scene_dict(C, R, Cells2, LeftoverHoles, Label, Scene2),
     length(Dominoes, NDom),
+    plural_word(NDom, "domino", "dominoes", DominoWord),
     format(string(Cap2),
-           "Place ~w domino(s) edge to edge; cells remain uncovered around the removed corner.",
-           [NDom]),
+           "Place ~w ~s edge to edge; cells remain uncovered around the removed corner.",
+           [NDom, DominoWord]),
     F2 = _{ step: 2, verb: "cover_partial", caption: Cap2,
             sceneChanged: true, scene: Scene2 },
     % Frame 3: the stall. The residue is marked (role deformation); the reason it
@@ -401,14 +407,22 @@ parity_deformation_frames(C, R, Reserved, Dominoes, [F1, F2, F3], NResidue) :-
     cell_dicts_role(Leftover, "deformation", "residue", ResidueDicts),
     append([DominoDicts, ReservedDicts, ResidueDicts], Cells3),
     scene_dict(C, R, Cells3, [], Label, Scene3),
+    plural_word(NResidue, "cell", "cells", ResidueWord),
+    remain_verb(NResidue, RemainWord),
     format(string(Cap3),
-           "The cover stalls: ~w cell(s) remain that no domino completes. Whether the board tiles at all is settled by a checkerboard-coloring parity count, not by pushing tiles. The tiles stage the impossibility; the reason hands off to human judgment.",
-           [NResidue]),
+           "The cover stalls: ~w ~s ~s that no domino completes. Whether the board tiles at all is settled by a checkerboard-coloring parity count, not by pushing tiles. The tiles stage the impossibility; the reason hands off to human judgment.",
+           [NResidue, ResidueWord, RemainWord]),
     F3 = _{ step: 3, verb: "stall", caption: Cap3,
             sceneChanged: true, scene: Scene3 }.
 
 parity_note(Note) :-
     Note = "The tiles stage the repeated failure — a partial cover that cannot close around the removed corner — but they cannot deliver its reason. Whether the region admits any tiling is settled by a two-coloring that leaves the two colors' counts unequal, an argument that departs the spatial model and hands off to inference. This is a hollow boundary: the picture names the impossibility; human judgment carries the proof.".
+
+plural_word(1, Singular, _Plural, Singular) :- !.
+plural_word(_Count, _Singular, Plural, Plural).
+
+remain_verb(1, "remains") :- !.
+remain_verb(_Count, "remain").
 
 
 % =============================================================================

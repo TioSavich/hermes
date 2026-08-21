@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fraction comparison pairs</title>
+  <title>Fraction and decimal comparison pairs</title>
   <link rel="stylesheet" href="../hermes-tokens.css">
   <link rel="stylesheet" href="../render/host.css">
   <script defer src="../render/hermes-shell.js" data-root="../" data-app="/" data-active="fraction-comparison"></script>
@@ -18,7 +18,11 @@
     .compare-note { background: var(--paper-warm, #efe6d2); border: 1px solid var(--line, #cdbfa2);
       border-left: 3px solid var(--teal, #2f7d6e); border-radius: 6px;
       padding: 12px 14px; margin-top: 18px; font-size: 0.92rem; }
+    .boundary-note { background: var(--paper-warm, #efe6d2); border: 1px solid var(--line, #cdbfa2);
+      border-radius: 6px; color: var(--ink, #28251f); padding: 12px 14px;
+      margin: 12px 0; font: inherit; }
     .initial { color: var(--muted, #665f4f); padding: 24px; }
+    [data-input-field][hidden] { display: none; }
     @media (max-width: 720px) { .cols { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -26,8 +30,8 @@
   <div class="wrap">
     <header class="host-head">
       <div>
-        <h1>Fraction comparison pairs</h1>
-        <p class="subhead">Run one of six comparison strategies beside the deformation that shadows it, using the same four inputs for both.</p>
+        <h1>Fraction and decimal comparison pairs</h1>
+        <p class="subhead">Run a fraction or decimal strategy beside its paired deformation, using the same quantities for both.</p>
       </div>
       <nav class="view-toggle" aria-label="audience">
         <button data-view="freshman" class="active">student</button>
@@ -55,6 +59,7 @@
         <div id="defCap" class="cap only-freshman"></div>
       </div>
     </div>
+    <div id="boundaryNote" class="boundary-note" hidden></div>
 
     <div class="controls">
       <button id="prev">&larr; Prev</button>
@@ -72,6 +77,8 @@
     <section class="panel only-philosopher">
       <h2>Formal signature</h2>
       <div id="formalNote" class="band"></div>
+      <div id="divergenceNote" class="band"></div>
+      <div id="viabilityNote" class="band"></div>
     </section>
 
     <section class="calc-bar">
@@ -83,6 +90,12 @@
           <option value="benchmark_fraction_comparison">benchmark</option>
           <option value="common_unit_fraction_comparison">common unit</option>
           <option value="decimal_fraction_place_value_comparison">decimal place value</option>
+          <option value="positional_decimal_reading">read a decimal</option>
+          <option value="decimal_comparison_by_aligned_units">compare decimals by aligned units</option>
+          <option value="decimal_addition_by_aligned_units">add decimals by aligned units</option>
+          <option value="decimal_subtraction_by_aligned_units">subtract decimals by aligned units</option>
+          <option value="decimal_place_unit_regrouping">regroup decimal units</option>
+          <option value="decimal_multiplication_rule">multiply decimals</option>
         </select>
       </label>
       <label><span data-input-label="n1">first numerator</span>
@@ -94,7 +107,7 @@
       <label><span data-input-label="n2">second numerator</span>
         <input id="n2" data-arg="n2" type="number" value="2" min="0">
       </label>
-      <label><span data-input-label="d2">second denominator</span>
+      <label data-input-field="d2"><span data-input-label="d2">second denominator</span>
         <input id="d2" data-arg="d2" type="number" value="5" min="1">
       </label>
       <button id="calculate">Run comparison</button>
@@ -113,27 +126,32 @@
         n2: document.querySelector('[data-input-label="n2"]'),
         d2: document.querySelector('[data-input-label="d2"]')
       };
+      var d2Field = document.querySelector('[data-input-field="d2"]');
+      var d2Input = document.getElementById('d2');
+      var decimalDefaults = {
+        decimal_fraction_place_value_comparison: [9, 10, 10, 100],
+        positional_decimal_reading: [37, 100, 0, 1],
+        decimal_comparison_by_aligned_units: [9, 10, 10, 100],
+        decimal_addition_by_aligned_units: [12, 10, 3, 100],
+        decimal_subtraction_by_aligned_units: [12, 10, 3, 100],
+        decimal_place_unit_regrouping: [3, 10, 100, 0],
+        decimal_multiplication_rule: [12, 10, 3, 10]
+      };
       function setLabels() {
-        var decimal = family.value === 'decimal_fraction_place_value_comparison';
-        labels.n1.textContent = decimal ? 'first numeral' : 'first numerator';
-        labels.d1.textContent = decimal ? 'first scale' : 'first denominator';
-        labels.n2.textContent = decimal ? 'second numeral' : 'second numerator';
+        var decimal = Object.prototype.hasOwnProperty.call(decimalDefaults, family.value);
+        labels.n1.textContent = family.value === 'decimal_place_unit_regrouping' ? 'unit count' : (decimal ? 'first numeral' : 'first numerator');
+        labels.d1.textContent = family.value === 'decimal_place_unit_regrouping' ? 'starting scale' : (decimal ? 'first scale' : 'first denominator');
+        labels.n2.textContent = family.value === 'decimal_place_unit_regrouping' ? 'target scale' : (decimal ? 'second numeral' : 'second numerator');
+        var d2Unused = family.value === 'positional_decimal_reading' || family.value === 'decimal_place_unit_regrouping';
         labels.d2.textContent = decimal ? 'second scale' : 'second denominator';
+        d2Field.hidden = d2Unused;
+        d2Input.disabled = d2Unused;
       }
       family.addEventListener('change', function () {
-        var decimal = family.value === 'decimal_fraction_place_value_comparison';
-        if (decimal) {
-          document.getElementById('n1').value = '9';
-          document.getElementById('d1').value = '10';
-          document.getElementById('n2').value = '10';
-          document.getElementById('d2').value = '100';
-        } else if (document.getElementById('d1').value === '10' &&
-                   document.getElementById('d2').value === '100') {
-          document.getElementById('n1').value = '1';
-          document.getElementById('d1').value = '3';
-          document.getElementById('n2').value = '2';
-          document.getElementById('d2').value = '5';
-        }
+        var values = decimalDefaults[family.value] || [1, 3, 2, 5];
+        ['n1', 'd1', 'n2', 'd2'].forEach(function (id, index) {
+          document.getElementById(id).value = String(values[index]);
+        });
         setLabels();
       });
       setLabels();

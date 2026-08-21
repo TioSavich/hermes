@@ -7,9 +7,9 @@ invariant with stubs, leaving a live verified REALLMS request to the controller.
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import ssl
-import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hermes.app import gate, llm, server  # noqa: E402
+from hermes.app import llm, server  # noqa: E402
 from hermes.app.routes.logic import RouteLogic  # noqa: E402
 
 # This is deliberately a grep pattern. It catches a direct assignment such as
@@ -30,7 +30,7 @@ from hermes.app.routes.logic import RouteLogic  # noqa: E402
 FORBIDDEN_ENV_WRITE = r"os\.environ\[(['\"])REALLMS_INSECURE\1\]\s*="
 
 
-def route_logic(*, mode: str, preflight_ok: bool | None) -> RouteLogic:
+def route_logic(*, preflight_ok: bool | None) -> RouteLogic:
     last_preflight = None
     if preflight_ok is not None:
         last_preflight = server.PreflightResult(
@@ -38,10 +38,8 @@ def route_logic(*, mode: str, preflight_ok: bool | None) -> RouteLogic:
             reason="fixture",
             checked_at=datetime.now(timezone.utc),
         )
-    gate_service = SimpleNamespace(
-        state=gate.GateState(mode=mode), last_preflight=last_preflight
-    )
-    return RouteLogic(SimpleNamespace(services=SimpleNamespace(gate=gate_service)))
+    tls_service = SimpleNamespace(last_preflight=last_preflight)
+    return RouteLogic(SimpleNamespace(services=SimpleNamespace(tls=tls_service)))
 
 
 def environment_without_insecure() -> mock._patch_dict:  # type: ignore[name-defined]
@@ -50,13 +48,12 @@ def environment_without_insecure() -> mock._patch_dict:  # type: ignore[name-def
     return mock.patch.dict(os.environ, copied, clear=True)
 
 
-def test_successful_preflight_prefers_verified_context_in_both_modes() -> None:
+def test_successful_preflight_prefers_verified_context() -> None:
     with environment_without_insecure():
-        for mode in (gate.HOME, gate.CAMPUS):
-            ctx = route_logic(mode=mode, preflight_ok=True)._ssl_ctx_for_mode()
-            assert ctx.verify_mode == ssl.CERT_REQUIRED, (mode, ctx.verify_mode)
-            assert ctx.check_hostname is True, mode
-    print("PASS successful preflight selects a verifying context in home and campus modes")
+        ctx = route_logic(preflight_ok=True)._ssl_context()
+        assert ctx.verify_mode == ssl.CERT_REQUIRED, ctx.verify_mode
+        assert ctx.check_hostname is True
+    print("PASS successful preflight selects a verifying context")
 
 
 def test_user_insecure_request_is_the_only_fallback() -> None:
@@ -65,7 +62,7 @@ def test_user_insecure_request_is_the_only_fallback() -> None:
     with mock.patch.dict(os.environ, {"REALLMS_INSECURE": "1"}, clear=True), \
          mock.patch.object(llm, "build_ssl_context", return_value=insecure) as build_default, \
          mock.patch.object(llm, "build_secure_ssl_context", return_value=secure) as build_secure:
-        actual = route_logic(mode=gate.HOME, preflight_ok=False)._ssl_ctx_for_mode()
+        actual = route_logic(preflight_ok=False)._ssl_context()
     assert actual is insecure
     build_default.assert_called_once_with()
     build_secure.assert_not_called()
@@ -78,43 +75,17 @@ def test_retained_preflight_outranks_user_insecure_request() -> None:
     with mock.patch.dict(os.environ, {"REALLMS_INSECURE": "1"}, clear=True), \
          mock.patch.object(llm, "build_ssl_context", return_value=insecure) as build_default, \
          mock.patch.object(llm, "build_secure_ssl_context", return_value=secure) as build_secure:
-        actual = route_logic(mode=gate.HOME, preflight_ok=True)._ssl_ctx_for_mode()
+        actual = route_logic(preflight_ok=True)._ssl_context()
     assert actual is secure
     build_secure.assert_called_once_with()
     build_default.assert_not_called()
     print("PASS a retained verified preflight outranks the user insecure request")
 
 
-def test_campus_mode_always_verifies_despite_user_insecure_request() -> None:
-    insecure = object()
-    secure = object()
-    for preflight_ok in (None, False):
-        with mock.patch.dict(os.environ, {"REALLMS_INSECURE": "1"}, clear=True), \
-             mock.patch.object(llm, "build_ssl_context", return_value=insecure) as build_default, \
-             mock.patch.object(llm, "build_secure_ssl_context", return_value=secure) as build_secure:
-            actual = route_logic(mode=gate.CAMPUS, preflight_ok=preflight_ok)._ssl_ctx_for_mode()
-        assert actual is secure, preflight_ok
-        build_secure.assert_called_once_with()
-        build_default.assert_not_called()
-    print("PASS campus mode always verifies, whatever the environment says")
-
-
-def test_workflow_client_insecurity_is_user_opt_in_only_and_never_campus() -> None:
-    from hermes.app.routes import workflow
-
-    with environment_without_insecure():
-        assert workflow._tls_insecure(gate.GateState(mode=gate.HOME)) is False
-        assert workflow._tls_insecure(gate.GateState(mode=gate.CAMPUS)) is False
-    with mock.patch.dict(os.environ, {"REALLMS_INSECURE": "1"}, clear=True):
-        assert workflow._tls_insecure(gate.GateState(mode=gate.HOME)) is True
-        assert workflow._tls_insecure(gate.GateState(mode=gate.CAMPUS)) is False
-    print("PASS workflow client insecurity is user opt-in only and never campus")
-
-
 def test_unproven_route_still_verifies_and_names_certificate_limit() -> None:
     with environment_without_insecure():
-        logic = route_logic(mode=gate.HOME, preflight_ok=False)
-        ctx = logic._ssl_ctx_for_mode()
+        logic = route_logic(preflight_ok=False)
+        ctx = logic._ssl_context()
         assert ctx.verify_mode == ssl.CERT_REQUIRED
         assert ctx.check_hostname is True
         error = logic._reallms_error(
@@ -131,17 +102,17 @@ def test_unproven_route_still_verifies_and_names_certificate_limit() -> None:
     print("PASS unproven route still verifies; certificate failure copy is explicit")
 
 
-def test_gate_service_retains_last_preflight_with_timestamp() -> None:
+def test_tls_service_retains_last_preflight_with_timestamp() -> None:
     with mock.patch.object(server.llm, "load_key", return_value="fixture-key"), \
          mock.patch.object(server.llm, "secure_preflight", return_value=(True, "fixture verified")):
-        service = server.GateService(runtime=ROOT)
+        service = server.TLSService(runtime=ROOT)
         result = service.run_preflight()
     assert result == (True, "fixture verified")
     assert service.last_preflight is not None
     assert service.last_preflight.ok is True
     assert service.last_preflight.reason == "fixture verified"
     assert service.last_preflight.checked_at.tzinfo is timezone.utc
-    print("PASS GateService retains the most recent secure preflight and UTC timestamp")
+    print("PASS TLSService retains the most recent secure preflight and UTC timestamp")
 
 
 def test_secure_preflight_ignores_insecure_flag() -> None:
@@ -159,19 +130,17 @@ def test_secure_preflight_ignores_insecure_flag() -> None:
     assert len(captured) == 1
     assert captured[0].verify_mode == ssl.CERT_REQUIRED
     assert captured[0].check_hostname is True
-    print("PASS FERPA invariant: secure_preflight ignores REALLMS_INSECURE")
+    print("PASS transport invariant: secure_preflight ignores REALLMS_INSECURE")
 
 
 def env_writes(tree: Path) -> str:
-    result = subprocess.run(
-        ["rg", "--pcre2", "-n", "--glob", "*.py", FORBIDDEN_ENV_WRITE, str(tree)],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode not in (0, 1):
-        raise RuntimeError(result.stderr.strip() or "rg failed")
-    return result.stdout
+    pattern = re.compile(FORBIDDEN_ENV_WRITE)
+    matches: list[str] = []
+    for path in tree.rglob("*.py"):
+        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if pattern.search(line):
+                matches.append(f"{path}:{line_number}:{line}")
+    return "\n".join(matches)
 
 
 def test_no_app_side_env_write_and_synthetic_reversion_bites() -> None:
@@ -183,8 +152,8 @@ def test_no_app_side_env_write_and_synthetic_reversion_bites() -> None:
         shutil.copy2(ROOT / "hermes/app/routes/logic.py", copied)
         copied.write_text(
             copied.read_text(encoding="utf-8").replace(
-                "    def _ssl_ctx_for_mode(self):",
-                "    def _ssl_ctx_for_mode(self):\n        os.environ[\"REALLMS_INSECURE\"] = \"1\"",
+                "    def _ssl_context(self):",
+                "    def _ssl_context(self):\n        os.environ[\"REALLMS_INSECURE\"] = \"1\"",
                 1,
             ),
             encoding="utf-8",
@@ -195,13 +164,11 @@ def test_no_app_side_env_write_and_synthetic_reversion_bites() -> None:
 
 
 def main() -> int:
-    test_successful_preflight_prefers_verified_context_in_both_modes()
+    test_successful_preflight_prefers_verified_context()
     test_user_insecure_request_is_the_only_fallback()
     test_retained_preflight_outranks_user_insecure_request()
-    test_campus_mode_always_verifies_despite_user_insecure_request()
-    test_workflow_client_insecurity_is_user_opt_in_only_and_never_campus()
     test_unproven_route_still_verifies_and_names_certificate_limit()
-    test_gate_service_retains_last_preflight_with_timestamp()
+    test_tls_service_retains_last_preflight_with_timestamp()
     test_secure_preflight_ignores_insecure_flag()
     test_no_app_side_env_write_and_synthetic_reversion_bites()
     print("tls verified-first checks PASS")

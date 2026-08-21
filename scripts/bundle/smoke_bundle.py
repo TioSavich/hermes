@@ -202,7 +202,6 @@ def static_audit(tree: Path, report: Report) -> None:
     required = (
         "hermes/web/atlas.html",
         "hermes/web/witnesses.html",
-        "hermes/web/review.html",
         "hermes/capability_registry.pl",
         "scripts/extract_capability_registry.py",
     )
@@ -223,10 +222,6 @@ def static_audit(tree: Path, report: Report) -> None:
             "formal/pml/mua_conjectures.pl", "knowledge/misconceptions/pml_wire.pl",
             "/api/witness/grounding", "image_schema", "target_inferential_strength_witness",
         ),
-        "hermes/web/review.html": (
-            "/api/review_queue", "/api/review_decide", "Unit recognition sets",
-            "None of these rows", "explicit_lesson_strategy/4",
-        ),
         "hermes/web/bridge.html": (
             "formal/learner/activity_contract.pl",
             "knowledge/strategies/math_benchmark.pl",
@@ -237,8 +232,11 @@ def static_audit(tree: Path, report: Report) -> None:
         "hermes/web/index.html": (
             "ZEEMAN_BIFURCATION_VERDICT agreement", "hermes/web/prolog/zeeman_machine.pl",
         ),
+        # The 2026-08-20 copy cleanup removed source-file names from the page
+        # (every word costs); the witness is now the generated index the page
+        # actually fetches.
         "hermes/web/monitoring_chart.html": (
-            "curriculum/im/im_glossary.pl", "curriculum/im_harness.pl",
+            "monitoring_visual_index.json",
         ),
         "hermes/web/visualizations.html": (
             "curriculum/im/generated/compiled_task_instances.pl",
@@ -424,7 +422,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
     try:
         for _ in range(60):
             try:
-                status, _ = call(base, "/api/mode", timeout=2)
+                status, _ = call(base, "/api/preflight", timeout=2)
                 if status == 200:
                     break
             except OSError:
@@ -434,7 +432,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
                     return
                 time.sleep(0.5)
         else:
-            report.add("FAIL", "server start", "no answer on /api/mode")
+            report.add("FAIL", "server start", "no answer on /api/preflight")
             return
 
         def probe(name: str, path: str, payload: dict | None = None,
@@ -459,7 +457,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
 
         probe("GET / (console)", "/",
               check=lambda b: b"hermes-shell" in b or b"console" in b)
-        probe("GET /api/mode", "/api/mode")
+        probe("GET /api/preflight", "/api/preflight")
         probe("GET /api/quickstart", "/api/quickstart")
         probe("GET /api/sample", "/api/sample")
         probe("GET /api/inputs", "/api/inputs")

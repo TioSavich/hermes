@@ -204,7 +204,7 @@
     <label class="fmt-note"><input type="checkbox" id="blind-discourse-speakers">
       Replace speaker names with S01, S02… before sending</label>
     <p class="fmt-note">Unchecked sends the labels to the app on this machine; checked replaces
-      them when you would rather not keep names in the local run record or you are on a gated deployment.</p>
+      them when you would rather not keep names in the local run record.</p>
     <div class="event-actions">
       <button class="btn ghost" data-discourse-route="/api/discourse_features">Surface features</button>
       <button class="btn ghost" data-discourse-route="/api/discourse_pragmatics">Pragmatic candidates</button>
@@ -224,8 +224,7 @@
         routes.</span>
     </summary>
     <p class="sec-hint">Paste a pseudonymized canonical event object or an array of events.
-      Do not put student work in this field. Speaker-connection requests require the verified gate;
-      unsafe fields and locked requests are reported without a substitute result.</p>
+      Do not put student work in this field. Unsafe fields are reported without a substitute result.</p>
     <textarea id="event-json">[
   {"event_id":"ev_0001","source":{"source_type":"n103_discussion","metadata":{"domain":"geometry","topic":"unknown"}},"actor":{"role":"student","pseudonym":"S01"},"substrate":{"utterance_type":"assertion","observed_markers":["unknown"],"candidate_terms":[],"confidence":0.35},"symbolic":{"commitments":["low_information_geometry_claim"],"entitlements":[],"missing_requirements":[],"incompatibilities":[],"material_inferences":[{"handle":"unknown_material_inference","frame":"inference_transition_frame","polarity":"expansive"}],"literature_handles":[],"residuals":["no_geometry_signal_detected"]},"pml":{"mode":"objective","polarity":"expansive","force":"binding","operator":"exp_poss","validity_focus":["objective_truth"],"pragmatic_horizon_level":"background","status":"candidate","confidence":0.35},"carspecken":{"action_impetus":"surface_unknown_validity_claim","identity_claim":null,"identity_cost":0.25,"recognition_risk":"low","proprioceptive_delta":"expansion","internalized_audience":"n103_geometry_discussion_norm","infinite_seed":false,"apophatic_guardrail":"Do not diagnose the learner or quote student work."},"question_candidates":[],"status":"pml_annotated"},
   {"event_id":"ev_0002","source":{"source_type":"n103_discussion","metadata":{"domain":"geometry","topic":"inclusive_shape_hierarchy"}},"actor":{"role":"student","pseudonym":"S02"},"substrate":{"utterance_type":"assertion","observed_markers":["inclusive_shape_hierarchy","misconception"],"candidate_terms":["square_not_rectangle"],"confidence":0.69},"symbolic":{"commitments":["square_not_rectangle"],"entitlements":[],"missing_requirements":["inclusive_shape_hierarchy_defining_attribute_warrant"],"incompatibilities":["square_not_rectangle"],"material_inferences":[{"handle":"class_inclusion_by_defining_attributes","frame":"category_membership_frame","polarity":"expansive"}],"literature_handles":["square_not_rectangle"],"residuals":[]},"pml":{"mode":"objective","polarity":"expansive","force":"binding","operator":"exp_poss","validity_focus":["objective_truth"],"pragmatic_horizon_level":"foreground","status":"candidate","confidence":0.69},"carspecken":{"action_impetus":"repair_inclusive_shape_hierarchy_classification","identity_claim":null,"identity_cost":0.65,"recognition_risk":"medium","proprioceptive_delta":"expansion","internalized_audience":"n103_geometry_discussion_norm","infinite_seed":false,"apophatic_guardrail":"Do not diagnose the learner or quote student work."},"question_candidates":[],"status":"pml_annotated"}

@@ -35,12 +35,13 @@ fraction_comparison_compare_json(Spec, Dict) :-
 
 comparison_document(Family, ProductiveKind, DeformationKind,
                     N1, D1, N2, D2, Dict) :-
-    (   run_pair(Family, ProductiveKind, DeformationKind,
-                 N1, D1, N2, D2,
-                 ProductiveOutcome, ProductiveTrace,
-                 DeformationOutcome, DeformationTrace)
+    (   once(run_pair(Family, ProductiveKind, DeformationKind,
+                      N1, D1, N2, D2,
+                      ProductiveOutcome, ProductiveTrace,
+                      DeformationOutcome, DeformationTrace))
     ->  (   comparison_scenes(Family, N1, D1, N2, D2,
                               ProductiveTrace, DeformationTrace,
+                              ProductiveOutcome, DeformationOutcome,
                               ProductiveScene, DeformationScene)
         ->  outcome_side(ProductiveOutcome, ProductiveTrace,
                          ProductiveScene, Productive),
@@ -65,7 +66,7 @@ document_fields(Family, ProductiveKind, DeformationKind,
     maplist(term_to_string,
             [Family, ProductiveKind, DeformationKind],
             [FamilyText, ProductiveText, DeformationText]),
-    outcome_note(DeformationOutcome, Note),
+    outcome_note(Family, DeformationOutcome, Note),
     Base = _{ productiveKind: ProductiveText,
               deformationKind: DeformationText,
               family: FamilyText,
@@ -116,28 +117,70 @@ family_kinds(common_unit_fraction_comparison,
 family_kinds(decimal_fraction_place_value_comparison,
              decimal_fraction_place_value_comparison,
              decimal_scale_loss_comparison).
+family_kinds(positional_decimal_reading,
+             positional_decimal_reading,
+             decimal_whole_number_reading).
+family_kinds(decimal_comparison_by_aligned_units,
+             decimal_comparison_by_aligned_units,
+             decimal_numeral_comparison_without_scale_alignment).
+family_kinds(decimal_addition_by_aligned_units,
+             decimal_addition_by_aligned_units,
+             decimal_add_unaligned_numerals).
+family_kinds(decimal_subtraction_by_aligned_units,
+             decimal_subtraction_by_aligned_units,
+             decimal_subtract_unaligned_numerals).
+family_kinds(decimal_place_unit_regrouping,
+             decimal_place_unit_regrouping,
+             change_decimal_place_name_without_regrouping).
+family_kinds(decimal_multiplication_rule,
+             decimal_multiplication_rule,
+             decimal_point_rule_misapplication).
 
-run_pair(decimal_fraction_place_value_comparison, ProductiveKind, DeformationKind,
+run_pair(Family, ProductiveKind, DeformationKind,
          N1, S1, N2, S2,
          ProductiveOutcome, ProductiveTrace,
          DeformationOutcome, DeformationTrace) :-
-    productive_decimal_deformation(ProductiveKind, DeformationKind,
-                                   decimal_scale_loss_comparison),
-    run_decimal_action(ProductiveKind, decimal_pair(N1, S1, N2, S2), ignored,
+    decimal_pair_family(Family),
+    productive_decimal_deformation(ProductiveKind, DeformationKind, _),
+    decimal_action_input(Family, N1, S1, N2, S2, Input, Scale),
+    run_decimal_action(ProductiveKind, Input, Scale,
                        ProductiveOutcome, ProductiveTrace),
-    run_decimal_action(DeformationKind, decimal_pair(N1, S1, N2, S2), ignored,
+    run_decimal_action(DeformationKind, Input, Scale,
                        DeformationOutcome, DeformationTrace).
 run_pair(Family, ProductiveKind, DeformationKind,
          N1, D1, N2, D2,
          ProductiveOutcome, ProductiveTrace,
          DeformationOutcome, DeformationTrace) :-
-    Family \== decimal_fraction_place_value_comparison,
+    \+ decimal_pair_family(Family),
     productive_fraction_deformation(ProductiveKind, DeformationKind, _),
     Pair = fraction_pair(N1, D1, N2, D2),
     run_fraction_action(ProductiveKind, Pair, unit(whole),
                         ProductiveOutcome, ProductiveTrace),
     run_fraction_action(DeformationKind, Pair, unit(whole),
                         DeformationOutcome, DeformationTrace).
+
+decimal_pair_family(decimal_fraction_place_value_comparison).
+decimal_pair_family(positional_decimal_reading).
+decimal_pair_family(decimal_comparison_by_aligned_units).
+decimal_pair_family(decimal_addition_by_aligned_units).
+decimal_pair_family(decimal_subtraction_by_aligned_units).
+decimal_pair_family(decimal_place_unit_regrouping).
+decimal_pair_family(decimal_multiplication_rule).
+
+decimal_action_input(positional_decimal_reading, Numeral, Scale, _, _,
+                     Numeral, Scale).
+decimal_action_input(decimal_place_unit_regrouping,
+                     Count, FromScale, ToScale, _,
+                     decimal_unit_conversion(Count, FromScale, ToScale), ignored).
+decimal_action_input(Family, N1, S1, N2, S2,
+                     decimal_pair(N1, S1, N2, S2), ignored) :-
+    memberchk(Family,
+              [ decimal_fraction_place_value_comparison,
+                decimal_comparison_by_aligned_units,
+                decimal_addition_by_aligned_units,
+                decimal_subtraction_by_aligned_units,
+                decimal_multiplication_rule
+              ]).
 
 
 outcome_side(Outcome, Trace, Scene, Side) :-
@@ -166,20 +209,34 @@ outcome_viability(Outcome, Viability) :-
         Viability = viability(_, _, _, _, _)
     ), !.
 
-outcome_note(Outcome, Note) :-
-    outcome_fields(Outcome, Fields),
-    (   memberchk(misconception_family(Family), Fields)
-    ->  human_term(Family, FamilyText)
-    ;   FamilyText = "paired deformation"
-    ),
-    (   memberchk(violated_invariant(Invariant), Fields)
-    ->  human_term(Invariant, InvariantText),
-        format(string(Note),
-               "The right side applies ~s and does not preserve ~s.",
-               [FamilyText, InvariantText])
-    ;   format(string(Note), "The right side applies ~s to the same inputs.",
-               [FamilyText])
-    ).
+outcome_note(Family, _Outcome, Note) :- family_note(Family, Note), !.
+outcome_note(_Family, _Outcome,
+             "The right side applies a paired deformation to the same inputs.").
+
+family_note(number_line_fraction_comparison,
+    "The productive side counts intervals of a common unit fraction. The deformation counts marks instead, shifting each represented position by one interval.").
+family_note(area_model_fraction_comparison,
+    "The productive side compares parts made by equal partitions of the same whole. The deformation counts shaded pieces even though the pieces are not the same size.").
+family_note(set_model_fraction_comparison,
+    "The productive side compares each subset with the same whole collection. The deformation compares subset counts without coordinating the size of the whole.").
+family_note(benchmark_fraction_comparison,
+    "The productive side locates both fractions relative to a shared benchmark. The deformation compares uncoordinated gaps, so the distances do not name the same unit.").
+family_note(common_unit_fraction_comparison,
+    "The productive side rewrites both fractions in a common unit before comparing them. The deformation adds numerators and denominators component by component, changing the quantities.").
+family_note(decimal_fraction_place_value_comparison,
+    "The productive side preserves each decimal's place-value scale while aligning the quantities. The deformation drops that scale and compares the written numerals alone.").
+family_note(positional_decimal_reading,
+    "The productive side reads the decimal mark and assigns each digit a place value. The deformation reads the same digit string as a whole number and loses the decimal scale.").
+family_note(decimal_comparison_by_aligned_units,
+    "The productive side expresses both decimals in one common unit before comparing them. The deformation compares the unaligned written numerals, which can reverse their order.").
+family_note(decimal_addition_by_aligned_units,
+    "The productive side aligns decimal units before adding and then reinscribes the sum. The deformation adds the written numerals first and attaches a scale afterward.").
+family_note(decimal_subtraction_by_aligned_units,
+    "The productive side aligns decimal units before subtracting and then reinscribes the difference. The deformation subtracts the written numerals without first making their units alike.").
+family_note(decimal_place_unit_regrouping,
+    "The productive side changes the count when it names a finer decimal unit, preserving the quantity. The deformation changes the unit name but leaves the count unchanged.").
+family_note(decimal_multiplication_rule,
+    "The productive side adds the two fractional-place counts when placing the decimal point in the product. The deformation uses only the larger place count, changing the product's scale.").
 
 viability_dict(viability(Status, condition(Condition), validity(Validity)), Dict) :-
     !,
@@ -199,7 +256,7 @@ trace_frames(Trace, Scene, Frames) :- trace_frames_(Trace, Scene, 1, Frames).
 
 trace_frames_([], _, _, []).
 trace_frames_([Hist|Rest], Scene, Step, [Frame|Frames]) :-
-    Hist = hist(State, _),
+    trace_state(Hist, State),
     term_to_string(State, Verb),
     trace_caption(Hist, Caption),
     ( Step =:= 1 -> Changed = true ; Changed = false ),
@@ -207,6 +264,10 @@ trace_frames_([Hist|Rest], Scene, Step, [Frame|Frames]) :-
               sceneChanged:Changed, scene:Scene},
     Next is Step + 1,
     trace_frames_(Rest, Scene, Next, Frames).
+
+trace_state(hist(State, _), State) :- !.
+trace_state(Action, State) :-
+    ( compound(Action) -> functor(Action, State, _) ; State = Action ).
 
 trace_caption(hist(_State, Viability), Caption) :-
     Viability = viability(_, condition(Condition), _),
@@ -219,10 +280,16 @@ trace_caption(hist(_State, Viability), Caption) :-
     human_term(Condition, ConditionText),
     format(string(Caption), "Viability condition: ~s.", [ConditionText]).
 trace_caption(hist(State, Payload), Caption) :-
+    !,
     state_label(State, StateText),
     compact_payload(Payload, Compact),
     human_term(Compact, PayloadText),
     format(string(Caption), "~s: ~s.", [StateText, PayloadText]).
+trace_caption(Action, Caption) :-
+    term_to_string(Action, Raw),
+    split_string(Raw, "_", "", Parts),
+    atomics_to_string(Parts, " ", Caption0),
+    format(string(Caption), "~s.", [Caption0]).
 
 state_label(State, Text) :-
     ( atom_concat(q_, Tail, State) -> true ; Tail = State ),
@@ -241,6 +308,69 @@ human_term(Term, Text) :-
     term_to_string(Term, Raw),
     split_string(Raw, "_", "", Parts),
     atomics_to_string(Parts, " ", Text).
+
+
+comparison_scenes(decimal_comparison_by_aligned_units,
+                  N1, S1, N2, S2, _, _, _, _,
+                  ProductiveScene, DeformationScene) :-
+    CommonScale is max(S1, S2),
+    Aligned1 is N1 * (CommonScale // S1),
+    Aligned2 is N2 * (CommonScale // S2),
+    decimal_number_line_scene(CommonScale, Aligned1, Aligned2,
+                              N1, S1, N2, S2, highlight, ProductiveScene),
+    decimal_number_line_scene(1, N1, N2,
+                              N1, S1, N2, S2, deformation, DeformationScene).
+comparison_scenes(Family, _N1, _S1, _N2, _S2, _, _,
+                  ProductiveOutcome, DeformationOutcome,
+                  ProductiveScene, DeformationScene) :-
+    decimal_result_family(Family),
+    outcome_result(ProductiveOutcome, ProductiveResult),
+    outcome_result(DeformationOutcome, DeformationResult),
+    decimal_magnitude(ProductiveResult, ProductiveNumeral, ProductiveScale),
+    decimal_magnitude(DeformationResult, DeformationNumeral, DeformationScale),
+    CommonScale is max(ProductiveScale, DeformationScale),
+    ProductiveAt is ProductiveNumeral * (CommonScale // ProductiveScale),
+    DeformationAt is DeformationNumeral * (CommonScale // DeformationScale),
+    max_list([1, ProductiveAt, DeformationAt], AxisMax),
+    decimal_result_scene(CommonScale, AxisMax, ProductiveAt,
+                         ProductiveResult, highlight, ProductiveScene),
+    decimal_result_scene(CommonScale, AxisMax, DeformationAt,
+                         DeformationResult, deformation, DeformationScene).
+comparison_scenes(Family, N1, D1, N2, D2,
+                  ProductiveTrace, DeformationTrace, _, _,
+                  ProductiveScene, DeformationScene) :-
+    comparison_scenes(Family, N1, D1, N2, D2,
+                      ProductiveTrace, DeformationTrace,
+                      ProductiveScene, DeformationScene).
+
+decimal_result_family(positional_decimal_reading).
+decimal_result_family(decimal_addition_by_aligned_units).
+decimal_result_family(decimal_subtraction_by_aligned_units).
+decimal_result_family(decimal_place_unit_regrouping).
+decimal_result_family(decimal_multiplication_rule).
+
+decimal_magnitude(decimal(Whole, fractional_digits(Fractional, Places), _),
+                  Numeral, Scale) :-
+    pow10(Places, Scale),
+    Numeral is Whole * Scale + Fractional.
+decimal_magnitude(whole_number(Numeral), Numeral, 1).
+decimal_magnitude(equivalent_decimal_units(
+                      Numeral, unit_fraction(1, Scale)), Numeral, Scale).
+
+pow10(0, 1) :- !.
+pow10(Places, Scale) :-
+    Places > 0,
+    Previous is Places - 1,
+    pow10(Previous, Prior),
+    Scale is Prior * 10.
+
+decimal_result_scene(CommonScale, AxisMax, At, Result, Role, Scene) :-
+    term_to_string(Result, Label),
+    sort([0, At, AxisMax], Ticks),
+    Scene = _{format:"number-line", version:2, mode:"decimal-result",
+              coordinateDenominator:CommonScale,
+              axis:_{min:0, max:AxisMax, ticks:Ticks}, jumps:[],
+              marks:[_{at:At,label:Label,role:Role}]}.
 
 
 comparison_scenes(number_line_fraction_comparison, N1, D1, N2, D2,

@@ -1,7 +1,7 @@
 """Endpoint behavior shared by the declarative route modules.
 
 This class is deliberately stateless: every request receives the server-owned
-RequestContext, including worker, gate, cache, paths, and LLM dependencies.
+RequestContext, including worker, TLS, cache, paths, and LLM dependencies.
 """
 from __future__ import annotations
 
@@ -10,11 +10,10 @@ import binascii
 import json
 import os
 import re
-import sqlite3
 import urllib.parse
 from typing import Any
 
-from hermes.app import gate, llm, worker
+from hermes.app import llm, worker
 from hermes.app.help_grounding import PAGE_CONTEXT, assemble_help_context
 
 TRANSCRIPT_SPEAKER_RE = re.compile(
@@ -169,134 +168,6 @@ WORKER_HINT = (
     "The local Prolog worker didn't respond as expected. If you just installed "
     "SWI-Prolog, restart Hermes. The terminal that launched Hermes has the full detail."
 )
-
-
-def _review_article_metadata(repo_root: Any, bibtex_key: str) -> dict[str, Any] | None:
-    """Return the corpus article named by a review proposal citation."""
-    database = repo_root / "data/research/research_shared.db"
-    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
-    try:
-        row = connection.execute(
-            """
-            SELECT bibtex_key, authors, year, title, journal, doi
-              FROM articles
-             WHERE bibtex_key = ?
-            """,
-            (bibtex_key,),
-        ).fetchone()
-    finally:
-        connection.close()
-    return dict(row) if row is not None else None
-
-
-def _review_candidate_evidence(
-    connection: sqlite3.Connection, row_type: str, row_id: int
-) -> tuple[str, dict[str, Any] | None]:
-    """Return the complete scored row text and its article metadata."""
-    if row_type == "strategy":
-        row = connection.execute(
-            """
-            SELECT s.strategy_description AS part_one,
-                   s.example AS part_two,
-                   s.key_moves_summary AS part_three,
-                   a.bibtex_key, a.authors, a.year, a.title, a.journal, a.doi
-              FROM strategy_instances s
-              LEFT JOIN articles a ON a.id = s.article_id
-             WHERE s.id = ?
-            """,
-            (row_id,),
-        ).fetchone()
-    elif row_type == "misconception":
-        row = connection.execute(
-            """
-            SELECT e.error_description AS part_one,
-                   e.example AS part_two,
-                   e.student_rule AS part_three,
-                   a.bibtex_key, a.authors, a.year, a.title, a.journal, a.doi
-              FROM error_instances e
-              LEFT JOIN articles a ON a.id = e.article_id
-             WHERE e.id = ?
-            """,
-            (row_id,),
-        ).fetchone()
-    else:
-        raise LookupError(f"unknown corpus review row type: {row_type}")
-    if row is None:
-        raise LookupError(f"corpus review row does not resolve: {row_type} {row_id}")
-    full_text = " ".join(
-        str(row[field])
-        for field in ("part_one", "part_two", "part_three")
-        if row[field]
-    )
-    metadata = (
-        {
-            field: row[field]
-            for field in ("bibtex_key", "authors", "year", "title", "journal", "doi")
-        }
-        if row["bibtex_key"]
-        else None
-    )
-    return full_text, metadata
-
-
-def _enrich_review_citation(repo_root: Any, result: Any) -> Any:
-    """Attach complete database rows and article fields to a review result."""
-    if not isinstance(result, dict) or not result.get("has_item"):
-        return result
-    item = result.get("item")
-    if not isinstance(item, dict):
-        return result
-    if item.get("item_type") == "unit_recognition_set":
-        return result
-    if item.get("item_type") == "corpus_binding":
-        citation = item.get("citation")
-        if citation == "unattributed":
-            item["citation_status"] = "no_recorded_source"
-            item["citation_metadata"] = None
-            return result
-        if not isinstance(citation, str) or not citation:
-            raise LookupError("corpus binding has no citation key")
-        metadata = _review_article_metadata(repo_root, citation)
-        if metadata is None:
-            raise LookupError(f"corpus citation does not resolve in articles: {citation}")
-        item["citation_status"] = "resolved_in_database"
-        item["citation_metadata"] = metadata
-        return result
-    if item.get("item_type") != "signature_anchor":
-        return result
-
-    database = repo_root / "data/research/research_shared.db"
-    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
-    try:
-        for candidate in item.get("candidates", []):
-            row_type = candidate.get("row_type")
-            row_id = candidate.get("row_id")
-            if (
-                not isinstance(row_type, str)
-                or isinstance(row_id, bool)
-                or not isinstance(row_id, int)
-            ):
-                raise LookupError("signature anchor candidate lacks a valid corpus row")
-            full_text, metadata = _review_candidate_evidence(
-                connection, row_type, row_id
-            )
-            candidate["full_text"] = full_text
-            citation = candidate.get("citation")
-            if citation == "unattributed":
-                candidate["citation_status"] = "no_recorded_source"
-                candidate["citation_metadata"] = None
-            elif metadata is None or metadata.get("bibtex_key") != citation:
-                raise LookupError(
-                    f"corpus citation does not match row {row_type} {row_id}: {citation}"
-                )
-            else:
-                candidate["citation_status"] = "resolved_in_database"
-                candidate["citation_metadata"] = metadata
-    finally:
-        connection.close()
-    return result
 
 
 class RouteLogic:
@@ -524,23 +395,21 @@ class RouteLogic:
             labels.append(label)
         return len(set(labels)) >= 2
 
-    def _ssl_ctx_for_mode(self):
-        """Prefer a successful verified preflight in either gate mode.
+    def _ssl_context(self):
+        """Prefer a verified context after a successful secure preflight.
 
-        Campus mode always verifies, whatever the environment says. Without
-        a retained proof, ``build_ssl_context`` honors only an explicit user
-        debugging setting; its normal path still verifies the server.
+        Without a retained proof, ``build_ssl_context`` honors only an
+        explicit user debugging setting; its normal path still verifies the
+        server.
         """
-        if self.ctx.services.gate.state.mode == gate.CAMPUS:
-            return llm.build_secure_ssl_context()
-        last_preflight = self.ctx.services.gate.last_preflight
+        last_preflight = self.ctx.services.tls.last_preflight
         if last_preflight is not None and last_preflight.ok:
             return llm.build_secure_ssl_context()
         return llm.build_ssl_context()
 
     def _reallms_error(self, exc: BaseException) -> str:
-        """Name certificate verification limits for an unproven verified route."""
-        last_preflight = self.ctx.services.gate.last_preflight
+        """Name certificate verification limits when preflight is unproven."""
+        last_preflight = self.ctx.services.tls.last_preflight
         verified_route_unproven = (
             (last_preflight is None or not last_preflight.ok)
             and not llm.insecure_tls_requested()
@@ -776,8 +645,6 @@ class RouteLogic:
                 "result": result,
                 "model": "offline-symbolic",
                 "offline": True,
-                "mode": self.ctx.services.gate.state.mode,
-                "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified),
             })
             return
         scene = self._chat_render_scene_request(message)
@@ -789,8 +656,6 @@ class RouteLogic:
                 "result": result,
                 "model": "offline-symbolic",
                 "offline": True,
-                "mode": self.ctx.services.gate.state.mode,
-                "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified),
             })
             return
         # Retrieve symbolic facts FIRST, so the answer is grounded in the KB
@@ -809,11 +674,9 @@ class RouteLogic:
                 "model": "offline-symbolic",
                 "offline": True,
                 "key_hint": KEY_HINT,
-                "mode": self.ctx.services.gate.state.mode,
-                "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified),
             })
             return
-        ssl_ctx = self._ssl_ctx_for_mode()
+        ssl_ctx = self._ssl_context()
         messages = [
             {"role": "system", "content": self.ctx.prompt("chat.md")},
             {"role": "user", "content": f"{message}\n\n{self._grounding_facts_block(grounding)}"},
@@ -833,8 +696,7 @@ class RouteLogic:
         answer = re.sub(
             r"(?m)^Context length:.*(?:\n+|$)", "", answer.strip(),
         ).strip()
-        self._send_json({"answer": answer, "grounded": grounded, "model": llm.resolve_model(),
-                         "mode": self.ctx.services.gate.state.mode, "insecure": not (self.ctx.services.gate.state.mode == gate.CAMPUS and self.ctx.services.gate.state.verified)})
+        self._send_json({"answer": answer, "grounded": grounded, "model": llm.resolve_model()})
 
     def _handle_help(self, payload: dict) -> None:
         question = str(payload.get("question") or "").strip()
@@ -867,7 +729,7 @@ class RouteLogic:
         try:
             answer = llm.call_api_messages(
                 messages, api_key=key, api_url=llm.resolve_api_url(),
-                model=llm.resolve_model(), ssl_ctx=self._ssl_ctx_for_mode(), timeout=300,
+                model=llm.resolve_model(), ssl_ctx=self._ssl_context(), timeout=300,
                 fail_on_error=False,
             )
         except Exception as exc:
@@ -944,7 +806,7 @@ class RouteLogic:
             self._send_json({"ok": True, "report": report,
                              "offline": True, "model": "offline-symbolic"})
             return
-        ssl_ctx = self._ssl_ctx_for_mode()
+        ssl_ctx = self._ssl_context()
 
         def call(system: str, user: str) -> str:
             return llm.call_api_messages(
@@ -1037,7 +899,7 @@ class RouteLogic:
         prompt_name = "transcribe_timed.md" if timed_audio else "transcribe.md"
         system = self.ctx.prompt(prompt_name)
         content = [{"type": "text", "text": f"FILE: {name}"}] + parts
-        ssl_ctx = self._ssl_ctx_for_mode()
+        ssl_ctx = self._ssl_context()
 
         def call(user_content: list) -> str:
             return llm.call_api_messages(
@@ -1130,7 +992,7 @@ class RouteLogic:
         if key is None:
             self._send_json({"error": KEY_HINT, "error_type": "no_key"}, status=503)
             return
-        ssl_ctx = self._ssl_ctx_for_mode()
+        ssl_ctx = self._ssl_context()
         messages = [
             {"role": "system", "content": self.ctx.prompt("pml_reader.md")},
             {"role": "user", "content": text},
@@ -1359,86 +1221,6 @@ class RouteLogic:
     def _handle_strategies(self, _payload: dict) -> None:
         self._send_json({"ok": True, "result": self.ctx.worker_request("list_strategies")})
 
-    def _handle_review_queue(self, payload: dict) -> None:
-        source = str(payload.get("source") or "").strip()
-        if source not in {"unit_recognition_set", "signature_anchor"}:
-            self._send_json(
-                {
-                    "error": (
-                        "source must be unit_recognition_set or signature_anchor"
-                    )
-                },
-                status=400,
-            )
-            return
-        offset = payload.get("offset", 0)
-        if isinstance(offset, bool) or not isinstance(offset, int) or offset < 0:
-            self._send_json({"error": "offset must be a non-negative integer"}, status=400)
-            return
-        result = self.ctx.worker_request("review_queue", source=source, offset=offset)
-        try:
-            result = _enrich_review_citation(self.ctx.repo_root, result)
-        except (LookupError, OSError, sqlite3.Error) as exc:
-            self._send_json({"error": str(exc)}, status=500)
-            return
-        self._send_json({"ok": True, "result": result})
-
-    def _handle_review_decide(self, payload: dict) -> None:
-        source = str(payload.get("source") or "").strip()
-        if source not in {"unit_recognition_set", "signature_anchor"}:
-            self._send_json(
-                {
-                    "error": (
-                        "source must be unit_recognition_set or signature_anchor"
-                    )
-                },
-                status=400,
-            )
-            return
-        verdict = str(payload.get("verdict") or "").strip().lower()
-        unit_verdict = verdict in {"accept-set", "reject-set", "amend"}
-        anchor_verdict = verdict == "none" or bool(
-            re.fullmatch(r"anchor:(?:strategy|misconception):\d+", verdict)
-        )
-        if (
-            source == "unit_recognition_set"
-            and not unit_verdict
-        ) or (
-            source == "signature_anchor"
-            and not anchor_verdict
-        ):
-            self._send_json(
-                {"error": "verdict is not valid for this review mode"},
-                status=400,
-            )
-            return
-        item_id = str(payload.get("item_id") or "").strip()
-        if not item_id:
-            self._send_json({"error": "item_id is required"}, status=400)
-            return
-        shown = payload.get("shown")
-        if not isinstance(shown, dict):
-            self._send_json({"error": "shown must be the queue item object"}, status=400)
-            return
-        note_value = payload.get("note", "")
-        if note_value is None:
-            note_value = ""
-        if not isinstance(note_value, str):
-            self._send_json({"error": "note must be text"}, status=400)
-            return
-        if len(note_value) > 4000:
-            self._send_json({"error": "note must be 4000 characters or fewer"}, status=400)
-            return
-        result = self.ctx.worker_request(
-            "review_decide",
-            source=source,
-            item_id=item_id,
-            verdict=verdict,
-            note=note_value,
-            shown=shown,
-        )
-        self._send_json({"ok": True, "result": result})
-
     def _handle_fraction_frames(self, raw_path: str) -> None:
         """Lay out a fraction automaton as bars (v2 frames). Returns the frame
         document at the top level so the viewer's live mode can fetch it directly
@@ -1471,6 +1253,7 @@ class RouteLogic:
         data. Lets every visualizer page draw against this same origin."""
         allowed = {
             "fraction_render", "fraction_compare", "fraction_comparison_compare",
+            "deformation_compare",
             "area_render", "area_compare",
             "base_ten_render", "ace_of_bases_render", "base_ten_compare", "set_grouping_render",
             "unit_echo_render",
@@ -1822,9 +1605,8 @@ class RouteLogic:
         )
 
     def _handle_benny_demo(self, _payload: dict) -> None:
-        # Public: Benny's rule deformations run side by side with their correct
-        # coordinated counterparts on the same inputs. No student data, no FERPA
-        # gate (like the rest of the encyclopedia surfaces).
+        # Benny's rule deformations run side by side with their correct
+        # coordinated counterparts on the same inputs.
         self._send_json({"ok": True, "result": self.ctx.worker_request("benny_demo")})
 
     def _handle_capabilities(self) -> None:

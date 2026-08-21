@@ -1,7 +1,6 @@
 """List and safely read the workflow outputs under runtime/output/.
 
-Viewing outputs is student data, so the server gates these behind an unlocked
-gate. Path reads are confined to runtime/output/ (no traversal).
+Path reads are confined to runtime/output/ (no traversal).
 """
 from __future__ import annotations
 

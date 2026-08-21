@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Copy the synthetic example roster + discussion paste into runtime/ so you can
-# exercise the workflow off-campus (launch with HERMES_GATE_OVERRIDE=1).
+# Copy the synthetic example roster + discussion paste into runtime/.
 set -euo pipefail
 APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 mkdir -p "$APP_DIR/runtime/input"

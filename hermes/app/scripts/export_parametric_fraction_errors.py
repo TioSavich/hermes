@@ -97,9 +97,8 @@ def main() -> int:
         "<h1>Equipartition-failure family, parametric over the fraction</h1>",
         "<p>One documented student-work error is a <b>rule</b>, not a single figure. "
         "Each strip below is the same deformation generated for several fractions, "
-        "differing only by the fraction parameter. Logic: "
-        "<code>knowledge/strategies/render/parametric_fraction_errors.pl</code>. Render: "
-        "<code>hermes/web/render/drawer.js</code>. A deformation is drawn only as a "
+        "differing only by the fraction parameter. The scene compiler supplies the "
+        "frames, and the shared renderer projects them into filmstrips. A deformation is drawn only as a "
         "labeled misconception, never as an unlabeled productive diagram.</p>",
     ]
 

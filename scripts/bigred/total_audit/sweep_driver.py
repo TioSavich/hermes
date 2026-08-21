@@ -27,7 +27,7 @@ a harvested `phrase` pool driving strategy_recognize/commitment_match; a
 PARAM_POOL_ALIAS table so differently-named params reach the pool their
 values actually are; a TUPLE_DOMAINS mechanism so cross-product ops enumerate
 real correlated pairs/triples instead of a first-param sweep; regex-harvested
-pools (topic, state, review_source, canonical, pack, claim_id, concept,
+pools (topic, state, canonical, pack, claim_id, concept,
 bootstrap_id, inference_id) read straight from the fact files rather than
 the Prolog prolog_query op; and an IRREGULAR_SPECS table so bespoke (non
 dispatch_spec) ops get typed params too. See
@@ -79,16 +79,7 @@ POOL_KEYS = {
     "lesson", "domain",
     # Run-2 additions (item 6, 7, 11): regex-harvested from the fact stores
     # rather than the worker's own replies (see harvest_static_pools below).
-    # NOTE: "source" is deliberately NOT a POOL_KEYS name. A dry run showed
-    # walk_json's generic reply-harvest already treats any POOL_KEYS name as
-    # fair game across every HARVEST_OPS reply, and "source" is an extremely
-    # common field in the witness_dict-shaped catalog entries list_misconceptions
-    # / list_standards return (citation sources) — adding it here pulled in
-    # 2,789 values and pushed ~10 unrelated *_witness ops to ~2,790 items each,
-    # roughly a third of the whole worklist, for a pool that should hold the
-    # two real review_source/1 atoms. "review_source" holds those two values;
-    # PARAM_POOL_ALIAS below routes the literal param name "source" to it.
-    "claim_id", "concept", "bootstrap_id", "inference_id", "review_source",
+    "claim_id", "concept", "bootstrap_id", "inference_id",
     "canonical", "phrase",
 }
 IM_CODE = re.compile(r"^IM-G[K0-9]")
@@ -144,10 +135,6 @@ PARAM_POOL_ALIAS = {
     "canonical": "canonical",
     "bootstrap_id": "bootstrap_id",
     "arc_id": "concept",
-    # See the POOL_KEYS comment: "source" the literal param name routes to
-    # the small dedicated review_source pool, never to a raw "source"
-    # POOL_KEYS entry (which would re-collide with the generic reply field).
-    "source": "review_source",
 }
 
 # Run-2 item 8. Bespoke (dispatch_irregular) ops carry no dispatch_spec typed
@@ -259,7 +246,6 @@ MATERIAL_CLAIM_RE = re.compile(
 BOOTSTRAP_ID_RE = re.compile(r"^bootstrap\(\s*([A-Za-z0-9_]+)\s*,", re.MULTILINE)
 KNOWN_TOPIC_RE = re.compile(r"^known_topic\((.+?)\)\.", re.MULTILINE)
 STATE_LABEL_RE = re.compile(r"^state_label\(\s*([A-Za-z0-9_]+)\s*,", re.MULTILINE)
-REVIEW_SOURCE_RE = re.compile(r"^review_source\(\s*([A-Za-z0-9_]+)\s*\)\.", re.MULTILINE)
 DEFAULT_AXIOM_PACK_RE = re.compile(
     r"^default_axiom_pack\(\s*([A-Za-z0-9_]+)\s*\)\.", re.MULTILINE)
 MATERIAL_INFERENCE_ID_RE = re.compile(
@@ -308,7 +294,7 @@ def harvest_static_pools(pools: dict[str, set], log) -> None:
             for m in BOOTSTRAP_ID_RE.finditer(text):
                 pools["bootstrap_id"].add(m.group(1))
 
-    # item 6: topic, state, source(review), pack.
+    # item 6: topic, state, and pack.
     text = _read("knowledge/index/relevance_negation.pl", log)
     if text:
         for m in KNOWN_TOPIC_RE.finditer(text):
@@ -320,10 +306,6 @@ def harvest_static_pools(pools: dict[str, set], log) -> None:
     if text:
         for m in STATE_LABEL_RE.finditer(text):
             pools["state"].add(m.group(1))
-    text = _read("hermes/review_queue.pl", log)
-    if text:
-        for m in REVIEW_SOURCE_RE.finditer(text):
-            pools["review_source"].add(m.group(1))
     text = _read("formal/sequent/sequent_engine.pl", log)
     if text:
         # Deviation from the widening spec's literal file pointer
@@ -345,7 +327,7 @@ def harvest_static_pools(pools: dict[str, set], log) -> None:
     log("static pools: " +
         ", ".join(f"{k}={len(v)}" for k, v in sorted(pools.items())
                   if k in {"phrase", "concept", "claim_id", "bootstrap_id",
-                          "topic", "state", "review_source", "pack",
+                          "topic", "state", "pack",
                           "inference_id"}))
 
 

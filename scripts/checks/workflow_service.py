@@ -296,9 +296,6 @@ def test_workflow_route_response_compatibility() -> None:
             app_dir=pack_root,
             payload={},
             services=SimpleNamespace(
-                gate=SimpleNamespace(
-                    state=SimpleNamespace(mode="campus", verified=True)
-                ),
                 worker=SimpleNamespace(request=lambda _op, **_payload: None),
             ),
             _send_json=lambda payload: sent.append(payload),
