@@ -882,84 +882,11 @@ UNROUTED = {
     },
     # 2026-08-18: pedagogical_questions left this table — the questions page
     # and its POST route landed, so the registry now reads it routed_paged.
-    "measurement_strip_render": {
-        "does": "Draws a measurement-strip scene from a strip specification, "
-        "returning drawer frames.",
-        "judgement": "Being unrouted from a web page is correct.",
-        "reason": "The generic render endpoint reaches it by op name, the way "
-        "every scene op is reached; its 2026-08-18 consumers are the "
-        "deterministic render-spec ledger and scene requests that name it. "
-        "A dedicated page per scene op would duplicate the generic path.",
-        "evidence": [
-            evidence(
-                "hermes_worker.pl",
-                "dispatch_irregular(measurement_strip_render).",
-                "worker dispatch",
-            ),
-            evidence(
-                "knowledge/strategies/render/measurement_strip_scene.pl",
-                "measurement_strip",
-                "the scene builder",
-            ),
-        ],
-    },
-    "ratio_diagram_render": {
-        "does": "Draws a ratio-diagram scene (double number line) from a ratio "
-        "specification, returning drawer frames.",
-        "judgement": "Being unrouted from a web page is correct.",
-        "reason": "The generic render endpoint reaches it by op name, the way "
-        "every scene op is reached; its 2026-08-18 consumers are the "
-        "deterministic render-spec ledger and scene requests that name it. "
-        "A dedicated page per scene op would duplicate the generic path.",
-        "evidence": [
-            evidence(
-                "hermes_worker.pl",
-                "dispatch_irregular(ratio_diagram_render).",
-                "worker dispatch",
-            ),
-            evidence(
-                "knowledge/strategies/render/ratio_diagram_scene.pl",
-                "ratio_diagram",
-                "the scene builder",
-            ),
-        ],
-    },
-    "index_topic_subtraction": {
-        "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
-        "judgement": "A page should route to it.",
-        "reason": "The module states that the index is reachable from the running application, "
-        "but the dispatch operation has no web route or MCP exposure.",
-        "evidence": [
-            evidence(
-                "knowledge/index/index_query.pl",
-                "index is reachable from the running application",
-                "runtime intent",
-            ),
-            evidence(
-                "hermes/dispatch_spec.pl",
-                "dispatch_spec(index_topic_subtraction,",
-                "worker dispatch",
-            ),
-        ],
-    },
-    "state_labels": {
-        "does": "Returns the default cited state label and its recorded alternatives.",
-        "judgement": "A page should route to it.",
-        "reason": "The operation has no web or MCP consumer. A strategy or Atlas page can use "
-        "the same cited vocabulary that the worker already returns.",
-        "evidence": [
-            evidence(
-                "hermes/dispatch_spec.pl",
-                "dispatch_spec(state_labels,",
-                "worker dispatch",
-            ),
-            evidence(
-                "knowledge/strategies/math/state_vocabulary.pl",
-                "state_display_label",
-                "label source",
-            ),
-        ],
-    },
+    # 2026-08-22: measurement_strip_render and ratio_diagram_render left this
+    # table — the generic render endpoint now names them in its whitelist and
+    # the visualizers hub carries a card for each, so the registry reads them
+    # routed. index_topic_subtraction and state_labels left the same day with
+    # their own POST routes and page consumers.
     "strategy_recognize": {
         "does": "Returns evidence-bearing candidate strategy traces for classroom language.",
         "judgement": "Being unrouted from a web page is correct.",
@@ -1443,6 +1370,11 @@ def build() -> dict[str, object]:
     # 17 at the night ceremony: question_moves and signature_anchors join with
     # authored judgements as the release wave lands and the review queue
     # retires.
+    # 13 from 2026-08-22: four rows LEAVE the set. measurement_strip_render
+    # and ratio_diagram_render enter the generic render endpoint's whitelist
+    # and gain visualizer cards, and index_topic_subtraction and state_labels
+    # gain POST routes with consumers on strategies.html and the automaton
+    # runner — the two "A page should route to it" judgements are discharged.
     return {
         "schema": "self_description_census_v1",
         "generated_by": GENERATED_BY,

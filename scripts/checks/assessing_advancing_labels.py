@@ -10,8 +10,8 @@ its source file and reproduces its text -- reading the span as a UTF-8
 character offset, not a raw byte offset (see the builder's docstring for
 why).
 
-Not wired into scripts/checks/run_all.sh. The controller adds that line at
-ceremony.
+Runs from scripts/checks/run_all.sh (an explicit list; a check absent from
+it never runs).
 """
 from __future__ import annotations
 

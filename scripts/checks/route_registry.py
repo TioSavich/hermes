@@ -86,6 +86,8 @@ POST /api/balance_solve worker
 POST /api/benny_demo worker
 POST /api/pedagogical_questions worker
 POST /api/guide_question_labels worker
+POST /api/index_topic_subtraction worker
+POST /api/state_labels worker
 POST /api/discourse_features worker
 POST /api/discourse_pragmatics worker
 POST /api/gesture_alignment worker

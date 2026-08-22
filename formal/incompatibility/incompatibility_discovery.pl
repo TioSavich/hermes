@@ -110,11 +110,13 @@ classify_candidate_set(Context, Set, Outcome) :-
     classify_candidate_set_witness(Context, Set, Outcome, _).
 
 
-%!  classify_candidate_set_witness(+Context, +Set, -Outcome, -Witness) is det.
+%!  classify_candidate_set_witness(+Context, +Set, -Outcome, -Witness) is semidet.
 %
 %   Classify Set under the finite closed-world Context and return the concrete
 %   reason the bounded engine used. Nontermination is a bounded search result,
 %   recorded with the inference limit, not an assertion about the open system.
+%   A non-list Set fails here rather than reaching sort/2, so the dispatch
+%   boundary reports its malformed-request message instead of a type error.
 classify_candidate_set_witness(Context0, Set0, Outcome,
                                _{ kind: bounded_candidate_classification,
                                   scope: Scope,
@@ -126,6 +128,7 @@ classify_candidate_set_witness(Context0, Set0, Outcome,
                                   outcome: Outcome,
                                   classifier_witness: ClassifierWitness,
                                   outcome_witness: OutcomeWitness }) :-
+    is_list(Set0),
     canonical_context(Context0, Context),
     normalized_candidate_set(Context, Set0, Set),
     inference_bound(Bound),

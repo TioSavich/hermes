@@ -373,6 +373,19 @@
     <div id="machine-offline"></div>
     <p class="margin-note">Strategy attributions follow Carpenter &amp; Fennema's Cognitively Guided Instruction taxonomy via Hackenberg. Each machine's definition is plain Prolog in <code>knowledge/strategies/math/</code>; the trace is the execution history returned by <code>strategy_trace</code>.</p>
   </section>
+
+  <div class="interactive-box">
+    <p>Machines for a topic</p>
+    <p class="interactive-label">The machine index subtracts rather than ranks: it removes the machines
+      an exclusion rule accounts for and reports what survived, how much was removed, and a sample of
+      the recorded evidence behind the removals. A topic no rule keys on is refused instead of
+      returning the untouched corpus as if it were a result.</p>
+    <div class="carving-controls">
+      <label>topic<select id="topic-select"><option>addition</option><option>algebraic</option><option>calculus</option><option>cardinality</option><option>counting</option><option>data</option><option>decimal</option><option>division</option><option selected>fraction</option><option>fraction/thirds</option><option>geometry</option><option>integer</option><option>multiplication</option><option>probability</option><option>proportional</option><option>ratio</option><option>subtraction</option></select></label>
+    </div>
+    <button class="try-it" id="topic-subtract">Subtract by topic</button>
+    <pre class="carving-output" id="topic-output"></pre>
+  </div>
 </div>
 
 <script>
@@ -474,6 +487,20 @@ async function runCarving(path) {
 }
 document.getElementById('carve-summary').onclick = () => runCarving('/api/carving_operation_summary');
 document.getElementById('carve-proof').onclick = () => runCarving('/api/carving_strategy_proof');
+
+document.getElementById('topic-subtract').onclick = async () => {
+  const out = document.getElementById('topic-output');
+  out.textContent = 'Requesting…';
+  try {
+    const response = await fetch('/api/index_topic_subtraction', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:document.getElementById('topic-select').value})});
+    const data = await response.json();
+    if (!data.ok) { out.textContent = data.error || 'The index refused the topic.'; return; }
+    const r = data.result;
+    const sample = (r.excluded_sample || []).map(row => `  ${row.machine} — ${row.reason}`).join('\n');
+    out.textContent = `${r.topic}: ${r.surviving} of ${r.total} machines survive; ${r.excluded} removed.` +
+      (sample ? `\nevidence sample:\n${sample}` : '\nNo removals were recorded for this topic.');
+  } catch (e) { out.textContent = 'The request failed: the app did not answer, or answered with something other than JSON.'; }
+};
 
 const machineEl = id => document.getElementById(id);
 let machineCurrent = null;

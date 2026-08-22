@@ -19,6 +19,7 @@ DEFAULT_AUDIT_DIR = ROOT / ".bigred-collected/2026-08-19-total-audit"
 DEFAULT_JSON_OUTPUT = ROOT / "data/research/work_queue.json"
 DEFAULT_MD_OUTPUT = ROOT / "data/research/work_queue.md"
 ADDENDA_PATH = ROOT / "data/research/work_queue_addenda.json"
+RESOLUTIONS_PATH = ROOT / "data/research/work_queue_resolutions.json"
 LIFECYCLE_PATH = ROOT / "knowledge/index/consumption_lifecycle.pl"
 ATTESTED_PATH = ROOT / "knowledge/index/consumption_attested_run2.pl"
 CENSUS_PATH = ROOT / "data/research/self_description_census.json"
@@ -322,6 +323,42 @@ def addenda_entries() -> list[dict[str, Any]]:
     return data
 
 
+RESOLUTION_KEYS = {"id", "resolution", "date", "finding", "evidence"}
+
+
+def parse_resolutions() -> list[dict[str, str]]:
+    """Read the authored resolutions that retire queue entries.
+
+    A resolution names a queue id whose blocking condition no longer holds
+    (the op was verified serving, retired, or repaired) while the collected
+    audit evidence still reproduces the entry. Resolved entries leave the
+    ranked tables and appear in their own section, so the queue stops
+    re-issuing settled work between audit runs.
+    """
+    if not RESOLUTIONS_PATH.is_file():
+        return []
+    data = read_json(RESOLUTIONS_PATH)
+    if not isinstance(data, list):
+        raise WorkQueueError(
+            f"{RESOLUTIONS_PATH.relative_to(ROOT)} must contain a JSON list"
+        )
+    rows: list[dict[str, str]] = []
+    for index, row in enumerate(data):
+        if not isinstance(row, dict) or set(row) != RESOLUTION_KEYS:
+            raise WorkQueueError(
+                f"resolution entry {index} must carry exactly {sorted(RESOLUTION_KEYS)}"
+            )
+        for key in RESOLUTION_KEYS:
+            if not isinstance(row[key], str) or not row[key].strip():
+                raise WorkQueueError(f"resolution entry {index} has an empty {key}")
+        rows.append(row)
+    identifiers = Counter(row["id"] for row in rows)
+    duplicates = sorted(name for name, count in identifiers.items() if count > 1)
+    if duplicates:
+        raise WorkQueueError(f"duplicate resolution ids: {duplicates}")
+    return rows
+
+
 def sort_entries(entries: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(
         entries,
@@ -333,7 +370,10 @@ def sort_entries(entries: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     )
 
 
-def build(audit_dir: Path = DEFAULT_AUDIT_DIR) -> list[dict[str, Any]]:
+def build_full(
+    audit_dir: Path = DEFAULT_AUDIT_DIR,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, str]]]:
+    """Return (active entries, resolved entries, prunable resolutions)."""
     audit = read_json(audit_dir / AUDIT_LEDGER_NAME)
     sweep = load_sweep(audit_dir / SWEEP_RESULTS_NAME)
     entries = [
@@ -343,7 +383,21 @@ def build(audit_dir: Path = DEFAULT_AUDIT_DIR) -> list[dict[str, Any]]:
         *census_entries(),
         *addenda_entries(),
     ]
-    return sort_entries(entries)
+    resolutions = {row["id"]: row for row in parse_resolutions()}
+    active = [row for row in entries if row["id"] not in resolutions]
+    resolved = [
+        {**row, "resolution": resolutions[row["id"]]}
+        for row in entries
+        if row["id"] in resolutions
+    ]
+    produced = {row["id"] for row in entries}
+    prunable = [row for name, row in sorted(resolutions.items()) if name not in produced]
+    return sort_entries(active), sort_entries(resolved), prunable
+
+
+def build(audit_dir: Path = DEFAULT_AUDIT_DIR) -> list[dict[str, Any]]:
+    active, _resolved, _prunable = build_full(audit_dir)
+    return active
 
 
 def render_json(entries: list[dict[str, Any]]) -> str:
@@ -405,13 +459,53 @@ def render_table(entries: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
-def render_markdown(entries: list[dict[str, Any]]) -> str:
+def render_resolved_table(
+    resolved: list[dict[str, Any]], prunable: list[dict[str, str]]
+) -> list[str]:
+    lines = [
+        "| work item | rows in evidence | resolution | date | finding |",
+        "|---|---:|---|---|---|",
+    ]
+    for row in resolved:
+        resolution = row["resolution"]
+        lines.append(
+            "| "
+            + " | ".join(
+                (
+                    f"`{table_escape(row['id'])}`",
+                    f"{row['rows_blocked']:,}",
+                    table_escape(resolution["resolution"]),
+                    table_escape(resolution["date"]),
+                    table_escape(resolution["finding"]),
+                )
+            )
+            + " |"
+        )
+    if prunable:
+        names = ", ".join(f"`{table_escape(row['id'])}`" for row in prunable)
+        lines.extend(
+            [
+                "",
+                "Resolutions with no matching entry in the current evidence "
+                f"(prunable from `data/research/work_queue_resolutions.json`): {names}.",
+            ]
+        )
+    return lines
+
+
+def render_markdown(
+    entries: list[dict[str, Any]],
+    resolved: list[dict[str, Any]] | None = None,
+    prunable: list[dict[str, str]] | None = None,
+) -> str:
+    resolved = resolved or []
+    prunable = prunable or []
     lines = [
         "# Generated work queue",
         "",
         "This queue ranks stalled inputs, refusal surfaces, held rows, census absences, and authored findings. It names work that blocks rows. It does not license deleting unconsumed stores.",
         "",
-        "Store status comes from `knowledge/index/consumption_lifecycle.pl` and `knowledge/index/consumption_attested_run2.pl`. Run-2 row counts and refusal outcomes come from jobs 8028943 and 8028944, collected 2026-08-22.",
+        "Store status comes from `knowledge/index/consumption_lifecycle.pl` and `knowledge/index/consumption_attested_run2.pl`. Run-2 row counts and refusal outcomes come from jobs 8028943 and 8028944, collected 2026-08-22. Entries retired by `data/research/work_queue_resolutions.json` appear under Resolved instead of the ranked tables.",
         "",
     ]
     for tier in TIER_ORDER:
@@ -430,6 +524,10 @@ def render_markdown(entries: list[dict[str, Any]]) -> str:
             lines.extend(render_table(other) if other else ["No entries."])
         else:
             lines.extend(render_table(tier_rows) if tier_rows else ["No entries."])
+        lines.append("")
+    if resolved or prunable:
+        lines.extend(["## Resolved", ""])
+        lines.extend(render_resolved_table(resolved, prunable))
         lines.append("")
     return "\n".join(lines)
 
@@ -475,14 +573,15 @@ def main() -> int:
         )
         return 1
     try:
-        entries = build(args.audit_dir)
+        entries, resolved, prunable = build_full(args.audit_dir)
         write_atomic(args.json_output, render_json(entries))
-        write_atomic(args.md_output, render_markdown(entries))
+        write_atomic(args.md_output, render_markdown(entries, resolved, prunable))
     except (OSError, ValueError, WorkQueueError) as exc:
         print(f"build_work_queue.py: {exc}", file=sys.stderr)
         return 1
     print(
-        f"wrote {args.json_output}: {len(entries)} entries; "
+        f"wrote {args.json_output}: {len(entries)} entries "
+        f"({len(resolved)} resolved, {len(prunable)} prunable resolutions); "
         f"wrote {args.md_output}"
     )
     return 0

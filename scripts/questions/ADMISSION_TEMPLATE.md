@@ -398,17 +398,22 @@ to get one.
    emitter and the check both read; confirm they read the tracked copy,
    not a local-only runtime artifact (the next item names a gap this
    instance itself has not closed).
-6. Confirm the whole chain runs from files `git` tracks. This instance's
-   stage-4 emitter reads `candidates.jsonl` from a gitignored runtime
-   path (`hermes/app/runtime/experiments/questions_admission/`) that
-   nothing regenerates automatically -- `build_admission_candidates.py`
-   is wired into neither `scripts/regen_all.sh` nor the check harness, so
-   its check (`scripts/checks/admitted_question_stores.py`) currently
-   depends on that file already existing locally from a prior manual run.
-   A new instance should either wire its stage-0 builder into the regen
-   pipeline so the check can rebuild candidates from scratch, or state
-   plainly, the way this checklist item does, that it has not yet done
-   so.
+6. Wire the stage-0 builder into both the regen pipeline and the check
+   harness, and guard it against any gitignored input it reads. This
+   instance's `build_admission_candidates.py` runs in
+   `scripts/regen_all.sh` immediately before the stage-4 emitter (so the
+   tracked admitted stores are settled before the self-description tail
+   reads them), and `scripts/checks/run_all.sh` runs its `--check`,
+   which re-derives all three gitignored outputs in memory and compares
+   them against the copies on disk -- re-reading the files alone would
+   certify a stale artifact. One input stays outside `git`: the guide
+   lane's per-row anchors are a gitignored docling tree, and a rebuild
+   without it would replace every guide row with a `source_missing`
+   hold. So when that tree is absent, the builder and its `--check`
+   print one SKIP line, exit 0, and leave the existing outputs
+   untouched: a docling-less clone keeps whatever candidates a prior
+   run produced, cannot rebuild or verify them, and the SKIP line says
+   so rather than pretending a check ran.
 7. Write the emitter to produce byte-stable output (no timestamps in the
    row content) and give it a `--check` mode that rebuilds and compares.
 8. Give the emitted store a `check_*/0` predicate it exports itself, that

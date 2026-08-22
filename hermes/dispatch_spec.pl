@@ -522,7 +522,7 @@ dispatch_spec(incoherent_witness,
          [context, out(witness)]),
     witness(no_incoherent_witness, missing_context)).
 dispatch_spec(incompatibility_discovery_witness,
-    [context-term, set-term],
+    [context-term, set-list],
     call(incompatibility_discovery:classify_candidate_set_witness,
          [context, set, drop, out(witness)]),
     witness_errorless(malformed_incompatibility_discovery_request)).

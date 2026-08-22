@@ -1465,7 +1465,7 @@ dispatch_request(notation_render, Id, Request, Response) :-
     ->  string_or_atom_to_atom(Kind0, Kind),
         notation_render_dispatch(Kind, Id, Request, Response)
     ;   error_response(Id, missing_kind,
-            "notation_render requires kind (write_equation or mirror_written)",
+            "notation_render requires kind (write_equation, mirror_written, or glyph_overwrite)",
             Response)
     ).
 
@@ -1496,9 +1496,30 @@ notation_render_dispatch(mirror_written, Id, Request, Response) :-
             "notation_render found no matching mirror_written deformation scene for the given fields",
             Response)
     ).
+% glyph_overwrite reads the productive equation fields plus the struck and
+% corrected result values. The scene comes from the parametric deformation
+% module, not notation_scene: the grammar admits the self-correction only
+% when the corrected value still misses the correct answer.
+notation_render_dispatch(glyph_overwrite, Id, Request, Response) :-
+    !,
+    request_integer(Request, a, 3, A),
+    request_integer(Request, b, 2, B),
+    request_integer(Request, r, 5, R),
+    request_op_atom(Request, operator, +, Op),
+    request_integer(Request, struck, 4, Struck),
+    request_integer(Request, corrected, 6, Corrected),
+    (   parametric_notation_deformation:deformed_notation_scene(
+            glyph_overwrite(A, Op, B, R, Struck, Corrected),
+            notation_error(glyph_overwrite), Dict0)
+    ->  json_safe(Dict0, Dict),
+        ok_response(Id, Dict, Response)
+    ;   error_response(Id, no_notation_scene,
+            "notation_render found no glyph_overwrite deformation scene for the given fields (struck and corrected must differ, and corrected must still miss the correct answer)",
+            Response)
+    ).
 notation_render_dispatch(Kind, Id, _Request, Response) :-
     format(string(Msg),
-        "notation_render kind '~w' is not supported (use write_equation or mirror_written)",
+        "notation_render kind '~w' is not supported (use write_equation, mirror_written, or glyph_overwrite)",
         [Kind]),
     error_response(Id, unsupported_notation_kind, Msg, Response).
 

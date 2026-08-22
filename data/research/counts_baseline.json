@@ -57,19 +57,19 @@
     "carried": false,
     "derivation": "orphan_modules rows via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 127
+    "value": 130
   },
   "census.registry_rows": {
     "carried": false,
     "derivation": "capability_registry.pl row count via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 361
+    "value": 364
   },
   "census.unrouted_rows": {
     "carried": false,
     "derivation": "unrouted rows via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 17
+    "value": 13
   },
   "curriculum.field_contexts": {
     "carried": false,
@@ -231,13 +231,13 @@
     "carried": false,
     "derivation": "mechanically_admitted rows in both question stores",
     "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
-    "value": 9094
+    "value": 9437
   },
   "questions.im_author_heading": {
     "carried": false,
     "derivation": "admitted question-store rows with im_author_heading warrant",
     "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
-    "value": 1013
+    "value": 1040
   },
   "questions.pedagogical_clusters": {
     "carried": false,
@@ -249,7 +249,7 @@
     "carried": false,
     "derivation": "admitted question-store rows with printed_region warrant",
     "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
-    "value": 8081
+    "value": 8397
   },
   "questions.total": {
     "carried": false,

@@ -25,14 +25,23 @@ CANDIDATES = ROOT / "hermes/app/runtime/experiments/questions_admission/candidat
 VERDICTS = ROOT / "curriculum/im/generated/questions_admission_verdicts.jsonl"
 
 EXPECTED_STATUS = {
-    "labels": Counter({"mechanically_admitted": 6479, "mechanically_held": 2648}),
+    "labels": Counter({"mechanically_admitted": 6822, "mechanically_held": 2305}),
     "guide": Counter({"mechanically_admitted": 2615, "mechanically_held": 1}),
 }
 EXPECTED_HELD = {
     "labels": Counter({
-        "duplicate_span": 18,
-        "malformed_text": 69,
-        "not_interrogative": 2561,
+        # 2026-08-22 admission pass: malformed_text and duplicate_span are
+        # extinct in this lane. IM's mixed quotation typography admits; a
+        # span that cuts a quotation short holds span_truncates_quote; a
+        # span recorded under two region types admits its re-derived winner
+        # and holds the rest under region_conflict_rederived (the argument
+        # names the winner; two rows sit in narrative text with no heading
+        # to read and carry no argument).
+        "not_interrogative": 2294,
+        "span_truncates_quote": 1,
+        "region_conflict_rederived(launch)": 6,
+        "region_conflict_rederived(activity_synthesis)": 2,
+        "region_conflict_rederived": 2,
     }),
     "guide": Counter({"malformed_text": 1}),
 }

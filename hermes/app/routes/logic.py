@@ -1194,6 +1194,12 @@ class RouteLogic:
     def _handle_guide_question_labels(self, payload: dict) -> None:
         self._forward_op("guide_question_labels", payload)
 
+    def _handle_index_topic_subtraction(self, payload: dict) -> None:
+        self._forward_op("index_topic_subtraction", payload)
+
+    def _handle_state_labels(self, payload: dict) -> None:
+        self._forward_op("state_labels", payload)
+
     def _handle_unit_coordination_svg(self, query: str) -> None:
         params = urllib.parse.parse_qs(query, keep_blank_values=True)
         try:
@@ -1258,7 +1264,9 @@ class RouteLogic:
             "base_ten_render", "ace_of_bases_render", "base_ten_compare", "set_grouping_render",
             "unit_echo_render",
             "set_grouping_compare", "number_line_render", "number_line_compare",
+            "notation_render",
             "place_value_chart_render", "hybridization_render",
+            "measurement_strip_render", "ratio_diagram_render",
             "coordinate_plane_render", "rigid_motion_render",
             "polyform_tiling_render", "angle_circular_render",
             "data_display_render", "solid_net_render", "geoboard_render",
@@ -1468,18 +1476,20 @@ class RouteLogic:
 
     def _handle_notation_render(self, payload: dict) -> None:
         # Symbol-level representation language: `kind` selects the lane
-        # (write_equation productive, mirror_written deformation); a/b/r are the
-        # operands and result, `operator` the symbol (+, -, =). The worker
-        # supplies defaults, so only kind is required here.
+        # (write_equation productive; mirror_written and glyph_overwrite
+        # deformations); a/b/r are the operands and result, `operator` the
+        # symbol (+, -, =), `digit` the mirrored digit, and struck/corrected
+        # the glyph_overwrite result values. The worker supplies defaults, so
+        # only kind is required here.
         kind = str(payload.get("kind") or "").strip()
         if not kind:
             self._send_json({"error": "kind is required"}, status=400)
             return
         kwargs: dict[str, Any] = {"kind": kind}
-        for key in ("a", "b", "r", "operator"):
+        for key in ("a", "b", "r", "operator", "digit", "struck", "corrected"):
             if payload.get(key) is not None:
                 kwargs[key] = payload[key]
-        self._send_json({"ok": True, "result": self.ctx.worker_request("notation_render", **kwargs)})
+        self._forward_op("notation_render", kwargs)
 
     def _handle_fraction_cgi_addition(self, payload: dict) -> None:
         # A CGI addition automaton over a shared denominator: `kind` names the

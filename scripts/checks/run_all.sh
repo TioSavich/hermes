@@ -113,6 +113,7 @@ run strategy_task_span_refusal.py python3 "$CHECKS_DIR/strategy_task_span_refusa
 run im_defragged_task_instances.py python3 "$CHECKS_DIR/im_defragged_task_instances.py"
 run k7_guide_questions.py python3 "$CHECKS_DIR/k7_guide_questions.py"
 run assessing_advancing_labels.py python3 "$CHECKS_DIR/assessing_advancing_labels.py"
+run build_admission_candidates python3 "$CHECKS_DIR/../questions/build_admission_candidates.py" --check
 run admitted_question_stores.py python3 "$CHECKS_DIR/admitted_question_stores.py"
 run admitted_question_labels.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/admitted_teacher_question_labels.pl -g admitted_teacher_question_labels:check_admitted_question_labels -t halt
 run admitted_guide_questions.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s curriculum/im/generated/admitted_guide_questions.pl -g admitted_guide_questions:check_admitted_guide_questions -t halt

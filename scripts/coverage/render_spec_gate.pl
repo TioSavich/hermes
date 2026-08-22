@@ -127,6 +127,17 @@ call_render(solid_net_render, Spec, Dict) :-
     solid_net_scene:solid_net_render_json(Spec, Dict).
 call_render(geoboard_render, Spec, Dict) :-
     geoboard_scene:geoboard_render_json(Spec, Dict).
+% glyph_overwrite renders through the parametric deformation module, the same
+% path the worker's notation_render_dispatch takes: notation_scene has no
+% glyph_overwrite layout, and its deferred_frame fallback would otherwise
+% report a placeholder frame as a drawn scene. The grammar admits the
+% overwrite only while the corrected value still misses the correct answer.
+call_render(notation_render, glyph_overwrite(A, Op, B, R, Struck, Corrected), Dict) :-
+    !,
+    use_module(render(parametric_notation_deformation), []),
+    parametric_notation_deformation:deformed_notation_scene(
+        glyph_overwrite(A, Op, B, R, Struck, Corrected),
+        notation_error(glyph_overwrite), Dict).
 call_render(notation_render, Spec, Dict) :-
     notation_scene:notation_render_json(Spec, Dict).
 call_render(balance_render, Spec, Dict) :-
@@ -361,6 +372,13 @@ notation_spec_for(mirror_written, Request, mirror_written(Digit, A, Op, B, R)) :
     request_integer(Request, a, 2, A), request_integer(Request, b, 3, B),
     request_integer(Request, r, 5, R), request_op_atom(Request, operator, +, Op0),
     op_symbol(Op0, Op).
+notation_spec_for(glyph_overwrite, Request,
+                  glyph_overwrite(A, Op, B, R, Struck, Corrected)) :- !,
+    request_integer(Request, a, 3, A), request_integer(Request, b, 2, B),
+    request_integer(Request, r, 5, R), request_op_atom(Request, operator, +, Op0),
+    op_symbol(Op0, Op),
+    request_integer(Request, struck, 4, Struck),
+    request_integer(Request, corrected, 6, Corrected).
 
 op_symbol('+', +) :- !.
 op_symbol('-', -) :- !.

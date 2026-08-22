@@ -124,7 +124,7 @@ capability('incoherent_witness', 'sequent_engine', 'sequent', ['context'], route
 capability('incompatibility_contexts', 'incompatibility_sets', 'incompatibility', ['context'], unrouted).
 capability('incompatibility_discovery_witness', 'incompatibility_discovery', 'incompatibility', ['context', 'set'], routed_paged).
 capability('incompatibility_entailment_witness', 'incompatibility_sets', 'incompatibility', ['replaced', 'replacement'], routed_paged).
-capability('index_topic_subtraction', 'index_query', 'unclassified', ['topic'], unrouted).
+capability('index_topic_subtraction', 'index_query', 'unclassified', ['topic'], routed_paged).
 capability('inferential_strength', 'user', 'synthesis', ['lesson'], routed_paged).
 capability('input_contract', 'dispatch_spec', 'infrastructure', ['kind', 'operation'], routed_only).
 capability('integer_signed_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
@@ -142,7 +142,7 @@ capability('list_strategies', 'hermes_encyclopedia', 'infrastructure', [], route
 capability('lit_search', 'hermes_encyclopedia', 'infrastructure', ['query'], routed_paged).
 capability('magnitude_equivalence_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('material_inference_witness', 'cw_driver', 'crosswalk', ['conclusion', 'inference_id', 'premises', 'source'], routed_paged).
-capability('measurement_strip_render', 'measurement_strip_scene', 'render', [], unrouted).
+capability('measurement_strip_render', 'measurement_strip_scene', 'render', [], routed_paged).
 capability('media_alignment', 'media_alignment', 'pml', ['segments', 'source'], routed_paged).
 capability('metaphor_break_witness', 'cw_driver', 'crosswalk', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
 capability('misconception_hook_witness', 'cw_driver', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
@@ -179,7 +179,7 @@ capability('prolog_query', 'prolog_query', 'infrastructure', [], unrouted).
 capability('query_misconception', 'hermes_worker', 'misconceptions', ['description', 'domain', 'source'], routed_only).
 capability('question_moves', 'question_move_pilot', 'synthesis', ['lesson', 'limit'], unrouted).
 capability('ranked_figures', 'user', 'monitoring', ['lesson_code'], routed_paged).
-capability('ratio_diagram_render', 'ratio_diagram_scene', 'render', [], unrouted).
+capability('ratio_diagram_render', 'ratio_diagram_scene', 'render', [], routed_paged).
 capability('ratio_proportion_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
 capability('render_coverage', 'misconception_render_coverage', 'monitoring', [], routed_only).
 capability('reorganize', 'fraction_band_ladder', 'learner', [], routed_paged).
@@ -218,7 +218,7 @@ capability('standard_k_ns_4_verify_subitizing_witness', 'standard_k_ns_4', 'stan
 capability('standard_k_ns_5_6_compare_groups_witness', 'standard_k_ns_5_6', 'standards', ['group_a', 'group_b'], routed_paged).
 capability('standard_k_ns_7_place_value_witness', 'standard_k_ns_7', 'standards', ['number'], routed_paged).
 capability('standards_progression_candidates', 'index_query', 'unclassified', ['code'], unrouted).
-capability('state_labels', 'user', 'synthesis', ['state'], unrouted).
+capability('state_labels', 'user', 'synthesis', ['state'], routed_paged).
 capability('strategy_recognize', 'strategy_recognizer', 'synthesis', ['content'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'synthesis', ['input', 'strategy'], routed_paged).
 capability('target_inferential_strength_witness', 'user', 'synthesis', ['target'], routed_paged).
@@ -303,6 +303,8 @@ capability('knowledge/crosswalk/merge_evidence.pl', 'merge_evidence', 'crosswalk
 capability('knowledge/crosswalk/vocabulary_licenses.pl', 'vocabulary_licenses', 'crosswalk', [], orphan_module).
 capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 'pml', [], orphan_module).
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
+capability('knowledge/index/consumption_attested_run2.pl', 'consumption_attested_run2', 'unclassified', [], orphan_module).
+capability('knowledge/index/consumption_lifecycle.pl', 'consumption_lifecycle', 'unclassified', [], orphan_module).
 capability('knowledge/index/coverage_absence_registry.pl', 'coverage_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/data_consumption_manifest.pl', 'data_consumption_manifest', 'unclassified', [], orphan_module).
 capability('knowledge/index/im_lesson_identity.pl', 'im_lesson_identity', 'unclassified', [], orphan_module).
@@ -354,6 +356,7 @@ capability('knowledge/strategies/machine_typology.pl', 'machine_typology', 'synt
 capability('knowledge/strategies/math/smr_div_remainder_cycle.pl', 'smr_div_remainder_cycle', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/math/unit_coordination_viz.pl', 'unit_coordination_viz', 'synthesis', [], lazy_reachable).
 capability('knowledge/strategies/math_benchmark.pl', 'math_benchmark', 'synthesis', [], orphan_module).
+capability('knowledge/strategies/render/authored_render_citations.pl', 'authored_render_citations', 'render', [], orphan_module).
 capability('knowledge/strategies/render/misconception_render_link.pl', 'misconception_render_link', 'render', [], orphan_module).
 capability('knowledge/strategies/transition_tables/addition.pl', 'addition', 'synthesis', [], orphan_module).
 capability('knowledge/strategies/transition_tables/algebraic.pl', 'algebraic', 'synthesis', [], orphan_module).
@@ -515,7 +518,7 @@ capability_parameter('image_schema', 'practice', 'string', true, null).
 capability_parameter('incoherent_witness', 'context', null, true, null).
 capability_parameter('incompatibility_contexts', 'context', 'string', false, null).
 capability_parameter('incompatibility_discovery_witness', 'context', null, true, null).
-capability_parameter('incompatibility_discovery_witness', 'set', null, true, null).
+capability_parameter('incompatibility_discovery_witness', 'set', 'array', true, null).
 capability_parameter('incompatibility_entailment_witness', 'replacement', null, true, null).
 capability_parameter('incompatibility_entailment_witness', 'replaced', null, true, null).
 capability_parameter('index_topic_subtraction', 'topic', 'string', true, null).
@@ -792,6 +795,7 @@ capability_route('image_schema', 'POST', '/api/witness/grounding').
 capability_route('incoherent_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_discovery_witness', 'POST', '/api/witness/formal').
 capability_route('incompatibility_entailment_witness', 'POST', '/api/witness/formal').
+capability_route('index_topic_subtraction', 'POST', '/api/index_topic_subtraction').
 capability_route('inferential_strength', 'POST', '/api/inferential_strength').
 capability_route('input_contract', 'POST', '/api/input_contract').
 capability_route('integer_signed_claim_witness', 'POST', '/api/witness/crosswalk_claim').
@@ -807,6 +811,7 @@ capability_route('list_strategies', 'POST', '/api/strategies').
 capability_route('lit_search', 'POST', '/api/literature').
 capability_route('magnitude_equivalence_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('material_inference_witness', 'POST', '/api/witness/crosswalk_claim').
+capability_route('measurement_strip_render', 'POST', '/api/render').
 capability_route('media_alignment', 'POST', '/api/media_transcribe').
 capability_route('metaphor_break_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('misconception_hook_witness', 'POST', '/api/witness/crosswalk_claim').
@@ -824,6 +829,7 @@ capability_route('multiply_array_witness', 'POST', '/api/witness/standards').
 capability_route('normative_crisis_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('notation_monitoring_chart', 'POST', '/api/notation_monitoring_chart').
 capability_route('notation_render', 'POST', '/api/notation_render').
+capability_route('notation_render', 'POST', '/api/render').
 capability_route('number_line_compare', 'POST', '/api/render').
 capability_route('number_line_render', 'POST', '/api/monitoring_visuals').
 capability_route('number_line_render', 'POST', '/api/render').
@@ -843,6 +849,7 @@ capability_route('primitive_for_practice', 'POST', '/api/witness/grounding').
 capability_route('productive_deformation_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('query_misconception', 'POST', '/api/query_misconception').
 capability_route('ranked_figures', 'POST', '/api/ranked_figures').
+capability_route('ratio_diagram_render', 'POST', '/api/render').
 capability_route('ratio_proportion_claim_witness', 'POST', '/api/witness/crosswalk_claim').
 capability_route('render_coverage', 'POST', '/api/render_coverage').
 capability_route('reorganize', 'GET', '/api/reorganize').
@@ -881,6 +888,7 @@ capability_route('standard_k_ns_3_order_independence_witness', 'POST', '/api/wit
 capability_route('standard_k_ns_4_verify_subitizing_witness', 'POST', '/api/witness/standards').
 capability_route('standard_k_ns_5_6_compare_groups_witness', 'POST', '/api/witness/standards').
 capability_route('standard_k_ns_7_place_value_witness', 'POST', '/api/witness/standards').
+capability_route('state_labels', 'POST', '/api/state_labels').
 capability_route('strategy_trace', 'POST', '/api/render').
 capability_route('strategy_trace', 'POST', '/api/strategy_trace').
 capability_route('target_inferential_strength_witness', 'POST', '/api/witness/grounding').
@@ -1100,6 +1108,7 @@ capability_page('image_schema', '/more-zeeman/witnesses.html').
 capability_page('incoherent_witness', '/hermes/app/web/breaks.html').
 capability_page('incompatibility_discovery_witness', '/hermes/app/web/breaks.html').
 capability_page('incompatibility_entailment_witness', '/hermes/app/web/breaks.html').
+capability_page('index_topic_subtraction', '/more-zeeman/strategies.html').
 capability_page('inferential_strength', '/more-zeeman/scoreboard.html').
 capability_page('integer_signed_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('intersubjective_material_witness', '/more-zeeman/witnesses.html').
@@ -1115,6 +1124,12 @@ capability_page('list_strategies', '/more-zeeman/strategies/index.html').
 capability_page('lit_search', '/hermes/app/web/no.html').
 capability_page('magnitude_equivalence_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('material_inference_witness', '/more-zeeman/witnesses.html').
+capability_page('measurement_strip_render', '/hermes/app/web/discussions.html').
+capability_page('measurement_strip_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('measurement_strip_render', '/more-zeeman/monitoring_chart.html').
+capability_page('measurement_strip_render', '/more-zeeman/unit-echo/index.html').
+capability_page('measurement_strip_render', '/more-zeeman/visualizations.html').
+capability_page('measurement_strip_render', '/more-zeeman/witnesses.html').
 capability_page('media_alignment', '/hermes/app/web/discussions.html').
 capability_page('metaphor_break_witness', '/more-zeeman/witnesses.html').
 capability_page('misconception_hook_witness', '/more-zeeman/witnesses.html').
@@ -1128,7 +1143,12 @@ capability_page('multiplication_division_claim_witness', '/more-zeeman/witnesses
 capability_page('multiply_array_witness', '/more-zeeman/witnesses.html').
 capability_page('normative_crisis_witness', '/more-zeeman/witnesses.html').
 capability_page('notation_monitoring_chart', '/more-zeeman/visualizations.html').
+capability_page('notation_render', '/hermes/app/web/discussions.html').
+capability_page('notation_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('notation_render', '/more-zeeman/monitoring_chart.html').
+capability_page('notation_render', '/more-zeeman/unit-echo/index.html').
 capability_page('notation_render', '/more-zeeman/visualizations.html').
+capability_page('notation_render', '/more-zeeman/witnesses.html').
 capability_page('number_line_compare', '/hermes/app/web/discussions.html').
 capability_page('number_line_compare', '/more-zeeman/fraction-bars/calculator.html').
 capability_page('number_line_compare', '/more-zeeman/monitoring_chart.html').
@@ -1165,6 +1185,12 @@ capability_page('practice_vocabulary_witness', '/more-zeeman/witnesses.html').
 capability_page('primitive_for_practice', '/more-zeeman/witnesses.html').
 capability_page('productive_deformation_witness', '/more-zeeman/witnesses.html').
 capability_page('ranked_figures', '/more-zeeman/scoreboard.html').
+capability_page('ratio_diagram_render', '/hermes/app/web/discussions.html').
+capability_page('ratio_diagram_render', '/more-zeeman/fraction-bars/calculator.html').
+capability_page('ratio_diagram_render', '/more-zeeman/monitoring_chart.html').
+capability_page('ratio_diagram_render', '/more-zeeman/unit-echo/index.html').
+capability_page('ratio_diagram_render', '/more-zeeman/visualizations.html').
+capability_page('ratio_diagram_render', '/more-zeeman/witnesses.html').
 capability_page('ratio_proportion_claim_witness', '/more-zeeman/witnesses.html').
 capability_page('reorganize', '/more-zeeman/bridge.html').
 capability_page('representation_spine_witness', '/more-zeeman/witnesses.html').
@@ -1218,6 +1244,7 @@ capability_page('standard_k_ns_3_order_independence_witness', '/more-zeeman/witn
 capability_page('standard_k_ns_4_verify_subitizing_witness', '/more-zeeman/witnesses.html').
 capability_page('standard_k_ns_5_6_compare_groups_witness', '/more-zeeman/witnesses.html').
 capability_page('standard_k_ns_7_place_value_witness', '/more-zeeman/witnesses.html').
+capability_page('state_labels', '/more-zeeman/strategies/machine.html').
 capability_page('strategy_trace', '/hermes/app/web/console.html').
 capability_page('strategy_trace', '/hermes/app/web/discussions.html').
 capability_page('strategy_trace', '/more-zeeman/fraction-bars/calculator.html').
@@ -1293,6 +1320,7 @@ capability_page('knowledge/geometry/geometry_bridge.pl', '/more-zeeman/witnesses
 capability_page('knowledge/misconceptions/literature_canonical_mappings.pl', '/hermes/app/web/no.html').
 capability_page('knowledge/strategies/math/unit_coordination_viz.pl', '/more-zeeman/coordination.html').
 capability_page('knowledge/strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
+capability_page('knowledge/strategies/render/authored_render_citations.pl', '/more-zeeman/generated/data_store_index.html').
 
 capability_lazy_via('formal/incompatibility/error_rule_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').

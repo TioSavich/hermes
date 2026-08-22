@@ -1,0 +1,855 @@
+[
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl regex rule\\(cw_accommodation, registry\\(([a-z_]+:[a-z_]+/\\d),(\\w+), — three rows: (critique:accommodate/1, dialectic_critique), (reorganization_engine:accommodate/1, learner_reorg), (reorganization_engine:reorganize_system/2, learner_reorg). target is a Module:Name/Arity TERM string.",
+    "notes": "target-term parses 'critique:accommodate/1' via json_to_term; quote exactly, no spaces.",
+    "op": "accommodation_witness",
+    "params": [
+      "target",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"accommodation\", \"ok\": true, \"result\": {\"effect\": \"sequent/commitment sublation; increments stress map, writes diagnostics, and fails to signal external intervention\", \"invocation_policy\": \"reg",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='addition_pairs': operation fixed 'addition'; knowledge/strategies/math/sar_add_action_pairs.pl regex (?m)^action_cluster\\((\\w+),\\s*(\\w+)\\) gives (kind, cluster). source='fraction_pairs': operation fixed 'fraction'; fraction_action_pairs.pl regex (?m)^fraction_action_cluster\\((\\w+),\\s*(\\w+)\\). source='registry': any of the 12 operations in the cw_action_cluster registry_cluster_dispatch table (addition, subtraction, multiplication, division, fraction, decimal, integer, ratio, diagnostic, calculus, algebraic, probability); harvest each op's *_action_pairs module cluster facts the same way.",
+    "notes": "cluster must match the fact's second argument exactly; the audit's old sample fed classroom phrases, the real key space is (action_kind, cluster) atom pairs from the action-pairs modules.",
+    "op": "action_cluster_witness",
+    "params": [
+      "operation",
+      "kind",
+      "cluster",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"action_cluster\", \"ok\": true, \"result\": {\"action_kind\": \"count_on_from_larger\", \"cluster\": \"additive_strategy_fluency\", \"derivation\": \"direct_addition_action_cluster_row\", \"kind\": \"action_clust",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_algebra_claim), ac\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_algebra_claim, ac\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "algebra_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"algebra\", \"ok\": true, \"result\": {\"canonical\": \"value_substitution_into_expression\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_substitution_semantics,\\\"Sub",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_arithmetic_property_claim), ap\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_arithmetic_property_claim, ap\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "arithmetic_property_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"arith_prop\", \"ok\": true, \"result\": {\"canonical\": \"associativity_single_operation\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_associativity_single_operatio",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/tools/axiom_pack_audit.pl:235-243 hierarchy_proof_witness/2 clause heads: kind is one of geometry_cover(Strong,Weak) with Strong/Weak in the axioms_geometry shape enum {square,rectangle,rhombus,parallelogram,trapezoid,kite,quadrilateral}; rhythm_necessity_cashout(From,To) with From-To a comp_nec/exp_nec cashout pair from rhythm_axioms rhythm_transition/2 (e.g. s(u)->s(a), s(lg)->s(u_prime), s(t_b)->s(t_n)); domain_expansion(n_to_z); domain_expansion(n_to_q); number_theory_self_defeat(ListOfInts). Sent as a term string.",
+    "notes": "All three kind families verified ok in one worker session. Driver should draw kinds from these five term shapes, not a generic atom pool.",
+    "op": "axiom_hierarchy_witness",
+    "params": [
+      "kind"
+    ],
+    "reply_excerpt": "{\"blocked_domain\": \"n\", \"crisis_context\": \"natural_numbers\", \"crisis_goal\": \"subtract(2,3,_32340)\", \"crisis_witness\": {\"context\": \"natural_numbers\", \"domain\": \"n\", \"goal\": \"subtract(2,3,_32348)\", \"kin",
+    "verified_ok": true
+  },
+  {
+    "domain": "pack = a currently-enabled axiom pack; the load-time default set is formal/sequent/sequent_engine.pl regex (?m)^default_axiom_pack\\((\\w+)\\) -> geometry, number_theory, rhythm, domains. source in {enabled_predicate, enabled_store} (both read the same dynamic store). NOTE: 'core' (the cw_edges edge sample) is NOT default-enabled; the audit's edge sample is not a valid runtime key.",
+    "notes": "State-dependent (enable/disable_axiom_pack mutate the store), but the four defaults hold on a fresh worker.",
+    "op": "axiom_pack_witness",
+    "params": [
+      "pack",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"axiom_pack\", \"ok\": true, \"result\": {\"derivation\": \"owner_predicate_state_read\", \"kind\": \"axiom_pack_enabled_state\", \"pack\": \"domains\", \"projection\": \"exported_enabled_pack_reader\", \"scope\": \"c",
+    "verified_ok": true
+  },
+  {
+    "domain": "a, b, c non-negative integers for the one-unknown balance a*x + b = c with a non-negative integer solution (3x + 4 = 7 -> x = 1).",
+    "notes": "",
+    "op": "balance_solve_witness",
+    "params": [
+      "a",
+      "b",
+      "c"
+    ],
+    "reply_excerpt": "{\"deformation_step\": {\"action\": \"subtract_from_left_pan_only\", \"balance_preserving\": false, \"caption\": \"Taking 4 off the LEFT pan only leaves 3x against 7: the beam tips. The same move was not done to",
+    "verified_ok": true
+  },
+  {
+    "domain": "events: JSON list of event dicts with the event_score shape above.",
+    "notes": "Same event shape as event_score; one bad element fails the batch.",
+    "op": "batch_event_score",
+    "params": [
+      "events"
+    ],
+    "reply_excerpt": "[{\"event_id\": \"e1\", \"expressive_annotations\": {\"content_inference_field\": [\"content_edge(commitment,\\\"counts_by_ones\\\")\"], \"illocutionary_infrastructure\": [\"actor_role(\\\"student\\\")\", \"utterance_type(\\",
+    "verified_ok": true
+  },
+  {
+    "domain": "commitments: non-empty JSON list of term strings; any contents work (b_incoherent computed, entailments over declared incompatible sets).",
+    "notes": "",
+    "op": "brandomian_check",
+    "params": [
+      "commitments"
+    ],
+    "reply_excerpt": "{\"b_incoherent\": true, \"backstop\": {\"checks\": [\"check(non_explosion,pass,'a fresh content, and a pair of unrelated fresh contents, are coherent')\", \"check(classical_floor,pass,'b_incoherent covers cla",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_calculus_claim), cc\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_calculus_claim, cc\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "calculus_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"calculus\", \"ok\": true, \"result\": {\"canonical\": \"limit_process_evaluation\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_calculus_limit_process_definition,\\\"L",
+    "verified_ok": true
+  },
+  {
+    "domain": "terms: JSON list of functor-name strings; each classified canonical | legacy | unknown. Never refuses on unknown names.",
+    "notes": "",
+    "op": "canonical_check",
+    "params": [
+      "terms"
+    ],
+    "reply_excerpt": "{\"results\": [{\"canonical\": null, \"status\": \"unknown\", \"term\": \"add_grounded\"}]}",
+    "verified_ok": true
+  },
+  {
+    "domain": "operation op_atom (default add); x, y, z ints forming a true fact of that operation (x op y = z) with a productive proof in the carving store.",
+    "notes": "",
+    "op": "carving_strategy_proof",
+    "params": [
+      "operation",
+      "x",
+      "y",
+      "z"
+    ],
+    "reply_excerpt": "{\"operation\": \"add\", \"proofs\": [\"proof(count_on,[start(3),successor_n(2,5)])\", \"proof(near_doubles,[identify_near_double(2,3,2,1),double(2,4),count_on(4,1,5)])\"], \"x\": 2, \"y\": 3, \"z\": 5}",
+    "verified_ok": true
+  },
+  {
+    "domain": "claim: a string parsing to a ground term matching hermes_worker.pl:2170-2201 safe_math_claim_shape/1: equivalence(fraction(N,D),fraction(N,D)) | n_over_n_is_one(F) | n_over_n_schema | division_by_n_is_unit_fraction(N) | improper(F) | number_line_position(F,between(0,1)) | midpoint(F) | multiplication(IntOrF,F,F) | fraction_of(N,F,Int) | difference(F,F,F) | iterate_to_whole(F,times(N)) | sum(A,B,C) | fraction_sum(F,F,ForWhole(N)) | subtraction(A,B,C) | comparison(Operand,Rel,Operand) | ordering([Ints],Dir) | class_inclusion(Shape,Shape) | shape_property(Shape,Prop) | arithmetic_equation(Expr,Expr).",
+    "notes": "The driver's '3 + 4 = 7' is not in the registered grammar; use sum(3,4,7) or arithmetic_equation(3+4, 7).",
+    "op": "check_math_claim",
+    "params": [
+      "claim"
+    ],
+    "reply_excerpt": "{\"adjudication\": \"holds\", \"checker\": \"grounded_arithmetic:add_grounded\", \"claim\": \"whole_number_sum\", \"status\": \"domain_checked\", \"trace\": [\"count on from 3 by 4 reaches 7; claimed 7\"], \"verdict\": \"ho",
+    "verified_ok": true
+  },
+  {
+    "domain": "operation in {add, subtract, multiply, divide}; a, b integers; limit positive int (default 20); mode in {direct, developmental} (default direct).",
+    "notes": "",
+    "op": "compute",
+    "params": [
+      "operation",
+      "a",
+      "b",
+      "limit",
+      "mode"
+    ],
+    "reply_excerpt": "{\"budget\": 50, \"events\": [{\"a\": 3, \"b\": 4, \"mode\": \"direct\", \"operation\": \"add\", \"time\": 1787422544.942338, \"type\": \"computation_start\"}, {\"inferences_used\": 0, \"interpretation\": \"Count on from 3 by o",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_counting_claim.pl: regex (?m)^cc\\((\\w+), — group 1 is the canonical key (the family's own claim table; heads start at column 0). Tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane. These four families dispatch to their own module (cw_counting_claim / cw_fraction_claim / cw_place_value_number_claim / cw_whole_number_claim), not through cw_driver:family_witness, but the request shape is identical.",
+    "op": "counting_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"counting\", \"ok\": true, \"result\": {\"canonical\": \"unit_coordination_cardinality\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_counting_cardinality_units,\\\"Cou",
+    "verified_ok": true
+  },
+  {
+    "domain": "proof: term string of nested proof(RuleName, Sequent, SubProofs) whose ancestry repeats a node(RuleName, Sequent), where every node in the cycle has RuleName = pml_rhythm(s(F) => s(comp_nec(T))) and Sequent = (Premises => Conclusions) with s(F) in Premises and s(comp_nec(T)) in Conclusions. The two-phase bad-infinite pair t_b/t_n from rhythm_axioms is the canonical cycle. See formal/dialectic/critique.pl bad_infinite_witness/2.",
+    "notes": "Any acyclic proof or a cycle with a non-comp_nec step refuses with no_bad_infinite_witness.",
+    "op": "critique_bad_infinite",
+    "params": [
+      "proof"
+    ],
+    "reply_excerpt": "{\"closed_cycle\": [\"node(pml_rhythm((s(t_b)=>s(comp_nec t_n))),([s(t_b)]=>[s(comp_nec t_n)]))\", \"node(pml_rhythm((s(t_n)=>s(comp_nec t_b))),([s(t_n)]=>[s(comp_nec t_b)]))\", \"node(pml_rhythm((s(t_b)=>s(",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_decimal_claim), dc\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_decimal_claim, dc\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "decimal_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"decimal\", \"ok\": true, \"result\": {\"canonical\": \"decimal_magnitude_ordered_by_place_value\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_decimal_place_value_or",
+    "verified_ok": true
+  },
+  {
+    "domain": "proposition: term matching requires_entitlement_fact/1 - today result_of(cross_multiply, _, _, _, _, _) (arity 6, first arg cross_multiply) - or result_of(Kind, ...) where Kind is a practice_kind with an LX-elaborated vocabulary (formal/learner/deontic_scorekeeper.pl:234ff).",
+    "notes": "",
+    "op": "deontic_requires_entitlement",
+    "params": [
+      "proposition"
+    ],
+    "reply_excerpt": "{\"kind\": \"manual_entitlement_requirement\", \"proposition\": \"result_of(cross_multiply,2,3,4,6,ok)\", \"source\": \"requires_entitlement_fact\"}",
+    "verified_ok": true
+  },
+  {
+    "domain": "Dynamic-state witness, two lanes. source='domain_atom': domain = the CURRENT sequent_engine domain (default n; the finite set is n/z/q per formal/learner/axioms_domains.pl), context fixed 'not_projected_by_source'. source='domain_context': domain fixed 'not_projected_by_source', context = the current domain's mapped context (n->natural_numbers, z->integers, q->rationals). Only the currently-set domain answers, so author the default-state pair.",
+    "notes": "State-dependent: if a prior request in the same worker session called set_domain, n may no longer answer.",
+    "op": "domain_context_witness",
+    "params": [
+      "domain",
+      "context",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"domain_ctx\", \"ok\": true, \"result\": {\"context\": \"not_projected_by_source\", \"derivation\": \"current_domain_dynamic_fact_read\", \"domain\": \"n\", \"kind\": \"domain_context_crosswalk\", \"legacy_functor\":",
+    "verified_ok": true
+  },
+  {
+    "domain": "sequent: term string '(Premises => Conclusions)' with list premises/conclusions over loaded material-inference vocabulary; identity '([X] => [X])' always proves. resources: JSON number (finite budget; each step costs >=1). See formal/sequent/embodied_prover.pl proves_witness/5.",
+    "notes": "resources_out returned 9 of 10; unprovable sequents or exhausted budgets refuse with no_embodied_proof_witness.",
+    "op": "embodied_proof_witness",
+    "params": [
+      "sequent",
+      "resources"
+    ],
+    "reply_excerpt": "{\"final_context\": \"neutral\", \"initial_context\": \"neutral\", \"kind\": \"embodied_proof\", \"proof\": \"proof(identity,([a]=>[a]),[])\", \"proof_witness\": {\"kind\": \"proof_step\", \"rule\": \"identity\", \"sequent\": \"[",
+    "verified_ok": true
+  },
+  {
+    "domain": "event: JSON dict with required keys event_id, actor{role}, substrate{utterance_type}, pml{status, validity_focus, pragmatic_horizon_level}, carspecken{recognition_risk, proprioceptive_delta}; optional symbolic{commitments, entitlements, missing_requirements, incompatibilities, material_inferences, literature_handles} (each a list; whole symbolic dict optional), question_candidates. See hermes/event_scoring.pl score_event/2 field readers.",
+    "notes": "Any missing required nested key makes score_event fail -> the raw_safe generic no-result refusal the audit recorded.",
+    "op": "event_score",
+    "params": [
+      "event"
+    ],
+    "reply_excerpt": "{\"event_id\": \"e1\", \"expressive_annotations\": {\"content_inference_field\": [\"content_edge(commitment,\\\"counts_by_ones\\\")\"], \"illocutionary_infrastructure\": [\"actor_role(\\\"student\\\")\", \"utterance_type(\\\"",
+    "verified_ok": true
+  },
+  {
+    "domain": "Three fixed (variant, source) pairs from the source_executable_practice_witness heads in knowledge/crosswalk/families/cw_edges.pl: (mml_run_learned_strategy, more_machine_learner), (oracle_list_available_strategies, oracle_server), (mua_practice, mua_relations). Regex: rule\\(cw_executable_practice, \\(source_executable_practice_witness\\((\\w+),",
+    "notes": "The 2nd and 3rd spec slots (predicate, practice_kind) are dropped by dispatch.",
+    "op": "executable_practice_witness",
+    "params": [
+      "variant",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"exec_practice\", \"ok\": true, \"result\": {\"invocation_policy\": \"read_only_registry_fact_query\", \"kind\": \"executable_practice_registry_entry\", \"legacy_functor\": \"mua_relations:practice/2\", \"practi",
+    "verified_ok": true
+  },
+  {
+    "domain": "kind: a CGI addition automaton name (count_on_from_larger, make_ten_split_leftover, make_base_transfer, base_ones_chunking, ...); na, nb non-negative ints; d positive int (same denominator both sides; defaults 7, 8, 10).",
+    "notes": "",
+    "op": "fraction_cgi_addition",
+    "params": [
+      "kind",
+      "na",
+      "nb",
+      "d"
+    ],
+    "reply_excerpt": "{\"annotation\": \"three_level_units_coordination(operative_base(10),unit_fraction(fraction(1,10)),referent_whole(fraction(10,10)),iteration_count_at_unit(addition_of(7,8)))\", \"kind\": \"count_on_from_larg",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_fraction_claim.pl: regex (?m)^fc\\((\\w+), — group 1 is the canonical key (the family's own claim table; heads start at column 0). Tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane. These four families dispatch to their own module (cw_counting_claim / cw_fraction_claim / cw_place_value_number_claim / cw_whole_number_claim), not through cw_driver:family_witness, but the request shape is identical.",
+    "op": "fraction_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"fraction\", \"ok\": true, \"result\": {\"canonical\": \"fraction_equivalence\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_fraction_equivalence_multiplicative_scali",
+    "verified_ok": true
+  },
+  {
+    "domain": "kind: a productive fraction kind with a paired deformation in knowledge/strategies/math/fraction_action_pairs.pl productive_fraction_deformation/3 (unit_fraction_iteration, cross_multiplication_rule_from_pattern, splitting, improper_fraction_iteration, recursive_partition, ...); a, b ints (defaults 5, 3). Unknown kinds still serve a dict with an explicit error field.",
+    "notes": "",
+    "op": "fraction_compare",
+    "params": [
+      "kind",
+      "a",
+      "b"
+    ],
+    "reply_excerpt": "{\"a\": 5, \"b\": 3, \"canvas\": {\"height\": 320, \"width\": 700}, \"deformation\": {\"frames\": [{\"caption\": \"The whole, 3/3.\", \"scene\": {\"bars\": [{\"fraction\": \"3/3\", \"h\": 48, \"isUnitBar\": false, \"label\": \"3/3\", ",
+    "verified_ok": true
+  },
+  {
+    "domain": "family: one of the 12 fraction_comparison_family/1 atoms in hermes_worker.pl:1023-1034 (number_line/area_model/set_model/benchmark/common_unit/decimal_fraction_place_value comparison, positional_decimal_reading [n1,d1 only], decimal_place_unit_regrouping [n1,d1,n2], decimal_*_by_aligned_units, decimal_multiplication_rule); strict integers per family.",
+    "notes": "",
+    "op": "fraction_comparison_compare",
+    "params": [
+      "family",
+      "n1",
+      "d1",
+      "n2",
+      "d2"
+    ],
+    "reply_excerpt": "{\"canvas\": {\"height\": 420, \"width\": 900}, \"deformation\": {\"expected\": \"less_than\", \"frames\": [{\"caption\": \"init: init(fraction(1,3),fraction(2,3)).\", \"scene\": {\"axis\": {\"max\": 9, \"min\": 0, \"ticks\": [0",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_fraction_extra_claim), fe\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_fraction_extra_claim, fe\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "fraction_extra_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"fraction_extra\", \"ok\": true, \"result\": {\"canonical\": \"fraction_of_quantity_as_part_of_part\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_fraction_of_quantit",
+    "verified_ok": true
+  },
+  {
+    "domain": "kind arith (operation/na/da/nb/db defaulted) or add_numerators_and_denominators, else a bar-scene kind passed to fraction_bars_scene:fraction_render_json/4 with n, d.",
+    "notes": "",
+    "op": "fraction_render",
+    "params": [
+      "kind"
+    ],
+    "reply_excerpt": "{\"a\": {\"den\": 3, \"num\": 1}, \"b\": {\"den\": 4, \"num\": 1}, \"canvas\": {\"height\": 320, \"width\": 700}, \"frames\": [{\"caption\": \"1/3 + 1/4. The parts are different sizes.\", \"scene\": {\"bars\": [{\"fraction\": \"1/3",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl regex rule\\(cw_fsm_engine, fsm_engine_variant\\((\\w+),([a-z_]+:[a-z_]+/\\d), — (source, descriptor): (strategy_generic, fsm_engine:run_fsm/4), (strategy_high_level, fsm_engine:run_strategy/4), (dialectical_generic, dialectical_engine:run_fsm/4). descriptor is a Module:Name/Arity term string.",
+    "notes": "",
+    "op": "fsm_engine_witness",
+    "params": [
+      "descriptor",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"fsm_engine\", \"ok\": true, \"result\": {\"descriptor\": \"fsm_engine:run_fsm/4\", \"execution_policy\": \"registry_only_no_fsm_execution\", \"kind\": \"fsm_engine_registry_entry\", \"legacy_functor\": \"fsm_engi",
+    "verified_ok": true
+  },
+  {
+    "domain": "predicate: one of the dispatch_geometry/4 heads in hermes_worker.pl:4003ff (matching_concepts, workflow_monitoring_matches, concepts_in_neighborhood, applicable_misconceptions, linked_misconceptions, vh_markers_for, bootstraps_for, developmental_arc_for, pck_synthesis_for, ...); args: positional JSON list per predicate (matching_concepts: [tokens_list, grade_band_or_any]).",
+    "notes": "",
+    "op": "geometry",
+    "params": [
+      "predicate",
+      "args"
+    ],
+    "reply_excerpt": "[{\"id\": \"ruler_units_vs_marks\", \"kind\": \"concept\", \"name\": \"A ruler measures the spaces between marks (units), not the marks themselves\", \"score\": 18, \"topic\": \"measurement\"}, {\"id\": \"area_unit_is_a_s",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/cross_links.pl regex (?s)concept_relation\\((\\w+),\\s*(\\w+),\\s*(\\w+),\\s*(\\w+)\\) -> (source, relation, target, status); status is an optional dispatch param defaulting to entitled, which matches every authored row.",
+    "notes": "Not a cw_driver family — user:cross_link_witness/5 from the geometry schema. Facts are multiline; use DOTALL. 'status_' marks verification state (the op's own optional 'status' param is left to default).",
+    "op": "geometry_cross_link_witness",
+    "params": [
+      "source",
+      "relation",
+      "target"
+    ],
+    "reply_excerpt": "{\"id\": \"geo_cross\", \"ok\": true, \"result\": {\"boundary\": \"material_inference_has_loaded_tier_support\", \"fact\": \"concept_relation(tilted_square_as_diamond,manifests_as,orientation_invariant_naming,entitl",
+    "verified_ok": true
+  },
+  {
+    "domain": "Shapes from formal/formalization/axioms_geometry.pl: {square, rectangle, rhombus, parallelogram, trapezoid, kite, quadrilateral}; entailer must reject every restriction the entailed rejects (square entails everything; X entails quadrilateral for all X; X entails X).",
+    "notes": "Non-entailing ordered pairs (e.g. rectangle->rhombus) correctly refuse.",
+    "op": "geometry_entailment_witness",
+    "params": [
+      "entailer",
+      "entailed"
+    ],
+    "reply_excerpt": "{\"entailed\": \"rectangle\", \"entailer\": \"square\", \"kind\": \"geometry_entailment\", \"missing_rejections\": [], \"proving_rejections\": [\"r1\", \"r2\", \"r3\", \"r4\", \"r5\", \"r6\"], \"required_rejections\": [\"r1\", \"r3\",",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/measurement.pl geom_misconception/6 first args whose clause lives in that file (the witness filters by clause file). Today exactly ONE row: ruler_counts_marks_not_spaces. Regex: ^geom_misconception\\( in that file.",
+    "notes": "The keyable surface is a single id; the 103 refusals were the driver's claim_id-style pool never containing it. A sweep needs only this one key.",
+    "op": "geometry_measurement_misconception_witness",
+    "params": [
+      "id_value"
+    ],
+    "reply_excerpt": "{\"boundary\": \"finite_measurement_misconception_table_not_general_diagnostic_model\", \"citation\": [\"vdw_ch19_p486\", \"vdw_ch19_p490\"], \"concept\": \"ruler_units_vs_marks\", \"fact\": \"geom_misconception(ruler",
+    "verified_ok": true
+  },
+  {
+    "domain": "Same 7-shape enum via knowledge/geometry/concepts/quadrilateral_incompatibility.pl quad_rejects/2 profiles; entailment iff required rejections subset of proving rejections, or same shape, or entailed=quadrilateral.",
+    "notes": "",
+    "op": "geometry_quadrilateral_entailment_witness",
+    "params": [
+      "entailer",
+      "entailed"
+    ],
+    "reply_excerpt": "{\"entailed\": \"rectangle\", \"entailed_witness\": {\"kind\": \"quadrilateral_rejection_profile\", \"label\": \"Rectangle\", \"rejected_restriction_witnesses\": [{\"fact\": \"quad_rejects(rectangle,no_opposite_sides_eq",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/van_hiele/transitions.pl van_hiele_material_claim/5 first args; 4 ids: didactic_gap_produces_memorization, level_relativity_of_correctness, definitions_require_level_2, appropriate_phases_support_level_transition. Regex: ^van_hiele_material_claim\\(",
+    "notes": "claim_id is a term param (atom).",
+    "op": "geometry_van_hiele_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"boundary\": \"tier_record_found\", \"claim_id\": \"didactic_gap_produces_memorization\", \"concept\": \"geometric_language\", \"conclusion\": \"Student cannot understand and falls back to memorization or imitatio",
+    "verified_ok": true
+  },
+  {
+    "domain": "utterances: list of {id, speaker, text} dicts with unique atomic ids. observations: list of STRICT dicts with exactly {kind, start_ms, end_ms, target, source, confidence}; kind in {pointing, head_movement, inscription_action, repositioning, object_handling, gesture_unspecified}; integer start_ms>=0 < end_ms; target 'unresolved' or a referent id declared in the optional context dict; source nonempty text; confidence in {exact, high, medium, low}. Optional context dict keys subset of {speaker_aliases, turn_timings, pause_events, referents, gestures, reference_links}. See formal/pml/gesture_alignment.pl observation_dict_term/5.",
+    "notes": "Without context turn_timings the observation serves with status no_temporal_overlap - still ok. Supply context.turn_timings [{utterance_id, start_ms, end_ms, source}] for real assignments.",
+    "op": "gesture_alignment",
+    "params": [
+      "utterances",
+      "observations"
+    ],
+    "reply_excerpt": "{\"assignments\": [{\"observation_id\": \"g0001\", \"status\": \"no_temporal_overlap\"}], \"candidate_count\": 0, \"candidates\": [], \"compiled_gesture_count\": 0, \"gesture_context\": {\"gestures\": []}, \"limits\": {\"al",
+    "verified_ok": true
+  },
+  {
+    "domain": "Computed witness. source='automata': query 'is_prime(P)' for a prime P, or 'nth_prime(N)' for a positive integer N. source='sequent_engine': query 'product_of_list([n1,n2,...])' over numbers. Authored tuples (keep N and the primes small; the witness re-derives a full primality/enumeration trace).",
+    "notes": "The 08-19 audit fed classroom phrases; the real domain is these three term shapes.",
+    "op": "godel_primes_witness",
+    "params": [
+      "query",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"godel\", \"ok\": true, \"result\": {\"derivation\": \"automata_primality_check\", \"kind\": \"godel_prime_utility_crosswalk\", \"legacy_functor\": \"automata:is_prime/1 or automata:nth_prime/2\", \"query\": \"is_",
+    "verified_ok": true
+  },
+  {
+    "domain": "Computed witness (executes the grounded op under a cost snapshot); no fact file enumerates tuples. Valid operations: add/subtract (source grounded_arithmetic, inputs '[recollection([...]),recollection([...])]', output the exact result recollection), successor (1 input), base_decompose (source grounded_utils, output 'bases_remainder(recollection([...]),recollection([...]))'), is_recollection (source robinson_q, output 'history(B)'). Use a small authored list.",
+    "notes": "output must unify with the computed result, so author tuples where the arithmetic is done by hand. All recollection terms are tally lists; integers are NOT accepted here (term-typed params).",
+    "op": "grounded_arith_witness",
+    "params": [
+      "operation",
+      "inputs",
+      "output",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"grounded_arith\", \"ok\": true, \"result\": {\"cost_witness\": {\"after_goal\": 1, \"after_restore\": 0, \"before\": 0, \"kind\": \"grounded_arithmetic_cost_snapshot\", \"policy\": \"restore_direct_cost_accumulat",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/formalization/grounding_metaphors.pl grounds_inference/3 (metaphor, inference) pairs, e.g. arithmetic_is_motion_along_a_path x multiplication_of_positives, multiplication_by_minus_one_is_rotation_by_180_degrees x product_of_two_negatives. Enumerate with grep '^grounds_inference(' in that file (prolog_query cannot reach formal/ modules).",
+    "notes": "GroundingPath is derived, not a key.",
+    "op": "grounding_inference_witness",
+    "params": [
+      "metaphor",
+      "inference"
+    ],
+    "reply_excerpt": "{\"definition_witness\": {\"description\": \"Numbers are point-locations on a path; zero is the origin; addition is motion away from origin; negatives are point-locations on the opposite side of zero.\", \"k",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='definition': formal/formalization/grounding_metaphors.pl regex (?s)base_grounding_metaphor_definition\\((\\w+),\\s*(\\w+),\\s*(\\w+), -> tuples (metaphor, 'domains(<src>,<tgt>)', 'definition'); ln_metaphor/4 rows in grounding_metaphors_extended.pl extend the same lane and back source='extension'. source='mua_practice': anchor 'practice(<P>)' from mua_relations:grounding_metaphor(P, Metaphor). source='geometry': anchor 'concept(<C>)' from geometry metaphor_source/4 rows (knowledge/geometry/metaphors/*.pl).",
+    "notes": "anchor is a wrapped term the caller must author from the fact row: domains(Source,Target) with no spaces.",
+    "op": "grounding_metaphor_witness",
+    "params": [
+      "metaphor",
+      "anchor",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"grounding_met\", \"ok\": true, \"result\": {\"anchor\": \"domains(physical_object_collections,arithmetic)\", \"derivation\": \"definition_table_lookup\", \"kind\": \"grounding_metaphor_crosswalk\", \"legacy_fun",
+    "verified_ok": true
+  },
+  {
+    "domain": "context: term string, a list containing a negation pair P and neg(P), or a same-marker pair d(P)/d(neg(P)) for d in {s,o,n}, or a context an enabled axiom pack marks incoherent. See formal/sequent/sequent_engine.pl incoherent_witness/2.",
+    "notes": "Coherent contexts refuse with no_incoherent_witness.",
+    "op": "incoherent_witness",
+    "params": [
+      "context"
+    ],
+    "reply_excerpt": "{\"base_witness\": {\"context\": [\"p\", \"neg p\"], \"kind\": \"base_incoherence\", \"negative\": \"neg p\", \"pattern\": \"plain_negation_pair\", \"positive\": \"p\", \"support\": [\"p\", \"neg p\"]}, \"context\": [\"p\", \"neg p\"], ",
+    "verified_ok": true
+  },
+  {
+    "domain": "context: {finite_three_rule_program (alias toy_three_rule_program), finite_loop_program (alias toy_loop_program), registry_neighborhood, defeasible_inference}. set: a LIST of that context's vocabulary terms - finite_three_rule_program: subsets of [rule(a_requires_b), rule(b_requires_c), rule(a_forbids_c)]; finite_loop_program: [rule(loop_self)]; registry_neighborhood: terms from the bounded registry pair grid; defeasible_inference: [inference(Id)|Defeaters].",
+    "notes": "DEFECT FIXED (the one allowed edit): the audit's atom-valued set reached sort/2 and raised a type error. Two-hunk fix: (1) hermes/dispatch_spec.pl:525 set-term -> set-list, so a non-list set fails input conversion and the boundary answers with the op's own malformed message ('incompatibility_discovery_witness requires context and set', type malformed_incompatibility_discovery_request) - verified live with set='probe'; (2) formal/incompatibility/incompatibility_discovery.pl classify_candidate_set_witness/4 gained an is_list(Set0) guard (doc mode det -> semidet) so direct Prolog callers fail cleanly instead of raising. Valid input re-verified ok after both hunks.",
+    "op": "incompatibility_discovery_witness",
+    "params": [
+      "context",
+      "set"
+    ],
+    "reply_excerpt": "{\"classifier_witness\": {\"asserted_set\": [\"rule(a_forbids_c)\", \"rule(a_requires_b)\", \"rule(b_requires_c)\"], \"kind\": \"scratch_context_classification\", ... \"outcome\": incoherent...}",
+    "verified_ok": true
+  },
+  {
+    "domain": "replaced: a term appearing in at least one incompatibility_sets:incompatibility_terms/2 set (cached Big Red discovery rows, hand-listed lesson sets over misconception_registry_entry names for IM-G1-U3-L17 / IM-G2-U1-L3 targets, brandomian seed sets). replacement: a term preserving joint incompatibility in EVERY profile containing replaced; identity (replacement == replaced) always qualifies and is the cheap smoke key.",
+    "notes": "Verified with the identity replacement over the IM-G1-U3-L17 hand-listed set (1 profile checked, served promptly under the full worker). Non-identity positive pairs must be mined from the profiles themselves; most arbitrary pairs correctly refuse.",
+    "op": "incompatibility_entailment_witness",
+    "params": [
+      "replacement",
+      "replaced"
+    ],
+    "reply_excerpt": "{\"kind\": \"incompatibility_entailment\", \"profiles_checked\": [{\"context\": \"IM-G1-U3-L17\", \"original_set\": [\"misconception(count_all_when_count_on_available)\", \"deformed_action(count_on_from_larger,count",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_integer_signed_claim), isc\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_integer_signed_claim, isc\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "integer_signed_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"integer_signed\", \"ok\": true, \"result\": {\"canonical\": \"directed_signed_quantity_operations\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_signed_number_order_",
+    "verified_ok": true
+  },
+  {
+    "domain": "Two clause families in formal/pml/intersubjective_praxis.pl: (1) from='[s(comp_nec(action(A, aggressive)))]' / to='o(comp_nec(position(B, crystallized)))' and the exp_nec listening/liquefied pair, A \\\\= B; (2) mutual recognition: from='[n(confession(A)), n(confession(B))]' / to='n(exp_nec(forgiveness(A, B)))' with distinct A, B.",
+    "notes": "Participant atoms are free but must differ.",
+    "op": "intersubjective_material_witness",
+    "params": [
+      "from",
+      "to"
+    ],
+    "reply_excerpt": "{\"from\": [\"n(confession(alice))\", \"n(confession(bob))\"], \"kind\": \"mutual_recognition\", \"normative_release\": \"n(exp_nec forgiveness(alice,bob))\", \"participants\": [\"alice\", \"bob\"], \"participants_distinc",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_magnitude_equivalence_claim), me\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_magnitude_equivalence_claim, me\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "magnitude_equivalence_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"magnitude\", \"ok\": true, \"result\": {\"canonical\": \"ratio_invariance_under_scaling\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_multiplicative_ratio_invarianc",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='defeasible': formal/incompatibility/defeasible_inference.pl regex (?ms)^material_inference\\((\\w+),\\s*(\\[.*?\\]),\\s*(.*?)\\)\\.\\s*$ — groups are (id, premises-list, conclusion), all sent verbatim as Prolog-term strings. Other lanes: source='deontic' reads deontic_scorekeeper:material_inference(Id,P,C) with premises sent as the singleton '[P]'; source='mua' reads deontic_scorekeeper:mua_derived_material_inference_witness/4 the same way; source='pml_rhythm' fixes inference_id='pml_rhythm' with premises '[A]' / conclusion B from embodied_prover:pml_rhythm_axiom(A,B).",
+    "notes": "premises and conclusion are term-typed: send exact Prolog syntax strings, no spaces needed. The defeasible lane is a plain fact table and is the driver-friendly one.",
+    "op": "material_inference_witness",
+    "params": [
+      "inference_id",
+      "premises",
+      "conclusion",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"material_inf\", \"ok\": true, \"result\": {\"conclusion\": \"o(q)\", \"derivation\": \"defeasible_material_catalog_lookup\", \"id\": \"commit_p_entitles_q\", \"kind\": \"material_inference\", \"legacy_functor\": \"de",
+    "verified_ok": true
+  },
+  {
+    "domain": "segments: ordered JSON list of STRICT dicts with exactly the keys {speaker, text, start_ms, end_ms} (nonempty speaker/text; integer start_ms>=0; end_ms>start_ms; nondecreasing start_ms across the list; extra or missing keys refuse). source: any nonempty attributed text label, e.g. 'reallms_audio_alignment:<model>'. See formal/pml/media_alignment.pl valid_segment_dict/1.",
+    "notes": "strict_dict_keys/2 rejects any element with extra keys; the audit fixture's elements lacked the four required keys.",
+    "op": "media_alignment",
+    "params": [
+      "segments",
+      "source"
+    ],
+    "reply_excerpt": "{\"context\": {\"turn_timings\": [{\"end_ms\": 2000, \"source\": \"reallms_audio_alignment:probe\", \"start_ms\": 0, \"utterance_id\": \"u0001\"}, {\"end_ms\": 4000, \"source\": \"reallms_audio_alignment:probe\", \"start_ms",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='mua' is the enumerable lane: formal/pml/mua_relations.pl regex (?m)^metaphor_breaks_at\\((\\w+),\\s+(\\w+)\\)\\. -> (metaphor, inference); detail is fixed 'none'. Metaphor names here are SHORT (object_collection, object_construction, ...), unlike the grounding-catalogue lane's long arithmetic_is_* ids. source='grounding_catalogue' additionally requires detail to equal the fact's reason term; source='compiled' fixes inference='compiled' with detail = the compiled_break/2 condition list — both impractical to author by regex.",
+    "notes": "",
+    "op": "metaphor_break_witness",
+    "params": [
+      "metaphor",
+      "inference",
+      "detail",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"met_break\", \"ok\": true, \"result\": {\"derivation\": \"mua_break_pair_lookup\", \"detail\": \"none\", \"inference\": \"subtraction_of_larger_from_smaller\", \"kind\": \"metaphor_break_crosswalk\", \"legacy_funct",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='literature_registry' is the enumerable lane: knowledge/misconceptions/misconception_registry.pl regex (?s)attested_misconception\\((\\w+),\\s*(\\w+), — (name, operation); tuples are (operation, 'misconception(<name>)', operation, 'literature_registry') — family MUST equal operation in this lane. Rows only fire when action_automaton_pair(Op,Productive,Name,Family) also holds, which held for both probes. source='action_registry'/'fraction_action' need the full action_outcome(Kind,[classification(...),vocabulary([...])]) term as outcome — impractical to author; skip in a driver.",
+    "notes": "outcome is a term: send the string 'misconception(name)'. The hook (4th spec slot) is dropped by dispatch.",
+    "op": "misconception_hook_witness",
+    "params": [
+      "operation",
+      "outcome",
+      "family",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"misc_hook_a\", \"ok\": true, \"result\": {\"derivation\": \"bounded_literature_registry_projection\", \"family\": \"addition\", \"hook\": \"registry_hook(deformed_action(count_on_from_larger,count_all_when_co",
+    "verified_ok": true
+  },
+  {
+    "domain": "Grounded in the action registry and misconception registry: move is a deformation kind atom (or misconception(Name), deformed_action(P,D,F), strategy(Op,D)); conflict is strategy(Operation, ProductiveKind) for the registered action_automaton_pair, or the entitlement term of a misconception_registry_entry. Pairs enumerable from productive_deformation/3 families in knowledge/strategies/math/*_action_pairs.pl (e.g. round_then_adjust/round_without_adjusting under addition).",
+    "notes": "Sweep driver: enumerate action_automaton_pair(Op, P, D, _) and key move=D, conflict=strategy(Op, P).",
+    "op": "misconception_incompatibility_witness",
+    "params": [
+      "move",
+      "conflict"
+    ],
+    "reply_excerpt": "{\"conflict\": \"strategy(addition,round_then_adjust)\", \"evidence\": {\"deformation\": \"round_without_adjusting\", \"family\": \"rounding_without_compensation\", \"operation\": \"addition\", \"productive\": \"round_the",
+    "verified_ok": true
+  },
+  {
+    "domain": "operation/deformation: a registered deformation automaton whose trace parses to number-line jumps; the covered family today is additive rounding-without-compensation: operation=addition, deformation=round_without_adjusting. a, b: integers.",
+    "notes": "Other deformations refuse until trace_step_jump/2 learns their trace terms - a data boundary, not a defect.",
+    "op": "misconception_jumps_witness",
+    "params": [
+      "operation",
+      "deformation",
+      "a",
+      "b"
+    ],
+    "reply_excerpt": "{\"deformation\": \"round_without_adjusting\", \"derivation\": \"parsed_deformation_action_trace\", \"expected\": 65, \"family\": \"rounding_without_compensation\", \"input\": {\"a\": 38, \"b\": 27}, \"jump_count\": 2, \"ju",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='meta_interpreter': formal/learner/meta_interpreter.pl regex (?m)^is_modal_operator\\((\\w+)\\(_\\), (\\w+)\\)\\. -> operator/context pairs: comp_nec/compressive, comp_poss/compressive, exp_nec/expansive, exp_poss/expansive. term is '<operator>(<any inner term>)', e.g. comp_nec(p). source='embodied_prover' mirrors the same four operators via determine_modal_context/2; source='pml_modality' wraps them in a mode functor, e.g. s(comp_nec(p)), context = compressive/expansive.",
+    "notes": "The audit fed classroom phrases; the real domain is the four PML polarity operators wrapping any term.",
+    "op": "modal_context_witness",
+    "params": [
+      "term",
+      "context",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"modal_ctx\", \"ok\": true, \"result\": {\"context\": \"compressive\", \"derivation\": \"fact_table_lookup\", \"kind\": \"modal_context\", \"legacy_functor\": \"meta_interpreter:is_modal_operator/2\", \"polarity\": \"",
+    "verified_ok": true
+  },
+  {
+    "domain": "Computed scorer, no fact enumeration. source='pml_vocabulary': subject = any action kind known to mua_relations:kind_vocabulary_terms/2 (action kinds from action_automaton_vocabulary/3, e.g. unit_fraction_iteration, count_on_from_larger); input = free corpus-row text (JSON string; the 'dict' converter is a passthrough, so a plain string works). source='pml_axiom_batch': subject fixed 'axiom_batch', input = a JSON list of PML clause strings scored by hermes_encyclopedia:pml_score_dict/2.",
+    "notes": "Scores 0..N; an unknown subject still succeeds with score 0 (kind_vocabulary_terms is det), so any atom subject + text input is well-formed for the pml_vocabulary lane. Verified probe scored 2.",
+    "op": "mua_coherence_witness",
+    "params": [
+      "subject",
+      "input",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"mua_coherence\", \"ok\": true, \"result\": {\"derivation\": \"kind_vocabulary_hit_scan\", \"input_scope\": \"lower_cased_corpus_row_text\", \"kind\": \"mua_coherence_crosswalk\", \"legacy_functor\": \"mua_relatio",
+    "verified_ok": true
+  },
+  {
+    "domain": "kind: any atom, meaningfully one of the 289 sorted action_automata_registry:action_automaton_vocabulary/3 kinds (verified live via prolog_query; e.g. fraction-family and strategy kinds). row_text: any lower-cased text string. The scorer (mua_relations:kind_mua_coherence_witness/4 via the cw_mua_coherence family) is det: score 0 with empty hits still serves ok.",
+    "notes": "Note kind 'fraction' itself is not a registry kind, so vocabulary_terms=[] and score 0 — still ok. For nonzero scores pair a registry kind with its own vocabulary words (e.g. kind count_on_from_larger, row_text 'count on'). The 285 refusals were most likely row_text arriving non-text (term-converted) so sub_string raised inside the family catch and the call failed to no_witness; row_text is a json param and must stay a plain string.",
+    "op": "mua_kind_coherence_witness",
+    "params": [
+      "kind",
+      "row_text"
+    ],
+    "reply_excerpt": "{\"hits\": [], \"kind\": \"mua_kind_coherence\", \"registry_kind\": \"fraction\", \"row_text_scope\": \"lower_cased_corpus_row_text\", \"score\": 0, \"vocabulary_terms\": []}",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_multiplication_division_claim), md\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_multiplication_division_claim, md\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "multiplication_division_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"mult_div\", \"ok\": true, \"result\": {\"canonical\": \"equal_groups_composite_unit\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_equal_groups_equal_size,\\\"Equal-gr",
+    "verified_ok": true
+  },
+  {
+    "domain": "Computed guard over formal/learner/axioms_domains.pl prohibition/2: context='natural_numbers' with goal 'subtract(M,S,_)' where S>M, or 'divide(A,B,_)' where B=0 or A mod B =\\= 0, valid while the current domain is n (the default). source fixed 'prohibition'. Authored tuples, not a fact sweep.",
+    "notes": "goal's third argument may be anything (it unifies with _ in the prohibition head). goal_family in the reply names the crisis class.",
+    "op": "normative_crisis_witness",
+    "params": [
+      "context",
+      "goal",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"norm_crisis\", \"ok\": true, \"result\": {\"context\": \"natural_numbers\", \"derivation\": \"non_mutating_prohibition_query\", \"goal\": \"subtract(1,2,-1)\", \"goal_family\": \"subtract_larger_from_smaller_in_n",
+    "verified_ok": true
+  },
+  {
+    "domain": "kind in {write_equation, mirror_written}; optional a, b, r ints, operator in {+,-,=}, and digit for mirror_written; all defaulted.",
+    "notes": "",
+    "op": "notation_render",
+    "params": [
+      "kind"
+    ],
+    "reply_excerpt": "{\"canvas\": {\"height\": 120, \"width\": 760}, \"frames\": [{\"caption\": \"Write 2 + 3 = 5.\", \"scene\": {\"baseline\": 40, \"format\": \"notation\", \"glyphPitch\": 24, \"glyphs\": [{\"ch\": \"2\", \"flip\": \"none\", \"ghost\": \"",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl regex rule\\(cw_orr_entry, registry\\((\\w+),[a-z_]+:[a-z_]+/\\d,\\w+,(\\w+), -> (variant, source): (eh_run_computation, learner_execution_handler), (eh_handle_perturbation, learner_execution_handler), (de_run_computation, dialectic_engine), (de_handle_perturbation, dialectic_engine).",
+    "notes": "The predicate and role slots are dropped by dispatch.",
+    "op": "orr_entry_witness",
+    "params": [
+      "variant",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"orr_entry\", \"ok\": true, \"result\": {\"invocation_policy\": \"registry_only_no_orr_execution\", \"kind\": \"orr_entry_registry_entry\", \"legacy_functor\": \"execution_handler:run_computation/2\", \"predicat",
+    "verified_ok": true
+  },
+  {
+    "domain": "Two event dicts each with event_id, actor{role, pseudonym}, and at least one shared pairing reason: source.metadata.domain equality, source.metadata.topic equality, pml.polarity contrast, shared pml.validity_focus register, etc. (hermes/pair_scoring.pl pair_reason_witness/4).",
+    "notes": "No shared reason -> refusal; the fixture above scores shared_domain(2)+shared_topic(1).",
+    "op": "pair_candidate_witness",
+    "params": [
+      "event_a",
+      "event_b"
+    ],
+    "reply_excerpt": "{\"event_a\": \"e1\", \"event_b\": \"e2\", \"kind\": \"pair_candidate\", \"pair_id\": \"pair_e1_e2\", \"pseudonym_a\": \"Quill\", \"pseudonym_b\": \"Sable\", \"question_moves\": [], \"reason_witnesses\": [{\"domain\": \"fractions\",",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_place_value_number_claim.pl: regex (?m)^pv\\((\\w+), — group 1 is the canonical key (the family's own claim table; heads start at column 0). Tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane. These four families dispatch to their own module (cw_counting_claim / cw_fraction_claim / cw_place_value_number_claim / cw_whole_number_claim), not through cw_driver:family_witness, but the request shape is identical.",
+    "op": "place_value_number_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"place_value\", \"ok\": true, \"result\": {\"canonical\": \"base_ten_composite_unit_arithmetic\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_base_ten_composite_units",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='additive_action': knowledge/strategies/math/sar_add_action_pairs.pl regex (?m)^action_vocabulary\\((\\w+), -> key enum. source='fraction_action': fraction_action_pairs.pl (?m)^fraction_action_vocabulary\\((\\w+),. source='mua_kind_terms': any action kind with nonempty mua_relations:kind_vocabulary_terms/2. source='mua_vocabulary_description': mua_relations.pl vocabulary/2 fact ids.",
+    "notes": "The cw_edges edge sample 'count_on' is NOT a key; the real additive keys are the action_vocabulary/2 first arguments (count_on_from_larger etc.).",
+    "op": "practice_vocabulary_witness",
+    "params": [
+      "key",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"practice_vocab\", \"ok\": true, \"result\": {\"derivation\": \"direct_additive_action_vocabulary_row\", \"key\": \"count_on_from_larger\", \"kind\": \"practice_vocabulary_crosswalk\", \"legacy_functor\": \"sar_ad",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='registry': action_automaton_pair/4 dispatches per operation to productive_*_deformation/3 fact tables in knowledge/strategies/math/*_action_pairs.pl (addition->productive_deformation, ratio->productive_ratio_deformation, fraction->productive_fraction_deformation, etc.; 16 operations wired at action_automata_registry.pl:1314-1345). Harvest e.g. sar_add_action_pairs.pl regex (?s)productive_deformation\\((\\w+),\\s*(\\w+),\\s*(\\w+)\\) for (productive, deformation, family) with operation='addition', source='registry'. source='addition'/'fraction' are fixed-operation lanes over the same two fact tables.",
+    "notes": "All five params are atoms. The pair facts are multiline in-file; use DOTALL regex.",
+    "op": "productive_deformation_witness",
+    "params": [
+      "operation",
+      "productive",
+      "deformation",
+      "family",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"prod_deform\", \"ok\": true, \"result\": {\"deformation\": \"additive_extension_of_ratio\", \"deformation_witness\": {\"action_kind\": \"additive_extension_of_ratio\", \"cluster\": \"proportional_ratio_unit_coo",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_ratio_proportion_claim), rp\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_ratio_proportion_claim, rp\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "ratio_proportion_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"ratio_prop\", \"ok\": true, \"result\": {\"canonical\": \"multiplicative_proportional_scaling\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_proportionality_requires",
+    "verified_ok": true
+  },
+  {
+    "domain": "NONE - dead machinery",
+    "notes": "The op no longer exists: grep over *.pl/*.py/*.js/*.html/*.sh/*.md finds review_decide only in data/research/work_queue.md item 38 (op-refusal queue row citing the 2026-08-19 sweep). No dispatch_spec row, no dispatch_irregular head, no capability_registry row, no page. Removed in commit eade506b (2026-08-20) when the review queue retired with its page, routes, and 380-line check. Live worker replies unknown_op.",
+    "op": "review_decide",
+    "params": [],
+    "recommendation": "RETIRE, do not fix. Drop review_decide from the audit driver's op list and close work_queue item 38 (op-refusal:review_decide) as retired-by-eade506b; the 3 audit refusals were requests to an op that was deleted between the sweep and now.",
+    "reply_excerpt": "{\"error\": {\"message\": \"Unsupported capability request: review_decide\", \"type\": \"unknown_op\"}, \"id\": \"rd1\", \"ok\": false}",
+    "verified_ok": false
+  },
+  {
+    "domain": "rhythm_axioms rhythm_transition/2 rows: direct modal pairs s(u)->s(comp_nec(a)), s(u_prime)->s(comp_nec(a)), s(a)->s(exp_poss(lg)), s(a)->s(comp_poss(t)), s(t)->s(comp_nec(neg(u))), s(lg)->s(exp_nec(u_prime)), s(t_b)->s(comp_nec(t_n)), s(t_n)->s(comp_nec(t_b)); plus necessity cashouts to='s(Payload)' for the comp_nec/exp_nec rows (e.g. s(u)->s(a)).",
+    "notes": "Requires axiom_pack_enabled(rhythm), which held in the stock worker.",
+    "op": "rhythm_transition_witness",
+    "params": [
+      "from",
+      "to"
+    ],
+    "reply_excerpt": "{\"from\": \"s(u)\", \"kind\": \"rhythm_transition\", \"modal_to\": \"s(comp_nec a)\", \"modality\": \"comp_nec\", \"payload\": \"a\", \"phase\": \"unawareness\", \"source\": \"direct_modal_transition\", \"to\": \"s(comp_nec a)\"}",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/formalization/axioms_robinson.pl robinson_axiom_witness/3 clauses: axiom in {q1_successor_not_zero, q2_successor_injective, q3_zero_or_successor, q4_add_zero, q5_add_successor, ...}; claim must unify with that clause's claim shape with integer bindings, e.g. q3 with o(eq(X, succ(Y))) where Y = X-1, q1 with o(eq(succ(X), 0)) X>=0, q4 with o(eq(plus(X,0), X)).",
+    "notes": "The dispatch row carries gate(axiom_pack(robinson)); the generic dispatcher enables the pack for the call.",
+    "op": "robinson_axiom_witness",
+    "params": [
+      "axiom",
+      "claim"
+    ],
+    "reply_excerpt": "{\"axiom\": \"q3_zero_or_successor\", \"case\": \"successor\", \"conclusion\": \"o(eq(4,succ(3)))\", \"kind\": \"robinson_axiom\", \"predecessor\": 3, \"predecessor_history\": [\"succ(2)\", \"succ(1)\", \"succ(0)\", \"axiom(zer",
+    "verified_ok": true
+  },
+  {
+    "domain": "objects: term string of any finite list of atoms; the witness counts it and its reverse.",
+    "notes": "Any small list serves.",
+    "op": "standard_k_ns_3_order_independence_witness",
+    "params": [
+      "objects"
+    ],
+    "reply_excerpt": "{\"boundary\": \"supplied_list_and_its_reverse_only\", \"comparison_witness\": {\"derivation\": \"grounded_equal_to_confirms_same_cardinality\", \"kind\": \"standard_k_ns_3_count_equality\", \"left_count\": \"recollec",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/indiana/standard_k_ns_4.pl known_pattern/2 first args: dice(1..6), fingers(1..10), ten_frame(1..10) (plus conceptual domino(A,B) via the conceptual route).",
+    "notes": "pattern is a term param.",
+    "op": "standard_k_ns_4_verify_subitizing_witness",
+    "params": [
+      "pattern"
+    ],
+    "reply_excerpt": "{\"boundary\": \"recognized_pattern_and_generated_object_list\", \"comparison_witness\": {\"counted_count\": \"recollection([tally,tally,tally,tally,tally])\", \"derivation\": \"grounded_equal_to_confirms_same_qua",
+    "verified_ok": true
+  },
+  {
+    "domain": "group_a/group_b: term strings of finite lists of atoms (counted by the grounded counting strategy).",
+    "notes": "",
+    "op": "standard_k_ns_5_6_compare_groups_witness",
+    "params": [
+      "group_a",
+      "group_b"
+    ],
+    "reply_excerpt": "{\"boundary\": \"supplied_lists_and_grounded_arithmetic_order\", \"comparison_witness\": {\"boundary\": \"loaded_grounded_arithmetic_order_for_finite_recollections\", \"derivation\": \"grounded_arithmetic_three_wa",
+    "verified_ok": true
+  },
+  {
+    "domain": "practice: any atom; teacher_layer/2 is det and composes whatever channels the practice grounds. Meaningful values are practice atoms from mua_relations practice_kind/3 / grounding metaphor tables.",
+    "notes": "counting_on returned ok with an empty dict (all channels thin, witness field intentionally dropped). Served, but a sweep wanting content should key practices that carry grounding metaphors.",
+    "op": "teacher_layer",
+    "params": [
+      "practice"
+    ],
+    "reply_excerpt": "{}",
+    "verified_ok": true
+  },
+  {
+    "domain": "utterances: [{id, speaker, text}] unique ids. ledger: STRICT dict with exactly the keys {proposals, adjudications}, both lists; empty lists are valid. Proposal dicts need exactly {id, trace_event, evidence_candidate_ids, proposer, source, created_at}.",
+    "notes": "The empty ledger is the cheap sweep key.",
+    "op": "trace_adjudication",
+    "params": [
+      "utterances",
+      "ledger"
+    ],
+    "reply_excerpt": "{\"adjudication_count\": 0, \"compiled_trace_count\": 0, \"compiled_trace_events\": [], \"limits\": {\"automation\": \"evidence candidates do not promote themselves\", \"pml\": \"no PML operator or S/O/N mode is ass",
+    "verified_ok": true
+  },
+  {
+    "domain": "source='strategy_compose': EXACTLY ONE tuple — key 'compose(2,3)', detail 'composite(6)'; the family rule hard-codes unit_size 2 x unit_count 3 as a fixed ground demo. source='literature_commitment': key 'lit(Id,Domain)' over literature_incompatibility_facts:lit_derived/9 rows with Topic=unit_coordination, but detail must reproduce the row's full commitment(StudentRule,ValidDomain,IncompatibleWith,Valence) term — impractical to author by regex; drive the compose tuple.",
+    "notes": "",
+    "op": "unit_coordination_witness",
+    "params": [
+      "key",
+      "detail",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"unit_coord\", \"ok\": true, \"result\": {\"derivation\": \"deterministic_strategy_demo\", \"detail\": \"composite(6)\", \"key\": \"compose(2,3)\", \"kind\": \"unit_coordination_crosswalk\", \"legacy_functor\": \"diva",
+    "verified_ok": true
+  },
+  {
+    "domain": "Computed numeric check: any JSON numbers with resources >= cost (both must be numbers; the family rule also runs embodied_prover/meta_interpreter check_viability/2). source in {embodied_prover, meta_interpreter}. Authored tuples.",
+    "notes": "resources and cost are number-typed params: send JSON numbers, not strings.",
+    "op": "viability_witness",
+    "params": [
+      "resources",
+      "cost",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"viability\", \"ok\": true, \"result\": {\"caught_perturbation_boundary\": \"insufficient_budget_throws_resource_exhaustion\", \"comparison\": \"5>=1\", \"cost\": 1, \"kind\": \"inference_budget_viability\", \"leg",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_whole_number_addsub_claim), wn\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_whole_number_addsub_claim, wn\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
+    "op": "whole_number_addsub_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"wn_addsub\", \"ok\": true, \"result\": {\"canonical\": \"addition_closure_totality\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_addition_total_operation,\\\"Addition",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_whole_number_claim.pl: regex (?m)^wn\\((\\w+), — group 1 is the canonical key (the family's own claim table; heads start at column 0). Tuples are (canonical, 'literature_commitment').",
+    "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane. These four families dispatch to their own module (cw_counting_claim / cw_fraction_claim / cw_place_value_number_claim / cw_whole_number_claim), not through cw_driver:family_witness, but the request shape is identical.",
+    "op": "whole_number_claim_witness",
+    "params": [
+      "canonical",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"whole_number\", \"ok\": true, \"result\": {\"canonical\": \"zero_as_a_number_status\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_zero_number_status,\\\"Zero is a num",
+    "verified_ok": true
+  }
+]

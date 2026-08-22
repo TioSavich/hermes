@@ -907,15 +907,20 @@ color_hollow(hollow).           % a commitment without entitlement: claimed, unf
 %!  fraction_compare_json(+ProductiveKind, +A, +B, -Dict) is det.
 %
 %   Build a productive/deformation comparison for a fraction scheme. Returns
-%   two filmstrips plus a grounded note. Five families draw. The three scheme
+%   two filmstrips plus a grounded note. Seven families draw. The three scheme
 %   families diverge in the bar itself (same length, wrong name). The two
 %   deontic families (rule_without_grounding on A=DenA, B=DenB unit fractions;
 %   mc1_no_reversibility on A·x = B) diverge in fill: grounded steps are
 %   filled, and the part a commitment names stays hollow when no entitlement
 %   backs it; their documents carry a `divergence` marker and per-frame
-%   `deontic` fields. A pair with no bar layout (splitting vs
-%   iterate-given-overshoot) returns an explicit error rather than a faked
-%   picture.
+%   `deontic` fields. Two families diverge in bar length:
+%   no_splitting_iterate_overshoot (the productive bar stops exactly at the
+%   whole, the deformation's runs past it) and add_numerator_and_denominator
+%   on the addition kind (the true sum vs the shorter mediant, on A=DenA,
+%   B=DenB unit fractions). The add_numerator_and_denominator family is
+%   shared with common_unit_fraction_comparison, whose drawing lives with
+%   fraction_comparison_compare; that kind's route through this op answers
+%   with the explicit error rather than an addition picture.
 fraction_compare_json(ProductiveKind, A, B, Dict) :-
     productive_fraction_deformation(ProductiveKind, DefKind, Family),
     !,
@@ -923,7 +928,7 @@ fraction_compare_json(ProductiveKind, A, B, Dict) :-
     term_to_string(DefKind, DKStr),
     term_to_string(Family, FamStr),
     canvas_dict(Canvas),
-    (   compare_scenes(Family, A, B, ProdFrames, DefFrames)
+    (   compare_scenes(ProductiveKind, Family, A, B, ProdFrames, DefFrames)
     ->  family_note(Family, A, B, Note),
         Dict0 = _{ productiveKind: PKStr, deformationKind: DKStr, family: FamStr,
                    a: A, b: B, note: Note, canvas: Canvas,
@@ -935,7 +940,7 @@ fraction_compare_json(ProductiveKind, A, B, Dict) :-
         )
     ;   Dict = _{ productiveKind: PKStr, deformationKind: DKStr, family: FamStr,
                   a: A, b: B, canvas: Canvas,
-                  error: "This pair is not yet drawn as a one-dimensional bar divergence.",
+                  error: "This pair is not drawn as a one-dimensional bar divergence for this input.",
                   productive: _{ frames: [] }, deformation: _{ frames: [] } }
     ).
 fraction_compare_json(ProductiveKind, A, B, Dict) :-
@@ -951,10 +956,17 @@ fraction_compare_json(ProductiveKind, A, B, Dict) :-
 % the frame-3 bar. The deontic families share their opening bars and diverge
 % in fill at the step named by family_divergence/2.
 
-%!  compare_scenes(+Family, +A, +B, -ProdFrames, -DefFrames) is semidet.
+%!  compare_scenes(+ProductiveKind, +Family, +A, +B, -ProdFrames, -DefFrames)
+%!      is semidet.
+%
+%   Most clauses dispatch on Family alone and leave ProductiveKind anonymous.
+%   The add_numerator_and_denominator family is shared by two productive
+%   kinds (comparison and addition), so its clause keys on the addition kind;
+%   the comparison kind's drawing lives with fraction_comparison_compare, and
+%   its route through this op falls to the caller's error dict.
 
 % Iterate a unit fraction past the whole: 5/3 (referent held) vs 5/5 (reset).
-compare_scenes(improper_fraction_reset, A, B, ProdFrames, DefFrames) :-
+compare_scenes(_, improper_fraction_reset, A, B, ProdFrames, DefFrames) :-
     A > B,
     Rem is A - B,
     whole_frame(B, F1),
@@ -974,7 +986,7 @@ compare_scenes(improper_fraction_reset, A, B, ProdFrames, DefFrames) :-
     DefFrames  = [F1, F2, F3d].
 
 % Iterate a unit fraction and name the count as a whole number: 4/3 vs "4".
-compare_scenes(whole_number_grab, A, B, ProdFrames, DefFrames) :-
+compare_scenes(_, whole_number_grab, A, B, ProdFrames, DefFrames) :-
     whole_frame(B, F1),
     unit_frame(B, F2),
     bar_at_true_length(A, B, [run(0, A, color_extra_part)], LabAB, ProdBar),
@@ -990,7 +1002,7 @@ compare_scenes(whole_number_grab, A, B, ProdFrames, DefFrames) :-
     DefFrames  = [F1, F2, F3d].
 
 % Partition a part again — fraction of a fraction: 1/6 vs 1/3 (inner referent).
-compare_scenes(referent_to_inner_whole_not_original, Outer, Inner, ProdFrames, DefFrames) :-
+compare_scenes(_, referent_to_inner_whole_not_original, Outer, Inner, ProdFrames, DefFrames) :-
     Composite is Outer * Inner,
     whole_frame(Outer, F1),
     % Disembed 1/Outer, then partition it into Inner — frame 2 shows 1/Outer.
@@ -1008,6 +1020,38 @@ compare_scenes(referent_to_inner_whole_not_original, Outer, Inner, ProdFrames, D
     ProdFrames = [F1, F2, F3p],
     DefFrames  = [F1, F2, F3d].
 
+% Splitting vs iterating forward past the whole: B/B (recovered) vs A/B
+% (overshot). Both strips recover the unit fraction 1/B; the productive side
+% iterates it exactly B times and the bar stops at the whole, because
+% partitioning and iterating are taken as mutual inverses. The deformation
+% iterates the given part A times (A > B) with no inverse recognition, and
+% the bar runs past the whole. Both automata are run so the drawn endpoints
+% are their recorded results, not assumptions; the splitting automaton takes
+% Count = 1 (one whole recovered), the overshoot automaton takes the
+% signature's (A, B) directly.
+compare_scenes(_, no_splitting_iterate_overshoot, A, B, ProdFrames, DefFrames) :-
+    integer(A), integer(B),
+    run_fraction_action(splitting, 1, B,
+                        action_outcome(_, ProdProps), _),
+    memberchk(result(whole_recovered(unit(whole))), ProdProps),
+    run_fraction_action(iterate_given_overshoot, A, B,
+                        action_outcome(_, DefProps), _),
+    memberchk(result(overshot(fraction(A, B))), DefProps),
+    whole_frame(B, F1),
+    unit_frame(B, F2),
+    % Productive: iterate 1/B back B times — the bar stops exactly at the whole.
+    bar_at_true_length(B, B, [run(0, B, color_whole_part)], LabBB, ProdBar),
+    fraction_label(B, B, LabBB),
+    prod_caption(no_splitting_iterate_overshoot, A, B, ProdCap),
+    make_frame(3, "iterate_unit_back_to_whole", ProdCap, [ProdBar], F3p),
+    % Deformation: iterate 1/B forward A times — the bar runs past the whole.
+    bar_at_true_length(A, B, [run(0, A, color_deformation)], LabAB, DefBar),
+    fraction_label(A, B, LabAB),
+    def_caption(no_splitting_iterate_overshoot, A, B, DefCap),
+    make_frame(3, "iterate_unit_past_the_whole", DefCap, [DefBar], F3d),
+    ProdFrames = [F1, F2, F3p],
+    DefFrames  = [F1, F2, F3d].
+
 % Cross-multiplication on unit fractions: 1/DA × 1/DB. Both automata compute
 % the same 1/(DA*DB); the divergence is deontic, not numeric. Frames 1-2 are
 % the same bars on both sides — the pattern's claim enters HOLLOW on both.
@@ -1016,7 +1060,7 @@ compare_scenes(referent_to_inner_whole_not_original, Outer, Inner, ProdFrames, D
 % same-geometry part stays hollow. The bars slice draws the unit-fraction case
 % (the two-integer compare signature carries the denominators); the 2-D area
 % figure itself is the area-model compare's job, not this strip's.
-compare_scenes(rule_without_grounding, DA, DB, ProdFrames, DefFrames) :-
+compare_scenes(_, rule_without_grounding, DA, DB, ProdFrames, DefFrames) :-
     integer(DA), integer(DB),
     DA >= 2, DB >= 2,
     Pair = fraction_pair(1, DA, 1, DB),
@@ -1080,7 +1124,7 @@ compare_scenes(rule_without_grounding, DA, DB, ProdFrames, DefFrames) :-
 % discharged into a measured, filled bar. The MC1 deformation iterates forward
 % only; partitioning is consumed in activity, no part can be disembedded to
 % become x, and the unknown stays hollow in every frame.
-compare_scenes(mc1_no_reversibility, P, Total, ProdFrames, DefFrames) :-
+compare_scenes(_, mc1_no_reversibility, P, Total, ProdFrames, DefFrames) :-
     integer(P), integer(Total),
     P >= 2, Total >= 1,
     run_fraction_action(solve_for_unit, solve(P, 1), Total,
@@ -1136,6 +1180,88 @@ compare_scenes(mc1_no_reversibility, P, Total, ProdFrames, DefFrames) :-
     DefFrames  = [F1, F2d, F3d].
 
 
+% Add unit fractions through a common partition vs adding across: 1/A + 1/B.
+% The compare signature carries the two denominators, the convention the
+% rule_without_grounding family already uses. The productive machine renames
+% both addends in a shared unit and combines the counts; the deformation adds
+% numerators and denominators and produces the mediant 2/(A+B). The
+% divergence is bar length: the sum bar is the two addends laid end to end,
+% and the mediant bar is shorter. Both engines are run; the renamed counts
+% are read from the productive machine's own recorded history, and the
+% deformation's recorded incorrect-as-a-sum validity gates the caption that
+% states the shortfall. This clause keys on the ADDITION kind because the
+% family is shared with common_unit_fraction_comparison, whose drawing lives
+% with fraction_comparison_compare.
+compare_scenes(common_denominator_fraction_addition, add_numerator_and_denominator,
+               A, B, ProdFrames, DefFrames) :-
+    integer(A), integer(B),
+    A >= 2, B >= 2,
+    Pair = fraction_addend_pair(frac(1, A), frac(1, B)),
+    run_fraction_action(common_denominator_fraction_addition, Pair, unit(whole),
+                        action_outcome(_, ProdProps), ProdTrace),
+    memberchk(result(fraction(SN, SD)), ProdProps),
+    memberchk(hist(q_transform_commensurate_1, transformed(_, fraction(SA, SD))),
+              ProdTrace),
+    memberchk(hist(q_transform_commensurate_2, transformed(_, fraction(SB, SD))),
+              ProdTrace),
+    run_fraction_action(add_numerator_denominator_sum, Pair, unit(whole),
+                        action_outcome(_, DefProps), _),
+    memberchk(result(fraction(MN, MD)), DefProps),
+    memberchk(validity(incorrect), DefProps),
+    % Frame 1 — the two addends, shared.
+    color_whole_part(CA),
+    color_extra_part(CB),
+    colors_run(A, [run(0, 1, CA)], ColA),
+    colors_run(B, [run(0, 1, CB)], ColB),
+    fraction_label(1, A, LabA),
+    fraction_label(1, B, LabB),
+    whole_split_bar(0, A, ColA, LabA, BarA),
+    whole_split_bar(1, B, ColB, LabB, BarB),
+    format(string(Cap1),
+           "~w + ~w. The parts are different sizes; no single unit yet measures both.",
+           [LabA, LabB]),
+    make_frame(1, "show_addends", Cap1, [BarA, BarB], F1),
+    % Frame 2, productive — rename both addends in the common partition.
+    colors_run(SD, [run(0, SA, CA)], ColAS),
+    colors_run(SD, [run(0, SB, CB)], ColBS),
+    fraction_label(SA, SD, LabAS),
+    fraction_label(SB, SD, LabBS),
+    whole_split_bar(0, SD, ColAS, LabAS, BarAS),
+    whole_split_bar(1, SD, ColBS, LabBS, BarBS),
+    format(string(Cap2p),
+           "Construct the common partition: ~w = ~w and ~w = ~w. One unit, 1/~w, now measures both addends.",
+           [LabA, LabAS, LabB, LabBS, SD]),
+    make_frame(2, "construct_common_partition", Cap2p, [BarAS, BarBS], F2p),
+    % Frame 3, productive — combine the counts: the sum bar at true length,
+    % the two counts keeping their colours, laid end to end.
+    fraction_label(SN, SD, LabSum),
+    bar_at_true_length_row(2, SN, SD,
+                           [run(0, SA, color_whole_part),
+                            run(SA, SB, color_extra_part)],
+                           LabSum, SumBar),
+    format(string(Cap3p),
+           "Combine the counts: ~w + ~w = ~w parts of 1/~w. The sum ~w is the two addends laid end to end.",
+           [SA, SB, SN, SD, LabSum]),
+    make_frame(3, "combine_counts", Cap3p, [BarAS, BarBS, SumBar], F3p),
+    % Frame 2, deformation — the addends unchanged; the counts are added with
+    % no shared unit constructed.
+    format(string(Cap2d),
+           "No common unit is constructed. Add across: 1 + 1 = ~w for the numerators and ~w + ~w = ~w for the denominators.",
+           [MN, A, B, MD]),
+    make_frame(2, "add_numerators_and_denominators", Cap2d, [BarA, BarB], F2d),
+    % Frame 3, deformation — the mediant at its true length, shorter than the
+    % addends laid end to end.
+    fraction_label(MN, MD, LabMed),
+    bar_at_true_length_row(2, MN, MD, [run(0, MN, color_deformation)],
+                           LabMed, MedBar),
+    format(string(Cap3d),
+           "The result is named ~w: the mediant of ~w and ~w. It lies between its two arguments, the proper move when the task is to name a fraction between two fractions; as their sum it falls short, since the addends laid end to end reach ~w.",
+           [LabMed, LabA, LabB, LabSum]),
+    make_frame(3, "name_mediant_as_sum", Cap3d, [BarA, BarB, MedBar], F3d),
+    ProdFrames = [F1, F2p, F3p],
+    DefFrames  = [F1, F2d, F3d].
+
+
 % --- Shared frame pieces -----------------------------------------------------
 
 %!  whole_frame(+B, -Frame) is det.
@@ -1158,12 +1284,19 @@ unit_frame(B, Frame) :-
 
 %!  bar_at_true_length(+A, +B, +Runs, +Label, -Bar) is det.
 %   A bar of A parts each one B-th of the whole wide, so its length is the true
-%   A/B of the whole. Splits coloured by Runs.
+%   A/B of the whole. Splits coloured by Runs (colour PREDICATE names). Drawn
+%   at row 0.
 bar_at_true_length(A, B, Runs, Label, Bar) :-
+    bar_at_true_length_row(0, A, B, Runs, Label, Bar).
+
+%!  bar_at_true_length_row(+Row, +A, +B, +Runs, +Label, -Bar) is det.
+%   As bar_at_true_length/5, at the given bar row.
+bar_at_true_length_row(Row, A, B, Runs, Label, Bar) :-
     unit_w(UW),
     W is (A * UW) // B,
     bar_h(H),
-    unit_x(X), unit_y(Y),
+    unit_x(X),
+    row_y(Row, Y),
     SplitW is W // A,
     colored_splits_runs(0, A, SplitW, W, H, Runs, Splits),
     color_whole(Base),
@@ -1261,6 +1394,11 @@ prod_caption(referent_to_inner_whole_not_original, Outer, Inner, Cap) :-
     format(string(Cap),
            "Partition the 1/~w part into ~w: the part of a part is 1/~w of the \
 original whole.", [Outer, Inner, Composite]).
+prod_caption(no_splitting_iterate_overshoot, _A, B, Cap) :-
+    format(string(Cap),
+           "Partition the whole into ~w parts, then iterate 1/~w ~w times: the \
+bar stops exactly at the whole. Iterating undoes partitioning (1/~w × ~w = 1), \
+so the whole is recovered.", [B, B, B, B, B]).
 
 def_caption(improper_fraction_reset, A, B, Cap) :-
     format(string(Cap),
@@ -1274,6 +1412,11 @@ def_caption(referent_to_inner_whole_not_original, _Outer, Inner, Cap) :-
     format(string(Cap),
            "The part is named 1/~w relative to the inner whole, losing its \
 relation to the original whole.", [Inner]).
+def_caption(no_splitting_iterate_overshoot, A, B, Cap) :-
+    format(string(Cap),
+           "Iterate 1/~w forward ~w times without taking partitioning and \
+iterating as inverses: the bar runs past the whole at ~w/~w, and nothing \
+recovers the whole.", [B, A, A, B]).
 
 %!  family_note(+Family, +A, +B, -Note) is det.
 %   A grounded description of the misconception, with literature attribution.
@@ -1319,3 +1462,24 @@ and re-iterated, so the unknown is never recovered. The hollow bar is that \
 undischarged commitment. The strips draw the deontic structure the \
 scorekeeper computes; they do not adjudicate it.",
            [P, Total]).
+family_note(no_splitting_iterate_overshoot, A, B, Note) :-
+    format(string(Note),
+           "Splitting composes partitioning and iterating as mutual inverses: \
+partition the whole into ~w parts, and iterating 1/~w ~w times refits the \
+whole exactly (1/~w × ~w = 1). Iterating the given part forward keeps each \
+move but not their inverse coordination, so the count runs to ~w/~w and the \
+whole is never recovered. The forward iteration is the same doing splitting \
+uses; what differs is the coordination that stops it at the whole. \
+Steffe & Olive 2010; Hackenberg 2007.", [B, B, B, B, B, A, B]).
+family_note(add_numerator_and_denominator, A, B, Note) :-
+    S is A + B,
+    format(string(Note),
+           "Adding numerators and denominators names 1/~w + 1/~w as 2/~w: the \
+mediant, not the sum. The two doings part at the shared unit: the productive \
+machine renames both addends in a common partition before combining counts, \
+and the deformation combines the counts with no shared referent, so the \
+mediant bar is shorter than the addends laid end to end. The mediant lies \
+between its two arguments, the proper move for the different practice of \
+naming a fraction between two fractions; the engine records that betweenness \
+and the sum divergence per input rather than adjudicating the operation once. \
+Behr, Wachsmuth, Post & Lesh 1984.", [A, B, S]).

@@ -18652,6 +18652,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“How can you use what you know about tens and ones to find the number that makes the equation true?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson12.md'), source_span(307, 307), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U4-L11',
+    guide_question(advancing, "”How is this like how your partner used the number line? How is it different?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(329, 329), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U2-L9',
     guide_question(advancing, "“What do you know about the shaded region?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson9.md'), source_span(219, 219), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -18796,6 +18800,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“How could we make sure that each part on a strip is equal?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson1.md'), source_span(237, 237), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U5-L5',
+    guide_question(advancing, "“How can knowing ______ (quantity in step 1 of the problem) help us find the amount of total sales for that day?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson5.md'), source_span(253, 253), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L2',
     guide_question(advancing, "“How are these alike? How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson2.md'), source_span(236, 236), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -18920,6 +18928,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“What is this problem about?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson7.md'), source_span(203, 203), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U2-L18',
+    guide_question(advancing, "“How could you use connecting cubes to show how the other equation could match the problem? How does it show the bigger amount, the smaller amount, and the difference?\"", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson18.md'), source_span(205, 206), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U2-L8',
     guide_question(advancing, "“How could you use labels or equations to help keep track of your steps?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson8.md'), source_span(290, 290), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -18986,6 +18998,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U7-L2',
     guide_question(advancing, "“Can you explain what you did?”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson2.md'), source_span(311, 311), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L2',
+    guide_question(advancing, "“How does the diagram represent each of the digits in the number you wrote?“", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson2.md'), source_span(243, 243), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L8',
@@ -19188,6 +19204,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“What is your strategy for finding the 31st shape?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson2.md'), source_span(209, 209), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U9-L3',
+    guide_question(advancing, "“How could you use a diagram to show the difference between their lengths?\"", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson3.md'), source_span(333, 333), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U6-L1',
     guide_question(advancing, "“What are some vocabulary words you've learned to describe shapes?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(427, 427), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -19242,6 +19262,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L4',
     guide_question(advancing, "“How are you going to figure out how many cubes there are all together?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson4.md'), source_span(192, 192), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U3-L1',
+    guide_question(advancing, "”What do you know about multiplication?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson1.md'), source_span(247, 247), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L12',
@@ -19384,6 +19408,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Can you think of a related multiplication fact that might be helpful?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson4.md'), source_span(205, 205), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U5-L4',
+    guide_question(advancing, "“What information do you know from looking at the diagram? What information is unknown?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson4.md'), source_span(262, 262), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L4',
     guide_question(advancing, "“How did you decide where to draw your line(s)?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson4.md'), source_span(382, 382), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -19500,6 +19528,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“How could you use one of these tools—connecting cubes or base-ten blocks—to find the unknown value?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson2.md'), source_span(256, 256), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U4-L16',
+    guide_question(advancing, "“What other numbers can you use to make this a true statement? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson16.md'), source_span(304, 304), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L10',
     guide_question(advancing, "What angles share the same vertex and rays as the angle that is unknown? How could you use those angle measures to help you find the unknown angle?", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson10.md'), source_span(307, 308), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -19570,6 +19602,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L6',
     guide_question(advancing, "How could you use connecting cubes to show that they both match?", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson6.md'), source_span(306, 306), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L13',
+    guide_question(advancing, "“Do you agree or disagree with how your partner has drawn the hour and minute hands? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson13.md'), source_span(352, 352), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L1',
@@ -19798,6 +19834,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L1',
     guide_question(advancing, "“How could you use the counters to act out the books in the story? How many should we show first?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson1.md'), source_span(333, 333), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U2-L23',
+    guide_question(advancing, "“How can you use the cubes to show each number? How can the cubes help you figure out which number is more?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(207, 207), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L6',
@@ -20256,6 +20296,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“What 2 whole numbers will the answer be between?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson12.md'), source_span(175, 175), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L8',
+    guide_question(advancing, "“How can you use the number line to show the value of the addition expression?", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(345, 345), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U1-L10',
     guide_question(advancing, "“How did you represent the situation?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson10.md'), source_span(328, 328), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -20508,6 +20552,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“What are the steps for each algorithm?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson5.md'), source_span(219, 219), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U5-L2',
+    guide_question(advancing, "“What do you know about the shaded part of the diagram?“", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson2.md'), source_span(242, 242), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U7-L10',
     guide_question(advancing, "“How did you decide where to fold the paper?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson10.md'), source_span(379, 379), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -20550,6 +20598,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U2-L8',
     guide_question(advancing, "“How did you find the area of the rectangle?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson8.md'), source_span(369, 369), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U3-L1',
+    guide_question(advancing, "”How would you describe the amount of the slice of pie on one plate? How would you describe two of the same slices? Three of the same slices?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson1.md'), source_span(248, 249), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L9',
@@ -21196,8 +21248,20 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“How could we show both fractions to determine if they are equivalent?”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson11.md'), source_span(238, 238), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U5-L3',
+    guide_question(advancing, "“Who has more books in this situation? Who has fewer books?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(320, 320), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L13',
+    guide_question(advancing, "“How could drawing some rectangles help you reason about the lengths and widths?", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson13.md'), source_span(230, 230), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U3-L11',
     guide_question(advancing, "How did you choose which shapes to color red?", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson11.md'), source_span(266, 266), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U3-L8',
+    guide_question(advancing, "“How could Jada's drawing help us understand Kiran's work?“", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson8.md'), source_span(236, 236), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L14',
@@ -21218,6 +21282,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L6',
     guide_question(advancing, "“How are you checking to see if there are 50 cubes?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson6.md'), source_span(286, 286), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L4',
+    guide_question(advancing, "\"What equation could you write to represent this situation? Use a symbol to represent the unknown value.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson4.md'), source_span(263, 263), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L7',
@@ -21306,6 +21374,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U1-L2',
     guide_question(advancing, "“How can you be sure that you have drawn all of the possible rectangles?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson2.md'), source_span(243, 243), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L6',
+    guide_question(advancing, "“What is the greatest number you need to represent? How can you check to see if it is possible to represent it with the scale you chose?", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson6.md'), source_span(197, 198), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L4',
@@ -21484,12 +21556,20 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“What do you know about the bracelets?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson11.md'), source_span(226, 226), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U3-L8',
+    guide_question(advancing, "“How did each student subtract?“", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson8.md'), source_span(235, 235), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U4-L9',
     guide_question(advancing, "“Can you use your markers/counters to tell me what happened in the story?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson9.md'), source_span(189, 189), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U1-L5',
     guide_question(advancing, "“How are you choosing which numbers to try?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson5.md'), source_span(327, 327), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L11',
+    guide_question(advancing, "”How did you decompose or compose a ten with the blocks? How can you tell by looking at the expression that you would need to decompose or compose a ten?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(327, 328), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U4-L2',
@@ -21506,6 +21586,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L3',
     guide_question(advancing, "What could you do to help you remember which circles you have counted already?", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson3.md'), source_span(265, 265), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U2-L1',
+    guide_question(advancing, "”How might you use two rectangles to represent the situation in a different way?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(339, 339), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L1',
@@ -21574,6 +21658,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L21',
     guide_question(advancing, "“How could you represent the problem?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson21.md'), source_span(317, 317), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U2-L23',
+    guide_question(advancing, "“What do you know about these two numbers? What are you trying to figure out?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(206, 206), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L12',
@@ -21698,6 +21786,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L2',
     guide_question(advancing, "“How do you know that both methods are correct?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson2.md'), source_span(295, 295), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U2-L1',
+    guide_question(advancing, "”What other shape could you use to draw a sandwich that might be easier to share in equal pieces?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(257, 257), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L6',
@@ -21858,6 +21950,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L17',
     guide_question(advancing, "“How could you combine your equations into one equation that would represent the problem?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson17.md'), source_span(289, 289), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U5-L7',
+    guide_question(advancing, "“How do you know your number works?", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson7.md'), source_span(381, 381), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L5',
@@ -22248,6 +22344,10 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Where do you see rectangular prisms in this figure?”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson9.md'), source_span(223, 223), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L6',
+    guide_question(advancing, "“What was the value of Elena’s blocks before she started subtracting? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(231, 231), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U1-L12',
     guide_question(advancing, "“How does the problem involve equal groups?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson12.md'), source_span(269, 269), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -22282,6 +22382,14 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L2',
     guide_question(advancing, "“If you drew a diagram for each row in the table, what would be the same about the diagrams? What would be different?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson2.md'), source_span(224, 225), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U1-L10',
+    guide_question(advancing, "“How might the images in the Warm-up offer ideas for ways to decompose this figure?", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson10.md'), source_span(296, 296), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U7-L14',
+    guide_question(advancing, "“Can you show me how the arrow hand moves around the clock? Start at the 12.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson14.md'), source_span(305, 305), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_admitted), review_evidence(mechanical_admission(im_author_heading("Advancing Student Thinking"), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L11',
@@ -22484,12 +22592,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What does each x on the line plot represent?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(224, 224), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('lesson_synthesis'), "“Why is the denominator of the product the same as the denominator of the fraction in the expression?” (The denominator represents the size of the equal parts in each group. The size of the part doesn’t change when the number of groups increases.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(345, 347), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U4-L4',
     guide_question(region('lesson_synthesis'), "“Today we used counters to add. I have 5 counters in my 5-frame and I need to add 3 more. Tell your partner what that means. What do I need to do?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson4.md'), source_span(380, 381), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U8-L4',
     guide_question(region('activity_synthesis'), "“Did the same strategies work to find numbers that make this equation true?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson4.md'), source_span(248, 249), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U6-L2',
+    guide_question(region('launch'), "“Would everyone agree that this paper clip is inches long? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L21',
@@ -22510,6 +22626,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L6',
     guide_question(region('launch'), "“If a recipe is for 5 servings or 5 people, but you need more than that, what would you do?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson6.md'), source_span(146, 147), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('activity_synthesis'), "“Where do you see the 5 groups in each strategy presented?” (5 groups in a diagram, adding 5 times or multiplying by 5)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(216, 218), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L8',
@@ -22604,6 +22724,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Why don’t we have to look at the ones when comparing 57 and 64?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson14.md'), source_span(359, 359), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L5',
+    guide_question(region('launch'), "“I’m going to put a counter on this group of 3 dots and a counter on this group of 2 dots. 3 dots and 2 dots is 5 dots. What expression should I write on my recording sheet?” (3 + 2)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(360, 363), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U4-L12',
     guide_question(region('lesson_synthesis'), "“What statements can you make about these two numbers?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson12.md'), source_span(322, 322), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -22644,6 +22768,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does each expression represent a way of finding the area of the figure?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson13.md'), source_span(273, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U6-L18',
+    guide_question(region('activity_synthesis'), "“Why?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson18.md'), source_span(177, 177), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U3-L11',
     guide_question(region('activity_synthesis'), "“How did the representation change when they added 3 ones? What stayed the same?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson11.md'), source_span(170, 171), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -22680,12 +22808,20 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What kinds of things do you see and do in the park?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson4.md'), source_span(145, 145), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U6-L3',
+    guide_question(region('activity_synthesis'), "“What is different about the values of the expressions?”(Some of them are whole numbers and some are decimals.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson3.md'), source_span(111, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U1-L1',
     guide_question(region('lesson_synthesis'), "“What did we learn about picture graphs and bar graphs today?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson1.md'), source_span(331, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L5',
     guide_question(region('activity_synthesis'), "Who can restate what _____ just showed us?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson5.md'), source_span(167, 167), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U4-L15',
+    guide_question(region('activity_synthesis'), "\"Why is Han's estimate reasonable?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(236, 236), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L3',
@@ -22864,12 +23000,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Did anyone notice a different pattern”?", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson3.md'), source_span(117, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U4-L4',
+    guide_question(region('launch'), "How do we name these decimals in terms of tenths and hundredths? Let’s read each one aloud.", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson4.md'), source_span(150, 151), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L7',
     guide_question(region('activity_synthesis'), "“Did anyone approach the expression in a different way?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson7.md'), source_span(138, 139), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L9',
     guide_question(region('launch'), "“How many dots do you see? How do you see them?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson9.md'), source_span(147, 147), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L9',
+    guide_question(region('activity_synthesis'), "“What do you notice about the numbers we counted?\"", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson9.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U5-L4',
@@ -22890,6 +23034,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U5-L8',
     guide_question(region('activity_synthesis'), "“What can you do to make sure that you are a good listener when playing in centers?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md'), source_span(400, 401), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('activity_synthesis'), "“How can we describe the location of the point?” (It is at the bottom left of the grid.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(96, 97), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L21',
@@ -22994,6 +23142,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U9-L11',
     guide_question(region('activity_synthesis'), "“How can you use your answer for 27 + 13 to find the value of 40- 13 ?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson11.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L6',
+    guide_question(region('lesson_synthesis'), "“What are some other statements we can make about this diagram that always would be true?” (The value of B is always 10 times the value of A. If I know the value of A, I can always figure out the value of B, using multiplication. If I know the value of B, I can always figure out the value of A.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(342, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L19',
@@ -23112,12 +23264,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What is different about how _____ represented their thinking and ______ represented theirs?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson9.md'), source_span(290, 291), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('lesson_synthesis'), "“Where are the line segments in this image?” (any part of a line with a starting point and an ending point)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(442, 442), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L1',
     guide_question(region('activity_synthesis'), "“What did we do first to act out this story?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson1.md'), source_span(219, 219), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L6',
     guide_question(region('activity_synthesis'), "“What makes the ‘not squares’ different from squares?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(200, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('activity_synthesis'), "“How does          compare to         ?” (I see and the     is 10 more.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(114, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L10',
@@ -23216,6 +23376,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Where are the 4 hands and 5 fingers in each drawing or diagram?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson10.md'), source_span(320, 321), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L4',
+    guide_question(region('launch'), "“Which poster is more helpful? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson4.md'), source_span(237, 237), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U5-L13',
     guide_question(region('activity_synthesis'), "“Who can restate the pattern in different words?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson13.md'), source_span(97, 97), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23234,6 +23398,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U1-L12',
     guide_question(region('launch'), "How can we figure out how many of us are here?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L9',
+    guide_question(region('launch'), "“What number is on my card? Let's build that number on the double 10-frame.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson9.md'), source_span(191, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L13',
@@ -23268,6 +23436,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Today we named circles and triangles. How are circles and triangles different? What words can you use to describe triangles? What words can you use to describe circles?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson5.md'), source_span(432, 433), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L13',
+    guide_question(region('activity_synthesis'), "“Is there another equation that could match the story problem? Explain why or why not.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(226, 227), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L7',
     guide_question(region('activity_synthesis'), "“How did you know the unlabeled side in Shape D is also cm long?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson7.md'), source_span(323, 324), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23286,6 +23458,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U3-L9',
     guide_question(region('lesson_synthesis'), "“In this section, we have learned all about shapes. What have you learned about shapes?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson9.md'), source_span(343, 343), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L19',
+    guide_question(region('launch'), "“Why are there 3 groups?” (We are dividing by 3.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(185, 185), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U5-L3',
@@ -23408,6 +23584,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Did your solution make sense, based on your estimate?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson16.md'), source_span(299, 300), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U6-L2',
+    guide_question(region('activity_synthesis'), "“What objects are longer than an unsharpened pencil?” (a book, the ruler, the height of the desk)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(194, 195), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L6',
     guide_question(region('lesson_synthesis'), "“Why do you think they are the same?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson6.md'), source_span(415, 415), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23496,6 +23676,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How are these 2 shapes the same? How are they different?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson12.md'), source_span(192, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L20',
+    guide_question(region('lesson_synthesis'), "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson20.md'), source_span(342, 342), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U8-L5',
     guide_question(region('activity_synthesis'), "“If we start at 11 and count backward to 1, what number would we say after 11?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson5.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23510,6 +23694,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U6-L21',
     guide_question(region('lesson_synthesis'), "“How are the two approaches alike?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson21.md'), source_span(403, 403), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U2-L14',
+    guide_question(region('activity_synthesis'), "“What would happen if we started at 5 next? What do you think would happen if we kept going?\"", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson14.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L18',
@@ -23596,6 +23784,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What was the same about how _____ and _____ counted? What was different?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson12.md'), source_span(190, 191), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U6-L17',
+    guide_question(region('launch'), "“Here are some examples of other quilts that might help us make our decisions. Do you think all of our patches should be the same size? Be ready to explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson17.md'), source_span(182, 185), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U1-L10',
     guide_question(region('lesson_synthesis'), "“Are there enough markers for everyone in the group? How do you know?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson10.md'), source_span(331, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23630,6 +23822,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U1-L15',
     guide_question(region('activity_synthesis'), "“How did you use the diagram to write your equation?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson15.md'), source_span(205, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U8-L8',
+    guide_question(region('activity_synthesis'), "“We saw different arrangements of the same number of counters. Which one makes it easier to tell how many there are altogether? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson8.md'), source_span(163, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L12',
@@ -23800,6 +23996,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Who can restate the pattern in different words?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson5.md'), source_span(115, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U3-L3',
+    guide_question(region('lesson_synthesis'), "“Does the way you add numbers or the representation you use change, based on the numbers in the problem?” (Yes, I use mental math when I see that a number is close to a hundred. No, I always add hundreds to hundreds, tens to tens, and ones to ones. I always like to draw a number line.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(272, 274), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U7-L6',
     guide_question(region('lesson_synthesis'), "“Where would we draw a rhombus that is not a square?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson6.md'), source_span(381, 381), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -23846,6 +24046,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G6-U8-L14',
     guide_question(region('activity_synthesis'), "“Did anyone reason about the statement in a different way?”", source_guide('curriculum/im_teacher_guides/grade6/unit8/lesson14.md'), source_span(131, 131), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L8',
+    guide_question(region('launch'), "“Jada locates 15.53 on the number line. Do you think Jada accurately located the number? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson8.md'), source_span(151, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L12',
@@ -23922,6 +24126,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L17',
     guide_question(region('lesson_synthesis'), "“What expression can we use to show that we had 4 dots and we added 1 more?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson17.md'), source_span(386, 386), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U2-L13',
+    guide_question(region('lesson_synthesis'), "“Do both equations match the story and the diagram? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(421, 421), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L6',
@@ -24012,6 +24220,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How does your strategy for the first two expressions change with this set of problems? Why?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson23.md'), source_span(331, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U6-L12',
+    guide_question(region('activity_synthesis'), "“What are some aspects of time that are related to a year?” (seasons, months, weeks, days)", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(99, 100), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U2-L4',
     guide_question(region('activity_synthesis'), "“If we kept increasing the dividend by 1, what would be the next whole number quotient?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson4.md'), source_span(117, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -24022,6 +24234,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U5-L1',
     guide_question(region('activity_synthesis'), "How much of the whole square is shaded?", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson1.md'), source_span(272, 272), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U7-L1',
+    guide_question(region('lesson_synthesis'), "“How can this help you think about            ?” (It is like 2 jumps of 100 on the number line, so it would be 434.)", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson1.md'), source_span(342, 342), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L5',
@@ -24224,12 +24440,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“There are fewer green triangles than orange squares. How many green triangles are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson3.md'), source_span(195, 196), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U5-L4',
+    guide_question(region('launch'), "Which of these shows the total value written as a three-digit number? Explain how you know.", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson4.md'), source_span(161, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U2-L15',
     guide_question(region('lesson_synthesis'), "“Today we talked about what it means for answers to make sense. How would you describe what it means for an answer to make sense to a friend?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(366, 367), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L12',
     guide_question(region('activity_synthesis'), "“Did anyone see the dots the same way but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson12.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('activity_synthesis'), "“How does          compare to          ?” (It’s 10 more)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L15',
@@ -24308,6 +24532,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How could you use the squares to find the area of each rectangle?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson3.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U3-L3',
+    guide_question(region('launch'), "“We are going to learn a center called Which One? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(329, 330), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U2-L14',
     guide_question(region('activity_synthesis'), "“Does anyone want to add on to _____’s strategy?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(137, 137), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -24318,6 +24546,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U6-L12',
     guide_question(region('lesson_synthesis'), "“Today we solved problems about weight and liquid volume related to giant pumpkins. What helps you make sense of such problems?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson12.md'), source_span(310, 311), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L8',
+    guide_question(region('lesson_synthesis'), "“How did you use what you know about tens and ones to solve the problems?” (Some questions I saw I could just count by 10 on the graph because the scale was 10. We didn’t subtract all at once. We subtracted the tens, then the ones. We were thinking about how to get to the next ten to make adding the tens easier.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(338, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L12',
@@ -24350,6 +24582,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U6-L21',
     guide_question(region('launch'), "“Would you rather have 4 nickels and 6 dimes, or 4 dimes and 6 nickels?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson21.md'), source_span(164, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U2-L15',
+    guide_question(region('lesson_synthesis'), "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(377, 377), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U8-L12',
@@ -24432,6 +24668,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Is there another equation that could match your story problem? How do you know?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson15.md'), source_span(317, 318), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U4-L14',
+    guide_question(region('activity_synthesis'), "“Can a multiple of 10,000 also be a multiple of 100,000? Show examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(128, 129), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U4-L19',
     guide_question(region('activity_synthesis'), "“What do you notice about the ways they made 37?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson19.md'), source_span(279, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -24466,6 +24706,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L19',
     guide_question(region('launch'), "“Name the quantities. What can we count or measure in this situation?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson19.md'), source_span(278, 279), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U6-L13',
+    guide_question(region('activity_synthesis'), "“How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson13.md'), source_span(281, 281), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L8',
@@ -24526,6 +24770,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L13',
     guide_question(region('lesson_synthesis'), "“How does this equation represent finding how many fewer students voted for markers than crayons?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson13.md'), source_span(360, 360), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('activity_synthesis'), "“How did you know where to put the point with coordinates      ?” (I put it on the horizontal axis. I went over 5 but did not go up at all.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(188, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L19',
@@ -24590,6 +24838,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U6-L10',
     guide_question(region('lesson_synthesis'), "“How does this work keep track of partial products and their sum in a different way?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson10.md'), source_span(337, 337), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U1-L2',
+    guide_question(region('launch'), "“What do you notice? Think quietly to yourself, and then you will share with a partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson2.md'), source_span(112, 113), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L3',
@@ -24820,12 +25072,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does the number of factor pairs relate to the number of rectangles?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson3.md'), source_span(341, 342), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L1',
+    guide_question(region('activity_synthesis'), "“Inches are a unit we use to measure length. What are some lengths that we could use inches to measure?“ (the length of a shoe, the length of material for an art project, the height of a desk)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(106, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U1-L2',
     guide_question(region('lesson_synthesis'), "“What did you or I do today that we can add to our chart?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson2.md'), source_span(321, 321), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L10',
     guide_question(region('activity_synthesis'), "“Which clues did your partner give that were helpful to you?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md'), source_span(280, 281), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U4-L20',
+    guide_question(region('activity_synthesis'), "\"What kinds of things do we throw out when we cook or eat at home or outside?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson20.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L12',
@@ -24958,6 +25218,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U5-L6',
     guide_question(region('activity_synthesis'), "“Where is 42 in this equation?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson6.md'), source_span(203, 203), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L14',
+    guide_question(region('lesson_synthesis'), "\"How is subtracting decimals the same as adding decimals? How is it different?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson14.md'), source_span(340, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U6-L19',
@@ -25196,6 +25460,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What relationships do you see between Jada's pattern and Priya’s pattern?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson9.md'), source_span(211, 212), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U8-L8',
+    guide_question(region('activity_synthesis'), "“What other ways can you make 7?” (1 and 6, 7 and 0)", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson8.md'), source_span(115, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U5-L10',
     guide_question(region('activity_synthesis'), "“How are these methods alike? How are they different?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson10.md'), source_span(255, 256), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -25230,6 +25498,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U1-L9',
     guide_question(region('activity_synthesis'), "“How did you represent the 5 petals on each flower?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson9.md'), source_span(321, 322), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L15',
+    guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(90, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L8',
@@ -25356,6 +25628,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did they use tools to help them count?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson1.md'), source_span(345, 345), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L8',
+    guide_question(region('activity_synthesis'), "“How did reading the problem three times help you make sense of the problem?” (I was more comfortable with the problem each time I read it. It made more sense every time I read the problem. I noticed different details each time I read it.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(203, 207), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U3-L28',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson28.md'), source_span(90, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -25366,6 +25642,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L22',
     guide_question(region('activity_synthesis'), "“What are some different ways you and your partner showed your number?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson22.md'), source_span(190, 191), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L8',
+    guide_question(region('lesson_synthesis'), "“In the future, how could you use the Three Reads strategy on your own, without a partner?” (I can first read a problem to figure out what it’s about. Then read it again to look for what can be measured or counted. Then read it a third time to think about strategies I could use to solve the problem.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(342, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U7-L2',
@@ -25478,6 +25758,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U5-L12',
     guide_question(region('lesson_synthesis'), "“How many counters are on the 10-frame? What are the 2 parts that you see?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson12.md'), source_span(358, 358), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L2',
+    guide_question(region('lesson_synthesis'), "“Jada says that the crayon is shorter than the tower. Do you agree? Why or why not?” (Yes, if the crayon is shorter than the pencil and the pencil is shorter than the tower, then the crayon is shorter than both.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(328, 329), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L13',
@@ -25724,6 +26008,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "What choices did these mathematicians make with their graphs?", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson18.md'), source_span(232, 233), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('activity_synthesis'), "“What multiplication expression can represent the amount of slime in the jars? How do you know?” ( or , because there are 5 equal groups of .)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(225, 228), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U4-L11',
     guide_question(region('activity_synthesis'), "“Which numbers were easier to locate? Why?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson11.md'), source_span(281, 281), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -25878,6 +26166,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L17',
     guide_question(region('activity_synthesis'), "“Why do all of the pictures have ladybugs in them?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson17.md'), source_span(272, 272), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U1-L8',
+    guide_question(region('activity_synthesis'), "“How many more adults like football than basketball? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson8.md'), source_span(193, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L9',
@@ -26060,6 +26352,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What is important to remember when using a standard algorithm to multiply 350 × 74?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson2.md'), source_span(280, 280), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L15',
+    guide_question(region('activity_synthesis'), "“Which expression is the closest to 50? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(119, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U7-L2',
     guide_question(region('activity_synthesis'), "“What new shape did I make with the cube and the cube I made?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson2.md'), source_span(247, 248), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26086,6 +26382,14 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L18',
     guide_question(region('activity_synthesis'), "“Why is there only one solution?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson18.md'), source_span(166, 166), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U7-L6',
+    guide_question(region('launch'), "“Why do you think a square is with these rectangles?“", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(165, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U1-L7',
+    guide_question(region('launch'), "“Look at the tools on your own. How did they sort the math tools? How many tools are in each category? When you are ready to share your thinking with your partner, put your thumb up.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson7.md'), source_span(288, 291), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U1-L2',
@@ -26120,6 +26424,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“Who is correct? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson16.md'), source_span(202, 202), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L18',
+    guide_question(region('activity_synthesis'), "Each picture showed a total of 8 coins. Does that mean they all showed the same value? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson18.md'), source_span(107, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U2-L9',
     guide_question(region('lesson_synthesis'), "“What is something new you’ve learned about ways to add or subtract from another classmate?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson9.md'), source_span(317, 317), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26128,12 +26436,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What is the same and what is different about how the ten was decomposed in each of these examples?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(307, 308), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L14',
+    guide_question(region('activity_synthesis'), "“What did the unknown factor represent? Explain.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson14.md'), source_span(230, 231), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U4-L9',
     guide_question(region('launch'), "“What can we count or measure in this situation?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson9.md'), source_span(287, 287), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L25',
     guide_question(region('activity_synthesis'), "What number comes before 50?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson25.md'), source_span(104, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L19',
+    guide_question(region('activity_synthesis'), "“How does each part of the equation connect to the situation?\"", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson19.md'), source_span(192, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U5-L4',
@@ -26330,6 +26646,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U8-L1',
     guide_question(region('activity_synthesis'), "“How many leftovers did each number have?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson1.md'), source_span(242, 243), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U2-L2',
+    guide_question(region('lesson_synthesis'), "“What are some of the different ways we showed what happened in this story? (We drew pictures, wrote expressions, and showed how to count.)", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson2.md'), source_span(361, 362), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L6',
@@ -26624,6 +26944,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What is different about the thinking shown on the posters?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson13.md'), source_span(270, 271), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U6-L2',
+    guide_question(region('activity_synthesis'), "“How was the string useful in comparing the lengths?” (We could put the string next to each part of the desk to see which part is longer.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(306, 308), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U4-L17',
     guide_question(region('launch'), "“What kind of milk do you like to drink?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson17.md'), source_span(159, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26654,6 +26978,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U3-L13',
     guide_question(region('activity_synthesis'), "How did you decide if a number doesn’t belong to any of these groups?", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson13.md'), source_span(228, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L7',
+    guide_question(region('activity_synthesis'), "“What is the same about the way they solved the story problem?” (They all showed 6 paletas in total. They all showed some lime and some coconut.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(222, 225), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L14',
@@ -26700,6 +27028,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How many students are singing now? How do you know?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md'), source_span(264, 265), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L2',
+    guide_question(region('lesson_synthesis'), "“What tool would you use to find the value that makes each equation true? Explain how you would use it.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson2.md'), source_span(366, 366), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L2',
     guide_question(region('activity_synthesis'), "“Which cube tower does this equation represent?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson2.md'), source_span(276, 276), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26740,6 +27072,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does this diagram represent both of these expressions?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson3.md'), source_span(180, 181), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('lesson_synthesis'), "“Do any of the points have vertical coordinate 0? How do you know?” (No, if the vertical coordinate were 0, the points would be on the horizontal axis.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(334, 335), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U1-L12',
     guide_question(region('lesson_synthesis'), "“What were some assumptions we thought about today as we made our estimates? How did the assumptions we made affect our estimates?”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson12.md'), source_span(340, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26776,6 +27112,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you decide what numbers (or times) to choose for each problem?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson14.md'), source_span(175, 176), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L7',
+    guide_question(region('activity_synthesis'), "“Which drawing helps you see what happens in the story? Why?” (In the second drawing we can just see which ones are on the shelf and which ones are in the basket, so it helps us to see the story. The circles with \"sh\" are the pomegranates on the shelf.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(337, 341), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U4-L18',
     guide_question(region('launch'), "“What do you know about the size of our state?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson18.md'), source_span(272, 272), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -26810,6 +27150,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U1-L12',
     guide_question(region('activity_synthesis'), "What do you notice about how they counted?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(207, 207), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U2-L16',
+    guide_question(region('lesson_synthesis'), "“Would you rather create a story problem or solve a story problem? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson16.md'), source_span(251, 251), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L4',
@@ -26872,12 +27216,20 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What numbers will make the value of this expression as large as possible?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson19.md'), source_span(260, 260), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U7-L1',
+    guide_question(region('activity_synthesis'), "“This shape also has two special angles. Their sides join in a way that forms a right angle in the shape. This is the way that sides meet in a square and in rectangles. What other shapes have right angles?” (B, F, M, and S)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(244, 248), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U8-L7',
     guide_question(region('activity_synthesis'), "“How did you know what number to say after 100?”", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson7.md'), source_span(162, 162), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U1-L8',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson8.md'), source_span(106, 106), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U1-L1',
+    guide_question(region('launch'), "“What do you notice? Think quietly to yourself, and then you will share with a partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson1.md'), source_span(120, 121), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L19',
@@ -26902,6 +27254,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U1-L10',
     guide_question(region('activity_synthesis'), "“How do the expressions with addition relate to the diagrams?”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson10.md'), source_span(272, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U3-L3',
+    guide_question(region('lesson_synthesis'), "“Today we added numbers, using many different strategies and representations. What is your favorite representation to use when you add numbers?” (I like to use base-ten blocks so I can see the numbers I am adding. I like to write equations because it shows me how I am adding the numbers.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(268, 270), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U5-L2',
@@ -26968,6 +27324,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Why do some of the expressions have the same value?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson16.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U4-L8',
+    guide_question(region('activity_synthesis'), "“How many division equations were you able to come up with for each multiplication equation? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson8.md'), source_span(301, 303), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L24',
     guide_question(region('activity_synthesis'), "“What kind of food did you think about when you made your display? What if a different kind of food was served for dinner instead? Would you need to do anything differently?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson24.md'), source_span(257, 260), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -27030,6 +27390,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L6',
     guide_question(region('activity_synthesis'), "“How do you know there aren't 50 cubes?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson6.md'), source_span(278, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U8-L9',
+    guide_question(region('lesson_synthesis'), "“What is my secret number? Explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson9.md'), source_span(284, 284), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L13',
@@ -27468,8 +27832,16 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Why is every group's measurements the same, or closer to the same, length?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(305, 306), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U5-L6',
+    guide_question(region('lesson_synthesis'), "“We have seen unit fractions represented several ways now. How would you describe a unit fraction to a friend? Use examples from these representations if it helps you.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson6.md'), source_span(306, 307), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U6-L10',
     guide_question(region('activity_synthesis'), "“What feedback could you give to someone who measured like this?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson10.md'), source_span(161, 162), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U5-L2',
+    guide_question(region('launch'), "“Which equations go with each drawing? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson2.md'), source_span(272, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L1',
@@ -27490,6 +27862,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L20',
     guide_question(region('activity_synthesis'), "“Did anyone use the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson20.md'), source_span(118, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U2-L6',
+    guide_question(region('lesson_synthesis'), "“Suppose a classmate is absent today, and you are asked to explain how to figure out the fraction that the point represents and how far away it is from        . What would you say?“", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson6.md'), source_span(429, 430), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U7-L8',
@@ -27548,6 +27924,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you know what number to say after 9?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson4.md'), source_span(98, 98), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L15',
+    guide_question(region('activity_synthesis'), "““Did anyone use the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson15.md'), source_span(119, 120), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U1-L6',
     guide_question(region('launch'), "“What is the story about?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(102, 102), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -27566,6 +27946,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L8',
     guide_question(region('lesson_synthesis'), "“What would you look for on other cards to know if it matched this number?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson8.md'), source_span(375, 375), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U6-L3',
+    guide_question(region('lesson_synthesis'), "“What are some things you learned about using a ruler marked with half inches and quarter inches?” (We can use it to measure lengths that are whole numbers of inches or fractions of an inch. Some measurements can be described in more than one way using equivalent fractions. For example, is equivalent to .)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(393, 395), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L10',
@@ -27590,6 +27974,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L21',
     guide_question(region('launch'), "“What is the story about?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson21.md'), source_span(90, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U6-L3',
+    guide_question(region('lesson_synthesis'), "“Can a length like inches be described using half of an inch? Why or why not?” (No, because it is between 2 halves and 3 halves of an inch.) “Can it be described in another way?” (Yes, inches)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(397, 398), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U5-L2',
@@ -27636,6 +28024,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Which equation best matches the actions in this story? Why?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson14.md'), source_span(365, 365), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U2-L8',
+    guide_question(region('launch'), "\"Open your eyes. There are red counters and yellow counters. How many yellow counters are under the cup? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson8.md'), source_span(190, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U4-L6',
     guide_question(region('lesson_synthesis'), "“What do you think the next unit will be after ten-thousands?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson6.md'), source_span(321, 321), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -27650,6 +28042,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U7-L7',
     guide_question(region('activity_narrative'), "“Why did the different approaches lead to the same outcome?”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson7.md'), source_span(118, 118), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_narrative'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U2-L9',
+    guide_question(region('activity_synthesis'), "How many dots are there in the next group? Use the counters to help you keep track of which dots you’ve counted.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson9.md'), source_span(316, 318), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L16',
@@ -27670,6 +28066,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U5-L2',
     guide_question(region('activity_synthesis'), "“Who can restate the pattern in different words?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(106, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L13',
+    guide_question(region('lesson_synthesis'), "“Why is the box in different places?” (They are answering different questions. The unknown part of the story is different.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(343, 343), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L16',
@@ -27698,6 +28098,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U3-L6',
     guide_question(region('activity_synthesis'), "“What was something that felt challenging during centers today? Why did it feel challenging?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson6.md'), source_span(358, 359), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U4-L14',
+    guide_question(region('launch'), "“Which is more? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson14.md'), source_span(165, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L24',
@@ -27808,6 +28212,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What can you change about C to make it true?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson17.md'), source_span(118, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U4-L16',
+    guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson16.md'), source_span(295, 295), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U2-L3',
     guide_question(region('activity_synthesis'), "“Why did the square tiles in the first rectangle, the third rectangle, and the fourth rectangle need to be adjusted before we could finish finding the area of the rectangle?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson3.md'), source_span(201, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -27818,6 +28226,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L6',
     guide_question(region('activity_synthesis'), "What equations represent these story problems?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson6.md'), source_span(312, 313), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L21',
+    guide_question(region('lesson_synthesis'), "“What decisions did you make today as you solved this problem? How did the decisions affect your plan for the game night?” (We decided to have 2 groups play Game D. This only left 8 tables for the rest of the games. We decided to try to fit as many guests as we could, so we ended up with a lot of tables used for Game B.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(348, 350), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L18',
@@ -28168,6 +28580,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How does the diagram or the equation help you illustrate or clarify your understanding of the situation?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson18.md'), source_span(293, 293), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U3-L14',
+    guide_question(region('activity_synthesis'), "“What shapes do you see in this painting? Tell your partner where you see the shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(107, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U4-L15',
     guide_question(region('lesson_synthesis'), "“What should Clare draw to show        ?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson15.md'), source_span(344, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28184,12 +28600,24 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What is this number?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson6.md'), source_span(179, 179), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“What does 3 mean in the story?” (Elena took away 3 pattern blocks.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(254, 255), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L3',
     guide_question(region('activity_narrative'), "How did you find the answer to the question?", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson3.md'), source_span(203, 203), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_narrative'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L15',
     guide_question(region('activity_synthesis'), "“Did anyone notice the same pattern but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson15.md'), source_span(110, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U1-L4',
+    guide_question(region('lesson_synthesis'), "“Describe the layers in the prism to a partner. What is a multiplication expression that would represent the volume of the prism? How does the expression represent the volume of the prism?” (10 × 9, there are 9 cubes in each layer and I can see 10 layers.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(379, 381), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U4-L14',
+    guide_question(region('activity_synthesis'), "“Can a multiple of 100,000 also be a multiple of 1,000? Show examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(131, 132), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U7-L11',
@@ -28202,6 +28630,14 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U5-L10',
     guide_question(region('activity_synthesis'), "“Who can restate the pattern in different words?”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson10.md'), source_span(129, 129), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“What does 9 mean in the story?” (The 9 pattern blocks Elena used to make the train.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(246, 247), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U6-L19',
+    guide_question(region('activity_synthesis'), "“How did you find the matching expression for\n                                             ?” (I looked for an expression with     , and only\n         2. Choose one expression from each set. Explain\n            whether the value is greater than or less than           one expression had another factor with the value             .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(156, 159), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L4',
@@ -28238,6 +28674,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L1',
     guide_question(region('activity_synthesis'), "“This situation is about sharing. We can represent equal sharing situations with division expressions. What division expressions can we write to represent each of the situations we represented?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(242, 246), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L2',
+    guide_question(region('activity_synthesis'), "\"How can we describe the location of the point?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson2.md'), source_span(102, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U7-L6',
@@ -28324,6 +28764,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What are some things you’ll have to think about as you plan how to copy your figure?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson14.md'), source_span(169, 170), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U2-L18',
+    guide_question(region('launch'), "“Take turns with your partner asking ‘how many?’ questions about the picture. When your partner asks you a ‘how many?’ question, show how many things there are on the recording sheet. Show your thinking using drawings, numbers, or words.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(160, 164), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U7-L2',
     guide_question(region('activity_synthesis'), "“How does the base-ten diagram show Jada’s blocks?”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson2.md'), source_span(277, 277), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28352,8 +28796,16 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How many squares are in each row?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson11.md'), source_span(222, 222), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('lesson_synthesis'), "“Which points were most helpful when describing the drawing to a partner?” (the points where the lines cross one another, or the points where the lines cross the edges of the card)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(434, 437), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U7-L11',
     guide_question(region('activity_synthesis'), "“What strategies did you use to add the numbers?”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson11.md'), source_span(174, 174), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L17',
+    guide_question(region('activity_synthesis'), "“How many pennies would you need in order to have the same value? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson17.md'), source_span(178, 179), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U5-L17',
@@ -28420,8 +28872,16 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What tool would you use to measure this object?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson13.md'), source_span(159, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U3-L2',
+    guide_question(region('activity_synthesis'), "“If the length of 1 edge of a centimeter cube is 1 centimeter, how long is this block? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson2.md'), source_span(140, 141), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U9-L2',
     guide_question(region('lesson_synthesis'), "“How did understanding fraction equivalence help you solve the problems?”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson2.md'), source_span(325, 325), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('launch'), "“Now we need to fill in an equation to show how many fingers are up and how many more fingers are needed to make 10. How should I fill in an equation?” (7 + 3)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(184, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L2',
@@ -28496,6 +28956,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How does the line plot help you see which lengths were measured more or less than others?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson15.md'), source_span(361, 361), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U3-L17',
+    guide_question(region('lesson_synthesis'), "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson17.md'), source_span(321, 321), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U6-L9',
     guide_question(region('activity_synthesis'), "“How do I write the number that represents the length of the red fox?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson9.md'), source_span(254, 255), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28556,6 +29020,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you notice about these clocks?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson14.md'), source_span(347, 347), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U4-L9',
+    guide_question(region('activity_synthesis'), "“Where do you see the 3 tens in each of these representations? Where do you see the 5 ones?\"", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson9.md'), source_span(107, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U6-L15',
     guide_question(region('activity_synthesis'), "“Is anyone’s estimate less than 20? Is anyone’s\n                                   estimate greater than 30?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson15.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28566,6 +29034,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U3-L6',
     guide_question(region('activity_synthesis'), "“Does anyone want to add on to____’s strategy?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(122, 122), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L19',
+    guide_question(region('lesson_synthesis'), "“If you are representing this quotient with base-ten blocks, would you put 9 tens and 6 ones in 8 groups, or would you put them into groups of 8?” (I would put them into 8 groups. Eight of the tens can go into 8 groups easily. The 1 remaining ten and 6 ones make 16 ones, so 2 ones go in each group. I would put them into groups of 8. I know 10 groups of 8 is 80, so that takes care of the 8 tens. The 1 remaining ten and 6 ones make 16, which is 2 groups of 8.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(338, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L7',
@@ -28600,6 +29072,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "How many pattern blocks did it take to make each shape?", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson1.md'), source_span(197, 198), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L3',
+    guide_question(region('lesson_synthesis'), "“Clare has drawn a shape that has these attributes. Which shape did Clare draw? Describe to your partner what the shape would look like.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(425, 426), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U6-L1',
     guide_question(region('launch'), "“What steps do we take to play Number Race with our partner?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson1.md'), source_span(341, 342), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28610,6 +29086,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U1-L6',
     guide_question(region('lesson_synthesis'), "“What did you learn today that will help you make decisions about how to create scaled bar graphs in the future?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson6.md'), source_span(285, 285), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U2-L2',
+    guide_question(region('activity_synthesis'), "“How did you know how many equal parts to partition each diagram into and how many parts to shade?“", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson2.md'), source_span(356, 358), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L21',
@@ -28820,6 +29300,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What is helpful about using quarters to make a certain value?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson16.md'), source_span(241, 242), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U1-L8',
+    guide_question(region('activity_synthesis'), "“We’re going to play a game called “Is it 3?” When I show you fingers or dots, think about if it is 3. If it is 3, give a thumbs up. If it is not 3, touch your shoes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson8.md'), source_span(164, 166), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U5-L8',
     guide_question(region('activity_synthesis'), "“How did the number line help you round numbers?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson8.md'), source_span(249, 249), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28872,6 +29356,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Can you give an example to help show . . . ?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson4.md'), source_span(279, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('lesson_synthesis'), "“Where do you see points in this drawing?” (Students likely will identify vertices of the triangle and also places where lines intersect.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(427, 429), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U6-L6',
     guide_question(region('activity_synthesis'), "“How do we read the scale? What if the scale is in between two numbers?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(230, 231), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28882,6 +29370,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L11',
     guide_question(region('activity_synthesis'), "Who can restate the pattern in different words?", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson11.md'), source_span(112, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U5-L10',
+    guide_question(region('lesson_synthesis'), "”Who do you agree with? Explain your thinking to your partner.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson10.md'), source_span(311, 311), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L10',
@@ -28920,6 +29412,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Where do you see _____ times as many in _____’s representation?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson1.md'), source_span(264, 265), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('lesson_synthesis'), "“How did the diagram help you think about which animal was longer?” (Once you label the rectangles, you can tell which one is longer because it has the longer rectangle.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(361, 362), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U6-L13',
     guide_question(region('activity_synthesis'), "“How did you represent your reasoning once you realized you needed to add (or subtract)?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson13.md'), source_span(266, 267), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -28942,6 +29438,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L4',
     guide_question(region('launch'), "“How did your estimation change?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson4.md'), source_span(249, 249), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U7-L13',
+    guide_question(region('lesson_synthesis'), "“Kiran wanted to take away by place, and use a base-ten diagram to keep track of his thinking. First, Kiran drew 534 as 5 hundreds, 3 tens, and 4 ones. What could Kiran do next? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson13.md'), source_span(363, 364), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L16',
@@ -28990,6 +29490,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U6-L8',
     guide_question(region('activity_synthesis'), "What patterns did you notice when finding the values of these expressions?", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson8.md'), source_span(116, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L6',
+    guide_question(region('lesson_synthesis'), "”What number is located at the first tick mark after 0.23?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson6.md'), source_span(287, 287), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L8',
@@ -29084,6 +29588,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How was that experience different from other problem-solving experiences you had so far?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson13.md'), source_span(413, 413), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U1-L5',
+    guide_question(region('launch'), "“Today we are going to play another game of How Close? This time we will play Close to 50.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson5.md'), source_span(162, 163), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L10',
     guide_question(region('activity_synthesis'), "What is the same about these graphs? What is different?", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson10.md'), source_span(222, 223), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29158,6 +29666,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U8-L7',
     guide_question(region('launch'), "“The red counters are arranged in rows, but it is not an array. How could we rearrange the counters to make an array like Image B?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson7.md'), source_span(191, 193), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L13',
+    guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson13.md'), source_span(98, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L14',
@@ -29272,6 +29784,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How do multiplication facts or the idea of multiples help us think about this problem?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson5.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U9-L13',
+    guide_question(region('activity_synthesis'), "“How does this help you calculate the third and fourth sums?” (I just added some more tens.)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(105, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L1',
     guide_question(region('lesson_synthesis'), "Today we played a math game and added and subtracted within 10. What does it look and sound like to do math together as a mathematical community? What was I doing? What were you doing?", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson1.md'), source_span(345, 346), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29346,6 +29862,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L8',
     guide_question(region('activity_synthesis'), "“How would we write this number using expanded form?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson8.md'), source_span(367, 368), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L8',
+    guide_question(region('launch'), "Which shape shows fourths or quarters? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson8.md'), source_span(167, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L3',
@@ -29472,6 +29992,14 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What do you still wonder about division?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson10.md'), source_span(298, 298), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U1-L13',
+    guide_question(region('launch'), "“A group of third grade students were asked, ‘What pets do you have?’ Their responses are shown in the bar graph.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson13.md'), source_span(152, 154), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L14',
+    guide_question(region('activity_synthesis'), "“What is the same about all of the expressions in this group?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(233, 234), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L14',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson14.md'), source_span(83, 83), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29580,6 +30108,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you find all the other angles?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson8.md'), source_span(279, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('activity_synthesis'), "“Did anyone measure something or use measurements? When might measurements have been helpful?” (When describing distances between lines or the position of a starting point.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(271, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L8',
     guide_question(region('lesson_synthesis'), "“Let’s look at some sums you found in the second activity. Which sums can be written as mixed numbers and why?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(450, 450), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29618,6 +30150,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L4',
     guide_question(region('activity_synthesis'), "After seeing these strategies, which one(s) do you prefer to use for ordering decimals? Why?", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson4.md'), source_span(196, 197), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U2-L17',
+    guide_question(region('activity_synthesis'), "“What are some ways we can prove that we have exactly 100 items?“", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson17.md'), source_span(164, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L12',
@@ -29666,6 +30202,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U7-L7',
     guide_question(region('activity_synthesis'), "“Are all squares rectangles? How does the diagram show this?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson7.md'), source_span(217, 218), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L10',
+    guide_question(region('launch'), "“What can you do in one second?” (stand up, wave my hand, say my name)", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson10.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L10',
@@ -29760,6 +30300,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How is this method the same as Diego’s or Tyler’s? How is it different?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(224, 225), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U1-L1',
+    guide_question(region('launch'), "”How many dots are there? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson1.md'), source_span(278, 278), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U3-L16',
     guide_question(region('activity_synthesis'), "Did anyone have the same strategy but would explain it differently?", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson16.md'), source_span(122, 123), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29820,6 +30364,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson10.md'), source_span(101, 101), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U6-L3',
+    guide_question(region('launch'), "“Clare and Mai walk to school every day. You can see their paths on the map. Who has the shorter walk? Choose a tool to use. Be ready to explain your thinking so that others will understand.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson3.md'), source_span(161, 164), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L6',
     guide_question(region('launch'), "How many do you see? How do you see them?", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson6.md'), source_span(92, 92), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29830,6 +30378,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L11',
     guide_question(region('activity_synthesis'), "\"How did each way of finding the area use whole numbers? How did each way use fractions?\"", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson11.md'), source_span(185, 186), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L19',
+    guide_question(region('launch'), "“How could the blocks have been divided to end up like this?” (The tens were put into 3 groups and then ones placed one by one into 3 groups until none were left.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(186, 189), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L6',
@@ -29888,6 +30440,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“Where do you think I should write this number on my recording sheet?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson11.md'), source_span(273, 274), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U2-L17',
+    guide_question(region('launch'), "“Which equation matches the story? Explain your choice to your partner.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson17.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U6-L8',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson8.md'), source_span(152, 152), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -29922,6 +30478,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U8-L3',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson3.md'), source_span(179, 179), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L14',
+    guide_question(region('activity_synthesis'), "“Grids are used in graphic design to design print layouts and websites. What are some other places you’ve seen grids used?” (games, maps, art)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson14.md'), source_span(99, 101), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L3',
@@ -29978,6 +30538,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L5',
     guide_question(region('activity_synthesis'), "How did you know what fractions to use to complete each equation in the first problem?", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson5.md'), source_span(167, 168), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U2-L17',
+    guide_question(region('launch'), "\"Should I write the 4 next to the butterfly, ladybug, flower, or rabbit?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson17.md'), source_span(244, 245), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L2',
@@ -30044,6 +30608,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How do the equations relate to each other?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson17.md'), source_span(314, 314), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U7-L4',
+    guide_question(region('activity_synthesis'), "“What is this shape called?” (a rectangle)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U7-L5',
     guide_question(region('activity_synthesis'), "What strategies did you come up with for picking your paper clip number?", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson5.md'), source_span(197, 198), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30072,6 +30640,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Were there any questions that you could not answer? Why not? What information or tool would help you answer that question?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson9.md'), source_span(243, 245), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U5-L12',
+    guide_question(region('lesson_synthesis'), "“How are they different?” (Instead of looking for parts that are the same size, we are looking for the same point or location on the number line.)", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(419, 420), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L3',
     guide_question(region('activity_synthesis'), "How do you see how many books Kiran had in all?", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson3.md'), source_span(218, 219), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30098,6 +30670,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U4-L9',
     guide_question(region('activity_synthesis'), "“Which method would you prefer to use for Han’s string problem? Why?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson9.md'), source_span(360, 361), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L19',
+    guide_question(region('activity_synthesis'), "“Why was it necessary or helpful to decompose the tens in 84?” (After putting 7 tens in 7 groups, there’s still 1 ten and 4 ones. The 1 ten couldn’t be split into 7 groups.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(226, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L3',
@@ -30210,6 +30786,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L3',
     guide_question(region('lesson_synthesis'), "“Are there fewer yellow counters or red counters? How do you know?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson3.md'), source_span(349, 349), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L2',
+    guide_question(region('lesson_synthesis'), "“What other statements could we say about the objects?” (The pencil is longer than the crayon. The pencil is shorter than the tower. The tower is longer than the crayon and pencil.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U8-L3',
@@ -30336,6 +30916,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "We rolled the number 13. My partner and I have to find 2 groups that go together to make 13. Which groups go together to make 13?", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson9.md'), source_span(315, 317), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U4-L15',
+    guide_question(region('lesson_synthesis'), "“Today we solved problems about a real-world context. We also discussed solutions that were mixed numbers. In what ways did we use division today?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(257, 258), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L5',
     guide_question(region('activity_synthesis'), "Show the same number of fingers that I am holding up. Share with your partner. Did you both hold up the same number of fingers?", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson5.md'), source_span(292, 294), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30394,6 +30978,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U3-L11',
     guide_question(region('activity_synthesis'), "What did you do?", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson11.md'), source_span(327, 327), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U5-L1',
+    guide_question(region('launch'), "The sum is (93). What number did I add? Talk with your partner. Explain how you know.", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson1.md'), source_span(208, 209), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L16',
@@ -30464,6 +31052,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How can you explain your answer to the last statement without finding the sum of all three addends?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson14.md'), source_span(100, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L21',
+    guide_question(region('activity_synthesis'), "“What does this arrangement tell us about the situation?” (It shows us how many of each game are played. It shows us how many people can play each game. It shows us how many people can play games in the room if it's set up like this.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(234, 238), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U6-L18',
     guide_question(region('activity_synthesis'), "“Who can restate ______’s reasoning in a different way?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson18.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30472,12 +31064,20 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“How are the two figures alike? How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson4.md'), source_span(197, 198), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U9-L13',
+    guide_question(region('activity_synthesis'), "“What are some different ways you can show solutions to the problems?” (drawings of objects, base-ten drawings, diagrams, number lines, expressions, equations)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(171, 174), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U4-L6',
     guide_question(region('launch'), "“What patterns do you see?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson6.md'), source_span(104, 104), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L6',
     guide_question(region('launch'), "What other kinds of pets are there?", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson6.md'), source_span(272, 272), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U3-L8',
+    guide_question(region('launch'), "“What do you notice about the numbers? Make some observations.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(267, 268), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L20',
@@ -30494,6 +31094,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U4-L6',
     guide_question(region('activity_synthesis'), "“What does the 2 in the tens place represent?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson6.md'), source_span(175, 175), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L6',
+    guide_question(region('activity_synthesis'), "“Why do you think the digits of A are also in B, in the same order, but not in the same places?” (Because they are multiplying 10 by A.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(284, 286), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L16',
@@ -30708,6 +31312,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Why might someone want to know how tall they are?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(101, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U3-L17',
+    guide_question(region('activity_synthesis'), "“What did you like about the activities you worked on today?\"", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson17.md'), source_span(237, 238), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U3-L3',
     guide_question(region('activity_synthesis'), "“How can you use the ruler to show someone how long 10 centimeters is?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson3.md'), source_span(241, 242), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30804,6 +31412,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Is anyone’s estimate less than 30? Is anyone’s estimate greater than 60?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson14.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L5',
+    guide_question(region('activity_synthesis'), "“Diego and Tyler covered these 2 groups of dots to make 6. Are there 2 other groups of dots that Diego and Tyler can cover to make 6?” (4 and 2, 5 and 1)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(389, 391), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U6-L13',
     guide_question(region('activity_synthesis'), "“Where do you see a change in the pattern of counting by 5?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson13.md'), source_span(108, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30822,6 +31434,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U3-L6',
     guide_question(region('lesson_synthesis'), "“We can multiply the numerators to find the numerator in the product. How does the diagram represent             ?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson6.md'), source_span(286, 286), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U7-L4',
+    guide_question(region('activity_synthesis'), "“Which method do you prefer? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson4.md'), source_span(197, 197), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L1',
@@ -30866,6 +31482,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L12',
     guide_question(region('launch'), "“What are different ways we can solve this problem?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson12.md'), source_span(269, 269), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U3-L6',
+    guide_question(region('activity_synthesis'), "”A newly composed unit can be recorded with a single digit. What does the single digit represent?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(202, 203), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L9',
@@ -30936,6 +31556,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Where on the number lines do we see equivalent fractions?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson5.md'), source_span(331, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U4-L13',
+    guide_question(region('activity_synthesis'), "“Han is playing Check It Off. He picks the numbers 70 and 20. What numbers can he check off?” (50 or 90)", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson13.md'), source_span(157, 158), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L20',
     guide_question(region('launch'), "“How many cubes can be in the new tower we make?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson20.md'), source_span(262, 263), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -30954,6 +31578,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U7-L7',
     guide_question(region('lesson_synthesis'), "“During the Warm-up we said the shape is a square because _____ (include statements students made earlier in the warm up). What do you now know about this shape?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson7.md'), source_span(328, 329), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U3-L13',
+    guide_question(region('activity_synthesis'), "But how do we decide whether a number is close to some multiple of 10 or some multiple of 100? We’ll think more about this question in the next activity.", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson13.md'), source_span(148, 150), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L9',
@@ -30986,6 +31614,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U9-L8',
     guide_question(region('activity_synthesis'), "How did you decide what operations to use to answer each question?", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson8.md'), source_span(254, 255), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U8-L10',
+    guide_question(region('lesson_synthesis'), "“Elena wrote as an equation to represent the number of objects in this array. Do you agree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson10.md'), source_span(317, 317), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L9',
@@ -31116,12 +31748,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What did we do next to act out this story?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson1.md'), source_span(221, 221), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U7-L1',
+    guide_question(region('lesson_synthesis'), "“Suppose another student puts A and S in different categories. Which attribute might they have used to sort the shapes?” (Right angles: A has none and S has two. Equal sides: All sides of A are equal, but not all sides of S are. Number of sides: A has three and S has five.)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(263, 265), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U6-L11',
     guide_question(region('activity_synthesis'), "“What times do these clocks show?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson11.md'), source_span(330, 330), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L8',
     guide_question(region('lesson_synthesis'), "“There were times in the lesson when some of you chose not to use the number lines to find equivalent fractions or to tell if two fractions were equivalent. Why was that?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson8.md'), source_span(379, 380), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U8-L14',
+    guide_question(region('lesson_synthesis'), "“What were the most important things about your image you had to consider as you created your Notice and Wonder? Why were these things important?” (I wanted an image that would show equal parts for division, but it was hard to find things that were equal. Sometimes the equal groups, like groups of windows on each floor of a building, made me think of multiplication, not division or fractions.)", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson14.md'), source_span(299, 302), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L9',
@@ -31170,6 +31810,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U1-L13',
     guide_question(region('activity_synthesis'), "“How can we add or subtract 1 or 2 quickly?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson13.md'), source_span(105, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L21',
+    guide_question(region('activity_synthesis'), "“What information does this bar graph give us about your game night plan?” (We can see the different games at the game night and the number of people playing each game. We can find the total number of people if we add them all up. We can see that the Game B tables would have room for the most guests.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(330, 336), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L18',
@@ -31244,6 +31888,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Today we measured length with connecting cubes. What is the length of the pencil? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson5.md'), source_span(334, 334), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U3-L1',
+    guide_question(region('activity_synthesis'), "“Which sums are more difficult to find?” (The sums that are + 4 or + 5 that do not make a 10 are harder.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson1.md'), source_span(272, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U6-L23',
     guide_question(region('lesson_synthesis'), "“Can you find examples where it was helpful or necessary to multiply, divide, add, or subtract multi-digit numbers?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson23.md'), source_span(336, 336), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -31274,6 +31922,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U8-L6',
     guide_question(region('activity_synthesis'), "“Why is a 1 by 1 by 126 arrangement not useful for packaging the sugar cubes?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson6.md'), source_span(198, 199), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U4-L8',
+    guide_question(region('activity_synthesis'), "“What are we trying to figure out?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson8.md'), source_span(273, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U1-L9',
@@ -31334,6 +31986,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L4',
     guide_question(region('activity_synthesis'), "“What method do you use most often to find the value of sums you do not yet know?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson4.md'), source_span(316, 317), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L4',
+    guide_question(region('activity_synthesis'), "“What is an estimate for the ____ that is about right? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson4.md'), source_span(378, 379), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L26',
@@ -31416,6 +32072,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“Are there enough pencils at your table for each student to get one?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson10.md'), source_span(213, 214), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L6',
+    guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U6-L11',
     guide_question(region('lesson_synthesis'), "In this unit, we have been working with the numbers 11–20. What is one thing you have learned about these numbers?", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson11.md'), source_span(348, 348), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -31460,6 +32120,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How are these representations of the same problem the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson13.md'), source_span(205, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U2-L18',
+    guide_question(region('lesson_synthesis'), "“Which equation did you pick to match this problem? Explain.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson18.md'), source_span(310, 310), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U9-L12',
     guide_question(region('activity_synthesis'), "“Does the equation represent any of these stories now?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson12.md'), source_span(203, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -31492,6 +32156,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you find how far 1 lap around the field is?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson7.md'), source_span(298, 298), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L8',
+    guide_question(region('activity_synthesis'), "“How are these methods the same? How are they different?” (Each way found the same number of trees. Some people subtracted the number of pine trees from fir trees. Some counted up from the number of pine trees to the number of fir trees. )", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(290, 294), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U5-L9',
     guide_question(region('lesson_synthesis'), "“Which holds more, a 2-liter bottle, or a 20,000-milliliter bottle?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson9.md'), source_span(408, 408), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -31502,6 +32170,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U8-L7',
     guide_question(region('activity_synthesis'), "“What if it represents 4 students?”", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson7.md'), source_span(110, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U9-L5',
+    guide_question(region('lesson_synthesis'), "“What connections do you see among these strategies? Point out as many as you can.”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson5.md'), source_span(332, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U7-L3',
@@ -31592,6 +32264,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What number is missing from the equation? How do you know?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson16.md'), source_span(317, 317), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U8-L6',
+    guide_question(region('activity_synthesis'), "“Which expressions could represent an even number of objects? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L6',
     guide_question(region('lesson_synthesis'), "“Did you notice something about the answers to the problems?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson6.md'), source_span(413, 413), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -31670,6 +32346,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U8-L2',
     guide_question(region('lesson_synthesis'), "“What do you notice about the numbers in each chart? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson2.md'), source_span(328, 328), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L19',
+    guide_question(region('activity_synthesis'), "“What is your favorite equation? Explain how you found the sum.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson19.md'), source_span(264, 265), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L15',
@@ -31802,6 +32482,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U8-L8',
     guide_question(region('activity_synthesis'), "“Did anyone have the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson8.md'), source_span(117, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L1',
+    guide_question(region('lesson_synthesis'), "“Which sentence best describes the length of Priya’s iguana? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(344, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L3',
@@ -31974,6 +32658,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L4',
     guide_question(region('lesson_synthesis'), "“Today we practiced adding and subtracting tens. How are these expressions alike? How are they different?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson4.md'), source_span(295, 295), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L12',
+    guide_question(region('activity_synthesis'), "“Which riddles did you and your partner find to be most challenging? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson12.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L2',
@@ -32236,6 +32924,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“If you say no, what would you need to make sure it is _____?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson11.md'), source_span(303, 304), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U1-L6',
+    guide_question(region('launch'), "“How many ____ are there? Show your partner on your fingers, or tell them how many ____ there are.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(235, 236), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U6-L10',
     guide_question(region('activity_synthesis'), "“How did your strategy compare to Lin’s method?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson10.md'), source_span(230, 230), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -32266,6 +32958,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U9-L3',
     guide_question(region('lesson_synthesis'), "“What are two things that you have learned from listening to the ideas of other students in these lessons?”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson3.md'), source_span(273, 273), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('activity_synthesis'), "“How are your drawings alike?” (They all have long lines. The shapes are made of shorter pieces of the lines. Some of those pieces end in dots. Others are cut off by another line.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(355, 358), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L6',
@@ -32378,6 +33074,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U3-L10',
     guide_question(region('activity_synthesis'), "“Where do you see shapes that are put together to make another shape?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson10.md'), source_span(139, 140), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U6-L3',
+    guide_question(region('activity_synthesis'), "“What is the same about the values of the expressions?” (There is a 1 and a 5 in each value.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson3.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L12',
@@ -32624,6 +33324,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Who can restate the way ___ saw the dots in different words?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson11.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U2-L18',
+    guide_question(region('launch'), "“Think of one ‘how many?’ question that you can ask your partner about this picture.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(156, 157), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U2-L2',
     guide_question(region('launch'), "“What is the same and what is different about these tools?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson2.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -32650,6 +33354,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U9-L1',
     guide_question(region('activity_synthesis'), "“Did anyone approach the problem in a different way?”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson1.md'), source_span(119, 120), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U7-L13',
+    guide_question(region('launch'), "“What should Mai do next to find the difference? Show your work on Mai’s diagram.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson13.md'), source_span(193, 194), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L9',
@@ -32732,12 +33440,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What strategies or algorithms do you want to practice more?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(290, 291), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L2',
+    guide_question(region('lesson_synthesis'), "“Which ruler would you use if we want to measure and get a length that is as close as possible to the actual length of the object? Why”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(373, 374), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L8',
     guide_question(region('launch'), "“What can you learn about the sports children love from her picture graph?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson8.md'), source_span(161, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L4',
     guide_question(region('activity_synthesis'), "“Which number tells us how many pattern blocks there are altogether?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson4.md'), source_span(254, 255), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L7',
+    guide_question(region('activity_synthesis'), "“What is different about how they solved the story problem?” (Two students used counters and two students drew pictures. They all have different answers.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(226, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U4-L17',
@@ -32750,6 +33466,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L5',
     guide_question(region('activity_synthesis'), "“How does each equation represent the situation?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson5.md'), source_span(209, 209), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L1',
+    guide_question(region('activity_synthesis'), "“What number does this point represent? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson1.md'), source_span(193, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U6-L13',
@@ -32806,6 +33526,14 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U2-L7',
     guide_question(region('activity_synthesis'), "“What did you think about the area of each item?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson7.md'), source_span(268, 268), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U1-L4',
+    guide_question(region('launch'), "“We are going to play a game called How Close? Let’s play 1 round together.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson4.md'), source_span(165, 166), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U9-L4',
+    guide_question(region('activity_synthesis'), "“What questions are easier to answer with the line plot? Explain.“", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson4.md'), source_span(301, 302), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L12',
@@ -32984,6 +33712,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How is the work that uses multiplication and the work that uses division the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson9.md'), source_span(206, 208), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U2-L4',
+    guide_question(region('launch'), "“How can we show tenths and twelfths in the two rows? Think quietly for a minute.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson4.md'), source_span(176, 177), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U4-L21',
     guide_question(region('activity_synthesis'), "“Why might Kiran think he has more?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson21.md'), source_span(187, 187), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -33034,6 +33766,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U1-L3',
     guide_question(region('launch'), "“Why do you think we call this a 5-frame?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson3.md'), source_span(192, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L4',
+    guide_question(region('launch'), "“We are going to learn a new way to play How Close? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson4.md'), source_span(140, 141), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U7-L7',
@@ -33110,6 +33846,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U8-L6',
     guide_question(region('launch'), "“How many do you see? How do you see them?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson6.md'), source_span(91, 91), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('lesson_synthesis'), "“How many lines do you see?” (four)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(411, 411), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L4',
@@ -33332,6 +34072,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What other expressions did you write that match these expressions?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson6.md'), source_span(304, 305), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U2-L14',
+    guide_question(region('launch'), "“What are some units that we use for measuring distance? Let’s name as many as we can think of.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(240, 241), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L22',
     guide_question(region('activity_synthesis'), "“What number is 1 more than this number? What number is 1 less?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson22.md'), source_span(252, 253), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -33502,6 +34246,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U1-L13',
     guide_question(region('lesson_synthesis'), "“How are multiplication expressions and equations alike?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson13.md'), source_span(323, 323), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U5-L12',
+    guide_question(region('lesson_synthesis'), "“How are the two ways of showing equivalent fractions alike?” (Both involve partitioning a whole and identifying two or more fractions.)", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(416, 417), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L14',
@@ -33680,8 +34428,16 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you know about      ?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson3.md'), source_span(89, 89), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U5-L9',
+    guide_question(region('lesson_synthesis'), "“If I wanted to compare 543 and 345, how would the number line help me see which is less and which is greater? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson9.md'), source_span(340, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U3-L1',
     guide_question(region('launch'), "“What do you know about this animal? What could you measure?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(161, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L4',
+    guide_question(region('activity_synthesis'), "“What are some names we can use to describe this shape?” (quadrilateral, diamond, parallelogram, rhombus)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(204, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L7',
@@ -33718,6 +34474,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U7-L12',
     guide_question(region('launch'), "“What do you know about coins?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson12.md'), source_span(257, 257), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U5-L8',
+    guide_question(region('lesson_synthesis'), "“If I wanted to locate and represent 80 on a number line, which one should I choose? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson8.md'), source_span(307, 307), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U8-L6',
@@ -33762,6 +34522,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L11',
     guide_question(region('lesson_synthesis'), "“Diego and Lin flipped over these cards while they were playing. Diego said, ‘There are more fingers than dots.’ Lin said, ‘There are fewer dots than fingers.’ Who do you agree with? Why?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson11.md'), source_span(457, 458), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L17',
+    guide_question(region('activity_synthesis'), "“How could we record an equation with a letter for the unknown quantity that would represent the problem? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson17.md'), source_span(169, 171), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U9-L6',
@@ -33824,6 +34588,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“When did we use division today?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson6.md'), source_span(296, 296), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U1-L4',
+    guide_question(region('activity_synthesis'), "“Why are multiples of 9 good estimates?” (We can see the layer of 9 cubes.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(127, 128), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U8-L18',
     guide_question(region('activity_synthesis'), "“How do the 10-Frame and the bead tool show a solution for the story problem?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md'), source_span(334, 335), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -33848,8 +34616,16 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did your estimates help you find the quotient?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson4.md'), source_span(148, 148), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U3-L13',
+    guide_question(region('lesson_synthesis'), "“What question was the second equation answering?” (How many students went home?)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(341, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U7-L14',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson14.md'), source_span(93, 93), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L8',
+    guide_question(region('activity_synthesis'), "“Do you agree or disagree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson8.md'), source_span(274, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U8-L11',
@@ -34088,6 +34864,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How might your strategy change if the numerator had more numbers or fewer numbers?”", source_guide('curriculum/im_teacher_guides/grade6/unit8/lesson9.md'), source_span(121, 121), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U2-L16',
+    guide_question(region('lesson_synthesis'), "“What are some things about writing, representing, or comparing fractions that you didn’t know at the beginning of the unit but you know quite well now? Think of at least two specific things.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson16.md'), source_span(280, 281), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U4-L2',
     guide_question(region('lesson_synthesis'), "“5 and 3 is 8. Where do you see 5 and 3 is 8 in the 5-frames?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson2.md'), source_span(384, 384), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -34236,6 +35016,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you know which pattern blocks would fit?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson10.md'), source_span(310, 310), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“Where do you see 3 in _____’s drawing?” (There are 3 circles crossed out, which represent the 3 pattern blocks that Elena took away.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(256, 258), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U3-L12',
     guide_question(region('activity_synthesis'), "“What patterns do you notice?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson12.md'), source_span(356, 356), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -34300,6 +35084,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "How did your knowledge of equal groups help you create arrays and write expressions for multiplication situations?", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson18.md'), source_span(290, 290), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U8-L6',
+    guide_question(region('activity_synthesis'), "“Which parts of the figure did you pay attention to when drawing? How did you make sure your drawing has line symmetry?“", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson6.md'), source_span(196, 198), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U7-L17',
     guide_question(region('lesson_synthesis'), "“How did you and your partner work together during centers? What went well? What can we continue to work on?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson17.md'), source_span(237, 237), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -34346,6 +35134,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L10',
     guide_question(region('activity_synthesis'), "“What is different about Andre and Noah’s drawings?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson10.md'), source_span(307, 308), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U4-L9',
+    guide_question(region('activity_synthesis'), "“What is used to represent the numbers in this True or False?” (expanded form)", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson9.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L13',
@@ -34460,6 +35252,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "How can thinking about splitting each part of a whole into equal smaller parts help you know whether or not two fractions are equivalent?", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson9.md'), source_span(356, 357), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L15',
+    guide_question(region('activity_synthesis'), "“Which expression is much less than 50? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U4-L1',
     guide_question(region('activity_synthesis'), "What are the two groups that you see?", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson1.md'), source_span(118, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -34568,8 +35364,16 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What mistake do you think a student made to get this sum?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson18.md'), source_span(339, 339), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U7-L7',
+    guide_question(region('activity_synthesis'), "“What is this shape called?” (a square)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson7.md'), source_span(101, 101), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L24',
     guide_question(region('launch'), "“Tyler is setting the table for dinner. What does he need to do?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson24.md'), source_span(159, 160), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U5-L1',
+    guide_question(region('activity_synthesis'), "“What is a number we could place in the fourth row? Use a pattern we discussed to explain how you know your number would belong.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson1.md'), source_span(112, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L4',
@@ -34584,12 +35388,20 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What were some different ways you described ‘how much’ a ray turned from another, or ‘how much‘ larger or smaller one angle was than another?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson7.md'), source_span(366, 367), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L1',
+    guide_question(region('activity_synthesis'), "“How did you measure the length of objects when the length was in between the marks on your ruler?” (We recorded the mark that was closest. The length was right between 1 inch and inches, so we estimated the length to be about inches.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(280, 284), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U7-L13',
     guide_question(region('activity_synthesis'), "“Did _____ decompose to subtract? Why? How can you use their diagram to tell?”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson13.md'), source_span(310, 311), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L13',
     guide_question(region('activity_synthesis'), "“What is something that could be added or changed to make the writer’s method more clear?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(210, 210), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U6-L2',
+    guide_question(region('launch'), "“How can we get a measurement closer to the length of the paper clip?\"", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L4',
@@ -34644,6 +35456,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What is the sum, and how do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson10.md'), source_span(159, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U4-L11',
+    guide_question(region('activity_synthesis'), "“Did you find Diego’s method or Tyler’s method more helpful? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(212, 213), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U3-L20',
     guide_question(region('activity_synthesis'), "“Who can restate ___ 's reasoning in a different way?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson20.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -34666,6 +35482,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L2',
     guide_question(region('lesson_synthesis'), "“How many cubes are there?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson2.md'), source_span(308, 308), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L21',
+    guide_question(region('launch'), "“We are going to learn a new center called Would You Rather? We will compare the values of coin collections. Let’s play a round together.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson21.md'), source_span(148, 150), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L11',
@@ -34742,6 +35562,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U2-L11',
     guide_question(region('lesson_synthesis'), "“How are these diagrams and drawings the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson11.md'), source_span(332, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U4-L7',
+    guide_question(region('lesson_synthesis'), "“Do you think the algorithm for multiplying whole numbers will work for any and all whole numbers? Why or why not? Discuss with a partner.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson7.md'), source_span(294, 295), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L13',
@@ -34972,6 +35796,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“How is this one different?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson10.md'), source_span(272, 272), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U4-L7',
+    guide_question(region('launch'), "“We have heard and acted out some stories about students playing at school. Where else in your community do you see people playing outside? Describe it to your partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson7.md'), source_span(256, 259), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L15',
     guide_question(region('launch'), "“How many do you see? How do you see them?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson15.md'), source_span(109, 109), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35044,6 +35872,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does the diagram show this equation?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson20.md'), source_span(194, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U8-L3',
+    guide_question(region('activity_synthesis'), "“Which designs have an even number of shapes? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson3.md'), source_span(234, 235), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L11',
     guide_question(region('activity_synthesis'), "“Are there enough pencils for every student? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson11.md'), source_span(218, 219), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35090,6 +35922,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U7-L12',
     guide_question(region('activity_synthesis'), "“Did anyone have the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson12.md'), source_span(114, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('launch'), "“What are different ways we could represent this problem?” (tape diagram, equations, base ten blocks)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(201, 202), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L5',
@@ -35224,6 +36060,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "Were there any pairs of lines that you assumed at first to be parallel but then realized that they are not? How did you find out?", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson4.md'), source_span(209, 211), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U6-L19',
+    guide_question(region('activity_synthesis'), "“Is          less than, equal to, or greater than      ?\nWhy?” (It is greater, since    is greater than 1.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(101, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U1-L17',
     guide_question(region('launch'), "“_____ made this model. What are some questions about it that we can ask them?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson17.md'), source_span(256, 257), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35242,6 +36082,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U5-L15',
     guide_question(region('lesson_synthesis'), "“How do you compare fractions with the same denominator? Does your strategy always work?”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson15.md'), source_span(304, 304), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U4-L14',
+    guide_question(region('activity_synthesis'), "“Can a multiple of 1,000 also be a multiple of 10,000? If you think so, show some examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(117, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L7',
@@ -35330,6 +36174,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U5-L7',
     guide_question(region('lesson_synthesis'), "“Today we looked at addition expressions and determined if you can make a new ten or not. How does knowing that you might have to make a new ten help you decide what method to use?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson7.md'), source_span(388, 389), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('lesson_synthesis'), "“Do these points have the same horizontal coordinate or vertical coordinate? How do you know?” (They all sit over the same place on the horizontal axis. That tells you the horizontal coordinate and it’s the same for all of the points.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L6',
@@ -35456,6 +36304,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "We have been working with pattern blocks, connecting cubes, geoblocks, and picture books throughout the unit. Which center is your favorite? Why?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson16.md'), source_span(369, 372), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U2-L11',
+    guide_question(region('activity_synthesis'), "“How many more pencils would we need to have enough? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson11.md'), source_span(221, 222), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U5-L13',
     guide_question(region('lesson_synthesis'), "“What did you find interesting? What did you find challenging?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson13.md'), source_span(416, 416), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35532,6 +36384,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "What number comes after 79?", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson25.md'), source_span(104, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L4',
+    guide_question(region('activity_synthesis'), "“This is my gameboard. Where would you put the other paper clip? (I would put it on 25 since 25 + 8 = 33 and then you could cover the last number in the column and have five in a row.)", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson4.md'), source_span(276, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U2-L17',
     guide_question(region('activity_synthesis'), "“What did you do if a paper clip landed in a location where it was difficult to name the fraction?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson17.md'), source_span(241, 242), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35550,6 +36406,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U7-L3',
     guide_question(region('lesson_synthesis'), "What question can Lin ask at the end of the story?", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson3.md'), source_span(371, 371), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U7-L1',
+    guide_question(region('lesson_synthesis'), "“Suppose a student puts A and S in the same category. Which attribute might they have used to sort shapes?” (Length of the sides: A and S have sides with equal length. Size of corners or angles: Both shapes have corners that are the same size. Shading: Neither shape is shaded.)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(259, 261), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U1-L2',
@@ -35630,6 +36490,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U1-L9',
     guide_question(region('activity_synthesis'), "“Did anyone have the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson9.md'), source_span(118, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L14',
+    guide_question(region('activity_synthesis'), "“What other expressions also make 5?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(239, 239), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L18',
@@ -35760,6 +36624,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Which questions helped you find out how many chairs were in the room?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson20.md'), source_span(205, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U8-L7',
+    guide_question(region('activity_synthesis'), "“What shapes do you notice in the wagon?\"", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson7.md'), source_span(108, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L5',
     guide_question(region('activity_synthesis'), "“How did the tools support you in drawing the whole figures?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson5.md'), source_span(309, 310), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35770,6 +36638,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U6-L8',
     guide_question(region('lesson_synthesis'), "“Why might it be more helpful to decompose 55 into than into ?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson8.md'), source_span(319, 319), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U5-L3',
+    guide_question(region('activity_synthesis'), "“How many did Diego have in all? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson3.md'), source_span(300, 301), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L18',
@@ -35932,6 +36804,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How could          help you to find the value of     ?”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson6.md'), source_span(118, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L14',
+    guide_question(region('lesson_synthesis'), "“What ideas for solving story problems have you learned from others?", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson14.md'), source_span(335, 335), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U4-L20',
     guide_question(region('activity_synthesis'), "“Did anyone approach the problem in a different way?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson20.md'), source_span(120, 121), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -35962,6 +36838,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U3-L1',
     guide_question(region('activity_synthesis'), "“How does each diagram represent          of   ?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson1.md'), source_span(273, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L14',
+    guide_question(region('launch'), "”If we want this display to show others the lengths of all our measurements, where do you think the length of your hand span should go?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(206, 208), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U7-L11',
@@ -36000,6 +36880,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How are their methods the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson9.md'), source_span(297, 298), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U8-L4',
+    guide_question(region('lesson_synthesis'), "“In both figures, there’s a line that creates two identical triangles. Why does the first figure have line symmetry but the other doesn’t?“", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson4.md'), source_span(455, 456), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U2-L5',
     guide_question(region('activity_synthesis'), "“Why did _____ need to change 82 to 7 tens and 12 ones to subtract ones from ones?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson5.md'), source_span(209, 210), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36014,6 +36898,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U5-L3',
     guide_question(region('activity_synthesis'), "“How could you explain why the third and fourth expressions have the same value?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson3.md'), source_span(118, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U1-L4',
+    guide_question(region('activity_synthesis'), "“How does 5 × 24 represent the volume of the prism?” (There are 5 layers if I cut the prism horizontally, and each layer has 24 cubes.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(341, 343), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L14',
@@ -36134,6 +37022,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U6-L21',
     guide_question(region('activity_synthesis'), "“What did you like about the activities you worked on today?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson21.md'), source_span(247, 248), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U5-L12',
+    guide_question(region('activity_synthesis'), "“How could we use the equal sign to record fractions that are equivalent?” ( , )", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(193, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L3',
@@ -36312,6 +37204,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How many fractions do you think you could write for that diagram?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson7.md'), source_span(222, 223), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U4-L16',
+    guide_question(region('launch'), "“Show your partner how you found the value of               . What is the same and what is different about how you found the value of the expression?” (We both showed 4 things first and we both took away 2 things. One of us put down 2 fingers and one took off 2 counters.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson16.md'), source_span(217, 222), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U4-L16',
     guide_question(region('lesson_synthesis'), "“How do we know this expression has the same value as                                 ?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson16.md'), source_span(286, 286), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36388,6 +37284,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What decisions did you have to make as you thought about how you would spend your money? How did you make the decisions?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson22.md'), source_span(262, 263), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L1',
+    guide_question(region('lesson_synthesis'), "“How could these two numbers show the same length?” (One tells us the number of whole inches and then how many half inches. The other tells us how many halves. They would be at the same location on the ruler, so they are the same length.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(320, 322), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U8-L6',
     guide_question(region('activity_synthesis'), "“Which do you think has greater volume?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson6.md'), source_span(278, 278), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36398,6 +37298,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U6-L13',
     guide_question(region('activity_synthesis'), "“What does the 84 represent in both problems?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson13.md'), source_span(198, 198), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U4-L12',
+    guide_question(region('activity_synthesis'), "“What is the value the diagram represents?” (120)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson12.md'), source_span(114, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U3-L13',
@@ -36424,6 +37328,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Why is the expression helpful for finding the sum?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson9.md'), source_span(165, 166), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('activity_synthesis'), "“This is the equation that Clare wrote. What did Clare’s fingers look like? How do you know?” (She held up 1 finger. She figured out that she needed 1 more finger to make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(360, 363), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U3-L1',
     guide_question(region('activity_synthesis'), "“How many groups do you see?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson1.md'), source_span(108, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36442,6 +37350,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L15',
     guide_question(region('activity_synthesis'), "How were your approaches alike when comparing 21 and 12 and when comparing 74 and 78? How were they different?", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson15.md'), source_span(149, 150), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L1',
+    guide_question(region('activity_synthesis'), "“Would these shapes belong to any of these categories? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(341, 342), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U6-L3',
@@ -36684,6 +37596,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Which method would you recommend to a friend? Why?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson12.md'), source_span(352, 352), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U3-L3',
+    guide_question(region('activity_synthesis'), "“What is different about these shapes?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(113, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L5',
     guide_question(region('activity_synthesis'), "“Does anyone want to add on to _____’s reasoning?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson5.md'), source_span(100, 100), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36820,6 +37736,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Are there any words or phrases that are important to include on our display?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson7.md'), source_span(216, 217), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L15',
+    guide_question(region('lesson_synthesis'), "“What were some aspects of the posters you saw that helped make the math your classmates used clear for you?” (clear labels on diagrams that help me understand their thinking, organization of the algorithms they used, units on their answers)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson15.md'), source_span(308, 310), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L24',
     guide_question(region('launch'), "“Think about your family. What do you need to do to set the table for dinner with your family?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson24.md'), source_span(226, 227), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36882,6 +37802,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L15',
     guide_question(region('activity_synthesis'), "“Is anyone’s estimate less than 500? Is anyone’s estimate greater than 800?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson15.md'), source_span(105, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U5-L17',
+    guide_question(region('lesson_synthesis'), "“Does your strategy for comparing fractions change, depending on the fractions?", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson17.md'), source_span(405, 405), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L4',
@@ -36956,6 +37880,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Are there any other words or phrases that are important to include on our chart?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson4.md'), source_span(191, 192), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U5-L6',
+    guide_question(region('activity_synthesis'), "“What would the tenth multiple be if we were counting by 192? 1092?” (1,920, 10,920)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U3-L5',
     guide_question(region('activity_synthesis'), "“What was challenging about measuring longer lengths in centimeters?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson5.md'), source_span(212, 213), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -36970,6 +37898,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L21',
     guide_question(region('launch'), "“I choose 3 of these cards to add to get as close to 20 as I can. What cards should I choose?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson21.md'), source_span(145, 146), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('activity_synthesis'), "“How many points do you see marked on this line or line segment? Where are they?” (I see 3 points marking the top of my 7.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(378, 380), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L6',
@@ -37002,6 +37934,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U8-L8',
     guide_question(region('lesson_synthesis'), "“Without measuring, what would you need to know to be sure one of the labeled sides is also 15 units long?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson8.md'), source_span(385, 386), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L20',
+    guide_question(region('activity_synthesis'), "“Which place helped you most as you were deciding if the statements were true or false? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson20.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L10',
@@ -37080,6 +38016,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Did anyone use the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson3.md'), source_span(122, 123), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('activity_synthesis'), "“How is it different?” (The amount in each group is a non-unit fraction instead of a unit fraction.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(234, 235), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U8-L7',
     guide_question(region('activity_synthesis'), "“How are the circles in B arranged differently than in the other groups?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson7.md'), source_span(114, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37122,6 +38062,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U5-L9',
     guide_question(region('launch'), "What are we trying to figure out?", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson9.md'), source_span(154, 154), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U2-L16',
+    guide_question(region('activity_synthesis'), "“How can the third equation help you with the fourth equation?” (If I know that 8 – 6 is 2, then I know that 8 – 2 is 6.)", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson16.md'), source_span(103, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L13',
@@ -37212,6 +38156,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "As needed, write 81, 801, and 810 and ask, “What is the difference between 81, 801, and 810?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson4.md'), source_span(205, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U4-L4',
+    guide_question(region('activity_synthesis'), "“Is _____’s comparison true? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(294, 294), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U1-L6',
     guide_question(region('activity_synthesis'), "“How can we describe what _____ made?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(333, 333), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37238,6 +38186,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U3-L11',
     guide_question(region('lesson_synthesis'), "“What do you still wonder about division?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson11.md'), source_span(315, 315), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L17',
+    guide_question(region('activity_synthesis'), "“How will the beads look different if we show ?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson17.md'), source_span(288, 289), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L15',
@@ -37332,6 +38284,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Is Kiran’s measurement accurate? Why or why not?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson7.md'), source_span(264, 264), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L8',
+    guide_question(region('lesson_synthesis'), "“Which methods make the most sense to you? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson8.md'), source_span(306, 306), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U4-L19',
     guide_question(region('activity_synthesis'), "“How did you find the value of 8 × 8 × 20?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson19.md'), source_span(110, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37342,6 +38298,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U3-L8',
     guide_question(region('activity_synthesis'), "“Did anyone have the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson8.md'), source_span(122, 123), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('lesson_synthesis'), "“Why are our fingers a helpful tool if we want to find different ways to make 10?” (We have 10 fingers. We can show different numbers on our fingers. We can put some fingers up and figure out how many fingers are still down.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(369, 370), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L1',
@@ -37372,6 +38332,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How can help you find the value of ?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson26.md'), source_span(114, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U6-L19',
+    guide_question(region('lesson_synthesis'), "“What are some ways you can compare the value of the product with                 ?” (I can calculate the value. I can make a\nnumber-line diagram and see that it is to the right of          . I can rewrite    as        and see that it is greater than    .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(317, 318), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U4-L17',
     guide_question(region('lesson_synthesis'), "“We learned that rounding to the nearest thousand was not the best idea for determining if planes are a safe distance apart. When might it be helpful to round numbers like these altitudes?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson17.md'), source_span(456, 457), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37382,6 +38346,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U8-L12',
     guide_question(region('activity_synthesis'), "“How are the games different?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson12.md'), source_span(170, 170), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('activity_synthesis'), "“How does         compare to       ?” (It’s 10 more)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U8-L15',
@@ -37398,6 +38366,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L9',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson9.md'), source_span(99, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U2-L17',
+    guide_question(region('launch'), "“My partner will roll the cube onto the mat and tell me the number they rolled. What is this number?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson17.md'), source_span(241, 242), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L9',
@@ -37520,6 +38492,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How were your methods the same? How were they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson8.md'), source_span(191, 192), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U3-L6',
+    guide_question(region('lesson_synthesis'), "“How did the diagram help you decide if you would add or subtract?” (After seeing which animal had the longer rectangle, it was easy to see which length was longer. I could see if I needed to add to find the longer length or subtract to find the difference or the shorter length.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(364, 366), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U3-L20',
     guide_question(region('launch'), "“What are all the things we can count in this story?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson20.md'), source_span(142, 142), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37570,6 +38546,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L11',
     guide_question(region('activity_synthesis'), "“How was rewriting as helpful in this calculation?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson11.md'), source_span(201, 202), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L4',
+    guide_question(region('activity_synthesis'), "“How else can we draw a rectangle?” (The sides can be longer or shorter.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L2',
@@ -37684,6 +38664,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you find the value of               ?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson4.md'), source_span(99, 99), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('activity_synthesis'), "“How many fingers are up?” (8)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(117, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U6-L7',
     guide_question(region('lesson_synthesis'), "“How are the representations alike and how are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson7.md'), source_span(298, 298), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -37726,6 +38710,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U7-L8',
     guide_question(region('activity_synthesis'), "“How could knowing 90 ÷ 9 help you find the value of the other expressions?”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson8.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L4',
+    guide_question(region('lesson_synthesis'), "“What are some categories of shapes that are quadrilaterals?” (rhombuses, squares, rectangles, trapezoids, parallelograms)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(321, 322), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L5',
@@ -37870,6 +38858,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L23',
     guide_question(region('activity_synthesis'), "“How did you decide which operation to use to complete each cell?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson23.md'), source_span(337, 338), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L13',
+    guide_question(region('lesson_synthesis'), "“What question was the first equation answering?” (How many students are still in the classroom?)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(339, 339), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L13',
@@ -38020,6 +39012,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson16.md'), source_span(85, 85), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U9-L13',
+    guide_question(region('activity_synthesis'), "“What are some things that you will look for when you look at the posters?” (Do I understand the story? Do I agree with the solution? Can I follow the thinking or reasoning?)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(167, 170), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L19',
     guide_question(region('activity_synthesis'), "“What is the same about how they ordered their cards and towers?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson19.md'), source_span(260, 261), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -38072,12 +39068,20 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson18.md'), source_span(187, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('activity_synthesis'), "“Were there any numbers that you just knew how many more you needed to make 10?” (I knew that 5 and 5 is 10. I knew that if there are 9, you only need 1 more to make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(282, 285), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U5-L13',
     guide_question(region('launch'), "“How many do you see? How do you see them?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson13.md'), source_span(87, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L3',
     guide_question(region('activity_synthesis'), "“Where do you see them?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson3.md'), source_span(114, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('activity_synthesis'), "“Which words or terms came up multiple times in the observations you made and in the questions you had?” (point, line, straight)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(115, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L6',
@@ -38184,6 +39188,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What questions do you have about these representations?”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson9.md'), source_span(275, 276), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('activity_synthesis'), "“What happens when a set of points share the same second coordinate?” (They will be on the same horizontal line.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(191, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U4-L19',
     guide_question(region('activity_synthesis'), "“Did anyone have the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson19.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -38230,6 +39238,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U1-L4',
     guide_question(region('launch'), "“What would your score be?”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson4.md'), source_span(260, 260), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U6-L12',
+    guide_question(region('activity_synthesis'), "“What does a year measure?” (time)", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(98, 98), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L17',
@@ -38372,12 +39384,24 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What connections do you notice between these expressions and fractions of an hour?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson21.md'), source_span(277, 277), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U5-L2',
+    guide_question(region('lesson_synthesis'), "“Which way do you think was easier to represent 700, Jada’s way or Han’s way? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(305, 305), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L22',
     guide_question(region('activity_synthesis'), "“How does ___’s partners’ equation match the story problem?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson22.md'), source_span(216, 217), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U8-L3',
     guide_question(region('lesson_synthesis'), "“What can we say about parallel sides in quadrilaterals?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson3.md'), source_span(525, 525), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L14',
+    guide_question(region('activity_synthesis'), "“Tell your partner about this expression. What is the value of this expression?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(236, 237), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U4-L16',
+    guide_question(region('launch'), "“Now my partner and I need to work together to find the value of the expression. What can we do to find the value of the expressions?” (You can use your fingers. You can use objects. You can draw a picture.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson16.md'), source_span(146, 149), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L7',
@@ -38496,6 +39520,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How can you prove that the bearded dragon is 24 centimeters long with only centimeter cubes?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson2.md'), source_span(225, 226), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U8-L4',
+    guide_question(region('lesson_synthesis'), "“Is there an even or odd number of dots? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson4.md'), source_span(345, 345), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U8-L2',
     guide_question(region('lesson_synthesis'), "“Today we multiplied multi-digit numbers using the standard algorithm. What was challenging about the problems we solved today?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson2.md'), source_span(276, 277), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -38530,6 +39558,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L1',
     guide_question(region('activity_synthesis'), "How many cubes are there altogether?", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson1.md'), source_span(312, 312), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L13',
+    guide_question(region('activity_synthesis'), "“How does knowing help you with ?” (You can add and then add 10 more.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L4',
@@ -38628,6 +39660,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Can we make any generalizations, based on the statements?”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson6.md'), source_span(149, 150), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U8-L5',
+    guide_question(region('activity_synthesis'), "“Which images show a group with an even number of dots?” (Image 1 and Image 3)", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson5.md'), source_span(116, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U6-L10',
     guide_question(region('lesson_synthesis'), "“How did you and your partner work together during centers? What went well? What can we continue to work on?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson10.md'), source_span(249, 249), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -38684,12 +39720,24 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“Has anyone ever seen seeds? Where have you seen them? Where can they be found?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson11.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('lesson_synthesis'), "“How many segments do you see in this drawing?” (Students likely will say 8, but there are more, including pieces that go from one edge of the card to another edge.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(444, 445), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L7',
     guide_question(region('activity_synthesis'), "“Does anyone want to add on to _____’s strategy?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson7.md'), source_span(140, 140), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L12',
     guide_question(region('activity_synthesis'), "“Does the recipe make more than or less than cups? How do you know?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson12.md'), source_span(189, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U6-L19',
+    guide_question(region('lesson_synthesis'), "“What are some ways you can compare the value of the product with                 ?” (I can calculate the value, but the numbers\nare complicated. I can make a number-line diagram and see that it is to the left of             . I can rewrite   as        and see\nthat it is less than      .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(313, 315), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U2-L3',
+    guide_question(region('lesson_synthesis'), "“If 2 dancers share 3 liters of water equally, how much water does each dancer get? Write an equation that represents the situation.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson3.md'), source_span(333, 334), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L13',
@@ -38852,6 +39900,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How are the strategies we use to find the area of rectangles with whole number side lengths the same as and different from the strategies we use to find the area of rectangles with a whole number side length and a fractional side length?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson9.md'), source_span(327, 328), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U7-L17',
+    guide_question(region('lesson_synthesis'), "What are some ways you knew when an estimate or an answer did not make sense? Give an example if it is helpful.", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson17.md'), source_span(351, 351), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U5-L1',
     guide_question(region('activity_synthesis'), "“How could you represent the 100 in the expression with the fewest blocks?”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson1.md'), source_span(310, 311), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -38886,6 +39938,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U5-L14',
     guide_question(region('activity_synthesis'), "“How is the subtraction game the same as the addition game?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson14.md'), source_span(308, 309), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L6',
+    guide_question(region('activity_synthesis'), "“How many times as much as A was B?” (10 times.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(281, 282), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L17',
@@ -39084,6 +40140,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“How do we know that the point represents        ?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson9.md'), source_span(187, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L1',
+    guide_question(region('activity_synthesis'), "“What parts did Diego break 4 into? (3 and 1)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson1.md'), source_span(227, 227), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U4-L10',
     guide_question(region('activity_synthesis'), "“How did you decide where to start?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson10.md'), source_span(290, 290), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39098,6 +40158,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U3-L10',
     guide_question(region('activity_synthesis'), "“What did you do differently as you completed each problem?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson10.md'), source_span(198, 199), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U5-L12',
+    guide_question(region('activity_synthesis'), "“Are there other numbers you could use? How do you know?\"", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson12.md'), source_span(269, 270), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L18',
@@ -39160,6 +40224,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does the equation each group wrote match the story problem?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson19.md'), source_span(345, 346), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“How many pattern blocks does Elena have now? How do you know?” (6, I counted the circles that aren’t crossed out.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(259, 261), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L13',
     guide_question(region('activity_synthesis'), "“Can you show us on the bar graph how you could count on (or count back) to find how many more?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson13.md'), source_span(199, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39186,6 +40254,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U5-L18',
     guide_question(region('activity_synthesis'), "“What other comparison statements can you make about how far these animals can jump?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson18.md'), source_span(121, 122), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U9-L13',
+    guide_question(region('activity_synthesis'), "“What changes in the second, third, and fourth sums?” (the tens of the second number)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L13',
@@ -39260,6 +40332,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Han is playing Five in a Row—Add or Subtract 10. He picks a card with the number 60. What are the 2 numbers he could cover on his gameboard? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson3.md'), source_span(424, 427), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U2-L12',
+    guide_question(region('launch'), "“How many dots are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson12.md'), source_span(167, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U2-L2',
     guide_question(region('activity_synthesis'), "“How did you decide how much space each figure covered?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson2.md'), source_span(210, 211), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39294,6 +40370,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U8-L2',
     guide_question(region('activity_synthesis'), "“Which fractions were easier to locate?”", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson2.md'), source_span(214, 214), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L10',
+    guide_question(region('lesson_synthesis'), "“Did you prefer showing your thinking with base-ten diagrams, the number line, or another way? Was it the same for addition and subtraction? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson10.md'), source_span(348, 349), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L6',
@@ -39380,6 +40460,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How do we know this is true?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson6.md'), source_span(110, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L14',
+    guide_question(region('lesson_synthesis'), "“Which is more useful for finding the size of an angle on a clock: thinking in terms of the number of minutes, the number of 5 minutes, or the numbers 1–12?” (It depends on the situation.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson14.md'), source_span(329, 330), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U4-L15',
     guide_question(region('lesson_synthesis'), "How might I write this using the greater than symbol?", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson15.md'), source_span(329, 329), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39394,6 +40478,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U8-L11',
     guide_question(region('activity_synthesis'), "“How was having an efficient way to divide helpful as you played Race to 1?”", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson11.md'), source_span(177, 178), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U9-L5',
+    guide_question(region('activity_synthesis'), "“Does this expression show 356? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson5.md'), source_span(275, 275), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U5-L11',
@@ -39432,6 +40520,14 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“If someone claimed that 24 ounces is 8 times as much as 3 pounds, would you agree? Why or why not?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson14.md'), source_span(396, 396), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U3-L7',
+    guide_question(region('launch'), "“Use your straws to make a shape. Show it to your partner and ask ‘What shape did I make?’ Take turns making and naming shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson7.md'), source_span(263, 265), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L2',
+    guide_question(region('activity_synthesis'), "“How do the lengths of the two objects compare?” (The book that is shorter than the pencil is also shorter than the block because the block is longer than the pencil.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(202, 205), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U9-L10',
     guide_question(region('lesson_synthesis'), "“How was the process of creating an Estimation Exploration different from answering one?”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson10.md'), source_span(327, 327), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39458,6 +40554,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L2',
     guide_question(region('lesson_synthesis'), "“What is the value of ?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson2.md'), source_span(347, 347), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U6-L21',
+    guide_question(region('lesson_synthesis'), "“Why?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson21.md'), source_span(388, 388), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L3',
@@ -39532,6 +40632,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“How do we know this is true?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson20.md'), source_span(304, 304), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U3-L14',
+    guide_question(region('lesson_synthesis'), "“Do you agree with Jada? Be prepared to explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson14.md'), source_span(286, 286), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U6-L6',
     guide_question(region('activity_narrative'), "What shapes did you use instead of a yellow hexagon?", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson6.md'), source_span(227, 228), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_narrative'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39546,6 +40650,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U1-L18',
     guide_question(region('activity_synthesis'), "What connections did you and your partner see between the multiplication expressions and arrays?", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson18.md'), source_span(267, 268), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U7-L6',
+    guide_question(region('launch'), "“These shapes are rectangles. What do you notice about them?“", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(157, 158), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L15',
@@ -39570,6 +40678,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L7',
     guide_question(region('lesson_synthesis'), "How do we determine the number of ten-thousands in a number?", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson7.md'), source_span(341, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U5-L3',
+    guide_question(region('launch'), "“What are some different ways we can represent the number shown in the diagram?\"", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson3.md'), source_span(231, 232), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L1',
@@ -39602,6 +40714,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U7-L3',
     guide_question(region('launch'), "“How can sums of 10 help you think about these equations?”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson3.md'), source_span(279, 280), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U1-L4',
+    guide_question(region('activity_synthesis'), "“How do these expressions represent the volume of Prism A?” (There are two layers of 12. We also can see 3 layers of 8.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(214, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L4',
@@ -39832,6 +40948,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“Today we tried to find out if a number is a multiple or a factor of another number. For example: Is 267 a multiple of 8?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson21.md'), source_span(384, 384), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U4-L15',
+    guide_question(region('lesson_synthesis'), "\"In what ways did we use fractions?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(261, 261), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U1-L2',
     guide_question(region('activity_synthesis'), "“Do you agree or disagree? Why?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson2.md'), source_span(116, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -39858,6 +40978,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L20',
     guide_question(region('activity_synthesis'), "“What were some choices you had to make as you designed your letter?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson20.md'), source_span(315, 316), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L11',
+    guide_question(region('activity_synthesis'), "“Tyler and Mai both draw hands on the clock to show 1:30. Which clock shows 1:30? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson11.md'), source_span(212, 213), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L17',
@@ -39922,6 +41046,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L13',
     guide_question(region('launch'), "“What do you notice about this clock? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson13.md'), source_span(161, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U3-L14',
+    guide_question(region('activity_synthesis'), "“What if I want to use a yellow hexagon pattern block in my puzzle and my partner has used all the yellow hexagon pattern blocks? What could I do?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(314, 316), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U8-L9',
@@ -40164,6 +41292,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How does Priya’s diagram show each expression?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson2.md'), source_span(292, 292), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U5-L3',
+    guide_question(region('lesson_synthesis'), "“How would you represent this number with base-ten blocks or a base-ten diagram? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson3.md'), source_span(347, 347), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U3-L2',
     guide_question(region('activity_synthesis'), "“How are the diagrams the same?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson2.md'), source_span(193, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40228,6 +41360,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do these questions have in common? How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson8.md'), source_span(261, 262), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U7-L1',
+    guide_question(region('launch'), "“What do you notice?” (There are a lot of dots or points. If we connect them, we can make shapes. I see triangles, rhombuses, and hexagons. The dots make straight lines left to right, and they are the same distance apart.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(323, 327), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U3-L10',
     guide_question(region('activity_synthesis'), "“What is the same about the patterns? What is different about them?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson10.md'), source_span(245, 246), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40250,6 +41386,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U4-L9',
     guide_question(region('activity_synthesis'), "“How does each expression represent the situation?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson9.md'), source_span(301, 301), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U6-L1',
+    guide_question(region('lesson_synthesis'), "“How is a ruler like a number line?” (The numbers go up as we move to the right. On both a number line and a ruler, each number has a location. On both, we can partition the wholes into halves.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(314, 315), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L22',
@@ -40320,6 +41460,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "Let’s solve some more story problems. These story problems are about checking out books. What kinds of books do you like to read?", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson3.md'), source_span(278, 280), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U6-L3',
+    guide_question(region('activity_synthesis'), "“Since some of the marks on the ruler can be described with halves or fourths, how did you decide which way to describe the lengths you measured?” (If the end of the object landed right on one of the half marks, we described it as a half. If it landed in between the half marks, we used fourths to describe the length.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(338, 344), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L17',
     guide_question(region('activity_synthesis'), "“How did you keep track as you counted?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson17.md'), source_span(194, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40352,8 +41496,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Did you determine if any of these were true or false without solving? How?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson11.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U2-L13',
+    guide_question(region('activity_synthesis'), "“Does _____’s method using subtraction match the actions in the story problem? Explain why or why not.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(329, 331), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U7-L14',
+    guide_question(region('lesson_synthesis'), "“Does the minute hand on a square clock or an oval clock turn the same number of degrees every minute as it does on a round clock? Explain or show how you know.” (Yes. The minute hand still travels a full turn or , in an hour, or 60 minutes, so each minute it still travels , regardless of the outer shape of the clock or how far away the numbers are from the center point.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson14.md'), source_span(337, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U4-L13',
     guide_question(region('lesson_synthesis'), "“How did your work multiplying one-digit numbers help you multiply teen numbers?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson13.md'), source_span(288, 288), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U8-L4',
+    guide_question(region('activity_synthesis'), "“Which students have an even number of stickers? Use the equations to explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson4.md'), source_span(210, 211), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U7-L13',
@@ -40442,6 +41598,14 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U2-L2',
     guide_question(region('activity_synthesis'), "“Is it a third of the square?”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson2.md'), source_span(119, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U3-L23',
+    guide_question(region('launch'), "“Have you ever started solving a math problem, and then had trouble finishing? Today we’re going to see some ways that students started to find a difference, and suggest ways they could finish.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson23.md'), source_span(255, 258), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U7-L13',
+    guide_question(region('activity_synthesis'), "“What’s the perimeter of this rectangle? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson13.md'), source_span(281, 282), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L5',
@@ -40560,6 +41724,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“The shape will have how many corners? The shape will have how many sides?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson8.md'), source_span(149, 150), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U4-L3',
+    guide_question(region('activity_synthesis'), "“Does the value of Expression B match the value represented in any of the diagrams?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson3.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U3-L9',
     guide_question(region('activity_synthesis'), "“Did you use the same strategy to find the product of the first and last expressions? Why or why not?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson9.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40574,6 +41742,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U6-L18',
     guide_question(region('activity_synthesis'), "“Which strategy or strategies do you find easy to follow? Hard to follow?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson18.md'), source_span(304, 305), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L7',
+    guide_question(region('lesson_synthesis'), "“Tyler drew this picture. Does Tyler’s picture show the story?” (Yes, he showed 7 pomegranates with 3 on the shelf and 4 in the basket.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(473, 474), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L12',
@@ -40692,6 +41864,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How are these ways of representing the story the same?”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson14.md'), source_span(313, 314), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U4-L19',
+    guide_question(region('activity_synthesis'), "“Was it necessary to decompose any of the tens into ones to divide?” (It wasn’t necessary for 63 ÷ 3 because there was already the right number of tens and ones to put into 3 groups. It wasn’t necessary for 100 ÷ 5 because I started with 10 tens and there was already the right number of tens to put into 5 groups.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(219, 225), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L8',
     guide_question(region('activity_synthesis'), "“How did your method stay the same or change in each image?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson8.md'), source_span(106, 107), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40732,6 +41908,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did some ways use division?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(206, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U2-L8',
+    guide_question(region('activity_synthesis'), "“What numbers were easy to see in the images?” (4, 5, 6)", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson8.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U8-L4',
     guide_question(region('activity_synthesis'), "“How did you find numbers that make the equation true?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson4.md'), source_span(238, 239), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40752,6 +41932,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“I have the numbers 7 and 3. How can I find the difference?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson5.md'), source_span(222, 223), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('launch'), "“Now my partner needs to figure out how many more fingers I need to put up to show 10 fingers. How many more fingers do I need to hold up to make 10?” (3.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(171, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U7-L4',
     guide_question(region('activity_synthesis'), "“We all worked on counting or adding and subtracting numbers in our centers today. What was the best part of your center work today?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson4.md'), source_span(344, 346), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -40766,6 +41950,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L12',
     guide_question(region('activity_synthesis'), "How did your partner describe the shapes to make it easier for you to draw them correctly?", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson12.md'), source_span(169, 170), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L14',
+    guide_question(region('activity_synthesis'), "“Was the unknown the product or one of the factors? Explain.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson14.md'), source_span(228, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L11',
@@ -40926,6 +42114,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L7',
     guide_question(region('activity_synthesis'), "Which numbers can you show on two hands?", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson7.md'), source_span(127, 127), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U7-L17',
+    guide_question(region('launch'), "“We are going to learn a new way to play Which One? One partner picks a shape that is on the board. Their partner asks them “yes or no?” questions to help them guess the shape their partner has chosen. Let’s play one round together. I will pick a shape and you can ask me questions.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson17.md'), source_span(147, 152), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L17',
@@ -41092,6 +42284,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What statements do you still have questions about?”", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson3.md'), source_span(160, 161), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L1',
+    guide_question(region('lesson_synthesis'), "“Do you agree or disagree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(445, 445), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U8-L12',
     guide_question(region('activity_synthesis'), "“How did the second image help you revise your thinking?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson12.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41110,6 +42306,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U2-L12',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson12.md'), source_span(258, 258), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L3',
+    guide_question(region('lesson_synthesis'), "“How would you complete the equations and comparison statements to make them true? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(337, 337), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L7',
@@ -41176,6 +42376,10 @@ compiled_lesson_guide_question(
     guide_question(region('lesson_synthesis'), "“What attributes are different?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson3.md'), source_span(523, 523), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U7-L3',
+    guide_question(region('activity_synthesis'), "“What does the zero in (0,3) tell us?” (It means the point will be on line zero of the horizontal axis, which is the vertical axis.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(199, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U8-L4',
     guide_question(region('activity_synthesis'), "“What do you notice about even and odd numbers?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson4.md'), source_span(317, 317), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41214,6 +42418,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U7-L8',
     guide_question(region('launch'), "“We see the label. Where is the angle? Where are the two rays that make this angle?”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson8.md'), source_span(258, 259), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U1-L10',
+    guide_question(region('launch'), "“We are going to learn a new way to play a game that you may have learned in kindergarten called What’s Behind My Back? Let’s play the first round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson10.md'), source_span(160, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U4-L18',
@@ -41332,6 +42540,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“How is this problem like the ones we saw earlier?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson10.md'), source_span(268, 268), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“Where do you see subtraction in _____’s drawing?” (There are some circles crossed out, which means the pattern blocks were taken away, or subtracted.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(251, 253), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U1-L18',
     guide_question(region('activity_synthesis'), "Did anyone see the triangles the same way but would explain it differently?", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson18.md'), source_span(110, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41374,6 +42586,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L16',
     guide_question(region('launch'), "“How many hundredths are in 1 tenth?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson16.md'), source_span(153, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G5-U7-L4',
+    guide_question(region('activity_synthesis'), "“How did you use parallel lines to sort the quadrilaterals?” (Some of the quadrilaterals did not have any parallel sides. Some had one pair of parallel sides. And some had two pairs of parallel sides.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(296, 299), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L12',
@@ -41544,6 +42760,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "How many pattern blocks do you think are here? How did you make your guess?", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson5.md'), source_span(395, 396), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U5-L6',
+    guide_question(region('activity_synthesis'), "“Which representations best help you understand the value of the number? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson6.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U7-L1',
     guide_question(region('lesson_synthesis'), "“This was the image from our Warm-up. What did we learn about it?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson1.md'), source_span(348, 348), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41676,6 +42896,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“Which number should I write on my sticky note to show how many objects there are?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(263, 264), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('activity_synthesis'), "“How many thirds do you see?” (8 thirds)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(104, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U3-L11',
     guide_question(region('activity_synthesis'), "“How are the situations the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson11.md'), source_span(259, 260), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41744,6 +42968,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you notice about this number line?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(153, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U5-L2',
+    guide_question(region('activity_synthesis'), "”How are they different?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson2.md'), source_span(107, 107), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U5-L11',
     guide_question(region('activity_synthesis'), "“What are the 2 parts that you see?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson11.md'), source_span(175, 175), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41774,6 +43002,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U3-L11',
     guide_question(region('activity_synthesis'), "Did you color fewer green triangles or orange squares?", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson11.md'), source_span(259, 260), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L8',
+    guide_question(region('activity_synthesis'), "Each of these students think they have split the rectangle into fourths or quarters. Who do you agree with? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson8.md'), source_span(202, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L3',
@@ -41856,6 +43088,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Why do you think 3,000 is a good estimate?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson1.md'), source_span(180, 180), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L3',
+    guide_question(region('lesson_synthesis'), "“Diego wanted to draw a shape with these attributes. Is it possible? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(433, 433), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U8-L8',
     guide_question(region('lesson_synthesis'), "“Suppose we know that B is a parallelogram. Would that help us find those lengths? Why or why not?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson8.md'), source_span(388, 388), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41864,12 +43100,20 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“We have been learning about different tools that we use at home and in our classroom. What kind of tools do you use when you eat at home?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson4.md'), source_span(178, 180), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U7-L4',
+    guide_question(region('launch'), "“We are going to learn a new center called How Are They the Same? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson4.md'), source_span(252, 253), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U7-L11',
     guide_question(region('lesson_synthesis'), "“Into which category would you put this shape? Why?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson11.md'), source_span(422, 422), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L10',
     guide_question(region('activity_synthesis'), "“Does anyone want to add an observation on why that pattern is happening here?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson10.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U7-L1',
+    guide_question(region('activity_synthesis'), "“What words or phrases were helpful for describing the shapes?” (four, five, side, corner, length, equal, triangle, square, rectangle, pentagon, hexagon)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(231, 233), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L14',
@@ -41882,6 +43126,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U8-L2',
     guide_question(region('activity_synthesis'), "“How did you know whether an angle in a triangle is a right angle?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson2.md'), source_span(227, 228), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U7-L17',
+    guide_question(region('lesson_synthesis'), "If you were estimating this sum, would you just add the greatest place, or would you estimate in another way? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson17.md'), source_span(357, 357), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L14',
@@ -41928,6 +43176,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“Did anyone approach the problem in a different way?”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('lesson_synthesis'), "“Why can we multiply to get the numerator of the product?” (We can think in terms of thirds. The diagram shows 4 groups of 2 thirds, or 8 thirds total.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(342, 343), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U7-L7',
     guide_question(region('launch'), "“Share your shape with your partner. How are they the same? How are they different?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson7.md'), source_span(170, 171), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -41972,6 +43224,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What about the lines of symmetry in Q?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson8.md'), source_span(200, 200), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-GK-U7-L5',
+    guide_question(region('activity_synthesis'), "“Where do you see 9 in _____’s drawing?” (There are 9 circles altogether, to represent the 9 pattern blocks on the train at the beginning.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(248, 250), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U9-L4',
     guide_question(region('activity_synthesis'), "“What other questions could we use the line plot to answer?”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson4.md'), source_span(287, 288), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42008,6 +43264,14 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What connections do you see between different representations?”", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson7.md'), source_span(106, 107), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U3-L4',
+    guide_question(region('activity_synthesis'), "“How is finding the value of like finding the value of ?” (Both are about finding the total amount in equal groups. Both involve a whole number of groups and a fraction in each group.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(230, 233), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G3-U1-L21',
+    guide_question(region('activity_synthesis'), "“How did choosing different scales affect the graphs?” (Some of the graphs have shorter bars because each jump on the graph is larger. Some of the graphs are easier to read than others.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(326, 329), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U2-L2',
     guide_question(region('activity_synthesis'), "How can I figure out how many connecting cubes there are?", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson2.md'), source_span(177, 178), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42030,6 +43294,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L2',
     guide_question(region('activity_synthesis'), "“How many dots are there altogether?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson2.md'), source_span(218, 218), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L10',
+    guide_question(region('lesson_synthesis'), "“Which parts of the problem-solving process were challenging or new to you?” (Deciding on which unit to use, multiplying large numbers, knowing where to start a logic puzzle, or getting unstuck along the way.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson10.md'), source_span(335, 336), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L14',
@@ -42064,8 +43332,16 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "Whose collection has more objects? How do you know?", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson2.md'), source_span(253, 254), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U3-L13',
+    guide_question(region('activity_synthesis'), "“How does this method show the story problem?” (I can see 15 for the number they started with. 10 is how many students sat down on the rug. 5 is how many students are still standing.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(196, 199), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U6-L1',
     guide_question(region('launch'), "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(103, 103), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L2',
+    guide_question(region('activity_synthesis'), "“Could each of these shapes be Han’s shape? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson2.md'), source_span(311, 312), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L3',
@@ -42126,6 +43402,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L1',
     guide_question(region('lesson_synthesis'), "Today we counted 2 groups to figure out how many objects we had altogether. Mai says we need to count the hexagons first, and then count the squares. What do you think?", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson1.md'), source_span(419, 420), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U6-L1',
+    guide_question(region('activity_synthesis'), "“What statement can we make to compare the lengths of _____ and _____? Use the phrases 'longer than' and 'shorter than.'\"", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson1.md'), source_span(227, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L9',
@@ -42420,6 +43700,14 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you know that the perimeter of C can be found by combining twice 4 cm and twice cm or ?”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson7.md'), source_span(317, 319), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L2',
+    guide_question(region('activity_synthesis'), "“Which shapes are pentagons? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson2.md'), source_span(97, 97), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L4',
+    guide_question(region('activity_synthesis'), "“Which comparison has a bigger difference between the two numbers? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(306, 307), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U4-L6',
     guide_question(region('activity_synthesis'), "“What does Lin do with the other 10 tens?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson6.md'), source_span(183, 183), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42434,6 +43722,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L8',
     guide_question(region('lesson_synthesis'), "“What equation could we write to show 10 groups of 10,000 are equivalent to 100,000?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson8.md'), source_span(424, 424), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G1-U1-L11',
+    guide_question(region('activity_synthesis'), "“Is this statement true or false? Explain how you know.\"", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson11.md'), source_span(172, 173), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L5',
@@ -42480,6 +43772,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What did the writer of this activity have to pay attention to when they designed this activity?”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson18.md'), source_span(118, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L8',
+    guide_question(region('launch'), "“What is this graph about?” (It’s about how students are feeling about the new year.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(155, 156), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U6-L10',
     guide_question(region('activity_synthesis'), "“How is this way of finding the time the bus arrived the same as the other ways? How is it different?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson10.md'), source_span(203, 205), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42492,6 +43788,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How are these expressions the same? How are they different?”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson9.md'), source_span(401, 402), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U3-L6',
+    guide_question(region('activity_synthesis'), "”How does place value help us remember what the additional ones represent?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(206, 207), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G4-U5-L3',
     guide_question(region('activity_narrative'), "“How could you represent the problem?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(167, 167), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_narrative'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42502,6 +43802,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L18',
     guide_question(region('activity_synthesis'), "“Which numbers did you mark first?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson18.md'), source_span(224, 224), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U5-L10',
+    guide_question(region('lesson_synthesis'), "“What math did you do to find out which animal traveled the farthest, to see if a statement was true, and to figure out the sizes of water bottles?” (We converted measurements from one unit to another, compared numbers and put them in order, and multiplied or divided numbers.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson10.md'), source_span(329, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L1',
@@ -42562,6 +43866,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L4',
     guide_question(region('launch'), "What is an estimate that’s too high? Too low? About right?", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson4.md'), source_span(81, 82), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U9-L8',
+    guide_question(region('activity_synthesis'), "“Which role did you like best—Player C or Player A or B? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson8.md'), source_span(203, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L6',
@@ -42636,12 +43944,20 @@ compiled_lesson_guide_question(
     guide_question(region('activity_narrative'), "“How did you arrange the ones?”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson8.md'), source_span(251, 252), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_narrative'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U6-L12',
+    guide_question(region('activity_synthesis'), "“Which is the correct way to show the time on the clock, using digits? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson12.md'), source_span(300, 301), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G3-U4-L14',
     guide_question(region('lesson_synthesis'), "“Today we saw some different ways to represent strategies we can use to multiply teen numbers. How are the strategies we use to multiply teen numbers like the strategies we used to multiply one-digit numbers in past lessons?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson14.md'), source_span(302, 303), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U4-L11',
     guide_question(region('activity_synthesis'), "“Can you use the word _____ in your explanation?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson11.md'), source_span(177, 178), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U8-L18',
+    guide_question(region('activity_synthesis'), "“What makes working in centers fun for you?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md'), source_span(410, 410), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L10',
@@ -42728,6 +44044,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“This chenille stem is 12 inches long. If we use the entire length to form a rectangle, what might be one possible pair of length and width?”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson16.md'), source_span(167, 169), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U2-L4',
+    guide_question(region('lesson_synthesis'), "“How did you know where to put a point for a fraction? Use one of the given fractions to explain.", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson4.md'), source_span(378, 378), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U6-L6',
     guide_question(region('launch'), "“What is an estimate that’s too high? Too low? About right?”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson6.md'), source_span(92, 93), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42784,6 +44104,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How did you use the digits to create other representations?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson9.md'), source_span(199, 200), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U5-L10',
+    guide_question(region('launch'), "“What can you do in one tenth of a second?” (blink, type one letter)", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson10.md'), source_span(168, 169), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G2-U1-L3',
     guide_question(region('lesson_synthesis'), "“Which of these did you do today? How did they help you in class?”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson3.md'), source_span(300, 300), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42798,6 +44122,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L5',
     guide_question(region('activity_synthesis'), "“What is the same about the two types of division problems?”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson5.md'), source_span(280, 281), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U4-L5',
+    guide_question(region('launch'), "“How many counters do you have now?” (2)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson5.md'), source_span(170, 170), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L8',
@@ -42896,6 +44224,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“What do you know about amusement parks?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(146, 146), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G5-U4-L9',
+    guide_question(region('lesson_synthesis'), "“How does this equation relate to the Peruvian dancers?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson9.md'), source_span(334, 334), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L2',
     guide_question(region('launch'), "“What is the story about?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson2.md'), source_span(103, 103), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -42950,6 +44282,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U3-L13',
     guide_question(region('activity_synthesis'), "“How does this equation represent a different strip of paper being cut into equal sized pieces?”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson13.md'), source_span(277, 278), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-GK-U5-L13',
+    guide_question(region('activity_synthesis'), "“If Lin holds up 8 fingers, how many more fingers does she need to hold up to make 10? How do you know?” (2 fingers. I held up 8 fingers and counted 2 fingers that are down. I know that 8 and 2 make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(203, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L17',
@@ -43180,6 +44516,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How many counters are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson12.md'), source_span(112, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G1-U3-L28',
+    guide_question(region('launch'), "“What do we need to know in order to answer this question?\"", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson28.md'), source_span(202, 203), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U8-L8',
     guide_question(region('launch'), "What is an estimate that’s too high? Too low? About right?", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson8.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -43262,6 +44602,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U8-L12',
     guide_question(region('activity_synthesis'), "What makes working in centers fun for you?", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson12.md'), source_span(310, 310), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G4-U9-L3',
+    guide_question(region('lesson_synthesis'), "“What is one thing you want to continue to practice when solving problems with fractions?“", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson3.md'), source_span(275, 275), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L16',
@@ -43568,6 +44912,10 @@ compiled_lesson_guide_question(
     guide_question(region('launch'), "“The statement says the tick marks are 1 meter apart. Are they really 1 meter apart?”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson8.md'), source_span(301, 302), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U3-L3',
+    guide_question(region('activity_synthesis'), "“Which representations show the same idea or help us find the sum the same way?” (The base-ten blocks and equations show adding hundreds to hundreds, tens to tens, and ones to ones. Both the number line and the words added on the second number to the first number in parts.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(189, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-GK-U5-L15',
     guide_question(region('activity_synthesis'), "“I wrote this expression about the box of fruit that _____ packed. What do we know about how _____ packed the box?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson15.md'), source_span(208, 210), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -43578,6 +44926,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U3-L8',
     guide_question(region('launch'), "“What do you notice about the number lines?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(272, 272), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U3-L14',
+    guide_question(region('activity_synthesis'), "“How many measurements did we collect for our line plot? Explain how you see the data.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(238, 239), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L25',
@@ -43784,6 +45136,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "What could we draw or write to show how many people like dogs better?", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson9.md'), source_span(150, 151), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G3-U1-L17',
+    guide_question(region('activity_synthesis'), "“How would you rearrange each group of dots to make an array?\"", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson17.md'), source_span(108, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U1-L7',
     guide_question(region('activity_synthesis'), "“How are the tools alike? How are they different?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson7.md'), source_span(124, 124), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -43930,6 +45286,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L5',
     guide_question(region('lesson_synthesis'), "How did you and your partner work together during centers? What went well? What can we continue to work on?", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson5.md'), source_span(263, 263), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U6-L9',
+    guide_question(region('lesson_synthesis'), "“Each of these shapes has shaded pieces. How would you name each one? Are there any pieces that you are not sure how to name? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson9.md'), source_span(392, 393), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L14',
@@ -44096,6 +45456,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“What does it mean to measure?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(108, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G2-U4-L3',
+    guide_question(region('activity_synthesis'), "“Which number line represents our count? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(106, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G1-U2-L8',
     guide_question(region('activity_synthesis'), "“How do you see the red counters in their drawing? How do you see the yellow counters? How do you see the total number of counters?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson8.md'), source_span(240, 242), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -44136,6 +45500,10 @@ compiled_lesson_guide_question(
     guide_question(region('activity_synthesis'), "“How do the diagrams help you see that              ?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson5.md'), source_span(330, 330), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
+    'IM-G4-U4-L2',
+    guide_question(region('lesson_synthesis'), "“Suppose a classmate is absent today. How would you convince them that 0.3 and 0.30 are equivalent? Write down at least two different ways.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson2.md'), source_span(292, 293), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('lesson_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
     'IM-G5-U8-L13',
     guide_question(region('activity_synthesis'), "How did your strategy change when trying to make the least product?", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson13.md'), source_span(257, 258), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('activity_synthesis'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
@@ -44150,6 +45518,10 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L11',
     guide_question(region('launch'), "What are some different types of food that you can share with another person?", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson11.md'), source_span(243, 244), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
+
+compiled_lesson_guide_question(
+    'IM-G2-U4-L3',
+    guide_question(region('launch'), "“Are the labeled tick marks in the right spots on the number line? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(159, 160), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_admitted), review_evidence(mechanical_admission(printed_region('launch'), extraction('scripts/questions/build_assessing_advancing_labels.py'), date('2026-08-20'))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L5',
@@ -44252,10 +45624,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Use solid shapes to make the tallest tower you can.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson15.md'), source_span(174, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“Why is the denominator of the product the same as the denominator of the fraction in the expression?” (The denominator represents the size of the equal parts in each group. The size of the part doesn’t change when the number of groups increases.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(345, 347), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L13',
     guide_question(assessing, "“Now work with your partner to measure the object and record the actual measurement.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson13.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44264,20 +45632,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "If students disagree about the unknown number, consider asking:", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson1.md'), source_span(270, 270), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L2',
-    guide_question(assessing, "“Would everyone agree that this paper clip is inches long? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U7-L6',
     guide_question(advancing, "“When we find the distance all the way around a shape, like we did with paper clips, we are measuring its perimeter.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson6.md'), source_span(199, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L12',
     guide_question(assessing, "“Write a list of mathematical questions that could be asked about this image.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson12.md'), source_span(157, 158), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“Where do you see the 5 groups in each strategy presented?” (5 groups in a diagram, adding 5 times or multiplying by 5)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(216, 218), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L5',
@@ -44340,10 +45700,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We are going to learn a new way to play Target Numbers. You and your partner will start with 100 and see who can get closer to 0 in four rounds of subtracting.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson10.md'), source_span(164, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L5',
-    guide_question(assessing, "“I’m going to put a counter on this group of 3 dots and a counter on this group of 2 dots. 3 dots and 2 dots is 5 dots. What expression should I write on my recording sheet?” (3 + 2)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(360, 363), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U7-L12',
     guide_question(advancing, "“We just showed that rectangles with a certain area do not always have the same perimeter.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson12.md'), source_span(184, 185), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44368,10 +45724,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Work together to answer the questions.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson4.md'), source_span(274, 274), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U6-L18',
-    guide_question(advancing, "“Why?”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson18.md'), source_span(177, 177), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U2-L18',
     guide_question(advancing, "“Let’s see if you were right.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(299, 299), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44381,15 +45733,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L15',
-    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(90, 90), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U6-L3',
-    guide_question(advancing, "“What is different about the values of the expressions?”(Some of them are whole numbers and some are decimals.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson3.md'), source_span(111, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U4-L15',
-    guide_question(advancing, "\"Why is Han's estimate reasonable?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(236, 236), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
+    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(90, 90), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L6',
@@ -44500,24 +45844,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Now you will choose from centers we have already learned.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson10.md'), source_span(220, 221), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U4-L4',
-    guide_question(assessing, "How do we name these decimals in terms of tenths and hundredths? Let’s read each one aloud.", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson4.md'), source_span(150, 151), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L13',
     guide_question(assessing, "“Choose one of your domino groups. Write an expression to show each domino in the group.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson13.md'), source_span(169, 170), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U6-L9',
-    guide_question(advancing, "“What do you notice about the numbers we counted?\"", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson9.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U6-L20',
     guide_question(assessing, "“Count by 2 starting at 90.”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson20.md'), source_span(85, 85), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“How can we describe the location of the point?” (It is at the bottom left of the grid.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(96, 97), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L14',
@@ -44558,10 +45890,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L4',
     guide_question(advancing, "“Today we looked at another story problem where we had to find out how much was added. Look at the problem and the equation. Tell your partner how the equation matches the story problem”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson4.md'), source_span(369, 370), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L6',
-    guide_question(advancing, "“What are some other statements we can make about this diagram that always would be true?” (The value of B is always 10 times the value of A. If I know the value of A, I can always figure out the value of B, using multiplication. If I know the value of B, I can always figure out the value of A.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(342, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U6-L2',
@@ -44609,7 +45937,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L16',
-    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson16.md'), source_span(295, 295), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson16.md'), source_span(295, 295), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L14',
@@ -44628,16 +45956,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell me more about your observations about the numbers in this pattern.”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson1.md'), source_span(444, 444), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“Where are the line segments in this image?” (any part of a line with a starting point and an ending point)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(442, 442), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L15',
     guide_question(assessing, "“Today, you are going to collect measurement data and create a line plot. First, measure the length in centimeters of each of the pencils in your group. Split into pairs in your group. You and your partner will both measure a pencil to make sure your measurements are accurate. After you have both measured the pencil, report the measurement to your group.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson15.md'), source_span(168, 175), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(advancing, "“How does          compare to         ?” (I see and the     is 10 more.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(114, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U1-L1',
@@ -44684,10 +46004,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson5.md'), source_span(327, 327), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L4',
-    guide_question(assessing, "“Which poster is more helpful? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson4.md'), source_span(237, 237), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U3-L11',
     guide_question(assessing, "Today we are going to choose from centers we have already learned.", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson11.md'), source_span(309, 310), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44698,10 +46014,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U1-L2',
     guide_question(assessing, "“Look at Cube Tower A in your book.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson2.md'), source_span(245, 245), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U3-L9',
-    guide_question(assessing, "“What number is on my card? Let's build that number on the double 10-frame.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson9.md'), source_span(191, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L1',
@@ -44740,10 +46052,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“We just learned that if we count the number of minutes halfway around the clock, we count 30 minutes. When the minute hand has gone halfway around the clock, from the 12 to the 6, the time is half past. We can write the time as 2:30. The 2 represents the hour and the 30 represent the minutes.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson15.md'), source_span(154, 160), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L13',
-    guide_question(advancing, "“Is there another equation that could match the story problem? Explain why or why not.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(226, 227), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L18',
     guide_question(advancing, "“Let’s share some of the objects we noticed during our walk.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson18.md'), source_span(214, 215), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44754,10 +46062,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U1-L4',
     guide_question(assessing, "“Then replace the cards you used and play again.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson4.md'), source_span(185, 185), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L19',
-    guide_question(assessing, "“Why are there 3 groups?” (We are dividing by 3.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(185, 185), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L1',
@@ -44804,10 +46108,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now you are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson16.md'), source_span(241, 242), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U6-L2',
-    guide_question(advancing, "“What objects are longer than an unsharpened pencil?” (a book, the ruler, the height of the desk)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(194, 195), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U3-L15',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson15.md'), source_span(98, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44840,16 +46140,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Today we built with and counted solid shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson15.md'), source_span(364, 364), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L20',
-    guide_question(advancing, "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson20.md'), source_span(342, 342), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U1-L15',
     guide_question(assessing, "In the Activity Synthesis, share different ways students represented the problem in addition to the equation.", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson15.md'), source_span(135, 135), activity_location("Activity Narrative"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U2-L14',
-    guide_question(advancing, "“What would happen if we started at 5 next? What do you think would happen if we kept going?\"", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson14.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L9',
@@ -44870,10 +46162,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L7',
     guide_question(advancing, "“When Tyler played Shake and Spill, he used 10 counters. We could think of his game as 10 is something and something:”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson7.md'), source_span(396, 397), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U6-L17',
-    guide_question(assessing, "“Here are some examples of other quilts that might help us make our decisions. Do you think all of our patches should be the same size? Be ready to explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson17.md'), source_span(182, 185), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L10',
@@ -44900,10 +46188,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“When you hear the signal, walk to the next group of charts and repeat.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson22.md'), source_span(229, 230), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U8-L8',
-    guide_question(advancing, "“We saw different arrangements of the same number of counters. Which one makes it easier to tell how many there are altogether? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson8.md'), source_span(163, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L16',
     guide_question(advancing, "If students are not sure how to get started, consider asking:", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson16.md'), source_span(202, 202), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -44925,7 +46209,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L12',
-    guide_question(advancing, "Did I count the students correctly?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(95, 95), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "Did I count the students correctly?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(95, 95), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L2',
@@ -44954,10 +46238,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L4',
     guide_question(assessing, "“We are going to solve some problems about panning for gold.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson4.md'), source_span(286, 287), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U3-L3',
-    guide_question(advancing, "“Does the way you add numbers or the representation you use change, based on the numbers in the problem?” (Yes, I use mental math when I see that a number is close to a hundred. No, I always add hundreds to hundreds, tens to tens, and ones to ones. I always like to draw a number line.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(272, 274), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L15',
@@ -44994,10 +46274,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U8-L16',
     guide_question(assessing, "“We are going to play Shake and Spill—Cover.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson16.md'), source_span(159, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L8',
-    guide_question(assessing, "“Jada locates 15.53 on the number line. Do you think Jada accurately located the number? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson8.md'), source_span(151, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L2',
@@ -45052,10 +46328,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Work with your partner to write an equation that represents each situation, drawing, and diagram.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson13.md'), source_span(257, 258), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L13',
-    guide_question(advancing, "“Do both equations match the story and the diagram? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(421, 421), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L8',
     guide_question(assessing, "“We are going to learn a new way to play Match Mine, which is a center that was introduced in kindergarten. Let’s play one round together. You all can be my partner.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson8.md'), source_span(146, 149), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45069,7 +46341,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L13',
-    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson13.md'), source_span(98, 98), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson13.md'), source_span(98, 98), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L9',
@@ -45090,14 +46362,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L7',
     guide_question(assessing, "“Now we are going to learn a new way to play the Number Puzzles center.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson7.md'), source_span(138, 139), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U6-L12',
-    guide_question(advancing, "“What are some aspects of time that are related to a year?” (seasons, months, weeks, days)", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(99, 100), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U7-L1',
-    guide_question(advancing, "“How can this help you think about            ?” (It is like 2 jumps of 100 on the number line, so it would be 434.)", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson1.md'), source_span(342, 342), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L14',
@@ -45176,14 +46440,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now you will choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson10.md'), source_span(219, 220), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U5-L4',
-    guide_question(assessing, "Which of these shows the total value written as a three-digit number? Explain how you know.", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson4.md'), source_span(161, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(advancing, "“How does          compare to          ?” (It’s 10 more)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L4',
     guide_question(assessing, "“Try Andre’s way and Diego’s way.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson4.md'), source_span(281, 281), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45208,10 +46464,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite students to share a set of side lengths.", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson16.md'), source_span(195, 195), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U3-L3',
-    guide_question(assessing, "“We are going to learn a center called Which One? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(329, 330), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U4-L7',
     guide_question(advancing, "Have students share strategies they used to solve the problem.", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson7.md'), source_span(316, 317), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45222,10 +46474,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U5-L14',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson14.md'), source_span(82, 83), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L8',
-    guide_question(advancing, "“How did you use what you know about tens and ones to solve the problems?” (Some questions I saw I could just count by 10 on the graph because the scale was 10. We didn’t subtract all at once. We subtracted the tens, then the ones. We were thinking about how to get to the next ten to make adding the tens easier.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(338, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L17',
@@ -45246,10 +46494,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U7-L3',
     guide_question(advancing, "Think of a story that you can tell about ______’s shape. Remember to think of a question to ask at the end of the story.", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson3.md'), source_span(272, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U2-L15',
-    guide_question(advancing, "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(377, 377), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L18',
@@ -45278,10 +46522,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L21',
     guide_question(assessing, "“We are going to learn a new way to do the Fewer, Same, More center.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson21.md'), source_span(217, 218), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U4-L14',
-    guide_question(advancing, "“Can a multiple of 10,000 also be a multiple of 100,000? Show examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(128, 129), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U7-L5',
@@ -45328,16 +46568,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Silently read and think about each question.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson6.md'), source_span(283, 283), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U6-L13',
-    guide_question(advancing, "“How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson13.md'), source_span(281, 281), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L5',
     guide_question(assessing, "“Work with your partner to find 2 groups of dots to make a number and write an expression.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(372, 373), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“How did you know where to put the point with coordinates      ?” (I put it on the horizontal axis. I went over 5 but did not go up at all.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(188, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U7-L14',
@@ -45358,10 +46590,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L8',
     guide_question(assessing, "This is the number 9. I start at the top, draw a curved line all the way around, then a straight line down.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson8.md'), source_span(230, 232), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U1-L2',
-    guide_question(assessing, "“What do you notice? Think quietly to yourself, and then you will share with a partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson2.md'), source_span(112, 113), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L17',
@@ -45414,10 +46642,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U7-L15',
     guide_question(assessing, "“Take a minute to make sense of Elena’s subtraction.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson15.md'), source_span(153, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L11',
-    guide_question(advancing, "”How is this like how your partner used the number line? How is it different?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(329, 329), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L11',
@@ -45476,10 +46700,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Now show fewer than 8 fingers.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson6.md'), source_span(119, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L1',
-    guide_question(advancing, "“Inches are a unit we use to measure length. What are some lengths that we could use inches to measure?“ (the length of a shoe, the length of material for an art project, the height of a desk)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(106, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U4-L4',
     guide_question(assessing, "“Now add 4 more counters.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson4.md'), source_span(192, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45490,10 +46710,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U4-L13',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson13.md'), source_span(145, 145), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U4-L20',
-    guide_question(advancing, "\"What kinds of things do we throw out when we cook or eat at home or outside?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson20.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L10',
@@ -45546,10 +46762,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U9-L1',
     guide_question(assessing, "Share your thinking with your partner. If you both agree on the missing addend, write and share equations that show how you found the missing number.", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson1.md'), source_span(226, 229), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L14',
-    guide_question(advancing, "\"How is subtracting decimals the same as adding decimals? How is it different?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson14.md'), source_span(340, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L11',
@@ -45616,10 +46828,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Get into groups of 3 + 2.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(349, 349), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U8-L8',
-    guide_question(advancing, "“What other ways can you make 7?” (1 and 6, 7 and 0)", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson8.md'), source_span(115, 115), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U1-L6',
     guide_question(assessing, "“Think about what you would like to work with first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(305, 305), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45634,10 +46842,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L20',
     guide_question(assessing, "“Let’s do one together.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson20.md'), source_span(255, 255), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L15',
-    guide_question(assessing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(90, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L4',
@@ -45668,20 +46872,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“You will be reading a story and asking questions about friends who went apple picking together.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson10.md'), source_span(159, 160), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L8',
-    guide_question(advancing, "“How did reading the problem three times help you make sense of the problem?” (I was more comfortable with the problem each time I read it. It made more sense every time I read the problem. I noticed different details each time I read it.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(203, 207), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U6-L3',
     guide_question(assessing, "“Pick 3 shapes that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(94, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U4-L4',
     guide_question(assessing, "“You are going to practice Elena’s multiplication strategy, the standard algorithm.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson4.md'), source_span(222, 223), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L8',
-    guide_question(advancing, "“In the future, how could you use the Three Reads strategy on your own, without a partner?” (I can first read a problem to figure out what it’s about. Then read it again to look for what can be measured or counted. Then read it a third time to think about strategies I could use to solve the problem.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(342, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L7',
@@ -45726,10 +46922,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L4',
     guide_question(assessing, "“Finally, everyone shares the shapes they have drawn and what they have in common with the 2 chosen shapes.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson4.md'), source_span(268, 270), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U6-L2',
-    guide_question(advancing, "“Jada says that the crayon is shorter than the tower. Do you agree? Why or why not?” (Yes, if the crayon is shorter than the pencil and the pencil is shorter than the tower, then the crayon is shorter than both.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(328, 329), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L4',
@@ -45786,10 +46978,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U1-L3',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson3.md'), source_span(99, 100), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L5',
-    guide_question(advancing, "“How can knowing ______ (quantity in step 1 of the problem) help us find the amount of total sales for that day?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson5.md'), source_span(253, 253), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L18',
@@ -45872,10 +47060,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Take turns being the speaker and the listener. If you are the speaker, share your ideas and writing so far. If you are the listener, ask questions and give feedback to help your partner improve their work.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson22.md'), source_span(277, 280), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“What multiplication expression can represent the amount of slime in the jars? How do you know?” ( or , because there are 5 equal groups of .)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(225, 228), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U7-L12',
     guide_question(advancing, "“Let’s try to use these words in the next activity as we explain our reasoning.”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson12.md'), source_span(221, 222), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45922,10 +47106,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U5-L4',
     guide_question(advancing, "“In both activities, we were able to see how unit fractions are used to make other fractions.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson4.md'), source_span(344, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U1-L8',
-    guide_question(advancing, "“How many more adults like football than basketball? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson8.md'), source_span(193, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L10',
@@ -45984,10 +47164,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Then ask students if they’d revise their estimate.", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(164, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L15',
-    guide_question(advancing, "“Which expression is the closest to 50? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(119, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L9',
     guide_question(assessing, "“Today we are going to make circles. Each circle will be made up of 4 pieces. You will walk around and find 3 people who have pieces that fit with yours to make a circle.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson9.md'), source_span(171, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -45998,14 +47174,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L27',
     guide_question(assessing, "“Compare your work with your partner's. The player who gets closer to 0 gets 1 point.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson27.md'), source_span(164, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U7-L6',
-    guide_question(assessing, "“Why do you think a square is with these rectangles?“", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(165, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U1-L7',
-    guide_question(assessing, "“Look at the tools on your own. How did they sort the math tools? How many tools are in each category? When you are ready to share your thinking with your partner, put your thumb up.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson7.md'), source_span(288, 291), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L10',
@@ -46020,10 +47188,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner about 8 and 6 using ‘more.’”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson22.md'), source_span(122, 122), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L18',
-    guide_question(advancing, "Each picture showed a total of 8 coins. Does that mean they all showed the same value? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson18.md'), source_span(107, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U2-L14',
     guide_question(assessing, "“We are going to read this problem 3 times.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson14.md'), source_span(249, 249), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46032,16 +47196,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Think about what you would like to do first.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson7.md'), source_span(314, 314), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L14',
-    guide_question(advancing, "“What did the unknown factor represent? Explain.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson14.md'), source_span(230, 231), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U7-L6',
     guide_question(assessing, "“Let’s find the length of the perimeter of some shapes on dot paper and some shapes whose side lengths are shown with tick marks.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson6.md'), source_span(252, 254), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L19',
-    guide_question(advancing, "“How does each part of the equation connect to the situation?\"", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson19.md'), source_span(192, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L8',
@@ -46144,10 +47300,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Draw the shape that you created on the first page of your book.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson6.md'), source_span(256, 257), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U2-L2',
-    guide_question(advancing, "“What are some of the different ways we showed what happened in this story? (We drew pictures, wrote expressions, and showed how to count.)", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson2.md'), source_span(361, 362), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U3-L11',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson11.md'), source_span(314, 314), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46248,10 +47400,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Then you can play again and have the other partner choose the number you count by.\"", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(147, 148), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U2-L18',
-    guide_question(advancing, "“How could you use connecting cubes to show how the other equation could match the problem? How does it show the bigger amount, the smaller amount, and the difference?\"", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson18.md'), source_span(205, 206), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U1-L10',
     guide_question(assessing, "“Each group will start with a tower of 10 cubes. Then one partner will break the tower into 2 parts and hide 1 of the parts behind their back.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson10.md'), source_span(164, 166), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46272,16 +47420,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Take a minute to read over the directions for Least Sum.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson10.md'), source_span(249, 250), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U6-L2',
-    guide_question(advancing, "“How was the string useful in comparing the lengths?” (We could put the string next to each part of the desk to see which part is longer.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(306, 308), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U4-L4',
     guide_question(assessing, "“We are going to learn a new center called 5-Frames.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson4.md'), source_span(273, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L7',
-    guide_question(advancing, "“What is the same about the way they solved the story problem?” (They all showed 6 paletas in total. They all showed some lime and some coconut.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(222, 225), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L12',
@@ -46290,10 +47430,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L20',
     guide_question(advancing, "“Let’s practice counting to 20.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson20.md'), source_span(359, 359), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U2-L2',
-    guide_question(advancing, "“What tool would you use to find the value that makes each equation true? Explain how you would use it.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson2.md'), source_span(366, 366), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L7',
@@ -46336,10 +47472,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“We will keep practicing counting to 100 by 10.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson2.md'), source_span(105, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“Do any of the points have vertical coordinate 0? How do you know?” (No, if the vertical coordinate were 0, the points would be on the horizontal axis.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(334, 335), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U1-L13',
     guide_question(assessing, "“There are more _____ than _____.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson13.md'), source_span(165, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46350,10 +47482,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U6-L11',
     guide_question(assessing, "Today we are going to choose from centers we have already learned.", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson11.md'), source_span(320, 321), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L7',
-    guide_question(advancing, "“Which drawing helps you see what happens in the story? Why?” (In the second drawing we can just see which ones are on the shelf and which ones are in the basket, so it helps us to see the story. The circles with \"sh\" are the pomegranates on the shelf.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(337, 341), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L7',
@@ -46376,10 +47504,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson2.md'), source_span(101, 102), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L16',
-    guide_question(advancing, "“Would you rather create a story problem or solve a story problem? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson16.md'), source_span(251, 251), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U7-L8',
     guide_question(assessing, "“Your sheet of paper is in the shape of half a circle. It shows a ray on the bottom right and two angles ( and ) measured from the ray.“", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson8.md'), source_span(255, 257), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46388,24 +47512,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“I have 5 dots together, so I’m going to write a 5 on the line. Now my sentence says ‘There are 5 dots’.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson2.md'), source_span(203, 204), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U5-L2',
-    guide_question(advancing, "“How does the diagram represent each of the digits in the number you wrote?“", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson2.md'), source_span(243, 243), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U1-L21',
     guide_question(assessing, "“You can work with your group, but everyone in your group will make their own graph. You can also choose a different scale than the rest of your group.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(315, 317), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L9',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson9.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U7-L1',
-    guide_question(advancing, "“This shape also has two special angles. Their sides join in a way that forms a right angle in the shape. This is the way that sides meet in a square and in rectangles. What other shapes have right angles?” (B, F, M, and S)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(244, 248), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U1-L1',
-    guide_question(assessing, "“What do you notice? Think quietly to yourself, and then you will share with a partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson1.md'), source_span(120, 121), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L9',
@@ -46422,10 +47534,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U8-L21',
     guide_question(assessing, "“10 students can sit at the table. The students who do not fit at the table will sit on the rug.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson21.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U3-L3',
-    guide_question(advancing, "“Today we added numbers, using many different strategies and representations. What is your favorite representation to use when you add numbers?” (I like to use base-ten blocks so I can see the numbers I am adding. I like to write equations because it shows me how I am adding the numbers.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(268, 270), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L8',
@@ -46450,10 +47558,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L2',
     guide_question(assessing, "“Tell your partner what happened in the story.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson2.md'), source_span(149, 149), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L8',
-    guide_question(advancing, "“How many division equations were you able to come up with for each multiplication equation? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson8.md'), source_span(301, 303), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L10',
@@ -46482,10 +47586,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U5-L12',
     guide_question(assessing, "“Figure out how many counters are needed to fill each 10-frame. Write a number to show how many counters are needed to fill it.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson12.md'), source_span(222, 224), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U8-L9',
-    guide_question(advancing, "“What is my secret number? Explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson9.md'), source_span(284, 284), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L13',
@@ -46724,14 +47824,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“This diagram is a floor plan. A floor plan is like a map for a room.”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson15.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U5-L6',
-    guide_question(advancing, "“We have seen unit fractions represented several ways now. How would you describe a unit fraction to a friend? Use examples from these representations if it helps you.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson6.md'), source_span(306, 307), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U5-L2',
-    guide_question(assessing, "“Which equations go with each drawing? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson2.md'), source_span(272, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L7',
     guide_question(assessing, "“Roll the number cube and use the number as the numerator in a fraction with a denominator of 2, 3, or 4. Then move that fraction along the correct number line.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson7.md'), source_span(199, 202), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46752,10 +47844,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“One-fourth can be written as the number 1/4.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson1.md'), source_span(370, 370), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U2-L6',
-    guide_question(advancing, "“Suppose a classmate is absent today, and you are asked to explain how to figure out the fraction that the point represents and how far away it is from        . What would you say?“", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson6.md'), source_span(429, 430), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U4-L3',
     guide_question(assessing, "Pick 3 that go together. Be ready to share why they go together.", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson3.md'), source_span(88, 89), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46768,16 +47856,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson19.md'), source_span(323, 323), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L15',
-    guide_question(advancing, "““Did anyone use the same strategy but would explain it differently?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson15.md'), source_span(119, 120), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U4-L7',
     guide_question(advancing, "“Sometimes, we label the jump with a number to show how far we jumped.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson7.md'), source_span(118, 119), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U6-L3',
-    guide_question(advancing, "“What are some things you learned about using a ruler marked with half inches and quarter inches?” (We can use it to measure lengths that are whole numbers of inches or fractions of an inch. Some measurements can be described in more than one way using equivalent fractions. For example, is equivalent to .)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(393, 395), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L12',
@@ -46792,10 +47872,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now try one on your own.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson10.md'), source_span(184, 184), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L3',
-    guide_question(advancing, "“Can a length like inches be described using half of an inch? Why or why not?” (No, because it is between 2 halves and 3 halves of an inch.) “Can it be described in another way?” (Yes, inches)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(397, 398), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U4-L19',
     guide_question(assessing, "“Use base-ten blocks to represent 39 ÷ 3.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(168, 168), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -46806,10 +47882,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L14',
     guide_question(advancing, "“On the second clock, the hour hand is halfway between the 7 and the 8, so we can name the time as ‘half past 7.’”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson14.md'), source_span(183, 185), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U2-L8',
-    guide_question(assessing, "\"Open your eyes. There are red counters and yellow counters. How many yellow counters are under the cup? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson8.md'), source_span(190, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L3',
@@ -46824,16 +47896,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson17.md'), source_span(88, 89), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U2-L9',
-    guide_question(advancing, "How many dots are there in the next group? Use the counters to help you keep track of which dots you’ve counted.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson9.md'), source_span(316, 318), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L14',
     guide_question(assessing, "“Now, we are going to make a representation to show everyone’s hand span measurements.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(198, 199), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U3-L13',
-    guide_question(advancing, "“Why is the box in different places?” (They are answering different questions. The unknown part of the story is different.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(343, 343), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L5',
@@ -46842,10 +47906,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L3',
     guide_question(advancing, "“With your partner, work together to write a revised explanation.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson3.md'), source_span(189, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U4-L14',
-    guide_question(assessing, "“Which is more? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson14.md'), source_span(165, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L16',
@@ -46904,16 +47964,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We’re going to complete this table. Take a minute to look at what might be missing from the table.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson6.md'), source_span(213, 214), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U4-L16',
-    guide_question(assessing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson16.md'), source_span(295, 295), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L12',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson12.md'), source_span(309, 310), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L21',
-    guide_question(advancing, "“What decisions did you make today as you solved this problem? How did the decisions affect your plan for the game night?” (We decided to have 2 groups play Game D. This only left 8 tables for the rest of the games. We decided to try to fit as many guests as we could, so we ended up with a lot of tables used for Game B.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(348, 350), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U1-L11',
@@ -47040,10 +48092,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Today, we looked at a game about lockers being opened and closed.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson6.md'), source_span(356, 356), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U9-L3',
-    guide_question(advancing, "“How could you use a diagram to show the difference between their lengths?\"", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson3.md'), source_span(333, 333), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U2-L8',
     guide_question(advancing, "“Today you solved problems where you knew the total and one part, but you needed to find the other part.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson8.md'), source_span(370, 370), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47080,20 +48128,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Take a minute and look over Noah’s work and what Elena says about it.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson11.md'), source_span(231, 232), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U3-L14',
-    guide_question(advancing, "“What shapes do you see in this painting? Tell your partner where you see the shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(107, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L16',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson16.md'), source_span(89, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L12',
     guide_question(advancing, "“Tell me how you broke the figure apart into rectangles to find the area.”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson12.md'), source_span(338, 338), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“What does 3 mean in the story?” (Elena took away 3 pattern blocks.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(254, 255), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U8-L2',
@@ -47104,32 +48144,16 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“You will work on your own to start. When you and your partner are finished, compare your work.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson10.md'), source_span(155, 156), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U1-L4',
-    guide_question(advancing, "“Describe the layers in the prism to a partner. What is a multiplication expression that would represent the volume of the prism? How does the expression represent the volume of the prism?” (10 × 9, there are 9 cubes in each layer and I can see 10 layers.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(379, 381), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L10',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson10.md'), source_span(97, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U4-L14',
-    guide_question(advancing, "“Can a multiple of 100,000 also be a multiple of 1,000? Show examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(131, 132), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L3',
     guide_question(advancing, "“Think about all of the ways used to find the values of differences and unknown addends. Tell your partner about one way that you feel confident about using and why.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson3.md'), source_span(322, 323), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“What does 9 mean in the story?” (The 9 pattern blocks Elena used to make the train.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(246, 247), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U6-L15',
     guide_question(assessing, "“Compare with your partner and work together to answer the questions to compare the values of the different groups of coins.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson15.md'), source_span(291, 293), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U6-L19',
-    guide_question(advancing, "“How did you find the matching expression for\n                                             ?” (I looked for an expression with     , and only\n         2. Choose one expression from each set. Explain\n            whether the value is greater than or less than           one expression had another factor with the value             .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(156, 159), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U3-L3',
@@ -47158,10 +48182,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U2-L5',
     guide_question(assessing, "“Now you are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson5.md'), source_span(207, 208), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L2',
-    guide_question(advancing, "\"How can we describe the location of the point?”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson2.md'), source_span(102, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L17',
@@ -47204,16 +48224,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We are going to read this story problem three times.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson2.md'), source_span(148, 148), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U2-L18',
-    guide_question(assessing, "“Take turns with your partner asking ‘how many?’ questions about the picture. When your partner asks you a ‘how many?’ question, show how many things there are on the recording sheet. Show your thinking using drawings, numbers, or words.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(160, 164), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U3-L2',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson2.md'), source_span(97, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L1',
-    guide_question(advancing, "”What do you know about multiplication?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson1.md'), source_span(247, 247), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L14',
@@ -47224,16 +48236,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Describe what is the most important thing to remember when we add decimal numbers.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson13.md'), source_span(271, 271), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“Which points were most helpful when describing the drawing to a partner?” (the points where the lines cross one another, or the points where the lines cross the edges of the card)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(434, 437), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L4',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson4.md'), source_span(295, 296), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L17',
-    guide_question(advancing, "“How many pennies would you need in order to have the same value? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson17.md'), source_span(178, 179), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L7',
@@ -47262,14 +48266,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L11',
     guide_question(advancing, "“We are going to find the values of more differences of mixed numbers and fractions in the next activity.”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson11.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L2',
-    guide_question(advancing, "“If the length of 1 edge of a centimeter cube is 1 centimeter, how long is this block? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson2.md'), source_span(140, 141), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(assessing, "“Now we need to fill in an equation to show how many fingers are up and how many more fingers are needed to make 10. How should I fill in an equation?” (7 + 3)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(184, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L22',
@@ -47304,10 +48300,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“When we add 0, there are none added, so the drawing shows 7 and 0 more.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson15.md'), source_span(169, 170), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U3-L17',
-    guide_question(advancing, "“What are some ways you would know that an answer does not make sense? Give an example if it is helpful.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson17.md'), source_span(321, 321), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L11',
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson11.md'), source_span(105, 106), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47320,28 +48312,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Without looking, you will reach into the bag and feel one shape until you can guess which shape it is.", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson11.md'), source_span(313, 314), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U4-L9',
-    guide_question(advancing, "“Where do you see the 3 tens in each of these representations? Where do you see the 5 ones?\"", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson9.md'), source_span(107, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L5',
     guide_question(assessing, "“Count by 1, starting at 20.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson5.md'), source_span(99, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U4-L19',
-    guide_question(advancing, "“If you are representing this quotient with base-ten blocks, would you put 9 tens and 6 ones in 8 groups, or would you put them into groups of 8?” (I would put them into 8 groups. Eight of the tens can go into 8 groups easily. The 1 remaining ten and 6 ones make 16 ones, so 2 ones go in each group. I would put them into groups of 8. I know 10 groups of 8 is 80, so that takes care of the 8 tens. The 1 remaining ten and 6 ones make 16, which is 2 groups of 8.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(338, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L14',
     guide_question(advancing, "“Name a number that is less than 7.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(105, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L3',
-    guide_question(advancing, "“Clare has drawn a shape that has these attributes. Which shape did Clare draw? Describe to your partner what the shape would look like.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(425, 426), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U2-L2',
-    guide_question(advancing, "“How did you know how many equal parts to partition each diagram into and how many parts to shade?“", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson2.md'), source_span(356, 358), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U5-L6',
@@ -47420,10 +48396,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We have used base-ten blocks, diagrams, and equations to add and subtract numbers, drawing on what we know about place value.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson4.md'), source_span(254, 256), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U1-L8',
-    guide_question(advancing, "“We’re going to play a game called “Is it 3?” When I show you fingers or dots, think about if it is 3. If it is 3, give a thumbs up. If it is not 3, touch your shoes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson8.md'), source_span(164, 166), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U2-L12',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson12.md'), source_span(88, 89), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47436,16 +48408,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Today we used     angles and a protractor to measure the size of an angle.”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson9.md'), source_span(359, 359), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“Where do you see points in this drawing?” (Students likely will identify vertices of the triangle and also places where lines intersect.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(427, 429), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U1-L6',
     guide_question(assessing, "“You each will write expressions, 2 true and one false, to represent the volume of two prisms, and then trade expressions with your partner to answer some questions.”", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson6.md'), source_span(434, 437), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U5-L10',
-    guide_question(advancing, "”Who do you agree with? Explain your thinking to your partner.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson10.md'), source_span(311, 311), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L7',
@@ -47462,14 +48426,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U6-L16',
     guide_question(assessing, "“Now you are going to work on centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson16.md'), source_span(215, 216), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(advancing, "“How did the diagram help you think about which animal was longer?” (Once you label the rectangles, you can tell which one is longer because it has the longer rectangle.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(361, 362), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L4',
-    guide_question(advancing, "“What information do you know from looking at the diagram? What information is unknown?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson4.md'), source_span(262, 262), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L5',
@@ -47492,20 +48448,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“In the next activity, we will work on showing what happened in the second story.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson6.md'), source_span(205, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U7-L13',
-    guide_question(advancing, "“Kiran wanted to take away by place, and use a base-ten diagram to keep track of his thinking. First, Kiran drew 534 as 5 hundreds, 3 tens, and 4 ones. What could Kiran do next? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson13.md'), source_span(363, 364), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U2-L19',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson19.md'), source_span(323, 324), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L12',
     guide_question(assessing, "“Show your thinking using objects, drawings, numbers, or words.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson12.md'), source_span(179, 180), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L6',
-    guide_question(advancing, "”What number is located at the first tick mark after 0.23?”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson6.md'), source_span(287, 287), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U6-L13',
@@ -47532,10 +48480,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“In this center you are going to find groups that have the same number of things.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson11.md'), source_span(414, 415), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U1-L5',
-    guide_question(assessing, "“Today we are going to play another game of How Close? This time we will play Close to 50.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson5.md'), source_span(162, 163), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U5-L12',
     guide_question(advancing, "“You are going to explain your method to another student in the class. Practice what you will say with your partner. Use these sentence starters to help you.”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson12.md'), source_span(186, 189), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47558,10 +48502,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U5-L2',
     guide_question(assessing, "“Then discuss each question together.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(255, 255), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L13',
-    guide_question(assessing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson13.md'), source_span(98, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L9',
@@ -47612,16 +48552,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite previously identified student(s) to explain how they labeled the tape diagram.", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson15.md'), source_span(192, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U9-L13',
-    guide_question(advancing, "“How does this help you calculate the third and fourth sums?” (I just added some more tens.)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(105, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L14',
     guide_question(advancing, "“Think of something that you could build, using one or more cylinders.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md'), source_span(349, 349), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L8',
-    guide_question(assessing, "Which shape shows fourths or quarters? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson8.md'), source_span(167, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L7',
@@ -47672,14 +48604,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite previously identified student(s) to share the equation they used to represent the story problem.", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson15.md'), source_span(203, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U1-L13',
-    guide_question(assessing, "“A group of third grade students were asked, ‘What pets do you have?’ Their responses are shown in the bar graph.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson13.md'), source_span(152, 154), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L14',
-    guide_question(advancing, "“What is the same about all of the expressions in this group?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(233, 234), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L2',
     guide_question(assessing, "“Think of a shape but don’t tell your partner. Describe the shape to your partner. Your partner’s job is to guess which shape you are describing. Once your partner figures out the shape, switch roles.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson2.md'), source_span(293, 296), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47724,10 +48648,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Diego and Elena drew base-ten diagrams to find the value of      .”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(158, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“Did anyone measure something or use measurements? When might measurements have been helpful?” (When describing distances between lines or the position of a starting point.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(271, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U1-L16',
     guide_question(assessing, "“We are going to read this story problem 3 times.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson16.md'), source_span(248, 248), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47756,10 +48676,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Explain that can be written as , which we call a mixed number. This number is equivalent to .", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(212, 214), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L17',
-    guide_question(advancing, "“What are some ways we can prove that we have exactly 100 items?“", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson17.md'), source_span(164, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U7-L4',
     guide_question(advancing, "“Pick two of the different shapes and share a way they are the same.” (Squares and rectangles have angles that are all 90 degrees. Rhombuses and squares have 4 sides of the same length.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(326, 327), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47770,10 +48686,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L3',
     guide_question(assessing, "“Pick 3 shapes that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson3.md'), source_span(98, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L10',
-    guide_question(assessing, "“What can you do in one second?” (stand up, wave my hand, say my name)", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson10.md'), source_span(166, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L17',
@@ -47860,14 +48772,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Pick one of those ways and explain to your partner what the student did.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson19.md'), source_span(297, 297), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U4-L16',
-    guide_question(advancing, "“What other numbers can you use to make this a true statement? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson16.md'), source_span(304, 304), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U1-L1',
-    guide_question(assessing, "”How many dots are there? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson1.md'), source_span(278, 278), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U2-L6',
     guide_question(assessing, "“Take turns drawing a card and subtracting until you play 6 rounds or one player reaches 0. After 6 rounds, whoever is closest to 0 is the winner.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(283, 285), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47920,10 +48824,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell me how you estimated the weight of the pet.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(345, 345), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U6-L3',
-    guide_question(assessing, "“Clare and Mai walk to school every day. You can see their paths on the map. Who has the shorter walk? Choose a tool to use. Be ready to explain your thinking so that others will understand.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson3.md'), source_span(161, 164), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L3',
     guide_question(assessing, "“Jada and Andre both found the value of , but thought about it a little differently.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson3.md'), source_span(152, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47934,10 +48834,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U2-L11',
     guide_question(advancing, "“We could represent the factors and the product in the last table in the first group of tables with 3 times 4 equals 12.”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson11.md'), source_span(212, 214), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L19',
-    guide_question(assessing, "“How could the blocks have been divided to end up like this?” (The tens were put into 3 groups and then ones placed one by one into 3 groups until none were left.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(186, 189), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L11',
@@ -47956,10 +48852,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Today we are going to make sense of and use number lines that do not label every tick mark.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(169, 170), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U2-L17',
-    guide_question(assessing, "“Which equation matches the story? Explain your choice to your partner.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson17.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U8-L16',
     guide_question(advancing, "Ask groups to share their completed Number Talk and ask the class to share reasons for the last expression.", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson16.md'), source_span(178, 180), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -47970,10 +48862,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L7',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson7.md'), source_span(91, 92), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L14',
-    guide_question(advancing, "“Grids are used in graphic design to design print layouts and websites. What are some other places you’ve seen grids used?” (games, maps, art)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson14.md'), source_span(99, 101), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L16',
@@ -48004,10 +48892,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We are going to learn a new center called Get Your Numbers In Order.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson18.md'), source_span(138, 139), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U2-L17',
-    guide_question(assessing, "\"Should I write the 4 next to the butterfly, ladybug, flower, or rabbit?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson17.md'), source_span(244, 245), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U4-L13',
     guide_question(advancing, "“Write down two other numbers that show that we can’t rely on the first or leftmost digits to tell us which number is greater. Share them with your partner.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson13.md'), source_span(302, 303), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48018,10 +48902,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U9-L8',
     guide_question(assessing, "“Now you will choose from centers we have already learned. You may also choose to continue with Heads Up.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson8.md'), source_span(250, 252), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L13',
-    guide_question(advancing, "“Do you agree or disagree with how your partner has drawn the hour and minute hands? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson13.md'), source_span(352, 352), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L5',
@@ -48036,24 +48916,16 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Tell me about what happened in the story.", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson6.md'), source_span(276, 276), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U7-L4',
-    guide_question(advancing, "“What is this shape called?” (a rectangle)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U3-L17',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson17.md'), source_span(91, 92), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L6',
-    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(95, 95), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(95, 95), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L1',
     guide_question(assessing, "“Now we are going to learn a game called Number Race—Add to 10. Let’s play the first round together.", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson1.md'), source_span(267, 268), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U5-L12',
-    guide_question(advancing, "“How are they different?” (Instead of looking for parts that are the same size, we are looking for the same point or location on the number line.)", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(419, 420), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L9',
@@ -48069,15 +48941,11 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L3',
-    guide_question(assessing, "“What is different about these shapes?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(113, 113), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(assessing, "“What is different about these shapes?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(113, 113), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(activity_synthesis))))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L6',
     guide_question(assessing, "“If the two groups disagree about where a fraction belongs, discuss your thinking until you reach an agreement.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson6.md'), source_span(262, 264), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L19',
-    guide_question(advancing, "“Why was it necessary or helpful to decompose the tens in 84?” (After putting 7 tens in 7 groups, there’s still 1 ten and 4 ones. The 1 ten couldn’t be split into 7 groups.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(226, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L9',
@@ -48108,10 +48976,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson8.md'), source_span(97, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U6-L2',
-    guide_question(advancing, "“What other statements could we say about the objects?” (The pencil is longer than the crayon. The pencil is shorter than the tower. The tower is longer than the crayon and pencil.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L8',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md'), source_span(382, 383), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48125,7 +48989,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L12',
-    guide_question(advancing, "“How many dots are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson12.md'), source_span(167, 167), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "“How many dots are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson12.md'), source_span(167, 167), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L14',
@@ -48154,10 +49018,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U6-L6',
     guide_question(advancing, "Tell your partner 2 different shapes you made today. Describe what shapes you used to compose your shapes.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson6.md'), source_span(376, 376), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U4-L15',
-    guide_question(advancing, "“Today we solved problems about a real-world context. We also discussed solutions that were mixed numbers. In what ways did we use division today?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(257, 258), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L14',
@@ -48216,10 +49076,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson7.md'), source_span(100, 101), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U5-L1',
-    guide_question(assessing, "The sum is (93). What number did I add? Talk with your partner. Explain how you know.", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson1.md'), source_span(208, 209), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U3-L3',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(86, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48248,24 +49104,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Here are some of the words we used to describe subtracting by place.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L21',
-    guide_question(advancing, "“What does this arrangement tell us about the situation?” (It shows us how many of each game are played. It shows us how many people can play each game. It shows us how many people can play games in the room if it's set up like this.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(234, 238), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U9-L13',
-    guide_question(advancing, "“What are some different ways you can show solutions to the problems?” (drawings of objects, base-ten drawings, diagrams, number lines, expressions, equations)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(171, 174), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L8',
-    guide_question(assessing, "“What do you notice about the numbers? Make some observations.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(267, 268), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L15',
     guide_question(advancing, "“Get into groups of 2 + 0.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(351, 351), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L6',
-    guide_question(advancing, "“Why do you think the digits of A are also in B, in the same order, but not in the same places?” (Because they are multiplying 10 by A.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(284, 286), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L6',
@@ -48344,10 +49184,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Show your partner what you made, and describe it to them.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson5.md'), source_span(194, 195), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U3-L17',
-    guide_question(advancing, "“What did you like about the activities you worked on today?\"", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson17.md'), source_span(237, 238), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L2',
     guide_question(assessing, "“Today we are going to make fraction strips.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson2.md'), source_span(180, 180), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48388,16 +49224,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We are going to roll two numbers and figure out which number is less.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(246, 247), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L5',
-    guide_question(advancing, "“Diego and Tyler covered these 2 groups of dots to make 6. Are there 2 other groups of dots that Diego and Tyler can cover to make 6?” (4 and 2, 5 and 1)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(389, 391), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L10',
     guide_question(assessing, "“Think about what you would like to do.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson10.md'), source_span(274, 274), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U7-L4',
-    guide_question(advancing, "“Which method do you prefer? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson4.md'), source_span(197, 197), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L4',
@@ -48428,10 +49256,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Now talk to your partner about who is showing more fingers and who is showing fewer and how you know. Or if you’re both showing the same number of fingers, talk about how you know.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson8.md'), source_span(124, 127), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U3-L6',
-    guide_question(advancing, "”A newly composed unit can be recorded with a single digit. What does the single digit represent?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(202, 203), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U8-L9',
     guide_question(advancing, "why B, C, and E are not possible figures of the\noriginal piece of paper even though there’s a line that\nbreaks each figure into two right triangles that match\nthe given triangle.", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson9.md'), source_span(199, 202), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48456,16 +49280,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Let's figure out how many red counters there are.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson3.md'), source_span(354, 354), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U4-L13',
-    guide_question(advancing, "“Han is playing Check It Off. He picks the numbers 70 and 20. What numbers can he check off?” (50 or 90)", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson13.md'), source_span(157, 158), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U4-L3',
     guide_question(advancing, "“Today we added and subtracted 10. Tell your partner how you add 10 to a number.”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson3.md'), source_span(433, 433), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U3-L13',
-    guide_question(advancing, "But how do we decide whether a number is close to some multiple of 10 or some multiple of 100? We’ll think more about this question in the next activity.", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson13.md'), source_span(148, 150), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L13',
@@ -48486,10 +49302,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U7-L1',
     guide_question(advancing, "“You also made sense of counting on and counting back by 10 or by 100 on the number line.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson1.md'), source_span(340, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U8-L10',
-    guide_question(advancing, "“Elena wrote as an equation to represent the number of objects in this array. Do you agree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson10.md'), source_span(317, 317), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L4',
@@ -48548,20 +49360,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now it is your turn to play with your partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson20.md'), source_span(279, 279), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U7-L1',
-    guide_question(advancing, "“Suppose another student puts A and S in different categories. Which attribute might they have used to sort the shapes?” (Right angles: A has none and S has two. Equal sides: All sides of A are equal, but not all sides of S are. Number of sides: A has three and S has five.)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(263, 265), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U2-L7',
     guide_question(assessing, "“Before picking a new card, make sure your group works together to agree on the new number.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson7.md'), source_span(284, 286), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L7',
     guide_question(advancing, "“Today we used diagrams to multiply three- and four-digit numbers by one-digit numbers. Let’s compare diagrams that represent and .”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson7.md'), source_span(284, 285), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U8-L14',
-    guide_question(advancing, "“What were the most important things about your image you had to consider as you created your Notice and Wonder? Why were these things important?” (I wanted an image that would show equal parts for division, but it was hard to find things that were equal. Sometimes the equal groups, like groups of windows on each floor of a building, made me think of multiplication, not division or fractions.)", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson14.md'), source_span(299, 302), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L5',
@@ -48578,10 +49382,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U6-L14',
     guide_question(assessing, "“There is an addition and subtraction equation that can match this problem.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson14.md'), source_span(284, 285), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L21',
-    guide_question(advancing, "“What information does this bar graph give us about your game night plan?” (We can see the different games at the game night and the number of people playing each game. We can find the total number of people if we add them all up. We can see that the Game B tables would have room for the most guests.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(330, 336), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L6',
@@ -48632,16 +49432,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Take a moment to read the data displayed by this graph.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson9.md'), source_span(220, 221), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L1',
-    guide_question(advancing, "“Which sums are more difficult to find?” (The sums that are + 4 or + 5 that do not make a 10 are harder.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson1.md'), source_span(272, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U9-L8',
     guide_question(assessing, "“Describe how your equations are the same and how they are different. Then, switch roles and play again.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson8.md'), source_span(191, 192), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U4-L8',
-    guide_question(advancing, "“What are we trying to figure out?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson8.md'), source_span(273, 273), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L2',
@@ -48654,10 +49446,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L17',
     guide_question(advancing, "“The parentheses show us that the subtraction is done first in the equation to represent the problem. Keep this in mind as you work on the next activity.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson17.md'), source_span(189, 191), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U2-L23',
-    guide_question(advancing, "“How can you use the cubes to show each number? How can the cubes help you figure out which number is more?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(207, 207), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L2',
@@ -48688,10 +49476,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“There were 6 paletas. 3 of them were coconut paletas and 3 of them were lime paletas. We can write that as 6 is 3 plus 3.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(249, 251), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U3-L4',
-    guide_question(advancing, "“What is an estimate for the ____ that is about right? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson4.md'), source_span(378, 379), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U4-L21',
     guide_question(advancing, "Ask students to share responses.", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson21.md'), source_span(284, 284), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48710,14 +49494,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U8-L1',
     guide_question(advancing, "“Whenever we put objects into 2 equal groups, we will either have 0 leftovers or 1 leftover.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson1.md'), source_span(244, 245), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U6-L6',
-    guide_question(assessing, "“What do you notice? What do you wonder?”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson6.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U2-L18',
-    guide_question(advancing, "“Which equation did you pick to match this problem? Explain.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson18.md'), source_span(310, 310), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L10',
@@ -48752,10 +49528,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Describe to your partner what the diagram would look like for this fraction.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson2.md'), source_span(172, 173), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L8',
-    guide_question(advancing, "“How are these methods the same? How are they different?” (Each way found the same number of trees. Some people subtracted the number of pine trees from fir trees. Some counted up from the number of pine trees to the number of fir trees. )", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(290, 294), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U8-L10',
     guide_question(assessing, "“Play Least Sum with your partner.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson10.md'), source_span(255, 255), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -48766,10 +49538,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U7-L2',
     guide_question(assessing, "“In this activity, you are going to name coordinates of points and plot points with given coordinates.”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson2.md'), source_span(268, 269), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U9-L5',
-    guide_question(advancing, "“What connections do you see among these strategies? Point out as many as you can.”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson5.md'), source_span(332, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L4',
@@ -48798,10 +49566,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U4-L5',
     guide_question(assessing, "“I’m going to write a 2 on the line. Now my sentence says ‘There are 2 counters left.’”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson5.md'), source_span(181, 182), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U8-L6',
-    guide_question(advancing, "“Which expressions could represent an even number of objects? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(102, 103), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L13',
@@ -48834,10 +49598,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U5-L1',
     guide_question(advancing, "Display the base-ten diagrams from the previous activity as students share to reinforce the description.", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson1.md'), source_span(327, 327), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U3-L19',
-    guide_question(advancing, "“What is your favorite equation? Explain how you found the sum.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson19.md'), source_span(264, 265), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L16',
@@ -48878,10 +49638,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L20',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson20.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L1',
-    guide_question(advancing, "“Which sentence best describes the length of Priya’s iguana? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(344, 344), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L18',
@@ -48976,10 +49732,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Diego and Priya read the clock and got two different times.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson16.md'), source_span(200, 201), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U4-L12',
-    guide_question(advancing, "“Which riddles did you and your partner find to be most challenging? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson12.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L18',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson18.md'), source_span(84, 85), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49060,16 +49812,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We noticed that artists use shapes in different ways to create art. Some artists make patterns and designs. Some put shapes together to form people or animals. Now you are going to make your own piece of artwork, using shapes. You can use any of these materials. Think about how you can draw or put shapes together to make larger shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(238, 244), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U1-L6',
-    guide_question(assessing, "“How many ____ are there? Show your partner on your fingers, or tell them how many ____ there are.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(235, 236), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U2-L13',
     guide_question(assessing, "“Switch mats with your partner. Check to be sure you agree with the groups your partner made.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson13.md'), source_span(288, 289), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“How are your drawings alike?” (They all have long lines. The shapes are made of shorter pieces of the lines. Some of those pieces end in dots. Others are cut off by another line.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(355, 358), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L15',
@@ -49110,10 +49854,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U7-L3',
     guide_question(advancing, "Look around the classroom and find a pair of parallel lines.", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson3.md'), source_span(420, 420), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U6-L3',
-    guide_question(advancing, "“What is the same about the values of the expressions?” (There is a 1 and a 5 in each value.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson3.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U7-L1',
@@ -49236,20 +49976,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Take turns counting to 10 with your partner. You can clap your hands or touch the table when you say each number. You can also think of your own movement for each number.", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(271, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U2-L18',
-    guide_question(assessing, "“Think of one ‘how many?’ question that you can ask your partner about this picture.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson18.md'), source_span(156, 157), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L14',
     guide_question(assessing, "“Use the solid shapes to build the same thing as your partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson14.md'), source_span(215, 216), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U6-L4',
     guide_question(assessing, "“The person with the sum closer to 100 gets one point. Then you each choose four more cards so that you have seven cards to start your next round. The person who gets more points wins.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson4.md'), source_span(159, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U7-L13',
-    guide_question(assessing, "“What should Mai do next to find the difference? Show your work on Mai’s diagram.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson13.md'), source_span(193, 194), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L12',
@@ -49300,16 +50032,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Look at the 5 cards. Think about which 3 cards you would choose to add together to get close to 20.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson4.md'), source_span(167, 168), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L2',
-    guide_question(advancing, "“Which ruler would you use if we want to measure and get a length that is as close as possible to the actual length of the object? Why”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(373, 374), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U1-L11',
     guide_question(assessing, "“Now we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson11.md'), source_span(305, 306), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L7',
-    guide_question(advancing, "“What is different about how they solved the story problem?” (Two students used counters and two students drew pictures. They all have different answers.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(226, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L21',
@@ -49322,10 +50046,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L7',
     guide_question(advancing, "“Let’s reflect on the work we did in this section with shapes. First you will think on your own. Then you will share your ideas with your partner.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson7.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L1',
-    guide_question(advancing, "“What number does this point represent? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson1.md'), source_span(193, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L10',
@@ -49346,14 +50066,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U2-L1',
     guide_question(assessing, "“Let’s count to 10.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson1.md'), source_span(109, 109), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U1-L4',
-    guide_question(assessing, "“We are going to play a game called How Close? Let’s play 1 round together.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson4.md'), source_span(165, 166), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U9-L4',
-    guide_question(advancing, "“What questions are easier to answer with the line plot? Explain.“", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson4.md'), source_span(301, 302), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L1',
@@ -49428,10 +50140,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Take a minute to think about which of these problems you would use the standard algorithm to solve. Then share your strategy with your partner.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson8.md'), source_span(372, 373), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U2-L4',
-    guide_question(assessing, "“How can we show tenths and twelfths in the two rows? Think quietly for a minute.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson4.md'), source_span(176, 177), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L14',
     guide_question(assessing, "“Han and Lin are comparing       and   , the same way you did. Take a minute to look at their work.”", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson14.md'), source_span(225, 226), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49450,10 +50158,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U6-L1',
     guide_question(advancing, "Invite students to share the numbers that they listed that come above 600 on the list.", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson1.md'), source_span(262, 263), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U6-L4',
-    guide_question(assessing, "“We are going to learn a new way to play How Close? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson4.md'), source_span(140, 141), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L4',
@@ -49482,10 +50186,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U4-L13',
     guide_question(advancing, "“Tell your partner how to use a partial-quotients algorithm to find the value of 935 ÷ 85.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson13.md'), source_span(277, 277), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“How many lines do you see?” (four)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(411, 411), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U1-L13',
@@ -49600,10 +50300,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson15.md'), source_span(347, 347), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U2-L14',
-    guide_question(assessing, "“What are some units that we use for measuring distance? Let’s name as many as we can think of.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(240, 241), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U1-L6',
     guide_question(assessing, "“Discuss your thinking with your partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson6.md'), source_span(232, 232), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49642,10 +50338,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U3-L1',
     guide_question(assessing, "“Take a minute and think of a three-digit number that you will use for this activity.“", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson1.md'), source_span(247, 248), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L8',
-    guide_question(advancing, "“How can you use the number line to show the value of the addition expression?", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(345, 345), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L10',
@@ -49710,10 +50402,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U5-L14',
     guide_question(assessing, "“Work with your partner to make one tower with 10 connecting cubes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson14.md'), source_span(162, 163), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U5-L12',
-    guide_question(advancing, "“How are the two ways of showing equivalent fractions alike?” (Both involve partitioning a whole and identifying two or more fractions.)", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(416, 417), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L11',
@@ -49796,14 +50484,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“When we record the length in fractions that are greater than 1, we can record a fraction like , or we can use a number that combines a whole number with a fraction less than 1, like . A number like this that combines a whole number and a fraction less than 1 is called a mixed number.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(324, 326), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U5-L9',
-    guide_question(advancing, "“If I wanted to compare 543 and 345, how would the number line help me see which is less and which is greater? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson9.md'), source_span(340, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L4',
-    guide_question(advancing, "“What are some names we can use to describe this shape?” (quadrilateral, diamond, parallelogram, rhombus)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(204, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L15',
     guide_question(assessing, "“Work with your partner and use 5 cubes, 4 cylinders, and 6 cones to build. Make sure that what you build has at least 1 tower.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson15.md'), source_span(256, 258), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49844,10 +50524,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now you will do your Notice and Wonder with another group.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson14.md'), source_span(212, 213), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U5-L8',
-    guide_question(advancing, "“If I wanted to locate and represent 80 on a number line, which one should I choose? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson8.md'), source_span(307, 307), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L10',
     guide_question(assessing, "“Pick 3 shapes that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson10.md'), source_span(99, 100), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49862,10 +50538,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U6-L9',
     guide_question(assessing, "“Write a list of mathematical questions that could be asked about this situation.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson9.md'), source_span(164, 165), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L17',
-    guide_question(advancing, "“How could we record an equation with a letter for the unknown quantity that would represent the problem? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson17.md'), source_span(169, 171), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L17',
@@ -49916,10 +50588,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“This equation is true because we know         is the same as, or equal to, 9.      equals 9.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson4.md'), source_span(233, 234), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U1-L4',
-    guide_question(advancing, "“Why are multiples of 9 good estimates?” (We can see the layer of 9 cubes.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(127, 128), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U2-L6',
     guide_question(assessing, "We are going to read this problem 3 times.", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson6.md'), source_span(173, 173), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -49932,16 +50600,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Pick 3 that go together. Be ready to share why they go together.", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson15.md'), source_span(96, 97), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L13',
-    guide_question(advancing, "“What question was the second equation answering?” (How many students went home?)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(341, 341), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L18',
     guide_question(assessing, "“In this version, you add hundreds, tens, and ones to get as close to 1,000 as possible.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson18.md'), source_span(139, 140), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L8',
-    guide_question(advancing, "“Do you agree or disagree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson8.md'), source_span(274, 274), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L4',
@@ -50076,10 +50736,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“In both these cases, 2 is being divided by a decimal number. Describe to your partner how you would find the value of each expression.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson23.md'), source_span(325, 326), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U2-L16',
-    guide_question(advancing, "“What are some things about writing, representing, or comparing fractions that you didn’t know at the beginning of the unit but you know quite well now? Think of at least two specific things.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson16.md'), source_span(280, 281), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U5-L3',
     guide_question(advancing, "“Today we found the sums of 2 two-digit numbers, explained our thinking, and practiced restating our partner's thinking. Listen as I explain how I found the value of 31 + 48. Then you will have a chance to restate what you heard me say.”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson3.md'), source_span(272, 274), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50132,10 +50788,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Select groups to share their two expressions and their reasoning.", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson15.md'), source_span(271, 272), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“Where do you see 3 in _____’s drawing?” (There are 3 circles crossed out, which represent the 3 pattern blocks that Elena took away.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(256, 258), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L10',
     guide_question(advancing, "“Let’s practice using clues to find a solid shape in the Lesson Synthesis.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson10.md'), source_span(350, 351), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50176,10 +50828,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite students to share their equations. Record them for all to see.", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(203, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U8-L6',
-    guide_question(advancing, "“Which parts of the figure did you pay attention to when drawing? How did you make sure your drawing has line symmetry?“", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson6.md'), source_span(196, 198), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L6',
     guide_question(advancing, "Ask students to share why Andre’s partitioning makes sense to them.", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson6.md'), source_span(165, 166), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50198,10 +50846,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L5',
     guide_question(assessing, "“Let’s imagine we are zookeepers who need to measure the lengths of these reptiles.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson5.md'), source_span(170, 171), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U4-L9',
-    guide_question(advancing, "“What is used to represent the numbers in this True or False?” (expanded form)", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson9.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L2',
@@ -50236,10 +50880,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Select previously identified students to share their responses to the second problem.", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson8.md'), source_span(304, 305), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L15',
-    guide_question(advancing, "“Which expression is much less than 50? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson15.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L15',
     guide_question(advancing, "“Let’s find the value of each expression.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(109, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50272,16 +50912,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Pause for a discussion. Invite students to share their responses.", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson16.md'), source_span(181, 182), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U7-L7',
-    guide_question(advancing, "“What is this shape called?” (a square)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson7.md'), source_span(101, 101), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L12',
     guide_question(assessing, "“You will be partitioning rectangles. For the first problem, work with your partner to make a rectangle using more than 1 row of tiles. Then partition one of the rectangles to match your tiles.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson12.md'), source_span(273, 276), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U5-L1',
-    guide_question(advancing, "“What is a number we could place in the fourth row? Use a pattern we discussed to explain how you know your number would belong.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson1.md'), source_span(112, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L16',
@@ -50290,14 +50922,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L22',
     guide_question(advancing, "“Today, many of you used multiplication and division to arrange your plants and find out how much you could harvest from your garden.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson22.md'), source_span(387, 388), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U6-L1',
-    guide_question(advancing, "“How did you measure the length of objects when the length was in between the marks on your ruler?” (We recorded the mark that was closest. The length was right between 1 inch and inches, so we estimated the length to be about inches.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(280, 284), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U6-L2',
-    guide_question(assessing, "“How can we get a measurement closer to the length of the paper clip?\"", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson2.md'), source_span(186, 187), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U9-L6',
@@ -50316,10 +50940,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We will use many different tools during math this year. Connecting cubes are one of these tools.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson1.md'), source_span(200, 201), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U4-L11',
-    guide_question(advancing, "“Did you find Diego’s method or Tyler’s method more helpful? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(212, 213), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U2-L14',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(100, 101), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50330,10 +50950,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U3-L6',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L21',
-    guide_question(assessing, "“We are going to learn a new center called Would You Rather? We will compare the values of coin collections. Let’s play a round together.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson21.md'), source_span(148, 150), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L10',
@@ -50356,20 +50972,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Now let’s put our patches together to make our quilt.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson17.md'), source_span(296, 297), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U4-L7',
-    guide_question(advancing, "“Do you think the algorithm for multiplying whole numbers will work for any and all whole numbers? Why or why not? Discuss with a partner.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson7.md'), source_span(294, 295), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U2-L2',
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson2.md'), source_span(98, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U6-L2',
     guide_question(assessing, "“We saw that sometimes we can compare lengths without lining up the objects. Now, you are going to compare the length of a side of your desk to the length of one of the legs of your desk.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(269, 272), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L2',
-    guide_question(advancing, "“What do you know about the shaded part of the diagram?“", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson2.md'), source_span(242, 242), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L12',
@@ -50444,20 +51052,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Last, we use the < , > , or = symbols to record our comparison.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(195, 196), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U4-L7',
-    guide_question(assessing, "“We have heard and acted out some stories about students playing at school. Where else in your community do you see people playing outside? Describe it to your partner.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson7.md'), source_span(256, 259), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U5-L1',
     guide_question(advancing, "In the next activity we will make and compare drawings of these numbers.", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson1.md'), source_span(213, 214), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L14',
     guide_question(assessing, "“Write another expression for each number.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(221, 221), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L1',
-    guide_question(advancing, "”How would you describe the amount of the slice of pie on one plate? How would you describe two of the same slices? Three of the same slices?”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson1.md'), source_span(248, 249), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L8',
@@ -50488,10 +51088,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Explain how you know these represent the same value.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson5.md'), source_span(325, 325), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U8-L3',
-    guide_question(advancing, "“Which designs have an even number of shapes? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson3.md'), source_span(234, 235), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U6-L5',
     guide_question(assessing, "Now we take turns figuring out how many pattern blocks there are. When you both agree on how many pattern blocks you have, write this number on your recording sheet.", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson5.md'), source_span(372, 375), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50514,10 +51110,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U7-L8',
     guide_question(assessing, "“Find the perimeter of this rectangle.“", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson8.md'), source_span(271, 271), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(assessing, "“What are different ways we could represent this problem?” (tape diagram, equations, base ten blocks)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(201, 202), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U4-L8',
@@ -50580,20 +51172,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Demonstrate saying the value of some of the sums you know aloud, then quickly coloring in that box of the chart.", source_guide('curriculum/im_teacher_guides/grade1/unit8/lesson1.md'), source_span(155, 157), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U6-L19',
-    guide_question(advancing, "“Is          less than, equal to, or greater than      ?\nWhy?” (It is greater, since    is greater than 1.)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(101, 102), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U3-L14',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(299, 300), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L10',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson10.md'), source_span(292, 292), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U4-L14',
-    guide_question(advancing, "“Can a multiple of 1,000 also be a multiple of 10,000? If you think so, show some examples.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson14.md'), source_span(117, 118), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L1',
@@ -50638,10 +51222,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U6-L1',
     guide_question(assessing, "“Now you are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson1.md'), source_span(335, 336), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“Do these points have the same horizontal coordinate or vertical coordinate? How do you know?” (They all sit over the same place on the horizontal axis. That tells you the horizontal coordinate and it’s the same for all of the points.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U1-L5',
@@ -50704,10 +51284,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Take 1–2 minutes to add any new words from today’s lesson to your word wall. Share your new entries with a neighbor and add any new ideas you learn from your conversation.", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson4.md'), source_span(380, 381), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U2-L11',
-    guide_question(advancing, "“How many more pencils would we need to have enough? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson11.md'), source_span(221, 222), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U7-L14',
     guide_question(advancing, "Invite students to share their plans for how they will copy the figure using a coordinate grid.", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson14.md'), source_span(192, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50728,20 +51304,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Have each group share a method they used or a fraction they placed, based on what you noticed during the activity. Encourage groups to use their number lines when demonstrating their reasoning.", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson2.md'), source_span(206, 209), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L4',
-    guide_question(advancing, "“This is my gameboard. Where would you put the other paper clip? (I would put it on 25 since 25 + 8 = 33 and then you could cover the last number in the column and have five in a row.)", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson4.md'), source_span(276, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L6',
     guide_question(assessing, "\"Now you'll play Write Numbers with your partner.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(151, 151), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U5-L13',
     guide_question(assessing, "“Now, work on the second problem on your own for a few minutes, and then talk to your partner about it.”", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson13.md'), source_span(146, 148), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U7-L1',
-    guide_question(advancing, "“Suppose a student puts A and S in the same category. Which attribute might they have used to sort shapes?” (Length of the sides: A and S have sides with equal length. Size of corners or angles: Both shapes have corners that are the same size. Shading: Neither shape is shaded.)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(259, 261), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L5',
@@ -50758,10 +51326,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L13',
     guide_question(advancing, "“Write down two large numbers that show that it is possible to tell which number is greater by comparing the first or leftmost digits. Then share the numbers with your partner.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson13.md'), source_span(299, 300), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L14',
-    guide_question(advancing, "“What other expressions also make 5?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(239, 239), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U5-L8',
@@ -50804,20 +51368,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Today we learned symbols that mean ‘greater than’ and ‘less than’ and compared more 2-digit numbers. Use the words ‘greater than’ to compare the numbers.", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson15.md'), source_span(326, 327), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U8-L7',
-    guide_question(advancing, "“What shapes do you notice in the wagon?\"", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson7.md'), source_span(108, 108), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U5-L12',
     guide_question(advancing, "Invite previously identified students to share their reasoning.", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson12.md'), source_span(228, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L8',
     guide_question(advancing, "“Describe _____’s array.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson8.md'), source_span(266, 266), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U5-L3',
-    guide_question(advancing, "“How many did Diego have in all? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson3.md'), source_span(300, 301), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L9',
@@ -50884,10 +51440,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“This shape is a square, which is a special rectangle because all 4 sides are the same length.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson6.md'), source_span(200, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L14',
-    guide_question(advancing, "“What ideas for solving story problems have you learned from others?", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson14.md'), source_span(335, 335), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U6-L12',
     guide_question(advancing, "As each student shares, ask if others in the class solved it the same way and if they approached it differently.", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(262, 263), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -50900,24 +51452,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson14.md'), source_span(86, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U3-L14',
-    guide_question(assessing, "”If we want this display to show others the lengths of all our measurements, where do you think the length of your hand span should go?”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(206, 208), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U3-L14',
     guide_question(advancing, "“Artists from all different parts of the world use shapes to create their art.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(187, 188), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L12',
     guide_question(assessing, "“You’re going to have an opportunity to find the value of each of these differences, using a strategy or an algorithm of your choice.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson12.md'), source_span(181, 183), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U8-L4',
-    guide_question(advancing, "“In both figures, there’s a line that creates two identical triangles. Why does the first figure have line symmetry but the other doesn’t?“", source_guide('curriculum/im_teacher_guides/grade4/unit8/lesson4.md'), source_span(455, 456), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U1-L4',
-    guide_question(advancing, "“How does 5 × 24 represent the volume of the prism?” (There are 5 layers if I cut the prism horizontally, and each layer has 24 cubes.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(341, 343), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L19',
@@ -50958,10 +51498,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U4-L12',
     guide_question(assessing, "“Let’s try one together.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson12.md'), source_span(174, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U5-L12',
-    guide_question(advancing, "“How could we use the equal sign to record fractions that are equivalent?” ( , )", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson12.md'), source_span(193, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L21',
@@ -51084,10 +51620,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Let’s listen to some different directions for how to draw these angles. As you listen, try to sketch the angle and guess which angle they are describing how to draw.”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson7.md'), source_span(220, 223), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U4-L16',
-    guide_question(assessing, "“Show your partner how you found the value of               . What is the same and what is different about how you found the value of the expression?” (We both showed 4 things first and we both took away 2 things. One of us put down 2 fingers and one took off 2 counters.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson16.md'), source_span(217, 222), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U5-L1',
     guide_question(advancing, "We will be investigating very small numbers and how to represent them in the next several lessons.", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson1.md'), source_span(116, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51100,18 +51632,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Then you will replace the cards you used and play again.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson5.md'), source_span(188, 189), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L1',
-    guide_question(advancing, "“How could these two numbers show the same length?” (One tells us the number of whole inches and then how many half inches. The other tells us how many halves. They would be at the same location on the ruler, so they are the same length.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(320, 322), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U4-L12',
-    guide_question(advancing, "“What is the value the diagram represents?” (120)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson12.md'), source_span(114, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(advancing, "“This is the equation that Clare wrote. What did Clare’s fingers look like? How do you know?” (She held up 1 finger. She figured out that she needed 1 more finger to make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(360, 363), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U6-L17',
     guide_question(assessing, "Tell your partner what this situation is about.", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson17.md'), source_span(223, 223), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51122,10 +51642,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U7-L6',
     guide_question(advancing, "“With your partner, work together to write a revised explanation.”", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson6.md'), source_span(286, 287), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L1',
-    guide_question(advancing, "“Would these shapes belong to any of these categories? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(341, 342), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L19',
@@ -51196,10 +51712,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Today we used base-ten blocks and diagrams to represent numbers that are greater than 100.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(303, 303), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U3-L3',
-    guide_question(advancing, "“What is different about these shapes?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson3.md'), source_span(113, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U2-L23',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(327, 328), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51240,10 +51752,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“You had to decide whether Elena walks her dog at 2:00 a.m. or p.m.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson13.md'), source_span(236, 237), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L15',
-    guide_question(advancing, "“What were some aspects of the posters you saw that helped make the math your classmates used clear for you?” (clear labels on diagrams that help me understand their thinking, organization of the algorithms they used, units on their answers)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson15.md'), source_span(308, 310), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U6-L1',
     guide_question(advancing, "“Tell me about how you partitioned the inches into halves.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(305, 305), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51270,10 +51778,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U4-L8',
     guide_question(assessing, "“Complete the first problem on your own and then we'll talk about it as a class.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson8.md'), source_span(355, 356), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U5-L17',
-    guide_question(advancing, "“Does your strategy for comparing fractions change, depending on the fractions?", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson17.md'), source_span(405, 405), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L14',
@@ -51316,16 +51820,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Choose who will go first. Snap the tower into two parts and hide one of the parts behind your back. Show your partner the other part.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson14.md'), source_span(165, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U5-L6',
-    guide_question(advancing, "“What would the tenth multiple be if we were counting by 192? 1092?” (1,920, 10,920)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U1-L5',
     guide_question(advancing, "“Tell your partner how _____ described their work.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson5.md'), source_span(343, 343), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“How many points do you see marked on this line or line segment? Where are they?” (I see 3 points marking the top of my 7.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(378, 380), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U8-L15',
@@ -51348,10 +51844,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson4.md'), source_span(98, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L20',
-    guide_question(advancing, "“Which place helped you most as you were deciding if the statements were true or false? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson20.md'), source_span(115, 116), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U3-L6',
     guide_question(assessing, "“Share the expression you selected with a partner.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson6.md'), source_span(336, 336), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51366,10 +51858,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U7-L3',
     guide_question(advancing, "“Tell your partner what group you would put this shape into and why.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson3.md'), source_span(303, 304), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“How is it different?” (The amount in each group is a non-unit fraction instead of a unit fraction.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(234, 235), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L7',
@@ -51404,16 +51892,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Ask groups to share their completed Number Talks and ask the class to share reasons for their expressions.", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson16.md'), source_span(241, 243), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U2-L16',
-    guide_question(advancing, "“How can the third equation help you with the fourth equation?” (If I know that 8 – 6 is 2, then I know that 8 – 2 is 6.)", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson16.md'), source_span(103, 105), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L2',
     guide_question(advancing, "“In the past, we used expressions to show when something was added or taken away. We can also write an expression to show the parts that we see. This design has 7 pattern blocks, 5 green triangles and 2 orange squares. I can write that as 5 + 2.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson2.md'), source_span(186, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L12',
-    guide_question(assessing, "Did I count the students correctly?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(assessing, "Did I count the students correctly?", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson12.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L15',
@@ -51488,14 +51972,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson9.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U4-L4',
-    guide_question(advancing, "“Is _____’s comparison true? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(294, 294), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L17',
-    guide_question(advancing, "“How will the beads look different if we show ?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson17.md'), source_span(288, 289), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L8',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson8.md'), source_span(98, 99), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51532,20 +52008,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite groups to share how they sorted the fractions.", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson6.md'), source_span(272, 272), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L8',
-    guide_question(advancing, "“Which methods make the most sense to you? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson8.md'), source_span(306, 306), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U5-L12',
     guide_question(assessing, "“Now you will have a chance to order numbers.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson12.md'), source_span(206, 206), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U8-L12',
     guide_question(advancing, "“In this lesson, you learned about partitioning rectangles into equal-size squares to create arrays. You also wrote equations with equal addends to represent those arrays.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson12.md'), source_span(367, 368), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(advancing, "“Why are our fingers a helpful tool if we want to find different ways to make 10?” (We have 10 fingers. We can show different numbers on our fingers. We can put some fingers up and figure out how many fingers are still down.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(369, 370), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U1-L11',
@@ -51556,16 +52024,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "If students do not offer fractional side lengths as an option, consider asking students to consider a pair of side lengths that includes fractions.", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson16.md'), source_span(198, 200), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U6-L19',
-    guide_question(advancing, "“What are some ways you can compare the value of the product with                 ?” (I can calculate the value. I can make a\nnumber-line diagram and see that it is to the right of          . I can rewrite    as        and see that it is greater than    .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(317, 318), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U6-L7',
     guide_question(advancing, "“Liters can be abbreviated with an uppercase L. We could show that each number represents a number of liters by writing an uppercase L next to each number.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson7.md'), source_span(352, 355), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(advancing, "“How does         compare to       ?” (It’s 10 more)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(111, 111), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L14',
@@ -51574,10 +52034,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L1',
     guide_question(assessing, "“For this sum, I might have to count on my fingers from 5. This is a sum that I can figure out, but it takes just a bit longer. When it takes you a little longer to find the value of the sum, place that card in the ‘not yet’ pile.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson1.md'), source_span(252, 256), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U2-L17',
-    guide_question(assessing, "“My partner will roll the cube onto the mat and tell me the number they rolled. What is this number?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson17.md'), source_span(241, 242), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U6-L14',
@@ -51644,10 +52100,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Let's find more multiples of 10 and multiples of 100 that are close to some numbers.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson14.md'), source_span(280, 281), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U3-L6',
-    guide_question(advancing, "“How did the diagram help you decide if you would add or subtract?” (After seeing which animal had the longer rectangle, it was easy to see which length was longer. I could see if I needed to add to find the longer length or subtract to find the difference or the shorter length.)", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(364, 366), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U1-L6',
     guide_question(assessing, "“Count by 2, starting at 0.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson6.md'), source_span(95, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51670,10 +52122,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L1',
     guide_question(advancing, "“Take a minute to look at each of these diagrams.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(227, 227), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L4',
-    guide_question(advancing, "“How else can we draw a rectangle?” (The sides can be longer or shorter.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L11',
@@ -51732,10 +52180,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Write the times on the new clock cards that show half past.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson15.md'), source_span(217, 218), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(advancing, "“How many fingers are up?” (8)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(117, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U4-L9',
     guide_question(advancing, "“Share with a partner something you learned about the relationship between digits from today’s lesson.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson9.md'), source_span(367, 367), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51746,10 +52190,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U8-L14',
     guide_question(advancing, "Invite a student to share how they sorted the cards.", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(232, 232), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L4',
-    guide_question(advancing, "“What are some categories of shapes that are quadrilaterals?” (rhombuses, squares, rectangles, trapezoids, parallelograms)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(321, 322), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L13',
@@ -51792,10 +52232,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to work with first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson7.md'), source_span(283, 283), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L13',
-    guide_question(advancing, "“What question was the first equation answering?” (How many students are still in the classroom?)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(339, 339), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U9-L3',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson3.md'), source_span(89, 90), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51832,16 +52268,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Explain how you see 4 × 2 = 8 in this diagram.", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson2.md'), source_span(329, 329), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U5-L3',
-    guide_question(advancing, "“Who has more books in this situation? Who has fewer books?", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(320, 320), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U1-L8',
     guide_question(assessing, "“Switch artwork with your partner.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson8.md'), source_span(274, 274), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L13',
-    guide_question(advancing, "“How could drawing some rectangles help you reason about the lengths and widths?", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson13.md'), source_span(230, 230), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G6-U8-L9',
@@ -51858,14 +52286,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U7-L16',
     guide_question(assessing, "“Discuss Lin’s work with your partner.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson16.md'), source_span(153, 153), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U9-L13',
-    guide_question(advancing, "“What are some things that you will look for when you look at the posters?” (Do I understand the story? Do I agree with the solution? Can I follow the thinking or reasoning?)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(167, 170), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U3-L8',
-    guide_question(advancing, "“How could Jada's drawing help us understand Kiran's work?“", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson8.md'), source_span(236, 236), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L4',
@@ -51892,10 +52312,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Include diagrams, notes, and any descriptions that might help others understand your thinking.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(325, 325), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(advancing, "“Were there any numbers that you just knew how many more you needed to make 10?” (I knew that 5 and 5 is 10. I knew that if there are 9, you only need 1 more to make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(282, 285), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L8',
     guide_question(assessing, "“Use your counters to make an array with 3 rows with 4 in each row. Make sure the counters in each row line up with the counters in the other rows.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson8.md'), source_span(215, 217), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -51904,20 +52320,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner about these expressions, using ‘less’ or ‘the same number as.’”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(268, 269), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“Which words or terms came up multiple times in the observations you made and in the questions you had?” (point, line, straight)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(115, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U1-L13',
     guide_question(assessing, "“Now Group B is going to take the survey and Group A will record the data.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson13.md'), source_span(249, 250), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U2-L4',
     guide_question(assessing, "“Pick 3 arrangements that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson4.md'), source_span(95, 96), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L4',
-    guide_question(advancing, "\"What equation could you write to represent this situation? Use a symbol to represent the unknown value.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson4.md'), source_span(263, 263), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U4-L9',
@@ -51956,20 +52364,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(86, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“What happens when a set of points share the same second coordinate?” (They will be on the same horizontal line.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(191, 193), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U3-L11',
     guide_question(assessing, "“Now you are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson11.md'), source_span(311, 312), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L4',
     guide_question(assessing, "“Write a list of mathematical questions that could be asked about this situation.”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson4.md'), source_span(153, 154), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U6-L12',
-    guide_question(advancing, "“What does a year measure?” (time)", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson12.md'), source_span(98, 98), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U7-L4',
@@ -52044,20 +52444,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Take a minute to consider these pattern blocks and think about how you could represent them in a scaled bar graph.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson6.md'), source_span(147, 149), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U5-L2',
-    guide_question(advancing, "“Which way do you think was easier to represent 700, Jada’s way or Han’s way? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(305, 305), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L14',
-    guide_question(advancing, "“Tell your partner about this expression. What is the value of this expression?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson14.md'), source_span(236, 237), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U3-L2',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson2.md'), source_span(101, 102), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U4-L16',
-    guide_question(assessing, "“Now my partner and I need to work together to find the value of the expression. What can we do to find the value of the expressions?” (You can use your fingers. You can use objects. You can draw a picture.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson16.md'), source_span(146, 149), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L11',
@@ -52080,10 +52468,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“5 counters and 5 counters is 10 counters. 5 and 5 is 10.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson4.md'), source_span(312, 313), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U8-L4',
-    guide_question(advancing, "“Is there an even or odd number of dots? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson4.md'), source_span(345, 345), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L7',
     guide_question(advancing, "Invite 2 or 3 previously identified groups to share how they decided if a ten or a hundred would be composed.", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson7.md'), source_span(326, 328), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52098,10 +52482,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U5-L1',
     guide_question(assessing, "“We use this block to represent a ten.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson1.md'), source_span(273, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U3-L13',
-    guide_question(advancing, "“How does knowing help you with ?” (You can add and then add 10 more.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(111, 112), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L17',
@@ -52125,7 +52505,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L14',
-    guide_question(advancing, "“Which is more? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson14.md'), source_span(165, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(advancing, "“Which is more? How do you know?”", source_guide('curriculum/im_teacher_guides/grade1/unit4/lesson14.md'), source_span(165, 165), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(launch))))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L25',
@@ -52168,10 +52548,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Work with your partner to figure out which number is more. Circle the number that is more.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(158, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U8-L5',
-    guide_question(advancing, "“Which images show a group with an even number of dots?” (Image 1 and Image 3)", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson5.md'), source_span(116, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U5-L11',
     guide_question(assessing, "“Color the fingers to show each equation.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson11.md'), source_span(251, 251), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52200,28 +52576,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "Today we are going to choose from centers we have already learned.", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson1.md'), source_span(317, 318), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(advancing, "“How many segments do you see in this drawing?” (Students likely will say 8, but there are more, including pieces that go from one edge of the card to another edge.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(444, 445), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U6-L19',
-    guide_question(advancing, "“What are some ways you can compare the value of the product with                 ?” (I can calculate the value, but the numbers\nare complicated. I can make a number-line diagram and see that it is to the left of             . I can rewrite   as        and see\nthat it is less than      .)", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson19.md'), source_span(313, 315), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U3-L9',
     guide_question(assessing, "“Use any materials to make or draw your favorite shape that you found on the shape walk.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson9.md'), source_span(253, 254), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U2-L3',
-    guide_question(advancing, "“If 2 dancers share 3 liters of water equally, how much water does each dancer get? Write an equation that represents the situation.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson3.md'), source_span(333, 334), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U2-L23',
     guide_question(assessing, "“Now we can solve the problem.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson23.md'), source_span(270, 270), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L6',
-    guide_question(advancing, "“What is the greatest number you need to represent? How can you check to see if it is possible to represent it with the scale you chose?", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson6.md'), source_span(197, 198), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L1',
@@ -52272,10 +52632,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“I am going to look at my cards. I need to choose 1 card and figure out which number I need to make 10 with the card.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson12.md'), source_span(481, 483), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U7-L17',
-    guide_question(advancing, "What are some ways you knew when an estimate or an answer did not make sense? Give an example if it is helpful.", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson17.md'), source_span(351, 351), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U6-L15',
     guide_question(advancing, "“Tell me more about how you found the value of ______.“", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson15.md'), source_span(265, 265), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52290,10 +52646,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U8-L12',
     guide_question(assessing, "“Take a minute to read over the directions for Decimal Race to 500.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson12.md'), source_span(279, 280), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L6',
-    guide_question(advancing, "“How many times as much as A was B?” (10 times.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson6.md'), source_span(281, 282), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L20',
@@ -52400,20 +52752,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Work with your partner to investigate the squares on both grids. Be prepared to share what you find.”", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson6.md'), source_span(189, 190), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L1',
-    guide_question(advancing, "“What parts did Diego break 4 into? (3 and 1)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson1.md'), source_span(227, 227), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L3',
     guide_question(advancing, "“In today’s lesson, we will solve story problems where counting forward and backward may help you.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson3.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U6-L7',
     guide_question(advancing, "“We can say that the volume of the water in the container is __ liters.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson7.md'), source_span(358, 359), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U5-L12',
-    guide_question(advancing, "“Are there other numbers you could use? How do you know?\"", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson12.md'), source_span(269, 270), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L8',
@@ -52428,20 +52772,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“All triangles on the left and Triangle E in the set are right angles. A triangle with a right angle is a right triangle.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson4.md'), source_span(167, 169), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“How many pattern blocks does Elena have now? How do you know?” (6, I counted the circles that aren’t crossed out.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(259, 261), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L14',
     guide_question(assessing, "“Now we need to represent the data we have collected. Draw a big x on your sticky note.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(201, 202), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U3-L6',
     guide_question(assessing, "“Work independently to pick your reptiles and complete the sentences.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson6.md'), source_span(297, 298), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U9-L13',
-    guide_question(advancing, "“What changes in the second, third, and fourth sums?” (the tens of the second number)", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson13.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L10',
@@ -52468,20 +52804,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell me about the directions that your partner gave you.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson13.md'), source_span(225, 225), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U2-L12',
-    guide_question(assessing, "“How many dots are there?”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson12.md'), source_span(167, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U8-L15',
     guide_question(advancing, "Invite 1 or 2 groups to share their completed Number Talk or to facilitate it for the class.", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson15.md'), source_span(370, 371), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L6',
     guide_question(assessing, "“Close your eyes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson6.md'), source_span(366, 366), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L10',
-    guide_question(advancing, "“Did you prefer showing your thinking with base-ten diagrams, the number line, or another way? Was it the same for addition and subtraction? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson10.md'), source_span(348, 349), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L1',
@@ -52524,16 +52852,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "We are going to read this story again. This time, let’s look very closely at the pictures and see what we notice.", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson1.md'), source_span(197, 199), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L14',
-    guide_question(advancing, "“Which is more useful for finding the size of an angle on a clock: thinking in terms of the number of minutes, the number of 5 minutes, or the numbers 1–12?” (It depends on the situation.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson14.md'), source_span(329, 330), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U4-L13',
     guide_question(assessing, "“There are blank number lines and diagrams that you can use if it helps.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson13.md'), source_span(260, 261), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U9-L5',
-    guide_question(advancing, "“Does this expression show 356? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson5.md'), source_span(275, 275), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L8',
@@ -52560,20 +52880,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We are going to make cube towers. First, choose a number card. Then build a cube tower with that number of cubes. When both partners agree that the tower has the correct number of cubes, choose another number card and build the next tower.“", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson19.md'), source_span(159, 163), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U3-L7',
-    guide_question(assessing, "“Use your straws to make a shape. Show it to your partner and ask ‘What shape did I make?’ Take turns making and naming shapes.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson7.md'), source_span(263, 265), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U6-L2',
-    guide_question(advancing, "“How do the lengths of the two objects compare?” (The book that is shorter than the pencil is also shorter than the block because the block is longer than the pencil.)", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson2.md'), source_span(202, 205), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L6',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(86, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U6-L21',
-    guide_question(advancing, "“Why?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson21.md'), source_span(388, 388), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L12',
@@ -52600,10 +52908,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Write as many equations as you can think of that represent the tower.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson2.md'), source_span(246, 247), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U3-L14',
-    guide_question(advancing, "“Do you agree with Jada? Be prepared to explain your thinking.”", source_guide('curriculum/im_teacher_guides/grade5/unit3/lesson14.md'), source_span(286, 286), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L15',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(316, 316), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52612,20 +52916,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now we write an equation to show how we built the number.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson9.md'), source_span(194, 195), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U7-L6',
-    guide_question(assessing, "“These shapes are rectangles. What do you notice about them?“", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson6.md'), source_span(157, 158), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U8-L2',
     guide_question(assessing, "“Pick 3 number lines that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade3/unit8/lesson2.md'), source_span(94, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L8',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson8.md'), source_span(97, 98), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U5-L3',
-    guide_question(assessing, "“What are some different ways we can represent the number shown in the diagram?\"", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson3.md'), source_span(231, 232), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L11',
@@ -52654,10 +52950,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U1-L8',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson8.md'), source_span(323, 323), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U1-L4',
-    guide_question(advancing, "“How do these expressions represent the volume of Prism A?” (There are two layers of 12. We also can see 3 layers of 8.)", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson4.md'), source_span(214, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U6-L7',
@@ -52712,10 +53004,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson5.md'), source_span(92, 93), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U3-L8',
-    guide_question(advancing, "“How did each student subtract?“", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson8.md'), source_span(235, 235), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L15',
     guide_question(advancing, "“I’m going to say and write a number or expression. Your job is to work together to get into groups of the correct number. If you can’t find a group, stand in the middle of the carpet. If you need another person in your group, find someone in the middle of the carpet.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson15.md'), source_span(338, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52752,16 +53040,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Discuss the difference and record it.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson12.md'), source_span(276, 276), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U4-L11',
-    guide_question(advancing, "”How did you decompose or compose a ten with the blocks? How can you tell by looking at the expression that you would need to decompose or compose a ten?”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson11.md'), source_span(327, 328), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U2-L7',
     guide_question(assessing, "“Listen for your player’s name and follow the directions on the card.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson7.md'), source_span(272, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U4-L15',
-    guide_question(advancing, "\"In what ways did we use fractions?”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson15.md'), source_span(261, 261), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U6-L10',
@@ -52784,10 +53064,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Compare the shapes you have drawn with your partner’s shapes.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(158, 159), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L11',
-    guide_question(advancing, "“Tyler and Mai both draw hands on the clock to show 1:30. Which clock shows 1:30? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson11.md'), source_span(212, 213), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G5-U4-L20',
     guide_question(advancing, "“Today we made estimates about how much food waste different groups of people produce in a week, a month, or a year.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson20.md'), source_span(387, 388), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52800,10 +53076,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“This problem had a remainder. When we divide and end up with leftovers we call them remainders, because they represent what is remaining after we divide into equal groups.”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson19.md'), source_span(193, 196), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U2-L1',
-    guide_question(advancing, "”How might you use two rectangles to represent the situation in a different way?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(339, 339), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U2-L10',
     guide_question(assessing, "“Instead of using cards to decide whether to take away tens or ones, you will use number cubes to create a two-digit number and then subtract that number.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson10.md'), source_span(168, 171), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52814,10 +53086,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U3-L4',
     guide_question(assessing, "“Today you will play Shake and Spill with 10 counters. When you write the equation to represent your counters, make sure it shows how many red counters and how many yellow counters you got.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson4.md'), source_span(152, 155), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U3-L14',
-    guide_question(advancing, "“What if I want to use a yellow hexagon pattern block in my puzzle and my partner has used all the yellow hexagon pattern blocks? What could I do?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson14.md'), source_span(314, 316), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L11',
@@ -52888,10 +53156,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Today, we wrote some comparison statements and figured out if other groups' statements were true or false.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson18.md'), source_span(284, 284), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U5-L3',
-    guide_question(advancing, "“How would you represent this number with base-ten blocks or a base-ten diagram? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson3.md'), source_span(347, 347), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U2-L14',
     guide_question(advancing, "Tell your partner about these pattern blocks.", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson14.md'), source_span(384, 384), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52904,20 +53168,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson8.md'), source_span(86, 87), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U7-L1',
-    guide_question(assessing, "“What do you notice?” (There are a lot of dots or points. If we connect them, we can make shapes. I see triangles, rhombuses, and hexagons. The dots make straight lines left to right, and they are the same distance apart.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson1.md'), source_span(323, 327), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L10',
     guide_question(assessing, "“Sort your cards in a way that makes sense to you. Then explain how you sorted them.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson10.md'), source_span(250, 251), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L1',
     guide_question(assessing, "We are going to learn a new center called Tower Build. You will each try to make a tower with 10 cubes. The first partner who has 10 cubes in their tower wins.", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson1.md'), source_span(371, 374), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U6-L1',
-    guide_question(advancing, "“How is a ruler like a number line?” (The numbers go up as we move to the right. On both a number line and a ruler, each number has a location. On both, we can partition the wholes into halves.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson1.md'), source_span(314, 315), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U9-L4',
@@ -52940,10 +53196,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson4.md'), source_span(218, 218), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U6-L3',
-    guide_question(advancing, "“Since some of the marks on the ruler can be described with halves or fourths, how did you decide which way to describe the lengths you measured?” (If the end of the object landed right on one of the half marks, we described it as a half. If it landed in between the half marks, we used fourths to describe the length.)", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson3.md'), source_span(338, 344), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L5',
     guide_question(assessing, "Prompt students who are standing to say their numbers. (0, 2, 4, . . .)", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson5.md'), source_span(182, 183), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -52952,24 +53204,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell me how you found the time.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson9.md'), source_span(210, 210), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U2-L13',
-    guide_question(advancing, "“Does _____’s method using subtraction match the actions in the story problem? Explain why or why not.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(329, 331), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L5',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson5.md'), source_span(328, 328), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U5-L2',
     guide_question(assessing, "“The next player only moves one of the paper clips to a new number in the same row. Then they find the sum of their 2 numbers and cover it with a counter on the gameboard. If the sum is already covered, they move the same paper clip to a different number. Continue taking turns moving one paper clip and covering numbers on the gameboard until someone gets 5 counters in a row or the board is filled. Remember, the counters can be in a row across, up and down, or diagonal”", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson2.md'), source_span(358, 367), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U7-L14',
-    guide_question(advancing, "“Does the minute hand on a square clock or an oval clock turn the same number of degrees every minute as it does on a round clock? Explain or show how you know.” (Yes. The minute hand still travels a full turn or , in an hour, or 60 minutes, so each minute it still travels , regardless of the outer shape of the clock or how far away the numbers are from the center point.)", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson14.md'), source_span(337, 340), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U8-L4',
-    guide_question(advancing, "“Which students have an even number of stickers? Use the equations to explain how you know.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson4.md'), source_span(210, 211), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U8-L15',
@@ -52992,16 +53232,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Here are three expressions.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson21.md'), source_span(311, 311), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L23',
-    guide_question(assessing, "“Have you ever started solving a math problem, and then had trouble finishing? Today we’re going to see some ways that students started to find a difference, and suggest ways they could finish.”", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson23.md'), source_span(255, 258), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U2-L7',
     guide_question(assessing, "“Tell your partner what this story is about.”", source_guide('curriculum/im_teacher_guides/grade1/unit2/lesson7.md'), source_span(316, 316), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U7-L13',
-    guide_question(advancing, "“What’s the perimeter of this rectangle? Explain your reasoning.”", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson13.md'), source_span(281, 282), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U4-L4',
@@ -53014,10 +53246,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-GK-U6-L4',
     guide_question(assessing, "“Choose who will go first. Figure out how many objects are in the collection. If your partner is counting, watch your partner to make sure that they count each object one time.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson4.md'), source_span(245, 248), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U2-L23',
-    guide_question(advancing, "“What do you know about these two numbers? What are you trying to figure out?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(206, 206), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U4-L20',
@@ -53052,20 +53280,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Now we can see how Jada and her siblings’ heights compare to the heights required for each ride.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson15.md'), source_span(185, 186), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U4-L3',
-    guide_question(advancing, "“Does the value of Expression B match the value represented in any of the diagrams?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson3.md'), source_span(112, 113), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U3-L5',
     guide_question(advancing, "“In this algorithm, we typically stack the newly composed tens or hundreds in the order they happen as we add from right to left, or from the ones place to the tens place to the hundreds place.”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson5.md'), source_span(309, 312), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L4',
     guide_question(assessing, "“Write a list of mathematical questions that could be asked about these number lines.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson4.md'), source_span(294, 295), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L7',
-    guide_question(advancing, "“Tyler drew this picture. Does Tyler’s picture show the story?” (Yes, he showed 7 pomegranates with 3 on the shelf and 4 in the basket.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson7.md'), source_span(473, 474), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L1',
@@ -53144,24 +53364,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Work with your partner to choose two number lines that show a method that could be used to find the length of Elena’s string.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson9.md'), source_span(318, 320), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U4-L19',
-    guide_question(advancing, "“Was it necessary to decompose any of the tens into ones to divide?” (It wasn’t necessary for 63 ÷ 3 because there was already the right number of tens and ones to put into 3 groups. It wasn’t necessary for 100 ÷ 5 because I started with 10 tens and there was already the right number of tens to put into 5 groups.)", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson19.md'), source_span(219, 225), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U7-L11',
     guide_question(advancing, "Ask the original speaker if their partner accurately restated their thinking.", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson11.md'), source_span(277, 278), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U2-L8',
-    guide_question(advancing, "“What numbers were easy to see in the images?” (4, 5, 6)", source_guide('curriculum/im_teacher_guides/grade3/unit2/lesson8.md'), source_span(109, 110), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U6-L11',
     guide_question(advancing, "Invite a student who counted all of the shapes to share.", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson11.md'), source_span(258, 259), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(assessing, "“Now my partner needs to figure out how many more fingers I need to put up to show 10 fingers. How many more fingers do I need to hold up to make 10?” (3.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(171, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U8-L7',
@@ -53174,10 +53382,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L16',
     guide_question(advancing, "If students choose a diagram in the second problem that doesn't help them find the product of , consider asking:", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson16.md'), source_span(233, 233), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L14',
-    guide_question(advancing, "“Was the unknown the product or one of the factors? Explain.”", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson14.md'), source_span(228, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U4-L6',
@@ -53248,10 +53452,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Compare the groups of objects. Explain how you know which group has more objects.", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson2.md'), source_span(332, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U7-L17',
-    guide_question(assessing, "“We are going to learn a new way to play Which One? One partner picks a shape that is on the board. Their partner asks them “yes or no?” questions to help them guess the shape their partner has chosen. Let’s play one round together. I will pick a shape and you can ask me questions.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson17.md'), source_span(147, 152), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U3-L11',
     guide_question(assessing, "“Let’s take a closer look at how we can subtract fractions like these, without using diagrams or a context to help us.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson11.md'), source_span(263, 265), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53312,10 +53512,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson12.md'), source_span(386, 387), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U2-L1',
-    guide_question(advancing, "”What other shape could you use to draw a sandwich that might be easier to share in equal pieces?”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson1.md'), source_span(257, 257), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U6-L19',
     guide_question(advancing, "“Today, we saw that sometimes when you divide numbers, you get a remainder.”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson19.md'), source_span(270, 270), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53324,20 +53520,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Pick 3 that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson13.md'), source_span(96, 97), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L1',
-    guide_question(advancing, "“Do you agree or disagree? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson1.md'), source_span(445, 445), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L1',
     guide_question(assessing, "In the last activity, we used square pattern blocks to make squares. Work with your partner to fill in this puzzle, using only the blue rhombus pattern blocks.", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson1.md'), source_span(253, 255), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L3',
     guide_question(advancing, "“Hold up 3 fingers.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson3.md'), source_span(109, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L3',
-    guide_question(advancing, "“How would you complete the equations and comparison statements to make them true? Explain how you know.”", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson3.md'), source_span(337, 337), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L9',
@@ -53384,10 +53572,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner about the numbers 9 and 5 using ‘less.’”", source_guide('curriculum/im_teacher_guides/kindergarten/unit2/lesson23.md'), source_span(116, 117), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U7-L3',
-    guide_question(advancing, "“What does the zero in (0,3) tell us?” (It means the point will be on line zero of the horizontal axis, which is the vertical axis.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson3.md'), source_span(199, 201), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U8-L21',
     guide_question(assessing, "“The students will sit either at the table or on the rug.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson21.md'), source_span(173, 174), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53402,10 +53586,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U2-L5',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson5.md'), source_span(94, 95), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U1-L10',
-    guide_question(assessing, "“We are going to learn a new way to play a game that you may have learned in kindergarten called What’s Behind My Back? Let’s play the first round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson10.md'), source_span(160, 162), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L10',
@@ -53468,20 +53648,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner how you can figure out how many cubes are missing.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson3.md'), source_span(215, 216), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“Where do you see subtraction in _____’s drawing?” (There are some circles crossed out, which means the pattern blocks were taken away, or subtracted.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(251, 253), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L6',
     guide_question(assessing, "“Take turns choosing how many numbers to write and then writing them. The player who writes the last number on the gameboard wins.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(144, 146), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U7-L13',
     guide_question(assessing, "“The clock has two hands or arrows. We saw the hour hand pointing to different times. The long hand is the minute hand. When it points to 12, we say it is 'o’clock.' This clock shows 8 o'clock.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson13.md'), source_span(302, 305), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G5-U7-L4',
-    guide_question(advancing, "“How did you use parallel lines to sort the quadrilaterals?” (Some of the quadrilaterals did not have any parallel sides. Some had one pair of parallel sides. And some had two pairs of parallel sides.)", source_guide('curriculum/im_teacher_guides/grade5/unit7/lesson4.md'), source_span(296, 299), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L28',
@@ -53530,10 +53702,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G4-U1-L2',
     guide_question(advancing, "“We call 1 and 21 a factor pair of 21 because each of them is a factor of 21 and multiplying them gives you a product of 21. Another factor pair of 21 is 3 and 7.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson2.md'), source_span(300, 302), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U5-L6',
-    guide_question(advancing, "“Which representations best help you understand the value of the number? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson6.md'), source_span(113, 114), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U8-L17',
@@ -53585,11 +53753,7 @@ compiled_lesson_guide_question(
 
 compiled_lesson_guide_question(
     'IM-G4-U2-L12',
-    guide_question(advancing, "“Which strategy do you think is most useful? Why?", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson12.md'), source_span(358, 358), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“How many thirds do you see?” (8 thirds)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(104, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
+    guide_question(advancing, "“Which strategy do you think is most useful? Why?", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson12.md'), source_span(358, 358), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(span_truncates_quote)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U3-L9',
@@ -53612,10 +53776,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Then use the picture graph to answer the questions.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson8.md'), source_span(261, 262), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U5-L2',
-    guide_question(advancing, "”How are they different?\"", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson2.md'), source_span(107, 107), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U3-L1',
     guide_question(advancing, "“The measurements are different because each group used different length units.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson1.md'), source_span(219, 220), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53636,16 +53796,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“The first player to land exactly on 2 of the target numbers wins.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson14.md'), source_span(155, 156), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L8',
-    guide_question(advancing, "Each of these students think they have split the rectangle into fourths or quarters. Who do you agree with? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson8.md'), source_span(202, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U8-L6',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade2/unit8/lesson6.md'), source_span(209, 209), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U5-L7',
-    guide_question(advancing, "“How do you know your number works?", source_guide('curriculum/im_teacher_guides/grade1/unit5/lesson7.md'), source_span(381, 381), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L17',
@@ -53660,16 +53812,8 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“There were 7 kids playing soccer and then 3 of the kids left to go play on the swings. We can write that as ‘7 take away 3’ or ‘7- 3 ’.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson11.md'), source_span(264, 266), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L3',
-    guide_question(advancing, "“Diego wanted to draw a shape with these attributes. Is it possible? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson3.md'), source_span(433, 433), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U3-L13',
     guide_question(advancing, "Tell me how you decided to place 216 on that number line.", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson13.md'), source_span(385, 385), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U7-L4',
-    guide_question(assessing, "“We are going to learn a new center called How Are They the Same? Let’s play one round together.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson4.md'), source_span(252, 253), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U9-L7',
@@ -53680,24 +53824,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner how your objects or drawings show what happened in the story.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson5.md'), source_span(278, 279), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U7-L1',
-    guide_question(advancing, "“What words or phrases were helpful for describing the shapes?” (four, five, side, corner, length, equal, triangle, square, rectangle, pentagon, hexagon)", source_guide('curriculum/im_teacher_guides/grade3/unit7/lesson1.md'), source_span(231, 233), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U7-L17',
-    guide_question(advancing, "If you were estimating this sum, would you just add the greatest place, or would you estimate in another way? Explain.", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson17.md'), source_span(357, 357), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U6-L17',
     guide_question(assessing, "“Now, you are going to work with a partner to make dollars and cents.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson17.md'), source_span(312, 313), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U5-L7',
     guide_question(assessing, "“Read the directions with your partner to see if you have any questions.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson7.md'), source_span(153, 154), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“Why can we multiply to get the numerator of the product?” (We can think in terms of thirds. The diagram shows 4 groups of 2 thirds, or 8 thirds total.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(342, 343), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U2-L6',
@@ -53716,10 +53848,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Let’s say this time together.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson13.md'), source_span(200, 200), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-GK-U7-L5',
-    guide_question(advancing, "“Where do you see 9 in _____’s drawing?” (There are 9 circles altogether, to represent the 9 pattern blocks on the train at the beginning.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(248, 250), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U7-L7',
     guide_question(advancing, "“When we describe an angle to others, we often draw an 'arc', or part of a circle, between the rays to show which turn we are talking about.”", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson7.md'), source_span(313, 315), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53730,14 +53858,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U4-L4',
     guide_question(assessing, "“This time you will use a number line that goes from 0 to 100.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(272, 273), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U3-L4',
-    guide_question(advancing, "“How is finding the value of like finding the value of ?” (Both are about finding the total amount in equal groups. Both involve a whole number of groups and a fraction in each group.)", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson4.md'), source_span(230, 233), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U1-L21',
-    guide_question(advancing, "“How did choosing different scales affect the graphs?” (Some of the graphs have shorter bars because each jump on the graph is larger. Some of the graphs are easier to read than others.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson21.md'), source_span(326, 329), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U3-L10',
@@ -53756,24 +53876,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "We are going to read this problem 3 times.", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson4.md'), source_span(284, 284), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U5-L10',
-    guide_question(advancing, "“Which parts of the problem-solving process were challenging or new to you?” (Deciding on which unit to use, multiplying large numbers, knowing where to start a logic puzzle, or getting unstuck along the way.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson10.md'), source_span(335, 336), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U3-L2',
     guide_question(assessing, "“Pick 3 buttons that go together. Be ready to share why they go together.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson2.md'), source_span(88, 89), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L13',
-    guide_question(advancing, "“How does this method show the story problem?” (I can see 15 for the number they started with. 10 is how many students sat down on the rug. 5 is how many students are still standing.)", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson13.md'), source_span(196, 199), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U6-L2',
-    guide_question(advancing, "“Could each of these shapes be Han’s shape? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson2.md'), source_span(311, 312), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U6-L13',
-    guide_question(assessing, "“How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson13.md'), source_span(281, 281), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(duplicate_span)))).
+    guide_question(assessing, "“How are they different?”", source_guide('curriculum/im_teacher_guides/grade4/unit6/lesson13.md'), source_span(281, 281), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(region_conflict_rederived(activity_synthesis))))).
 
 compiled_lesson_guide_question(
     'IM-G2-U2-L4',
@@ -53794,10 +53902,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U6-L5',
     guide_question(advancing, "“The ______ is ___ cubes long.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson5.md'), source_span(190, 191), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U6-L1',
-    guide_question(advancing, "“What statement can we make to compare the lengths of _____ and _____? Use the phrases 'longer than' and 'shorter than.'\"", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson1.md'), source_span(227, 229), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U5-L3',
@@ -53932,18 +54036,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now you are going to look at number lines and write equations that match the diagram.“", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson8.md'), source_span(243, 244), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L2',
-    guide_question(advancing, "“Which shapes are pentagons? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson2.md'), source_span(97, 97), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L4',
-    guide_question(advancing, "“Which comparison has a bigger difference between the two numbers? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson4.md'), source_span(306, 307), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U1-L11',
-    guide_question(advancing, "“Is this statement true or false? Explain how you know.\"", source_guide('curriculum/im_teacher_guides/grade1/unit1/lesson11.md'), source_span(172, 173), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U4-L5',
     guide_question(assessing, "“Think about it for a moment, and then share your estimate with your partner.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson5.md'), source_span(234, 235), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53964,14 +54056,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson6.md'), source_span(90, 91), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L8',
-    guide_question(assessing, "“What is this graph about?” (It’s about how students are feeling about the new year.)", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson8.md'), source_span(155, 156), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G3-U3-L6',
-    guide_question(advancing, "”How does place value help us remember what the additional ones represent?”", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson6.md'), source_span(206, 207), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G3-U5-L14',
     guide_question(advancing, "invite previously selected students to share their approaches for      and    .", source_guide('curriculum/im_teacher_guides/grade3/unit5/lesson14.md'), source_span(183, 184), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -53982,10 +54066,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G1-U6-L12',
     guide_question(assessing, "“This time, the gameboards have larger numbers so you can practice writing numbers above 100. Decide which gameboard to begin with and decide whether to start with the smaller number and count forward, or start with the larger number and count backward. Take turns counting by 1 and writing the next one, two, or three numbers on the path. Remember, the person who writes the last number wins.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson12.md'), source_span(333, 340), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U5-L10',
-    guide_question(advancing, "“What math did you do to find out which animal traveled the farthest, to see if a statement was true, and to figure out the sizes of water bottles?” (We converted measurements from one unit to another, compared numbers and put them in order, and multiplied or divided numbers.)", source_guide('curriculum/im_teacher_guides/grade4/unit5/lesson10.md'), source_span(329, 331), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G1-U1-L13',
@@ -54016,10 +54096,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“We start with 7 cards again. Think about what cards you would choose to make 2 two-digit numbers that have a sum close to 50.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson5.md'), source_span(165, 167), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U9-L8',
-    guide_question(advancing, "“Which role did you like best—Player C or Player A or B? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson8.md'), source_span(203, 204), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U1-L5',
     guide_question(advancing, "Invite previously selected students to share their work.", source_guide('curriculum/im_teacher_guides/kindergarten/unit1/lesson5.md'), source_span(341, 342), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54028,20 +54104,12 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson4.md'), source_span(84, 85), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L12',
-    guide_question(advancing, "“Which is the correct way to show the time on the clock, using digits? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson12.md'), source_span(300, 301), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U6-L4',
     guide_question(assessing, "“Your goal is to make a tower with 20 cubes. The first partner who has 20 cubes in their tower wins.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson4.md'), source_span(359, 360), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U7-L3',
     guide_question(advancing, "Think of a story that you can tell about _____’s shape. Think of a question that you can ask at the end of the story.", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson3.md'), source_span(204, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U8-L18',
-    guide_question(advancing, "“What makes working in centers fun for you?“", source_guide('curriculum/im_teacher_guides/kindergarten/unit8/lesson18.md'), source_span(410, 410), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L12',
@@ -54084,10 +54152,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Complete the first problem.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson5.md'), source_span(135, 135), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U2-L4',
-    guide_question(advancing, "“How did you know where to put a point for a fraction? Use one of the given fractions to explain.", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson4.md'), source_span(378, 378), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G1-U6-L16',
     guide_question(assessing, "“This time, you will estimate how many objects are in your collection before you count them. To make an estimate, record a number that is too low, too high, and just about right. Then work with your partner to count the collection. Record your count.", source_guide('curriculum/im_teacher_guides/grade1/unit6/lesson16.md'), source_span(159, 163), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54108,10 +54172,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Count by 10, starting at 0.”", source_guide('curriculum/im_teacher_guides/grade2/unit5/lesson2.md'), source_span(92, 92), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U5-L10',
-    guide_question(assessing, "“What can you do in one tenth of a second?” (blink, type one letter)", source_guide('curriculum/im_teacher_guides/grade5/unit5/lesson10.md'), source_span(168, 169), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U1-L8',
     guide_question(advancing, "“Today, you created Mondrian-inspired art that incorporated factors, multiples, prime numbers, and composite numbers.”", source_guide('curriculum/im_teacher_guides/grade4/unit1/lesson8.md'), source_span(311, 312), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54122,10 +54182,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G2-U9-L2',
     guide_question(assessing, "“Partner B names a number that you can add to the number on the card to get to 20.”", source_guide('curriculum/im_teacher_guides/grade2/unit9/lesson2.md'), source_span(168, 169), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U4-L5',
-    guide_question(assessing, "“How many counters do you have now?” (2)", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson5.md'), source_span(170, 170), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U6-L12',
@@ -54148,10 +54204,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“At each display, check to see if the reasoning strategies make sense to you. Think about how the reasoning in different displays is alike and how it is different.”", source_guide('curriculum/im_teacher_guides/grade4/unit2/lesson14.md'), source_span(331, 332), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U4-L9',
-    guide_question(advancing, "“How does this equation relate to the Peruvian dancers?\"", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson9.md'), source_span(334, 334), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U6-L2',
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit6/lesson2.md'), source_span(330, 330), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54166,10 +54218,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G5-U2-L17',
     guide_question(advancing, "“A mosaic is a pattern or picture created using small pieces of ceramic, stone, or glass to cover a surface.”", source_guide('curriculum/im_teacher_guides/grade5/unit2/lesson17.md'), source_span(103, 104), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-GK-U5-L13',
-    guide_question(advancing, "“If Lin holds up 8 fingers, how many more fingers does she need to hold up to make 10? How do you know?” (2 fingers. I held up 8 fingers and counted 2 fingers that are down. I know that 8 and 2 make 10.)", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(203, 206), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G3-U3-L11',
@@ -54244,10 +54292,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite students to share their work for finding the product 62 × 35.", source_guide('curriculum/im_teacher_guides/grade5/unit4/lesson2.md'), source_span(178, 179), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G1-U3-L28',
-    guide_question(assessing, "“What do we need to know in order to answer this question?\"", source_guide('curriculum/im_teacher_guides/grade1/unit3/lesson28.md'), source_span(202, 203), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L5',
     guide_question(assessing, "“Today we are going to choose from centers we have already learned.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson5.md'), source_span(304, 305), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54302,10 +54346,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U4-L16',
     guide_question(assessing, "“Take a look at how Mai started to multiply . Then talk to your partner about why you think Mai decided to start multiplying this way.”", source_guide('curriculum/im_teacher_guides/grade3/unit4/lesson16.md'), source_span(268, 270), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G4-U9-L3',
-    guide_question(advancing, "“What is one thing you want to continue to practice when solving problems with fractions?“", source_guide('curriculum/im_teacher_guides/grade4/unit9/lesson3.md'), source_span(275, 275), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U6-L4',
@@ -54436,14 +54476,6 @@ compiled_lesson_guide_question(
     guide_question(advancing, "Invite students to share the equations they made.", source_guide('curriculum/im_teacher_guides/grade5/unit6/lesson1.md'), source_span(187, 187), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U3-L3',
-    guide_question(advancing, "“Which representations show the same idea or help us find the sum the same way?” (The base-ten blocks and equations show adding hundreds to hundreds, tens to tens, and ones to ones. Both the number line and the words added on the second number to the first number in parts.)", source_guide('curriculum/im_teacher_guides/grade3/unit3/lesson3.md'), source_span(189, 194), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U3-L14',
-    guide_question(advancing, "“How many measurements did we collect for our line plot? Explain how you see the data.”", source_guide('curriculum/im_teacher_guides/grade2/unit3/lesson14.md'), source_span(238, 239), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U3-L17',
     guide_question(assessing, "“Return to your collection. Address any questions left for you or revise your thinking. Then record the expression you have in each group.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson17.md'), source_span(213, 215), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54552,10 +54584,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Now you will play 4 rounds of the Greatest Sum with your partner.”", source_guide('curriculum/im_teacher_guides/grade5/unit8/lesson10.md'), source_span(174, 175), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G3-U1-L17',
-    guide_question(advancing, "“How would you rearrange each group of dots to make an array?\"", source_guide('curriculum/im_teacher_guides/grade3/unit1/lesson17.md'), source_span(108, 109), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G2-U7-L1',
     guide_question(assessing, "“This works with three-digit numbers, too.”", source_guide('curriculum/im_teacher_guides/grade2/unit7/lesson1.md'), source_span(164, 164), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54566,10 +54594,6 @@ compiled_lesson_guide_question(
 compiled_lesson_guide_question(
     'IM-G3-U6-L8',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade3/unit6/lesson8.md'), source_span(87, 88), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U2-L6',
-    guide_question(advancing, "“What was the value of Elena’s blocks before she started subtracting? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit2/lesson6.md'), source_span(231, 231), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G5-U2-L6',
@@ -54616,10 +54640,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“A quarter is worth 25 cents. The coin is larger than a nickel. It usually says ‘quarter dollar’ on the front. Quarters have many different pictures on the back, but they are always the same size.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson16.md'), source_span(193, 196), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U6-L9',
-    guide_question(advancing, "“Each of these shapes has shaded pieces. How would you name each one? Are there any pieces that you are not sure how to name? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit6/lesson9.md'), source_span(392, 393), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U7-L2',
     guide_question(assessing, "“Use the pattern blocks to fill in this puzzle. The sentence says, ‘I used ___ pattern blocks.’ Write a number to show how many pattern blocks you used.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit7/lesson2.md'), source_span(240, 242), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54660,20 +54680,12 @@ compiled_lesson_guide_question(
     guide_question(advancing, "“Tell your partner one thing you know about each shape.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit3/lesson7.md'), source_span(384, 384), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G5-U1-L10',
-    guide_question(advancing, "“How might the images in the Warm-up offer ideas for ways to decompose this figure?", source_guide('curriculum/im_teacher_guides/grade5/unit1/lesson10.md'), source_span(296, 296), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(malformed_text)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U3-L19',
     guide_question(assessing, "“We are going to read this problem 3 times.”", source_guide('curriculum/im_teacher_guides/grade4/unit3/lesson19.md'), source_span(268, 268), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-G2-U1-L5',
     guide_question(assessing, "“Give me a signal when you have an answer and can explain how you got it.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson5.md'), source_span(96, 97), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G1-U7-L14',
-    guide_question(advancing, "“Can you show me how the arrow hand moves around the clock? Start at the 12.”", source_guide('curriculum/im_teacher_guides/grade1/unit7/lesson14.md'), source_span(305, 305), activity_location("Advancing Student Thinking"), label_origin(author_heading), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U2-L18',
@@ -54712,10 +54724,6 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit5/lesson13.md'), source_span(339, 339), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G2-U4-L3',
-    guide_question(advancing, "“Which number line represents our count? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(106, 106), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-GK-U4-L13',
     guide_question(assessing, "“Now you will think of a different story problem about the same thing that your partner told you. For example, if your partner told you a story problem about kids playing on the statue, think of a different kind of story problem about kids playing on the statue.”", source_guide('curriculum/im_teacher_guides/kindergarten/unit4/lesson13.md'), source_span(315, 320), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
@@ -54752,16 +54760,8 @@ compiled_lesson_guide_question(
     guide_question(assessing, "“Think about what you would like to do first.”", source_guide('curriculum/im_teacher_guides/grade2/unit1/lesson12.md'), source_span(207, 207), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
-    'IM-G4-U4-L2',
-    guide_question(advancing, "“Suppose a classmate is absent today. How would you convince them that 0.3 and 0.30 are equivalent? Write down at least two different ways.”", source_guide('curriculum/im_teacher_guides/grade4/unit4/lesson2.md'), source_span(292, 293), activity_location("Lesson Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
     'IM-G4-U7-L16',
     guide_question(advancing, "Invite students to share how they measured the angle formed by the streets and a horizontal line.", source_guide('curriculum/im_teacher_guides/grade4/unit7/lesson16.md'), source_span(196, 197), activity_location("Activity Synthesis"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
-
-compiled_lesson_guide_question(
-    'IM-G2-U4-L3',
-    guide_question(assessing, "“Are the labeled tick marks in the right spots on the number line? Explain.”", source_guide('curriculum/im_teacher_guides/grade2/unit4/lesson3.md'), source_span(159, 160), activity_location("Launch"), label_origin(machine_classification), review_status(mechanically_held), review_evidence(held(not_interrogative)))).
 
 compiled_lesson_guide_question(
     'IM-GK-U1-L1',

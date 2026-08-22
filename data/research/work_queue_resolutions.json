@@ -1,0 +1,534 @@
+[
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:accommodation_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:action_cluster_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:algebra_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:arithmetic_property_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:axiom_hierarchy_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:axiom_pack_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:balance_solve_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:batch_event_score",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:brandomian_check",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:calculus_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:canonical_check",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:carving_strategy_proof",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:check_math_claim",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:compute",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:counting_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:critique_bad_infinite",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:decimal_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:deontic_requires_entitlement",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:domain_context_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:embodied_proof_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:event_score",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:executable_practice_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_cgi_addition",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_compare",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_comparison_compare",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_extra_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fraction_render",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:fsm_engine_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry_cross_link_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry_entailment_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry_measurement_misconception_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry_quadrilateral_entailment_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:geometry_van_hiele_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:gesture_alignment",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:godel_primes_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:grounded_arith_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:grounding_inference_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:grounding_metaphor_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:incoherent_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The audit fixture made the op raise through sort/2 instead of refusing. Input validation now answers non-list sets with the op's malformed message; a valid set still serves.",
+    "id": "op-refusal:incompatibility_discovery_witness",
+    "resolution": "defect-fixed"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:incompatibility_entailment_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:integer_signed_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:intersubjective_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:magnitude_equivalence_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:material_inference_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:media_alignment",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:metaphor_break_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:misconception_hook_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:misconception_incompatibility_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:misconception_jumps_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:modal_context_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:mua_coherence_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:mua_kind_coherence_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:multiplication_division_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:normative_crisis_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:notation_render",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:orr_entry_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:pair_candidate_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:place_value_number_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:practice_vocabulary_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:productive_deformation_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:ratio_proportion_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "review_decide was deleted in eade506b with the review-queue retirement; the live worker replies unknown_op. The audit rows predate the retirement.",
+    "id": "op-refusal:review_decide",
+    "resolution": "op-retired"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:rhythm_transition_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:robinson_axiom_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:standard_k_ns_3_order_independence_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:standard_k_ns_4_verify_subitizing_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:standard_k_ns_5_6_compare_groups_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:teacher_layer",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:trace_adjudication",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:unit_coordination_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:viability_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:whole_number_addsub_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
+    "id": "op-refusal:whole_number_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  }
+]

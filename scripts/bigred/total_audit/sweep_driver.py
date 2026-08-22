@@ -34,6 +34,17 @@ dispatch_spec) ops get typed params too. See
 .superpowers/sdd/task-0820D-widening-spec.md for the item-by-item contract
 this implements.
 
+Run-3 widening (2026-08-22). The 08-19 audit left a block of ops refusing
+every keyed item; two verified domain reports (the 35 crosswalk-family
+witnesses and 40 further ops, every one probed serving) showed the refusals
+were wrong-key-domain artifacts: claim-id pools that never held an op's real
+ids, classroom phrases fed to term-typed params, fixtures missing required
+dict keys. This pass adds the real domains — regex harvests over the backing
+fact files where the key space is enumerable, and AUTHORED_TUPLE_DOMAINS
+where the witness computes over a key space no fact file lists. review_decide
+is not among them: the worker dropped that op when the review queue retired
+(eade506b), so its audit refusals close as retired, not repaired.
+
 Usage (from the repo root):
   python3 scripts/bigred/total_audit/sweep_driver.py --out OUTDIR \
       [--max-per-op 3000] [--item-timeout 180] [--segment-items 4000]
@@ -88,10 +99,10 @@ IM_CODE = re.compile(r"^IM-G[K0-9]")
 # witness (every keyed call exceeds the item timeout). Sampled, and logged
 # as a truncation like every other cap.
 OP_SAMPLE_CAPS = {
-    # 2026-08-22: retain this cap until the controller completes the full
-    # lesson_misconception_witness_store bake. Retire it only with that store
-    # present in the audited tree, when the keyed domain becomes fact lookups.
-    "lesson_misconception_incompatibility_witness": 25,
+    # 2026-08-22: lesson_misconception_incompatibility_witness's cap (25) and
+    # timeout override (360) retired — the baked store landed
+    # (curriculum/im/generated/lesson_misconception_witness_store.pl is
+    # tracked), so the keyed domain is now fact lookups.
     "monitoring_chart_export": 50,
     "ranked_figures": 50,
     "lesson_enactment_run": 50,
@@ -100,8 +111,7 @@ OP_SAMPLE_CAPS = {
     "lesson_arithmetic_demonstration": 100,
 }
 
-TIMEOUT_OVERRIDES = {"lesson_misconception_incompatibility_witness": 360,
-                     "lesson_enactment_run": 360, "monitoring_chart_export": 360,
+TIMEOUT_OVERRIDES = {"lesson_enactment_run": 360, "monitoring_chart_export": 360,
                      "lesson_enactment_list": 360, "field_connectivity_audit": 600,
                      "notation_monitoring_chart": 360,
                      # Run-2 item 3: figure export walks every ranked figure
@@ -141,7 +151,9 @@ TYPE_FIXTURES = {"atom": "probe", "string": "probe", "code": "IM-G1-U3-L17",
                                             "text": "i added the tens first"}],
                  "list": [],
                  "nonempty_text": "ten plus three is thirteen",
-                 "math_claim": "3 + 4 = 7", "fraction": "1/2",
+                 # Run-3 (2026-08-22): "3 + 4 = 7" is not in the registered
+                 # safe_math_claim_shape/1 grammar (hermes_worker.pl); sum/3 is.
+                 "math_claim": "sum(3,4,7)", "fraction": "1/2",
                  "optional_code": "IM-G1-U3-L17", "op_atom": "probe",
                  "filter": {},
                  # Run-2 item 1: image_schema/primitive_for_practice had no
@@ -155,7 +167,24 @@ TYPE_FIXTURES = {"atom": "probe", "string": "probe", "code": "IM-G1-U3-L17",
                  # domain value in the pooled domain-atom sweep gets a genuine
                  # match, not just a clean refusal.
                  "shape_target_pair": ["parallelogram", "rectangle"],
-                 "verdict_atom": "holds"}
+                 "verdict_atom": "holds",
+                 # Run-3 (2026-08-22): media_alignment's valid_segment_dict/1
+                 # (formal/pml/media_alignment.pl) takes STRICT dicts with
+                 # exactly {speaker, text, start_ms, end_ms}; the generic
+                 # json_list fixture's {id, speaker, text} elements refuse.
+                 "media_segments": [
+                     {"speaker": "T", "text": "What did you notice?",
+                      "start_ms": 0, "end_ms": 2000},
+                     {"speaker": "S", "text": "I counted by fives.",
+                      "start_ms": 2000, "end_ms": 4000}],
+                 "alignment_source": "reallms_audio_alignment:probe",
+                 # Run-3: gesture_alignment's observation_dict_term/5
+                 # (formal/pml/gesture_alignment.pl) takes STRICT dicts with
+                 # exactly {kind, start_ms, end_ms, target, source, confidence}.
+                 "gesture_observations": [
+                     {"kind": "pointing", "start_ms": 100, "end_ms": 700,
+                      "target": "unresolved", "source": "video:probe",
+                      "confidence": "high"}]}
 # Param types with structured shapes the driver cannot fabricate honestly
 # (recollection, fallback, ...) stay unresolved: those ops get a
 # shape probe, and their refusal message records the contract.
@@ -198,10 +227,13 @@ IRREGULAR_SPECS = {
                      ("got", "verdict_atom", False)],
     "discourse_features": [("utterances", "json_list", False)],
     "discourse_pragmatics": [("utterances", "json_list", False)],
+    # Run-3 (2026-08-22): both alignment ops refused their run-2 json_list
+    # fixtures on strict dict-key checks; the typed fixtures above carry the
+    # exact required keys.
     "gesture_alignment": [("utterances", "json_list", False),
-                          ("observations", "json_list", False)],
-    "media_alignment": [("segments", "json_list", False),
-                        ("source", "atom", False)],
+                          ("observations", "gesture_observations", False)],
+    "media_alignment": [("segments", "media_segments", False),
+                        ("source", "alignment_source", False)],
 }
 
 
@@ -398,6 +430,338 @@ DIALECTICAL_TRANSITION_RE = re.compile(
 SEQUENT_PROOF_SOURCE_RE = re.compile(
     r"rule\(cw_sequent_proof,\s*sequent_proof_source\(([a-z_]+),")
 
+# ---------------------------------------------------------------------------
+# Run-3 (2026-08-22) regex harvests: the 08-19 audit's full-refusal ops, per
+# the two verified domain reports. Correlated params (misconception_hook's
+# family==operation, grounding_metaphor's domains(Src,Tgt) anchor) always come
+# from the SAME fact row, never a cross product of independent pools.
+
+# Ten crosswalk claim families whose canonical enum lives in cw_edges.pl as
+# rule(<family>, <tag>(Canonical, Commitment, Edges)). Each pairs with the
+# always-live source 'literature_commitment' lane the reports verified.
+CW_EDGE_CLAIM_FAMILIES = [
+    ("algebra_claim_witness", re.compile(r"rule\(cw_algebra_claim, ac\((\w+),")),
+    ("arithmetic_property_witness",
+     re.compile(r"rule\(cw_arithmetic_property_claim, ap\((\w+),")),
+    ("calculus_claim_witness", re.compile(r"rule\(cw_calculus_claim, cc\((\w+),")),
+    ("decimal_claim_witness", re.compile(r"rule\(cw_decimal_claim, dc\((\w+),")),
+    ("fraction_extra_claim_witness",
+     re.compile(r"rule\(cw_fraction_extra_claim, fe\((\w+),")),
+    ("integer_signed_claim_witness",
+     re.compile(r"rule\(cw_integer_signed_claim, isc\((\w+),")),
+    ("magnitude_equivalence_claim_witness",
+     re.compile(r"rule\(cw_magnitude_equivalence_claim, me\((\w+),")),
+    ("multiplication_division_claim_witness",
+     re.compile(r"rule\(cw_multiplication_division_claim, md\((\w+),")),
+    ("ratio_proportion_claim_witness",
+     re.compile(r"rule\(cw_ratio_proportion_claim, rp\((\w+),")),
+    ("whole_number_addsub_claim_witness",
+     re.compile(r"rule\(cw_whole_number_addsub_claim, wn\((\w+),")),
+]
+# Four families that dispatch to their own module; the claim table heads
+# (cc/2+, fc/4, pv/2+, wn/2+) start at column 0 in the family's own file.
+CW_MODULE_CLAIM_FAMILIES = [
+    ("counting_claim_witness",
+     "knowledge/crosswalk/families/cw_counting_claim.pl",
+     re.compile(r"^cc\((\w+),", re.MULTILINE)),
+    ("fraction_claim_witness",
+     "knowledge/crosswalk/families/cw_fraction_claim.pl",
+     re.compile(r"^fc\((\w+),", re.MULTILINE)),
+    ("place_value_number_claim_witness",
+     "knowledge/crosswalk/families/cw_place_value_number_claim.pl",
+     re.compile(r"^pv\((\w+),", re.MULTILINE)),
+    ("whole_number_claim_witness",
+     "knowledge/crosswalk/families/cw_whole_number_claim.pl",
+     re.compile(r"^wn\((\w+),", re.MULTILINE)),
+]
+# cw_edges.pl registry rows whose key params are correlated within one row.
+CW_ACCOMMODATION_REGISTRY_RE = re.compile(
+    r"rule\(cw_accommodation, registry\(([a-z_]+:[a-z_]+/\d+),(\w+),")
+CW_EXEC_PRACTICE_RE = re.compile(
+    r"rule\(cw_executable_practice, \(source_executable_practice_witness\("
+    r"(\w+),[a-z_]+:[a-z_]+/\d+,\w+,(\w+),")
+CW_FSM_ENGINE_VARIANT_RE = re.compile(
+    r"rule\(cw_fsm_engine, fsm_engine_variant\((\w+),([a-z_]+:[a-z_]+/\d+),")
+CW_ORR_ENTRY_REGISTRY_RE = re.compile(
+    r"rule\(cw_orr_entry, registry\((\w+),[a-z_]+:[a-z_]+/\d+,\w+,(\w+),")
+# formal/incompatibility/defeasible_inference.pl material_inference/3 rows
+# (multiline; id, premises list, conclusion sent verbatim as term strings).
+DEFEASIBLE_MATERIAL_INFERENCE_RE = re.compile(
+    r"^material_inference\((\w+),\s*(\[.*?\]),\s*(.*?)\)\.\s*$",
+    re.MULTILINE | re.DOTALL)
+# knowledge/strategies/math action-pair fact tables (addition + fraction).
+ACTION_CLUSTER_ROW_RE = re.compile(r"^action_cluster\((\w+),\s*(\w+)\)",
+                                   re.MULTILINE)
+FRACTION_ACTION_CLUSTER_ROW_RE = re.compile(
+    r"^fraction_action_cluster\((\w+),\s*(\w+)\)", re.MULTILINE)
+PRODUCTIVE_DEFORMATION_ROW_RE = re.compile(
+    r"^productive_deformation\(\s*(\w+),\s*(\w+),\s*(\w+)\)", re.MULTILINE)
+PRODUCTIVE_FRACTION_DEFORMATION_ROW_RE = re.compile(
+    r"^productive_fraction_deformation\(\s*(\w+),\s*(\w+),\s*(\w+)\)",
+    re.MULTILINE)
+ACTION_VOCABULARY_KEY_RE = re.compile(r"^action_vocabulary\(\s*(\w+),",
+                                      re.MULTILINE)
+FRACTION_ACTION_VOCABULARY_KEY_RE = re.compile(
+    r"^fraction_action_vocabulary\(\s*(\w+),", re.MULTILINE)
+# knowledge/misconceptions/misconception_registry.pl attested_misconception/5
+# (Name, Operation, ...); the line-start anchor skips the clause-body use.
+ATTESTED_MISCONCEPTION_ROW_RE = re.compile(
+    r"^attested_misconception\(\s*(\w+),\s*(\w+),", re.MULTILINE)
+# formal/formalization/grounding_metaphors.pl fact tables.
+GROUNDING_METAPHOR_DEF_RE = re.compile(
+    r"^base_grounding_metaphor_definition\(\s*(\w+),\s*(\w+),\s*(\w+),",
+    re.MULTILINE)
+GROUNDS_INFERENCE_RE = re.compile(r"^grounds_inference\(\s*(\w+),\s*(\w+)",
+                                  re.MULTILINE)
+# formal/pml/mua_relations.pl metaphor_breaks_at/2 (short metaphor names).
+METAPHOR_BREAKS_AT_RE = re.compile(r"^metaphor_breaks_at\(\s*(\w+),\s+(\w+)\)\.",
+                                   re.MULTILINE)
+# formal/learner/meta_interpreter.pl is_modal_operator/2: the four PML
+# polarity operators; the witness takes '<operator>(<any term>)'.
+IS_MODAL_OPERATOR_RE = re.compile(r"^is_modal_operator\((\w+)\(_\), (\w+)\)\.",
+                                  re.MULTILINE)
+# knowledge/geometry fact tables the run-2 claim_id/concept pools missed.
+CONCEPT_RELATION_ROW_RE = re.compile(
+    r"^concept_relation\(\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\)", re.MULTILINE)
+GEOM_MISCONCEPTION_ID_RE = re.compile(r"^geom_misconception\(\s*(\w+)",
+                                      re.MULTILINE)
+VAN_HIELE_CLAIM_RE = re.compile(r"^van_hiele_material_claim\(\s*(\w+)",
+                                re.MULTILINE)
+# knowledge/standards/indiana/standard_k_ns_4.pl known_pattern/2 first args.
+KNOWN_PATTERN_RE = re.compile(r"^known_pattern\(\s*([a-z_]+\(\d+\)),",
+                              re.MULTILINE)
+# formal/pml/rhythm_axioms.pl rhythm_transition/2 rows (single-line facts).
+RHYTHM_TRANSITION_RE = re.compile(r"^rhythm_transition\((s\(\w+\)),\s*(.+?)\)\.",
+                                  re.MULTILINE)
+
+# The minimal event dict hermes/event_scoring.pl score_event/2 accepts (every
+# required nested key present), from the verified domain report.
+EVENT_SCORE_EVENT = {
+    "event_id": "e1",
+    "actor": {"role": "student", "pseudonym": "Quill"},
+    "substrate": {"utterance_type": "claim"},
+    "pml": {"status": "stable", "validity_focus": "subjective",
+            "pragmatic_horizon_level": 1},
+    "carspecken": {"recognition_risk": "low", "proprioceptive_delta": "stable"},
+    "symbolic": {"commitments": ["counts_by_ones"], "incompatibilities": []},
+}
+
+# ---------------------------------------------------------------------------
+# Run-3 authored tuple lists. Authored lists are honest here because these
+# key spaces are computed by the witness (arithmetic re-derived, budgets
+# compared, proofs re-walked, dynamic state read) or the enum lives in code —
+# no fact file enumerates them, so a regex harvest would have nothing to
+# read. Tuples copied from the 2026-08-22 verified domain reports; each entry
+# names the backing rule. Number-typed params carry JSON numbers, a
+# deliberate deviation from the all-strings tuple convention.
+AUTHORED_TUPLE_DOMAINS = {
+    # cw_edges.pl cw_godel_primes: query is an is_prime/1, nth_prime/1, or
+    # product_of_list/1 term; automata / sequent_engine re-derive the trace.
+    "godel_primes_witness": (("query", "source"), [
+        ("is_prime(7)", "automata"),
+        ("nth_prime(3)", "automata"),
+        ("product_of_list([2,3,5])", "sequent_engine"),
+    ], "tuple"),
+    # cw_edges.pl cw_grounded_arith: executes the grounded op under a cost
+    # snapshot; output must unify with the computed result (tally
+    # recollections, never integers).
+    "grounded_arith_witness": (("operation", "inputs", "output", "source"), [
+        ("add", "[recollection([tally]),recollection([tally])]",
+         "recollection([tally,tally])", "grounded_arithmetic"),
+        ("subtract", "[recollection([tally,tally]),recollection([tally])]",
+         "recollection([tally])", "grounded_arithmetic"),
+        ("successor", "[recollection([tally])]",
+         "recollection([tally,tally])", "grounded_arithmetic"),
+    ], "tuple"),
+    # cw_edges.pl cw_domain_context: reads the CURRENT sequent_engine domain
+    # (default n) — dynamic state, not a fact table; the default-state pairs.
+    "domain_context_witness": (("domain", "context", "source"), [
+        ("n", "not_projected_by_source", "domain_atom"),
+        ("not_projected_by_source", "natural_numbers", "domain_context"),
+    ], "tuple"),
+    # cw_edges.pl cw_mua_coherence: scores free corpus text against
+    # mua_relations:kind_vocabulary_terms/2 — a det computed scorer.
+    "mua_coherence_witness": (("subject", "input", "source"), [
+        ("unit_fraction_iteration",
+         "iterate the unit fraction against the referent whole",
+         "pml_vocabulary"),
+        ("count_on_from_larger", "count on from the larger addend",
+         "pml_vocabulary"),
+    ], "tuple"),
+    # cw_edges.pl cw_normative_crisis: a non-mutating guard over
+    # axioms_domains.pl prohibition/2 under the current domain (default n).
+    "normative_crisis_witness": (("context", "goal", "source"), [
+        ("natural_numbers", "subtract(1,2,-1)", "prohibition"),
+        ("natural_numbers", "subtract(3,5,_)", "prohibition"),
+    ], "tuple"),
+    # cw_edges.pl cw_unit_coordination strategy_compose lane: the family rule
+    # hard-codes the compose(2,3) ground demo — exactly one tuple exists.
+    "unit_coordination_witness": (("key", "detail", "source"), [
+        ("compose(2,3)", "composite(6)", "strategy_compose"),
+    ], "tuple"),
+    # dispatch_spec viability_witness: embodied_prover / meta_interpreter
+    # check_viability/2 over any numbers with resources >= cost.
+    "viability_witness": (("resources", "cost", "source"), [
+        (5, 1, "embodied_prover"),
+        (10, 10, "meta_interpreter"),
+    ], "tuple"),
+    # formal/tools/axiom_pack_audit.pl hierarchy_proof_witness/2 clause
+    # heads: five term shapes re-proved on call, not fact rows.
+    "axiom_hierarchy_witness": (("kind",), [
+        ("domain_expansion(n_to_z)",),
+        ("geometry_cover(square, rectangle)",),
+        ("number_theory_self_defeat([2,3,5])",),
+    ], "tuple"),
+    # mua_relations:kind_mua_coherence_witness/4: det scorer over any
+    # (kind, text); row_text is a json param and must stay a plain string.
+    "mua_kind_coherence_witness": (("kind", "row_text"), [
+        ("count_on_from_larger", "count on"),
+        ("fraction", "unit fraction"),
+    ], "tuple"),
+    # hermes/event_scoring.pl score_event/2: a structured event dict, not an
+    # enumerable key space.
+    "event_score": (("event",), [(EVENT_SCORE_EVENT,)], "tuple"),
+    "batch_event_score": (("events",), [([EVENT_SCORE_EVENT],)], "tuple"),
+    # formal/dialectic/critique.pl bad_infinite_witness/2: needs a cyclic
+    # comp_nec proof term; the canonical t_b/t_n bad-infinite cycle.
+    "critique_bad_infinite": (("proof",), [
+        ("proof(pml_rhythm(s(t_b) => s(comp_nec(t_n))), "
+         "([s(t_b)] => [s(comp_nec(t_n))]), "
+         "[proof(pml_rhythm(s(t_n) => s(comp_nec(t_b))), "
+         "([s(t_n)] => [s(comp_nec(t_b))]), "
+         "[proof(pml_rhythm(s(t_b) => s(comp_nec(t_n))), "
+         "([s(t_b)] => [s(comp_nec(t_n))]), [])])])",),
+    ], "tuple"),
+    # formal/sequent/embodied_prover.pl proves_witness/5: the identity
+    # sequent always proves under a finite budget (resources is a number).
+    "embodied_proof_witness": (("sequent", "resources"), [
+        ("([a] => [a])", 10),
+    ], "tuple"),
+    # sequent_engine:incoherent_witness/2: a plain negation pair is the
+    # minimal incoherent context.
+    "incoherent_witness": (("context",), [("[p, neg(p)]",)], "tuple"),
+    # incompatibility_sets:incompatibility_entailment_witness: the identity
+    # replacement always preserves joint incompatibility; non-identity
+    # positive pairs must be mined from the profiles themselves.
+    "incompatibility_entailment_witness": (("replacement", "replaced"), [
+        ("misconception(count_all_when_count_on_available)",
+         "misconception(count_all_when_count_on_available)"),
+    ], "tuple"),
+    # formal/pml/intersubjective_praxis.pl mutual-recognition clause:
+    # participant atoms are free but must differ.
+    "intersubjective_material_witness": (("from", "to"), [
+        ("[n(confession(alice)), n(confession(bob))]",
+         "n(exp_nec(forgiveness(alice, bob)))"),
+    ], "tuple"),
+    # formal/formalization/axioms_robinson.pl robinson_axiom_witness/3:
+    # claim must unify with the axiom clause's shape with integer bindings.
+    "robinson_axiom_witness": (("axiom", "claim"), [
+        ("q3_zero_or_successor", "o(eq(4, succ(3)))"),
+    ], "tuple"),
+    # formal/formalization/axioms_geometry.pl rejection profiles: entailment
+    # holds iff the entailer rejects every restriction the entailed rejects;
+    # identity and X->quadrilateral hold for every shape.
+    "geometry_entailment_witness": (("entailer", "entailed"), [
+        ("square", "rectangle"),
+        ("rhombus", "rhombus"),
+        ("kite", "quadrilateral"),
+    ], "tuple"),
+    # knowledge/geometry/concepts/quadrilateral_incompatibility.pl
+    # quad_rejects/2 profiles, same entailment rule as above.
+    "geometry_quadrilateral_entailment_witness": (("entailer", "entailed"), [
+        ("square", "rectangle"),
+        ("trapezoid", "trapezoid"),
+        ("rhombus", "quadrilateral"),
+    ], "tuple"),
+    # standard_k_ns_3: counts the supplied list and its reverse — any finite
+    # atom list serves.
+    "standard_k_ns_3_order_independence_witness": (("objects",), [
+        ("[apple, pear, plum]",),
+    ], "tuple"),
+    # standard_k_ns_5_6: grounded counting over two supplied finite lists.
+    "standard_k_ns_5_6_compare_groups_witness": (("group_a", "group_b"), [
+        ("[a, b, c]", "[x, y]"),
+    ], "tuple"),
+    # incompatibility_discovery:classify_candidate_set_witness/4 over the
+    # finite scratch programs; set is list-typed (the 08-22 defect fix) and a
+    # Prolog-list string parses via json_to_term.
+    "incompatibility_discovery_witness": (("context", "set"), [
+        ("finite_three_rule_program",
+         "[rule(a_requires_b), rule(b_requires_c), rule(a_forbids_c)]"),
+        ("finite_loop_program", "[rule(loop_self)]"),
+    ], "tuple"),
+    # teacher_layer/2 is det over any practice atom; counting_on is the
+    # report-verified practice.
+    "teacher_layer": (("practice",), [("counting_on",)], "tuple"),
+    # trace_adjudication: the ledger is a STRICT dict with exactly
+    # {proposals, adjudications}; the empty ledger is the cheap key.
+    "trace_adjudication": (("utterances", "ledger"), [
+        ([{"id": "u1", "speaker": "T", "text": "um, what did you notice?"}],
+         {"proposals": [], "adjudications": []}),
+    ], "tuple"),
+    # misconception_jumps_witness: the one deformation family whose trace
+    # parses to number-line jumps today (trace_step_jump/2); a, b integers.
+    "misconception_jumps_witness": (("operation", "deformation", "a", "b"), [
+        ("addition", "round_without_adjusting", 38, 27),
+    ], "tuple"),
+    # hermes/pair_scoring.pl pair_reason_witness/4: the pair needs a shared
+    # pairing reason; shared source.metadata domain+topic supplies two.
+    "pair_candidate_witness": (("event_a", "event_b"), [
+        ({"event_id": "e1",
+          "actor": {"role": "student", "pseudonym": "Quill"},
+          "source": {"metadata": {"domain": "fractions",
+                                  "topic": "unit_fractions"}}},
+         {"event_id": "e2",
+          "actor": {"role": "student", "pseudonym": "Sable"},
+          "source": {"metadata": {"domain": "fractions",
+                                  "topic": "unit_fractions"}}}),
+    ], "tuple"),
+    # notation_render: kind enum lives in code; everything else defaulted.
+    "notation_render": (("kind",), [("write_equation",), ("mirror_written",)],
+                        "tuple"),
+    # compute: the four grounded operations with integer operands.
+    "compute": (("operation", "a", "b", "limit", "mode"), [
+        ("add", 3, 4, 50, "direct"),
+        ("subtract", 7, 3, 50, "direct"),
+        ("multiply", 3, 4, 50, "direct"),
+        ("divide", 12, 3, 50, "direct"),
+    ], "tuple"),
+    # canonical_check classifies any functor-name list; never refuses.
+    "canonical_check": (("terms",), [(["add_grounded"],)], "tuple"),
+    # brandomian_check computes b_incoherent over any commitment list.
+    "brandomian_check": (("commitments",), [(["p", "neg(p)"],)], "tuple"),
+    # carving_strategy_proof: a true fact of the operation with a productive
+    # proof in the carving store.
+    "carving_strategy_proof": (("operation", "x", "y", "z"), [
+        ("add", 2, 3, 5),
+    ], "tuple"),
+    # balance_solve_witness: one-unknown balance a*x + b = c with a
+    # non-negative integer solution.
+    "balance_solve_witness": (("a", "b", "c"), [(3, 4, 7)], "tuple"),
+    # deontic_scorekeeper requires_entitlement_fact/1: today the arity-6
+    # result_of(cross_multiply, ...) shape.
+    "deontic_requires_entitlement": (("proposition",), [
+        ("result_of(cross_multiply, 2, 3, 4, 6, ok)",),
+    ], "tuple"),
+    # fraction_cgi_addition: a CGI addition automaton over same-denominator
+    # fraction operands.
+    "fraction_cgi_addition": (("kind", "na", "nb", "d"), [
+        ("count_on_from_larger", 7, 8, 10),
+    ], "tuple"),
+    # fraction_comparison_compare: 12-family enum in hermes_worker.pl
+    # fraction_comparison_family/1 with per-family strict arg counts; only
+    # the report-verified four-int family is authored.
+    "fraction_comparison_compare": (("family", "n1", "d1", "n2", "d2"), [
+        ("number_line_fraction_comparison", 1, 3, 2, 3),
+    ], "tuple"),
+    # fraction_render: arith is the fully-defaulted kind.
+    "fraction_render": (("kind",), [("arith",)], "tuple"),
+    # dispatch_geometry/4 (hermes_worker.pl): predicate + positional args.
+    "geometry": (("predicate", "args"), [
+        ("matching_concepts", [["ruler", "units"], "any"]),
+    ], "tuple"),
+}
+
 
 def _standard_pairs(rel: str, framework: str, log) -> list[tuple[str, str]]:
     text = _read(rel, log)
@@ -522,6 +886,248 @@ def harvest_tuple_domains(log) -> dict[str, tuple[tuple[str, ...], list, str]]:
             sequent = "=>([comp_nec(a)],[comp_nec(a)])"
             domains["sequent_proof_witness"] = (
                 ("sequent", "source"), [(sequent, s) for s in sources], "tuple")
+
+    # ---- Run-3 (2026-08-22): domains for the 08-19 audit's full-refusal
+    # ops, per the two verified domain reports. Correlated params come from
+    # the SAME fact row throughout; the two deliberate crosses (claim
+    # canonicals x 'literature_commitment', axiom packs x the two store
+    # readers) pair a harvested key with a fixed always-live lane the reports
+    # verified, not with another harvested pool.
+    if edges_text:
+        # The ten cw_edges claim families: canonical enum from the family's
+        # own claim rows, source fixed to the literature_commitment lane.
+        for op, rx in CW_EDGE_CLAIM_FAMILIES:
+            canonicals = sorted(set(rx.findall(edges_text)))
+            if canonicals:
+                domains[op] = (
+                    ("canonical", "source"),
+                    [(c, "literature_commitment") for c in canonicals],
+                    "tuple")
+        # cw_accommodation registry/6 rows: (target, source) from one row;
+        # target is a Module:Name/Arity term string.
+        pairs = CW_ACCOMMODATION_REGISTRY_RE.findall(edges_text)
+        if pairs:
+            domains["accommodation_witness"] = (("target", "source"), pairs,
+                                                "tuple")
+        # cw_executable_practice source_executable_practice_witness heads:
+        # (variant, source) from one head; the predicate and practice_kind
+        # slots are dropped by dispatch.
+        pairs = CW_EXEC_PRACTICE_RE.findall(edges_text)
+        if pairs:
+            domains["executable_practice_witness"] = (("variant", "source"),
+                                                      pairs, "tuple")
+        # cw_fsm_engine fsm_engine_variant rows: (source, descriptor);
+        # descriptor is a Module:Name/Arity term string.
+        pairs = [(d, s) for s, d in CW_FSM_ENGINE_VARIANT_RE.findall(edges_text)]
+        if pairs:
+            domains["fsm_engine_witness"] = (("descriptor", "source"), pairs,
+                                             "tuple")
+        # cw_orr_entry registry/7 rows: (variant, source) from one row.
+        pairs = CW_ORR_ENTRY_REGISTRY_RE.findall(edges_text)
+        if pairs:
+            domains["orr_entry_witness"] = (("variant", "source"), pairs,
+                                            "tuple")
+    # The four claim families with their own module: canonical enum from the
+    # family's own claim table, same literature_commitment lane.
+    for op, rel, rx in CW_MODULE_CLAIM_FAMILIES:
+        text = _read(rel, log)
+        if text:
+            canonicals = sorted(set(rx.findall(text)))
+            if canonicals:
+                domains[op] = (
+                    ("canonical", "source"),
+                    [(c, "literature_commitment") for c in canonicals],
+                    "tuple")
+
+    # material_inference_witness, source='defeasible' (the plain fact-table
+    # lane): defeasible_inference.pl material_inference/3 rows sent verbatim
+    # as term strings.
+    text = _read("formal/incompatibility/defeasible_inference.pl", log)
+    if text:
+        tuples = [(mid, prem, concl, "defeasible")
+                  for mid, prem, concl in
+                  DEFEASIBLE_MATERIAL_INFERENCE_RE.findall(text)]
+        if tuples:
+            domains["material_inference_witness"] = (
+                ("inference_id", "premises", "conclusion", "source"), tuples,
+                "tuple")
+
+    # The action-pair fact tables back four ops at once; read both files one
+    # time each. Backing predicates: action_cluster/2 +
+    # productive_deformation/3 + action_vocabulary/2 (sar_add_action_pairs.pl,
+    # operation addition) and their fraction_* twins
+    # (fraction_action_pairs.pl, operation fraction).
+    add_text = _read("knowledge/strategies/math/sar_add_action_pairs.pl", log)
+    frac_text = _read("knowledge/strategies/math/fraction_action_pairs.pl", log)
+    cluster_tuples = []
+    deformation_tuples = []
+    incompat_tuples = []
+    vocab_tuples = []
+    if add_text:
+        cluster_tuples += [("addition", kind, cluster, "addition_pairs")
+                           for kind, cluster in
+                           ACTION_CLUSTER_ROW_RE.findall(add_text)]
+        for prod, deform, family in \
+                PRODUCTIVE_DEFORMATION_ROW_RE.findall(add_text):
+            deformation_tuples.append(("addition", prod, deform, family,
+                                       "registry"))
+            # misconception_incompatibility_witness keys the registered
+            # action_automaton_pair rows: move=Deformation,
+            # conflict=strategy(Operation, Productive) — same fact row.
+            incompat_tuples.append((deform, f"strategy(addition,{prod})"))
+        vocab_tuples += [(key, "additive_action")
+                         for key in ACTION_VOCABULARY_KEY_RE.findall(add_text)]
+    if frac_text:
+        cluster_tuples += [("fraction", kind, cluster, "fraction_pairs")
+                           for kind, cluster in
+                           FRACTION_ACTION_CLUSTER_ROW_RE.findall(frac_text)]
+        fraction_kinds = []
+        for prod, deform, family in \
+                PRODUCTIVE_FRACTION_DEFORMATION_ROW_RE.findall(frac_text):
+            deformation_tuples.append(("fraction", prod, deform, family,
+                                       "registry"))
+            incompat_tuples.append((deform, f"strategy(fraction,{prod})"))
+            fraction_kinds.append(prod)
+        vocab_tuples += [(key, "fraction_action") for key in
+                         FRACTION_ACTION_VOCABULARY_KEY_RE.findall(frac_text)]
+        # fraction_compare keys the productive kinds of the same pair table;
+        # a and b are free integers (the op's own defaults).
+        if fraction_kinds:
+            domains["fraction_compare"] = (
+                ("kind", "a", "b"), [(k, 5, 3) for k in fraction_kinds],
+                "tuple")
+    if cluster_tuples:
+        domains["action_cluster_witness"] = (
+            ("operation", "kind", "cluster", "source"), cluster_tuples, "tuple")
+    if deformation_tuples:
+        domains["productive_deformation_witness"] = (
+            ("operation", "productive", "deformation", "family", "source"),
+            deformation_tuples, "tuple")
+    if incompat_tuples:
+        domains["misconception_incompatibility_witness"] = (
+            ("move", "conflict"), incompat_tuples, "tuple")
+    if vocab_tuples:
+        domains["practice_vocabulary_witness"] = (("key", "source"),
+                                                  vocab_tuples, "tuple")
+
+    # misconception_hook_witness, source='literature_registry' (the
+    # enumerable lane): attested_misconception/5 rows; outcome wraps the
+    # row's own name and family MUST equal the row's operation.
+    text = _read("knowledge/misconceptions/misconception_registry.pl", log)
+    if text:
+        tuples = [(op_, f"misconception({name})", op_, "literature_registry")
+                  for name, op_ in ATTESTED_MISCONCEPTION_ROW_RE.findall(text)]
+        if tuples:
+            domains["misconception_hook_witness"] = (
+                ("operation", "outcome", "family", "source"), tuples, "tuple")
+
+    # grounding_metaphor_witness (definition lane): the anchor is authored
+    # from the SAME base_grounding_metaphor_definition/4 row as
+    # domains(Source,Target). grounding_inference_witness:
+    # grounds_inference/3 (metaphor, inference) pairs from the same file.
+    text = _read("formal/formalization/grounding_metaphors.pl", log)
+    if text:
+        tuples = [(met, f"domains({src},{tgt})", "definition")
+                  for met, src, tgt in GROUNDING_METAPHOR_DEF_RE.findall(text)]
+        if tuples:
+            domains["grounding_metaphor_witness"] = (
+                ("metaphor", "anchor", "source"), tuples, "tuple")
+        pairs = sorted(set(GROUNDS_INFERENCE_RE.findall(text)))
+        if pairs:
+            domains["grounding_inference_witness"] = (
+                ("metaphor", "inference"), pairs, "tuple")
+
+    # metaphor_break_witness, source='mua' (the enumerable lane):
+    # mua_relations.pl metaphor_breaks_at/2; detail fixed 'none'.
+    text = _read("formal/pml/mua_relations.pl", log)
+    if text:
+        tuples = [(met, inf, "none", "mua")
+                  for met, inf in METAPHOR_BREAKS_AT_RE.findall(text)]
+        if tuples:
+            domains["metaphor_break_witness"] = (
+                ("metaphor", "inference", "detail", "source"), tuples, "tuple")
+
+    # modal_context_witness: meta_interpreter.pl is_modal_operator/2 — the
+    # four PML polarity operators wrapping any inner term.
+    text = _read("formal/learner/meta_interpreter.pl", log)
+    if text:
+        tuples = [(f"{operator}(p)", context, "meta_interpreter")
+                  for operator, context in IS_MODAL_OPERATOR_RE.findall(text)]
+        if tuples:
+            domains["modal_context_witness"] = (
+                ("term", "context", "source"), tuples, "tuple")
+
+    # axiom_pack_witness: default_axiom_pack/1 in sequent_engine.pl is the
+    # load-time enabled set; enabled_predicate and enabled_store read the
+    # same dynamic store, so crossing them is deliberate, not a correlated-
+    # row violation. ('core', the cw_edges edge sample, is NOT default-
+    # enabled — the run-2 pool trap this replaces.)
+    text = _read("formal/sequent/sequent_engine.pl", log)
+    if text:
+        packs = sorted(set(DEFAULT_AXIOM_PACK_RE.findall(text)))
+        if packs:
+            domains["axiom_pack_witness"] = (
+                ("pack", "source"),
+                [(p, s) for p in packs
+                 for s in ("enabled_predicate", "enabled_store")], "tuple")
+
+    # geometry_cross_link_witness: concept_relation/4 rows (multiline); the
+    # authored status arg is left to its dispatch default, which matches
+    # every row.
+    text = _read("knowledge/geometry/concepts/cross_links.pl", log)
+    if text:
+        tuples = [(src, rel_, tgt) for src, rel_, tgt, _status in
+                  CONCEPT_RELATION_ROW_RE.findall(text)]
+        if tuples:
+            domains["geometry_cross_link_witness"] = (
+                ("source", "relation", "target"), tuples, "tuple")
+
+    # geometry_measurement_misconception_witness: geom_misconception/6 heads
+    # whose clause lives in measurement.pl (the witness filters by clause
+    # file) — the run-2 claim_id pool never held this id.
+    text = _read("knowledge/geometry/concepts/measurement.pl", log)
+    if text:
+        ids = sorted(set(GEOM_MISCONCEPTION_ID_RE.findall(text)))
+        if ids:
+            domains["geometry_measurement_misconception_witness"] = (
+                ("id_value",), [(i,) for i in ids], "tuple")
+
+    # geometry_van_hiele_material_witness: van_hiele_material_claim/5 first
+    # args live outside the concepts dir the run-2 claim_id pool reads.
+    text = _read("knowledge/geometry/van_hiele/transitions.pl", log)
+    if text:
+        ids = sorted(set(VAN_HIELE_CLAIM_RE.findall(text)))
+        if ids:
+            domains["geometry_van_hiele_material_witness"] = (
+                ("claim_id",), [(i,) for i in ids], "tuple")
+
+    # standard_k_ns_4_verify_subitizing_witness: known_pattern/2 first args
+    # (dice/fingers/ten_frame terms).
+    text = _read("knowledge/standards/indiana/standard_k_ns_4.pl", log)
+    if text:
+        patterns = sorted(set(KNOWN_PATTERN_RE.findall(text)))
+        if patterns:
+            domains["standard_k_ns_4_verify_subitizing_witness"] = (
+                ("pattern",), [(p,) for p in patterns], "tuple")
+
+    # rhythm_transition_witness: rhythm_axioms.pl rhythm_transition/2 direct
+    # modal pairs, sent verbatim (requires axiom_pack_enabled(rhythm), which
+    # holds on a stock worker).
+    text = _read("formal/pml/rhythm_axioms.pl", log)
+    if text:
+        pairs = RHYTHM_TRANSITION_RE.findall(text)
+        if pairs:
+            domains["rhythm_transition_witness"] = (("from", "to"), pairs,
+                                                    "tuple")
+
+    # Authored tuple lists last; a harvested domain for the same op would be
+    # a programming error, so keep the harvest and say so.
+    for op, entry in AUTHORED_TUPLE_DOMAINS.items():
+        if op in domains:
+            log(f"authored domain for {op} collides with a harvested one; "
+                f"keeping the harvested domain")
+            continue
+        domains[op] = entry
 
     for op, (names, tuples, cls) in sorted(domains.items()):
         log(f"tuple domain {op}: {len(tuples)} {'+'.join(names)} tuples ({cls})")

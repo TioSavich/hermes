@@ -298,12 +298,26 @@ def render_held(reason: str, detail: Any) -> str:
     # section 13 amendment, which stopped consulting verdicts for
     # disposition at all. The closed taxonomy going forward is purely
     # deterministic.
+    #
+    # 2026-08-22 admission pass, two new labels-lane reasons:
+    # span_truncates_quote (the span cuts a quotation off before the
+    # source closes it) and region_conflict_rederived (one printed span
+    # recorded under two region types; the source page's nearest
+    # preceding heading re-derived one winner, named in the argument, or
+    # no argument when the page carries no heading to read). Keep this
+    # set, the two stores' valid_held_reason/1 blocks, and stage 0's
+    # reason names in step together.
     bare = {
         "source_missing", "source_sha_drift", "source_unreadable", "span_mismatch",
         "not_interrogative", "malformed_text", "label_rule_mismatch", "duplicate_span",
+        "span_truncates_quote",
     }
     if reason in bare:
         return f"held({reason})"
+    if reason == "region_conflict_rederived":
+        if detail is None:
+            return "held(region_conflict_rederived)"
+        return f"held(region_conflict_rederived({prolog_atom(detail)}))"
     raise ValueError(f"held reason outside the closed taxonomy: {reason}")
 
 
@@ -351,7 +365,13 @@ def disposition_for_row(
     relationship to contradict.
     """
     if row["det"] == "held":
-        return Disposed(row, "held", row["held_reason"], None, None, ("none", None))
+        detail = None
+        if row["held_reason"] == "region_conflict_rederived":
+            # The winning region the source page's own heading re-derived,
+            # when one exists; a conflict the page could not settle carries
+            # no argument.
+            detail = row.get("held_detail", {}).get("winning_region")
+        return Disposed(row, "held", row["held_reason"], detail, None, ("none", None))
 
     label_origin = row["anchor"]["label_origin"]
     builder_script = GUIDE_BUILDER_SCRIPT if is_guide_lane else LABELS_BUILDER_SCRIPT
@@ -622,9 +642,11 @@ LABELS_CHECK_CODE_TEMPLATE = """
 %  printed_region row's region argument re-derived from its own anchor
 %  field), testimony against valid_testimony/1, receipts against the
 %  warrant's fixed list, held reasons against the closed taxonomy, anchor
-%  consistency among author_heading rows (a span with two conflicting
-%  labels must have every claimant held(duplicate_span) -- printed_region
-%  rows assert no label to conflict over, so they are not checked here),
+%  consistency among author_heading rows (no two admitted author_heading
+%  rows at one anchor may disagree; a span recorded under two conflicting
+%  region types admits at most its re-derived winner, the rest holding
+%  region_conflict_rederived -- printed_region rows assert no label to
+%  conflict over, so they are not checked here),
 %  and the summary counts against the rows themselves. Throws a named
 %  error on the first claim that fails to reproduce.
 check_admitted_question_labels :-
@@ -751,17 +773,27 @@ check_held_labels_row(Lesson, _StoredLabel, _Text, _Anchor,
     ;  throw(error(admitted_teacher_question_labels(bad_held_reason(Lesson, Reason)), _))
     ).
 
+% duplicate_span is extinct in this lane as of the 2026-08-22 admission
+% pass: a span recorded under two conflicting region types is settled by
+% the source page's own nearest preceding heading -- the matching row
+% admits, the rest hold under region_conflict_rederived, which names the
+% winning region when the page carries a heading to read and no argument
+% when it does not. span_truncates_quote holds a row whose span cuts a
+% quotation off before the source closes it.
 valid_held_reason(source_missing).
 valid_held_reason(source_sha_drift).
 valid_held_reason(span_mismatch).
 valid_held_reason(not_interrogative).
 valid_held_reason(malformed_text).
 valid_held_reason(label_rule_mismatch).
-valid_held_reason(duplicate_span).
+valid_held_reason(span_truncates_quote).
+valid_held_reason(region_conflict_rederived).
+valid_held_reason(region_conflict_rederived(Region)) :- atom(Region).
 
-%  A span claimed with two different labels must have every claimant
-%  held(duplicate_span) -- no two admitted author_heading rows at the same
-%  anchor may disagree. Scoped to warrant(im_author_heading) rows only:
+%  No two admitted author_heading rows at the same anchor may disagree
+%  (a span recorded under two conflicting region types admits at most the
+%  member the source page's own heading re-derived; the rest hold
+%  region_conflict_rederived). Scoped to warrant(im_author_heading) rows only:
 %  printed_region rows assert no label (their argument is region(_), not
 %  assessing/advancing), so two of them differing in region at a shared
 %  span is not a contradiction the way a differing function claim would
@@ -1240,6 +1272,21 @@ def build_labels_store(
         "argument's place, asserting only the verified position, never a",
         "function claim. Held rows stay in this store, forever queryable,",
         "never deleted.",
+        "",
+        "What counts as a question (2026-08-22 admission pass): a row admits",
+        "when its printed text carries at least one complete question -- a",
+        "question mark closing a sentence. Glosses, sample responses, and",
+        "follow-on instructions IM prints with the question ride along",
+        "verbatim rather than disqualifying the row, and IM's own mixed",
+        "quotation typography -- a curly opener closed by a straight quote, a",
+        "quote the source never closes -- is typography, not a defect. Rows",
+        "whose text carries no question at all stay held (not_interrogative).",
+        "The same pass named two further holds: span_truncates_quote, a span",
+        "that cuts a quotation off before the source closes it, and",
+        "region_conflict_rederived, one printed span recorded under two",
+        "region types, where the region the page's own nearest preceding",
+        "heading re-derives admits and the others hold with the winner named",
+        "(or with none named, when the page carries no heading to read).",
         "",
         f"Inputs: candidates.jsonl sha256 {input_shas['candidates']}, "
         f"verdicts file sha256 {input_shas['verdicts']}, "

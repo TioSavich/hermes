@@ -55,6 +55,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -75,6 +76,19 @@ CANDIDATES_PATH = OUT_DIR / "candidates.jsonl"
 MODEL_INPUT_PATH = OUT_DIR / "model_input.jsonl"
 PILOT_KEY_PATH = OUT_DIR / "pilot_key.jsonl"
 
+# The guide lane's per-row anchors (D1/D2/D7) live under this gitignored
+# docling tree. Nothing tracked may hard-require a gitignored input, and a
+# rebuild without the tree would hold every guide row as source_missing --
+# replacing the only good candidates.jsonl with a degraded one. When the
+# tree is absent, main() prints one SKIP line and writes nothing.
+GUIDE_DOCLING_ROOT = (
+    ROOT / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides"
+)
+DOCLING_SKIP_LINE = (
+    "SKIP build_admission_candidates: docling guide anchors absent; "
+    "existing outputs retained"
+)
+
 GRADE_TOKENS = ("k", "1", "2", "3", "4", "5", "6", "7", "8")
 GRADE_MODULES = tuple(f"grade_{token}_extracted_guide_questions" for token in GRADE_TOKENS)
 
@@ -83,6 +97,31 @@ GRADE_MODULES = tuple(f"grade_{token}_extracted_guide_questions" for token in GR
 # question's trailing quote against (scripts/research/extract_lesson_context
 # .py); reused here for both lanes, not reinvented per lane.
 QUOTE_AND_SPACE_CHARS = " \t\r\n'\"‘’“”"
+
+# The double-quote glyphs IM's guides print interchangeably: the straight
+# quote and the two curly quotes. Measured against the live corpus
+# (2026-08-22): the guides wrap one question in mixed pairs -- an opening
+# curly closed by a straight quote, two openers closed by one closer, a
+# closer used as an opener -- so these three glyphs form ONE wrapper class
+# for balance purposes. Which glyph opens and which closes is typesetting,
+# not meaning. Apostrophes and single quotes stay outside the class.
+QUOTE_WRAPPER_GLYPHS = '"“”'
+
+# When a question's quote never closes inside its extracted span, the
+# source itself decides between two readings (2026-08-22 ruling): if the
+# printed passage continues past the span and a wrapper glyph follows
+# before any structural break, the span cut the quotation short
+# (span_truncates_quote); if the source moves on to new content -- a
+# bullet, a blank line, a new section -- without ever closing the quote,
+# the lone opener is IM's own typography and the text is complete as
+# stored. This many characters of source are consulted past the span end.
+QUOTE_LOOKAHEAD_WINDOW = 300
+
+# The lower length floor (in glyph-stripped characters) for a question:
+# lowered from 8 to 4 on 2026-08-22 so a printed "Why?" admits. The upper
+# bound is unchanged.
+QUESTION_MIN_CHARS = 4
+QUESTION_MAX_CHARS = 500
 
 PILOT_LABELS_TARGET = 150
 PILOT_LABELS_MIN_ASSESSING = 40
@@ -220,17 +259,141 @@ def strip_outer(text: str) -> str:
     return text.strip(QUOTE_AND_SPACE_CHARS)
 
 
+def strip_trailing_glosses(text: str) -> str:
+    """Drop trailing parenthesized gloss(es) from a question's text.
+
+    IM prints sample responses and asides in parentheses directly after a
+    question -- "What parts did Diego break 4 into? (3 and 1)" -- and those
+    ride along verbatim in the stored text. For deciding whether the text
+    IS a question, each trailing "(...)" group and its surrounding
+    whitespace comes off; interior parentheses stay. If the whole text is
+    one parenthesized group, it is kept as it stands rather than emptied.
+    """
+    result = text.rstrip()
+    while result.endswith(")"):
+        depth = 0
+        start = None
+        for index in range(len(result) - 1, -1, -1):
+            char = result[index]
+            if char == ")":
+                depth += 1
+            elif char == "(":
+                depth -= 1
+                if depth == 0:
+                    start = index
+                    break
+        if start is None:
+            break
+        candidate = result[:start].rstrip()
+        if not candidate:
+            break
+        result = candidate
+    return result
+
+
+def has_sentence_terminal_question(text: str) -> bool:
+    """True when the text carries at least one sentence-terminal `?`.
+
+    A question mark is sentence-terminal when what follows it is the end
+    of the text, a closing quote glyph, or whitespace and then a capital
+    letter or an opening quote (the next printed sentence). A `?` followed
+    by a lowercase word or a digit is not one: those are activity titles
+    used mid-sentence ("the How Close? center") and counting continuations
+    ("What comes next? 4, 5, 6"), and they do not admit a row on their own.
+    """
+    for index, char in enumerate(text):
+        if char != "?":
+            continue
+        rest = text[index + 1:]
+        if not rest:
+            return True
+        if rest[0] in "\"”’'":
+            return True
+        if rest[0].isspace():
+            following = rest.lstrip()
+            if not following:
+                return True
+            if following[0].isupper() or following[0] in "\"“‘'":
+                return True
+    return False
+
+
 def interrogative_form_ok(text: str) -> bool:
-    stripped = strip_outer(text)
-    return stripped.endswith("?") and 8 <= len(stripped) <= 500
+    """2026-08-22 widening: a row's text is interrogative when, after its
+    trailing parenthesized glosses and outer quotes come off, it carries
+    at least one complete printed question. Instructions IM prints after
+    the question no longer disqualify the row; text with no sentence-
+    terminal question mark at all still does.
+    """
+    stripped = strip_outer(strip_trailing_glosses(text))
+    if not (QUESTION_MIN_CHARS <= len(stripped) <= QUESTION_MAX_CHARS):
+        return False
+    return has_sentence_terminal_question(stripped)
+
+
+def quote_glyphs_balanced(text: str) -> bool:
+    """Balance over the one wrapper class, honoring mixed typography.
+
+    An even count of wrapper glyphs is balanced regardless of which glyphs
+    pair with which. An odd count is still balanced when the text is
+    enclosed -- it begins and ends with wrapper glyphs -- and the interior
+    (after the enclosing runs) pairs off evenly: IM prints wrappers like
+    "..." closed by a curly quote, and a doubled opener with a single
+    closer, and neither is a defect. Everything else carries a genuinely
+    unpaired quote.
+    """
+    stripped = text.strip()
+    total = sum(1 for char in stripped if char in QUOTE_WRAPPER_GLYPHS)
+    if total % 2 == 0:
+        return True
+    if (
+        len(stripped) >= 2
+        and stripped[0] in QUOTE_WRAPPER_GLYPHS
+        and stripped[-1] in QUOTE_WRAPPER_GLYPHS
+    ):
+        lead = len(stripped) - len(stripped.lstrip(QUOTE_WRAPPER_GLYPHS))
+        trail = len(stripped) - len(stripped.rstrip(QUOTE_WRAPPER_GLYPHS))
+        return (total - lead - trail) % 2 == 0
+    return False
+
+
+def unpaired_leading_wrapper(text: str) -> bool:
+    """The one imbalance class the source lookahead adjudicates: the text
+    opens with a wrapper glyph, and the rest of its quotes pair off evenly
+    -- a lone opener with no closer. Any other imbalance stays malformed.
+    """
+    stripped = text.strip()
+    if not stripped or stripped[0] not in QUOTE_WRAPPER_GLYPHS:
+        return False
+    lead = len(stripped) - len(stripped.lstrip(QUOTE_WRAPPER_GLYPHS))
+    rest = sum(1 for char in stripped[lead:] if char in QUOTE_WRAPPER_GLYPHS)
+    return rest % 2 == 0
+
+
+def source_closes_quote(source_text: str, span_end: int) -> bool:
+    """Does the printed passage close the row's unclosed quote past its span?
+
+    Consults QUOTE_LOOKAHEAD_WINDOW characters of source beyond the span
+    end. A wrapper glyph found there closes the quote only when no
+    structural break -- a bullet, a blank line -- stands between the span
+    end and the glyph; a glyph past a break belongs to new content (the
+    next bulleted question, the next section), which means the source
+    itself never closes this quote.
+    """
+    window = source_text[span_end:span_end + QUOTE_LOOKAHEAD_WINDOW]
+    for index, char in enumerate(window):
+        if char in QUOTE_WRAPPER_GLYPHS:
+            between = window[:index]
+            if "•" in between or "◦" in between or "\n\n" in between:
+                return False
+            return True
+    return False
 
 
 def text_clean_ok(text: str) -> bool:
     if "|" in text:
         return False
-    if text.count('"') % 2 != 0:
-        return False
-    if text.count("“") != text.count("”"):
+    if not quote_glyphs_balanced(text):
         return False
     if text.startswith("#") or text.startswith("- "):
         return False
@@ -250,6 +413,68 @@ def sha256_file(path: Path) -> str:
 # ---------------------------------------------------------------------------
 # Labels lane (store 1): D1-D7
 # ---------------------------------------------------------------------------
+
+# The printed heading vocabulary the pipeline already trusts: the heading
+# rule's two lists plus the author-heading override titles (all from
+# build_assessing_advancing_labels.py, itself carrying
+# extract_lesson_context.py:668-681 verbatim). Used by the duplicate-span
+# re-derivation below to read the region straight off the source page.
+NORMALIZED_REGION_HEADINGS = frozenset(
+    label_builder.normalize_heading(heading)
+    for heading in (
+        label_builder.ASSESSING_HEADINGS
+        + label_builder.ADVANCING_HEADINGS
+        + tuple(title for _label, title in label_builder.AUTHOR_HEADING_OVERRIDES.values())
+    )
+)
+
+_COLUMN_GAP = re.compile(r"\s{2,}")
+
+
+def _line_region_heading(line: str) -> str | None:
+    """The region heading this source line prints, if it prints one.
+
+    The K-5 guides are fixed-width, two-column pages: a region heading
+    appears either as a line of its own ("Activity Synthesis", possibly
+    after a form feed) or as the right-column segment of a shared line
+    ("Student Task Statement          Launch"). Segments are split on runs
+    of two or more spaces -- the column gap -- and each candidate is
+    matched by normalized identity against the trusted heading vocabulary,
+    never by resemblance.
+    """
+    raw = line.lstrip("\x0c").strip()
+    if not raw:
+        return None
+    candidates = [raw]
+    parts = _COLUMN_GAP.split(raw)
+    if len(parts) > 1:
+        candidates.append(parts[0])
+        candidates.append(parts[-1])
+    for candidate in candidates:
+        normalized = label_builder.normalize_heading(candidate)
+        if normalized in NORMALIZED_REGION_HEADINGS:
+            return normalized
+    return None
+
+
+def nearest_region_heading(source_text: str, char_start: int) -> str | None:
+    """The nearest trusted region heading preceding char_start, or None.
+
+    Walks the source line by line and keeps the last heading found on a
+    line that starts before char_start. Offsets are UTF-8 character
+    offsets, the same convention the spans themselves use.
+    """
+    found = None
+    position = 0
+    for line in source_text.split("\n"):
+        if position >= char_start:
+            break
+        heading = _line_region_heading(line)
+        if heading is not None:
+            found = heading
+        position += len(line) + 1
+    return found
+
 
 def rederive_label(region_type: str) -> tuple[str | None, dict[str, Any] | None]:
     """Re-run the 10-line heading rule (reused, not reimplemented).
@@ -294,25 +519,46 @@ def build_labels_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     anchor_groups: dict[tuple[str, int, int], list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
         anchor_groups[(row["source_path"], row["byte_start"], row["byte_end"])].append(row)
-    colliding_ids: dict[str, list[str]] = {}
-    for group in anchor_groups.values():
+
+    # A span recorded under two conflicting labels is not left as a mutual
+    # duplicate_span hold any more (2026-08-22 ruling): the source page
+    # itself decides. The nearest trusted region heading preceding the span
+    # re-derives the region; the member whose recorded region matches it
+    # clears D7, every other member holds under region_conflict_rederived
+    # naming the winner. When no preceding heading exists (the span sits in
+    # narrative text before any region structure), every member holds and
+    # no winner is named.
+    conflict_decisions: dict[str, tuple[str, str | None, list[str]]] = {}
+    for (source_path, char_start, _end), group in anchor_groups.items():
         if len(group) < 2:
             continue
         labels_seen = {member["label"] for member in group}
-        if len(labels_seen) > 1:
-            for member in group:
-                partners = [other["_id"] for other in group if other is not member]
-                colliding_ids[member["_id"]] = partners
+        if len(labels_seen) < 2:
+            continue
+        full_path = ROOT / source_path
+        winner = None
+        if full_path.is_file():
+            source_text = full_path.read_text(encoding="utf-8", errors="replace")
+            winner = nearest_region_heading(source_text, char_start)
+        for member in group:
+            partners = [other["_id"] for other in group if other is not member]
+            matches = (
+                winner is not None
+                and label_builder.normalize_heading(member["region_type"]) == winner
+            )
+            verdict = "pass" if matches else "held"
+            conflict_decisions[member["_id"]] = (verdict, winner, partners)
 
     candidates = []
     for row in rows:
-        det, held_reason, extra = check_labels_row(row, colliding_ids)
+        det, held_reason, extra = check_labels_row(row, conflict_decisions)
         candidates.append(render_labels_candidate(row, det, held_reason, extra))
     return candidates
 
 
 def check_labels_row(
-    row: dict[str, Any], colliding_ids: dict[str, list[str]]
+    row: dict[str, Any],
+    conflict_decisions: dict[str, tuple[str, str | None, list[str]]],
 ) -> tuple[str, str | None, dict[str, Any]]:
     source_path = ROOT / row["source_path"]
 
@@ -335,9 +581,18 @@ def check_labels_row(
     if not interrogative_form_ok(row["text"]):
         return "held", "not_interrogative", {}
 
-    # D5 text_clean
+    # D5 text_clean. A lone opening quote with no closer is the one
+    # imbalance the source adjudicates (2026-08-22 ruling): when the
+    # printed passage closes the quote just past the span, the stored text
+    # truncates the quotation and fails its verbatim-completeness claim;
+    # when the source itself never closes it, the glyph is IM's own
+    # typography and the row continues through the remaining gates.
     if not text_clean_ok(row["text"]):
-        return "held", "malformed_text", {}
+        if unpaired_leading_wrapper(row["text"]):
+            if source_closes_quote(text, row["byte_end"]):
+                return "held", "span_truncates_quote", {}
+        else:
+            return "held", "malformed_text", {}
 
     # D6 label_rule_rederived
     rederived_label, rederived_origin = rederive_label(row["region_type"])
@@ -348,9 +603,17 @@ def check_labels_row(
             "rederived_label_origin": rederived_origin,
         }
 
-    # D7 anchor_unique
-    if row["_id"] in colliding_ids:
-        return "held", "duplicate_span", {"partners": colliding_ids[row["_id"]]}
+    # D7 anchor_unique, settled by re-derivation for conflicting groups
+    # (see build_labels_candidates): the member matching the source page's
+    # own nearest preceding heading passes; the rest hold with the winner
+    # named, or with none named when the page carries no heading to read.
+    if row["_id"] in conflict_decisions:
+        verdict, winner, partners = conflict_decisions[row["_id"]]
+        if verdict == "held":
+            extra: dict[str, Any] = {"partners": partners}
+            if winner is not None:
+                extra["winning_region"] = winner
+            return "held", "region_conflict_rederived", extra
 
     return "pass", None, {}
 
@@ -683,10 +946,54 @@ def build_all() -> dict[str, Any]:
     }
 
 
+def render_jsonl(rows: list[dict[str, Any]]) -> str:
+    lines = [json.dumps(row, ensure_ascii=False, sort_keys=True) for row in rows]
+    return "\n".join(lines) + ("\n" if lines else "")
+
+
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    lines = [json.dumps(row, ensure_ascii=False, sort_keys=True) for row in rows]
-    path.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")
+    path.write_text(render_jsonl(rows), encoding="utf-8")
+
+
+def check_outputs(outputs: list[tuple[str, Path, list[dict[str, Any]]]]) -> int:
+    """Compare a fresh in-memory re-derivation against the files on disk.
+
+    Byte comparison is sound here because the build path and this check
+    render through the same render_jsonl and the build is deterministic
+    (no clock, no model). Re-reading the files alone would certify a stale
+    artifact; only a re-derivation catches one.
+    """
+    failures = []
+    for name, path, rows in outputs:
+        expected = render_jsonl(rows)
+        if not path.is_file():
+            print(f"MISSING {name}: {path} does not exist while its sources are "
+                  "present -- the builder never ran here; run scripts/regen_all.sh")
+            failures.append(f"{name} missing")
+            continue
+        actual = path.read_text(encoding="utf-8")
+        if actual == expected:
+            print(f"ok {name}: {len(rows)} rows match a fresh re-derivation ({path})")
+            continue
+        expected_lines = expected.splitlines()
+        actual_lines = actual.splitlines()
+        differing = sum(1 for a, b in zip(actual_lines, expected_lines) if a != b)
+        differing += abs(len(actual_lines) - len(expected_lines))
+        print(f"MISMATCH {name}: {len(actual_lines)} rows on disk, "
+              f"{len(expected_lines)} re-derived, {differing} line(s) differ ({path})")
+        failures.append(f"{name} mismatch")
+    if failures:
+        print(
+            "FAIL build_admission_candidates --check: " + "; ".join(failures)
+            + " -- the sources are present, so scripts/regen_all.sh can settle "
+            "the outputs",
+            file=sys.stderr,
+        )
+        return 1
+    print("PASS build_admission_candidates --check: all three outputs match a "
+          "fresh re-derivation")
+    return 0
 
 
 def print_census(built: dict[str, Any]) -> None:
@@ -709,17 +1016,36 @@ def main() -> int:
     parser.add_argument("--candidates", type=Path, default=CANDIDATES_PATH)
     parser.add_argument("--model-input", type=Path, default=MODEL_INPUT_PATH)
     parser.add_argument("--pilot-key", type=Path, default=PILOT_KEY_PATH)
+    parser.add_argument(
+        "--check", action="store_true",
+        help="re-derive all three outputs in memory and compare against the "
+             "files on disk; exits nonzero on any missing or differing output",
+    )
     args = parser.parse_args()
 
+    # Both the build and the check need the gitignored guide anchors; without
+    # them a build would degrade candidates.jsonl and a check would report a
+    # mismatch that is really an absent input.
+    if not GUIDE_DOCLING_ROOT.is_dir():
+        print(DOCLING_SKIP_LINE)
+        return 0
+
     built = build_all()
-    write_jsonl(args.candidates, built["candidates"])
-    write_jsonl(args.model_input, built["model_input"])
-    write_jsonl(args.pilot_key, built["pilot_key"])
+    outputs = [
+        ("candidates", args.candidates, built["candidates"]),
+        ("model_input", args.model_input, built["model_input"]),
+        ("pilot_key", args.pilot_key, built["pilot_key"]),
+    ]
+
+    if args.check:
+        return check_outputs(outputs)
+
+    for _name, path, rows in outputs:
+        write_jsonl(path, rows)
 
     print_census(built)
-    print(f"written: {args.candidates}")
-    print(f"written: {args.model_input}")
-    print(f"written: {args.pilot_key}")
+    for _name, path, _rows in outputs:
+        print(f"written: {path}")
     return 0
 
 

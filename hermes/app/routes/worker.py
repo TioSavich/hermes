@@ -65,6 +65,8 @@ _HANDLERS = (
     ("/api/benny_demo", "_handle_benny_demo"),
     ("/api/pedagogical_questions", "_handle_pedagogical_questions"),
     ("/api/guide_question_labels", "_handle_guide_question_labels"),
+    ("/api/index_topic_subtraction", "_handle_index_topic_subtraction"),
+    ("/api/state_labels", "_handle_state_labels"),
 )
 
 _WITNESS_HANDLERS = (

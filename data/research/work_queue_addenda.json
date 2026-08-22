@@ -1,52 +1,12 @@
 [
   {
     "evidence": {
-      "candidate_rows_measured": 11743,
-      "finding": "scripts/questions/build_admission_candidates.py is absent from scripts/regen_all.sh and scripts/checks/run_all.sh; its check reads the gitignored runtime candidates.jsonl"
+      "finding": "On a clone without the gitignored candidates.jsonl, emit_admitted_question_stores.py (in regen) and scripts/checks/admitted_question_stores.py line 24 die on the missing file; the 2026-08-22 guard protects existing outputs but cannot rebuild absent ones without the docling tree."
     },
-    "id": "addendum:admission-candidates-wiring",
-    "rows_blocked": 11743,
-    "source": "session 2026-08-22",
-    "tier": "structural",
-    "title": "Wire admission-candidate generation into regeneration and checks"
-  },
-  {
-    "evidence": {
-      "finding": "fraction_compare_json errors for iterate_given_overshoot and add_numerator_denominator_sum",
-      "pairs": [
-        "iterate_given_overshoot",
-        "add_numerator_denominator_sum"
-      ]
-    },
-    "id": "addendum:fraction-compare-errors",
-    "rows_blocked": 2,
+    "id": "addendum:questions-admission-absent-candidates",
+    "rows_blocked": 0,
     "source": "session 2026-08-22",
     "tier": "defect",
-    "title": "Repair the two fraction_compare_json error pairs"
-  },
-  {
-    "evidence": {
-      "finding": "glyph_overwrite is not a notation_render kind; measurement_strip and ratio_diagram are unrouted",
-      "surfaces": [
-        "glyph_overwrite",
-        "measurement_strip",
-        "ratio_diagram"
-      ]
-    },
-    "id": "addendum:notation-and-render-routing",
-    "rows_blocked": 3,
-    "source": "session 2026-08-22",
-    "tier": "defect",
-    "title": "Align notation kinds and route the two render surfaces"
-  },
-  {
-    "evidence": {
-      "finding": "lesson_misconception_incompatibility_witness recomputes per call; a caching design brief exists in .superpowers/sdd/"
-    },
-    "id": "addendum:incompatibility-witness-caching",
-    "rows_blocked": 1,
-    "source": "session 2026-08-22",
-    "tier": "defect",
-    "title": "Review per-call incompatibility-witness recomputation"
+    "title": "State a path for the questions-admission chain when candidates.jsonl is absent"
   }
 ]

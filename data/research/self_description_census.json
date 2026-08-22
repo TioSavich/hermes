@@ -413,23 +413,23 @@
       "misconceptions": 16,
       "monitoring": 5,
       "pml": 15,
-      "render": 41,
+      "render": 42,
       "sequent": 14,
       "standards": 23,
       "synthesis": 71,
-      "unclassified": 10,
+      "unclassified": 12,
       "workflow": 29,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 11,
-      "orphan_module": 127,
+      "orphan_module": 130,
       "routed_only": 15,
-      "routed_paged": 191,
-      "unrouted": 17
+      "routed_paged": 195,
+      "unrouted": 13
     },
     "orphan_verdicts": {
-      "consumed_by_builder": 5,
+      "consumed_by_builder": 8,
       "consumed_by_check": 37,
       "deliberately_unloaded": 4,
       "include_active": 23,
@@ -438,8 +438,8 @@
       "superseded": 0,
       "undetermined": 22
     },
-    "total": 361,
-    "unrouted": 17
+    "total": 364,
+    "unrouted": 13
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1817,6 +1817,52 @@
       "capability_class": "unclassified",
       "evidence": [
         {
+          "locator": "/** <module> Dated run-2 consumption attestations",
+          "path": "knowledge/index/consumption_attested_run2.pl",
+          "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "fable",
+          "judgement_path": "knowledge/index/consumption_attested_run2.pl",
+          "locator": "scripts/research/build_work_queue.py:ATTESTED_LINE regex reads store_consumption_attested/…; scripts/bigred/total_audit/build_consumption_attestation.py is its producer; scripts/checks/consumption_gate.py consumes it in the gate.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
+        }
+      ],
+      "module": "consumption_attested_run2",
+      "note": "NEW 2026-08-22 ceremony: same late-landing class as consumption_lifecycle.pl — the f0f01cbd registry predates the store. Script-lane store the worker never loads; a tracked builder output (the work queue) derives from it.",
+      "path": "knowledge/index/consumption_attested_run2.pl",
+      "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
+          "locator": "/** <module> Authored lifecycle declarations for fact stores",
+          "path": "knowledge/index/consumption_lifecycle.pl",
+          "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "fable",
+          "judgement_path": "knowledge/index/consumption_lifecycle.pl",
+          "locator": "scripts/research/build_work_queue.py:parse_lifecycles() regex-parses store_lifecycle/5 lines into queue entries; scripts/checks/consumption_gate.py loads the same rows for the lifecycle gate.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
+        }
+      ],
+      "module": "consumption_lifecycle",
+      "note": "NEW 2026-08-22 ceremony: the store entered the registry orphan set because the f0f01cbd ceremony extracted the registry before this store landed in the tree; the worker never loads it because it is a script-lane store. Its rows drive a tracked builder output (the work queue), so the class is consumed_by_builder, not stalled_input.",
+      "path": "knowledge/index/consumption_lifecycle.pl",
+      "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "unclassified",
+      "evidence": [
+        {
           "locator": "/** <module> Generated coverage and absence registry",
           "path": "knowledge/index/coverage_absence_registry.pl",
           "relation": "source inspected"
@@ -2936,6 +2982,29 @@
       "capability_class": "render",
       "evidence": [
         {
+          "locator": "/** <module> Authored render-to-registry citation verdicts",
+          "path": "knowledge/strategies/render/authored_render_citations.pl",
+          "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "fable",
+          "judgement_path": "knowledge/strategies/render/authored_render_citations.pl",
+          "locator": "scripts/research/build_misconception_render_link.py reads the authored citation rows when deriving misconception_render_link.pl; the generated store's header cites the lane.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
+        }
+      ],
+      "module": "authored_render_citations",
+      "note": "NEW 2026-08-22 ceremony: entered the orphan set with the registry catch-up, not by losing a reader. The authored lane exists so bibkey links carry human-verified citations; its consumer is the link builder, so the class is consumed_by_builder.",
+      "path": "knowledge/strategies/render/authored_render_citations.pl",
+      "verdict": "consumed_by_builder"
+    },
+    {
+      "capability_class": "render",
+      "evidence": [
+        {
           "locator": "% Generated by scripts/research/build_misconception_render_link.py from",
           "path": "knowledge/strategies/render/misconception_render_link.pl",
           "relation": "source inspected"
@@ -3351,24 +3420,6 @@
       "reason": "The MCP server exposes it for research callers, and the entailment page presents the same inventory from its generated register rather than a live route."
     },
     {
-      "does": "Returns counts and evidence samples after topic exclusions remove index rows.",
-      "evidence": [
-        {
-          "locator": "index is reachable from the running application",
-          "path": "knowledge/index/index_query.pl",
-          "relation": "runtime intent"
-        },
-        {
-          "locator": "dispatch_spec(index_topic_subtraction,",
-          "path": "hermes/dispatch_spec.pl",
-          "relation": "worker dispatch"
-        }
-      ],
-      "judgement": "A page should route to it.",
-      "name": "index_topic_subtraction",
-      "reason": "The module states that the index is reachable from the running application, but the dispatch operation has no web route or MCP exposure."
-    },
-    {
       "does": "Lists every lesson an enactment lane can perform, the distinct forms declared for each, and every named refusal with the machine it would need.",
       "evidence": [
         {
@@ -3398,24 +3449,6 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "lesson_enactment_run",
       "reason": "The serializer fills the dict shape strategy_trace_dict/3 returns, so an enactment already reaches every consumer a strategy trace reaches. A second route would duplicate a display path rather than add one."
-    },
-    {
-      "does": "Draws a measurement-strip scene from a strip specification, returning drawer frames.",
-      "evidence": [
-        {
-          "locator": "dispatch_irregular(measurement_strip_render).",
-          "path": "hermes_worker.pl",
-          "relation": "worker dispatch"
-        },
-        {
-          "locator": "measurement_strip",
-          "path": "knowledge/strategies/render/measurement_strip_scene.pl",
-          "relation": "the scene builder"
-        }
-      ],
-      "judgement": "Being unrouted from a web page is correct.",
-      "name": "measurement_strip_render",
-      "reason": "The generic render endpoint reaches it by op name, the way every scene op is reached; its 2026-08-18 consumers are the deterministic render-spec ledger and scene requests that name it. A dedicated page per scene op would duplicate the generic path."
     },
     {
       "does": "Returns the 739 admitted model-authored story-problem analyses by lesson code or statement id, each row carrying its statement, anchor, the five analysis fields, and its testimony and receipt.",
@@ -3472,24 +3505,6 @@
       "reason": "The moves serve analysis clients and the MCP; the Questions page already carries the admitted question stores, and a second page for moves would assert a function surface the kappa-0.02 void ruled out."
     },
     {
-      "does": "Draws a ratio-diagram scene (double number line) from a ratio specification, returning drawer frames.",
-      "evidence": [
-        {
-          "locator": "dispatch_irregular(ratio_diagram_render).",
-          "path": "hermes_worker.pl",
-          "relation": "worker dispatch"
-        },
-        {
-          "locator": "ratio_diagram",
-          "path": "knowledge/strategies/render/ratio_diagram_scene.pl",
-          "relation": "the scene builder"
-        }
-      ],
-      "judgement": "Being unrouted from a web page is correct.",
-      "name": "ratio_diagram_render",
-      "reason": "The generic render endpoint reaches it by op name, the way every scene op is reached; its 2026-08-18 consumers are the deterministic render-spec ledger and scene requests that name it. A dedicated page per scene op would duplicate the generic path."
-    },
-    {
       "does": "Returns the two strong-band admitted signature anchors from the retired review queue's mechanical promotion, each with its corpus-row identity and receipts; the 537 held proposals stay queryable in the attributed store.",
       "evidence": [
         {
@@ -3524,24 +3539,6 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "standards_progression_candidates",
       "reason": "The overlay holds candidates, not licensed prerequisites. Its consumers are the stage-2 normalizer and analysis clients through the worker; a web form would invite readers to treat candidate edges as a learning order before any reviewed promotion."
-    },
-    {
-      "does": "Returns the default cited state label and its recorded alternatives.",
-      "evidence": [
-        {
-          "locator": "dispatch_spec(state_labels,",
-          "path": "hermes/dispatch_spec.pl",
-          "relation": "worker dispatch"
-        },
-        {
-          "locator": "state_display_label",
-          "path": "knowledge/strategies/math/state_vocabulary.pl",
-          "relation": "label source"
-        }
-      ],
-      "judgement": "A page should route to it.",
-      "name": "state_labels",
-      "reason": "The operation has no web or MCP consumer. A strategy or Atlas page can use the same cited vocabulary that the worker already returns."
     },
     {
       "does": "Returns evidence-bearing candidate strategy traces for classroom language.",

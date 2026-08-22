@@ -154,9 +154,9 @@ def main() -> int:
         if errors:
             return fail("; ".join(errors))
 
-        rebuilt = builder.build(builder.DEFAULT_AUDIT_DIR)
+        rebuilt, resolved, prunable = builder.build_full(builder.DEFAULT_AUDIT_DIR)
         rebuilt_json = builder.render_json(rebuilt).encode("utf-8")
-        rebuilt_md = builder.render_markdown(rebuilt).encode("utf-8")
+        rebuilt_md = builder.render_markdown(rebuilt, resolved, prunable).encode("utf-8")
         if rebuilt_json != tracked_json_bytes:
             return fail("work_queue.json differs from a byte-stable rebuild")
         if rebuilt_md != tracked_md_bytes:

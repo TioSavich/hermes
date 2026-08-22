@@ -69,6 +69,25 @@
     <h2 id="topology-title">Action topology</h2>
     <div id="machine-topology"></div>
   </section>
+
+  <section aria-labelledby="state-vocabulary-title">
+    <h2 id="state-vocabulary-title">State vocabulary</h2>
+    <p class="meta">Comparison-automaton states carry cited literature labels. Enter a state atom
+      from a runtime trace to read its default label and the recorded alternates, each with its
+      tradition and citation. Labels are recorded in
+      <code>knowledge/strategies/math/state_vocabulary.pl</code>; a state without a recorded
+      label answers with its own atom, marked as the fallback it is, rather than an invented
+      name.</p>
+    <div class="inputs">
+      <label>State
+        <input id="state-label-input" type="text" value="q_partition" aria-label="state atom">
+      </label>
+    </div>
+    <div class="machine-run-controls">
+      <button id="state-label-lookup" type="button">Look up labels</button>
+      <p id="state-label-output" class="meta" aria-live="polite"></p>
+    </div>
+  </section>
 </main>
 <script src="strategy_viz.js"></script>
 <script>
@@ -85,6 +104,21 @@
       { family: 'addition', kind: 'column_addition_with_carrying' },
       { family: 'addition', kind: 'known_fact_retrieval' }
     ]
+  });
+
+  document.getElementById('state-label-lookup').addEventListener('click', async () => {
+    const out = document.getElementById('state-label-output');
+    out.textContent = 'Requesting…';
+    try {
+      const response = await fetch('/api/state_labels', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({state: document.getElementById('state-label-input').value.trim()})});
+      const data = await response.json();
+      if (!data.ok) { out.textContent = data.error || 'No labels are recorded for that state.'; return; }
+      const r = data.result;
+      const alternates = (r.alternates || []).map(a => `${a.label} (${a.tradition}; ${a.citation})`).join('; ');
+      out.textContent = `${r.state}: "${r.default}" (${r.default_tradition}; ${r.default_citation})`
+        + (alternates ? `. Alternates: ${alternates}.` : '. No alternates are recorded.');
+    } catch (e) { out.textContent = 'The request failed: the app did not answer, or answered with something other than JSON.'; }
   });
 </script>
 </body>

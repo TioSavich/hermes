@@ -127,6 +127,12 @@ add_registry_lane() {
     add_python scripts/research/build_recognition_benchmark.py
     add_python scripts/research/build_relevance_negation.py
     add_python scripts/questions/build_question_move_pilot.py
+    # Candidates before the emitter, and the emitter before the self-description
+    # tail, so the tracked admitted stores are settled when the manifest reads
+    # them; on a clone without the docling guide anchors the candidates builder
+    # prints SKIP and retains its prior outputs.
+    add_python scripts/questions/build_admission_candidates.py
+    add_python scripts/questions/emit_admitted_question_stores.py
     add_python scripts/research/promote_review_proposals.py
     add_python scripts/research/build_misconception_render_link.py
 }
