@@ -1,0 +1,2862 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "common partition: no common unit constructed.",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_common_partition"
+      },
+      {
+        "caption": "add numerator denominator: first(1,3,4).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_add_numerator_denominator"
+      },
+      {
+        "caption": "add numerator denominator: second(2,5,7).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_add_numerator_denominator"
+      },
+      {
+        "caption": "measure with co unit: omitted.",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_measure_with_co_unit"
+      },
+      {
+        "caption": "compare same denominator: compare unlike sums(4,7,less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_compare_same_denominator"
+      },
+      {
+        "caption": "emit order: emit(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_emit_order"
+      },
+      {
+        "caption": "accept: accept(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "less_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_common_partition,no_common_unit_constructed)",
+      "hist(q_add_numerator_denominator,first(1,3,4))",
+      "hist(q_add_numerator_denominator,second(2,5,7))",
+      "hist(q_measure_with_co_unit,omitted)",
+      "hist(q_compare_same_denominator,compare_unlike_sums(4,7,less_than))",
+      "hist(q_emit_order,emit(less_than))",
+      "hist(q_accept,accept(less_than))"
+    ],
+    "validity": "contextually_correct"
+  },
+  "deformationKind": "add_numerator_denominator_comparison",
+  "family": "common_unit_fraction_comparison",
+  "inputs": {
+    "family": "common_unit_fraction_comparison",
+    "n1": 1,
+    "d1": 3,
+    "n2": 2,
+    "d2": 5
+  },
+  "note": "The productive side rewrites both fractions in a common unit before comparing them. The deformation adds numerators and denominators component by component, changing the quantities.",
+  "productive": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "common partition: common denominator(15).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_common_partition"
+      },
+      {
+        "caption": "transform commensurate 1: transformed(fraction(1,3),fraction(5,15),trace steps(4)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_transform_commensurate_1"
+      },
+      {
+        "caption": "transform commensurate 2: transformed(fraction(2,5),fraction(6,15),trace steps(5)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_transform_commensurate_2"
+      },
+      {
+        "caption": "measure with co unit: co measure(unit fraction(1,15),5,6).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_measure_with_co_unit"
+      },
+      {
+        "caption": "compare same denominator: compare counts(5,6,less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_compare_same_denominator"
+      },
+      {
+        "caption": "emit order: emit(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_emit_order"
+      },
+      {
+        "caption": "accept: accept(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "5/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "5/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "6/15",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "6/15",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 28,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 56,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 112,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 28,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 196,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 224,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 280,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 308,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 336,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 364,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 28,
+                  "x": 392,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "less_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_common_partition,common_denominator(15))",
+      "hist(q_transform_commensurate_1,transformed(fraction(1,3),fraction(5,15),[step(state(q_init_calc,1,5,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,5,0,1),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,1,5,5,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,5,5,0),[],Calculation complete. Result = 5.)]))",
+      "hist(q_transform_commensurate_2,transformed(fraction(2,5),fraction(6,15),[step(state(q_init_calc,2,3,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,3,0,2),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,2,3,3,1),[],Iterate: Added 3. Total = 6.),step(state(q_loop_calc,2,3,6,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,3,6,0),[],Calculation complete. Result = 6.)]))",
+      "hist(q_measure_with_co_unit,co_measure(unit_fraction(1,15),5,6))",
+      "hist(q_compare_same_denominator,compare_counts(5,6,less_than))",
+      "hist(q_emit_order,emit(less_than))",
+      "hist(q_accept,accept(less_than))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "common_unit_fraction_comparison",
+  "viability": {
+    "condition": "numerator denominator sum order agrees with common unit order",
+    "inputs": {
+      "d1": 3,
+      "d2": 5,
+      "n1": 1,
+      "n2": 2
+    },
+    "status": "contextual_success",
+    "validity": "contextually_correct"
+  }
+}

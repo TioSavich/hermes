@@ -1,6 +1,6 @@
-hermes/	2480
-curriculum/	972
-knowledge/	310
+hermes/	2718
+curriculum/	978
+knowledge/	314
 formal/	123
 data/	34
 scripts/	10

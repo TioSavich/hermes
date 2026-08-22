@@ -12,6 +12,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 RESEARCH_SCRIPTS = ROOT / "scripts/research"
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(RESEARCH_SCRIPTS))
 
 from build_graph_quotients import (  # noqa: E402
@@ -21,6 +22,10 @@ from build_graph_quotients import (  # noqa: E402
     SOURCE,
     generate_json,
 )
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
+
+EXPECTED_FAMILY_NODES = baseline_value("automata.quotient_family_nodes")
 
 
 def fail_if(condition: bool, message: str, failures: list[str]) -> None:
@@ -361,7 +366,11 @@ def main() -> int:
     fail_if(len(edge_ids) != len(set(edge_ids)), "duplicate family bundle ids", failures)
     fail_if(len(nodes) != len({node["family"] for node in full["nodes"]}),
             "family node count disagrees with full graph", failures)
-    fail_if(len(nodes) != 15, f"expected 15 family nodes, got {len(nodes)}", failures)
+    fail_if(
+        len(nodes) != EXPECTED_FAMILY_NODES,
+        f"expected {EXPECTED_FAMILY_NODES} family nodes, got {len(nodes)}",
+        failures,
+    )
     fail_if(len(edges) != len(nodes) * (len(nodes) - 1) // 2,
             "family quotient does not contain every cross-family pair", failures)
 
@@ -452,7 +461,8 @@ def main() -> int:
     print("PASS family quotient rebuild is byte-identical and matches its schema-2 source hash")
     print("PASS every bundle expands to the selected full-graph projection")
     print(
-        f"PASS 15 deterministic domain ego builder outputs expand to incident family projections "
+        f"PASS {EXPECTED_FAMILY_NODES} deterministic domain ego builder outputs "
+        f"expand to incident family projections "
         f"({domain_min_members}..{domain_max_members} members)"
     )
     print(

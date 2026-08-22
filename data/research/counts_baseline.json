@@ -1,0 +1,290 @@
+{
+  "automata.compendium_pages": {
+    "carried": false,
+    "derivation": "generated compendium page mapping size",
+    "producer": "scripts/research/build_automata_compendium.py",
+    "value": 16
+  },
+  "automata.composite_svgs": {
+    "carried": false,
+    "derivation": "tracked family composite SVG count",
+    "producer": "scripts/checks/automata_vocabulary.py",
+    "value": 15
+  },
+  "automata.deformation_validity_rows": {
+    "carried": false,
+    "derivation": "deformation_validity.pl rows via the gate ledger loader",
+    "producer": "scripts/checks/deformation_validity.py",
+    "value": 259
+  },
+  "automata.family_pages": {
+    "carried": false,
+    "derivation": "tracked automata family page count",
+    "producer": "scripts/checks/automata_vocabulary.py",
+    "value": 15
+  },
+  "automata.full_graph_machines": {
+    "carried": false,
+    "derivation": "parse_transition_tables machine count",
+    "producer": "scripts/research/build_full_graph_json.py",
+    "value": 245
+  },
+  "automata.quotient_family_nodes": {
+    "carried": false,
+    "derivation": "family quotient nodes from generate_json",
+    "producer": "scripts/research/build_graph_quotients.py",
+    "value": 15
+  },
+  "bridges.cross_family": {
+    "carried": false,
+    "derivation": "admitted bridge facts whose source and target families differ",
+    "producer": "scripts/checks/admitted_bridges_store.py load_store",
+    "value": 383
+  },
+  "bridges.distinct_adapted_inputs": {
+    "carried": false,
+    "derivation": "unique distinct_adapted_inputs value across admitted bridge facts",
+    "producer": "scripts/checks/admitted_bridges_store.py load_store",
+    "value": 20
+  },
+  "bridges.facts": {
+    "carried": false,
+    "derivation": "admitted_bridge facts loaded from the tracked store",
+    "producer": "scripts/checks/admitted_bridges_store.py load_store",
+    "value": 594
+  },
+  "census.orphan_rows": {
+    "carried": false,
+    "derivation": "orphan_modules rows via build_self_description_census",
+    "producer": "regen_all tail: build_self_description_census.py",
+    "value": 127
+  },
+  "census.registry_rows": {
+    "carried": false,
+    "derivation": "capability_registry.pl row count via build_self_description_census",
+    "producer": "regen_all tail: build_self_description_census.py",
+    "value": 361
+  },
+  "census.unrouted_rows": {
+    "carried": false,
+    "derivation": "unrouted rows via build_self_description_census",
+    "producer": "regen_all tail: build_self_description_census.py",
+    "value": 17
+  },
+  "curriculum.field_contexts": {
+    "carried": false,
+    "derivation": "field_contexts object entries in the generated cache",
+    "producer": "scripts/checks/field_context_cache.py",
+    "value": 1317
+  },
+  "curriculum.lesson_topics": {
+    "carried": false,
+    "derivation": "published and encoded-but-unpublished lesson codes in im_coverage.json",
+    "producer": "scripts/checks/lesson_topics_cache.py coverage_codes",
+    "value": 1317
+  },
+  "curriculum.markerless_task_readings": {
+    "carried": false,
+    "derivation": "marker-less multi-pair K-5 spans from markerless_grid_audit",
+    "producer": "scripts/checks/lesson_task_readings.py",
+    "value": 15
+  },
+  "curriculum.measurement_enactment_forms": {
+    "carried": false,
+    "derivation": "measurement enactment form warrants read from the Prolog module",
+    "producer": "scripts/checks/measurement_enactment.py form_warrants",
+    "value": 10
+  },
+  "curriculum.sidecar_equation_rows": {
+    "carried": false,
+    "derivation": "witnessed task-206 rows from validate_lesson_task_readings",
+    "producer": "scripts/checks/equation_verification_sidecar_segmenter.py",
+    "value": 10
+  },
+  "defrag.admitted_rows": {
+    "carried": false,
+    "derivation": "defragged rows after the compiled-fact prefix",
+    "producer": "scripts/checks/im_defragged_task_instances.py check_identity",
+    "value": 2583
+  },
+  "defrag.compiled_facts": {
+    "carried": false,
+    "derivation": "compiled task facts scanned from source artifacts",
+    "producer": "scripts/checks/im_defragged_task_instances.py scan_compiled_facts",
+    "value": 2659
+  },
+  "defrag.eligible_rows": {
+    "carried": false,
+    "derivation": "defragged rows in an eligible status",
+    "producer": "scripts/checks/im_defragged_task_instances.py check_census",
+    "value": 4715
+  },
+  "defrag.rows": {
+    "carried": false,
+    "derivation": "defragged task rows projected through SWI-Prolog",
+    "producer": "scripts/checks/im_defragged_task_instances.py read_rows",
+    "value": 5242
+  },
+  "defrag.span_fixtures": {
+    "carried": false,
+    "derivation": "IM defrag source-span fixture row count",
+    "producer": "scripts/checks/im_defragged_task_instances.py check_span_fixtures",
+    "value": 20
+  },
+  "defrag.visual_markers": {
+    "carried": false,
+    "derivation": "visual_count sum across defragged rows",
+    "producer": "scripts/checks/im_defragged_task_instances.py check_census",
+    "value": 142
+  },
+  "defrag.widened_receipts": {
+    "carried": false,
+    "derivation": "defragged rows carrying widened checkpoint receipt provenance",
+    "producer": "scripts/checks/im_defragged_task_instances.py check_census",
+    "value": 22
+  },
+  "grade8.guide_questions": {
+    "carried": false,
+    "derivation": "guide-question rows in compatible Grade 8 recovery checkpoints",
+    "producer": "scripts/checks/grade8_extraction.py",
+    "value": 268
+  },
+  "grade8.lessons": {
+    "carried": false,
+    "derivation": "discover_docs(8) lesson count",
+    "producer": "scripts/checks/grade8_extraction.py",
+    "value": 134
+  },
+  "grade8.task_sections": {
+    "carried": false,
+    "derivation": "task rows in compatible Grade 8 recovery checkpoints",
+    "producer": "scripts/checks/grade8_extraction.py",
+    "value": 513
+  },
+  "k7.grade_1.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(1) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 148
+  },
+  "k7.grade_2.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(2) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 150
+  },
+  "k7.grade_3.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(3) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 143
+  },
+  "k7.grade_4.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(4) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 151
+  },
+  "k7.grade_5.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(5) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 148
+  },
+  "k7.grade_6.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(6) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 152
+  },
+  "k7.grade_7.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(7) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 143
+  },
+  "k7.grade_k.lessons": {
+    "carried": false,
+    "derivation": "discover_question_guides(k) lesson count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 139
+  },
+  "k7.guide_questions": {
+    "carried": false,
+    "derivation": "guide-question rows in compatible K-7 checkpoints",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 2348
+  },
+  "k7.lessons": {
+    "carried": false,
+    "derivation": "compatible K-7 guide-question checkpoint count",
+    "producer": "scripts/checks/k7_guide_questions.py",
+    "value": 1174
+  },
+  "mcp.branch_replay_records": {
+    "carried": false,
+    "derivation": "records emitted by the task-240 offline branch-agent replay",
+    "producer": "hermes/mcp/branch_agents.py --replay",
+    "value": 12
+  },
+  "questions.admitted": {
+    "carried": false,
+    "derivation": "mechanically_admitted rows in both question stores",
+    "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
+    "value": 9094
+  },
+  "questions.im_author_heading": {
+    "carried": false,
+    "derivation": "admitted question-store rows with im_author_heading warrant",
+    "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
+    "value": 1013
+  },
+  "questions.pedagogical_clusters": {
+    "carried": false,
+    "derivation": "whole-corpus pedagogical question lookup match_count",
+    "producer": "scripts/checks/pedagogical_questions_check.py direct_lookup",
+    "value": 42
+  },
+  "questions.printed_region": {
+    "carried": false,
+    "derivation": "admitted question-store rows with printed_region warrant",
+    "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
+    "value": 8081
+  },
+  "questions.total": {
+    "carried": false,
+    "derivation": "rows in both question admission stores",
+    "producer": "scripts/research/extract_lesson_context.py admission_store_rows",
+    "value": 11743
+  },
+  "standards.cross_grade_prefix_edges": {
+    "carried": false,
+    "derivation": "standards progression overlay cross-grade prefix edge count",
+    "producer": "scripts/curriculum/build_standards_progression_overlay.py",
+    "value": 390
+  },
+  "standards.edges": {
+    "carried": false,
+    "derivation": "standards progression overlay edge_count",
+    "producer": "scripts/curriculum/build_standards_progression_overlay.py",
+    "value": 621
+  },
+  "standards.evidence_rows": {
+    "carried": false,
+    "derivation": "standards progression overlay evidence_row_count",
+    "producer": "scripts/curriculum/build_standards_progression_overlay.py",
+    "value": 707
+  },
+  "vision.text_only_pairs": {
+    "carried": false,
+    "derivation": "text_only_pairs derived from the Grade 6-7 checkpoint corpus",
+    "producer": "scripts/curriculum/vision_pass.py",
+    "value": 76
+  },
+  "vision.worklist_spans": {
+    "carried": false,
+    "derivation": "spans in the derived Grade 6-7 vision worklist",
+    "producer": "scripts/curriculum/vision_pass.py",
+    "value": 240
+  }
+}

@@ -30,6 +30,10 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 ROWS = os.path.join(ROOT, 'data/learningcommons/derived/lesson_enactments/measurement_task.jsonl')
 RECUT = os.path.join(ROOT, 'data/learningcommons/derived/im_action_seam_recut.json')
 
@@ -94,9 +98,10 @@ def main():
 
     # 1. form warrants
     forms, stderr = form_warrants()
-    if len(forms) != 10:
-        failures.append('read %d form warrants from the module, expected 10 (%s)'
-                        % (len(forms), stderr.strip()[:200]))
+    expected_forms = baseline_value("curriculum.measurement_enactment_forms")
+    if len(forms) != expected_forms:
+        failures.append('read %d form warrants from the module, expected %d (%s)'
+                        % (len(forms), expected_forms, stderr.strip()[:200]))
     for form, lesson, rel, line, text in forms:
         check_warrant('form %s (%s)' % (form, lesson), rel, line, text, failures)
 

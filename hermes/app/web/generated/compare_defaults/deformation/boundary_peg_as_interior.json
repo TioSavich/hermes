@@ -1,0 +1,919 @@
+{
+  "canvas": {
+    "height": 520,
+    "width": 520
+  },
+  "correct_area": 12,
+  "correct_pick": {
+    "boundary": 14,
+    "interior": 6
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "The peg (0, 1) sits on the band's edge: a boundary peg. Counted there, Pick gives area 12.",
+        "scene": {
+          "area": 12,
+          "format": "geoboard",
+          "lattice": {
+            "xMax": 5,
+            "xMin": -1,
+            "yMax": 4,
+            "yMin": -1
+          },
+          "pegs": [
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 4
+            }
+          ],
+          "pick": {
+            "boundary": 14,
+            "interior": 6
+          },
+          "polygon": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "locate_boundary_peg"
+      },
+      {
+        "caption": "Recount (0, 1) as interior and the tally reads 7 interior, 13 boundary. Pick then reports area 12.5, too large by one half.",
+        "scene": {
+          "area": "12.5",
+          "format": "geoboard",
+          "lattice": {
+            "xMax": 5,
+            "xMin": -1,
+            "yMax": 4,
+            "yMin": -1
+          },
+          "pegs": [
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "deformation",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 4
+            }
+          ],
+          "pick": {
+            "boundary": 13,
+            "interior": 7
+          },
+          "polygon": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "miscount_peg"
+      }
+    ]
+  },
+  "deformationKind": "boundary_peg_as_interior",
+  "deformed_area": "12.5",
+  "deformed_pick": {
+    "boundary": 13,
+    "interior": 7
+  },
+  "family": "boundary_peg_as_interior",
+  "kind": "geoboard_pick_vs_boundary_miscount",
+  "miscounted_peg": {
+    "x": 0,
+    "y": 1
+  },
+  "note": "Pick's theorem reads area off the lattice as A = I + B/2 - 1. The peg (0, 1) lies on the band's edge, so it counts toward B. Recounting it as interior moves one unit from B to I; because an interior peg weighs twice a boundary peg, the reported area rises from 12 to 12.5, too large by one half. (Boundary-peg-as-interior family.)",
+  "productive": {
+    "frames": [
+      {
+        "caption": "6 interior pegs and 14 boundary pegs; by Pick's theorem the area is 12 = 6 + 14/2 - 1.",
+        "scene": {
+          "area": 12,
+          "format": "geoboard",
+          "lattice": {
+            "xMax": 5,
+            "xMin": -1,
+            "yMax": 4,
+            "yMin": -1
+          },
+          "pegs": [
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 0,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 0,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 1,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 1,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 1,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 2,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 2,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 1
+            },
+            {
+              "kind": "interior",
+              "role": "peg",
+              "x": 3,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 3,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 3,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": -1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 1
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 2
+            },
+            {
+              "kind": "boundary",
+              "role": "peg",
+              "x": 4,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 4,
+              "y": 4
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": -1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 0
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 1
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 2
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 3
+            },
+            {
+              "kind": "outside",
+              "role": "peg",
+              "x": 5,
+              "y": 4
+            }
+          ],
+          "pick": {
+            "boundary": 14,
+            "interior": 6
+          },
+          "polygon": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "count_pegs"
+      }
+    ]
+  },
+  "productiveKind": "geoboard_pick_area",
+  "request": {
+    "vertices": "(0, 0), (4, 0), (4, 3), (0, 3)"
+  },
+  "inputs": {
+    "family": "boundary_peg_as_interior",
+    "vertices": "[[0,0],[4,0],[4,3],[0,3]]"
+  }
+}

@@ -117,7 +117,10 @@
   </div>
 
   <script>
-    window.HermesCompare = { op: 'fraction_comparison_compare' };
+    window.HermesCompare = {
+      op: 'fraction_comparison_compare',
+      prebaked: '/generated/compare_defaults/fraction/'
+    };
     document.addEventListener('DOMContentLoaded', function () {
       var family = document.getElementById('family');
       var labels = {

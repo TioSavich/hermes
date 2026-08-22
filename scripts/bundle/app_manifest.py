@@ -104,6 +104,7 @@ KEEP_FILES = [
     "curriculum/im/generated/admitted_teacher_question_labels.pl",  # mechanically admitted labels (2026-08-20)
     "curriculum/im/generated/admitted_guide_questions.pl",  # guide-lane admission store (2026-08-20)
     "curriculum/im/generated/lesson_representation_evidence.pl",  # deformation-chart host/fraction citations
+    "curriculum/im/generated/lesson_misconception_witness_store.pl",  # baked incompatibility-witness closure (2026-08-22)
     "knowledge/strategies/render/fraction_comparison_scene.pl",  # six-pair comparison scene compiler
     "curriculum/im/lesson_arithmetic_demonstration.pl",  # lesson-bounded make-ten demonstration
     "knowledge/strategies/math/geometry_action_pairs.pl",  # registry geometry actions

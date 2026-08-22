@@ -27,8 +27,9 @@ What this check holds:
   ``too_vague`` as its RegistryName (2026-08 ruling: too_vague is never
   served as a misconception).
 
-  No authored rows.  This pass never emits ``via(authored)``; the lane is
-  schema for later, human-curated hands.
+  Authored lane.  Five reviewed links emit ``via(authored)``; the angle row
+  remains mechanical after regex widening. Reviewed refusals keep their named
+  absence reason.
 """
 from __future__ import annotations
 
@@ -50,8 +51,7 @@ LINK_RE = re.compile(
     r"(?m)^misconception_render_link\((\w+), (\w+), via\((\w+(?:\([^)]*\))?)\)\)\."
 )
 UNLINKED_RE = re.compile(
-    r"(?m)^misconception_render_unlinked\((\w+), "
-    r"reason\((\w+(?:\('(?:[^'\\]|\\.)*'\))?)\)\)\."
+    r"(?m)^misconception_render_unlinked\((\w+), reason\((.*)\)\)\.$"
 )
 
 EXPECTED_TOTAL = 44
@@ -101,11 +101,6 @@ def main() -> int:
                 f"{render_id}: links to too_vague, which the "
                 "misconception-under-erasure ruling says is never served"
             )
-        if via == "authored":
-            errors.append(
-                f"{render_id}: via(authored) row present; this pass declared "
-                "it would emit none"
-            )
         if via == "name_equality" and render_id != name:
             errors.append(
                 f"{render_id}: via(name_equality) but RegistryName is {name}, "
@@ -119,6 +114,28 @@ def main() -> int:
                 f"{render_id}: links via a bibkey but has no "
                 "render_deformation_citation/3 row"
             )
+
+    via_counts: dict[str, int] = {}
+    for _render_id, _name, via in links:
+        key = via.split("(")[0]
+        via_counts[key] = via_counts.get(key, 0) + 1
+    expected_via = {"name_equality": 5, "bibkey": 1, "authored": 5}
+    if via_counts != expected_via:
+        errors.append(f"link lane counts are {via_counts}, expected {expected_via}")
+
+    reason_counts: dict[str, int] = {}
+    for _render_id, reason in unlinked:
+        key = reason.split("(")[0]
+        reason_counts[key] = reason_counts.get(key, 0) + 1
+    expected_reasons = {
+        "no_registry_bibkey": 9,
+        "no_literature_signal": 23,
+        "prefilter_rejected": 1,
+    }
+    if reason_counts != expected_reasons:
+        errors.append(
+            f"unlinked reason counts are {reason_counts}, expected {expected_reasons}"
+        )
 
     # --- the swipl re-derivation ---
     check = prolog(
@@ -174,19 +191,10 @@ def main() -> int:
             print(f"  ... and {len(errors) - 20} more", file=sys.stderr)
         return 1
 
-    via_counts: dict[str, int] = {}
-    for _render_id, _name, via in links:
-        key = via.split("(")[0]
-        via_counts[key] = via_counts.get(key, 0) + 1
-    reason_counts: dict[str, int] = {}
-    for _render_id, reason in unlinked:
-        key = reason.split("(")[0]
-        reason_counts[key] = reason_counts.get(key, 0) + 1
-
     print(f"PASS regeneration: {BUILDER.name} rerun is byte-identical, twice")
     print("PASS check_misconception_render_link/0 re-derived every claim")
     print(f"PASS census: {len(all_ids)} render ids, each linked xor unlinked")
-    print("PASS no too_vague links, no authored rows")
+    print("PASS no too_vague links; authored lane and named refusals match")
     print()
     print(f"render ids                : {len(all_ids)}")
     print(f"citation rows             : {len(citations)} over "

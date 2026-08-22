@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.bigred.questions_admission import judge  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 from scripts.curriculum import structure_to_task_rows as anchoring  # noqa: E402
 from scripts.research import extract_lesson_context as context  # noqa: E402
 
@@ -39,6 +40,10 @@ EXPECTED_VOID = {
     "labels": {"n": 279, "modal_share": 0.6559, "kappa": 0.0212},
     "guide": {"n": 47, "modal_share": 0.8298, "kappa": -0.0338},
 }
+EXPECTED_AUTHOR_HEADING = baseline_value("questions.im_author_heading")
+EXPECTED_PRINTED_REGION = baseline_value("questions.printed_region")
+EXPECTED_ADMITTED = baseline_value("questions.admitted")
+EXPECTED_TOTAL = baseline_value("questions.total")
 
 
 def load_jsonl(path: Path) -> list[dict]:
@@ -147,17 +152,23 @@ def main() -> int:
     check_counts(labels, guide)
     warrants = check_spans(labels, guide)
     check_void_history(load_jsonl(CANDIDATES), load_jsonl(VERDICTS))
-    assert warrants == Counter({"printed_region": 8081, "im_author_heading": 1013})
-    assert sum(EXPECTED_STATUS[lane]["mechanically_admitted"] for lane in EXPECTED_STATUS) == 9094
-    assert sum(sum(counts.values()) for counts in EXPECTED_STATUS.values()) == 11743
+    assert warrants == Counter({
+        "printed_region": EXPECTED_PRINTED_REGION,
+        "im_author_heading": EXPECTED_AUTHOR_HEADING,
+    })
+    assert sum(
+        EXPECTED_STATUS[lane]["mechanically_admitted"] for lane in EXPECTED_STATUS
+    ) == EXPECTED_ADMITTED
+    assert sum(sum(counts.values()) for counts in EXPECTED_STATUS.values()) == EXPECTED_TOTAL
     assert all(
         not row["held_reason"].startswith("pass_void")
         for row in labels + guide
         if row["status"] == "mechanically_held"
     )
     print(
-        "PASS admitted question stores: 9094 of 11743 rows admitted; "
-        "1013 im_author_heading and 8081 printed_region warrants; "
+        f"PASS admitted question stores: {EXPECTED_ADMITTED} of {EXPECTED_TOTAL} rows admitted; "
+        f"{EXPECTED_AUTHOR_HEADING} im_author_heading and "
+        f"{EXPECTED_PRINTED_REGION} printed_region warrants; "
         "held rows are form holds"
     )
     return 0

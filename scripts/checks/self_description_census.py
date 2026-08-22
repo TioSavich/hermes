@@ -14,12 +14,14 @@ ROOT = Path(__file__).resolve().parents[2]
 BUILDER = ROOT / "scripts/research/build_self_description_census.py"
 JSON_PATH = ROOT / "data/research/self_description_census.json"
 REPORT_PATH = ROOT / "docs/research/2026-07-25-what-the-repo-knows-about-itself.md"
+AUTHORED_JUDGEMENTS = ROOT / "data/research/orphan_judgements_authored.json"
 REGISTRY = ROOT / "hermes/capability_registry.pl"
 EXPECTED_VERDICTS = {
     "consumed_by_check",
     "consumed_by_builder",
     "include_active",
     "deliberately_unloaded",
+    "quarantined",
     "stalled_input",
     "superseded",
     "undetermined",
@@ -81,6 +83,10 @@ def evidence_groups(data: dict[str, object]):
 
 def check_evidence(data: dict[str, object]) -> int:
     checked = 0
+    authored_rows = {
+        row["path"]: row
+        for row in json.loads(AUTHORED_JUDGEMENTS.read_text(encoding="utf-8"))["judgements"]
+    }
     for owner, items in evidence_groups(data):
         if not items:
             fail(f"{owner} has no named evidence")
@@ -98,6 +104,15 @@ def check_evidence(data: dict[str, object]) -> int:
                 fail(f"{owner} names evidence outside the repository: {rel}")
             if not path.is_file():
                 fail(f"{owner} names missing evidence: {rel}")
+            if path == AUTHORED_JUDGEMENTS:
+                judgement_path = item.get("judgement_path")
+                authored = authored_rows.get(judgement_path)
+                if authored is None:
+                    fail(f"{owner} names an absent authored judgement: {judgement_path}")
+                if locator != authored.get("evidence"):
+                    fail(f"{owner} has stale authored evidence: {judgement_path}")
+                checked += 1
+                continue
             text = path.read_text(encoding="utf-8", errors="replace")
             if locator not in text:
                 fail(f"{owner} has a dead evidence locator in {rel}: {locator!r}")
@@ -144,6 +159,7 @@ def check_counts(data: dict[str, object], report: str) -> None:
             "consumed_by_builder",
             "include_active",
             "deliberately_unloaded",
+            "quarantined",
             "stalled_input",
             "superseded",
             "undetermined",

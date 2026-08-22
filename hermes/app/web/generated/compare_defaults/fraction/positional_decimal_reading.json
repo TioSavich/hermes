@@ -1,0 +1,316 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "decimal(0,fractional_digits(37,2),hundredths)",
+    "frames": [
+      {
+        "caption": "see digits as whole number string(37).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3700,
+              "label": "whole_number(37)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "see_digits_as_whole_number_string"
+      },
+      {
+        "caption": "ignore decimal mark(scale(100)).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3700,
+              "label": "whole_number(37)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "ignore_decimal_mark"
+      },
+      {
+        "caption": "ignore fractional place value(37,places(2),hundredths).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3700,
+              "label": "whole_number(37)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "ignore_fractional_place_value"
+      },
+      {
+        "caption": "name decimal as whole number(whole number(37)).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3700,
+              "label": "whole_number(37)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "name_decimal_as_whole_number"
+      },
+      {
+        "caption": "lose decimal scale(expected(decimal(0,fractional digits(37,2),hundredths)),produced(whole number(37))).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3700,
+              "label": "whole_number(37)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "lose_decimal_scale"
+      }
+    ],
+    "result": "whole_number(37)",
+    "trace": [
+      "see_digits_as_whole_number_string(37)",
+      "ignore_decimal_mark(scale(100))",
+      "ignore_fractional_place_value(37,places(2),hundredths)",
+      "name_decimal_as_whole_number(whole_number(37))",
+      "lose_decimal_scale(expected(decimal(0,fractional_digits(37,2),hundredths)),produced(whole_number(37)))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "decimal_whole_number_reading",
+  "divergence": {
+    "deformationResult": "whole_number(37)",
+    "productiveResult": "decimal(0,fractional_digits(37,2),hundredths)"
+  },
+  "family": "positional_decimal_reading",
+  "inputs": {
+    "family": "positional_decimal_reading",
+    "n1": 37,
+    "d1": 100,
+    "n2": 0
+  },
+  "note": "The productive side reads the decimal mark and assigns each digit a place value. The deformation reads the same digit string as a whole number and loses the decimal scale.",
+  "productive": {
+    "expected": "decimal(0,fractional_digits(37,2),hundredths)",
+    "frames": [
+      {
+        "caption": "read decimal mark(scale(100)).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              37,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 37,
+              "label": "decimal(0,fractional_digits(37,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "read_decimal_mark"
+      },
+      {
+        "caption": "split whole and fractional parts(37,100,0,37).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              37,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 37,
+              "label": "decimal(0,fractional_digits(37,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "split_whole_and_fractional_parts"
+      },
+      {
+        "caption": "assign fractional place value(37,places(2),hundredths).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              37,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 37,
+              "label": "decimal(0,fractional_digits(37,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "assign_fractional_place_value"
+      },
+      {
+        "caption": "compose decimal value(decimal(0,fractional digits(37,2),hundredths)).",
+        "scene": {
+          "axis": {
+            "max": 3700,
+            "min": 0,
+            "ticks": [
+              0,
+              37,
+              3700
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 37,
+              "label": "decimal(0,fractional_digits(37,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "compose_decimal_value"
+      }
+    ],
+    "result": "decimal(0,fractional_digits(37,2),hundredths)",
+    "trace": [
+      "read_decimal_mark(scale(100))",
+      "split_whole_and_fractional_parts(37,100,0,37)",
+      "assign_fractional_place_value(37,places(2),hundredths)",
+      "compose_decimal_value(decimal(0,fractional_digits(37,2),hundredths))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "positional_decimal_reading",
+  "viability": {
+    "condition": "omitting decimal scale changes the value",
+    "expected": "decimal(0,fractional_digits(37,2),hundredths)",
+    "inputs": {
+      "d1": 100,
+      "d2": 1,
+      "n1": 37,
+      "n2": 0
+    },
+    "produced": "whole_number(37)",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

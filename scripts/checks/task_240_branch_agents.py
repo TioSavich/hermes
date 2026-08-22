@@ -22,6 +22,7 @@ from hermes.mcp.branch_agents import (
 )
 from hermes.mcp.server import HermesMCPServer
 from hermes.app.root import resolve_hermes_root
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 def main() -> int:
@@ -77,7 +78,7 @@ def main() -> int:
             raise RuntimeError(completed.stderr or completed.stdout)
         records = json.loads(output.read_text(encoding="utf-8"))
 
-    assert len(records) == 12
+    assert len(records) == baseline_value("mcp.branch_replay_records")
     assert len({record["replay_item_id"] for record in records}) == len(records)
     assert any(record["outcome"] == "retry_bound_exhausted" for record in records)
     assert any(

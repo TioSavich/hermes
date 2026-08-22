@@ -19,11 +19,13 @@ FIXTURE = (
     / "fixtures"
     / "equation_verification_sidecar_segmenter_controls.json"
 )
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(CURRICULUM))
 
 import build_sidecar_equation_census as census  # noqa: E402
 import compile_action_mappings as compiler  # noqa: E402
 import equation_verification as eqv  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 def corpus():
@@ -201,13 +203,17 @@ def check_live_witnesses(
         for row in rows
         if row["id"].startswith(("task_206_", "task_206fw_"))
     ]
-    if len(sidecar_rows) != 10:
+    expected_rows = baseline_value("curriculum.sidecar_equation_rows")
+    if len(sidecar_rows) != expected_rows:
         raise SystemExit(
-            f"expected 10 witnessed sidecar rows, found {len(sidecar_rows)}"
+            f"expected {expected_rows} witnessed sidecar rows, found {len(sidecar_rows)}"
         )
     if any(row["witness_class"] != "printed_answer" for row in sidecar_rows):
         raise SystemExit("a sidecar row lost its printed-answer witness")
-    print("sidecar live rows: accepted=10 printed_answer=10 withheld=1")
+    print(
+        f"sidecar live rows: accepted={expected_rows} "
+        f"printed_answer={expected_rows} withheld=1"
+    )
 
 
 def check_equation_matching_refusal(

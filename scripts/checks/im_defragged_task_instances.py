@@ -15,6 +15,8 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 ARTIFACT = ROOT / "curriculum/im/generated/compiled_defragged_task_instances.pl"
 COMPILED = ROOT / "curriculum/im/generated/compiled_task_instances.pl"
 GRADE8_COMPILED = ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
@@ -25,13 +27,11 @@ EXPECTED_STATUS = Counter(
         "already_complete": 3417,
         "recovered": 1295,
         "recovered_with_referent": 3,
-        "blocked_missing_visual": 142,
         "blocked_layout": 385,
     }
 )
 EXPECTED_BLOCKERS = Counter(
     {
-        "none": 4715,
         "required_visual_asset_unresolved": 23,
         "pdf_source_absent_no_unique_markdown_join": 242,
         "joined_source_span_not_complete": 60,
@@ -215,7 +215,9 @@ def check_provenance(rows: list[dict]) -> None:
 
 def check_identity(rows: list[dict]) -> None:
     facts = scan_compiled_facts()
-    if len(facts) != 2659 or len(rows) != 5242:
+    expected_facts = baseline_value("defrag.compiled_facts")
+    expected_rows = baseline_value("defrag.rows")
+    if len(facts) != expected_facts or len(rows) != expected_rows:
         fail(f"row count drift: compiled={len(facts)}, defrag={len(rows)}")
     ids = [row["record_id"] for row in rows]
     if len(ids) != len(set(ids)):
@@ -234,7 +236,8 @@ def check_identity(rows: list[dict]) -> None:
         if row["record_id"] != expected:
             fail(f"unstable record ID: expected {expected}, got {row['record_id']}")
     admitted = rows[len(facts) :]
-    if len(admitted) != 2583:
+    expected_admitted = baseline_value("defrag.admitted_rows")
+    if len(admitted) != expected_admitted:
         fail(f"admission row count drift: {len(admitted)}")
     if any(
         row["task_term"] != "rule_absent-absent(operation)"
@@ -248,12 +251,19 @@ def check_identity(rows: list[dict]) -> None:
 def check_census(rows: list[dict]) -> None:
     status = Counter(row["status"] for row in rows)
     blockers = Counter(row["blocker"] for row in rows)
-    if status != EXPECTED_STATUS:
+    expected_status = EXPECTED_STATUS.copy()
+    expected_status["blocked_missing_visual"] = baseline_value(
+        "defrag.visual_markers"
+    )
+    if status != expected_status:
         fail(f"status census drift: {status}")
-    if blockers != EXPECTED_BLOCKERS:
+    expected_blockers = EXPECTED_BLOCKERS.copy()
+    expected_blockers["none"] = baseline_value("defrag.eligible_rows")
+    if blockers != expected_blockers:
         fail(f"blocker census drift: {blockers}")
-    if sum(row["visual_count"] for row in rows) != 142:
-        fail("visual absence-marker count is not 142")
+    expected_visuals = baseline_value("defrag.visual_markers")
+    if sum(row["visual_count"] for row in rows) != expected_visuals:
+        fail(f"visual absence-marker count is not {expected_visuals}")
     repair_classes = Counter(row["statement_repair_class"] for row in rows)
     if repair_classes != EXPECTED_REPAIR_CLASSES:
         fail(f"statement-repair census drift: {repair_classes}")
@@ -263,16 +273,17 @@ def check_census(rows: list[dict]) -> None:
             in {"already_complete", "recovered", "recovered_with_referent"}
             for row in rows
         )
-        != 4715
+        != baseline_value("defrag.eligible_rows")
     ):
-        fail("eligible record count is not 4,715")
+        fail("eligible record count disagrees with the baseline")
     widened = [
         row
         for row in rows
         if "provenance_class(widened_checkpoint_receipt_v1)" in row["evidence_term"]
     ]
-    if len(widened) != 22:
-        fail(f"widened receipt census is not 22: {len(widened)}")
+    expected_widened = baseline_value("defrag.widened_receipts")
+    if len(widened) != expected_widened:
+        fail(f"widened receipt census is not {expected_widened}: {len(widened)}")
     if not all(
         "raw_response_checkpoint(" in row["evidence_term"]
         and "structured_reading_sha256(" in row["evidence_term"]
@@ -297,8 +308,12 @@ def check_visual_markers() -> None:
 
 def check_span_fixtures(rows: list[dict]) -> None:
     fixtures = json.loads(FIXTURES.read_text(encoding="utf-8"))
-    if len(fixtures) != 20:
-        fail(f"expected 20 source-span fixtures, found {len(fixtures)}")
+    expected_fixtures = baseline_value("defrag.span_fixtures")
+    if len(fixtures) != expected_fixtures:
+        fail(
+            f"expected {expected_fixtures} source-span fixtures, "
+            f"found {len(fixtures)}"
+        )
     by_lesson: dict[str, list[dict]] = defaultdict(list)
     for row in rows:
         by_lesson[row["lesson"]].append(row)
@@ -407,9 +422,12 @@ def main() -> None:
     check_sentence_boundary_repair(rows)
     check_double_generation()
     print(
-        "PASS im defrag: 5,242 rows; 4,715 usable; 2,583 unclaimed admissions; "
-        "22 widened receipts; "
-        "385 layout blocks; 142 visual blocks; 20 spans; byte provenance and "
+        f"PASS im defrag: {baseline_value('defrag.rows'):,} rows; "
+        f"{baseline_value('defrag.eligible_rows'):,} usable; "
+        f"{baseline_value('defrag.admitted_rows'):,} unclaimed admissions; "
+        f"{baseline_value('defrag.widened_receipts')} widened receipts; "
+        f"385 layout blocks; {baseline_value('defrag.visual_markers')} visual blocks; "
+        f"{baseline_value('defrag.span_fixtures')} spans; byte provenance and "
         "double generation"
     )
 

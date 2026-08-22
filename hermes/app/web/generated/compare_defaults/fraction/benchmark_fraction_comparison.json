@@ -1,0 +1,1834 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "select benchmark: selected(one).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_select_benchmark"
+      },
+      {
+        "caption": "benchmark first: numerator denominator gap(first,2).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_benchmark_first"
+      },
+      {
+        "caption": "benchmark second: numerator denominator gap(second,3).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_benchmark_second"
+      },
+      {
+        "caption": "gap thinking: compare absolute gaps(2,3,greater than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_gap_thinking"
+      },
+      {
+        "caption": "transitive compare: omitted external value relation.",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_transitive_compare"
+      },
+      {
+        "caption": "residual compare: unscaled residuals(2,3).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_residual_compare"
+      },
+      {
+        "caption": "Viability condition: gap order diverges from fraction order.",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_viability_context"
+      },
+      {
+        "caption": "emit: emit(greater than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 9,
+        "verb": "q_emit"
+      },
+      {
+        "caption": "accept: accept(greater than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "deformation",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 10,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "greater_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_select_benchmark,selected(one))",
+      "hist(q_benchmark_first,numerator_denominator_gap(first,2))",
+      "hist(q_benchmark_second,numerator_denominator_gap(second,3))",
+      "hist(q_gap_thinking,compare_absolute_gaps(2,3,greater_than))",
+      "hist(q_transitive_compare,omitted_external_value_relation)",
+      "hist(q_residual_compare,unscaled_residuals(2,3))",
+      "hist(q_viability_context,viability(fails_in_context,condition(gap_order_diverges_from_fraction_order),expected(less_than),produced(greater_than),validity(incorrect)))",
+      "hist(q_emit,emit(greater_than))",
+      "hist(q_accept,accept(greater_than))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "gap_thinking_fraction_comparison",
+  "divergence": {
+    "deformationResult": "greater_than",
+    "productiveResult": "less_than"
+  },
+  "family": "benchmark_fraction_comparison",
+  "inputs": {
+    "family": "benchmark_fraction_comparison",
+    "n1": 1,
+    "d1": 3,
+    "n2": 2,
+    "d2": 5
+  },
+  "note": "The productive side locates both fractions relative to a shared benchmark. The deformation compares uncoordinated gaps, so the distances do not name the same unit.",
+  "productive": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "select benchmark: selected(one half).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_select_benchmark"
+      },
+      {
+        "caption": "benchmark first: judgment(fraction(1,3),less than,one half,cross products(2,trace steps(4),3,trace steps(4))).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_benchmark_first"
+      },
+      {
+        "caption": "benchmark second: judgment(fraction(2,5),less than,one half,cross products(4,trace steps(5),5,trace steps(4))).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_benchmark_second"
+      },
+      {
+        "caption": "transitive compare: same side requires residual.",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_transitive_compare"
+      },
+      {
+        "caption": "residual compare: residual(compared(fraction(1,3),fraction(2,5),less than),cross products(5,trace steps(4),6,trace steps(5))).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_residual_compare"
+      },
+      {
+        "caption": "emit: emit(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_emit"
+      },
+      {
+        "caption": "accept: accept(less than).",
+        "scene": {
+          "bars": [
+            {
+              "fraction": "1/3",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "1/3",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 140,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 140,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 140,
+                  "x": 280,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 45
+            },
+            {
+              "fraction": "2/5",
+              "h": 54,
+              "isUnitBar": false,
+              "label": "2/5",
+              "role": "whole",
+              "size": 420,
+              "splits": [
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "highlight",
+                  "w": 84,
+                  "x": 84,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 168,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 252,
+                  "y": 0
+                },
+                {
+                  "h": 54,
+                  "role": "whole",
+                  "w": 84,
+                  "x": 336,
+                  "y": 0
+                }
+              ],
+              "type": "bar",
+              "w": 420,
+              "x": 40,
+              "y": 155
+            }
+          ],
+          "format": "fraction-bars",
+          "mats": [],
+          "unitBarIndex": null,
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "less_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_select_benchmark,selected(one_half))",
+      "hist(q_benchmark_first,judgment(fraction(1,3),less_than,one_half,cross_products(2,[step(state(q_init_calc,1,2,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,2,0,1),[],Iterate: Added 2. Total = 2.),step(state(q_loop_calc,1,2,2,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,2,2,0),[],Calculation complete. Result = 2.)],3,[step(state(q_init_calc,1,3,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,3,0,1),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,1,3,3,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,3,3,0),[],Calculation complete. Result = 3.)])))",
+      "hist(q_benchmark_second,judgment(fraction(2,5),less_than,one_half,cross_products(4,[step(state(q_init_calc,2,2,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,2,0,2),[],Iterate: Added 2. Total = 2.),step(state(q_loop_calc,2,2,2,1),[],Iterate: Added 2. Total = 4.),step(state(q_loop_calc,2,2,4,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,2,4,0),[],Calculation complete. Result = 4.)],5,[step(state(q_init_calc,1,5,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,5,0,1),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,1,5,5,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,5,5,0),[],Calculation complete. Result = 5.)])))",
+      "hist(q_transitive_compare,same_side_requires_residual)",
+      "hist(q_residual_compare,residual(compared(fraction(1,3),fraction(2,5),less_than),cross_products(5,[step(state(q_init_calc,1,5,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,5,0,1),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,1,5,5,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,5,5,0),[],Calculation complete. Result = 5.)],6,[step(state(q_init_calc,2,3,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,3,0,2),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,2,3,3,1),[],Iterate: Added 3. Total = 6.),step(state(q_loop_calc,2,3,6,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,3,6,0),[],Calculation complete. Result = 6.)])))",
+      "hist(q_emit,emit(less_than))",
+      "hist(q_accept,accept(less_than))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "benchmark_fraction_comparison",
+  "viability": {
+    "condition": "gap order diverges from fraction order",
+    "expected": "less_than",
+    "inputs": {
+      "d1": 3,
+      "d2": 5,
+      "n1": 1,
+      "n2": 2
+    },
+    "produced": "greater_than",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

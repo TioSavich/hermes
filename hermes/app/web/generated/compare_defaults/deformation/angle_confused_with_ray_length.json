@@ -1,0 +1,142 @@
+{
+  "canvas": {
+    "height": 380,
+    "width": 440
+  },
+  "correct_angle": {
+    "degrees": 60,
+    "ray_length": 120
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "The angle measures 60 degrees, the amount of turn between the rays.",
+        "scene": {
+          "arc": {
+            "radius": 56,
+            "startDeg": 0,
+            "sweepDeg": 60
+          },
+          "format": "angle-circular",
+          "label": "60",
+          "rays": [
+            {
+              "angleDeg": 0,
+              "length": 120
+            },
+            {
+              "angleDeg": 60,
+              "length": 120
+            }
+          ],
+          "sector": null,
+          "version": 2,
+          "vertex": {
+            "x": 220,
+            "y": 200
+          }
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "measure_angle"
+      },
+      {
+        "caption": "Redrawing the same 60-degree turn with longer rays does not change the angle; reading the longer rays as a bigger angle is the ray-length error.",
+        "scene": {
+          "arc": {
+            "radius": 56,
+            "startDeg": 0,
+            "sweepDeg": 60
+          },
+          "format": "angle-circular",
+          "label": "60",
+          "rays": [
+            {
+              "angleDeg": 0,
+              "length": 120
+            },
+            {
+              "angleDeg": 60,
+              "length": 120
+            },
+            {
+              "angleDeg": 0,
+              "length": 240,
+              "role": "deformation"
+            },
+            {
+              "angleDeg": 60,
+              "length": 240,
+              "role": "deformation"
+            }
+          ],
+          "sector": null,
+          "version": 2,
+          "vertex": {
+            "x": 220,
+            "y": 200
+          }
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "stretch_rays"
+      }
+    ]
+  },
+  "deformationKind": "ray_length_stretched_angle",
+  "deformed_angle": {
+    "degrees": 60,
+    "drawn_length": 240,
+    "read_as": "bigger"
+  },
+  "family": "angle_confused_with_ray_length",
+  "kind": "angle_vs_ray_length_stretched_angle",
+  "note": "The angle measures 60 degrees whether the rays are drawn 120 px or 240 px long: angle measure is the amount of turn between the rays, and ray length carries none of it. Reading the longer-drawn rays as a bigger angle is the ray-length error. (Angle-confused-with-ray-length family.)",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Draw the 60-degree angle: the arc is the turn between the rays.",
+        "scene": {
+          "arc": {
+            "radius": 56,
+            "startDeg": 0,
+            "sweepDeg": 60
+          },
+          "format": "angle-circular",
+          "label": "60",
+          "rays": [
+            {
+              "angleDeg": 0,
+              "length": 120
+            },
+            {
+              "angleDeg": 60,
+              "length": 120
+            }
+          ],
+          "sector": null,
+          "version": 2,
+          "vertex": {
+            "x": 220,
+            "y": 200
+          }
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "draw_angle"
+      }
+    ]
+  },
+  "productiveKind": "angle",
+  "request": {
+    "degrees": 60,
+    "long_length": 240,
+    "short_length": 120
+  },
+  "inputs": {
+    "family": "angle_confused_with_ray_length",
+    "degrees": 60,
+    "short_length": 120,
+    "long_length": 240
+  }
+}

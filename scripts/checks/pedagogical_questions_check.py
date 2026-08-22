@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from hermes.app.worker import PersistentPrologWorker
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 CLUSTER_FILES = sorted(
     (ROOT / "data/research_assets/research").glob(
@@ -76,7 +77,9 @@ def main() -> int:
 
     every = direct_lookup("all", "ignored")
     assert every["status"] == "matched"
-    assert every["match_count"] == 42, every["match_count"]
+    assert every["match_count"] == baseline_value(
+        "questions.pedagogical_clusters"
+    ), every["match_count"]
     assert all(row["match_basis"] == "whole_corpus" for row in every["matches"])
 
     by_standard = direct_lookup("standard", "CCSS 3.NF.A.1")

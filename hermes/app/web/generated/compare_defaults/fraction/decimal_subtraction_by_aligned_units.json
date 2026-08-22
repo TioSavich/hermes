@@ -1,0 +1,406 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "decimal(1,fractional_digits(17,2),hundredths)",
+    "frames": [
+      {
+        "caption": "read written integer numerals(12,3).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "read_written_integer_numerals"
+      },
+      {
+        "caption": "omit decimal scale alignment(10,100).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "omit_decimal_scale_alignment"
+      },
+      {
+        "caption": "subtract unaligned numerals(12,3,9).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "subtract_unaligned_numerals"
+      },
+      {
+        "caption": "reinscribe at larger scale(9,100,decimal(0,fractional digits(9,2),hundredths)).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "reinscribe_at_larger_scale"
+      },
+      {
+        "caption": "lose decimal scale relation(expected(decimal(1,fractional digits(17,2),hundredths)),produced(decimal(0,fractional digits(9,2),hundredths))).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "lose_decimal_scale_relation"
+      },
+      {
+        "caption": "record decimal operation viability(viability(fails in context,condition(unaligned decimal operation diverges from decimal value operation),expected(decimal(1,fractional digits(17,2),hundredths)),produced(decimal(0,fractional digits(9,2),hundredths)),validity(incorrect))).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "decimal(0,fractional_digits(9,2),hundredths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "record_decimal_operation_viability"
+      }
+    ],
+    "result": "decimal(0,fractional_digits(9,2),hundredths)",
+    "trace": [
+      "read_written_integer_numerals(12,3)",
+      "omit_decimal_scale_alignment(10,100)",
+      "subtract_unaligned_numerals(12,3,9)",
+      "reinscribe_at_larger_scale(9,100,decimal(0,fractional_digits(9,2),hundredths))",
+      "lose_decimal_scale_relation(expected(decimal(1,fractional_digits(17,2),hundredths)),produced(decimal(0,fractional_digits(9,2),hundredths)))",
+      "record_decimal_operation_viability(viability(fails_in_context,condition(unaligned_decimal_operation_diverges_from_decimal_value_operation),expected(decimal(1,fractional_digits(17,2),hundredths)),produced(decimal(0,fractional_digits(9,2),hundredths)),validity(incorrect)))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "decimal_subtract_unaligned_numerals",
+  "divergence": {
+    "deformationResult": "decimal(0,fractional_digits(9,2),hundredths)",
+    "productiveResult": "decimal(1,fractional_digits(17,2),hundredths)"
+  },
+  "family": "decimal_subtraction_by_aligned_units",
+  "inputs": {
+    "family": "decimal_subtraction_by_aligned_units",
+    "n1": 12,
+    "d1": 10,
+    "n2": 3,
+    "d2": 100
+  },
+  "note": "The productive side aligns decimal units before subtracting and then reinscribes the difference. The deformation subtracts the written numerals without first making their units alike.",
+  "productive": {
+    "expected": "decimal(1,fractional_digits(17,2),hundredths)",
+    "frames": [
+      {
+        "caption": "identify operand scales(10,100).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_operand_scales"
+      },
+      {
+        "caption": "choose common decimal scale(100).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "choose_common_decimal_scale"
+      },
+      {
+        "caption": "align decimal units(12,10,120).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "align_decimal_units"
+      },
+      {
+        "caption": "align decimal units(3,100,3).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "align_decimal_units"
+      },
+      {
+        "caption": "subtract grounded aligned units(120,3,117).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "subtract_grounded_aligned_units"
+      },
+      {
+        "caption": "reinscribe decimal result(117,100,decimal(1,fractional digits(17,2),hundredths)).",
+        "scene": {
+          "axis": {
+            "max": 117,
+            "min": 0,
+            "ticks": [
+              0,
+              117
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 117,
+              "label": "decimal(1,fractional_digits(17,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "reinscribe_decimal_result"
+      }
+    ],
+    "result": "decimal(1,fractional_digits(17,2),hundredths)",
+    "trace": [
+      "identify_operand_scales(10,100)",
+      "choose_common_decimal_scale(100)",
+      "align_decimal_units(12,10,120)",
+      "align_decimal_units(3,100,3)",
+      "subtract_grounded_aligned_units(120,3,117)",
+      "reinscribe_decimal_result(117,100,decimal(1,fractional_digits(17,2),hundredths))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "decimal_subtraction_by_aligned_units",
+  "viability": {
+    "condition": "unaligned decimal operation diverges from decimal value operation",
+    "expected": "decimal(1,fractional_digits(17,2),hundredths)",
+    "inputs": {
+      "d1": 10,
+      "d2": 100,
+      "n1": 12,
+      "n2": 3
+    },
+    "produced": "decimal(0,fractional_digits(9,2),hundredths)",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

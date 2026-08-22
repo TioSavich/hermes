@@ -96,6 +96,7 @@ add_curriculum_lane() {
     add_enactment_driver
     add_python scripts/curriculum/build_im_lesson_enactment_census.py
     add_python scripts/curriculum/build_counting_place_value_diagnosis.py
+    add_python scripts/curriculum/build_lesson_misconception_witness_store.py
 }
 
 add_loops_lane() {
@@ -112,6 +113,7 @@ add_registry_lane() {
     add_python hermes/app/scripts/export_parametric_deformations.py
     add_python hermes/app/scripts/export_parametric_fraction_errors.py
     add_python hermes/app/scripts/export_lesson_deformation_charts.py
+    add_python hermes/app/scripts/export_compare_defaults.py
     add_python scripts/generate_visual_surface_indexes.py
     add_python scripts/extract_a_fortiori_context_closure.py
     add_python scripts/extract_coverage_absence_registry.py
@@ -126,6 +128,7 @@ add_registry_lane() {
     add_python scripts/research/build_relevance_negation.py
     add_python scripts/questions/build_question_move_pilot.py
     add_python scripts/research/promote_review_proposals.py
+    add_python scripts/research/build_misconception_render_link.py
 }
 
 add_tail() {
@@ -137,6 +140,8 @@ add_tail() {
     add_python scripts/research/build_data_store_index.py
     add_python scripts/research/build_self_description_census.py
     add_python scripts/extract_research_measurement_registry.py
+    add_python scripts/research/build_counts_baseline.py
+    add_python scripts/research/build_work_queue.py
     add_python scripts/extract_data_consumption_manifest.py
 }
 

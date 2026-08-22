@@ -104,7 +104,10 @@
   </div>
 
   <script>
-    window.HermesCompare = { op: 'deformation_compare' };
+    window.HermesCompare = {
+      op: 'deformation_compare',
+      prebaked: '/generated/compare_defaults/deformation/'
+    };
     document.addEventListener('DOMContentLoaded', function () {
       var family = document.getElementById('family');
       var vertices = document.getElementById('vertices');

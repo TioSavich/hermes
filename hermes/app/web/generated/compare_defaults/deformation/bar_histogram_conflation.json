@@ -1,0 +1,177 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 560
+  },
+  "categories": 2,
+  "deformation": {
+    "frames": [
+      {
+        "caption": "Categorical bars stand apart: each bar is a discrete category, and the gaps carry that separateness.",
+        "scene": {
+          "axes": {
+            "categoryLabels": [
+              "red",
+              "blue"
+            ],
+            "freqMax": 6
+          },
+          "bars": [
+            {
+              "count": 4,
+              "h": 200,
+              "label": "red",
+              "role": "bar",
+              "w": 48,
+              "x": 60,
+              "y": 140
+            },
+            {
+              "count": 6,
+              "h": 300,
+              "label": "blue",
+              "role": "bar",
+              "w": 48,
+              "x": 132,
+              "y": 40
+            }
+          ],
+          "dots": [],
+          "format": "data-display",
+          "mode": "bar",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "stand_bars_apart"
+      },
+      {
+        "caption": "Closing the gaps redraws the same categories as touching bins, mis-signalling one continuous variable where the data are separate categories.",
+        "scene": {
+          "axes": {
+            "categoryLabels": [
+              "red",
+              "blue"
+            ],
+            "freqMax": 6
+          },
+          "bars": [
+            {
+              "count": 4,
+              "h": 200,
+              "label": "red",
+              "role": "deformation",
+              "w": 48,
+              "x": 60,
+              "y": 140
+            },
+            {
+              "count": 6,
+              "h": 300,
+              "label": "blue",
+              "role": "deformation",
+              "w": 48,
+              "x": 108,
+              "y": 40
+            }
+          ],
+          "dots": [],
+          "format": "data-display",
+          "mode": "histogram",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "close_the_gaps"
+      }
+    ]
+  },
+  "deformationKind": "pseudo_histogram",
+  "family": "bar_histogram_conflation",
+  "kind": "bar_chart_vs_pseudo_histogram",
+  "note": "A bar chart spaces 2 categorical bars apart; each bar is a discrete category and the gaps carry that discreteness. Drawing the same bars touching, evenly binned, redraws them as a histogram and mis-signals a continuous variable. A bar's length denotes a count, but a histogram's frequency is its bar's area over an interval, so reading the touching bins by height alone loses the area reading that unequal bins would demand. (Bar-histogram-conflation family.)",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Raise the red bar to 4 units: its length marks a count of 4.",
+        "scene": {
+          "axes": {
+            "categoryLabels": [
+              "red",
+              "blue"
+            ],
+            "freqMax": 6
+          },
+          "bars": [
+            {
+              "count": 4,
+              "h": 200,
+              "label": "red",
+              "role": "bar",
+              "w": 48,
+              "x": 60,
+              "y": 140
+            }
+          ],
+          "dots": [],
+          "format": "data-display",
+          "mode": "bar",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "bar(red,4)"
+      },
+      {
+        "caption": "Raise the blue bar to 6 units: its length marks a count of 6.",
+        "scene": {
+          "axes": {
+            "categoryLabels": [
+              "red",
+              "blue"
+            ],
+            "freqMax": 6
+          },
+          "bars": [
+            {
+              "count": 4,
+              "h": 200,
+              "label": "red",
+              "role": "bar",
+              "w": 48,
+              "x": 60,
+              "y": 140
+            },
+            {
+              "count": 6,
+              "h": 300,
+              "label": "blue",
+              "role": "bar",
+              "w": 48,
+              "x": 132,
+              "y": 40
+            }
+          ],
+          "dots": [],
+          "format": "data-display",
+          "mode": "bar",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "bar(blue,6)"
+      }
+    ]
+  },
+  "productiveKind": "bar_chart",
+  "provenance": "literature_only",
+  "request": {
+    "count": 2,
+    "pairs": "[red-4,blue-6]"
+  },
+  "violation": "categorical_spacing_read_as_continuous_bins",
+  "inputs": {
+    "family": "bar_histogram_conflation",
+    "pairs": "[{\"category\":\"red\",\"count\":4},{\"category\":\"blue\",\"count\":6}]"
+  }
+}

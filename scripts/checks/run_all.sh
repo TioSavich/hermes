@@ -35,6 +35,7 @@ run static_route_containment.py python3 "$CHECKS_DIR/static_route_containment.py
 run hermes_shell_page_context.py python3 "$CHECKS_DIR/hermes_shell_page_context.py"
 run required_system_prompts.py python3 "$CHECKS_DIR/required_system_prompts.py"
 run mcp_description_counts.py python3 "$CHECKS_DIR/mcp_description_counts.py"
+run counts_baseline.py      python3 "$CHECKS_DIR/counts_baseline.py"
 run fraction_comparison_scene.py python3 "$CHECKS_DIR/fraction_comparison_scene.py"
 run deformation_compare_scene.py python3 "$CHECKS_DIR/deformation_compare_scene.py"
 run visual_surface_indexes.py python3 "$CHECKS_DIR/visual_surface_indexes.py"
@@ -123,7 +124,9 @@ run self_description_census.py python3 "$CHECKS_DIR/self_description_census.py"
 run extract_research_measurement_registry python3 "$CHECKS_DIR/../extract_research_measurement_registry.py" --check
 run render_contract.py      python3 "$CHECKS_DIR/render_contract.py"
 run check_prebaked.py       python3 "$CHECKS_DIR/../render/check_prebaked.py"
+run lesson_misconception_witness_store.py python3 "$CHECKS_DIR/lesson_misconception_witness_store.py"
 run strict_load.sh          bash "$CHECKS_DIR/strict_load.sh"
+run consumption_gate.py     python3 "$CHECKS_DIR/consumption_gate.py"
 run field_context_cache.py  python3 "$CHECKS_DIR/field_context_cache.py"
 run monitoring_route_budget.py python3 "$CHECKS_DIR/monitoring_route_budget.py"
 run monitoring_chart_client_guard.py python3 "$CHECKS_DIR/monitoring_chart_client_guard.py"
@@ -194,6 +197,7 @@ run error_rule_automaton_join.pl swipl -q -l "$CHECKS_DIR/../../paths.pl" -s "$C
 
 # Last: the manifest indexes every data artifact and the readers that open it, so
 # it describes the settled state after every other generator has run.
+run work_queue.py python3 "$CHECKS_DIR/work_queue.py"
 run extract_data_consumption_manifest python3 "$CHECKS_DIR/../extract_data_consumption_manifest.py" --check
 
 if (( ${#FAILED[@]} )); then

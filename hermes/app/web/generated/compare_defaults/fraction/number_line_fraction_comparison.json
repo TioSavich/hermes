@@ -1,0 +1,700 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "identify unit: unit interval(0,1).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_identify_unit"
+      },
+      {
+        "caption": "partition interval: partitions(fraction(1,3),trace steps(6),fraction(2,5),trace steps(8)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_partition_interval"
+      },
+      {
+        "caption": "count marks not intervals: overcount(origin mark included,fraction(1,3),mark count(recollection(trace steps(2))),trace steps(4),fraction(2,5),mark count(recollection(trace steps(3))),trace steps(5)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_count_marks_not_intervals"
+      },
+      {
+        "caption": "locate endpoint: mislocated endpoints(mark count(recollection(trace steps(2)),3),mark count(recollection(trace steps(3)),5)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_locate_endpoint"
+      },
+      {
+        "caption": "measure with unit fraction: co measure(unit fraction(1,15),trace steps(6),position(mark count(recollection(trace steps(2)),3),10,trace steps(5)),position(mark count(recollection(trace steps(3)),5),9,trace steps(6))).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_measure_with_unit_fraction"
+      },
+      {
+        "caption": "compare positions: compare(10,9,greater than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_compare_positions"
+      },
+      {
+        "caption": "emit: emit(greater than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_emit"
+      },
+      {
+        "caption": "accept: accept(greater than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              9,
+              10,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 10,
+              "label": "fraction(1,3)",
+              "role": "deformation"
+            },
+            {
+              "at": 9,
+              "label": "fraction(2,5)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 9,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "greater_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_identify_unit,unit_interval(0,1))",
+      "hist(q_partition_interval,partitions(fraction(1,3),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],fraction(2,5),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+      "hist(q_count_marks_not_intervals,overcount(origin_mark_included,fraction(1,3),mark_count(recollection([tally,tally])),[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Iterate connected copy 1 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)],fraction(2,5),mark_count(recollection([tally,tally,tally])),[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally]),recollection([]),[]),Iterate connected copy 1 of 3.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 3.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 3 of 3.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)]))",
+      "hist(q_locate_endpoint,mislocated_endpoints(mark_count(recollection([tally,tally]),3),mark_count(recollection([tally,tally,tally]),5)))",
+      "hist(q_measure_with_unit_fraction,co_measure(unit_fraction(1,15),[step(state(q_init_calc,3,5,0,3),[],Initializing iterative calculation.),step(state(q_loop_calc,3,5,0,3),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,3,5,5,2),[],Iterate: Added 5. Total = 10.),step(state(q_loop_calc,3,5,10,1),[],Iterate: Added 5. Total = 15.),step(state(q_loop_calc,3,5,15,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,3,5,15,0),[],Calculation complete. Result = 15.)],position(mark_count(recollection([tally,tally]),3),10,[step(state(q_init_calc,2,5,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,5,0,2),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,2,5,5,1),[],Iterate: Added 5. Total = 10.),step(state(q_loop_calc,2,5,10,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,5,10,0),[],Calculation complete. Result = 10.)]),position(mark_count(recollection([tally,tally,tally]),5),9,[step(state(q_init_calc,3,3,0,3),[],Initializing iterative calculation.),step(state(q_loop_calc,3,3,0,3),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,3,3,3,2),[],Iterate: Added 3. Total = 6.),step(state(q_loop_calc,3,3,6,1),[],Iterate: Added 3. Total = 9.),step(state(q_loop_calc,3,3,9,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,3,3,9,0),[],Calculation complete. Result = 9.)])))",
+      "hist(q_compare_positions,compare(10,9,greater_than))",
+      "hist(q_emit,emit(greater_than))",
+      "hist(q_accept,accept(greater_than))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "number_line_count_marks_not_intervals",
+  "divergence": {
+    "deformationResult": "greater_than",
+    "productiveResult": "less_than"
+  },
+  "family": "number_line_fraction_comparison",
+  "inputs": {
+    "family": "number_line_fraction_comparison",
+    "n1": 1,
+    "d1": 3,
+    "n2": 2,
+    "d2": 5
+  },
+  "note": "The productive side counts intervals of a common unit fraction. The deformation counts marks instead, shifting each represented position by one interval.",
+  "productive": {
+    "expected": "less_than",
+    "frames": [
+      {
+        "caption": "init: init(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "q_init"
+      },
+      {
+        "caption": "identify unit: unit interval(0,1).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "q_identify_unit"
+      },
+      {
+        "caption": "partition interval: partitions(fraction(1,3),trace steps(6),fraction(2,5),trace steps(8)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "q_partition_interval"
+      },
+      {
+        "caption": "mark off lengths: iterations(fraction(1,3),unit(divaded(recollection(trace steps(3)),unit interval(0,1))),trace steps(1),trace steps(3),fraction(2,5),unit(divaded(recollection(trace steps(5)),unit interval(0,1))),trace steps(2),trace steps(4)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "q_mark_off_lengths"
+      },
+      {
+        "caption": "locate endpoint: endpoints(fraction(1,3),fraction(2,5)).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "q_locate_endpoint"
+      },
+      {
+        "caption": "measure with unit fraction: co measure(unit fraction(1,15),trace steps(6),position(fraction(1,3),5,trace steps(4)),position(fraction(2,5),6,trace steps(5))).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "q_measure_with_unit_fraction"
+      },
+      {
+        "caption": "compare positions: compare(5,6,less than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 7,
+        "verb": "q_compare_positions"
+      },
+      {
+        "caption": "emit: emit(less than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 8,
+        "verb": "q_emit"
+      },
+      {
+        "caption": "accept: accept(less than).",
+        "scene": {
+          "axis": {
+            "max": 15,
+            "min": 0,
+            "ticks": [
+              0,
+              5,
+              6,
+              15
+            ]
+          },
+          "coordinateDenominator": 15,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 5,
+              "label": "fraction(1,3)",
+              "role": "highlight"
+            },
+            {
+              "at": 6,
+              "label": "fraction(2,5)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "fraction-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 9,
+        "verb": "q_accept"
+      }
+    ],
+    "result": "less_than",
+    "trace": [
+      "hist(q_init,init(fraction(1,3),fraction(2,5)))",
+      "hist(q_identify_unit,unit_interval(0,1))",
+      "hist(q_partition_interval,partitions(fraction(1,3),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 3.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)],fraction(2,5),[step(q_start,state(q_start,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Establish the referent whole; deal it into D equal parts (elaborates equal-sharing division).),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([]),[]),Cut equal part 1 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 2 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 3 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 4 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Cut equal part 5 of 5.),step(q_partition,state(q_partition,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),All D equal parts cut.),step(q_verify,state(q_verify,unit_interval(0,1),recollection([tally,tally,tally,tally,tally]),recollection([tally,tally,tally,tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Certified: each part is 1/D, inside the whole and (once disembedded) iterable.)]))",
+      "hist(q_mark_off_lengths,iterations(fraction(1,3),unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([]),[]),Iterate connected copy 1 of 1.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1))),recollection([tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)],fraction(2,5),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))],[step(q_start,state(q_start,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Begin: make N connected copies of the part (elaborates multiplication as repeated connected addition).),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([]),[]),Iterate connected copy 1 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),Iterate connected copy 2 of 2.),step(q_iterate,state(q_iterate,unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),recollection([tally,tally]),recollection([tally,tally]),[unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1))),unit(divaded(recollection([tally,tally,tally,tally,tally]),unit_interval(0,1)))]),N connected copies made; the iterated quantity is complete.)]))",
+      "hist(q_locate_endpoint,endpoints(fraction(1,3),fraction(2,5)))",
+      "hist(q_measure_with_unit_fraction,co_measure(unit_fraction(1,15),[step(state(q_init_calc,3,5,0,3),[],Initializing iterative calculation.),step(state(q_loop_calc,3,5,0,3),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,3,5,5,2),[],Iterate: Added 5. Total = 10.),step(state(q_loop_calc,3,5,10,1),[],Iterate: Added 5. Total = 15.),step(state(q_loop_calc,3,5,15,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,3,5,15,0),[],Calculation complete. Result = 15.)],position(fraction(1,3),5,[step(state(q_init_calc,1,5,0,1),[],Initializing iterative calculation.),step(state(q_loop_calc,1,5,0,1),[],Iterate: Added 5. Total = 5.),step(state(q_loop_calc,1,5,5,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,1,5,5,0),[],Calculation complete. Result = 5.)]),position(fraction(2,5),6,[step(state(q_init_calc,2,3,0,2),[],Initializing iterative calculation.),step(state(q_loop_calc,2,3,0,2),[],Iterate: Added 3. Total = 3.),step(state(q_loop_calc,2,3,3,1),[],Iterate: Added 3. Total = 6.),step(state(q_loop_calc,2,3,6,0),[],Counter reached zero. Calculation complete.),step(state(q_accept,2,3,6,0),[],Calculation complete. Result = 6.)])))",
+      "hist(q_compare_positions,compare(5,6,less_than))",
+      "hist(q_emit,emit(less_than))",
+      "hist(q_accept,accept(less_than))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "number_line_fraction_comparison",
+  "viability": {
+    "condition": "mark count order diverges from interval measure",
+    "expected": "less_than",
+    "inputs": {
+      "d1": 3,
+      "d2": 5,
+      "n1": 1,
+      "n2": 2
+    },
+    "produced": "greater_than",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

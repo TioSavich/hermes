@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts/curriculum"))
 
 import build_standards_progression_overlay as generator  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 from normalize_learner_path_graph import (  # noqa: E402
     annotate_components_with_candidate_cross_grade_links,
     load_candidate_standards_overlay,
@@ -31,9 +32,11 @@ def check_artifact() -> list[dict]:
     payload = json.loads(OVERLAY.read_text(encoding="utf-8"))
     assert payload == generator.build(), "tracked standards overlay is stale"
     assert payload["lesson_count"] == 1_308
-    assert payload["evidence_row_count"] == 707
-    assert payload["edge_count"] == 621
-    assert payload["cross_grade_prefix_edge_count"] == 390
+    assert payload["evidence_row_count"] == baseline_value("standards.evidence_rows")
+    assert payload["edge_count"] == baseline_value("standards.edges")
+    assert payload["cross_grade_prefix_edge_count"] == baseline_value(
+        "standards.cross_grade_prefix_edges"
+    )
     assert payload["learner_reachability"] is False
 
     spine = json.loads(generator.SPINE.read_text(encoding="utf-8"))
@@ -48,8 +51,11 @@ def check_artifact() -> list[dict]:
             assert edge["from_code"] in exact_row["ccss"]["building_on"]
             assert edge["to_code"] in exact_row["ccss"]["addressing"]
     print(
-        "PASS standards overlay: lessons=1308 evidence_rows=707 edges=621 "
-        "cross_grade_prefix=390 learner_reachability=false exact_provenance=true"
+        f"PASS standards overlay: lessons=1308 "
+        f"evidence_rows={baseline_value('standards.evidence_rows')} "
+        f"edges={baseline_value('standards.edges')} "
+        f"cross_grade_prefix={baseline_value('standards.cross_grade_prefix_edges')} "
+        "learner_reachability=false exact_provenance=true"
     )
     return load_candidate_standards_overlay(OVERLAY)
 

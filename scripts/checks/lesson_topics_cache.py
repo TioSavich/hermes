@@ -5,13 +5,17 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 COVERAGE_PATH = ROOT / "curriculum/im/coverage/im_coverage.json"
-EXPECTED_LESSONS = 1317
 PROLOG_GOAL = """
 use_module(library(http/json)),
 use_module(im_lessons(lesson_monitoring)),
@@ -56,8 +60,9 @@ def coverage_codes() -> list[str]:
         fail("coverage contains a missing or non-string lesson code")
     if len(codes) != len(set(codes)):
         fail("coverage contains duplicate lesson codes")
-    if len(codes) != EXPECTED_LESSONS:
-        fail(f"expected {EXPECTED_LESSONS} lesson codes, found {len(codes)}")
+    expected_lessons = baseline_value("curriculum.lesson_topics")
+    if len(codes) != expected_lessons:
+        fail(f"expected {expected_lessons} lesson codes, found {len(codes)}")
     return sorted(codes)
 
 

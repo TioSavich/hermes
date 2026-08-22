@@ -1,0 +1,172 @@
+{
+  "attempted_motion": "rotation",
+  "canvas": {
+    "height": 560,
+    "width": 560
+  },
+  "cells_landed": 4,
+  "cells_overhang": 1,
+  "deformation": {
+    "frames": [
+      {
+        "caption": "The footprint piece l must fill \u2014 the mirror of the piece.",
+        "scene": {
+          "cells": [],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 4
+            },
+            {
+              "col": 2,
+              "row": 1
+            },
+            {
+              "col": 2,
+              "row": 2
+            },
+            {
+              "col": 2,
+              "row": 3
+            },
+            {
+              "col": 2,
+              "row": 4
+            }
+          ],
+          "lattice": {
+            "cols": 2,
+            "rows": 4
+          },
+          "regionLabel": "2x4 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "show_target"
+      },
+      {
+        "caption": "A rotation lands 4 cells but pushes 1 cell outside the footprint: no rotation mirrors a chiral piece. Only the Flip button reaches it.",
+        "scene": {
+          "cells": [
+            {
+              "col": 2,
+              "piece": "rotate",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "rotate",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "rotate",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "rotate",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 1,
+              "piece": "rotate",
+              "role": "deformation",
+              "row": 1
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 4
+            }
+          ],
+          "lattice": {
+            "cols": 2,
+            "rows": 4
+          },
+          "regionLabel": "2x4 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "rotate_attempt"
+      }
+    ]
+  },
+  "deformationKind": "rotation_only_attempt",
+  "family": "flip_needed",
+  "kind": "place_chiral_piece_flip_vs_rotation",
+  "note": "Piece l is chiral: its mirror image is a distinct orientation. The rotation gesture cycles a piece through its four turns, none of which equals the mirror; only the Flip button crosses to the reflected orientation. The tiles stage the mismatch precisely (the overhang cells), and the reason is a fact about the piece, not the drawer. (Flip-needed family.)",
+  "piece": "l",
+  "productive": {
+    "frames": [
+      {
+        "caption": "With the Flip button, piece l seats in its mirror orientation, filling the footprint.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "flip",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 2,
+              "piece": "flip",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "flip",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "flip",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "flip",
+              "role": "piece",
+              "row": 4
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [],
+          "lattice": {
+            "cols": 2,
+            "rows": 4
+          },
+          "regionLabel": "2x4 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "flip_place"
+      }
+    ]
+  },
+  "productiveKind": "flip_places_mirror",
+  "provenance": "literature_only",
+  "request": {
+    "piece": "l"
+  },
+  "required_motion": "flip",
+  "violation": "reason(chirality_requires_flip_not_rotation)",
+  "inputs": {
+    "family": "flip_needed",
+    "piece": "l"
+  }
+}

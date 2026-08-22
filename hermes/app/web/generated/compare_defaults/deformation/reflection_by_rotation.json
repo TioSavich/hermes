@@ -1,0 +1,323 @@
+{
+  "attempted_image": "[[0,0],[-4,0],[-4,-1],[-2,-1],[-2,-3],[0,-3]]",
+  "attempted_motion": "rotation of 180 degrees about the origin",
+  "canvas": {
+    "height": 520,
+    "width": 520
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "Place the chiral pre-image: a figure with no line of symmetry.",
+        "scene": {
+          "axes": {
+            "xMax": 5,
+            "xMin": -5,
+            "yMax": 4,
+            "yMin": -4
+          },
+          "format": "rigid-motion",
+          "image": [],
+          "mirrorLine": {
+            "x1": 0,
+            "x2": 0,
+            "y1": -4,
+            "y2": 4
+          },
+          "motion": {
+            "cx": 0,
+            "cy": 0,
+            "deg": 180,
+            "kind": "rotation"
+          },
+          "preImage": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "place_preimage"
+      },
+      {
+        "caption": "Rotating 180 degrees about the origin keeps the figure's orientation, so the rotated tile (deformation) does not land on the true mirror image across the y-axis. A reflection reverses orientation and no in-plane rotation does, so the mirror image of a chiral tile is unreachable by rotation; reaching it needs a flip out of the plane.",
+        "scene": {
+          "axes": {
+            "xMax": 5,
+            "xMin": -5,
+            "yMax": 4,
+            "yMin": -4
+          },
+          "deformation": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": -1
+            },
+            {
+              "x": -2,
+              "y": -1
+            },
+            {
+              "x": -2,
+              "y": -3
+            },
+            {
+              "x": 0,
+              "y": -3
+            }
+          ],
+          "format": "rigid-motion",
+          "image": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": 1
+            },
+            {
+              "x": -2,
+              "y": 1
+            },
+            {
+              "x": -2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "mirrorLine": {
+            "x1": 0,
+            "x2": 0,
+            "y1": -4,
+            "y2": 4
+          },
+          "motion": {
+            "cx": 0,
+            "cy": 0,
+            "deg": 180,
+            "kind": "rotation"
+          },
+          "preImage": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "rotate_instead_of_reflect"
+      }
+    ]
+  },
+  "deformationKind": "rotate_180_instead_of_reflect",
+  "family": "reflection_by_rotation",
+  "kind": "reflect_vs_rotate_180",
+  "note": "A chiral figure has no line of symmetry, so its mirror image cannot be produced by any rotation within the plane. The deformation attempts the reflection by rotating 180 degrees about the origin: because rotation preserves orientation and reflection reverses it, the rotated tile does not coincide with the true mirror image. Reaching the mirror image needs a flip through the third dimension. (Reflection-by-rotation family; literature-only.)",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Place the pre-image.",
+        "scene": {
+          "axes": {
+            "xMax": 5,
+            "xMin": -5,
+            "yMax": 4,
+            "yMin": -1
+          },
+          "format": "rigid-motion",
+          "image": [],
+          "mirrorLine": {
+            "x1": 0,
+            "x2": 0,
+            "y1": -1,
+            "y2": 4
+          },
+          "motion": {
+            "axis": "y",
+            "kind": "reflection"
+          },
+          "preImage": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "place_preimage"
+      },
+      {
+        "caption": "Reflect across the y-axis. The image is congruent, with its orientation reversed.",
+        "scene": {
+          "axes": {
+            "xMax": 5,
+            "xMin": -5,
+            "yMax": 4,
+            "yMin": -1
+          },
+          "format": "rigid-motion",
+          "image": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": 0
+            },
+            {
+              "x": -4,
+              "y": 1
+            },
+            {
+              "x": -2,
+              "y": 1
+            },
+            {
+              "x": -2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "mirrorLine": {
+            "x1": 0,
+            "x2": 0,
+            "y1": -1,
+            "y2": 4
+          },
+          "motion": {
+            "axis": "y",
+            "kind": "reflection"
+          },
+          "preImage": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "reflect"
+      }
+    ]
+  },
+  "productiveKind": "reflect_across_y",
+  "provenance": "literature_only",
+  "request": {
+    "shape": "[[0,0],[4,0],[4,1],[2,1],[2,3],[0,3]]"
+  },
+  "true_image": "[[0,0],[-4,0],[-4,1],[-2,1],[-2,3],[0,3]]",
+  "violation": "reason(orientation_reversed_not_reachable_by_rotation)",
+  "inputs": {
+    "family": "reflection_by_rotation",
+    "vertices": "[[0,0],[4,0],[4,1],[2,1],[2,3],[0,3]]"
+  }
+}

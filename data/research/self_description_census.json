@@ -429,13 +429,14 @@
       "unrouted": 17
     },
     "orphan_verdicts": {
-      "consumed_by_builder": 2,
-      "consumed_by_check": 6,
+      "consumed_by_builder": 5,
+      "consumed_by_check": 37,
       "deliberately_unloaded": 4,
-      "include_active": 21,
-      "stalled_input": 3,
+      "include_active": 23,
+      "quarantined": 19,
+      "stalled_input": 17,
       "superseded": 0,
-      "undetermined": 91
+      "undetermined": 22
     },
     "total": 361,
     "unrouted": 17
@@ -449,12 +450,21 @@
           "locator": "/** <module> Enactment forms for the counting, place-value, and comparison lane",
           "path": "curriculum/im/enactment/counting_place_value.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/counting_place_value.pl",
+          "locator": "scripts/checks/lesson_enactment.pl:load_lanes/1 globs curriculum/im/enactment/*.pl and use_modules every file found, then 13 checks query lesson_enactment:enactment_form/3.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "im_enactment_counting_place_value",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/checks/lesson_enactment.pl (run_all.sh:185) loads every top-level enactment/*.pl lane by glob and queries the shared enactment_form/3 predicate the lane contributes to; upgraded from the boilerplate undetermined verdict.",
       "path": "curriculum/im/enactment/counting_place_value.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -463,12 +473,21 @@
           "locator": "/** <module> Enactment lane: IM lessons classed data_representation_or_question",
           "path": "curriculum/im/enactment/data_representation.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/data_representation.pl",
+          "locator": "scripts/checks/data_representation_enactment_citations.pl:13 use_module(im_lessons('enactment/data_representation')), then queries data_representation_enactment:enactment_form/3, lane_lesson/3, lesson_inputs/4.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "data_representation_enactment",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified BOTH the shared enactment gate (run_all.sh:185) and a dedicated citation check (run_all.sh:184) use_module and query this lane's predicates.",
       "path": "curriculum/im/enactment/data_representation.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -477,12 +496,21 @@
           "locator": "/** <module> Reference lane — fraction_model_reasoning",
           "path": "curriculum/im/enactment/fraction_model_reasoning.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/fraction_model_reasoning.pl",
+          "locator": "scripts/checks/lesson_enactment.pl:load_lanes/1 globs and use_modules this file (the worked example for the lesson_enactment.pl contract); the shared 13 checks then run against it.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "enactment_fraction_model_reasoning",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: this lane's own header calls itself a worked example not claiming a lane's ground this wave, but the shared gate loads and checks it the same as every other top-level enactment/*.pl file; no dedicated check beyond the shared gate was found.",
       "path": "curriculum/im/enactment/fraction_model_reasoning.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -491,12 +519,21 @@
           "locator": "/** <module> Enactment lane: the 72 geometry construction and measure lessons",
           "path": "curriculum/im/enactment/geometry_construction.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/geometry_construction.pl",
+          "locator": "scripts/checks/geometry_enactment.pl:18 use_module(im_lessons('enactment/geometry_construction')), then queries geometry_construction:geometry_lane_coverage/..., lane_move_audit/2, enact/3.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "geometry_construction",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified BOTH the shared enactment gate (run_all.sh:185) and a dedicated geometry check (run_all.sh:181) use_module and query this lane's predicates.",
       "path": "curriculum/im/enactment/geometry_construction.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -505,12 +542,21 @@
           "locator": "/** <module> Enactment of the IM measurement lessons",
           "path": "curriculum/im/enactment/measurement.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/measurement.pl",
+          "locator": "scripts/checks/measurement_enactment.py:74-75 swipl -s curriculum/im/enactment/measurement.pl, then queries im_enactment_measurement:enactment_form/3.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "im_enactment_measurement",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified BOTH the shared enactment gate (run_all.sh:185) and a dedicated Python check (run_all.sh:183) load and query this lane's predicates.",
       "path": "curriculum/im/enactment/measurement.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -519,12 +565,21 @@
           "locator": "% Lesson rows for the data_representation_or_question enactment lane.",
           "path": "curriculum/im/enactment/support/data_representation_lessons.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/support/data_representation_lessons.pl",
+          "locator": "curriculum/im/enactment/data_representation.pl:1822 :- include(im_lessons('enactment/support/data_representation_lessons')).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "data_representation_lessons",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: this file's own header already says 'Included by ... data_representation.pl; not a module', and the include directive is confirmed live at line 1822. Upgraded from boilerplate undetermined to include_active, matching the existing pattern for the other 21 include_active rows.",
       "path": "curriculum/im/enactment/support/data_representation_lessons.pl",
-      "verdict": "undetermined"
+      "verdict": "include_active"
     },
     {
       "capability_class": "workflow",
@@ -533,12 +588,21 @@
           "locator": "/** <module> Lattice figure algebra for the geometry enactment lane",
           "path": "curriculum/im/enactment/support/geometry_figures.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/enactment/support/geometry_figures.pl",
+          "locator": "curriculum/im/enactment/geometry_construction.pl:58 use_module(im_lessons('enactment/support/geometry_figures')); geometry_construction's checked predicates (enact/3 etc.) depend on this module's figure algebra.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "geometry_figures",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: a real module (use_module, not include) loaded whenever geometry_construction.pl loads, which scripts/checks/geometry_enactment.pl does and queries (run_all.sh:181); the figure algebra it defines is exercised transitively through geometry_construction's checked predicates.",
       "path": "curriculum/im/enactment/support/geometry_figures.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -571,12 +635,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_1_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_1_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_1_extracted_guide_questions',[]), grade_1_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_1_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_1_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -585,12 +658,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_2_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_2_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_2_extracted_guide_questions',[]), grade_2_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_2_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_2_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -599,12 +681,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_3_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_3_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_3_extracted_guide_questions',[]), grade_3_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_3_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_3_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -613,12 +704,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_4_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_4_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_4_extracted_guide_questions',[]), grade_4_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_4_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_4_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -627,12 +727,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_5_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_5_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_5_extracted_guide_questions',[]), grade_5_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_5_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_5_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -641,12 +750,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_6_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_6_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_6_extracted_guide_questions',[]), grade_6_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_6_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_6_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -655,12 +773,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_7_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_7_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_7_extracted_guide_questions',[]), grade_7_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_7_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_7_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -669,12 +796,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_8_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_8_extracted_guide_questions.pl",
+          "locator": "scripts/checks/grade8_extraction.py:228-232 use_module(curriculum/im/generated/grade_8_extracted_guide_questions,[]), then queries extracted_guide_question_summary/2 and aggregate_all over extracted_lesson_guide_question/2.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_8_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module + fact query; wired run_all.sh:167.",
       "path": "curriculum/im/generated/grade_8_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -683,12 +819,21 @@
           "locator": "/** <module> Generated source-backed Docling task instances",
           "path": "curriculum/im/generated/grade_8_extracted_task_instances.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_8_extracted_task_instances.pl",
+          "locator": "scripts/checks/grade8_extraction.py:221-225 use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]), then queries extracted_task_instance_summary/2 and aggregate_all over extracted_lesson_task_instance/3.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_8_extracted_task_instances",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module + fact query; wired run_all.sh:167.",
       "path": "curriculum/im/generated/grade_8_extracted_task_instances.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -697,12 +842,21 @@
           "locator": "/** <module> Generated pending Docling guide-question records",
           "path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
+          "locator": "scripts/checks/k7_guide_questions.py:check_prolog_loads/0 runs use_module('curriculum/im/generated/grade_k_extracted_guide_questions',[]), grade_k_extracted_guide_questions:extracted_guide_question_summary(...), and aggregate_all(count,...:extracted_lesson_guide_question(_,_),...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "grade_k_extracted_guide_questions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified check_prolog_loads iterates GRADE_COUNTS = {k,1..7} and runs a real swipl query against each grade file by name; wired run_all.sh:114.",
       "path": "curriculum/im/generated/grade_k_extracted_guide_questions.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -711,12 +865,21 @@
           "locator": "/** <module> Vision-recovered fraction operands",
           "path": "curriculum/im/generated/vision_fraction_recovery.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/generated/vision_fraction_recovery.pl",
+          "locator": "run_all.sh:60 swipl -s curriculum/im/generated/vision_fraction_recovery.pl -g vision_fraction_recovery:check_vision_fraction_recovery -t halt",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "vision_fraction_recovery",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22, matches the consumption-gate brief's own 'unhinted' row exactly: \"curriculum/im/generated/vision_fraction_recovery.pl -> check_only + check_goal(...) -- the worked example; its check already runs in run_all.sh.\"",
       "path": "curriculum/im/generated/vision_fraction_recovery.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -763,12 +926,21 @@
           "locator": "/** <module> lesson_enactment — the second rung, for IM lessons no automaton computes",
           "path": "curriculum/im/lesson_enactment.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im/lesson_enactment.pl",
+          "locator": "scripts/checks/lesson_enactment.pl:55 :- use_module(im_lessons(lesson_enactment), []). then queries lesson_enactment:enactment_form/3.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "lesson_enactment",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: the contract module is use_module'd directly by name and its shared predicate queried by 13 checks (run_all.sh:185). It is also reached lazily at request time by the MCP-exposed unrouted ops lesson_enactment_list/lesson_enactment_run, a second, independent consumption path noted for completeness.",
       "path": "curriculum/im/lesson_enactment.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "workflow",
@@ -777,6 +949,15 @@
           "locator": "/** <module> Illustrative Math execution harness (codebook refactor, Phase 2)",
           "path": "curriculum/im_harness.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "curriculum/im_harness.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "im_harness",
@@ -848,10 +1029,19 @@
           "locator": "% Verify base-invariance for addition make-base targets.",
           "path": "formal/formalization/synthesis/run_add.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/formalization/synthesis/run_add.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "run_add",
-      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "note": "Manual command entry point. No check or research builder invokes it.",
       "path": "formal/formalization/synthesis/run_add.pl",
       "verdict": "undetermined"
     },
@@ -862,10 +1052,19 @@
           "locator": "% Verify base-invariance of cost-bounded synthesis.",
           "path": "formal/formalization/synthesis/run_lazy.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/formalization/synthesis/run_lazy.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "run_lazy",
-      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "note": "Manual command entry point. No check or research builder invokes it.",
       "path": "formal/formalization/synthesis/run_lazy.pl",
       "verdict": "undetermined"
     },
@@ -876,10 +1075,19 @@
           "locator": "% Run the synthesizer against each declared target, time the search, print",
           "path": "formal/formalization/synthesis/run_synth.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/formalization/synthesis/run_synth.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "run_synth",
-      "note": "This is a manual command entry point. No check or research builder invokes it.",
+      "note": "Manual command entry point. No check or research builder invokes it.",
       "path": "formal/formalization/synthesis/run_synth.pl",
       "verdict": "undetermined"
     },
@@ -890,6 +1098,15 @@
           "locator": "/** <module> Program synthesis from arithmetic primitives",
           "path": "formal/formalization/synthesis/synth.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/formalization/synthesis/synth.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "synth",
@@ -904,10 +1121,19 @@
           "locator": "/** <module> Cost-aware program synthesis with structural (base-parametric) cost",
           "path": "formal/formalization/synthesis/synth_lazy.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/formalization/synthesis/synth_lazy.pl",
+          "locator": "Only the unconsumed run_add.pl and run_lazy.pl entry points import this cost-aware synthesizer; no check or research builder was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "synth_lazy",
-      "note": "Only the unconsumed run_add.pl and run_lazy.pl entry points import this module. No stronger verdict is supported.",
+      "note": "CONTROLLER RECONCILIATION 2026-08-22: the lifecycle store records runtime_lazy consumption through formal/formalization/synthesis/run_lazy.pl. The orphan census has no runtime-consumed verdict, so this row returns to undetermined instead of naming live runtime input as stalled. The original draft classified it as stalled_input.",
       "path": "formal/formalization/synthesis/synth_lazy.pl",
       "verdict": "undetermined"
     },
@@ -918,12 +1144,21 @@
           "locator": "% PURPOSE: Error-rule material inferences and their break points, generated from the",
           "path": "formal/incompatibility/error_rule_inferences.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/incompatibility/error_rule_inferences.pl",
+          "locator": "formal/incompatibility/defeasible_inference.pl:418-419 :- if(exists_source(error_rule_inferences)). :- include(error_rule_inferences).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "error_rule_inferences",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: confirmed a real (guarded) include directive. The census's own prose comment already named this file 'an included clause file rather than a module' but the machine verdict had not been updated from boilerplate undetermined; this brings the two into agreement.",
       "path": "formal/incompatibility/error_rule_inferences.pl",
-      "verdict": "undetermined"
+      "verdict": "include_active"
     },
     {
       "capability_class": "incompatibility",
@@ -932,12 +1167,21 @@
           "locator": "/** <module> Generated finite incompatibility-entailment register",
           "path": "formal/incompatibility/incompatibility_entailment_order.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/incompatibility/incompatibility_entailment_order.pl",
+          "locator": "scripts/checks/incompatibility_register_runtime_agreement.pl:14 :- use_module(incompat(incompatibility_entailment_order), ...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "incompatibility_entailment_order",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module by a check wired at run_all.sh:192, running -g main -t halt. Matches the consumption-gate brief's own table row for this exact store ('check_only; scripts/checks/incompatibility_register_runtime_agreement.pl (in run_all.sh:192) | check_goal') rather than the byte-identity extract_*.py --check that also touches this file.",
       "path": "formal/incompatibility/incompatibility_entailment_order.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "juncture",
@@ -965,10 +1209,19 @@
           "locator": "/** <module> Typed bridge from IM lesson monitoring to learner action paths",
           "path": "formal/learner/activity_contract.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/activity_contract.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "activity_contract",
-      "note": "task_transition.pl and scripts/curriculum/mini_atlas.pl load this module, but neither is a scripts/checks or scripts/research consumer.",
+      "note": "task_transition.pl and mini_atlas.pl load this module, but neither is a scripts/checks or scripts/research consumer.",
       "path": "formal/learner/activity_contract.pl",
       "verdict": "undetermined"
     },
@@ -1022,6 +1275,15 @@
           "locator": "/** <module> Crisis Processor",
           "path": "formal/learner/crisis_processor.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/crisis_processor.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "crisis_processor",
@@ -1036,6 +1298,15 @@
           "locator": "/** <module> Curriculum Processor",
           "path": "formal/learner/curriculum_processor.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/curriculum_processor.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "curriculum_processor",
@@ -1050,10 +1321,19 @@
           "locator": "/** <module> Interactive Command-Line UI for the More Machine Learner",
           "path": "formal/learner/interactive_ui.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/interactive_ui.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "interactive_ui",
-      "note": "This is a manual command-line interface. No check, research builder, include directive, or supersession record was found.",
+      "note": "Manual command-line interface. No check, research builder, include directive, or supersession record was found.",
       "path": "formal/learner/interactive_ui.pl",
       "verdict": "undetermined"
     },
@@ -1064,6 +1344,15 @@
           "locator": "/** <module> Knowledge Management Utilities",
           "path": "formal/learner/knowledge_manager.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/knowledge_manager.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "knowledge_manager",
@@ -1078,6 +1367,15 @@
           "locator": "% Automatically generated knowledge base V2.",
           "path": "formal/learner/learned_knowledge_v2.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/learned_knowledge_v2.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "learned_knowledge_v2",
@@ -1092,10 +1390,19 @@
           "locator": "/** <module> Main Entry Point for Command-Line Execution",
           "path": "formal/learner/main.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/main.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "main",
-      "note": "This is a manual command entry point. It loads primordial_start.pl, but no check or research builder invokes it.",
+      "note": "Manual, non-interactive command entry point. Loads primordial_start.pl, but no check or research builder invokes it.",
       "path": "formal/learner/main.pl",
       "verdict": "undetermined"
     },
@@ -1106,6 +1413,15 @@
           "locator": "/** <module> Primordial Machine Entry Point",
           "path": "formal/learner/primordial_start.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/primordial_start.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "primordial_start",
@@ -1177,10 +1493,19 @@
           "locator": "/** <module> f_{t,c}: the local task-transition function of the curriculum dynamics",
           "path": "formal/learner/task_transition.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/learner/task_transition.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "task_transition",
-      "note": "scripts/curriculum/mini_atlas.pl loads this module, but that producer is not one of the consumer categories in the verdict table.",
+      "note": "mini_atlas.pl loads this module, but that producer is not one of the consumer categories in the verdict table.",
       "path": "formal/learner/task_transition.pl",
       "verdict": "undetermined"
     },
@@ -1191,10 +1516,19 @@
           "locator": "/** <module> Audit of cross-module Prolog connectors",
           "path": "formal/pml/audit_connectors.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/pml/audit_connectors.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "audit_connectors",
-      "note": "This source describes a strict audit entry point, but run_all.sh and the scripts/checks directory do not invoke it.",
+      "note": "Describes a strict audit entry point, but run_all.sh and scripts/checks do not invoke it.",
       "path": "formal/pml/audit_connectors.pl",
       "verdict": "undetermined"
     },
@@ -1205,10 +1539,19 @@
           "locator": "/** <module> MUA conjecture register",
           "path": "formal/pml/mua_conjectures.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/pml/mua_conjectures.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "mua_conjectures",
-      "note": "The register is intentionally empty. It holds no authored relation row to classify as stalled input, and no consumer was found.",
+      "note": "The conjecture register is intentionally empty. Holds no authored relation row to classify as stalled input, and no consumer was found.",
       "path": "formal/pml/mua_conjectures.pl",
       "verdict": "undetermined"
     },
@@ -1219,6 +1562,15 @@
           "locator": "/** <module> MUA codebook-health guard",
           "path": "formal/pml/mua_health.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/pml/mua_health.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "mua_health",
@@ -1252,12 +1604,21 @@
           "locator": "/** <module> Deterministic TalkMoves packet adapter and review surface",
           "path": "formal/pml/talkmoves_adapter.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "formal/pml/talkmoves_adapter.pl",
+          "locator": "formal/pml/talkmoves_adapter.pl's own header: 'Alias candidates are never promoted to speaker_alias/3 context evidence here; a reviewer must supply confirmed aliases through the context dict channel.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "talkmoves_adapter",
-      "note": "No check, research builder, include directive, or explicit supersession record was found for this packet-review adapter.",
+      "note": "RECLASSIFIED 2026-08-22 from the census's inherited 'undetermined' to stalled_input: one of the brief's 20 live registry_orphan-overlap stores, and the module's own header names a real, specific, not-yet-built intended consumer (a reviewer's confirmation channel) rather than an information gap -- the clearer stalled_input shape.",
       "path": "formal/pml/talkmoves_adapter.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "infrastructure",
@@ -1333,10 +1694,19 @@
           "locator": "/** <module> Opt-in Zeeman and interactional-trace PML candidates",
           "path": "hermes/web/prolog/zeeman_pml_bridge.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "hermes/web/prolog/zeeman_pml_bridge.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "zeeman_pml_bridge",
-      "note": "The source explicitly calls itself opt-in and records that canonical loaders do not load it. Opt-in status is not one of the specified positive verdicts.",
+      "note": "The source states it is opt-in and that canonical loaders do not load it. Opt-in status is not one of the specified positive verdicts.",
       "path": "hermes/web/prolog/zeeman_pml_bridge.pl",
       "verdict": "undetermined"
     },
@@ -1347,10 +1717,19 @@
           "locator": "/** <module> Zeeman machine — consumable event tape",
           "path": "hermes/web/prolog/zeeman_tape.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "hermes/web/prolog/zeeman_tape.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "zeeman_tape",
-      "note": "This module imports the checked Zeeman machine, but no check or builder consumes the tape itself.",
+      "note": "Imports the checked Zeeman machine, but no check or builder consumes the tape itself.",
       "path": "hermes/web/prolog/zeeman_tape.pl",
       "verdict": "undetermined"
     },
@@ -1361,10 +1740,19 @@
           "locator": "/** <module> merge_evidence — required companion to every canonical_concept/2 assertion.",
           "path": "knowledge/crosswalk/merge_evidence.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/crosswalk/merge_evidence.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "merge_evidence",
-      "note": "The file describes a merge gate that is absent from scripts/. It contains no active merge_evidence row, so stalled_input and superseded are unsupported.",
+      "note": "Describes a merge gate absent from scripts/. Contains no active merge_evidence row, so stalled_input and superseded are unsupported.",
       "path": "knowledge/crosswalk/merge_evidence.pl",
       "verdict": "undetermined"
     },
@@ -1432,12 +1820,21 @@
           "locator": "/** <module> Generated coverage and absence registry",
           "path": "knowledge/index/coverage_absence_registry.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/coverage_absence_registry.pl",
+          "locator": "scripts/extract_coverage_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "coverage_absence_registry",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_coverage_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/coverage_absence_registry.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1446,12 +1843,21 @@
           "locator": "/** <module> Generated data-consumption manifest",
           "path": "knowledge/index/data_consumption_manifest.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/data_consumption_manifest.pl",
+          "locator": "scripts/extract_data_consumption_manifest.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "data_consumption_manifest",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_data_consumption_manifest.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/data_consumption_manifest.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1460,12 +1866,21 @@
           "locator": "/** <module> Checked Illustrative Mathematics lesson identity",
           "path": "knowledge/index/im_lesson_identity.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/im_lesson_identity.pl",
+          "locator": "scripts/extract_im_lesson_identity.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "im_lesson_identity",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_im_lesson_identity.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/im_lesson_identity.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1474,12 +1889,21 @@
           "locator": "/** <module> Checked machine block decomposition",
           "path": "knowledge/index/machine_block_decomposition.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/machine_block_decomposition.pl",
+          "locator": "scripts/extract_machine_block_decomposition.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "machine_block_decomposition",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_machine_block_decomposition.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/machine_block_decomposition.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1488,12 +1912,21 @@
           "locator": "/** <module> Generated research-measurement provenance registry",
           "path": "knowledge/index/research_measurement_registry.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/research_measurement_registry.pl",
+          "locator": "scripts/extract_research_measurement_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "research_measurement_registry",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_research_measurement_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/research_measurement_registry.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1502,12 +1935,21 @@
           "locator": "/** <module> Generated student-task-span absence registry",
           "path": "knowledge/index/task_span_absence_registry.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/task_span_absence_registry.pl",
+          "locator": "scripts/extract_task_span_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "task_span_absence_registry",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_task_span_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/task_span_absence_registry.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "unclassified",
@@ -1516,12 +1958,21 @@
           "locator": "/** <module> Generated audit of the IM 6-8 vision lesson digest",
           "path": "knowledge/index/vision_lesson_digest_audit.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/index/vision_lesson_digest_audit.pl",
+          "locator": "scripts/extract_vision_lesson_digest_audit.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "vision_lesson_digest_audit",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/extract_vision_lesson_digest_audit.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/vision_lesson_digest_audit.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "misconceptions",
@@ -1549,12 +2000,21 @@
           "locator": "/** <module> Monitoring-name to misconception-registry bridge",
           "path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
+          "locator": "knowledge/misconceptions/monitoring_registry_bridge.pl's own header: 'No current lesson predicate loads this module.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "monitoring_registry_bridge",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: the module's own header makes an honest self-report of its unconsumed state; no reader was found anywhere in the tree. Upgraded from boilerplate undetermined to stalled_input on the module's own testimony.",
       "path": "knowledge/misconceptions/monitoring_registry_bridge.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "misconceptions",
@@ -1563,12 +2023,21 @@
           "locator": "/** <module> Keyword probes over the research-corpus misconception rows",
           "path": "knowledge/misconceptions/query_probes.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/misconceptions/query_probes.pl",
+          "locator": "knowledge/misconceptions/query_probes.pl's own header: 'gives a small model a single predicate it can call with a keyword instead of the sixteen-argument row term.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "misconception_query_probes",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: grepped the whole tree for misconception_query_probes; the only hits are the module's own declaration and the census's prose commentary. The only theoretically available path is the generic, MCP-exposed prolog_query op composing an ad-hoc goal, which has never been demonstrated with a fixed call site.",
       "path": "knowledge/misconceptions/query_probes.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "misconceptions",
@@ -1577,12 +2046,21 @@
           "locator": "/** <module> Generated research-corpus automaton bindings",
           "path": "knowledge/misconceptions/research_corpus_automaton_bindings.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/misconceptions/research_corpus_automaton_bindings.pl",
+          "locator": "formal/learner/reorg_domains/whole_number_operations.pl:100 cites this file's path in a comment only ('bound in research_corpus_automaton_bindings.pl'); no use_module or query was found anywhere.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "research_corpus_automaton_bindings",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified every repo-wide reference to this file's name is either its own declaration, the extractor that produces it, or a prose citation -- never a real use_module/query. Matches the census's own prior note: 'a generated registry ... with no Prolog loader yet.'",
       "path": "knowledge/misconceptions/research_corpus_automaton_bindings.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "standards",
@@ -1591,12 +2069,21 @@
           "locator": "/** <module> Receipt-backed CCSS standard narrowing",
           "path": "knowledge/standards/standard_doing.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/standards/standard_doing.pl",
+          "locator": "scripts/language/build_standard_doing.py:compare_or_write(path, content, check) re-renders the store and coverage file and byte-compares them; wired run_all.sh:159 as --check.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "standard_doing",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified build_standard_doing.py --check is a regen-and-byte-compare gate, the producer's own gate per the consumption-gate brief's adjudication. The module's own header names its intent ('the standard narrows the family and contract genre; the parsed program decides the operation') but no downstream parser/router was found reading it.",
       "path": "knowledge/standards/standard_doing.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "synthesis",
@@ -1605,12 +2092,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/addition_action_signatures.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/addition_action_signatures.pl",
+          "locator": "knowledge/strategies/deformation_validity.pl cites this file's path as a basis-fact provenance string (addition_ledger_loss('knowledge/strategies/abstraction/addition_action_signatures.pl', ...)); no use_module of it was found anywhere.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "addition_action_signatures",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: the only repo-wide reference is a quoted path inside another module's provenance data, not a Prolog import; the abstraction/README.md frames this file as one of the 2026-08-03 regularization pilots, quarantined like its siblings until a later seam adopts it (unlike kernel_gate_pilot.pl, which the README records as adopted).",
       "path": "knowledge/strategies/abstraction/addition_action_signatures.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1619,12 +2115,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/ape_reader_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/ape_reader_pilot.pl",
+          "locator": "scripts/language/pusu_harness_runner.pl:19 :- use_module('../../knowledge/strategies/abstraction/ape_reader_pilot.pl').",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "ape_reader_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module by pusu_harness_runner.pl, which run_all.sh:155 loads and runs (check_expression_routing, check_serialized_table_routing).",
       "path": "knowledge/strategies/abstraction/ape_reader_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1633,12 +2138,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/channel_collapse.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/channel_collapse.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: 'a third reading beside productive and deformed ... with a discrimination test.' Check: check_channel_collapse/0 (not wired anywhere).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "channel_collapse",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: grepped the whole tree; zero references outside the file's own declaration. Its own check predicate is never invoked by run_all.sh or any other script.",
       "path": "knowledge/strategies/abstraction/channel_collapse.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1647,12 +2161,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/english_morphology.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/english_morphology.pl",
+          "locator": "scripts/language/pusu_harness_runner.pl:23 :- use_module('../../knowledge/strategies/abstraction/english_morphology.pl', []).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "english_morphology",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module by pusu_harness_runner.pl (run_all.sh:155); also use_module'd by word_problem_reader_pilot.pl and math_lexicon_pilot.pl.",
       "path": "knowledge/strategies/abstraction/english_morphology.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1661,12 +2184,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
+          "locator": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_circle_and_solid_dimensions",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1675,12 +2207,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
+          "locator": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_decimal_fraction_form",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1689,12 +2230,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
+          "locator": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_exponent_expression_equivalence",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1703,12 +2253,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
+          "locator": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_linear_equation_reading_and_authoring",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1717,12 +2276,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
+          "locator": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_linear_expression_normalizer",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1731,12 +2299,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
+          "locator": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_power_of_ten_alignment",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1745,12 +2322,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
+          "locator": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl's own header: a draft automaton for a doing the published grade-8 pilots do not carry, naming its own check_<name>/0 self-test.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "g8_scaled_copy_and_similar_sides",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of the '7 unattested g8 pilots' CLAUDE.md's current 'Still quarantined' line names explicitly; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1759,12 +2345,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/k7_array_grid.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/k7_array_grid.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: a K-7 scene-emission sibling (or shared parts, for k7_scene_common); 'Nothing outside this directory imports any of them.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "k7_array_grid",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of CLAUDE.md's current 'four k7_* scene-emission siblings + k7_scene_common' named still quarantined. Below the consumption-gate brief's 20-fact threshold or not independently flagged registry_orphan by the audit, but CLAUDE.md's quarantine list is the more current, repo-checked-in source and governs.",
       "path": "knowledge/strategies/abstraction/k7_array_grid.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1773,12 +2368,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/k7_equal_share_bars.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/k7_equal_share_bars.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: a K-7 scene-emission sibling (or shared parts, for k7_scene_common); 'Nothing outside this directory imports any of them.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "k7_equal_share_bars",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of CLAUDE.md's current 'four k7_* scene-emission siblings + k7_scene_common' named still quarantined. Below the consumption-gate brief's 20-fact threshold or not independently flagged registry_orphan by the audit, but CLAUDE.md's quarantine list is the more current, repo-checked-in source and governs.",
       "path": "knowledge/strategies/abstraction/k7_equal_share_bars.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1787,12 +2391,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/k7_fraction_number_line.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/k7_fraction_number_line.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: a K-7 scene-emission sibling; 'Nothing outside this directory imports any of them.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "k7_fraction_number_line",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of CLAUDE.md's current 'four k7_* scene-emission siblings' named still quarantined; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/k7_fraction_number_line.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1801,12 +2414,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/k7_number_line_hops.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/k7_number_line_hops.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: a K-7 scene-emission sibling; 'Nothing outside this directory imports any of them.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "k7_number_line_hops",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of CLAUDE.md's current 'four k7_* scene-emission siblings' named still quarantined; also one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/k7_number_line_hops.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1815,12 +2437,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/k7_scene_common.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/k7_scene_common.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: a K-7 scene-emission sibling (or shared parts, for k7_scene_common); 'Nothing outside this directory imports any of them.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "k7_scene_common",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: one of CLAUDE.md's current 'four k7_* scene-emission siblings + k7_scene_common' named still quarantined. Below the consumption-gate brief's 20-fact threshold or not independently flagged registry_orphan by the audit, but CLAUDE.md's quarantine list is the more current, repo-checked-in source and governs.",
       "path": "knowledge/strategies/abstraction/k7_scene_common.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1829,12 +2460,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/lexical_typing_store.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/lexical_typing_store.pl",
+          "locator": "word_problem_reader_pilot.pl:25 :- use_module('lexical_typing_store.pl', []). and calls lexical_typing_store:lexical_typing/2 at lines 1121, 1134; word_problem_reader_pilot.pl is itself use_module'd by pusu_harness_runner.pl (run_all.sh:155).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "lexical_typing_store",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a real, two-hop consumption chain: the wired check loads word_problem_reader_pilot.pl, which loads and queries this seam module's predicates. The seam's own header notes its underlying data rows are a separate, gitignored artifact (the Erik lexical-funnel IP boundary); the seam and its predicates are what is consumed here, independent of whether rows are present.",
       "path": "knowledge/strategies/abstraction/lexical_typing_store.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1843,12 +2483,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl",
+          "locator": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl's own header: 'The consultation driver appends rows below the generated-region marker.' Check: check_lexicon_loop_admitted/0 (not wired anywhere).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "lexicon_loop_admitted_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified scripts/language/consultation_scan.pl, the only script referencing this file, is absent from run_all.sh; no other reader was found.",
       "path": "knowledge/strategies/abstraction/lexicon_loop_admitted_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1857,12 +2506,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl",
+          "locator": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl's own header: 'This quarantined, authored store dispositions every word absent from the slice-1 Webster demand lexicon.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "lexicon_supplement_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified none of its three referencing scripts appear in run_all.sh; the module's own header already calls itself quarantined.",
       "path": "knowledge/strategies/abstraction/lexicon_supplement_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1871,12 +2529,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/math_lexicon_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/math_lexicon_pilot.pl",
+          "locator": "knowledge/strategies/abstraction/math_lexicon_pilot.pl's own header: 'Generated from repository demand sources by scripts/language/build_math_lexicon.py.' Check: check_math_lexicon_pilot/0 (not wired anywhere).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "math_lexicon_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified its own check is not run_all.sh-wired and its only readers are unwired language-lane scripts.",
       "path": "knowledge/strategies/abstraction/math_lexicon_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1885,12 +2552,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
+          "locator": "scripts/checks/metaphor_seam_registry.py:25-60 loads 'knowledge/strategies/abstraction/metaphor_seam_registry' and queries metaphor_seam_registry:metaphor_operating/3 and metaphor_seam/5 for real.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "metaphor_seam_registry",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a live swipl -g query (not a byte-identity check) against this module's own predicates; wired run_all.sh:69.",
       "path": "knowledge/strategies/abstraction/metaphor_seam_registry.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1899,12 +2575,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "medium",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
+          "locator": "scripts/language/pusu_harness_runner.pl:20 :- use_module('../../knowledge/strategies/abstraction/pedagogy_force_pilot.pl').",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "pedagogy_force_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module by pusu_harness_runner.pl (run_all.sh:155).",
       "path": "knowledge/strategies/abstraction/pedagogy_force_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1913,12 +2598,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/printed_expression_reader_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/printed_expression_reader_pilot.pl",
+          "locator": "pusu_harness_runner.pl:21 :- use_module(...printed_expression_reader_pilot.pl). check_expression_reader.py:21 READER = .../printed_expression_reader_pilot.pl, then a swipl -g query reads its segment facts.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "printed_expression_reader_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified two independent real consumers, both wired (run_all.sh:155, 152).",
       "path": "knowledge/strategies/abstraction/printed_expression_reader_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1927,12 +2621,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/refusal_genesis_sketch.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/refusal_genesis_sketch.pl",
+          "locator": "scripts/bigred/loops/elaboration_queries.py:98 cites this file's path+line-range as a documentation string, not a use_module.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "refusal_genesis_sketch",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: the only outside reference is a citation string inside a Big Red cluster script, not a real load; the module's own header: 'It is quarantined like everything else in this line: nothing imports it, nothing is renamed.'",
       "path": "knowledge/strategies/abstraction/refusal_genesis_sketch.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -1941,12 +2644,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
+          "locator": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl's own header: 'scripts/language/rewrite_consultation.py asks a model to restate a sentence ... then gates the restatement ... A restatement that clears all three is testimony ... kept apart from any hand-authored store.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "rewrite_consultation_admitted_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified no check or downstream reader references this file; only its producer does. One of the consumption-gate brief's 20 live registry_orphan-overlap stores; per the brief's own adjudication (a producer-only store is stalled_input, not check_only), this is stalled_input with the producer named as the only relation on record.",
       "path": "knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "synthesis",
@@ -1955,12 +2667,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl",
+          "locator": "run_all.sh:153 swipl -l ... -l .../serialized_table_reader_pilot.pl -g serialized_table_reader_pilot:check_serialized_table_reader -t halt",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "serialized_table_reader_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: two independent wired consumers verified. Upgraded from boilerplate undetermined; the registry's status (orphan_module = not in the worker's static closure) is unaffected since this is a separate check process.",
       "path": "knowledge/strategies/abstraction/serialized_table_reader_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1969,12 +2690,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
+          "locator": "run_all.sh:156 swipl -l ... -l .../standards_router_pilot.pl -g '(standards_router_pilot:check_standards_router_pilot,standards_router_pilot:check_table_routes)' -t halt",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "standards_router_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified direct wiring. Also referenced by scripts/language/check_standards_router_roundtrip.py (run_all.sh:157).",
       "path": "knowledge/strategies/abstraction/standards_router_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1983,12 +2713,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/table_ask_binding_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/table_ask_binding_pilot.pl",
+          "locator": "run_all.sh:154 swipl -l ... -l .../table_ask_binding_pilot.pl -g table_ask_binding_pilot:check_table_ask_binding -t halt",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "table_ask_binding_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified direct wiring.",
       "path": "knowledge/strategies/abstraction/table_ask_binding_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -1997,12 +2736,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/task_pattern_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/task_pattern_pilot.pl",
+          "locator": "knowledge/strategies/abstraction/README.md: 'one row per region of input space ... GENERATED by scripts/questions/build_task_pattern_pilot.py.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "task_pattern_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: CLAUDE.md's current 'Still quarantined' line names 'the task-pattern ... store' explicitly; one of the consumption-gate brief's 20 live registry_orphan-overlap stores.",
       "path": "knowledge/strategies/abstraction/task_pattern_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "quarantined"
     },
     {
       "capability_class": "synthesis",
@@ -2011,12 +2759,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/abstraction/word_problem_reader_pilot.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/abstraction/word_problem_reader_pilot.pl",
+          "locator": "pusu_harness_runner.pl:18 :- use_module('../../knowledge/strategies/abstraction/word_problem_reader_pilot.pl').",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "word_problem_reader_pilot",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified real use_module by pusu_harness_runner.pl (run_all.sh:155).",
       "path": "knowledge/strategies/abstraction/word_problem_reader_pilot.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -2044,12 +2801,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/deformation_coincidence.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/deformation_coincidence.pl",
+          "locator": "scripts/research/build_automata_compendium.py:28,163 COINCIDENCE = .../deformation_coincidence.pl, and a real regex parse of 'deformation_coincidence:coincidence_profile(' rows.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "deformation_coincidence",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a genuine text-parse of this file's own coincidence_profile/10 rows into the automata compendium research page, distinct from deformation_validity.pl's citation-only reference to the same file's path.",
       "path": "knowledge/strategies/deformation_coincidence.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_builder"
     },
     {
       "capability_class": "synthesis",
@@ -2058,12 +2824,21 @@
           "locator": ":- encoding(utf8).",
           "path": "knowledge/strategies/deformation_validity.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/deformation_validity.pl",
+          "locator": "scripts/checks/deformation_validity.py:94-110 load_ledger() runs a live swipl -g query: forall(deformation_validity(Family,Kind,Action,From,To,Modes,Basis,Status), ...).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "deformation_validity",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a real, live Prolog query over this module's own facts (not a byte-identity check); wired run_all.sh:59.",
       "path": "knowledge/strategies/deformation_validity.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",
@@ -2072,12 +2847,21 @@
           "locator": "/** <module> Authored machine-class attestations",
           "path": "knowledge/strategies/machine_class_attestations.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/machine_class_attestations.pl",
+          "locator": "scripts/research/build_automata_compendium.py:27 ATTESTATIONS = .../machine_class_attestations.pl, parsed for the compendium's authored-class column.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "machine_class_attestations",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a genuine parse of this file into the automata compendium research page.",
       "path": "knowledge/strategies/machine_class_attestations.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_builder"
     },
     {
       "capability_class": "synthesis",
@@ -2086,12 +2870,21 @@
           "locator": "% Generated by scripts/research/build_machine_typology.py.",
           "path": "knowledge/strategies/machine_typology.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/machine_typology.pl",
+          "locator": "scripts/research/build_automata_compendium.py:16 imports build_machine_typology (parse_transition_tables, structure) and reads machine_typology.pl's generated classes for the compendium's structural-class column.",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "machine_typology",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified a genuine read of this generated file into the automata compendium research page, distinct from its own producer build_machine_typology.py.",
       "path": "knowledge/strategies/machine_typology.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_builder"
     },
     {
       "capability_class": "synthesis",
@@ -2100,12 +2893,21 @@
           "locator": "/** <module> Decimal expansion decided by the remainder cycle",
           "path": "knowledge/strategies/math/smr_div_remainder_cycle.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/math/smr_div_remainder_cycle.pl",
+          "locator": "knowledge/strategies/math/smr_div_remainder_cycle.pl's own header: 'decide whether the decimal expansion of P/Q terminates ... by carrying the remainder rather than a digit count.'",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "smr_div_remainder_cycle",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: the census's own prose commentary (build_self_description_census.py history) already states this plainly: 'its orphanhood is a decision rather than an oversight: it decides what its sibling smr_div_long cannot, and wiring it in waits on a canonical action for halting on a state recurrence.' Upgraded the machine verdict from boilerplate undetermined to stalled_input to match that standing prose judgement.",
       "path": "knowledge/strategies/math/smr_div_remainder_cycle.pl",
-      "verdict": "undetermined"
+      "verdict": "stalled_input"
     },
     {
       "capability_class": "synthesis",
@@ -2114,10 +2916,19 @@
           "locator": "/** <module> Comprehensive Mathematical Reasoning Benchmark",
           "path": "knowledge/strategies/math_benchmark.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/math_benchmark.pl",
+          "locator": "module's own header/source (see registry census specific_undetermined note)",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "math_benchmark",
-      "note": "This is a manual command-line benchmark. No check or research builder invokes it.",
+      "note": "Manual command-line benchmark. No check or research builder invokes it.",
       "path": "knowledge/strategies/math_benchmark.pl",
       "verdict": "undetermined"
     },
@@ -2128,12 +2939,21 @@
           "locator": "% Generated by scripts/research/build_misconception_render_link.py from",
           "path": "knowledge/strategies/render/misconception_render_link.pl",
           "relation": "source inspected"
+        },
+        {
+          "confidence": "high",
+          "drafter_date": "2026-08-22",
+          "drafter_model": "sonnet",
+          "judgement_path": "knowledge/strategies/render/misconception_render_link.pl",
+          "locator": "scripts/checks/misconception_render_link.py: 'check_misconception_render_link/0 recomputes' the join via a live swipl -g query (in addition to a separate byte-identity regeneration check).",
+          "path": "data/research/orphan_judgements_authored.json",
+          "relation": "authored judgement"
         }
       ],
       "module": "misconception_render_link",
-      "note": "No scripts/checks loader, scripts/research reader, include directive, explicit supersession record, or applicable unload constraint was found. The source was inspected without assigning a stronger verdict.",
+      "note": "NEW 2026-08-22: verified this check runs BOTH a live Prolog re-derivation (real consumption, the same pattern already accepted for action_grammar.pl) and a byte-identity regen check; wired run_all.sh:63.",
       "path": "knowledge/strategies/render/misconception_render_link.pl",
-      "verdict": "undetermined"
+      "verdict": "consumed_by_check"
     },
     {
       "capability_class": "synthesis",

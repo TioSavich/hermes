@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESEARCH_SCRIPTS = ROOT / "scripts/research"
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(RESEARCH_SCRIPTS))
 
 from build_full_graph_json import (  # noqa: E402
@@ -24,11 +25,13 @@ from build_full_graph_json import (  # noqa: E402
     generate_json,
 )
 from build_machine_typology import parse_transition_tables  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 PAGE = ROOT / "docs/research/automata-graph.html"
 HUB = ROOT / "docs/research/2026-08-03-automata-compendium.html"
 TOKENS = ROOT / "hermes/web/hermes-tokens.css"
+EXPECTED_MACHINES = baseline_value("automata.full_graph_machines")
 
 
 def fail_if(condition: bool, message: str, failures: list[str]) -> None:
@@ -57,7 +60,11 @@ def main() -> int:
     edge_by_id = {edge.get("id"): edge for edge in edges}
 
     fail_if(data.get("schema") != 2, "full graph schema is not 2", failures)
-    fail_if(len(machines) != 245, f"expected 245 machines, got {len(machines)}", failures)  # 245 from 2026-08-06: the grade-7 authoring wave
+    fail_if(
+        len(machines) != EXPECTED_MACHINES,
+        f"expected {EXPECTED_MACHINES} machines, got {len(machines)}",
+        failures,
+    )
     fail_if(len(nodes) != sum(len(machine.states) for machine in machines),
             "node count does not equal the per-machine state sum", failures)
     fail_if(len(edges) != sum(len(machine.unique_edges) for machine in machines),

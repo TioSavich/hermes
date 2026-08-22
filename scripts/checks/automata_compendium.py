@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESEARCH_SCRIPTS = ROOT / "scripts/research"
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(RESEARCH_SCRIPTS))
 
 from build_automata_compendium import (  # noqa: E402
@@ -22,6 +23,10 @@ from render_automaton_context_svg import (  # noqa: E402
     scene_records,
 )
 from render_automaton_svg import OUTPUT_DIR as SVG_DIR, render_all as render_radial  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
+
+EXPECTED_PAGES = baseline_value("automata.compendium_pages")
 
 
 def compare_file(path: Path, expected: str, failures: list[str]) -> None:
@@ -62,9 +67,10 @@ def main() -> int:
         failures.append(
             f"unexpected generated compendium page: {path.relative_to(ROOT)}"
         )
-    if len(compendium_pages) != 16:
+    if len(compendium_pages) != EXPECTED_PAGES:
         failures.append(
-            f"compendium page-count mismatch: expected 16, got {len(compendium_pages)}"
+            f"compendium page-count mismatch: expected {EXPECTED_PAGES}, "
+            f"got {len(compendium_pages)}"
         )
     hub = compendium_pages.get(COMPENDIUM, "")
     for fragment in (

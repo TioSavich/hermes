@@ -23,6 +23,7 @@
           ]).
 
 :- use_module(library(http/json)).
+:- use_module(library(pairs), [group_pairs_by_key/2]).
 :- use_module(library(readutil)).
 :- absolute_file_name(geometry(schema),
                       GeometrySchema,
@@ -81,6 +82,10 @@
 :- discontiguous traditional_lesson/6, scope_sequence_only_lesson/1.
 :- discontiguous scope_sequence_mapped_lesson/1.
 :- dynamic cached_lesson_topics/2.
+:- dynamic cached_monitoring_cluster_dict/2.
+:- dynamic cached_derived_incompatibility_terms/4.
+:- multifile lesson_misconception_witness_fact/4.
+:- multifile lesson_misconception_witness_store_baked/0.
 :- multifile lesson_resonant_misconception/6.
 :- dynamic lesson_resonant_misconception/6.
 % Dynamic so tests can assert a fixture lesson under setup/cleanup (the
@@ -114,6 +119,12 @@
 % awaits its first curriculum build.
 :- if(exists_source('generated/lesson_standard_anchors')).
 :- ensure_loaded('generated/lesson_standard_anchors').
+:- endif.
+% Optional until scripts/curriculum/build_lesson_misconception_witness_store.py
+% completes its first full bake. The worker checks for the generated marker
+% before choosing the store-backed request path.
+:- if(exists_source('generated/lesson_misconception_witness_store')).
+:- ensure_loaded('generated/lesson_misconception_witness_store').
 :- endif.
 
 
@@ -928,22 +939,18 @@ explicit_lesson_strategy('IM-G2-U1-L3', subtraction, count_up_missing_addend, In
 
 %!  lesson_misconception(+LessonCode, -Operation, -Name, -Info) is nondet.
 lesson_misconception(Code, Operation, Name, Info) :-
-    findall(Operation0-Name0,
-            lesson_monitoring:lesson_misconception_candidate(Code, Operation0, Name0, _Info0),
-            Keys0),
-    sort(Keys0, Keys),
-    member(Operation-Name, Keys),
-    preferred_lesson_misconception_candidate(Code, Operation, Name, Info).
+    findall((Operation0-Name0)-Info0,
+            lesson_monitoring:lesson_misconception_candidate(
+                Code, Operation0, Name0, Info0),
+            Pairs0),
+    keysort(Pairs0, Pairs),
+    group_pairs_by_key(Pairs, Groups),
+    member((Operation-Name)-Infos, Groups),
+    preferred_info(Code, Infos, Info).
 
 preferred_lesson_strategy_candidate(Code, Operation, Kind, Info) :-
     findall(Info0,
             lesson_monitoring:lesson_strategy_candidate(Code, Operation, Kind, Info0),
-            Infos),
-    preferred_info(Code, Infos, Info).
-
-preferred_lesson_misconception_candidate(Code, Operation, Name, Info) :-
-    findall(Info0,
-            lesson_monitoring:lesson_misconception_candidate(Code, Operation, Name, Info0),
             Infos),
     preferred_info(Code, Infos, Info).
 
@@ -1479,6 +1486,25 @@ misconception_info(Name, Citation, Commitment, EntitlementLacked, Prefix, Info) 
            Info).
 
 derived_incompatibility_terms(Name, Commitment, EntitlementLacked, Terms) :-
+    cached_derived_incompatibility_terms(
+        Name, Commitment, EntitlementLacked, Terms),
+    !.
+derived_incompatibility_terms(Name, Commitment, EntitlementLacked, Terms) :-
+    % The first call fixes this registry triple under the process's current
+    % ITER7 cap environment. That stable per-process context is intentional;
+    % the generated bake unsets all three ITER7 cap variables.
+    with_mutex(
+        lesson_monitoring_incompatibility_cache,
+        (   cached_derived_incompatibility_terms(
+                Name, Commitment, EntitlementLacked, Terms)
+        ->  true
+        ;   derived_incompatibility_terms_uncached(
+                Name, Commitment, EntitlementLacked, Terms),
+            assertz(cached_derived_incompatibility_terms(
+                Name, Commitment, EntitlementLacked, Terms))
+        )).
+
+derived_incompatibility_terms_uncached(Name, Commitment, EntitlementLacked, Terms) :-
     derived_incompatibility_witness(Name,
                                     Commitment,
                                     EntitlementLacked,
@@ -1847,14 +1873,26 @@ monitoring_cluster_source(geometry,
 
 
 monitoring_cluster_dict(RelativePath, Cluster) :-
-    repo_file(RelativePath, Path),
-    setup_call_cleanup(
-        open(Path, read, In),
-        json_read_dict(In, Root, [value_string_as(atom)]),
-        close(In)
-    ),
+    monitoring_cluster_root(RelativePath, Root),
     get_dict(clusters, Root, Clusters),
     member(Cluster, Clusters).
+
+monitoring_cluster_root(RelativePath, Root) :-
+    cached_monitoring_cluster_dict(RelativePath, Root),
+    !.
+monitoring_cluster_root(RelativePath, Root) :-
+    with_mutex(
+        lesson_monitoring_cluster_cache,
+        (   cached_monitoring_cluster_dict(RelativePath, Root)
+        ->  true
+        ;   repo_file(RelativePath, Path),
+            setup_call_cleanup(
+                open(Path, read, In),
+                json_read_dict(In, Root, [value_string_as(atom)]),
+                close(In)
+            ),
+            assertz(cached_monitoring_cluster_dict(RelativePath, Root))
+        )).
 
 
 cluster_info(Cluster, Info) :-

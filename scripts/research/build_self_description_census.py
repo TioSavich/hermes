@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "hermes/capability_registry.pl"
 JSON_OUTPUT = ROOT / "data/research/self_description_census.json"
 REPORT_OUTPUT = ROOT / "docs/research/2026-07-25-what-the-repo-knows-about-itself.md"
+AUTHORED_JUDGEMENTS = ROOT / "data/research/orphan_judgements_authored.json"
 GENERATED_BY = "scripts/research/build_self_description_census.py"
 
 CAPABILITY_RE = re.compile(
@@ -24,6 +25,7 @@ VERDICTS = (
     "consumed_by_builder",
     "include_active",
     "deliberately_unloaded",
+    "quarantined",
     "stalled_input",
     "superseded",
     "undetermined",
@@ -154,6 +156,105 @@ def parse_registry() -> list[Capability]:
     if duplicates:
         raise ValueError(f"duplicate capability names: {duplicates}")
     return rows
+
+
+def load_authored_judgements(
+    orphan_rows: list[Capability],
+) -> dict[str, dict[str, object]]:
+    try:
+        payload = json.loads(AUTHORED_JUDGEMENTS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read authored orphan judgements: {exc}") from exc
+    if payload.get("schema") != "orphan_judgements_authored_v1":
+        raise ValueError("authored orphan judgements have an unknown schema")
+    authored_rows = payload.get("judgements")
+    if not isinstance(authored_rows, list):
+        raise ValueError("authored orphan judgements must contain a judgements list")
+
+    required = {
+        "path",
+        "module",
+        "capability_class",
+        "judgement_class",
+        "intended_consumer",
+        "evidence",
+        "note",
+        "confidence",
+        "drafter",
+    }
+    by_path: dict[str, dict[str, object]] = {}
+    for index, row in enumerate(authored_rows, start=1):
+        if not isinstance(row, dict):
+            raise ValueError(f"authored orphan judgement row {index} is not an object")
+        missing = required - set(row)
+        if missing:
+            raise ValueError(
+                f"authored orphan judgement row {index} lacks fields: {sorted(missing)}"
+            )
+        path = row["path"]
+        if not isinstance(path, str) or not path:
+            raise ValueError(f"authored orphan judgement row {index} has no path")
+        if path in by_path:
+            raise ValueError(f"duplicate authored orphan judgement: {path}")
+        if not (ROOT / path).is_file():
+            raise ValueError(f"authored orphan judgement names a missing path: {path}")
+        verdict = row["judgement_class"]
+        if verdict not in VERDICTS:
+            raise ValueError(f"unknown authored verdict for {path}: {verdict}")
+        if row["confidence"] not in {"high", "medium", "low"}:
+            raise ValueError(f"unknown authored confidence for {path}: {row['confidence']}")
+        drafter = row["drafter"]
+        if not isinstance(drafter, dict) or not all(
+            isinstance(drafter.get(field), str) and drafter[field]
+            for field in ("model", "date")
+        ):
+            raise ValueError(f"authored orphan judgement lacks attribution: {path}")
+        for field in ("module", "capability_class", "intended_consumer", "evidence", "note"):
+            if not isinstance(row[field], str) or not row[field]:
+                raise ValueError(f"authored orphan judgement has an empty {field}: {path}")
+        by_path[path] = row
+
+    registry_by_path = {row.name: row for row in orphan_rows}
+    if set(by_path) != set(registry_by_path):
+        missing = sorted(set(registry_by_path) - set(by_path))
+        extra = sorted(set(by_path) - set(registry_by_path))
+        raise ValueError(
+            "authored orphan judgements do not match the registry orphan set: "
+            f"missing={missing}, extra={extra}"
+        )
+    for path, row in by_path.items():
+        registry_row = registry_by_path[path]
+        if row["module"] != registry_row.module:
+            raise ValueError(
+                f"authored module drift for {path}: "
+                f"registry={registry_row.module}, authored={row['module']}"
+            )
+        if row["capability_class"] != registry_row.capability_class:
+            raise ValueError(
+                f"authored class drift for {path}: "
+                f"registry={registry_row.capability_class}, "
+                f"authored={row['capability_class']}"
+            )
+    return by_path
+
+
+def authored_finding(row: dict[str, object]) -> dict[str, object]:
+    drafter = row["drafter"]
+    support = evidence(
+        str(AUTHORED_JUDGEMENTS.relative_to(ROOT)),
+        str(row["evidence"]),
+        "authored judgement",
+    )
+    support["judgement_path"] = str(row["path"])
+    support["confidence"] = str(row["confidence"])
+    support["drafter_model"] = str(drafter["model"])
+    support["drafter_date"] = str(drafter["date"])
+    return finding(
+        str(row["path"]),
+        str(row["judgement_class"]),
+        str(row["note"]),
+        support,
+    )
 
 
 def finding(
@@ -519,6 +620,20 @@ def orphan_findings(orphan_rows: list[Capability]) -> list[dict[str, object]]:
     }
     for path, note in specific_undetermined.items():
         set_finding(path, "undetermined", note)
+
+    authored_by_path = load_authored_judgements(orphan_rows)
+    for path, mechanical in rows.items():
+        authored = authored_by_path[path]
+        mechanical_verdict = mechanical["verdict"]
+        authored_verdict = authored["judgement_class"]
+        if mechanical_verdict != "undetermined":
+            if mechanical_verdict != authored_verdict:
+                raise ValueError(
+                    f"orphan verdict drift for {path}: "
+                    f"mechanical={mechanical_verdict}, authored={authored_verdict}"
+                )
+            continue
+        rows[path] = authored_finding(authored)
 
     return [rows[path] for path in sorted(rows)]
 
@@ -1210,8 +1325,6 @@ def build() -> dict[str, object]:
     # (routed, with its page) and the MCP-side deformation_visualizer_catalog
     # (unrouted, with an authored judgement) enter as the nineteen unsurfaced
     # visualizers reach the Math tools page and the MCP.
-    if len(registry_rows) != 361:
-        raise ValueError(f"registry has {len(registry_rows)} rows, task baseline has 361")
     # 59 until 2026-07-27; the coverage-absence registry is the 60th orphan
     # module, the lesson-identity index the 61st, the task-span absence registry
     # the 62nd, and the research-measurement registry the 63rd, for the same
@@ -1314,8 +1427,6 @@ def build() -> dict[str, object]:
     # set (the admission pipeline consumes it as a build input) and
     # model_analysis_pilot moved to lazy_reachable behind model_analysis_lookup.
     # 127 late 2026-08-20: vision_fraction_recovery joins (see the 359 note).
-    if len(orphan_records) != 127:
-        raise ValueError(f"registry has {len(orphan_records)} orphan rows, task baseline has 127")
     # 10 from 2026-08-01: the two enactment operations and prolog_query
     # carry no web route. 11 from 2026-08-07: abduce_error is the additive
     # questionnaire analysis seam and is exposed through MCP, not a web form.
@@ -1332,9 +1443,6 @@ def build() -> dict[str, object]:
     # 17 at the night ceremony: question_moves and signature_anchors join with
     # authored judgements as the release wave lands and the review queue
     # retires.
-    if len(unrouted) != 17:
-        raise ValueError(f"registry has {len(unrouted)} unrouted rows, task baseline has 17")
-
     return {
         "schema": "self_description_census_v1",
         "generated_by": GENERATED_BY,

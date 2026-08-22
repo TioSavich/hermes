@@ -83,12 +83,58 @@ POOL_KEYS = {
     "canonical", "phrase",
 }
 IM_CODE = re.compile(r"^IM-G[K0-9]")
-TIMEOUT_OVERRIDES = {"lesson_enactment_run": 360, "monitoring_chart_export": 360,
+# Ops whose per-item cost makes full enumeration a multi-day job; run-2's
+# first attempt burned 17 hours rotating segments on the incompatibility
+# witness (every keyed call exceeds the item timeout). Sampled, and logged
+# as a truncation like every other cap.
+OP_SAMPLE_CAPS = {
+    # 2026-08-22: retain this cap until the controller completes the full
+    # lesson_misconception_witness_store bake. Retire it only with that store
+    # present in the audited tree, when the keyed domain becomes fact lookups.
+    "lesson_misconception_incompatibility_witness": 25,
+    "monitoring_chart_export": 50,
+    "ranked_figures": 50,
+    "lesson_enactment_run": 50,
+    "field_context": 100,
+    "lesson_deformation_chart": 100,
+    "lesson_arithmetic_demonstration": 100,
+}
+
+TIMEOUT_OVERRIDES = {"lesson_misconception_incompatibility_witness": 360,
+                     "lesson_enactment_run": 360, "monitoring_chart_export": 360,
                      "lesson_enactment_list": 360, "field_connectivity_audit": 600,
+                     "notation_monitoring_chart": 360,
                      # Run-2 item 3: figure export walks every ranked figure
                      # for a lesson; the other lesson_code chains showed this
                      # needs headroom too.
                      "ranked_figures": 360}
+
+
+def first_terminal_rows(rows):
+    """Yield the first recorded terminal result for each work-item id."""
+    seen: set[str] = set()
+    for row in rows:
+        item_id = row.get("id")
+        if not isinstance(item_id, str) or item_id in seen:
+            continue
+        seen.add(item_id)
+        yield row
+
+
+def replay_outcomes(path: Path, op: str) -> Counter:
+    rows = []
+    for line in path.open(encoding="utf-8"):
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(row, dict):
+            rows.append(row)
+    return Counter(
+        row.get("outcome", "missing")
+        for row in first_terminal_rows(rows)
+        if row.get("op") == op
+    )
 TYPE_FIXTURES = {"atom": "probe", "string": "probe", "code": "IM-G1-U3-L17",
                  "term": "probe", "number": 1, "int": 1, "dict": {},
                  "json": {}, "json_list": [{"id": "u1", "speaker": "student",
@@ -558,13 +604,15 @@ def build_worklist(specs, pools, ops, max_per_op, log,
     for op in sorted(ops):
         items.append({"op": op, "args": {}, "class": "shape_probe"})
 
+        op_cap = min(max_per_op, OP_SAMPLE_CAPS.get(op, max_per_op))
+
         if op in tuple_domains:
             param_names, tuples, cls = tuple_domains[op]
             domain = tuples
-            if len(domain) > max_per_op:
+            if len(domain) > op_cap:
                 truncations.append({"op": op, "param": "+".join(param_names),
-                                    "domain": len(domain), "kept": max_per_op})
-                domain = domain[:max_per_op]
+                                    "domain": len(domain), "kept": op_cap})
+                domain = domain[:op_cap]
             for tup in domain:
                 items.append({"op": op, "args": dict(zip(param_names, tup)),
                              "class": cls})
@@ -601,10 +649,10 @@ def build_worklist(specs, pools, ops, max_per_op, log,
         for name, pool_name in pooled[1:]:
             args_base[name] = sorted(pool_domain(pool_name, name))[0]
         domain = sorted(pool_domain(key_pool, key_name))
-        if len(domain) > max_per_op:
+        if len(domain) > op_cap:
             truncations.append({"op": op, "param": key_name,
-                                "domain": len(domain), "kept": max_per_op})
-            domain = domain[:max_per_op]
+                                "domain": len(domain), "kept": op_cap})
+            domain = domain[:op_cap]
         for value in domain:
             args = dict(args_base)
             args[key_name] = value
@@ -651,7 +699,7 @@ def print_worklist_table(items, ops, log):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", required=True)
+    ap.add_argument("--out")
     ap.add_argument("--max-per-op", type=int, default=3000)
     ap.add_argument("--item-timeout", type=float, default=180.0)
     ap.add_argument("--segment-items", type=int, default=4000)
@@ -663,7 +711,18 @@ def main() -> int:
                          "count-by-class table, and exit before executing "
                          "any item (still boots one worker for health + "
                          "the harvest ops)")
+    ap.add_argument("--replay-results", type=Path,
+                    help="read a prior sweep_results.jsonl through the first-terminal merge and exit")
+    ap.add_argument("--replay-op", default="notation_monitoring_chart",
+                    help="op summarized by --replay-results")
     args = ap.parse_args()
+
+    if args.replay_results is not None:
+        counts = replay_outcomes(args.replay_results, args.replay_op)
+        print(json.dumps({"op": args.replay_op, "outcomes": dict(counts)}, sort_keys=True))
+        return 0
+    if not args.out:
+        ap.error("--out is required unless --replay-results is used")
 
     outdir = Path(args.out)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -677,9 +736,11 @@ def main() -> int:
     if results_path.exists():
         for line in results_path.open():
             try:
-                done.add(json.loads(line)["id"])
+                item_id = json.loads(line)["id"]
             except (json.JSONDecodeError, KeyError):
                 continue
+            if isinstance(item_id, str):
+                done.add(item_id)
         log(f"resume: {len(done)} items already recorded")
     results = results_path.open("a")
 
@@ -745,16 +806,21 @@ def main() -> int:
         return 0
 
     outcomes = Counter()
+    terminal_outcomes = set(done)
     requeue: list[dict] = []
     seg_count = 0
 
     def record(item, outcome, ms, note=""):
+        if item["id"] in terminal_outcomes:
+            return False
+        terminal_outcomes.add(item["id"])
         outcomes[outcome] += 1
         results.write(json.dumps({
             "id": item["id"], "op": item["op"], "class": item["class"],
             "outcome": outcome, "ms": round(ms, 1), "note": note[:400],
         }, ensure_ascii=False) + "\n")
         results.flush()
+        return True
 
     def rotate(reason):
         nonlocal worker, segno, seg_count
@@ -785,9 +851,20 @@ def main() -> int:
     log(f"executing {total} items")
     n = 0
     requeued_once: set[str] = set()
+    # Circuit breaker: five timeouts on one op trips it, and the op's
+    # remaining items record op_circuit_open without executing. Run-2's
+    # first attempt spent 17 hours rotating segments on one op whose every
+    # keyed call exceeded the item timeout; the breaker makes that cost
+    # five items, loudly, instead of the whole job.
+    op_timeout_counts: Counter = Counter()
+    tripped_ops: set[str] = set()
     while queue:
         item = queue.popleft()
         n += 1
+        if item["op"] in tripped_ops:
+            record(item, "op_circuit_open", 0.0,
+                   note="skipped after 5 timeouts on this op")
+            continue
         timeout = TIMEOUT_OVERRIDES.get(item["op"], args.item_timeout)
         t0 = time.monotonic()
         try:
@@ -805,6 +882,11 @@ def main() -> int:
         except TimeoutError:
             ms = (time.monotonic() - t0) * 1000
             record(item, "timeout", ms)
+            op_timeout_counts[item["op"]] += 1
+            if op_timeout_counts[item["op"]] >= 5 and item["op"] not in tripped_ops:
+                tripped_ops.add(item["op"])
+                log(f"CIRCUIT OPEN for {item['op']} after 5 timeouts; "
+                    f"its remaining items record op_circuit_open")
             rotate(f"timeout on {item['op']}")
         except (BrokenPipeError, json.JSONDecodeError, OSError) as e:
             ms = (time.monotonic() - t0) * 1000

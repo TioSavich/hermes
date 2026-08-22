@@ -17,6 +17,7 @@ sys.path.insert(0, str(CURRICULUM))
 
 import compile_action_mappings as compiler  # noqa: E402
 from scripts.curriculum import build_lesson_evidence as evidence_ledger  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 def coverage() -> tuple[list[compiler.LessonDoc], set[str], dict[str, set[tuple[str, str]]]]:
@@ -248,10 +249,6 @@ def markerless_grid_audit(
     # and the line-anchored item markers admit three spans whose sentence-
     # final "NN." was prose, not a list marker (IM-G1-U2-L6, IM-G1-U3-L19,
     # IM-G5-U4-L2).
-    if len(markerless) != 15:
-        raise SystemExit(
-            f"marker-less grid audit expected 15 K--5 spans, found {len(markerless)}"
-        )
     return len(markerless), citable
 
 
@@ -343,6 +340,12 @@ def main() -> int:
     maximality_forms = maximality_form_controls()
     print(f"maximality unit controls passed: {maximality_forms}")
     markerless_spans, citable_spans = markerless_grid_audit(docs, covered, attachments)
+    expected_markerless = baseline_value("curriculum.markerless_task_readings")
+    if markerless_spans != expected_markerless:
+        raise SystemExit(
+            f"marker-less grid audit expected {expected_markerless} K--5 spans, "
+            f"found {markerless_spans}"
+        )
     print(
         "marker-less grid audit: "
         f"spans={markerless_spans} single_expression_citable={citable_spans}"

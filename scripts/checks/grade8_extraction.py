@@ -15,6 +15,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.curriculum import build_im_defragged_task_instances as defrag  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 from scripts.curriculum import compile_action_mappings as compiler  # noqa: E402
 from scripts.curriculum import extract_docling_grade as extraction  # noqa: E402
 from scripts.curriculum import recover_docling_grade8 as recovery  # noqa: E402
@@ -27,6 +28,9 @@ TASK_OUTPUT = extraction.GENERATED / "grade_8_extracted_task_instances.pl"
 QUESTION_OUTPUT = extraction.GENERATED / "grade_8_extracted_guide_questions.pl"
 SUMMARY_OUTPUT = recovery.DEFAULT_RECOVERY_DIR / "summary.json"
 VISION_DIR = recovery.DEFAULT_RECOVERY_DIR / "vision"
+EXPECTED_LESSONS = baseline_value("grade8.lessons")
+EXPECTED_TASKS = baseline_value("grade8.task_sections")
+EXPECTED_QUESTIONS = baseline_value("grade8.guide_questions")
 
 
 def prolog(goal: str) -> None:
@@ -145,7 +149,7 @@ def check_source_mapping(docs: list[object], payloads: list[dict]) -> None:
                 blocked[task["blocker"]] += 1
                 if task["extraction_status"] == "blocked_missing_visual":
                     assert task["visual_provenance"]
-    assert total == 513, total
+    assert total == EXPECTED_TASKS, total
     assert blocked == Counter(
         {
             "curriculum_text_absent_after_docling": 4,
@@ -170,7 +174,7 @@ def check_questions(payloads: list[dict]) -> None:
             assert question.review_status == "pending_human_review"
             assert question.reviewer is None
         records.extend(questions)
-    assert len(records) == 268
+    assert len(records) == EXPECTED_QUESTIONS
 
 
 def check_generated_outputs(payloads: list[dict]) -> None:
@@ -181,8 +185,8 @@ def check_generated_outputs(payloads: list[dict]) -> None:
         8, payloads, context
     )
     summary = json.loads(SUMMARY_OUTPUT.read_text(encoding="utf-8"))
-    assert summary["lessons"] == 134
-    assert summary["tasks"] == 513
+    assert summary["lessons"] == EXPECTED_LESSONS
+    assert summary["tasks"] == EXPECTED_TASKS
     assert summary["after_status_counts"] == {
         "blocked_layout": 73,
         "blocked_missing_visual": 119,
@@ -215,28 +219,30 @@ def check_vision_accounting(payloads: list[dict]) -> None:
 def check_prolog_loads() -> None:
     prolog(
         "use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]),"
-        "grade_8_extracted_task_instances:extracted_task_instance_summary(134,"
+        f"grade_8_extracted_task_instances:extracted_task_instance_summary({EXPECTED_LESSONS},"
         "counts{blocked_layout:73,blocked_missing_visual:119,complete:287,recovered:34}),"
         "aggregate_all(count,grade_8_extracted_task_instances:"
-        "extracted_lesson_task_instance(_,_,_),513)"
+        f"extracted_lesson_task_instance(_,_,_),{EXPECTED_TASKS})"
     )
     prolog(
         "use_module(curriculum/im/generated/grade_8_extracted_guide_questions,[]),"
-        "grade_8_extracted_guide_questions:extracted_guide_question_summary(134,"
-        "counts{advancing:134,assessing:134}),"
+        f"grade_8_extracted_guide_questions:extracted_guide_question_summary({EXPECTED_LESSONS},"
+        f"counts{{advancing:{EXPECTED_LESSONS},assessing:{EXPECTED_LESSONS}}}),"
         "aggregate_all(count,grade_8_extracted_guide_questions:"
         "extracted_lesson_guide_question(_,guide_question(_,_,_,_,_,"
         "label_origin(machine_classification),review_status(pending_human_review),"
-        "review_evidence(none))),268)"
+        f"review_evidence(none))),{EXPECTED_QUESTIONS})"
     )
     prolog(
         "use_module(curriculum/im/generated/compiled_defragged_task_instances,[]),"
-        "compiled_defragged_task_instances:defragged_task_instance_summary(5242,"
-        "counts{already_complete:3417,blocked_layout:385,blocked_missing_visual:142,"
+        f"compiled_defragged_task_instances:defragged_task_instance_summary("
+        f"{baseline_value('defrag.rows')},"
+        f"counts{{already_complete:3417,blocked_layout:385,"
+        f"blocked_missing_visual:{baseline_value('defrag.visual_markers')},"
         "recovered:1295,recovered_with_referent:3}),"
         "aggregate_all(count,(compiled_defragged_task_instances:"
         "defragged_task_instance(_,L,curriculum_task(_),D),"
-        "sub_atom(L,0,5,_,'IM-G8'),get_dict(status,D,_)),513)"
+        f"sub_atom(L,0,5,_,'IM-G8'),get_dict(status,D,_)),{EXPECTED_TASKS})"
     )
     # The 268 G8 machine-classified rows admitted under printed_region when
     # the positional-serving ruling landed (2026-08-20); the source store
@@ -246,7 +252,7 @@ def check_prolog_loads() -> None:
         "aggregate_all(count,(compiled_lesson_context:compiled_lesson_guide_question(L,"
         "guide_question(_,_,_,_,_,label_origin(machine_classification),"
         "review_status(mechanically_admitted),_)),"
-        "sub_atom(L,0,5,_,'IM-G8')),268)"
+        f"sub_atom(L,0,5,_,'IM-G8')),{EXPECTED_QUESTIONS})"
     )
     prolog(
         "use_module(curriculum/im/generated/compiled_lesson_context,[]),"
@@ -258,7 +264,7 @@ def check_prolog_loads() -> None:
         "use_module(curriculum/im/generated/grade_8_extracted_task_instances,[]),"
         "use_module(im_lessons(lesson_monitoring),[]),"
         "setof(L,T^E^(grade_8_extracted_task_instances:"
-        "extracted_lesson_task_instance(L,T,E)),Ls),length(Ls,134),"
+        f"extracted_lesson_task_instance(L,T,E)),Ls),length(Ls,{EXPECTED_LESSONS}),"
         "forall(member(L,Ls),(lesson_monitoring:monitoring_chart(L,_),"
         "compiled_lesson_context:compiled_lesson_context(L,_,_,_),"
         "aggregate_all(count,compiled_lesson_context:"
@@ -269,8 +275,8 @@ def check_prolog_loads() -> None:
 def main() -> int:
     check_rule_fixtures()
     docs = extraction.discover_docs(8, compiler)
-    assert len(docs) == 134
-    assert len({doc.code for doc in docs}) == 134
+    assert len(docs) == EXPECTED_LESSONS
+    assert len({doc.code for doc in docs}) == EXPECTED_LESSONS
     payloads = load_payloads(docs)
     check_source_mapping(docs, payloads)
     check_questions(payloads)
@@ -278,7 +284,8 @@ def main() -> int:
     check_vision_accounting(payloads)
     check_prolog_loads()
     print(
-        "PASS Grade 8 extraction recovery: 134 lessons, 513 task sections, "
+        f"PASS Grade 8 extraction recovery: {EXPECTED_LESSONS} lessons, "
+        f"{EXPECTED_TASKS} task sections, "
         "11 JSON recoveries, 23 vision recoveries, 192 named blockers, "
         "clean Prolog loads"
     )

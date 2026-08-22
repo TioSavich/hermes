@@ -3,7 +3,8 @@
 % knowledge/strategies/math/fraction_action_pairs.pl,
 % knowledge/strategies/math/decimal_action_pairs.pl,
 % knowledge/strategies/render/parametric_fraction_errors.pl,
-% knowledge/strategies/render/attested_deformations.pl, and a live query
+% knowledge/strategies/render/attested_deformations.pl,
+% knowledge/strategies/render/authored_render_citations.pl, and a live query
 % against knowledge/misconceptions/misconception_registry.pl.
 % Do not hand-edit; edit the builder and regenerate.
 %
@@ -18,11 +19,11 @@
 % passes the render-coverage report's own representation-family compatibility
 % table (op_render_family/3), the two sides are joined.
 %
-% WHAT THE LINK LICENSES, AND WHAT IT DOES NOT. A row here says: this drawing
-% and this literature-attested misconception cite the same source and share a
-% representation family. It is NEVER equivalence, and it is NEVER a diagnosis
-% -- the render id is a computed scene, the registry name is a literature
-% attestation, and citing the same paper does not make them the same claim.
+% WHAT THE LINK LICENSES, AND WHAT IT DOES NOT. A mechanical row says that a
+% drawing and a literature-attested misconception cite the same source and
+% share a representation family. An authored row records a separately reviewed
+% topical match from authored_render_citations.pl. Neither lane asserts
+% equivalence or a diagnosis.
 %
 % too_vague NEVER LINKS. A number of registry entries carry the sentinel name
 % too_vague (misconception-under-erasure ruling, 2026-08: viability not
@@ -40,12 +41,11 @@
 % decimal_strategy, or equipartition_failure instead: honestly-named markers
 % for "no representation-grammar atom applies," not entries in
 % representation_language/1. op_render_family/3 has no row for any of the
-% three, so no bibkey warranted for those ids can ever pass the compatibility
-% filter -- which is exactly what happened this pass: they are all
-% no_bibkey_in_source besides.
+% three, so no mechanically warranted bibkey for those ids can pass the
+% compatibility filter. The authored lane does not use this prefilter.
 %
-% NO authored rows this pass. via(authored) is declared in the vocabulary
-% below for a later, human-curated pass; this builder never emits one.
+% AUTHORED ABSENCES STAY NAMED. Reviewed refusals distinguish literature with
+% no usable registry bibkey from a source that names no literature signal.
 
 :- module(misconception_render_link,
           [ render_deformation_citation/3,
@@ -60,18 +60,22 @@
 :- use_module(math(decimal_action_pairs), [productive_decimal_deformation/3]).
 :- use_module(render(parametric_fraction_errors), [fraction_error_type/1]).
 :- use_module(render(attested_deformations), [attested_transplant/5]).
+:- use_module(render(authored_render_citations), [authored_render_citation/5]).
 :- use_module(render(misconception_render_coverage), [op_render_family/3]).
 :- use_module(misconceptions(misconception_registry),
               [ misconception_registry_entry/5 ]).
 :- use_module(library(pairs)).
 :- use_module(library(lists)).
 :- use_module(library(aggregate)).
+:- use_module(library(readutil)).
 
 % --- render_deformation_citation(RenderId, Bibkey, source(File, Evidence)) -
 % One row per (render id, bibkey) the render side can WARRANT: the bibkey
 % is a literal atom near the id's own clause, or a structured match against
 % attested_deformations.pl's attested_transplant/5 or
 % attested_representation_error/4 tables (see the module header).
+render_deformation_citation(angle_confused_with_ray_length, 'ESM_Fischbein_1999_Intuitions',
+    source('knowledge/strategies/render/representation_grammar.pl', header_comment(line(1651)))).
 render_deformation_citation(hybridized_model, 'ESM_Cadez_2018_How',
     source('knowledge/strategies/render/attested_deformations.pl', attested_transplant_row(area_model, rectangle_grid_partition, circle_region, 'p14_2.png', matched_on([illicit_host])))).
 render_deformation_citation(hybridized_model, 'MERJ_Zhang_2015_Enriching',
@@ -81,56 +85,56 @@ render_deformation_citation(hybridized_model, 'ZDM_Garderen_2014_Challenges',
 
 % --- misconception_render_link(RenderId, RegistryName, via(V)) -------------
 % V in {name_equality, bibkey(Bibkey), authored}. too_vague never appears as
-% RegistryName. authored is declared and never emitted by this builder.
+% RegistryName. Authored rows bypass the mechanical family prefilter.
 misconception_render_link(add_numerators_and_denominators, add_numerators_and_denominators, via(name_equality)).
+misconception_render_link(angle_confused_with_ray_length, batch_row_39105, via(bibkey('ESM_Fischbein_1999_Intuitions'))).
 misconception_render_link(borrow_without_reducing_bases, borrow_without_reducing_bases, via(name_equality)).
 misconception_render_link(decimal_point_rule_misapplication, decimal_point_rule_misapplication, via(name_equality)).
+misconception_render_link(gap_thinking_fraction_comparison, gap_thinking, via(authored)).
+misconception_render_link(iterate_only_no_reverse, batch_row_37827, via(authored)).
 misconception_render_link(make_ten_drop_leftover, make_ten_drop_leftover, via(name_equality)).
+misconception_render_link(number_line_count_marks_not_intervals, count_marks_not_intervals, via(authored)).
+misconception_render_link(operational_equals_chain, batch_row_38494, via(authored)).
+misconception_render_link(place_value_writing_error, mirror_image_place_value, via(authored)).
 misconception_render_link(whole_number_grab, whole_number_grab, via(name_equality)).
 
 % --- misconception_render_unlinked(RenderId, reason(R)) --------------------
-% R in {no_bibkey_in_source, bibkey_not_in_registry, prefilter_rejected(K)}.
+% R names the mechanical or reviewed point where the join stopped.
 % This absence list is itself the finding: the render layer and the
 % registry are, for almost all of the 44, genuinely unjoined vocabularies.
-misconception_render_unlinked(add_numerator_denominator_comparison, reason(no_bibkey_in_source)).
-misconception_render_unlinked(add_numerator_denominator_sum, reason(no_bibkey_in_source)).
-misconception_render_unlinked(add_with_dropped_carry, reason(no_bibkey_in_source)).
-misconception_render_unlinked(angle_confused_with_ray_length, reason(no_bibkey_in_source)).
-misconception_render_unlinked(area_model_unequal_partition_piece_count, reason(no_bibkey_in_source)).
-misconception_render_unlinked(bar_histogram_conflation, reason(no_bibkey_in_source)).
-misconception_render_unlinked(boundary_peg_as_interior, reason(no_bibkey_in_source)).
-misconception_render_unlinked(change_decimal_place_name_without_regrouping, reason(no_bibkey_in_source)).
-misconception_render_unlinked(clear_inner_referent, reason(no_bibkey_in_source)).
-misconception_render_unlinked(cross_multiplication_rule_without_ground, reason(no_bibkey_in_source)).
-misconception_render_unlinked(decimal_add_unaligned_numerals, reason(no_bibkey_in_source)).
-misconception_render_unlinked(decimal_numeral_comparison_without_scale_alignment, reason(no_bibkey_in_source)).
-misconception_render_unlinked(decimal_scale_loss_comparison, reason(no_bibkey_in_source)).
-misconception_render_unlinked(decimal_subtract_unaligned_numerals, reason(no_bibkey_in_source)).
-misconception_render_unlinked(decimal_whole_number_reading, reason(no_bibkey_in_source)).
-misconception_render_unlinked(digit_transposition, reason(no_bibkey_in_source)).
-misconception_render_unlinked(dropped_carry_mark, reason(no_bibkey_in_source)).
-misconception_render_unlinked(false_equation, reason(no_bibkey_in_source)).
-misconception_render_unlinked(flip_needed, reason(no_bibkey_in_source)).
-misconception_render_unlinked(gap_thinking_fraction_comparison, reason(no_bibkey_in_source)).
-misconception_render_unlinked(glyph_overwrite, reason(no_bibkey_in_source)).
+misconception_render_unlinked(add_numerator_denominator_comparison, reason(no_registry_bibkey(nearest_literature("Behr, Wachsmuth, Post & Lesh 1984")))).
+misconception_render_unlinked(add_numerator_denominator_sum, reason(no_registry_bibkey(nearest_literature("Behr, Wachsmuth, Post & Lesh 1984")))).
+misconception_render_unlinked(add_with_dropped_carry, reason(no_literature_signal)).
+misconception_render_unlinked(area_model_unequal_partition_piece_count, reason(no_registry_bibkey(nearest_literature("Behr et al. 1984")))).
+misconception_render_unlinked(bar_histogram_conflation, reason(no_literature_signal)).
+misconception_render_unlinked(boundary_peg_as_interior, reason(no_literature_signal)).
+misconception_render_unlinked(change_decimal_place_name_without_regrouping, reason(no_literature_signal)).
+misconception_render_unlinked(clear_inner_referent, reason(no_registry_bibkey(nearest_literature("Lakoff & Nunez (L&N), nested partition of a unit object")))).
+misconception_render_unlinked(cross_multiplication_rule_without_ground, reason(no_registry_bibkey(nearest_literature("Glade 2017 (extract-028); Baruk 1987 (corpus figures)")))).
+misconception_render_unlinked(decimal_add_unaligned_numerals, reason(no_literature_signal)).
+misconception_render_unlinked(decimal_numeral_comparison_without_scale_alignment, reason(no_literature_signal)).
+misconception_render_unlinked(decimal_scale_loss_comparison, reason(no_registry_bibkey(nearest_literature("ASKTM G4Q2 coded legend, A2/B2")))).
+misconception_render_unlinked(decimal_subtract_unaligned_numerals, reason(no_literature_signal)).
+misconception_render_unlinked(decimal_whole_number_reading, reason(no_literature_signal)).
+misconception_render_unlinked(digit_transposition, reason(no_literature_signal)).
+misconception_render_unlinked(dropped_carry_mark, reason(no_literature_signal)).
+misconception_render_unlinked(false_equation, reason(no_literature_signal)).
+misconception_render_unlinked(flip_needed, reason(no_literature_signal)).
+misconception_render_unlinked(glyph_overwrite, reason(no_literature_signal)).
 misconception_render_unlinked(hybridized_model, reason(prefilter_rejected('ZDM_Garderen_2014_Challenges'))).
-misconception_render_unlinked(improper_fraction_chain_loss, reason(no_bibkey_in_source)).
-misconception_render_unlinked(iterate_given_overshoot, reason(no_bibkey_in_source)).
-misconception_render_unlinked(iterate_only_no_reverse, reason(no_bibkey_in_source)).
-misconception_render_unlinked(mirror_written_numeral, reason(no_bibkey_in_source)).
-misconception_render_unlinked(miscount_partition, reason(no_bibkey_in_source)).
-misconception_render_unlinked(net_does_not_fold, reason(no_bibkey_in_source)).
-misconception_render_unlinked(number_line_count_marks_not_intervals, reason(no_bibkey_in_source)).
-misconception_render_unlinked(operational_equals_chain, reason(no_bibkey_in_source)).
-misconception_render_unlinked(operational_equals_subtract_from_one_side, reason(no_bibkey_in_source)).
-misconception_render_unlinked(place_value_writing_error, reason(no_bibkey_in_source)).
-misconception_render_unlinked(quadrant_sign_error, reason(no_bibkey_in_source)).
-misconception_render_unlinked(reflection_by_rotation, reason(no_bibkey_in_source)).
-misconception_render_unlinked(set_model_subset_size_focus, reason(no_bibkey_in_source)).
-misconception_render_unlinked(shade_wrong_count, reason(no_bibkey_in_source)).
-misconception_render_unlinked(unequal_partition, reason(no_bibkey_in_source)).
-misconception_render_unlinked(unfillable_by_parity, reason(no_bibkey_in_source)).
-misconception_render_unlinked(wrong_referent_whole, reason(no_bibkey_in_source)).
+misconception_render_unlinked(improper_fraction_chain_loss, reason(no_registry_bibkey(nearest_literature("Lakoff & Nunez (L&N), Motion-Along-a-Path; Steffe Stage-3 units coordination")))).
+misconception_render_unlinked(iterate_given_overshoot, reason(no_registry_bibkey(nearest_literature("Lakoff & Nunez (L&N), Object-Construction entailment")))).
+misconception_render_unlinked(mirror_written_numeral, reason(no_literature_signal)).
+misconception_render_unlinked(miscount_partition, reason(no_literature_signal)).
+misconception_render_unlinked(net_does_not_fold, reason(no_literature_signal)).
+misconception_render_unlinked(operational_equals_subtract_from_one_side, reason(no_literature_signal)).
+misconception_render_unlinked(quadrant_sign_error, reason(no_literature_signal)).
+misconception_render_unlinked(reflection_by_rotation, reason(no_literature_signal)).
+misconception_render_unlinked(set_model_subset_size_focus, reason(no_registry_bibkey(nearest_literature("Van de Walle, ch. 15, Models for Fractions")))).
+misconception_render_unlinked(shade_wrong_count, reason(no_literature_signal)).
+misconception_render_unlinked(unequal_partition, reason(no_literature_signal)).
+misconception_render_unlinked(unfillable_by_parity, reason(no_literature_signal)).
+misconception_render_unlinked(wrong_referent_whole, reason(no_literature_signal)).
 
 % =============================================================================
 % Independent re-derivation. check_misconception_render_link/0 recomputes the
@@ -249,6 +253,26 @@ recomputed_census(Pairs) :-
 %   this pass ever cites, and a structured attested_transplant_row Evidence
 %   term names an actual attested_transplant/5 fact whose matched fields
 %   really do equal the fields of one of Id's own grammar clauses.
+check_citation_warrant(Id, Bibkey,
+                       'knowledge/strategies/render/representation_grammar.pl',
+                       header_comment(line(Line))) :-
+    !,
+    read_file_to_string(
+        'knowledge/strategies/render/representation_grammar.pl', Text, []),
+    split_string(Text, "\n", "", Lines),
+    Start is max(1, Line - 25),
+    End is min(Line + 25, 1000000),
+    findall(SourceLine,
+            ( between(Start, End, N), nth1(N, Lines, SourceLine) ),
+            WindowLines),
+    atomics_to_string(WindowLines, "\n", Window),
+    atom_string(Bibkey, BibkeyString),
+    atom_string(Id, IdString),
+    ( sub_string(Window, _, _, _, BibkeyString),
+      sub_string(Window, _, _, _, IdString)
+    -> true
+    ;  throw(error(citation_header_comment_mismatch(Id, Bibkey, Line), _))
+    ).
 check_citation_warrant(Id, _Bibkey, File, _Evidence) :-
     File \== 'knowledge/strategies/render/attested_deformations.pl',
     !,
@@ -326,7 +350,23 @@ check_link_warrant(Census, Id, Name, bibkey(Bibkey)) :-
     ).
 check_link_warrant(_Census, Id, Name, authored) :-
     !,
-    throw(error(unexpected_authored_link(Id, Name), _)).
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _Evidence,
+                                                          _Attribution, _Notes),
+      get_dict(kind, Verdict, link),
+      get_dict(bibkey, Verdict, Bibkey),
+      get_dict(registry_name, Verdict, Name),
+      get_dict(registry_operation, Verdict, Op),
+      get_dict(registry_description, Verdict, Description)
+    -> true
+    ;  throw(error(authored_link_not_in_store(Id, Name), _))
+    ),
+    atom_string(BibkeyAtom, Bibkey),
+    ( Name == too_vague -> throw(error(link_names_too_vague(Id), _)) ; true ),
+    ( misconception_registry:misconception_registry_entry(
+          Name, Op, citation(BibkeyAtom, Description), _, _)
+    -> true
+    ;  throw(error(authored_link_registry_mismatch(Id, Name, Bibkey), _))
+    ).
 check_link_warrant(_Census, Id, Name, Via) :-
     throw(error(link_bad_via(Id, Name, Via), _)).
 
@@ -367,8 +407,87 @@ check_unlinked_warrant(Census, Id, prefilter_rejected(K)) :-
     -> true
     ;  throw(error(unlinked_reason_wrong(Id, prefilter_rejected(K)), _))
     ).
+check_unlinked_warrant(_Census, Id,
+                       no_registry_bibkey(nearest_literature(Nearest))) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, no_registry_bibkey),
+      get_dict(nearest_literature, Verdict, Nearest)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, no_registry_bibkey), _))
+    ).
+check_unlinked_warrant(_Census, Id, no_literature_signal) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, no_literature_signal)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, no_literature_signal), _))
+    ).
 check_unlinked_warrant(_Census, Id, Reason) :-
     throw(error(unlinked_bad_reason(Id, Reason), _)).
+
+%!  check_authored_store(+CensusIds) is det.
+%
+%   Confirms that the generated verdicts consume all 38 authored rows. The one
+%   link also found by the widened mechanical regex stays via(bibkey); the
+%   other five link rows use via(authored).
+check_authored_store(CensusIds) :-
+    findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
+    length(Ids, 38),
+    sort(Ids, UniqueIds),
+    length(UniqueIds, 38),
+    forall(member(Id, UniqueIds),
+           ( memberchk(Id, CensusIds) -> true ; throw(error(authored_unknown_id(Id), _)) )),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, link) ),
+                  6),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, no_registry_bibkey) ),
+                  9),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, no_literature_signal) ),
+                  23),
+    forall(
+        authored_render_citations:authored_render_citation(Id, Verdict, Evidence,
+                                                            Attribution, _Notes),
+        ( get_dict(file, Evidence, File), string(File),
+          get_dict(line, Evidence, Line), integer(Line), Line > 0,
+          get_dict(quoted_signal, Evidence, Signal), string(Signal), Signal \== "",
+          get_dict(model, Attribution, opus),
+          get_dict(date, Attribution, '2026-08-22'),
+          get_dict(verification_method, Attribution, Method), string(Method), Method \== "",
+          get_dict(kind, Verdict, Kind),
+          check_authored_output(Id, Kind, Verdict)
+        )),
+    authored_render_citations:authored_render_citation(
+        add_numerator_denominator_sum, SumVerdict, _, _, _),
+    get_dict(discrepancy, SumVerdict, Discrepancy),
+    get_dict(source_states, Discrepancy, "Behr, Wachsmuth, Post & Lesh 1984"),
+    get_dict(registry_key, Discrepancy, "JRME_Behr_1985_Construct"),
+    get_dict(status, Discrepancy, held_not_linked).
+
+check_authored_output(Id, link, Verdict) :-
+    !,
+    get_dict(bibkey, Verdict, Bibkey),
+    get_dict(registry_name, Verdict, Name),
+    atom_string(BibkeyAtom, Bibkey),
+    ( misconception_render_link(Id, Name, via(bibkey(BibkeyAtom)))
+    ; misconception_render_link(Id, Name, via(authored))
+    ),
+    !.
+check_authored_output(Id, no_registry_bibkey, Verdict) :-
+    !,
+    get_dict(nearest_literature, Verdict, Nearest),
+    misconception_render_unlinked(
+        Id, reason(no_registry_bibkey(nearest_literature(Nearest)))).
+check_authored_output(Id, no_literature_signal, _Verdict) :-
+    !,
+    misconception_render_unlinked(Id, reason(no_literature_signal)).
+check_authored_output(Id, Kind, _Verdict) :-
+    throw(error(authored_bad_verdict(Id, Kind), _)).
 
 %!  misconception_render_link_summary(-Summary) is det.
 misconception_render_link_summary(Summary) :-
@@ -390,6 +509,8 @@ misconception_render_link_summary(Summary) :-
     aggregate_all(count, misconception_render_unlinked(_, reason(no_bibkey_in_source)), NoBibkeyCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(bibkey_not_in_registry)), NotInRegistryCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(prefilter_rejected(_))), PrefilterCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(no_registry_bibkey(_))), NoRegistryBibkeyCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(no_literature_signal)), NoLiteratureSignalCount),
 
     Summary = _{
         total_render_ids: 44,
@@ -403,7 +524,9 @@ misconception_render_link_summary(Summary) :-
         unlinked_render_ids: UnlinkedIdCount,
         unlinked_by_reason: _{ no_bibkey_in_source: NoBibkeyCount,
                                 bibkey_not_in_registry: NotInRegistryCount,
-                                prefilter_rejected: PrefilterCount }
+                                prefilter_rejected: PrefilterCount,
+                                no_registry_bibkey: NoRegistryBibkeyCount,
+                                no_literature_signal: NoLiteratureSignalCount }
     }.
 
 %!  check_misconception_render_link is det.
@@ -415,6 +538,7 @@ check_misconception_render_link :-
     length(Census, CensusCount),
     ( CensusCount =:= 44 -> true ; throw(error(census_count_mismatch(CensusCount), _)) ),
     pairs_keys(Census, CensusIds),
+    check_authored_store(CensusIds),
 
     forall(render_deformation_citation(Id, _, _),
            ( memberchk(Id, CensusIds) -> true ; throw(error(citation_unknown_id(Id), _)) )),

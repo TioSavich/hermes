@@ -12,11 +12,15 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 GRAPH = ROOT / "docs/research/assets/automata/full_graph.json"
 LEDGER = ROOT / "knowledge/strategies/deformation_validity.pl"
 TABLES = ROOT / "knowledge/strategies/transition_tables"
 
-EXPECTED_ROWS = 259  # 259 from 2026-08-06: the grade-7 authoring wave adds 27 deforming edges (34 filed minus 7 misfiled on non-deforming transitions)
 ALLOWED_MODES = {
     "objective_invalid",
     "context_sensitive_or_inefficient",
@@ -69,6 +73,10 @@ TRANSITION_RE = re.compile(
 def fail(message: str) -> None:
     print(f"FAIL deformation validity: {message}", file=sys.stderr)
     raise SystemExit(1)
+
+
+def expected_rows() -> int:
+    return baseline_value("automata.deformation_validity_rows")
 
 
 def graph_key(edge: dict[str, object]) -> tuple[str, str, str, str, str]:
@@ -127,19 +135,23 @@ def load_transition_keys() -> set[tuple[str, str, str, str, str]]:
 
 
 def main() -> None:
+    expected_row_count = expected_rows()
     graph = json.loads(GRAPH.read_text(encoding="utf-8"))
     deforming_edges = [edge for edge in graph["edges"] if edge.get("stance") == "deforming"]
     graph_keys = [graph_key(edge) for edge in deforming_edges]
 
-    if len(graph_keys) != EXPECTED_ROWS:
-        fail(f"full_graph.json has {len(graph_keys)} deforming edges, expected {EXPECTED_ROWS}")
+    if len(graph_keys) != expected_row_count:
+        fail(
+            f"full_graph.json has {len(graph_keys)} deforming edges, "
+            f"expected {expected_row_count}"
+        )
     if len(set(graph_keys)) != len(graph_keys):
         duplicates = [key for key, count in Counter(graph_keys).items() if count > 1]
         fail(f"full_graph.json has duplicate deforming keys: {duplicates[:3]}")
 
     rows = load_ledger()
-    if len(rows) != EXPECTED_ROWS:
-        fail(f"ledger has {len(rows)} rows, expected {EXPECTED_ROWS}")
+    if len(rows) != expected_row_count:
+        fail(f"ledger has {len(rows)} rows, expected {expected_row_count}")
 
     ledger_keys: list[tuple[str, str, str, str, str]] = []
     mode_census: Counter[str] = Counter()

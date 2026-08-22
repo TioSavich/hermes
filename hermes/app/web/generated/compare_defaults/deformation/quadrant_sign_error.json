@@ -1,0 +1,119 @@
+{
+  "canvas": {
+    "height": 520,
+    "width": 520
+  },
+  "correct_point": {
+    "quadrant": "II",
+    "x": -3,
+    "y": 2
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "The pair (-3, 2) belongs in quadrant II.",
+        "scene": {
+          "axes": {
+            "xMax": 4,
+            "xMin": -4,
+            "yMax": 3,
+            "yMin": -1
+          },
+          "format": "coordinate-plane",
+          "path": [],
+          "points": [
+            {
+              "label": "(-3, 2)",
+              "role": "point",
+              "x": -3,
+              "y": 2
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "locate_pair"
+      },
+      {
+        "caption": "Dropping the sign plots (3, 2) instead: it lands in quadrant I, the wrong quadrant.",
+        "scene": {
+          "axes": {
+            "xMax": 4,
+            "xMin": -4,
+            "yMax": 3,
+            "yMin": -1
+          },
+          "format": "coordinate-plane",
+          "path": [],
+          "points": [
+            {
+              "label": "(-3, 2)",
+              "role": "point",
+              "x": -3,
+              "y": 2
+            },
+            {
+              "label": "(3, 2)",
+              "role": "deformation",
+              "x": 3,
+              "y": 2
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "drop_sign"
+      }
+    ]
+  },
+  "deformationKind": "sign_dropped_pair",
+  "deformed_point": {
+    "quadrant": "I",
+    "x": 3,
+    "y": 2
+  },
+  "family": "quadrant_sign_error",
+  "kind": "plot_pair_vs_sign_dropped_pair",
+  "note": "The pair (-3, 2) belongs in quadrant II. Dropping the sign of a coordinate plots (3, 2) in quadrant I instead. The plane is doubly indexed: the sign of each coordinate chooses the side of its axis, and losing it moves the point to a different quadrant. (Quadrant-sign-error family.)",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Plot (-3, 2) in quadrant II, keeping both signs.",
+        "scene": {
+          "axes": {
+            "xMax": 4,
+            "xMin": -4,
+            "yMax": 3,
+            "yMin": -1
+          },
+          "format": "coordinate-plane",
+          "path": [],
+          "points": [
+            {
+              "label": "(-3, 2)",
+              "role": "point",
+              "x": -3,
+              "y": 2
+            }
+          ],
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "plot_pair"
+      }
+    ]
+  },
+  "productiveKind": "plot_pair",
+  "request": {
+    "x": -3,
+    "y": 2
+  },
+  "inputs": {
+    "family": "quadrant_sign_error",
+    "x": -3,
+    "y": 2
+  }
+}

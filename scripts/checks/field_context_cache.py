@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from hermes.app.routes import monitoring
 from hermes.app.worker import PersistentPrologWorker
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 CACHE_PATH = ROOT / "curriculum/im/generated/field_context_cache.json"
@@ -60,9 +61,10 @@ def main() -> int:
     if artifact.get("schema") != "hermes_field_context_cache_v1":
         raise SystemExit("field-context cache has the wrong or missing schema")
     contexts = artifact.get("field_contexts")
-    if not isinstance(contexts, dict) or len(contexts) != 1317:
+    expected_contexts = baseline_value("curriculum.field_contexts")
+    if not isinstance(contexts, dict) or len(contexts) != expected_contexts:
         raise SystemExit(
-            f"field-context cache expected 1317 entries, found "
+            f"field-context cache expected {expected_contexts} entries, found "
             f"{len(contexts) if isinstance(contexts, dict) else 'non-object'}"
         )
     cached = contexts.get(SAMPLE_LESSON)

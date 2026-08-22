@@ -1,0 +1,3713 @@
+[
+  {
+    "evidence": {
+      "candidate_rows_measured": 11743,
+      "finding": "scripts/questions/build_admission_candidates.py is absent from scripts/regen_all.sh and scripts/checks/run_all.sh; its check reads the gitignored runtime candidates.jsonl"
+    },
+    "id": "addendum:admission-candidates-wiring",
+    "rows_blocked": 11743,
+    "source": "session 2026-08-22",
+    "tier": "structural",
+    "title": "Wire admission-candidate generation into regeneration and checks"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "knowledge/index/research_measurement_registry.pl",
+      "note": "byte-identity adjudication: only its producer checks bytes; intended registry carries path prose but does not load or query exported predicates",
+      "run2_facts": 9731,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/task_span_absence_registry.pl",
+    "rows_blocked": 9731,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/task_span_absence_registry.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 26,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.991336,
+      "refused": 2975,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3001
+    },
+    "id": "op-refusal:lesson_deformation_chart",
+    "rows_blocked": 2975,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for lesson_deformation_chart"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 225,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.925025,
+      "refused": 2776,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3001
+    },
+    "id": "op-refusal:standards_progression_candidates",
+    "rows_blocked": 2776,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for standards_progression_candidates"
+  },
+  {
+    "evidence": {
+      "count": 2648,
+      "derived_from": "held_question_label/6 rows"
+    },
+    "id": "held:teacher-question-labels",
+    "rows_blocked": 2648,
+    "source": "curriculum/im/generated/admitted_teacher_question_labels.pl",
+    "tier": "held",
+    "title": "Run an admission pass on held teacher-question labels"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "scripts/extract_research_measurement_registry.py",
+      "note": "byte-identity adjudication: its extractor checks production; the intended registry builder checks path existence but never queries exported predicates",
+      "run2_facts": 1799,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/coverage_absence_registry.pl",
+    "rows_blocked": 1799,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/coverage_absence_registry.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1257,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.530269,
+      "refused": 1419,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2676
+    },
+    "id": "op-refusal:monitoring_chart_export",
+    "rows_blocked": 1419,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for monitoring_chart_export"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1308,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.511211,
+      "refused": 1368,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2676
+    },
+    "id": "op-refusal:field_context",
+    "rows_blocked": 1368,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for field_context"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: task-pattern store remains outside the runtime closure",
+      "run2_facts": 1366,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/task_pattern_pilot.pl",
+    "rows_blocked": 1366,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/task_pattern_pilot.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "formal/learner/reorg_domains/whole_number_operations.pl",
+      "note": "controller adjudication: intended consumer names the store only in prose; no load or query of either exported predicate repository-wide",
+      "run2_facts": 937,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/misconceptions/research_corpus_automaton_bindings.pl",
+    "rows_blocked": 937,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/misconceptions/research_corpus_automaton_bindings.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 536,
+      "op_circuit_open": 1572,
+      "refusal_rate": 0.295901,
+      "refused": 888,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 5,
+      "total": 3001
+    },
+    "id": "op-refusal:notation_monitoring_chart",
+    "rows_blocked": 888,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for notation_monitoring_chart"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "knowledge/strategies/action_vocabulary_map.pl",
+      "note": "mandatory row reclassified: action_vocabulary_map mentions licenses only in prose; no load or query of exported predicates repository-wide",
+      "run2_facts": 633,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/crosswalk/vocabulary_licenses.pl",
+    "rows_blocked": 633,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/crosswalk/vocabulary_licenses.pl"
+  },
+  {
+    "evidence": {
+      "count": 537,
+      "derived_from": "held_signature_anchor/9 and held_unit_recognition_proposal/6 rows"
+    },
+    "id": "held:review-proposals",
+    "rows_blocked": 537,
+    "source": "knowledge/index/admitted_review_proposals.pl",
+    "tier": "held",
+    "title": "Run an admission pass on held review proposals"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "run-2 registry orphan; no load or exported-predicate query found outside its own checks and metadata",
+      "run2_facts": 508,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:curriculum/im/im_glossary.pl",
+    "rows_blocked": 508,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for curriculum/im/im_glossary.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "curriculum/im/lesson_monitoring.pl",
+      "note": "run-2 registry orphan; intended lesson-monitoring consumer does not load or query exported predicates",
+      "run2_facts": 480,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/vision_lesson_digest_audit.pl",
+    "rows_blocked": 480,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/vision_lesson_digest_audit.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 479,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:godel_primes_witness",
+    "rows_blocked": 479,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for godel_primes_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "run-2 registry orphan; no live loader or exported-predicate query found",
+      "run2_facts": 340,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/research_measurement_registry.pl",
+    "rows_blocked": 340,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/research_measurement_registry.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 312,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 312
+    },
+    "id": "op-refusal:axiom_hierarchy_witness",
+    "rows_blocked": 312,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for axiom_hierarchy_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "run-2 registry orphan; no live loader or exported-predicate query found",
+      "run2_facts": 292,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/machine_block_decomposition.pl",
+    "rows_blocked": 292,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/machine_block_decomposition.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 26,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.916667,
+      "refused": 286,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 312
+    },
+    "id": "op-refusal:mua_kind_coherence_witness",
+    "rows_blocked": 286,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for mua_kind_coherence_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "formal/incompatibility/find_emergent_hyperedges.pl",
+      "note": "run-2 hint corrected: intended hyperedge consumer does not load this cache or query its predicates",
+      "run2_facts": 270,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:formal/incompatibility/incompatibility_sets_error_rules.pl",
+    "rows_blocked": 270,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for formal/incompatibility/incompatibility_sets_error_rules.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 4,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.983122,
+      "refused": 233,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 237
+    },
+    "id": "op-refusal:geometry_developmental_arc_witness",
+    "rows_blocked": 233,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_developmental_arc_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 5,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.978903,
+      "refused": 232,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 237
+    },
+    "id": "op-refusal:geometry_pck_classification_witness",
+    "rows_blocked": 232,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_pck_classification_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 2223,
+      "refusal_rate": 0.086323,
+      "refused": 231,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 222,
+      "total": 2676
+    },
+    "id": "op-refusal:lesson_misconception_incompatibility_witness",
+    "rows_blocked": 231,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for lesson_misconception_incompatibility_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 9,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.962025,
+      "refused": 228,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 237
+    },
+    "id": "op-refusal:geometry_van_hiele_marker_witness",
+    "rows_blocked": 228,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_van_hiele_marker_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 31,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.869198,
+      "refused": 206,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 237
+    },
+    "id": "op-refusal:geometry_synthesizer_triangulation_witness",
+    "rows_blocked": 206,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_synthesizer_triangulation_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "scripts/research/build_self_description_census.py",
+      "note": "run-2 registry orphan; intended self-description surface does not load or query this manifest",
+      "run2_facts": 130,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/index/data_consumption_manifest.pl",
+    "rows_blocked": 130,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/index/data_consumption_manifest.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 104,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_measurement_misconception_witness",
+    "rows_blocked": 104,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for geometry_measurement_misconception_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 104,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_van_hiele_material_witness",
+    "rows_blocked": 104,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for geometry_van_hiele_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.990385,
+      "refused": 103,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_synthesizer_anchor_material_witness",
+    "rows_blocked": 103,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_synthesizer_anchor_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 4,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.961538,
+      "refused": 100,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_van_hiele_level_material_witness",
+    "rows_blocked": 100,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_van_hiele_level_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 5,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.951923,
+      "refused": 99,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_attribute_material_witness",
+    "rows_blocked": 99,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_attribute_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 5,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.951923,
+      "refused": 99,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_shape_recognition_material_witness",
+    "rows_blocked": 99,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_shape_recognition_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 7,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.932692,
+      "refused": 97,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_coordinate_material_witness",
+    "rows_blocked": 97,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_coordinate_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 8,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.923077,
+      "refused": 96,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_angle_material_witness",
+    "rows_blocked": 96,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_angle_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 8,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.923077,
+      "refused": 96,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_pythagorean_material_witness",
+    "rows_blocked": 96,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_pythagorean_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 8,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.923077,
+      "refused": 96,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_similarity_material_witness",
+    "rows_blocked": 96,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_similarity_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 10,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.903846,
+      "refused": 94,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_volume_surface_area_material_witness",
+    "rows_blocked": 94,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_volume_surface_area_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:algebra_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for algebra_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:arithmetic_property_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for arithmetic_property_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:calculus_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for calculus_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:counting_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for counting_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:decimal_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for decimal_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:fraction_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for fraction_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:fraction_extra_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for fraction_extra_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 11,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.894231,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_transformation_material_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_transformation_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:integer_signed_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for integer_signed_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:magnitude_equivalence_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for magnitude_equivalence_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:multiplication_division_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for multiplication_division_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:place_value_number_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for place_value_number_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:ratio_proportion_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for ratio_proportion_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:whole_number_addsub_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for whole_number_addsub_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 93,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 93
+    },
+    "id": "op-refusal:whole_number_claim_witness",
+    "rows_blocked": 93,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for whole_number_claim_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 91,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 91
+    },
+    "id": "op-refusal:material_inference_witness",
+    "rows_blocked": 91,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for material_inference_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "run-2 registry orphan; no live loader or exported-predicate query found",
+      "run2_facts": 90,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:formal/pml/talkmoves_adapter.pl",
+    "rows_blocked": 90,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for formal/pml/talkmoves_adapter.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 15,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.855769,
+      "refused": 89,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_area_perimeter_material_witness",
+    "rows_blocked": 89,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_area_perimeter_material_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "knowledge/strategies/math/statistics_action_pairs.pl",
+      "note": "run-2 lexical hint was measurement_unit only; intended consumer does not load the store or query exported predicates",
+      "run2_facts": 89,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/standards_router_pilot.pl",
+    "rows_blocked": 89,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/strategies/abstraction/standards_router_pilot.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 21,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.798077,
+      "refused": 83,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 104
+    },
+    "id": "op-refusal:geometry_classification_material_witness",
+    "rows_blocked": 83,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_classification_material_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 59,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl",
+    "rows_blocked": 59,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_exponent_expression_equivalence.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: K-7 scene-emission sibling remains outside the runtime closure",
+      "run2_facts": 54,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/k7_array_grid.pl",
+    "rows_blocked": 54,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/k7_array_grid.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: K-7 scene-emission sibling remains outside the runtime closure",
+      "run2_facts": 47,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/k7_fraction_number_line.pl",
+    "rows_blocked": 47,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/k7_fraction_number_line.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: K-7 scene-emission sibling remains outside the runtime closure",
+      "run2_facts": 47,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/k7_number_line_hops.pl",
+    "rows_blocked": 47,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/k7_number_line_hops.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 44,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl",
+    "rows_blocked": 44,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_linear_equation_reading_and_authoring.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 38,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.525,
+      "refused": 42,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 80
+    },
+    "id": "op-refusal:geometry_n103_bootstrap_witness",
+    "rows_blocked": 42,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_n103_bootstrap_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 40,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl",
+    "rows_blocked": 40,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_linear_expression_normalizer.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 41,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.4875,
+      "refused": 39,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 80
+    },
+    "id": "op-refusal:geometry_van_de_walle_bootstrap_witness",
+    "rows_blocked": 39,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_van_de_walle_bootstrap_witness"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 38,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl",
+    "rows_blocked": 38,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_circle_and_solid_dimensions.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: K-7 scene-emission sibling remains outside the runtime closure",
+      "run2_facts": 38,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/k7_equal_share_bars.pl",
+    "rows_blocked": 38,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/k7_equal_share_bars.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 34,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl",
+    "rows_blocked": 34,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_power_of_ten_alignment.pl"
+  },
+  {
+    "evidence": {
+      "count": 33,
+      "derived_from": "misconception_render_unlinked/2 rows"
+    },
+    "id": "held:misconception-render-links",
+    "rows_blocked": 33,
+    "source": "knowledge/strategies/render/misconception_render_link.pl",
+    "tier": "held",
+    "title": "Author warranted links for unlinked render deformations"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 32,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_decimal_fraction_form.pl",
+    "rows_blocked": 32,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_decimal_fraction_form.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "quarantined",
+      "collected": "2026-08-22",
+      "consumer": "none_named",
+      "note": "CLAUDE quarantine ruling: unattested G8 pilot remains outside the runtime closure",
+      "run2_facts": 32,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl",
+    "rows_blocked": 32,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Review quarantine for knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl"
+  },
+  {
+    "evidence": {
+      "authoritative_status": "stalled_input",
+      "collected": "2026-08-22",
+      "consumer": "scripts/language/rewrite_consultation.py",
+      "note": "admitted-by-ceremony registry orphan; intended consultation path does not load or query exported predicates",
+      "run2_facts": 28,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "since": "2026-08-22"
+    },
+    "id": "store:knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl",
+    "rows_blocked": 28,
+    "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
+    "tier": "store",
+    "title": "Provide a consumer for knowledge/strategies/abstraction/rewrite_consultation_admitted_pilot.pl"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 22,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 22
+    },
+    "id": "op-refusal:action_cluster_witness",
+    "rows_blocked": 22,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for action_cluster_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 14,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.611111,
+      "refused": 22,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 36
+    },
+    "id": "op-refusal:geometry_measuring_stick_metaphor_witness",
+    "rows_blocked": 22,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_measuring_stick_metaphor_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 22,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 22
+    },
+    "id": "op-refusal:grounded_arith_witness",
+    "rows_blocked": 22,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for grounded_arith_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 22,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 22
+    },
+    "id": "op-refusal:misconception_hook_witness",
+    "rows_blocked": 22,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for misconception_hook_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 22,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 22
+    },
+    "id": "op-refusal:productive_deformation_witness",
+    "rows_blocked": 22,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for productive_deformation_witness"
+  },
+  {
+    "evidence": {
+      "paths": [
+        "curriculum/im_harness.pl",
+        "formal/formalization/synthesis/run_add.pl",
+        "formal/formalization/synthesis/run_lazy.pl",
+        "formal/formalization/synthesis/run_synth.pl",
+        "formal/formalization/synthesis/synth.pl",
+        "formal/formalization/synthesis/synth_lazy.pl",
+        "formal/learner/activity_contract.pl",
+        "formal/learner/crisis_processor.pl",
+        "formal/learner/curriculum_processor.pl",
+        "formal/learner/interactive_ui.pl",
+        "formal/learner/knowledge_manager.pl",
+        "formal/learner/learned_knowledge_v2.pl",
+        "formal/learner/main.pl",
+        "formal/learner/primordial_start.pl",
+        "formal/learner/task_transition.pl",
+        "formal/pml/audit_connectors.pl",
+        "formal/pml/mua_conjectures.pl",
+        "formal/pml/mua_health.pl",
+        "hermes/web/prolog/zeeman_pml_bridge.pl",
+        "hermes/web/prolog/zeeman_tape.pl",
+        "knowledge/crosswalk/merge_evidence.pl",
+        "knowledge/strategies/math_benchmark.pl"
+      ],
+      "verdict": "undetermined"
+    },
+    "id": "census:orphan-modules-undetermined",
+    "rows_blocked": 22,
+    "source": "data/research/self_description_census.json",
+    "tier": "store",
+    "title": "Adjudicate census orphan modules with undetermined status"
+  },
+  {
+    "evidence": {
+      "names": [
+        "abduce_error",
+        "check_math_claim",
+        "check_solution_steps",
+        "deformation_visualizer_catalog",
+        "incompatibility_contexts",
+        "index_topic_subtraction",
+        "lesson_enactment_list",
+        "lesson_enactment_run",
+        "measurement_strip_render",
+        "model_analysis_lookup",
+        "prolog_query",
+        "question_moves",
+        "ratio_diagram_render",
+        "signature_anchors",
+        "standards_progression_candidates",
+        "state_labels",
+        "strategy_recognize"
+      ]
+    },
+    "id": "census:unrouted",
+    "rows_blocked": 17,
+    "source": "data/research/self_description_census.json",
+    "tier": "structural",
+    "title": "Review unrouted capability rows"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 21,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.416667,
+      "refused": 15,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 36
+    },
+    "id": "op-refusal:geometry_lakoff_nunez_metaphor_witness",
+    "rows_blocked": 15,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_lakoff_nunez_metaphor_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 12,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 12
+    },
+    "id": "op-refusal:domain_context_witness",
+    "rows_blocked": 12,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for domain_context_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 180,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.047619,
+      "refused": 9,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 189
+    },
+    "id": "op-refusal:lesson_enactment_run",
+    "rows_blocked": 9,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for lesson_enactment_run"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 6,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 6
+    },
+    "id": "op-refusal:axiom_pack_witness",
+    "rows_blocked": 6,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for axiom_pack_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:accommodation_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for accommodation_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:executable_practice_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for executable_practice_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:fsm_engine_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for fsm_engine_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:geometry_cross_link_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for geometry_cross_link_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:grounding_metaphor_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for grounding_metaphor_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:media_alignment",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for media_alignment"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:metaphor_break_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for metaphor_break_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:modal_context_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for modal_context_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:mua_coherence_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for mua_coherence_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:normative_crisis_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for normative_crisis_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:orr_entry_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for orr_entry_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:practice_vocabulary_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for practice_vocabulary_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:review_decide",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for review_decide"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:unit_coordination_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for unit_coordination_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": true,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 3,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:viability_witness",
+    "rows_blocked": 3,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Resolve 100% refusal surface for viability_witness"
+  },
+  {
+    "evidence": {
+      "finding": "glyph_overwrite is not a notation_render kind; measurement_strip and ratio_diagram are unrouted",
+      "surfaces": [
+        "glyph_overwrite",
+        "measurement_strip",
+        "ratio_diagram"
+      ]
+    },
+    "id": "addendum:notation-and-render-routing",
+    "rows_blocked": 3,
+    "source": "session 2026-08-22",
+    "tier": "defect",
+    "title": "Align notation kinds and route the two render surfaces"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:batch_event_score",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for batch_event_score"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:check_math_claim",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for check_math_claim"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:critique_bad_infinite",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for critique_bad_infinite"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:embodied_proof_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for embodied_proof_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:event_score",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for event_score"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:geometry_entailment_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_entailment_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:geometry_quadrilateral_entailment_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_quadrilateral_entailment_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:gesture_alignment",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for gesture_alignment"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:grounding_inference_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for grounding_inference_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:incoherent_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for incoherent_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:incompatibility_discovery_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for incompatibility_discovery_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:incompatibility_entailment_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for incompatibility_entailment_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:intersubjective_material_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for intersubjective_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:misconception_incompatibility_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for misconception_incompatibility_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:rhythm_transition_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for rhythm_transition_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:robinson_axiom_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for robinson_axiom_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:standard_k_ns_3_order_independence_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for standard_k_ns_3_order_independence_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:standard_k_ns_4_verify_subitizing_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for standard_k_ns_4_verify_subitizing_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 2,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:standard_k_ns_5_6_compare_groups_witness",
+    "rows_blocked": 2,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for standard_k_ns_5_6_compare_groups_witness"
+  },
+  {
+    "evidence": {
+      "finding": "fraction_compare_json errors for iterate_given_overshoot and add_numerator_denominator_sum",
+      "pairs": [
+        "iterate_given_overshoot",
+        "add_numerator_denominator_sum"
+      ]
+    },
+    "id": "addendum:fraction-compare-errors",
+    "rows_blocked": 2,
+    "source": "session 2026-08-22",
+    "tier": "defect",
+    "title": "Repair the two fraction_compare_json error pairs"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 11,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.083333,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 12
+    },
+    "id": "op-refusal:abduce_error",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for abduce_error"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:balance_solve_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for balance_solve_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:brandomian_check",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for brandomian_check"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:canonical_check",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for canonical_check"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:carving_strategy_proof",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for carving_strategy_proof"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 478,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002088,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:check_solution_steps",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for check_solution_steps"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 478,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002088,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:commitment_match",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for commitment_match"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:compute",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for compute"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 90,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.010989,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 91
+    },
+    "id": "op-refusal:defeasible_classify",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for defeasible_classify"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:deontic_requires_entitlement",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for deontic_requires_entitlement"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 11,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.083333,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 12
+    },
+    "id": "op-refusal:diagnose_error",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for diagnose_error"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:discourse_features",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for discourse_features"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:discourse_pragmatics",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for discourse_pragmatics"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:fraction_cgi_addition",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for fraction_cgi_addition"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:fraction_compare",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for fraction_compare"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:fraction_comparison_compare",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for fraction_comparison_compare"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:fraction_render",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for fraction_render"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:geometry",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 41,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.02381,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 42
+    },
+    "id": "op-refusal:geometry_ccss_standard_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_ccss_standard_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 338,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.00295,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 339
+    },
+    "id": "op-refusal:geometry_im_grade5_standard_anchor_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_im_grade5_standard_anchor_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 152,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.006536,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 153
+    },
+    "id": "op-refusal:geometry_im_grade6_lesson_standard_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_im_grade6_lesson_standard_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 143,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.006944,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 144
+    },
+    "id": "op-refusal:geometry_im_grade7_lesson_standard_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_im_grade7_lesson_standard_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 134,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.007407,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 135
+    },
+    "id": "op-refusal:geometry_im_grade8_lesson_standard_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_im_grade8_lesson_standard_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 26,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.037037,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 27
+    },
+    "id": "op-refusal:geometry_indiana_standard_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_indiana_standard_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 236,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.004219,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 237
+    },
+    "id": "op-refusal:geometry_material_profile_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for geometry_material_profile_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 478,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002088,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:ground",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for ground"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 21,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.045455,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 22
+    },
+    "id": "op-refusal:grounding_for",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for grounding_for"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:image_schema",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for image_schema"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 17,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.055556,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 18
+    },
+    "id": "op-refusal:index_topic_subtraction",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for index_topic_subtraction"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 188,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.005291,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 189
+    },
+    "id": "op-refusal:inferential_strength",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for inferential_strength"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 284,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.003509,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 285
+    },
+    "id": "op-refusal:input_contract",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for input_contract"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 188,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.005291,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 189
+    },
+    "id": "op-refusal:lesson_arithmetic_demonstration",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for lesson_arithmetic_demonstration"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 478,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002088,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:lit_search",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for lit_search"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:misconception_jumps_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for misconception_jumps_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:notation_render",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for notation_render"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:number_theory_self_defeat_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for number_theory_self_defeat_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:pair_candidate_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for pair_candidate_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:pair_graph",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for pair_graph"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:pair_score",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for pair_score"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 479,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002083,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 480
+    },
+    "id": "op-refusal:pedagogical_questions",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for pedagogical_questions"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:pml_score",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for pml_score"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:primitive_for_practice",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for primitive_for_practice"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 2675,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.000374,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2676
+    },
+    "id": "op-refusal:ranked_figures",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for ranked_figures"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 2,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.333333,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 3
+    },
+    "id": "op-refusal:review_queue",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for review_queue"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 8,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.111111,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 9
+    },
+    "id": "op-refusal:semantic_material_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for semantic_material_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 5,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.166667,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 6
+    },
+    "id": "op-refusal:sequent_proof_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for sequent_proof_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 64,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.015385,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 65
+    },
+    "id": "op-refusal:state_labels",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for state_labels"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 478,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.002088,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 479
+    },
+    "id": "op-refusal:strategy_recognize",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for strategy_recognize"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 284,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.003509,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 285
+    },
+    "id": "op-refusal:strategy_trace",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for strategy_trace"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 1,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.5,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2
+    },
+    "id": "op-refusal:target_inferential_strength_witness",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for target_inferential_strength_witness"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:teacher_layer",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for teacher_layer"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 0,
+      "op_circuit_open": 0,
+      "refusal_rate": 1.0,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 1
+    },
+    "id": "op-refusal:trace_adjudication",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for trace_adjudication"
+  },
+  {
+    "evidence": {
+      "collected": "2026-08-22",
+      "dedup": "first_terminal",
+      "full_refusal_n_ge_3": false,
+      "ok": 2675,
+      "op_circuit_open": 0,
+      "refusal_rate": 0.000374,
+      "refused": 1,
+      "run2_jobs": [
+        8028943,
+        8028944
+      ],
+      "timeout": 0,
+      "total": 2676
+    },
+    "id": "op-refusal:validate_reader_axioms",
+    "rows_blocked": 1,
+    "source": ".bigred-collected/2026-08-19-total-audit/sweep_results.jsonl",
+    "tier": "structural",
+    "title": "Review refusal surface for validate_reader_axioms"
+  },
+  {
+    "evidence": {
+      "count": 1,
+      "derived_from": "held_guide_question/6 rows"
+    },
+    "id": "held:guide-questions",
+    "rows_blocked": 1,
+    "source": "curriculum/im/generated/admitted_guide_questions.pl",
+    "tier": "held",
+    "title": "Run an admission pass on held guide questions"
+  },
+  {
+    "evidence": {
+      "finding": "lesson_misconception_incompatibility_witness recomputes per call; a caching design brief exists in .superpowers/sdd/"
+    },
+    "id": "addendum:incompatibility-witness-caching",
+    "rows_blocked": 1,
+    "source": "session 2026-08-22",
+    "tier": "defect",
+    "title": "Review per-call incompatibility-witness recomputation"
+  }
+]

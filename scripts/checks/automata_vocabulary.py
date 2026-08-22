@@ -9,12 +9,19 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 DOCS = ROOT / "docs"
 GLOSSARY = DOCS / "research/automata-vocabulary.html"
 HUB = DOCS / "research/2026-08-03-automata-compendium.html"
 GRAPH = DOCS / "research/automata-graph.html"
 FAMILY_DIR = DOCS / "research/automata-compendium"
 COMPOSITE_DIR = DOCS / "research/assets/automata"
+EXPECTED_COMPOSITES = baseline_value("automata.composite_svgs")
+EXPECTED_FAMILY_PAGES = baseline_value("automata.family_pages")
 
 REQUIRED_TERMS = {
     "automaton",
@@ -104,7 +111,11 @@ def main() -> int:
     fail_if(bool(re.search(r"https?://", glossary)), "glossary contains an external URL", failures)
 
     composites = sorted(COMPOSITE_DIR.glob("*/_composite.svg"))
-    fail_if(len(composites) != 15, f"expected 15 composite SVGs, got {len(composites)}", failures)
+    fail_if(
+        len(composites) != EXPECTED_COMPOSITES,
+        f"expected {EXPECTED_COMPOSITES} composite SVGs, got {len(composites)}",
+        failures,
+    )
     for path in composites:
         svg = path.read_text(encoding="utf-8")
         fail_if(bool(re.search(r">s\d+(?:<|\s)", svg)),
@@ -126,7 +137,11 @@ def main() -> int:
         fail_if('href="automata-vocabulary.html"' not in HUB.read_text(encoding="utf-8"),
                 "compendium hub lacks the glossary link", failures)
     family_pages = sorted(FAMILY_DIR.glob("*.html"))
-    fail_if(len(family_pages) != 15, f"expected 15 family pages, got {len(family_pages)}", failures)
+    fail_if(
+        len(family_pages) != EXPECTED_FAMILY_PAGES,
+        f"expected {EXPECTED_FAMILY_PAGES} family pages, got {len(family_pages)}",
+        failures,
+    )
     for path in family_pages:
         fail_if('href="../automata-vocabulary.html"' not in path.read_text(encoding="utf-8"),
                 f"family page lacks the glossary link: {path.relative_to(ROOT)}", failures)

@@ -1,0 +1,287 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "equivalent_decimal_units(30,unit_fraction(1,100))",
+    "frames": [
+      {
+        "caption": "identify nested decimal units(10,100).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              3,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3,
+              "label": "equivalent_decimal_units(3,unit_fraction(1,100))",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_nested_decimal_units"
+      },
+      {
+        "caption": "change decimal unit name(10,100).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              3,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3,
+              "label": "equivalent_decimal_units(3,unit_fraction(1,100))",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "change_decimal_unit_name"
+      },
+      {
+        "caption": "retain original count(3).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              3,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3,
+              "label": "equivalent_decimal_units(3,unit_fraction(1,100))",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "retain_original_count"
+      },
+      {
+        "caption": "omit regrouping factor(expected(equivalent decimal units(30,unit fraction(1,100))),produced(equivalent decimal units(3,unit fraction(1,100)))).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              3,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 3,
+              "label": "equivalent_decimal_units(3,unit_fraction(1,100))",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "omit_regrouping_factor"
+      }
+    ],
+    "result": "equivalent_decimal_units(3,unit_fraction(1,100))",
+    "trace": [
+      "identify_nested_decimal_units(10,100)",
+      "change_decimal_unit_name(10,100)",
+      "retain_original_count(3)",
+      "omit_regrouping_factor(expected(equivalent_decimal_units(30,unit_fraction(1,100))),produced(equivalent_decimal_units(3,unit_fraction(1,100))))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "change_decimal_place_name_without_regrouping",
+  "divergence": {
+    "deformationResult": "equivalent_decimal_units(3,unit_fraction(1,100))",
+    "productiveResult": "equivalent_decimal_units(30,unit_fraction(1,100))"
+  },
+  "family": "decimal_place_unit_regrouping",
+  "inputs": {
+    "family": "decimal_place_unit_regrouping",
+    "n1": 3,
+    "d1": 10,
+    "n2": 100
+  },
+  "note": "The productive side changes the count when it names a finer decimal unit, preserving the quantity. The deformation changes the unit name but leaves the count unchanged.",
+  "productive": {
+    "expected": "equivalent_decimal_units(30,unit_fraction(1,100))",
+    "frames": [
+      {
+        "caption": "identify nested decimal units(10,100).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 30,
+              "label": "equivalent_decimal_units(30,unit_fraction(1,100))",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_nested_decimal_units"
+      },
+      {
+        "caption": "derive regrouping factor(10,100,10).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 30,
+              "label": "equivalent_decimal_units(30,unit_fraction(1,100))",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "derive_regrouping_factor"
+      },
+      {
+        "caption": "iterate finer unit(3,10,30).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 30,
+              "label": "equivalent_decimal_units(30,unit_fraction(1,100))",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "iterate_finer_unit"
+      },
+      {
+        "caption": "preserve decimal quantity(equivalent decimal units(30,unit fraction(1,100))).",
+        "scene": {
+          "axis": {
+            "max": 30,
+            "min": 0,
+            "ticks": [
+              0,
+              30
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 30,
+              "label": "equivalent_decimal_units(30,unit_fraction(1,100))",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "preserve_decimal_quantity"
+      }
+    ],
+    "result": "equivalent_decimal_units(30,unit_fraction(1,100))",
+    "trace": [
+      "identify_nested_decimal_units(10,100)",
+      "derive_regrouping_factor(10,100,10)",
+      "iterate_finer_unit(3,10,30)",
+      "preserve_decimal_quantity(equivalent_decimal_units(30,unit_fraction(1,100)))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "decimal_place_unit_regrouping",
+  "viability": {
+    "condition": "changing the unit name without regrouping changes the quantity",
+    "expected": "equivalent_decimal_units(30,unit_fraction(1,100))",
+    "inputs": {
+      "d1": 10,
+      "d2": 1,
+      "n1": 3,
+      "n2": 100
+    },
+    "produced": "equivalent_decimal_units(3,unit_fraction(1,100))",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

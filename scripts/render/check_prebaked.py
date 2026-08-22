@@ -9,6 +9,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 EXPORTERS = (
+    "export_compare_defaults.py",
     "export_fraction_cliff.py",
     "export_hybridization_demo.py",
     "export_lesson_deformation_charts.py",

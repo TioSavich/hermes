@@ -1,0 +1,1231 @@
+{
+  "canvas": {
+    "height": 560,
+    "width": 560
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "Remove one corner of the 5x5 board (cell 5,5). Try to cover the rest with dominoes.",
+        "scene": {
+          "cells": [
+            {
+              "col": 5,
+              "piece": "removed",
+              "role": "deformation",
+              "row": 5
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 1
+            },
+            {
+              "col": 2,
+              "row": 1
+            },
+            {
+              "col": 3,
+              "row": 1
+            },
+            {
+              "col": 4,
+              "row": 1
+            },
+            {
+              "col": 5,
+              "row": 1
+            },
+            {
+              "col": 1,
+              "row": 2
+            },
+            {
+              "col": 2,
+              "row": 2
+            },
+            {
+              "col": 3,
+              "row": 2
+            },
+            {
+              "col": 4,
+              "row": 2
+            },
+            {
+              "col": 5,
+              "row": 2
+            },
+            {
+              "col": 1,
+              "row": 3
+            },
+            {
+              "col": 2,
+              "row": 3
+            },
+            {
+              "col": 3,
+              "row": 3
+            },
+            {
+              "col": 4,
+              "row": 3
+            },
+            {
+              "col": 5,
+              "row": 3
+            },
+            {
+              "col": 1,
+              "row": 4
+            },
+            {
+              "col": 2,
+              "row": 4
+            },
+            {
+              "col": 3,
+              "row": 4
+            },
+            {
+              "col": 4,
+              "row": 4
+            },
+            {
+              "col": 5,
+              "row": 4
+            },
+            {
+              "col": 1,
+              "row": 5
+            },
+            {
+              "col": 2,
+              "row": 5
+            },
+            {
+              "col": 3,
+              "row": 5
+            },
+            {
+              "col": 4,
+              "row": 5
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "remove_corner"
+      },
+      {
+        "caption": "Place 10 dominoes edge to edge; cells remain uncovered around the removed corner.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "d1",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "d1",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "d2",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "d2",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "d3",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "d3",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "d4",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "d4",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 1,
+              "piece": "d5",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "d5",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 3,
+              "piece": "d6",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 4,
+              "piece": "d6",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 1,
+              "piece": "d7",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 2,
+              "piece": "d7",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 3,
+              "piece": "d8",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 4,
+              "piece": "d8",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 1,
+              "piece": "d9",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 2,
+              "piece": "d9",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 3,
+              "piece": "d10",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 4,
+              "piece": "d10",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 5,
+              "piece": "removed",
+              "role": "deformation",
+              "row": 5
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 5,
+              "row": 1
+            },
+            {
+              "col": 5,
+              "row": 2
+            },
+            {
+              "col": 5,
+              "row": 3
+            },
+            {
+              "col": 5,
+              "row": 4
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "cover_partial"
+      },
+      {
+        "caption": "The cover stalls: 4 cells remain that no domino completes. Whether the board tiles at all is settled by a checkerboard-coloring parity count, not by pushing tiles. The tiles stage the impossibility; the reason hands off to human judgment.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "d1",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "d1",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "d2",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "d2",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "d3",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "d3",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "d4",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "d4",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 1,
+              "piece": "d5",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "d5",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 3,
+              "piece": "d6",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 4,
+              "piece": "d6",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 1,
+              "piece": "d7",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 2,
+              "piece": "d7",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 3,
+              "piece": "d8",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 4,
+              "piece": "d8",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 1,
+              "piece": "d9",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 2,
+              "piece": "d9",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 3,
+              "piece": "d10",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 4,
+              "piece": "d10",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 5,
+              "piece": "removed",
+              "role": "deformation",
+              "row": 5
+            },
+            {
+              "col": 5,
+              "piece": "residue",
+              "role": "deformation",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "residue",
+              "role": "deformation",
+              "row": 2
+            },
+            {
+              "col": 5,
+              "piece": "residue",
+              "role": "deformation",
+              "row": 3
+            },
+            {
+              "col": 5,
+              "piece": "residue",
+              "role": "deformation",
+              "row": 4
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 3,
+        "verb": "stall"
+      }
+    ]
+  },
+  "deformationKind": "stalled_domino_cover",
+  "erasure": true,
+  "family": "unfillable_by_parity",
+  "handoff": "coloring_parity_argument",
+  "kind": "tile_region_with_dominoes_vs_parity_obstruction",
+  "note": "The tiles stage the repeated failure \u2014 a partial cover that cannot close around the removed corner \u2014 but they cannot deliver its reason. Whether the region admits any tiling is settled by a two-coloring that leaves the two colors' counts unequal, an argument that departs the spatial model and hands off to inference. This is a hollow boundary: the picture names the impossibility; human judgment carries the proof.",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Tile row 1 with 5 unit cells; 5 of 25 cells covered.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 2
+            },
+            {
+              "col": 2,
+              "row": 2
+            },
+            {
+              "col": 3,
+              "row": 2
+            },
+            {
+              "col": 4,
+              "row": 2
+            },
+            {
+              "col": 5,
+              "row": 2
+            },
+            {
+              "col": 1,
+              "row": 3
+            },
+            {
+              "col": 2,
+              "row": 3
+            },
+            {
+              "col": 3,
+              "row": 3
+            },
+            {
+              "col": 4,
+              "row": 3
+            },
+            {
+              "col": 5,
+              "row": 3
+            },
+            {
+              "col": 1,
+              "row": 4
+            },
+            {
+              "col": 2,
+              "row": 4
+            },
+            {
+              "col": 3,
+              "row": 4
+            },
+            {
+              "col": 4,
+              "row": 4
+            },
+            {
+              "col": 5,
+              "row": 4
+            },
+            {
+              "col": 1,
+              "row": 5
+            },
+            {
+              "col": 2,
+              "row": 5
+            },
+            {
+              "col": 3,
+              "row": 5
+            },
+            {
+              "col": 4,
+              "row": 5
+            },
+            {
+              "col": 5,
+              "row": 5
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "tile_row(1)"
+      },
+      {
+        "caption": "Tile row 2 with 5 unit cells; 10 of 25 cells covered.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 3
+            },
+            {
+              "col": 2,
+              "row": 3
+            },
+            {
+              "col": 3,
+              "row": 3
+            },
+            {
+              "col": 4,
+              "row": 3
+            },
+            {
+              "col": 5,
+              "row": 3
+            },
+            {
+              "col": 1,
+              "row": 4
+            },
+            {
+              "col": 2,
+              "row": 4
+            },
+            {
+              "col": 3,
+              "row": 4
+            },
+            {
+              "col": 4,
+              "row": 4
+            },
+            {
+              "col": 5,
+              "row": 4
+            },
+            {
+              "col": 1,
+              "row": 5
+            },
+            {
+              "col": 2,
+              "row": 5
+            },
+            {
+              "col": 3,
+              "row": 5
+            },
+            {
+              "col": 4,
+              "row": 5
+            },
+            {
+              "col": 5,
+              "row": 5
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "tile_row(2)"
+      },
+      {
+        "caption": "Tile row 3 with 5 unit cells; 15 of 25 cells covered.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 4
+            },
+            {
+              "col": 2,
+              "row": 4
+            },
+            {
+              "col": 3,
+              "row": 4
+            },
+            {
+              "col": 4,
+              "row": 4
+            },
+            {
+              "col": 5,
+              "row": 4
+            },
+            {
+              "col": 1,
+              "row": 5
+            },
+            {
+              "col": 2,
+              "row": 5
+            },
+            {
+              "col": 3,
+              "row": 5
+            },
+            {
+              "col": 4,
+              "row": 5
+            },
+            {
+              "col": 5,
+              "row": 5
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 3,
+        "verb": "tile_row(3)"
+      },
+      {
+        "caption": "Tile row 4 with 5 unit cells; 20 of 25 cells covered.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [
+            {
+              "col": 1,
+              "row": 5
+            },
+            {
+              "col": 2,
+              "row": 5
+            },
+            {
+              "col": 3,
+              "row": 5
+            },
+            {
+              "col": 4,
+              "row": 5
+            },
+            {
+              "col": 5,
+              "row": 5
+            }
+          ],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 4,
+        "verb": "tile_row(4)"
+      },
+      {
+        "caption": "Tile row 5 with 5 unit cells; 25 of 25 cells covered.",
+        "scene": {
+          "cells": [
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 1
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 2
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 3
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 4
+            },
+            {
+              "col": 1,
+              "piece": "unit",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 2,
+              "piece": "unit",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 3,
+              "piece": "unit",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 4,
+              "piece": "unit",
+              "role": "piece",
+              "row": 5
+            },
+            {
+              "col": 5,
+              "piece": "unit",
+              "role": "piece",
+              "row": 5
+            }
+          ],
+          "format": "polyform-tiling",
+          "holes": [],
+          "lattice": {
+            "cols": 5,
+            "rows": 5
+          },
+          "regionLabel": "5x5 region",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 5,
+        "verb": "tile_row(5)"
+      }
+    ]
+  },
+  "productiveKind": "unit_area_tiling",
+  "provenance": "literature_only",
+  "removed_corner": {
+    "col": 5,
+    "row": 5
+  },
+  "request": {
+    "cols": 5,
+    "rows": 5
+  },
+  "residue_cells": 4,
+  "violation": "reason(coloring_parity_imbalance)",
+  "inputs": {
+    "family": "unfillable_by_parity",
+    "cols": 5,
+    "rows": 5
+  }
+}

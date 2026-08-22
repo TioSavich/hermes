@@ -1,0 +1,1503 @@
+{
+  "bad_arrangement": "two_by_three_block",
+  "canvas": {
+    "height": 420,
+    "width": 420
+  },
+  "deformation": {
+    "frames": [
+      {
+        "caption": "Place tile (1,1) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "place_tile((1,1))"
+      },
+      {
+        "caption": "Place tile (2,1) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "place_tile((2,1))"
+      },
+      {
+        "caption": "Place tile (3,1) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,1)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 3,
+        "verb": "place_tile((3,1))"
+      },
+      {
+        "caption": "Place tile (1,2) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,1)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(1,2)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                },
+                {
+                  "x": 60,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 4,
+        "verb": "place_tile((1,2))"
+      },
+      {
+        "caption": "Place tile (2,2) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,1)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(1,2)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                },
+                {
+                  "x": 60,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,2)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 240
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 5,
+        "verb": "place_tile((2,2))"
+      },
+      {
+        "caption": "Place tile (3,2) of the six-face arrangement for the cube.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,1)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(1,2)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                },
+                {
+                  "x": 60,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,2)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 240
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,2)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 300,
+                  "y": 240
+                },
+                {
+                  "x": 220,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 6,
+        "verb": "place_tile((3,2))"
+      },
+      {
+        "caption": "Trace the folds (dashed): two of the 6 faces land on the same side, so this arrangement never closes to the cube.",
+        "scene": {
+          "creases": [
+            {
+              "x1": 140,
+              "x2": 140,
+              "y1": 80,
+              "y2": 160
+            },
+            {
+              "x1": 220,
+              "x2": 220,
+              "y1": 80,
+              "y2": 160
+            },
+            {
+              "x1": 140,
+              "x2": 140,
+              "y1": 160,
+              "y2": 240
+            },
+            {
+              "x1": 220,
+              "x2": 220,
+              "y1": 160,
+              "y2": 240
+            },
+            {
+              "x1": 60,
+              "x2": 140,
+              "y1": 160,
+              "y2": 160
+            },
+            {
+              "x1": 140,
+              "x2": 220,
+              "y1": 160,
+              "y2": 160
+            },
+            {
+              "x1": 220,
+              "x2": 300,
+              "y1": 160,
+              "y2": 160
+            }
+          ],
+          "faces": [
+            {
+              "label": "(1,1)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 60,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,1)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,1)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 80
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(1,2)",
+              "points": [
+                {
+                  "x": 60,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                },
+                {
+                  "x": 60,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(2,2)",
+              "points": [
+                {
+                  "x": 140,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 220,
+                  "y": 240
+                },
+                {
+                  "x": 140,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            },
+            {
+              "label": "(3,2)",
+              "points": [
+                {
+                  "x": 220,
+                  "y": 160
+                },
+                {
+                  "x": 300,
+                  "y": 160
+                },
+                {
+                  "x": 300,
+                  "y": 240
+                },
+                {
+                  "x": 220,
+                  "y": 240
+                }
+              ],
+              "role": "deformation"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 7,
+        "verb": "trace_overlap"
+      }
+    ]
+  },
+  "deformationKind": "net_does_not_fold",
+  "face_count": 6,
+  "family": "net_fold_failure",
+  "kind": "net_vs_unfoldable_arrangement",
+  "note": "The 6-face 2-by-3 arrangement carries the right number of faces for a cube, but it cannot fold to one: it holds a 2-by-2 sub-square, and folding lands two faces on the same side. The faces are all present; the arrangement is not foldable.",
+  "productive": {
+    "frames": [
+      {
+        "caption": "Lay out the top face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "place_face(top)"
+      },
+      {
+        "caption": "Lay out the front face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 2,
+        "verb": "place_face(front)"
+      },
+      {
+        "caption": "Lay out the bottom face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "bottom",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 120,
+                  "y": 280
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 3,
+        "verb": "place_face(bottom)"
+      },
+      {
+        "caption": "Lay out the back face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "bottom",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 120,
+                  "y": 280
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "back",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 360
+                },
+                {
+                  "x": 120,
+                  "y": 360
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 4,
+        "verb": "place_face(back)"
+      },
+      {
+        "caption": "Lay out the left face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "bottom",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 120,
+                  "y": 280
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "back",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 360
+                },
+                {
+                  "x": 120,
+                  "y": 360
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "left",
+              "points": [
+                {
+                  "x": 40,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 40,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 5,
+        "verb": "place_face(left)"
+      },
+      {
+        "caption": "Lay out the right face of the cube net.",
+        "scene": {
+          "creases": [],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "bottom",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 120,
+                  "y": 280
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "back",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 360
+                },
+                {
+                  "x": 120,
+                  "y": 360
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "left",
+              "points": [
+                {
+                  "x": 40,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 40,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "right",
+              "points": [
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 280,
+                  "y": 120
+                },
+                {
+                  "x": 280,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 6,
+        "verb": "place_face(right)"
+      },
+      {
+        "caption": "Mark the fold creases (dashed) where the 6 faces of the cube net join.",
+        "scene": {
+          "creases": [
+            {
+              "x1": 120,
+              "x2": 200,
+              "y1": 120,
+              "y2": 120
+            },
+            {
+              "x1": 120,
+              "x2": 200,
+              "y1": 200,
+              "y2": 200
+            },
+            {
+              "x1": 120,
+              "x2": 200,
+              "y1": 280,
+              "y2": 280
+            },
+            {
+              "x1": 120,
+              "x2": 120,
+              "y1": 120,
+              "y2": 200
+            },
+            {
+              "x1": 200,
+              "x2": 200,
+              "y1": 120,
+              "y2": 200
+            }
+          ],
+          "faces": [
+            {
+              "label": "top",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 40
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "front",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "bottom",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 120,
+                  "y": 280
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "back",
+              "points": [
+                {
+                  "x": 120,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 280
+                },
+                {
+                  "x": 200,
+                  "y": 360
+                },
+                {
+                  "x": 120,
+                  "y": 360
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "left",
+              "points": [
+                {
+                  "x": 40,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 120
+                },
+                {
+                  "x": 120,
+                  "y": 200
+                },
+                {
+                  "x": 40,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            },
+            {
+              "label": "right",
+              "points": [
+                {
+                  "x": 200,
+                  "y": 120
+                },
+                {
+                  "x": 280,
+                  "y": 120
+                },
+                {
+                  "x": 280,
+                  "y": 200
+                },
+                {
+                  "x": 200,
+                  "y": 200
+                }
+              ],
+              "role": "face"
+            }
+          ],
+          "format": "solid-net",
+          "mode": "net",
+          "solid": "cube",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 7,
+        "verb": "mark_creases"
+      }
+    ]
+  },
+  "productiveKind": "cube_net",
+  "provenance": "literature_only",
+  "request": {
+    "solid": "cube"
+  },
+  "solid": "cube",
+  "violation": "net_faces_do_not_fold_to_solid",
+  "inputs": {
+    "family": "net_fold_failure",
+    "solid": "cube"
+  }
+}

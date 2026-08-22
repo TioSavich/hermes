@@ -1,0 +1,412 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "more",
+    "frames": [
+      {
+        "caption": "read written integer numerals(9,10).",
+        "scene": {
+          "axis": {
+            "max": 10,
+            "min": 0,
+            "ticks": [
+              0,
+              1,
+              9,
+              10
+            ]
+          },
+          "coordinateDenominator": 1,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "9/10",
+              "role": "deformation"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "read_written_integer_numerals"
+      },
+      {
+        "caption": "omit decimal scale alignment(10,100).",
+        "scene": {
+          "axis": {
+            "max": 10,
+            "min": 0,
+            "ticks": [
+              0,
+              1,
+              9,
+              10
+            ]
+          },
+          "coordinateDenominator": 1,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "9/10",
+              "role": "deformation"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "omit_decimal_scale_alignment"
+      },
+      {
+        "caption": "compare unaligned numerals(9,10,less).",
+        "scene": {
+          "axis": {
+            "max": 10,
+            "min": 0,
+            "ticks": [
+              0,
+              1,
+              9,
+              10
+            ]
+          },
+          "coordinateDenominator": 1,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "9/10",
+              "role": "deformation"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "compare_unaligned_numerals"
+      },
+      {
+        "caption": "lose decimal scale relation(expected(more),produced(less)).",
+        "scene": {
+          "axis": {
+            "max": 10,
+            "min": 0,
+            "ticks": [
+              0,
+              1,
+              9,
+              10
+            ]
+          },
+          "coordinateDenominator": 1,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "9/10",
+              "role": "deformation"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "lose_decimal_scale_relation"
+      },
+      {
+        "caption": "record decimal order viability(viability(fails in context,condition(written numeral order diverges from decimal value order),expected(more),produced(less),validity(incorrect))).",
+        "scene": {
+          "axis": {
+            "max": 10,
+            "min": 0,
+            "ticks": [
+              0,
+              1,
+              9,
+              10
+            ]
+          },
+          "coordinateDenominator": 1,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 9,
+              "label": "9/10",
+              "role": "deformation"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "record_decimal_order_viability"
+      }
+    ],
+    "result": "less",
+    "trace": [
+      "read_written_integer_numerals(9,10)",
+      "omit_decimal_scale_alignment(10,100)",
+      "compare_unaligned_numerals(9,10,less)",
+      "lose_decimal_scale_relation(expected(more),produced(less))",
+      "record_decimal_order_viability(viability(fails_in_context,condition(written_numeral_order_diverges_from_decimal_value_order),expected(more),produced(less),validity(incorrect)))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "decimal_numeral_comparison_without_scale_alignment",
+  "divergence": {
+    "deformationResult": "less",
+    "productiveResult": "more"
+  },
+  "family": "decimal_comparison_by_aligned_units",
+  "inputs": {
+    "family": "decimal_comparison_by_aligned_units",
+    "n1": 9,
+    "d1": 10,
+    "n2": 10,
+    "d2": 100
+  },
+  "note": "The productive side expresses both decimals in one common unit before comparing them. The deformation compares the unaligned written numerals, which can reverse their order.",
+  "productive": {
+    "expected": "more",
+    "frames": [
+      {
+        "caption": "identify operand scales(10,100).",
+        "scene": {
+          "axis": {
+            "max": 100,
+            "min": 0,
+            "ticks": [
+              0,
+              10,
+              90,
+              100
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 90,
+              "label": "9/10",
+              "role": "highlight"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_operand_scales"
+      },
+      {
+        "caption": "choose common decimal scale(100).",
+        "scene": {
+          "axis": {
+            "max": 100,
+            "min": 0,
+            "ticks": [
+              0,
+              10,
+              90,
+              100
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 90,
+              "label": "9/10",
+              "role": "highlight"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "choose_common_decimal_scale"
+      },
+      {
+        "caption": "align decimal units(9,10,90).",
+        "scene": {
+          "axis": {
+            "max": 100,
+            "min": 0,
+            "ticks": [
+              0,
+              10,
+              90,
+              100
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 90,
+              "label": "9/10",
+              "role": "highlight"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "align_decimal_units"
+      },
+      {
+        "caption": "align decimal units(10,100,10).",
+        "scene": {
+          "axis": {
+            "max": 100,
+            "min": 0,
+            "ticks": [
+              0,
+              10,
+              90,
+              100
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 90,
+              "label": "9/10",
+              "role": "highlight"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "align_decimal_units"
+      },
+      {
+        "caption": "compare aligned decimal units(90,10,more).",
+        "scene": {
+          "axis": {
+            "max": 100,
+            "min": 0,
+            "ticks": [
+              0,
+              10,
+              90,
+              100
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 90,
+              "label": "9/10",
+              "role": "highlight"
+            },
+            {
+              "at": 10,
+              "label": "10/100",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-comparison",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "compare_aligned_decimal_units"
+      }
+    ],
+    "result": "more",
+    "trace": [
+      "identify_operand_scales(10,100)",
+      "choose_common_decimal_scale(100)",
+      "align_decimal_units(9,10,90)",
+      "align_decimal_units(10,100,10)",
+      "compare_aligned_decimal_units(90,10,more)"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "decimal_comparison_by_aligned_units",
+  "viability": {
+    "condition": "written numeral order diverges from decimal value order",
+    "expected": "more",
+    "inputs": {
+      "d1": 10,
+      "d2": 100,
+      "n1": 9,
+      "n2": 10
+    },
+    "produced": "less",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

@@ -3332,6 +3332,12 @@ render_practice(balance_render, solve_linear(_, _, _), p_relational_equals_balan
 render_practice(balance_compare, solve_linear(_, _, _), p_relational_equals_balance_preservation) :- !.
 
 lesson_misconception_incompatibility_witness(Code, Operation, Name, Witness) :-
+    \+ getenv('HERMES_WITNESS_LIVE', '1'),
+    lesson_monitoring:lesson_misconception_witness_store_baked,
+    !,
+    lesson_monitoring:lesson_misconception_witness_fact(
+        Code, Operation, Name, Witness).
+lesson_misconception_incompatibility_witness(Code, Operation, Name, Witness) :-
     lesson_monitoring:monitoring_chart(
         Code,
         monitoring_chart(Code,

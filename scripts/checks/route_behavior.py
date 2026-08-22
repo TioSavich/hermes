@@ -17,6 +17,14 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
+
+EXPECTED_AUTHOR_HEADING = baseline_value("questions.im_author_heading")
+EXPECTED_PRINTED_REGION = baseline_value("questions.printed_region")
 
 
 def free_port() -> int:
@@ -138,9 +146,9 @@ def main() -> int:
              },
              lambda body: body.get("ok") is True
              and body.get("result", {}).get("admission_warrants", {}).get(
-                 "im_author_heading") == 1013
+                 "im_author_heading") == EXPECTED_AUTHOR_HEADING
              and body["result"].get("admission_warrants", {}).get(
-                 "printed_region") == 8081
+                 "printed_region") == EXPECTED_PRINTED_REGION
              and len(body["result"].get("rows", [])) == 1
              and body["result"]["rows"][0].get("status") == "mechanically_admitted"
              and body["result"]["rows"][0].get("admission", {}).get(

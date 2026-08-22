@@ -29,6 +29,7 @@
   var OP = CFG.op || 'fraction_compare';
 
   var state = { doc: null, index: 0, steps: 0 };
+  var prebakedRequest = 0;
 
   function el(id) { return document.getElementById(id); }
 
@@ -202,6 +203,35 @@
     return out;
   }
 
+  function populateInputs(inputs) {
+    if (!inputs || typeof inputs !== 'object') return;
+    var nodes = document.querySelectorAll('[data-arg]');
+    Array.prototype.forEach.call(nodes, function (node) {
+      var key = node.getAttribute('data-arg');
+      if (Object.prototype.hasOwnProperty.call(inputs, key)) {
+        node.value = String(inputs[key]);
+      }
+    });
+  }
+
+  function loadPrebaked() {
+    var family = el('family');
+    if (!CFG.prebaked || !family) return;
+    var request = ++prebakedRequest;
+    var url = CFG.prebaked + encodeURIComponent(family.value) + '.json';
+    fetch(url).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    }).then(function (doc) {
+      if (request !== prebakedRequest || !doc || typeof doc !== 'object') return;
+      populateInputs(doc.inputs);
+      ingest(doc);
+    }).catch(function () {
+      // A fresh checkout or static host may not carry generated defaults yet.
+      // Keep the page's existing initial state and live Calculate path.
+    });
+  }
+
   function calculate() {
     var payload = { op: OP };
     Object.assign(payload, collectInputs());
@@ -246,10 +276,12 @@
     var next = el('next');
     var seek = el('seek');
     var calc = el('calculate');
+    var family = el('family');
     if (prev) prev.addEventListener('click', function () { goTo(state.index - 1); });
     if (next) next.addEventListener('click', function () { goTo(state.index + 1); });
     if (seek) seek.addEventListener('input', function (e) { goTo(Number(e.target.value)); });
     if (calc) calc.addEventListener('click', calculate);
+    if (family && CFG.prebaked) family.addEventListener('change', loadPrebaked);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') goTo(state.index - 1);
       else if (e.key === 'ArrowRight') goTo(state.index + 1);
@@ -294,6 +326,10 @@
       if (a && el('a')) el('a').value = a;
       if (b && el('b')) el('b').value = b;
       calculate();
+      return;
+    }
+    if (CFG.prebaked) {
+      loadPrebaked();
       return;
     }
     var embedded = el('frames');

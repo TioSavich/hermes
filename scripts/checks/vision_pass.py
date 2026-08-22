@@ -31,10 +31,11 @@ from scripts.curriculum.vision_pass import (  # noqa: E402
     stable_hash,
     text_only_pairs,
 )
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 
 def main() -> int:
-    assert len(text_only_pairs()) == 76
+    assert len(text_only_pairs()) == baseline_value("vision.text_only_pairs")
     worklist = derive_worklist()
     assert worklist["derived_counts"] == REPORT_COUNTS
     assert worklist["difference_from_report"] == {
@@ -42,7 +43,7 @@ def main() -> int:
         "grade_7": 0,
         "total": 0,
     }
-    assert len(worklist["spans"]) == 240
+    assert len(worklist["spans"]) == baseline_value("vision.worklist_spans")
     assert all(span["images"] for span in worklist["spans"])
     assert all(
         (ROOT / image["file"]).is_file()

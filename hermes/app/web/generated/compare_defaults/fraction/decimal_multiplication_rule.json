@@ -1,0 +1,377 @@
+{
+  "canvas": {
+    "height": 420,
+    "width": 900
+  },
+  "deformation": {
+    "expected": "decimal(0,fractional_digits(36,2),hundredths)",
+    "frames": [
+      {
+        "caption": "identify operand place counts(1,1).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 360,
+              "label": "decimal(3,fractional_digits(6,1),tenths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_operand_place_counts"
+      },
+      {
+        "caption": "multiply integer numerals(12,3,36).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 360,
+              "label": "decimal(3,fractional_digits(6,1),tenths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "multiply_integer_numerals"
+      },
+      {
+        "caption": "take max of place counts instead of summing(1,1,1).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 360,
+              "label": "decimal(3,fractional_digits(6,1),tenths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "take_max_of_place_counts_instead_of_summing"
+      },
+      {
+        "caption": "place decimal point(36,scale(10)).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 360,
+              "label": "decimal(3,fractional_digits(6,1),tenths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "place_decimal_point"
+      },
+      {
+        "caption": "lose fractional place count(expected(decimal(0,fractional digits(36,2),hundredths)),produced(decimal(3,fractional digits(6,1),tenths))).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 360,
+              "label": "decimal(3,fractional_digits(6,1),tenths)",
+              "role": "deformation"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "lose_fractional_place_count"
+      }
+    ],
+    "result": "decimal(3,fractional_digits(6,1),tenths)",
+    "trace": [
+      "identify_operand_place_counts(1,1)",
+      "multiply_integer_numerals(12,3,36)",
+      "take_max_of_place_counts_instead_of_summing(1,1,1)",
+      "place_decimal_point(36,scale(10))",
+      "lose_fractional_place_count(expected(decimal(0,fractional_digits(36,2),hundredths)),produced(decimal(3,fractional_digits(6,1),tenths)))"
+    ],
+    "validity": "incorrect"
+  },
+  "deformationKind": "decimal_point_rule_misapplication",
+  "divergence": {
+    "deformationResult": "decimal(3,fractional_digits(6,1),tenths)",
+    "productiveResult": "decimal(0,fractional_digits(36,2),hundredths)"
+  },
+  "family": "decimal_multiplication_rule",
+  "inputs": {
+    "family": "decimal_multiplication_rule",
+    "n1": 12,
+    "d1": 10,
+    "n2": 3,
+    "d2": 10
+  },
+  "note": "The productive side adds the two fractional-place counts when placing the decimal point in the product. The deformation uses only the larger place count, changing the product's scale.",
+  "productive": {
+    "expected": "decimal(0,fractional_digits(36,2),hundredths)",
+    "frames": [
+      {
+        "caption": "identify operand place counts(1,1).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": true,
+        "step": 1,
+        "verb": "identify_operand_place_counts"
+      },
+      {
+        "caption": "ignore decimal marks momentarily(decimal pair(12,10,3,10)).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 2,
+        "verb": "ignore_decimal_marks_momentarily"
+      },
+      {
+        "caption": "multiply integer numerals(12,3,36).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 3,
+        "verb": "multiply_integer_numerals"
+      },
+      {
+        "caption": "sum fractional place counts(1,1,2).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 4,
+        "verb": "sum_fractional_place_counts"
+      },
+      {
+        "caption": "place decimal point(36,scale(100)).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 5,
+        "verb": "place_decimal_point"
+      },
+      {
+        "caption": "compose decimal product(decimal(0,fractional digits(36,2),hundredths)).",
+        "scene": {
+          "axis": {
+            "max": 360,
+            "min": 0,
+            "ticks": [
+              0,
+              36,
+              360
+            ]
+          },
+          "coordinateDenominator": 100,
+          "format": "number-line",
+          "jumps": [],
+          "marks": [
+            {
+              "at": 36,
+              "label": "decimal(0,fractional_digits(36,2),hundredths)",
+              "role": "highlight"
+            }
+          ],
+          "mode": "decimal-result",
+          "version": 2
+        },
+        "sceneChanged": false,
+        "step": 6,
+        "verb": "compose_decimal_product"
+      }
+    ],
+    "result": "decimal(0,fractional_digits(36,2),hundredths)",
+    "trace": [
+      "identify_operand_place_counts(1,1)",
+      "ignore_decimal_marks_momentarily(decimal_pair(12,10,3,10))",
+      "multiply_integer_numerals(12,3,36)",
+      "sum_fractional_place_counts(1,1,2)",
+      "place_decimal_point(36,scale(100))",
+      "compose_decimal_product(decimal(0,fractional_digits(36,2),hundredths))"
+    ],
+    "validity": "correct"
+  },
+  "productiveKind": "decimal_multiplication_rule",
+  "viability": {
+    "condition": "using the larger place count changes the product scale",
+    "expected": "decimal(0,fractional_digits(36,2),hundredths)",
+    "inputs": {
+      "d1": 10,
+      "d2": 10,
+      "n1": 12,
+      "n2": 3
+    },
+    "produced": "decimal(3,fractional_digits(6,1),tenths)",
+    "status": "fails_in_context",
+    "validity": "incorrect"
+  }
+}

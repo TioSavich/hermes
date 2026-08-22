@@ -41,7 +41,7 @@ This builder re-derives the join from scratch every run:
      citations live in the companion ``attested_*.pl`` files. Only path (b)
      produces anything in this corpus, and only for the hybridization family.
 
-  3. Join a warranted (RenderId, Bibkey) pair to the registry only when a
+  3. Join a mechanically warranted (RenderId, Bibkey) pair to the registry only when a
      registry entry cites that same bibkey AND the entry's own target
      operation passes ``misconception_render_coverage:op_render_family/3``
      for the render id's Representation -- the same compatibility table the
@@ -50,17 +50,20 @@ This builder re-derives the join from scratch every run:
      are excluded outright (2026-08 ruling: too_vague is never served as a
      misconception; see memory ``misconception-under-erasure.md``).
 
-  4. Every id with no surviving link is recorded in
+  4. Consume ``authored_render_citations.pl`` as a separate reviewed lane.
+     Its link verdicts bypass the mechanical family prefilter, while its two
+     refusal verdicts replace generic missing-bibkey reasons with the named
+     point where the reviewed join stopped.
+
+  5. Every id with no surviving link is recorded in
      ``misconception_render_unlinked/2`` with the reason the join stopped:
      no bibkey was ever warranted, the warranted bibkey(s) are not in the
      registry at all, or the registry does cite them but no candidate
      survives the family-compatibility filter.
 
-The output licenses one claim only: "this drawing and this literature-
-attested misconception cite the same source and share a representation
-family." It is never equivalence and never a diagnosis. The ``authored``
-lane in the ``via/1`` vocabulary is declared but never populated by this
-builder -- it is schema left for a later, human-curated pass.
+The output licenses one claim only: a mechanical row records a shared source
+and representation family; an authored row records the reviewed topical match
+preserved in the authored store. Neither is equivalence or a diagnosis.
 
 The output is deterministic and byte-compared by
 ``scripts/checks/misconception_render_link.py``.
@@ -83,6 +86,7 @@ DECIMAL_PAIRS = ROOT / "knowledge/strategies/math/decimal_action_pairs.pl"
 PARAMETRIC_ERRORS = ROOT / "knowledge/strategies/render/parametric_fraction_errors.pl"
 ATTESTED_DEFORMATIONS = ROOT / "knowledge/strategies/render/attested_deformations.pl"
 COVERAGE = ROOT / "knowledge/strategies/render/misconception_render_coverage.pl"
+AUTHORED_CITATIONS = ROOT / "knowledge/strategies/render/authored_render_citations.pl"
 PATHS_PL = ROOT / "paths.pl"
 DEFAULT_OUTPUT = ROOT / "knowledge/strategies/render/misconception_render_link.pl"
 
@@ -91,6 +95,7 @@ FRACTION_PAIRS_REL = "knowledge/strategies/math/fraction_action_pairs.pl"
 DECIMAL_PAIRS_REL = "knowledge/strategies/math/decimal_action_pairs.pl"
 PARAMETRIC_ERRORS_REL = "knowledge/strategies/render/parametric_fraction_errors.pl"
 ATTESTED_DEFORMATIONS_REL = "knowledge/strategies/render/attested_deformations.pl"
+AUTHORED_CITATIONS_REL = "knowledge/strategies/render/authored_render_citations.pl"
 
 TOO_VAGUE = "too_vague"  # never served as a misconception; see the ruling cited above.
 
@@ -101,8 +106,9 @@ EXPECTED_CROSS_FILE_OVERLAP = "cross_multiplication_rule_without_ground"
 
 EXPECTED_TOTAL = 44
 
+BIBKEY_BODY = r"[A-Za-z]+_[A-Za-z][A-Za-z]*_[0-9]{4}_[A-Za-z][A-Za-z'\-]*"
 BIBKEY_ATOM_RE = re.compile(
-    r"'([A-Za-z]+_[A-Za-z][A-Za-z]*_[0-9]{4}_[A-Za-z][A-Za-z'\-]*)'"
+    rf"(?:'(?P<quoted>{BIBKEY_BODY})'|\((?P<parenthesized>{BIBKEY_BODY})\))"
 )
 
 # --- representation_grammar.pl: deformation_spec_evidence/4 ---------------
@@ -142,11 +148,19 @@ REGISTRY_DUMP_GOAL = (
     "use_module(library(http/json)), "
     "use_module(misconceptions(misconception_registry), "
     "[misconception_registry_entry/5]), "
-    "findall(Name-Op-B, misconception_registry_entry(Name,Op,citation(B,_),_,_), Rows0), "
+    "findall(Name-Op-B-Note, misconception_registry_entry(Name,Op,citation(B,Note),_,_), Rows0), "
     "sort(Rows0, Rows), "
-    "forall(member(Name-Op-B, Rows), "
-    "(json_write_dict(current_output, _{name:Name, op:Op, bibkey:B}, [width(0)]), nl)), "
+    "forall(member(Name-Op-B-Note, Rows), "
+    "(json_write_dict(current_output, _{name:Name, op:Op, bibkey:B, note:Note}, [width(0)]), nl)), "
     "halt."
+)
+
+AUTHORED_DUMP_GOAL = (
+    "use_module(library(http/json)), "
+    "use_module(render(authored_render_citations), [authored_render_citation/5]), "
+    "forall(authored_render_citation(Id,Verdict,Evidence,Attribution,Notes), "
+    "(json_write_dict(current_output, _{id:Id, verdict:Verdict, evidence:Evidence, "
+    "attribution:Attribution, notes:Notes}, [width(0)]), nl)), halt."
 )
 
 
@@ -154,6 +168,18 @@ def pl_atom(text: str) -> str:
     """Quote as a Prolog atom, escaping backslashes and single quotes."""
     escaped = text.replace("\\", "\\\\").replace("'", "\\'")
     return f"'{escaped}'"
+
+
+def pl_string(text: str) -> str:
+    """Render a Prolog string with deterministic JSON-compatible escaping."""
+    return json.dumps(text, ensure_ascii=False)
+
+
+def find_bibkeys(text: str) -> list[str]:
+    return [
+        match.group("quoted") or match.group("parenthesized")
+        for match in BIBKEY_ATOM_RE.finditer(text)
+    ]
 
 
 # =============================================================================
@@ -167,6 +193,7 @@ def parse_grammar_deformations(text: str) -> list[dict]:
     matches the line-anchored clause-start pattern)."""
     starts = [m.start() for m in GRAMMAR_CLAUSE_START_RE.finditer(text)]
     records = []
+    all_lines = text.splitlines()
     for index, start in enumerate(starts):
         end = starts[index + 1] if index + 1 < len(starts) else len(text)
         chunk = text[start:end]
@@ -179,6 +206,27 @@ def parse_grammar_deformations(text: str) -> list[dict]:
         foreign = FOREIGN_PRIMITIVE_FIELD_RE.search(chunk)
         host = ILLICIT_HOST_FIELD_RE.search(chunk)
         line = text.count("\n", 0, start) + 1
+        prefix_lines = text[:start].splitlines()
+        while prefix_lines and not prefix_lines[-1].strip():
+            prefix_lines.pop()
+        comment_lines = []
+        while prefix_lines and prefix_lines[-1].lstrip().startswith("%"):
+            comment_lines.append(prefix_lines.pop())
+        comment_lines.reverse()
+        clause_end = re.search(r"(?m)^\s*\}\.\s*$", chunk)
+        definition = chunk[:clause_end.end()] if clause_end else chunk
+        citation_scope = "\n".join(comment_lines) + "\n" + definition
+        bibkeys = sorted(set(find_bibkeys(citation_scope)))
+        bibkey_lines = {}
+        for bibkey in bibkeys:
+            candidates = [
+                source_line
+                for source_line in range(max(1, line - 25), min(len(all_lines), line + 25) + 1)
+                if bibkey in all_lines[source_line - 1]
+            ]
+            if not candidates:
+                raise SystemExit(f"bibkey {bibkey!r} has no source line near grammar line {line}")
+            bibkey_lines[bibkey] = min(candidates, key=lambda source_line: abs(source_line - line))
         records.append(
             {
                 "id": misconception.group(1),
@@ -186,7 +234,8 @@ def parse_grammar_deformations(text: str) -> list[dict]:
                 "foreign_primitive": foreign.group(1) if foreign else None,
                 "illicit_host": host.group(1) if host else None,
                 "line": line,
-                "bibkeys_near_definition": sorted(set(BIBKEY_ATOM_RE.findall(chunk))),
+                "bibkeys_near_definition": bibkeys,
+                "bibkey_evidence_lines": bibkey_lines,
             }
         )
     return records
@@ -225,7 +274,7 @@ def parse_op_render_family(text: str) -> dict[str, set[str]]:
 def bibkeys_near_scope(text: str, scope_name: str) -> list[str]:
     """Whole-file bibkey-shaped-atom scan for a file with no clean per-clause
     boundary. Named per file so a nonzero find is traceable in the summary."""
-    found = sorted(set(BIBKEY_ATOM_RE.findall(text)))
+    found = sorted(set(find_bibkeys(text)))
     return found
 
 
@@ -279,6 +328,13 @@ def build_census(grammar_records: list[dict], fraction_rows: list[tuple[str, str
         bibkeys_near_definition = sorted(
             {bibkey for rec in recs for bibkey in rec["bibkeys_near_definition"]}
         )
+        bibkey_evidence_lines = {
+            bibkey: min(
+                rec["bibkey_evidence_lines"][bibkey]
+                for rec in recs if bibkey in rec["bibkey_evidence_lines"]
+            )
+            for bibkey in bibkeys_near_definition
+        }
         census[render_id] = {
             "id": render_id,
             "representation": representation,
@@ -291,6 +347,7 @@ def build_census(grammar_records: list[dict], fraction_rows: list[tuple[str, str
                 }
             ),
             "bibkeys_near_definition": bibkeys_near_definition,
+            "bibkey_evidence_lines": bibkey_evidence_lines,
         }
 
     for _productive, deformation, _family in sorted(fraction_rows):
@@ -327,7 +384,7 @@ def compute_citations(census: dict[str, dict], transplants: list[tuple[str, str,
                     "id": render_id,
                     "bibkey": bibkey,
                     "source_file": GRAMMAR_REL,
-                    "evidence": f"header_comment(line({record['sources'][0][1]}))",
+                    "evidence": f"header_comment(line({record['bibkey_evidence_lines'][bibkey]}))",
                 }
             )
 
@@ -399,37 +456,121 @@ def compute_citations(census: dict[str, dict], transplants: list[tuple[str, str,
 # =============================================================================
 
 
-def load_registry_rows() -> list[tuple[str, str, str]]:
+def run_jsonl_goal(goal: str, label: str) -> list[dict]:
     completed = subprocess.run(
-        ["swipl", "-q", "-l", str(PATHS_PL), "-g", REGISTRY_DUMP_GOAL],
+        ["swipl", "-q", "-l", str(PATHS_PL), "-g", goal],
         cwd=ROOT, capture_output=True, text=True, timeout=300,
     )
     if completed.returncode != 0:
         raise SystemExit(
-            f"registry dump failed (exit {completed.returncode}):\n{completed.stderr}"
+            f"{label} dump failed (exit {completed.returncode}):\n{completed.stderr}"
         )
     rows = []
     for line in completed.stdout.splitlines():
         line = line.strip()
         if not line:
             continue
-        row = json.loads(line)
-        rows.append((row["name"], row["op"], row["bibkey"]))
+        rows.append(json.loads(line))
     if not rows:
-        raise SystemExit("registry dump produced zero rows")
-    return sorted(set(rows))
+        raise SystemExit(f"{label} dump produced zero rows")
+    return rows
+
+
+def load_registry_rows() -> list[tuple[str, str, str, str]]:
+    rows = run_jsonl_goal(REGISTRY_DUMP_GOAL, "registry")
+    return sorted(
+        {(row["name"], row["op"], row["bibkey"], row["note"]) for row in rows}
+    )
+
+
+def signal_tokens(text: str) -> list[str]:
+    """Words used to confirm a drafted quotation against its current source.
+
+    Drafted quotations collapse wrapped comments, use ``...`` for omitted
+    spans, and normalize typographic dashes. Token-subsequence matching keeps
+    those explicit omissions while still failing if the named signal moves or
+    changes.
+    """
+    return re.findall(r"[A-Za-z0-9_]+", text.lower())
+
+
+def tokens_are_subsequence(needles: list[str], haystack: list[str]) -> bool:
+    cursor = iter(haystack)
+    return all(any(token == needle for token in cursor) for needle in needles)
+
+
+def validate_authored_evidence(row: dict) -> None:
+    evidence = row["evidence"]
+    path = ROOT / evidence["file"]
+    if not path.is_file():
+        raise SystemExit(f"authored evidence file absent for {row['id']}: {evidence['file']}")
+    lines = path.read_text(encoding="utf-8").splitlines()
+    line = evidence["line"]
+    if not isinstance(line, int) or not 1 <= line <= len(lines):
+        raise SystemExit(f"authored evidence line moved for {row['id']}: {evidence['file']}:{line}")
+    start = max(0, line - 26)
+    end = min(len(lines), line + 25)
+    if not tokens_are_subsequence(
+        signal_tokens(evidence["quoted_signal"]), signal_tokens("\n".join(lines[start:end]))
+    ):
+        raise SystemExit(
+            f"authored evidence quote mismatch for {row['id']}: {evidence['file']}:{line}"
+        )
+
+
+def load_authored_rows(census: dict[str, dict]) -> list[dict]:
+    rows = run_jsonl_goal(AUTHORED_DUMP_GOAL, "authored citation")
+    ids = [row["id"] for row in rows]
+    duplicates = sorted(name for name, count in collections.Counter(ids).items() if count > 1)
+    if duplicates:
+        raise SystemExit(f"duplicate authored render ids: {duplicates}")
+    if len(rows) != 38:
+        raise SystemExit(f"authored citation store has {len(rows)} rows, expected 38")
+    unknown = sorted(set(ids) - set(census))
+    if unknown:
+        raise SystemExit(f"authored citation store names unknown render ids: {unknown}")
+    verdict_counts = collections.Counter(row["verdict"].get("kind") for row in rows)
+    expected = {"link": 6, "no_registry_bibkey": 9, "no_literature_signal": 23}
+    if dict(verdict_counts) != expected:
+        raise SystemExit(
+            f"authored verdict counts are {dict(verdict_counts)}, expected {expected}"
+        )
+    for row in rows:
+        attribution = row["attribution"]
+        if attribution.get("model") != "opus" or attribution.get("date") != "2026-08-22":
+            raise SystemExit(f"authored attribution mismatch for {row['id']}")
+        if not attribution.get("verification_method"):
+            raise SystemExit(f"authored verification method absent for {row['id']}")
+        validate_authored_evidence(row)
+    return sorted(rows, key=lambda row: row["id"])
 
 
 def compute_links_and_unlinked(
     census: dict[str, dict],
     citations: list[dict],
-    registry_rows: list[tuple[str, str, str]],
+    registry_rows: list[tuple[str, str, str, str]],
     op_render_family: dict[str, set[str]],
+    authored_rows: list[dict],
 ) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str | None]]]:
-    registry_names = {name for name, _op, _bibkey in registry_rows}
+    registry_names = {name for name, _op, _bibkey, _note in registry_rows}
     registry_by_bibkey: dict[str, list[tuple[str, str]]] = collections.defaultdict(list)
-    for name, op, bibkey in registry_rows:
+    for name, op, bibkey, _note in registry_rows:
         registry_by_bibkey[bibkey].append((name, op))
+
+    authored_by_id = {row["id"]: row for row in authored_rows}
+    registry_set = set(registry_rows)
+    for row in authored_rows:
+        verdict = row["verdict"]
+        if verdict["kind"] != "link":
+            continue
+        registry_row = (
+            verdict["registry_name"], verdict["registry_operation"],
+            verdict["bibkey"], verdict["registry_description"],
+        )
+        if registry_row not in registry_set:
+            raise SystemExit(f"authored registry link mismatch for {row['id']}: {registry_row}")
+        if verdict["registry_name"] == TOO_VAGUE:
+            raise SystemExit(f"authored link names too_vague for {row['id']}")
 
     citations_by_id: dict[str, list[str]] = collections.defaultdict(list)
     for c in citations:
@@ -455,13 +596,29 @@ def compute_links_and_unlinked(
                 if name == TOO_VAGUE:
                     continue
                 if representation in op_render_family.get(op, set()):
-                    row_links.add((render_id, name, f"bibkey({bibkey})"))
+                    row_links.add((render_id, name, f"bibkey({pl_atom(bibkey)})"))
+
+        authored = authored_by_id.get(render_id)
+        if authored and authored["verdict"]["kind"] == "link":
+            verdict = authored["verdict"]
+            mechanical_match = (
+                render_id, verdict["registry_name"],
+                f"bibkey({pl_atom(verdict['bibkey'])})"
+            )
+            if mechanical_match not in row_links:
+                row_links.add((render_id, verdict["registry_name"], "authored"))
 
         if row_links:
             links.extend(sorted(row_links))
             continue
 
-        if not bibkeys:
+        if authored and authored["verdict"]["kind"] == "no_registry_bibkey":
+            unlinked.append(
+                (render_id, "no_registry_bibkey", authored["verdict"]["nearest_literature"])
+            )
+        elif authored and authored["verdict"]["kind"] == "no_literature_signal":
+            unlinked.append((render_id, "no_literature_signal", None))
+        elif not bibkeys:
             unlinked.append((render_id, "no_bibkey_in_source", None))
         elif not any_registry_hit:
             unlinked.append((render_id, "bibkey_not_in_registry", bibkeys[0]))
@@ -487,7 +644,8 @@ PROLOG_HEADER = """\
 % knowledge/strategies/math/fraction_action_pairs.pl,
 % knowledge/strategies/math/decimal_action_pairs.pl,
 % knowledge/strategies/render/parametric_fraction_errors.pl,
-% knowledge/strategies/render/attested_deformations.pl, and a live query
+% knowledge/strategies/render/attested_deformations.pl,
+% knowledge/strategies/render/authored_render_citations.pl, and a live query
 % against knowledge/misconceptions/misconception_registry.pl.
 % Do not hand-edit; edit the builder and regenerate.
 %
@@ -502,11 +660,11 @@ PROLOG_HEADER = """\
 % passes the render-coverage report's own representation-family compatibility
 % table (op_render_family/3), the two sides are joined.
 %
-% WHAT THE LINK LICENSES, AND WHAT IT DOES NOT. A row here says: this drawing
-% and this literature-attested misconception cite the same source and share a
-% representation family. It is NEVER equivalence, and it is NEVER a diagnosis
-% -- the render id is a computed scene, the registry name is a literature
-% attestation, and citing the same paper does not make them the same claim.
+% WHAT THE LINK LICENSES, AND WHAT IT DOES NOT. A mechanical row says that a
+% drawing and a literature-attested misconception cite the same source and
+% share a representation family. An authored row records a separately reviewed
+% topical match from authored_render_citations.pl. Neither lane asserts
+% equivalence or a diagnosis.
 %
 % too_vague NEVER LINKS. A number of registry entries carry the sentinel name
 % too_vague (misconception-under-erasure ruling, 2026-08: viability not
@@ -524,12 +682,11 @@ PROLOG_HEADER = """\
 % decimal_strategy, or equipartition_failure instead: honestly-named markers
 % for "no representation-grammar atom applies," not entries in
 % representation_language/1. op_render_family/3 has no row for any of the
-% three, so no bibkey warranted for those ids can ever pass the compatibility
-% filter -- which is exactly what happened this pass: they are all
-% no_bibkey_in_source besides.
+% three, so no mechanically warranted bibkey for those ids can pass the
+% compatibility filter. The authored lane does not use this prefilter.
 %
-% NO authored rows this pass. via(authored) is declared in the vocabulary
-% below for a later, human-curated pass; this builder never emits one.
+% AUTHORED ABSENCES STAY NAMED. Reviewed refusals distinguish literature with
+% no usable registry bibkey from a source that names no literature signal.
 """
 
 
@@ -551,12 +708,14 @@ def render_module(citations: list[dict], links: list[tuple[str, str, str]],
     write(":- use_module(math(decimal_action_pairs), [productive_decimal_deformation/3]).")
     write(":- use_module(render(parametric_fraction_errors), [fraction_error_type/1]).")
     write(":- use_module(render(attested_deformations), [attested_transplant/5]).")
+    write(":- use_module(render(authored_render_citations), [authored_render_citation/5]).")
     write(":- use_module(render(misconception_render_coverage), [op_render_family/3]).")
     write(":- use_module(misconceptions(misconception_registry),")
     write("              [ misconception_registry_entry/5 ]).")
     write(":- use_module(library(pairs)).")
     write(":- use_module(library(lists)).")
     write(":- use_module(library(aggregate)).")
+    write(":- use_module(library(readutil)).")
     write("")
 
     write("% --- render_deformation_citation(RenderId, Bibkey, source(File, Evidence)) -")
@@ -574,18 +733,22 @@ def render_module(citations: list[dict], links: list[tuple[str, str, str]],
 
     write("% --- misconception_render_link(RenderId, RegistryName, via(V)) -------------")
     write("% V in {name_equality, bibkey(Bibkey), authored}. too_vague never appears as")
-    write("% RegistryName. authored is declared and never emitted by this builder.")
+    write("% RegistryName. Authored rows bypass the mechanical family prefilter.")
     for render_id, name, via in links:
         write(f"misconception_render_link({render_id}, {name}, via({via})).")
     write("")
 
     write("% --- misconception_render_unlinked(RenderId, reason(R)) --------------------")
-    write("% R in {no_bibkey_in_source, bibkey_not_in_registry, prefilter_rejected(K)}.")
+    write("% R names the mechanical or reviewed point where the join stopped.")
     write("% This absence list is itself the finding: the render layer and the")
     write("% registry are, for almost all of the 44, genuinely unjoined vocabularies.")
     for render_id, reason, arg in unlinked:
         if reason == "prefilter_rejected":
             write(f"misconception_render_unlinked({render_id}, reason(prefilter_rejected({pl_atom(arg)}))).")
+        elif reason == "no_registry_bibkey":
+            write(f"misconception_render_unlinked({render_id}, reason(no_registry_bibkey(nearest_literature({pl_string(arg)})))).")
+        elif reason == "no_literature_signal":
+            write(f"misconception_render_unlinked({render_id}, reason(no_literature_signal)).")
         elif reason == "bibkey_not_in_registry":
             write(f"misconception_render_unlinked({render_id}, reason(bibkey_not_in_registry)).")
         else:
@@ -714,6 +877,26 @@ recomputed_census(Pairs) :-
 %   this pass ever cites, and a structured attested_transplant_row Evidence
 %   term names an actual attested_transplant/5 fact whose matched fields
 %   really do equal the fields of one of Id's own grammar clauses.
+check_citation_warrant(Id, Bibkey,
+                       'knowledge/strategies/render/representation_grammar.pl',
+                       header_comment(line(Line))) :-
+    !,
+    read_file_to_string(
+        'knowledge/strategies/render/representation_grammar.pl', Text, []),
+    split_string(Text, "\\n", "", Lines),
+    Start is max(1, Line - 25),
+    End is min(Line + 25, 1000000),
+    findall(SourceLine,
+            ( between(Start, End, N), nth1(N, Lines, SourceLine) ),
+            WindowLines),
+    atomics_to_string(WindowLines, "\\n", Window),
+    atom_string(Bibkey, BibkeyString),
+    atom_string(Id, IdString),
+    ( sub_string(Window, _, _, _, BibkeyString),
+      sub_string(Window, _, _, _, IdString)
+    -> true
+    ;  throw(error(citation_header_comment_mismatch(Id, Bibkey, Line), _))
+    ).
 check_citation_warrant(Id, _Bibkey, File, _Evidence) :-
     File \\== 'knowledge/strategies/render/attested_deformations.pl',
     !,
@@ -791,7 +974,23 @@ check_link_warrant(Census, Id, Name, bibkey(Bibkey)) :-
     ).
 check_link_warrant(_Census, Id, Name, authored) :-
     !,
-    throw(error(unexpected_authored_link(Id, Name), _)).
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _Evidence,
+                                                          _Attribution, _Notes),
+      get_dict(kind, Verdict, link),
+      get_dict(bibkey, Verdict, Bibkey),
+      get_dict(registry_name, Verdict, Name),
+      get_dict(registry_operation, Verdict, Op),
+      get_dict(registry_description, Verdict, Description)
+    -> true
+    ;  throw(error(authored_link_not_in_store(Id, Name), _))
+    ),
+    atom_string(BibkeyAtom, Bibkey),
+    ( Name == too_vague -> throw(error(link_names_too_vague(Id), _)) ; true ),
+    ( misconception_registry:misconception_registry_entry(
+          Name, Op, citation(BibkeyAtom, Description), _, _)
+    -> true
+    ;  throw(error(authored_link_registry_mismatch(Id, Name, Bibkey), _))
+    ).
 check_link_warrant(_Census, Id, Name, Via) :-
     throw(error(link_bad_via(Id, Name, Via), _)).
 
@@ -832,8 +1031,87 @@ check_unlinked_warrant(Census, Id, prefilter_rejected(K)) :-
     -> true
     ;  throw(error(unlinked_reason_wrong(Id, prefilter_rejected(K)), _))
     ).
+check_unlinked_warrant(_Census, Id,
+                       no_registry_bibkey(nearest_literature(Nearest))) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, no_registry_bibkey),
+      get_dict(nearest_literature, Verdict, Nearest)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, no_registry_bibkey), _))
+    ).
+check_unlinked_warrant(_Census, Id, no_literature_signal) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, no_literature_signal)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, no_literature_signal), _))
+    ).
 check_unlinked_warrant(_Census, Id, Reason) :-
     throw(error(unlinked_bad_reason(Id, Reason), _)).
+
+%!  check_authored_store(+CensusIds) is det.
+%
+%   Confirms that the generated verdicts consume all 38 authored rows. The one
+%   link also found by the widened mechanical regex stays via(bibkey); the
+%   other five link rows use via(authored).
+check_authored_store(CensusIds) :-
+    findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
+    length(Ids, 38),
+    sort(Ids, UniqueIds),
+    length(UniqueIds, 38),
+    forall(member(Id, UniqueIds),
+           ( memberchk(Id, CensusIds) -> true ; throw(error(authored_unknown_id(Id), _)) )),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, link) ),
+                  6),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, no_registry_bibkey) ),
+                  9),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, no_literature_signal) ),
+                  23),
+    forall(
+        authored_render_citations:authored_render_citation(Id, Verdict, Evidence,
+                                                            Attribution, _Notes),
+        ( get_dict(file, Evidence, File), string(File),
+          get_dict(line, Evidence, Line), integer(Line), Line > 0,
+          get_dict(quoted_signal, Evidence, Signal), string(Signal), Signal \\== "",
+          get_dict(model, Attribution, opus),
+          get_dict(date, Attribution, '2026-08-22'),
+          get_dict(verification_method, Attribution, Method), string(Method), Method \\== "",
+          get_dict(kind, Verdict, Kind),
+          check_authored_output(Id, Kind, Verdict)
+        )),
+    authored_render_citations:authored_render_citation(
+        add_numerator_denominator_sum, SumVerdict, _, _, _),
+    get_dict(discrepancy, SumVerdict, Discrepancy),
+    get_dict(source_states, Discrepancy, "Behr, Wachsmuth, Post & Lesh 1984"),
+    get_dict(registry_key, Discrepancy, "JRME_Behr_1985_Construct"),
+    get_dict(status, Discrepancy, held_not_linked).
+
+check_authored_output(Id, link, Verdict) :-
+    !,
+    get_dict(bibkey, Verdict, Bibkey),
+    get_dict(registry_name, Verdict, Name),
+    atom_string(BibkeyAtom, Bibkey),
+    ( misconception_render_link(Id, Name, via(bibkey(BibkeyAtom)))
+    ; misconception_render_link(Id, Name, via(authored))
+    ),
+    !.
+check_authored_output(Id, no_registry_bibkey, Verdict) :-
+    !,
+    get_dict(nearest_literature, Verdict, Nearest),
+    misconception_render_unlinked(
+        Id, reason(no_registry_bibkey(nearest_literature(Nearest)))).
+check_authored_output(Id, no_literature_signal, _Verdict) :-
+    !,
+    misconception_render_unlinked(Id, reason(no_literature_signal)).
+check_authored_output(Id, Kind, _Verdict) :-
+    throw(error(authored_bad_verdict(Id, Kind), _)).
 
 %!  misconception_render_link_summary(-Summary) is det.
 misconception_render_link_summary(Summary) :-
@@ -855,6 +1133,8 @@ misconception_render_link_summary(Summary) :-
     aggregate_all(count, misconception_render_unlinked(_, reason(no_bibkey_in_source)), NoBibkeyCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(bibkey_not_in_registry)), NotInRegistryCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(prefilter_rejected(_))), PrefilterCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(no_registry_bibkey(_))), NoRegistryBibkeyCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(no_literature_signal)), NoLiteratureSignalCount),
 
     Summary = _{
         total_render_ids: 44,
@@ -868,7 +1148,9 @@ misconception_render_link_summary(Summary) :-
         unlinked_render_ids: UnlinkedIdCount,
         unlinked_by_reason: _{ no_bibkey_in_source: NoBibkeyCount,
                                 bibkey_not_in_registry: NotInRegistryCount,
-                                prefilter_rejected: PrefilterCount }
+                                prefilter_rejected: PrefilterCount,
+                                no_registry_bibkey: NoRegistryBibkeyCount,
+                                no_literature_signal: NoLiteratureSignalCount }
     }.
 
 %!  check_misconception_render_link is det.
@@ -880,6 +1162,7 @@ check_misconception_render_link :-
     length(Census, CensusCount),
     ( CensusCount =:= 44 -> true ; throw(error(census_count_mismatch(CensusCount), _)) ),
     pairs_keys(Census, CensusIds),
+    check_authored_store(CensusIds),
 
     forall(render_deformation_citation(Id, _, _),
            ( memberchk(Id, CensusIds) -> true ; throw(error(citation_unknown_id(Id), _)) )),
@@ -925,7 +1208,7 @@ check_misconception_render_link :-
 
 def build(output: pathlib.Path) -> dict:
     for path in (GRAMMAR, FRACTION_PAIRS, DECIMAL_PAIRS, PARAMETRIC_ERRORS,
-                 ATTESTED_DEFORMATIONS, COVERAGE):
+                 ATTESTED_DEFORMATIONS, COVERAGE, AUTHORED_CITATIONS):
         if not path.exists():
             raise SystemExit(f"{path} does not exist")
 
@@ -970,7 +1253,10 @@ def build(output: pathlib.Path) -> dict:
 
     citations = compute_citations(census, transplants, attested_errors)
     registry_rows = load_registry_rows()
-    links, unlinked = compute_links_and_unlinked(census, citations, registry_rows, op_render_family)
+    authored_rows = load_authored_rows(census)
+    links, unlinked = compute_links_and_unlinked(
+        census, citations, registry_rows, op_render_family, authored_rows
+    )
 
     if len(links) + len(unlinked) < len(census):
         raise SystemExit("some render id produced neither a link nor an unlinked row")

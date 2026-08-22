@@ -17,19 +17,19 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.curriculum import extract_docling_grade as extraction  # noqa: E402
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 from scripts.research import extract_lesson_context as context  # noqa: E402
 
 
 GRADE_COUNTS = {
-    "k": 139,
-    "1": 148,
-    "2": 150,
-    "3": 143,
-    "4": 151,
-    "5": 148,
-    "6": 152,
-    "7": 143,
+    grade: baseline_value(f"k7.grade_{grade}.lessons")
+    for grade in ("k", "1", "2", "3", "4", "5", "6", "7")
 }
+EXPECTED_LESSONS = baseline_value("k7.lessons")
+EXPECTED_QUESTIONS = baseline_value("k7.guide_questions")
+EXPECTED_AUTHOR_HEADING = baseline_value("questions.im_author_heading")
+EXPECTED_PRINTED_REGION = baseline_value("questions.printed_region")
+EXPECTED_ADMITTED = baseline_value("questions.admitted")
 L17_REVIEWED_BLOCK_SHA256 = (
     "850eee0c8dc82c25f4f8da0c1cc51931b2de82db76cab02452d13077a41d89c4"
 )
@@ -159,12 +159,12 @@ def check_prolog_loads() -> None:
         "compiled_lesson_guide_question(_,guide_question(_,_,_,_,_,"
         "label_origin(author_heading),review_status(mechanically_admitted),"
         "review_evidence(mechanical_admission(im_author_heading(_),extraction(_),"
-        "date(_))))),1013),"
+        f"date(_))))),{EXPECTED_AUTHOR_HEADING}),"
         "aggregate_all(count,compiled_lesson_context:"
         "compiled_lesson_guide_question(_,guide_question(region(_),_,_,_,_,"
         "label_origin(machine_classification),review_status(mechanically_admitted),"
         "review_evidence(mechanical_admission(printed_region(_),extraction(_),"
-        "date(_))))),8081),"
+        f"date(_))))),{EXPECTED_PRINTED_REGION}),"
         "aggregate_all(count,compiled_lesson_context:"
         "compiled_lesson_guide_question(_,guide_question(_,_,_,_,_,_,"
         "review_status(mechanically_held),_)),2649),"
@@ -183,7 +183,8 @@ def check_prolog_loads() -> None:
     prolog(
         "use_module(curriculum/im/lesson_monitoring,[]),"
         "lesson_monitoring:guide_question_labels_dict(all,all,all,1,AllRows),"
-        "get_dict(matched_count,AllRows,9094),get_dict(admitted,AllRows,9094),"
+        f"get_dict(matched_count,AllRows,{EXPECTED_ADMITTED}),"
+        f"get_dict(admitted,AllRows,{EXPECTED_ADMITTED}),"
         "lesson_monitoring:guide_question_labels_dict(all,launch,labels,1,LaunchRows),"
         "get_dict(rows,LaunchRows,[Launch|_]),get_dict(section_name,Launch,\"Launch\"),"
         "get_dict(status,Launch,mechanically_admitted),"
@@ -227,13 +228,14 @@ def main() -> int:
         check_source_spans(payloads)
         check_grade_output(grade, payloads)
         all_payloads.extend(payloads)
-    assert len(all_payloads) == 1174
-    assert sum(len(payload["guide_questions"]) for payload in all_payloads) == 2348
+    assert len(all_payloads) == EXPECTED_LESSONS
+    assert sum(len(payload["guide_questions"]) for payload in all_payloads) == EXPECTED_QUESTIONS
     check_named_absence_fixture()
     check_compiled_context()
     check_prolog_loads()
     print(
-        "PASS K-7 guide questions: 1174 lessons, 2348 exact source records, "
+        f"PASS K-7 guide questions: {EXPECTED_LESSONS} lessons, "
+        f"{EXPECTED_QUESTIONS} exact source records, "
         "positional warrants joined, serving refusals pinned, L17 reviewed bytes unchanged"
     )
     return 0

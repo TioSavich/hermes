@@ -15,19 +15,17 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.counts_baseline_lib import baseline_value  # noqa: E402
+
 DOCKET = ROOT / "docs/research/internal/2026-08-10-r4-admission-docket.json"
 STORE = ROOT / "scripts/bigred/loops/admitted_bridges.pl"
 DOCKET_CITATION = "docs/research/internal/2026-08-10-r4-admission-docket.json"
 COLLECTION_CITATION = ".bigred-collected/2026-08-10-loops-wave4-r4/rows"
 RULING_CITATION = "plans/2026-08-11-r4-admission-band1-draft.md"
 EXPECTED_GENERATED_FOR = "2026-08-10 R4 admission ceremony"
-
-EXPECTED_PARTITION = {
-    "admitted": 594,
-    "held_thin": 507,
-    "held_singleton": 152,
-    "held_answer_degenerate": 9,
-}
 EXPECTED_ADAPTER_COUNTS = {
     "carry_measured_magnitude": 5,
     "integer_over_one_to_fraction_object": 9,
@@ -136,6 +134,27 @@ class AdmissionError(RuntimeError):
     """The docket, ruling arithmetic, or tracked store disagrees."""
 
 
+def expected_distinct_inputs() -> int:
+    return baseline_value("bridges.distinct_adapted_inputs")
+
+
+def expected_cross_family() -> int:
+    return baseline_value("bridges.cross_family")
+
+
+def expected_facts() -> int:
+    return baseline_value("bridges.facts")
+
+
+def expected_partition() -> dict[str, int]:
+    return {
+        "admitted": expected_facts(),
+        "held_thin": 507,
+        "held_singleton": 152,
+        "held_answer_degenerate": 9,
+    }
+
+
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AdmissionError(message)
@@ -184,7 +203,7 @@ def verify_warrant(row: dict[str, Any]) -> None:
 def partition_rows(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     """Apply answer degeneracy, singleton degeneracy, then evidence strength."""
     buckets: dict[str, list[dict[str, Any]]] = {
-        name: [] for name in EXPECTED_PARTITION
+        name: [] for name in expected_partition()
     }
     observed_answer_degenerate: set[tuple[str, str, str, str, str]] = set()
 
@@ -213,7 +232,7 @@ def partition_rows(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]
     )
     actual_partition = {name: len(bucket) for name, bucket in buckets.items()}
     require(
-        actual_partition == EXPECTED_PARTITION,
+        actual_partition == expected_partition(),
         f"partition mismatch: {actual_partition!r}",
     )
     require(sum(actual_partition.values()) == 1_262, "band-1 partition does not sum to 1,262")
@@ -231,9 +250,10 @@ def verify_admitted_arithmetic(rows: list[dict[str, Any]]) -> None:
         class_counts == Counter(EXPECTED_CLASS_COUNTS),
         f"admitted class counts mismatch: {dict(sorted(class_counts.items()))!r}",
     )
+    measurements = admitted_measurements(rows)
     require(
-        all(row.get("distinct_adapted_inputs") == 20 for row in rows),
-        "an admitted row does not carry 20 distinct adapted inputs",
+        measurements["distinct_adapted_inputs"] == expected_distinct_inputs(),
+        f"an admitted row does not carry {expected_distinct_inputs()} distinct adapted inputs",
     )
 
     seam_counts: Counter[str] = Counter()
@@ -248,12 +268,34 @@ def verify_admitted_arithmetic(rows: list[dict[str, Any]]) -> None:
         f"admitted seam counts mismatch: {dict(sorted(seam_counts.items()))!r}",
     )
 
-    same_family = sum(bool(row.get("same_family")) for row in rows)
+    same_family = measurements["same_family"]
     require(
         same_family == EXPECTED_SAME_FAMILY,
         f"same-family count mismatch: {same_family}",
     )
-    require(len(rows) - same_family == 383, "cross-family count mismatch")
+    require(
+        measurements["cross_family"] == expected_cross_family(),
+        "cross-family count mismatch",
+    )
+
+
+def admitted_measurements(rows: list[dict[str, Any]]) -> dict[str, int]:
+    distinct_inputs = {row.get("distinct_adapted_inputs") for row in rows}
+    require(
+        len(distinct_inputs) == 1 and isinstance(next(iter(distinct_inputs)), int),
+        "admitted rows do not carry one integer distinct-input count",
+    )
+    same_family = sum(
+        row.get("same_family") is True
+        or row["source"]["family"] == row["target"]["family"]
+        for row in rows
+    )
+    return {
+        "distinct_adapted_inputs": next(iter(distinct_inputs)),
+        "same_family": same_family,
+        "cross_family": len(rows) - same_family,
+        "facts": len(rows),
+    }
 
 
 def parse_path(path: str) -> tuple[str | int, ...]:
@@ -450,11 +492,11 @@ def render_store(facts: list[dict[str, Any]]) -> str:
     generated_for = next(iter(generated_for_values))
     header = f"""/** <module> Ceremony-admitted typed contract bridges
  *
- * This store records 594 band-1 contract_bridge admissions.  Class P licenses
+ * This store records {expected_facts()} band-1 contract_bridge admissions.  Class P licenses
  * transport of the named role only.  It licenses neither equivalence between
  * the machines nor correctness of the transported value.
  *
- * The ruled partition is 594 admitted, 507 held because their evidence is
+ * The ruled partition is {expected_facts()} admitted, 507 held because their evidence is
  * thin, 152 held because the carried value arrives as the sole element of a
  * collection, and 9 held because the target answer is degenerate.  The 507
  * thin rows wait on grid repairs and re-collection.  The 152 singleton rows
@@ -491,8 +533,8 @@ def render_store(facts: list[dict[str, Any]]) -> str:
 def verify_store_text() -> None:
     text = STORE.read_text(encoding="utf-8")
     require(
-        text.count("admitted_bridge(") == 594,
-        "tracked store does not contain exactly 594 admitted_bridge( occurrences",
+        text.count("admitted_bridge(") == expected_facts(),
+        f"tracked store does not contain exactly {expected_facts()} admitted_bridge( occurrences",
     )
     # Count every directive, not only module directives: a non-module
     # directive after the header would execute at load time, and the
@@ -511,7 +553,7 @@ def verify_store_text() -> None:
         r"(?m)^[ \t]*([a-z][A-Za-z0-9_]*)[ \t]*\(", text
     )
     require(
-        Counter(clause_heads) == Counter({"admitted_bridge": 594}),
+        Counter(clause_heads) == Counter({"admitted_bridge": expected_facts()}),
         f"tracked store has another clause head: {dict(Counter(clause_heads))!r}",
     )
 
@@ -554,7 +596,7 @@ def fact_identity(fact: dict[str, Any]) -> tuple[str, str, str, str]:
 
 
 def check_tracked_store(actual: list[dict[str, Any]]) -> None:
-    require(len(actual) == 594, f"store fact count mismatch: {len(actual)}")
+    require(len(actual) == expected_facts(), f"store fact count mismatch: {len(actual)}")
     identities = [fact_identity(fact) for fact in actual]
     require(len(identities) == len(set(identities)), "store contains a duplicate admitted identity")
 
@@ -702,7 +744,7 @@ def main() -> int:
             f"{DOCKET_CITATION} is local runtime and is absent"
         )
         print(
-            "PASS admitted_bridges_store tracked-store: store-facts=594 "
+            f"PASS admitted_bridges_store tracked-store: store-facts={expected_facts()} "
             "duplicate-identities=0 R=146 P=442 U=6 "
             "witness-provenance=complete"
         )
@@ -713,7 +755,7 @@ def main() -> int:
             f"held-thin={len(buckets['held_thin'])} "
             f"held-singleton={len(buckets['held_singleton'])} "
             f"held-answer-degenerate={len(buckets['held_answer_degenerate'])} "
-            "store-facts=594 R=146 P=442 U=6"
+            f"store-facts={expected_facts()} R=146 P=442 U=6"
         )
     return 0
 
