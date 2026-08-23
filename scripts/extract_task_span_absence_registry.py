@@ -22,6 +22,7 @@ import argparse
 import difflib
 import json
 import re
+import subprocess
 import sys
 import tempfile
 from collections import Counter, defaultdict
@@ -33,6 +34,11 @@ OUTPUT = ROOT / "knowledge" / "index" / "task_span_absence_registry.pl"
 LESSON_EVIDENCE = ROOT / "data" / "learningcommons" / "derived" / "im_lesson_evidence.json"
 COMPILER_DIRECTORY = ROOT / "scripts" / "curriculum"
 RULES = COMPILER_DIRECTORY / "action_mapping_rules.json"
+DOCLING_GUIDES = (
+    ROOT
+    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
+    / "TeacherLessonGuides"
+)
 
 sys.path.insert(0, str(COMPILER_DIRECTORY))
 import compile_action_mappings as compiler  # noqa: E402
@@ -392,13 +398,13 @@ def classify(text: str, decisions: list[dict]) -> tuple[str, list[str]]:
 def build_rows(root: Path) -> dict[str, object]:
     _mappings, _tasks, report = compiler.build(root, RULES)
     decisions_by_span: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    readiness, missing_only_task_evidence = lesson_readiness(LESSON_EVIDENCE)
     for row in report["task_candidates"]:
         decisions_by_span[(row["code"], row["position"].split("/")[0])].append(row)
 
     docs = compiler.read_teacher_guides(root)
     spans = compiler.extract_student_task_spans(docs)
     geometry = span_geometry(root)
-    readiness, missing_only_task_evidence = lesson_readiness(LESSON_EVIDENCE)
 
     span_keys = {(span.code, span.position) for span in spans}
     if len(span_keys) != len(spans):
@@ -677,12 +683,48 @@ def check_output(expected: str, output: Path) -> int:
     return 1
 
 
+def validate_tracked_output(output: Path) -> None:
+    if not output.is_file():
+        raise RuntimeError(f"tracked registry is absent: {output}")
+    quoted = str(output).replace("'", "''")
+    goal = (
+        f"load_files('{quoted}',[silent(true)]),"
+        "task_span_absence_registry:task_span_denominator(spans,Spans),"
+        "aggregate_all(count,task_span_absence_registry:task_span_receipt(_,_,_,_),Spans),"
+        "findall(C,task_span_absence_registry:task_span_status_count(_,C),Cs),"
+        "sum_list(Cs,Spans),"
+        "forall(task_span_absence_registry:task_span_receipt(_,_,Status,Evidence),"
+        "(compound(Status),is_list(Evidence))),halt"
+    )
+    completed = subprocess.run(
+        ["swipl", "-q", "-g", goal],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            "tracked task-span registry failed load or denominator checks: "
+            + (completed.stderr or completed.stdout).strip()
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the registry is stale")
     parser.add_argument("--output", type=Path, default=OUTPUT, help=argparse.SUPPRESS)
     arguments = parser.parse_args()
     output = arguments.output if arguments.output.is_absolute() else ROOT / arguments.output
+    if arguments.check and not DOCLING_GUIDES.is_dir():
+        validate_tracked_output(output)
+        print(
+            "SKIP task span absence registry re-derivation: "
+            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+            "TeacherLessonGuides absent locally (docling full-output); "
+            "tracked registry loads and its row and status denominators reconcile"
+        )
+        return 0
     rendered, measured = render_registry()
     if arguments.check:
         result = check_output(rendered, output)

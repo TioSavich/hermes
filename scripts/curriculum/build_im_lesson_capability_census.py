@@ -1140,11 +1140,49 @@ def render(payload: dict) -> str:
     ) + "\n"
 
 
+def validate_tracked_census(path: Path) -> dict:
+    payload = load_json(path)
+    if not isinstance(payload, dict) or payload.get("schema") != SCHEMA:
+        fail("tracked capability census has an unexpected schema")
+    lessons = payload.get("lessons")
+    ladder = payload.get("ladder")
+    populations = payload.get("source_populations")
+    if not isinstance(lessons, list) or not isinstance(ladder, list) or not isinstance(populations, dict):
+        fail("tracked capability census has malformed core sections")
+    if len(lessons) != populations.get("union"):
+        fail("tracked capability census lesson denominator drifted")
+    lesson_ids = [row.get("lesson") for row in lessons]
+    if len(lesson_ids) != len(set(lesson_ids)):
+        fail("tracked capability census has duplicate lesson ids")
+    memberships = Counter()
+    for row in lessons:
+        for rung, included in row.get("memberships", {}).items():
+            memberships[rung] += bool(included)
+    for rung in ladder:
+        identifier = rung.get("id")
+        if identifier in memberships and rung.get("count") != memberships[identifier]:
+            fail(f"tracked capability census rung count drifted: {identifier}")
+        if rung.get("count", 0) > rung.get("denominator", -1):
+            fail(f"tracked capability census rung exceeds denominator: {identifier}")
+    return payload
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
+
+    if args.check and not compiler.MIDDLE_GUIDE_ROOT.is_dir():
+        payload = validate_tracked_census(args.output)
+        print(
+            "SKIP IM lesson-capability census re-derivation: "
+            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+            "TeacherLessonGuides absent locally (docling full-output); "
+            f"tracked schema, {len(payload['lessons'])}-lesson union, unique ids, "
+            "and ladder membership denominators verified"
+        )
+        return 0
 
     payload = build()
     rendered = render(payload)

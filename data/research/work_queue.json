@@ -469,17 +469,6 @@
   },
   {
     "evidence": {
-      "count": 33,
-      "derived_from": "misconception_render_unlinked/2 rows"
-    },
-    "id": "held:misconception-render-links",
-    "rows_blocked": 33,
-    "source": "knowledge/strategies/render/misconception_render_link.pl",
-    "tier": "held",
-    "title": "Author warranted links for unlinked render deformations"
-  },
-  {
-    "evidence": {
       "authoritative_status": "quarantined",
       "collected": "2026-08-22",
       "consumer": "none_named",
@@ -515,6 +504,17 @@
     "source": "knowledge/index/consumption_lifecycle.pl; knowledge/index/consumption_attested_run2.pl; .bigred-collected/2026-08-19-total-audit/audit_ledger.json",
     "tier": "store",
     "title": "Review quarantine for knowledge/strategies/abstraction/g8_scaled_copy_and_similar_sides.pl"
+  },
+  {
+    "evidence": {
+      "count": 32,
+      "derived_from": "misconception_render_unlinked/2 rows"
+    },
+    "id": "held:misconception-render-links",
+    "rows_blocked": 32,
+    "source": "knowledge/strategies/render/misconception_render_link.pl",
+    "tier": "held",
+    "title": "Author warranted links for unlinked render deformations"
   },
   {
     "evidence": {

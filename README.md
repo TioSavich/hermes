@@ -111,11 +111,13 @@ python3 scripts/render/check_prebaked.py
 python3 scripts/bundle/smoke_bundle.py
 ```
 
-A number of its checks re-derive tracked artifacts from local research
-state the repository does not carry — the docling extraction tree,
-`hermes/app/runtime/experiments/`, and collected audit runs. On a clone
-without that state, those checks fail on their missing inputs by name;
-that reports the boundary, not a broken checkout.
+The full suite also passes on a fresh clone. A number of its checks
+re-derive tracked artifacts from local research state the repository does
+not carry — the docling extraction tree, `hermes/app/runtime/experiments/`,
+and collected audit runs. On a clone without that state, each of those
+checks verifies what the tracked files support and then skips its
+re-derivation with a named `SKIP` line; the skips report that boundary,
+and everything else runs.
 
 When lesson, strategy, misconception, standards, literature, or
 inferential-strength facts change, regenerate the lesson context cache before the

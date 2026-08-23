@@ -119,7 +119,7 @@ def main() -> int:
     for _render_id, _name, via in links:
         key = via.split("(")[0]
         via_counts[key] = via_counts.get(key, 0) + 1
-    expected_via = {"name_equality": 5, "bibkey": 1, "authored": 5}
+    expected_via = {"name_equality": 5, "bibkey": 1, "authored": 6}
     if via_counts != expected_via:
         errors.append(f"link lane counts are {via_counts}, expected {expected_via}")
 
@@ -130,7 +130,6 @@ def main() -> int:
     expected_reasons = {
         "no_registry_bibkey": 9,
         "no_literature_signal": 23,
-        "prefilter_rejected": 1,
     }
     if reason_counts != expected_reasons:
         errors.append(

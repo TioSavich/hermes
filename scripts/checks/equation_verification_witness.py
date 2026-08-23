@@ -299,7 +299,47 @@ dict_string(Dict, Key, Value) :-
     return outcomes
 
 
+DOCLING_GUIDES = compiler.MIDDLE_GUIDE_ROOT
+
+
+def validate_tracked_ledger() -> tuple[int, int]:
+    ledger = json.loads(compiler.EQUATION_VERIFICATIONS.read_text(encoding="utf-8"))
+    if ledger.get("schema") != "lesson_equation_verifications_v1":
+        raise SystemExit("tracked equation ledger has an unexpected schema")
+    spans = ledger.get("spans")
+    summary = ledger.get("summary")
+    if not isinstance(spans, list) or not isinstance(summary, dict):
+        raise SystemExit("tracked equation ledger has malformed spans or summary")
+    accepted = [
+        row
+        for span in spans
+        for row in span.get("rows", [])
+        if row.get("accepted") is True
+    ]
+    if summary.get("routine_spans") != len(spans):
+        raise SystemExit("tracked equation ledger routine-span denominator drifted")
+    if summary.get("accepted_equations") != len(accepted):
+        raise SystemExit("tracked equation ledger accepted-equation denominator drifted")
+    for row in accepted:
+        if not row.get("reason_trace") or not row.get("witness_source"):
+            raise SystemExit("tracked accepted equation lacks a reason trace or witness source")
+    return len(spans), len(accepted)
+
+
 def main() -> int:
+    if not DOCLING_GUIDES.is_dir():
+        spans, accepted = validate_tracked_ledger()
+        controls = formal_core_controls()
+        if not controls:
+            raise SystemExit("formal-core controls returned no receipts")
+        print(
+            "SKIP equation-verification guide witnesses: "
+            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+            "TeacherLessonGuides absent locally (docling full-output); "
+            f"tracked ledger schema, {spans} spans, {accepted} accepted reason traces, "
+            f"and {len(controls)} formal-core controls verified"
+        )
+        return 0
     docs, covered, attachments = coverage()
     rows = compiler.validate_equation_verifications(ROOT, docs, covered, attachments)
     ledger = json.loads(

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from fractions import Fraction
+from pathlib import Path
 
 from probe_reader_coverage import sentences
 from probe_task_statements import load_rows
@@ -22,6 +23,8 @@ from surface_normalizer import normalize_surface
 BOXES = "im_defrag_748d648a603084b18ef50728_1"
 COMPARISON = "im_defrag_bfee414957b9544aaf7a78bc_1"
 EXPRESSION = "im_defrag_cccb8e4da6df0e2433600096_1"
+ROOT = Path(__file__).resolve().parents[2]
+LANGUAGE_RUNTIME = ROOT / "hermes/app/runtime/experiments/language"
 
 
 def source_row(record_id: str) -> dict:
@@ -50,6 +53,24 @@ def synthetic_source_row(text: str) -> dict:
 
 def main() -> int:
     truth = load_ground_truth()
+    synthetic_join = compare_ground_truth(
+        "synthetic",
+        {
+            "status": "completed",
+            "answers": [{"value": "4"}],
+            "ask_targets": [{"target_kind": "numeric", "referent_class": "book"}],
+        },
+        {"synthetic": [{"result_term": "4"}]},
+    )
+    assert synthetic_join["verdict"] == "agree"
+    if not LANGUAGE_RUNTIME.is_dir():
+        print(
+            "SKIP completion-thesis corpus receipts: "
+            "hermes/app/runtime/experiments/language absent locally "
+            "(gitignored language runtime); tracked ground-truth loading and numeric "
+            "comparison control verified"
+        )
+        return 0
     hashes = source_hashes()
     runner = PrologRunner()
     try:
@@ -132,16 +153,6 @@ def main() -> int:
     assert totals["completed_from_partial"]["numerator"] == 0
     assert totals["completed"]["numerator"] == 3
 
-    synthetic_join = compare_ground_truth(
-        "synthetic",
-        {
-            "status": "completed",
-            "answers": [{"value": "4"}],
-            "ask_targets": [{"target_kind": "numeric", "referent_class": "book"}],
-        },
-        {"synthetic": [{"result_term": "4"}]},
-    )
-    assert synthetic_join["verdict"] == "agree"
     print("completion_thesis: all focused receipts passed")
     return 0
 

@@ -91,6 +91,7 @@ misconception_render_link(angle_confused_with_ray_length, batch_row_39105, via(b
 misconception_render_link(borrow_without_reducing_bases, borrow_without_reducing_bases, via(name_equality)).
 misconception_render_link(decimal_point_rule_misapplication, decimal_point_rule_misapplication, via(name_equality)).
 misconception_render_link(gap_thinking_fraction_comparison, gap_thinking, via(authored)).
+misconception_render_link(hybridized_model, batch_row_38178, via(authored)).
 misconception_render_link(iterate_only_no_reverse, batch_row_37827, via(authored)).
 misconception_render_link(make_ten_drop_leftover, make_ten_drop_leftover, via(name_equality)).
 misconception_render_link(number_line_count_marks_not_intervals, count_marks_not_intervals, via(authored)).
@@ -121,7 +122,6 @@ misconception_render_unlinked(dropped_carry_mark, reason(no_literature_signal)).
 misconception_render_unlinked(false_equation, reason(no_literature_signal)).
 misconception_render_unlinked(flip_needed, reason(no_literature_signal)).
 misconception_render_unlinked(glyph_overwrite, reason(no_literature_signal)).
-misconception_render_unlinked(hybridized_model, reason(prefilter_rejected('ZDM_Garderen_2014_Challenges'))).
 misconception_render_unlinked(improper_fraction_chain_loss, reason(no_registry_bibkey(nearest_literature("Lakoff & Nunez (L&N), Motion-Along-a-Path; Steffe Stage-3 units coordination")))).
 misconception_render_unlinked(iterate_given_overshoot, reason(no_registry_bibkey(nearest_literature("Lakoff & Nunez (L&N), Object-Construction entailment")))).
 misconception_render_unlinked(mirror_written_numeral, reason(no_literature_signal)).
@@ -428,20 +428,20 @@ check_unlinked_warrant(_Census, Id, Reason) :-
 
 %!  check_authored_store(+CensusIds) is det.
 %
-%   Confirms that the generated verdicts consume all 38 authored rows. The one
+%   Confirms that the generated verdicts consume all 39 authored rows. The one
 %   link also found by the widened mechanical regex stays via(bibkey); the
 %   other five link rows use via(authored).
 check_authored_store(CensusIds) :-
     findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
-    length(Ids, 38),
+    length(Ids, 39),
     sort(Ids, UniqueIds),
-    length(UniqueIds, 38),
+    length(UniqueIds, 39),
     forall(member(Id, UniqueIds),
            ( memberchk(Id, CensusIds) -> true ; throw(error(authored_unknown_id(Id), _)) )),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, link) ),
-                  6),
+                  7),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_registry_bibkey) ),
@@ -456,7 +456,8 @@ check_authored_store(CensusIds) :-
         ( get_dict(file, Evidence, File), string(File),
           get_dict(line, Evidence, Line), integer(Line), Line > 0,
           get_dict(quoted_signal, Evidence, Signal), string(Signal), Signal \== "",
-          get_dict(model, Attribution, opus),
+          get_dict(model, Attribution, Model),
+          memberchk(Model, [opus, fable]),
           get_dict(date, Attribution, '2026-08-22'),
           get_dict(verification_method, Attribution, Method), string(Method), Method \== "",
           get_dict(kind, Verdict, Kind),

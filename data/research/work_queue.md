@@ -54,7 +54,7 @@ No entries.
 |---:|---|---:|---|---|
 | 1 | `held:teacher-question-labels`<br>Run an admission pass on held teacher-question labels | 2,305 | `curriculum/im/generated/admitted_teacher_question_labels.pl` | derived_from=held_question_label/6 rows; count=2305 |
 | 2 | `held:review-proposals`<br>Run an admission pass on held review proposals | 537 | `knowledge/index/admitted_review_proposals.pl` | derived_from=held_signature_anchor/9 and held_unit_recognition_proposal/6 rows; count=537 |
-| 3 | `held:misconception-render-links`<br>Author warranted links for unlinked render deformations | 33 | `knowledge/strategies/render/misconception_render_link.pl` | derived_from=misconception_render_unlinked/2 rows; count=33 |
+| 3 | `held:misconception-render-links`<br>Author warranted links for unlinked render deformations | 32 | `knowledge/strategies/render/misconception_render_link.pl` | derived_from=misconception_render_unlinked/2 rows; count=32 |
 | 4 | `held:guide-questions`<br>Run an admission pass on held guide questions | 1 | `curriculum/im/generated/admitted_guide_questions.pl` | derived_from=held_guide_question/6 rows; count=1 |
 
 ## Defect

@@ -31,6 +31,7 @@ UNIT_RATE_ROWS = {
 }
 RESULTS = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
 SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
+EXPERIMENTS = REPO / "hermes/app/runtime/experiments"
 
 
 def corpus_row(runner: PrologRunner, record_id: str, corpus_index: int) -> dict:
@@ -172,6 +173,13 @@ def check_full_artifacts() -> None:
 def main() -> int:
     check_engine_recipes()
     check_guide_lines()
+    if not EXPERIMENTS.is_dir():
+        print(
+            "SKIP agreement-scale language receipts: "
+            "hermes/app/runtime/experiments absent locally (gitignored research state); "
+            "tracked saturation recipes and guide line accounting verified"
+        )
+        return 0
     check_full_artifacts()
     runner = PrologRunner()
     try:

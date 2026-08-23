@@ -101,7 +101,7 @@ def standard_sources() -> list[Path]:
     ]
 
 
-def base_lesson_codes() -> dict[str, set[str]]:
+def base_lesson_codes(lessons: set[str] | None = None) -> dict[str, set[str]]:
     """Reproduce the design's standards/im + generated-explicit baseline."""
     concept_codes: dict[str, set[str]] = defaultdict(set)
     unit_concepts: dict[str, str] = {}
@@ -118,7 +118,8 @@ def base_lesson_codes() -> dict[str, set[str]]:
     ):
         explicit[lesson].add(code)
 
-    lessons = {row["lesson"] for row in read_jsonl(PUSU_RESULTS)}
+    if lessons is None:
+        lessons = {row["lesson"] for row in read_jsonl(PUSU_RESULTS)}
     result: dict[str, set[str]] = defaultdict(set)
     for lesson in lessons:
         if lesson in explicit:
@@ -146,8 +147,10 @@ def addressing_codes() -> dict[str, set[str]]:
     return result
 
 
-def joined_lesson_codes() -> tuple[dict[str, set[str]], dict[str, set[str]]]:
-    before = base_lesson_codes()
+def joined_lesson_codes(
+    lessons: set[str] | None = None,
+) -> tuple[dict[str, set[str]], dict[str, set[str]]]:
+    before = base_lesson_codes(lessons)
     after = defaultdict(set, {lesson: set(codes) for lesson, codes in before.items()})
     for lesson, codes in addressing_codes().items():
         after[lesson].update(codes)
@@ -252,12 +255,9 @@ def row_key(row: dict[str, Any], code: str) -> tuple[str, str, str]:
 
 
 def cluster_contract_families() -> dict[str, str]:
-    """Map each grade 8 cluster to the contract family its machines file.
-
-    Read from the two artifacts and nothing else: the sibling map says which
-    machines a cluster ran, and the contract store says under which family each
-    machine is declared.  A cluster whose machines disagree is an error rather
-    than a choice made here.
+    """Map each grade 8 cluster to its machines' contract family.
+    The sibling map names the machines; the contract store names their family.
+    A cluster whose machines disagree is an error rather than a choice here.
     """
     contract_family = {
         machine: family
@@ -284,9 +284,13 @@ def cluster_contract_families() -> dict[str, str]:
 
 
 def build_rows(
-    lesson_codes: dict[str, set[str]], threshold: int
+    lesson_codes: dict[str, set[str]] | None, threshold: int
 ) -> tuple[list[StoreRow], dict[str, Any]]:
     wave_rows = read_jsonl(WAVE5_ROWS) + read_jsonl(WAVE5_G8_ROWS)
+    if lesson_codes is None:
+        _before_codes, lesson_codes = joined_lesson_codes(
+            {row["lesson"] for row in wave_rows}
+        )
     support: Counter[tuple[str, str, str]] = Counter()
     support_lessons: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     witnesses: dict[tuple[str, str, str], dict[str, Any]] = {}
@@ -536,12 +540,17 @@ def main() -> int:
     if args.threshold < 1:
         parser.error("--threshold must be at least 1")
 
-    coverage_bytes, lesson_codes = coverage_receipt()
+    pusu_available = PUSU_RESULTS.is_file()
+    if pusu_available:
+        coverage_bytes, lesson_codes = coverage_receipt()
+    else:
+        lesson_codes = None
     clusters = cluster_contract_families()
     rows, summary = build_rows(lesson_codes, args.threshold)
     store_bytes = generated_source(rows, args.threshold, clusters)
     fresh = compare_or_write(args.output, store_bytes, args.check)
-    fresh = compare_or_write(args.coverage_output, coverage_bytes, args.check) and fresh
+    if pusu_available:
+        fresh = compare_or_write(args.coverage_output, coverage_bytes, args.check) and fresh
     summary.update(
         {
             "mode": "check" if args.check else "build",
@@ -550,7 +559,15 @@ def main() -> int:
             "fresh": fresh,
         }
     )
-    print(json.dumps(summary, sort_keys=True))
+    if pusu_available:
+        print(json.dumps(summary, sort_keys=True))
+    else:
+        print(
+            "SKIP standard-doing coverage receipt: "
+            "hermes/app/runtime/experiments/language/pusu_results.jsonl absent locally "
+            "(gitignored language runtime); tracked standards, machine maps, contracts, "
+            f"and {summary['rows']}-row standard-doing store verified"
+        )
     return 0 if fresh else 1
 
 

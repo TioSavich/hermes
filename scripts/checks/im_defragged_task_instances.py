@@ -7,6 +7,7 @@ from collections import Counter, defaultdict
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -22,6 +23,7 @@ COMPILED = ROOT / "curriculum/im/generated/compiled_task_instances.pl"
 GRADE8_COMPILED = ROOT / "curriculum/im/generated/grade_8_extracted_task_instances.pl"
 GENERATOR = ROOT / "scripts/curriculum/build_im_defragged_task_instances.py"
 FIXTURES = ROOT / "scripts/checks/fixtures/im_defrag_source_spans.json"
+EXPERIMENTS = ROOT / "hermes/app/runtime/experiments"
 EXPECTED_STATUS = Counter(
     {
         "already_complete": 3417,
@@ -53,6 +55,7 @@ EXPECTED_REPAIR_CLASSES = Counter(
 )
 SWI_GOAL = r"""use_module(library(http/json)),use_module(curriculum/im/generated/compiled_defragged_task_instances), forall(compiled_defragged_task_instances:defragged_task_instance(Id,L,T,D),(term_string(T,TS,[quoted(true)]),get_dict(source_evidence,D,E),term_string(E,ES,[quoted(true)]),del_dict(source_evidence,D,_,D1),del_dict(visuals,D1,Vs,D2),length(Vs,VC),put_dict(_{record_id:Id,lesson:L,task_term:TS,evidence_term:ES,visual_count:VC},D2,O),json_write_dict(current_output,O,[width(0)]),nl)),halt."""
 VISUAL_GOAL = r"""use_module(curriculum/im/generated/compiled_defragged_task_instances),forall(compiled_defragged_task_instances:defragged_task_instance(_,_,_,D),(get_dict(status,D,Status),get_dict(visuals,D,Vs),(Status==blocked_missing_visual->Vs=[V],get_dict(status,V,VisualStatus),get_dict(asset,V,Asset),((VisualStatus==excluded_docling_asset,string(Asset),exists_directory(Asset));(memberchk(VisualStatus,[missing_from_guide_markdown,missing_from_absent_pdf]),Asset==none));Vs==[]))),halt."""
+VISUAL_SCHEMA_GOAL = r"""use_module(curriculum/im/generated/compiled_defragged_task_instances),forall(compiled_defragged_task_instances:defragged_task_instance(_,_,_,D),(get_dict(status,D,Status),get_dict(visuals,D,Vs),(Status==blocked_missing_visual->Vs=[V],get_dict(status,V,VisualStatus),get_dict(asset,V,Asset),((VisualStatus==excluded_docling_asset,string(Asset));(memberchk(VisualStatus,[missing_from_guide_markdown,missing_from_absent_pdf]),Asset==none));Vs==[]))),halt."""
 
 
 def fail(message: str) -> None:
@@ -162,55 +165,110 @@ def joined(ids: list[str], joiner: str, decoded: dict[str, str]) -> str:
         fail(f"unknown source segment reference: {exc.args[0]}")
 
 
-def check_provenance(rows: list[dict]) -> None:
+def check_provenance(rows: list[dict]) -> dict[str, int]:
     cache: dict[str, bytes] = {}
+    verified_segments = 0
+    unavailable_segments = 0
+    allowed_decoders = {
+        "utf8",
+        "json_string_ascii",
+        "json_string_utf8",
+        "docling_json_text_v1",
+        "docling_formula_spacing_v1",
+    }
     for row in rows:
         segments = row["source_segments"]
         by_id = {segment["id"]: segment for segment in segments}
         if len(by_id) != len(segments):
             fail(f"duplicate segment ID inside {row['record_id']}")
-        decoded = {
-            segment_id: decode_segment(segment, cache)
-            for segment_id, segment in by_id.items()
-        }
-        statement = joined(row["statement_segments"], row["statement_joiner"], decoded)
-        if statement != row["complete_statement"]:
-            fail(f"invented or unmapped statement text in {row['record_id']}")
+        referenced = [
+            *row["statement_segments"],
+            *row["source_statement_segments"],
+            *row.get("fragment_segments", []),
+            *(
+                segment_id
+                for referent in row["referents"]
+                for segment_id in [
+                    *referent["segments"],
+                    *referent["antecedent_segments"],
+                ]
+            ),
+        ]
+        unknown = sorted(set(referenced) - set(by_id))
+        if unknown:
+            fail(f"unknown source segment references in {row['record_id']}: {unknown}")
+        decoded: dict[str, str] = {}
+        for segment_id, segment in by_id.items():
+            path = segment.get("path")
+            if not isinstance(path, str):
+                fail(f"segment path is malformed for {segment_id}")
+            candidate = (ROOT / path).resolve()
+            if not candidate.is_relative_to(ROOT.resolve()):
+                fail(f"segment escapes repository root: {path}")
+            if segment.get("decoder") not in allowed_decoders:
+                fail(f"unknown decoder for {segment_id}: {segment.get('decoder')}")
+            if not isinstance(segment.get("sha256"), str) or not re.fullmatch(
+                r"[0-9a-f]{64}", segment["sha256"]
+            ):
+                fail(f"segment hash is malformed for {segment_id}")
+            if candidate.is_file():
+                decoded[segment_id] = decode_segment(segment, cache)
+                verified_segments += 1
+            elif not EXPERIMENTS.is_dir() and candidate.is_relative_to(EXPERIMENTS.resolve()):
+                unavailable_segments += 1
+            else:
+                fail(f"segment source is absent: {path}")
+
+        def verify_join(ids: list[str], joiner: str, expected: str, label: str) -> None:
+            if all(segment_id in decoded for segment_id in ids):
+                actual = joined(ids, joiner, decoded)
+                if actual != expected:
+                    fail(f"{label} is not byte-backed: {row['record_id']}")
+
+        verify_join(
+            row["statement_segments"], row["statement_joiner"],
+            row["complete_statement"], "statement text",
+        )
         if row["source_statement_segments"]:
-            source_statement = joined(
+            verify_join(
                 row["source_statement_segments"],
                 row["source_statement_joiner"],
-                decoded,
+                row["source_statement"],
+                "source statement",
             )
-            if source_statement != row["source_statement"]:
-                fail(
-                    f"invented or unmapped source statement in {row['record_id']}"
-                )
         if row["status"] == "blocked_layout":
-            if statement or row["statement_segments"]:
+            if row["complete_statement"] or row["statement_segments"]:
                 fail(
                     f"layout-blocked row claims a complete statement: {row['record_id']}"
                 )
-            fragment = joined(row["fragment_segments"], row["fragment_joiner"], decoded)
-            if fragment != row["available_fragment"] or not fragment:
-                fail(f"layout-blocked fragment is not byte-backed: {row['record_id']}")
-        elif not statement:
+            if not row["available_fragment"] or not row["fragment_segments"]:
+                fail(f"layout-blocked row has no available fragment: {row['record_id']}")
+            verify_join(
+                row["fragment_segments"], row["fragment_joiner"],
+                row["available_fragment"], "layout-blocked fragment",
+            )
+        elif not row["complete_statement"] or not row["statement_segments"]:
             fail(
                 f"usable or visual-blocked row has no task statement: {row['record_id']}"
             )
         for referent in row["referents"]:
-            surface = joined(referent["segments"], " ", decoded)
-            if surface != referent["surface"]:
-                fail(f"referent surface is not byte-backed: {row['record_id']}")
-            antecedent = joined(referent["antecedent_segments"], " ", decoded)
-            if antecedent != referent["antecedent"]:
-                fail(f"referent antecedent is not byte-backed: {row['record_id']}")
+            verify_join(
+                referent["segments"], " ", referent["surface"], "referent surface"
+            )
+            verify_join(
+                referent["antecedent_segments"], " ", referent["antecedent"],
+                "referent antecedent",
+            )
             if referent["status"] == "missing" and (
-                antecedent or referent["absence_reason"] == "none"
+                referent["antecedent"] or referent["absence_reason"] == "none"
             ):
                 fail(
                     f"missing referent lacks an honest absence marker: {row['record_id']}"
                 )
+    return {
+        "verified_segments": verified_segments,
+        "unavailable_segments": unavailable_segments,
+    }
 
 
 def check_identity(rows: list[dict]) -> None:
@@ -246,6 +304,10 @@ def check_identity(rows: list[dict]) -> None:
         for row in admitted
     ):
         fail("an admission row does not record absent rule and operation")
+
+
+def load_span_fixtures() -> list[dict]:
+    return json.loads(FIXTURES.read_text(encoding="utf-8"))
 
 
 def check_census(rows: list[dict]) -> None:
@@ -294,8 +356,9 @@ def check_census(rows: list[dict]) -> None:
 
 
 def check_visual_markers() -> None:
+    goal = VISUAL_GOAL if EXPERIMENTS.is_dir() else VISUAL_SCHEMA_GOAL
     result = subprocess.run(
-        ["swipl", "-q", "-g", VISUAL_GOAL],
+        ["swipl", "-q", "-g", goal],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -307,7 +370,7 @@ def check_visual_markers() -> None:
 
 
 def check_span_fixtures(rows: list[dict]) -> None:
-    fixtures = json.loads(FIXTURES.read_text(encoding="utf-8"))
+    fixtures = load_span_fixtures()
     expected_fixtures = baseline_value("defrag.span_fixtures")
     if len(fixtures) != expected_fixtures:
         fail(
@@ -412,24 +475,34 @@ def check_double_generation() -> None:
 
 
 def main() -> None:
+    local_runtime_available = EXPERIMENTS.is_dir()
     rows = read_rows()
     check_identity(rows)
     check_census(rows)
     check_visual_markers()
-    check_provenance(rows)
+    provenance = check_provenance(rows)
     check_span_fixtures(rows)
     check_l17_type_specimen()
     check_sentence_boundary_repair(rows)
-    check_double_generation()
-    print(
-        f"PASS im defrag: {baseline_value('defrag.rows'):,} rows; "
-        f"{baseline_value('defrag.eligible_rows'):,} usable; "
-        f"{baseline_value('defrag.admitted_rows'):,} unclaimed admissions; "
-        f"{baseline_value('defrag.widened_receipts')} widened receipts; "
-        f"385 layout blocks; {baseline_value('defrag.visual_markers')} visual blocks; "
-        f"{baseline_value('defrag.span_fixtures')} spans; byte provenance and "
-        "double generation"
-    )
+    if local_runtime_available:
+        check_double_generation()
+        print(
+            f"PASS im defrag: {baseline_value('defrag.rows'):,} rows; "
+            f"{baseline_value('defrag.eligible_rows'):,} usable; "
+            f"{baseline_value('defrag.admitted_rows'):,} unclaimed admissions; "
+            f"{baseline_value('defrag.widened_receipts')} widened receipts; "
+            f"385 layout blocks; {baseline_value('defrag.visual_markers')} visual blocks; "
+            f"{baseline_value('defrag.span_fixtures')} spans; byte provenance and "
+            "double generation"
+        )
+    else:
+        print(
+            "SKIP IM defrag local-source re-derivation: "
+            "hermes/app/runtime/experiments absent locally (gitignored research state); "
+            f"tracked Prolog load, {baseline_value('defrag.rows'):,}-row census, "
+            f"visual marker schema, {provenance['verified_segments']} tracked byte spans, "
+            "local span schemas, fixtures, and repair controls verified"
+        )
 
 
 if __name__ == "__main__":

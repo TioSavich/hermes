@@ -31,6 +31,7 @@ VISION_DIR = recovery.DEFAULT_RECOVERY_DIR / "vision"
 EXPECTED_LESSONS = baseline_value("grade8.lessons")
 EXPECTED_TASKS = baseline_value("grade8.task_sections")
 EXPECTED_QUESTIONS = baseline_value("grade8.guide_questions")
+EXPERIMENTS = ROOT / "hermes/app/runtime/experiments"
 
 
 def prolog(goal: str) -> None:
@@ -274,6 +275,15 @@ def check_prolog_loads() -> None:
 
 def main() -> int:
     check_rule_fixtures()
+    if not EXPERIMENTS.is_dir():
+        check_prolog_loads()
+        print(
+            "SKIP Grade 8 extraction source and checkpoint re-derivation: "
+            "hermes/app/runtime/experiments absent locally (gitignored research state); "
+            "tracked rule fixtures and generated task, question, defrag, context, and "
+            "monitoring Prolog counts verified"
+        )
+        return 0
     docs = extraction.discover_docs(8, compiler)
     assert len(docs) == EXPECTED_LESSONS
     assert len({doc.code for doc in docs}) == EXPECTED_LESSONS

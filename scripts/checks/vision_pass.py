@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+EXPERIMENTS = ROOT / "hermes/app/runtime/experiments"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -36,6 +37,13 @@ from scripts.counts_baseline_lib import baseline_value  # noqa: E402
 
 def main() -> int:
     assert len(text_only_pairs()) == baseline_value("vision.text_only_pairs")
+    if not EXPERIMENTS.is_dir():
+        print(
+            "SKIP Grade 6-7 vision-pass worklist: "
+            "hermes/app/runtime/experiments absent locally (gitignored research state); "
+            "tracked text-only boundary decisions and their baseline count verified"
+        )
+        return 0
     worklist = derive_worklist()
     assert worklist["derived_counts"] == REPORT_COUNTS
     assert worklist["difference_from_report"] == {

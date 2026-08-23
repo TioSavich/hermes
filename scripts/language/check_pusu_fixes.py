@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 from probe_reader_coverage import sentences
 from probe_task_statements import load_rows
@@ -20,6 +21,8 @@ PENCILS = "im_defrag_95e6836c2e770aa507544dfc_1"
 PLANE = "im_defrag_2f1df73a1a4681025ce9f31b_1"
 ASK = re.compile(r"^asks\(result,([^()]+)\)$")
 QUANTITY = re.compile(r"^quantity\(([^(),]+),")
+ROOT = Path(__file__).resolve().parents[2]
+LANGUAGE_RUNTIME = ROOT / "hermes/app/runtime/experiments/language"
 
 
 def source_row(record_id: str) -> dict[str, object]:
@@ -50,6 +53,26 @@ def assert_no_query_seed(program: list[str]) -> None:
 
 
 def main() -> int:
+    synthetic = compare_ground_truth(
+        "numeric",
+        {
+            "status": "completed",
+            "reason": "derived_all_asks",
+            "answers": [{"value": "560"}],
+            "ask_targets": [
+                {"target_kind": "numeric", "referent_class": "rate"}
+            ],
+        },
+        {"numeric": [{"result_term": "560"}]},
+    )
+    assert synthetic["verdict"] == "agree"
+    if not LANGUAGE_RUNTIME.is_dir():
+        print(
+            "SKIP PUSU seeded-1 corpus receipts: "
+            "hermes/app/runtime/experiments/language absent locally "
+            "(gitignored language runtime); tracked numeric ground-truth join verified"
+        )
+        return 0
     runner = PrologRunner()
     try:
         plane_normalization, plane = reader_receipt(runner, PLANE)
@@ -123,19 +146,6 @@ def main() -> int:
         assert pencils["completion"]["answers"] == []
         assert pencils_join["verdict"] == "not_completed"
 
-    synthetic = compare_ground_truth(
-        "numeric",
-        {
-            "status": "completed",
-            "reason": "derived_all_asks",
-            "answers": [{"value": "560"}],
-            "ask_targets": [
-                {"target_kind": "numeric", "referent_class": "rate"}
-            ],
-        },
-        {"numeric": [{"result_term": "560"}]},
-    )
-    assert synthetic["verdict"] == "agree"
     assert pencils_normalization["profile"] == "im"
     print("pusu_fixes: all focused receipts passed")
     return 0

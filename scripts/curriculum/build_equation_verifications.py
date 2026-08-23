@@ -23,6 +23,35 @@ import compile_action_mappings as compiler  # noqa: E402
 import equation_verification as eqv  # noqa: E402
 
 OUTPUT = ROOT / "scripts" / "curriculum" / "lesson_equation_verifications.json"
+DOCLING_GUIDES = compiler.MIDDLE_GUIDE_ROOT
+
+
+def validate_tracked_ledger(path: pathlib.Path) -> dict:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise SystemExit(f"cannot validate tracked equation ledger: {exc}") from exc
+    if payload.get("schema") != "lesson_equation_verifications_v1":
+        raise SystemExit("tracked equation ledger has an unexpected schema")
+    spans = payload.get("spans")
+    summary = payload.get("summary")
+    if not isinstance(spans, list) or not isinstance(summary, dict):
+        raise SystemExit("tracked equation ledger has malformed spans or summary")
+    if summary.get("routine_spans") != len(spans):
+        raise SystemExit("tracked equation ledger routine-span denominator drifted")
+    if summary.get("accepted_spans", 0) + summary.get("refused_spans", 0) != len(spans):
+        raise SystemExit("tracked equation ledger span statuses do not partition its rows")
+    accepted_rows = [
+        row
+        for span in spans
+        for row in span.get("rows", [])
+        if row.get("accepted") is True
+    ]
+    if summary.get("accepted_equations") != len(accepted_rows):
+        raise SystemExit("tracked equation ledger accepted-equation denominator drifted")
+    if any(not row.get("reason_trace") for row in accepted_rows):
+        raise SystemExit("tracked equation ledger contains an accepted row without a reason trace")
+    return payload
 
 
 def registry_pairs(root: pathlib.Path) -> dict[tuple[str, str], list[dict]]:
@@ -113,6 +142,17 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--output", type=pathlib.Path, default=OUTPUT)
     args = parser.parse_args()
+
+    if args.check and not DOCLING_GUIDES.is_dir():
+        payload = validate_tracked_ledger(args.output)
+        print(
+            "SKIP equation-verification ledger re-derivation: "
+            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+            "TeacherLessonGuides absent locally (docling full-output); "
+            f"tracked schema and {payload['summary']['routine_spans']} span receipts "
+            "reconcile with accepted and refused denominators"
+        )
+        return 0
 
     payload = build(ROOT)
     rendered = render(payload)

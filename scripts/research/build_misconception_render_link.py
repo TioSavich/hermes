@@ -524,20 +524,26 @@ def load_authored_rows(census: dict[str, dict]) -> list[dict]:
     duplicates = sorted(name for name, count in collections.Counter(ids).items() if count > 1)
     if duplicates:
         raise SystemExit(f"duplicate authored render ids: {duplicates}")
-    if len(rows) != 38:
-        raise SystemExit(f"authored citation store has {len(rows)} rows, expected 38")
+    if len(rows) != 39:
+        raise SystemExit(f"authored citation store has {len(rows)} rows, expected 39")
     unknown = sorted(set(ids) - set(census))
     if unknown:
         raise SystemExit(f"authored citation store names unknown render ids: {unknown}")
     verdict_counts = collections.Counter(row["verdict"].get("kind") for row in rows)
-    expected = {"link": 6, "no_registry_bibkey": 9, "no_literature_signal": 23}
+    expected = {"link": 7, "no_registry_bibkey": 9, "no_literature_signal": 23}
     if dict(verdict_counts) != expected:
         raise SystemExit(
             f"authored verdict counts are {dict(verdict_counts)}, expected {expected}"
         )
     for row in rows:
         attribution = row["attribution"]
-        if attribution.get("model") != "opus" or attribution.get("date") != "2026-08-22":
+        # Two drafting passes are on record, both 2026-08-22: the opus pass
+        # (38 rows) and the fable pass that closed the carried
+        # hybridized_model candidate. Any other attribution is a fabrication.
+        if (
+            attribution.get("model") not in {"opus", "fable"}
+            or attribution.get("date") != "2026-08-22"
+        ):
             raise SystemExit(f"authored attribution mismatch for {row['id']}")
         if not attribution.get("verification_method"):
             raise SystemExit(f"authored verification method absent for {row['id']}")
@@ -1052,20 +1058,20 @@ check_unlinked_warrant(_Census, Id, Reason) :-
 
 %!  check_authored_store(+CensusIds) is det.
 %
-%   Confirms that the generated verdicts consume all 38 authored rows. The one
+%   Confirms that the generated verdicts consume all 39 authored rows. The one
 %   link also found by the widened mechanical regex stays via(bibkey); the
 %   other five link rows use via(authored).
 check_authored_store(CensusIds) :-
     findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
-    length(Ids, 38),
+    length(Ids, 39),
     sort(Ids, UniqueIds),
-    length(UniqueIds, 38),
+    length(UniqueIds, 39),
     forall(member(Id, UniqueIds),
            ( memberchk(Id, CensusIds) -> true ; throw(error(authored_unknown_id(Id), _)) )),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, link) ),
-                  6),
+                  7),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_registry_bibkey) ),
@@ -1080,7 +1086,8 @@ check_authored_store(CensusIds) :-
         ( get_dict(file, Evidence, File), string(File),
           get_dict(line, Evidence, Line), integer(Line), Line > 0,
           get_dict(quoted_signal, Evidence, Signal), string(Signal), Signal \\== "",
-          get_dict(model, Attribution, opus),
+          get_dict(model, Attribution, Model),
+          memberchk(Model, [opus, fable]),
           get_dict(date, Attribution, '2026-08-22'),
           get_dict(verification_method, Attribution, Method), string(Method), Method \\== "",
           get_dict(kind, Verdict, Kind),
