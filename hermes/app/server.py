@@ -238,7 +238,15 @@ class HermesHandler(BaseHTTPRequestHandler):
         try:
             context.payload = self._read_json()
         except Exception as exc:
-            self._send_backend_error(context, exc)
+            # A body the server could not read is the caller's defect,
+            # not a backend failure: 400 with the reason, not a raw 500.
+            self._send_json(
+                {
+                    "error": f"request body is not readable JSON: {exc}",
+                    "error_type": "bad_request",
+                },
+                status=400,
+            )
             return
         self._dispatch_guarded(context)
 

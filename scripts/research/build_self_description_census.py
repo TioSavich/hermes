@@ -684,6 +684,74 @@ UNROUTED = {
             ),
         ],
     },
+    "task_span_backlog": {
+        "does": "Returns the ranked task-span reason queue and the lessons one parser away from executable task evidence.",
+        "judgement": "Being unrouted from a web page is correct for now.",
+        "reason": "This query serves analysis clients through the worker and MCP surface; no page consumes the backlog yet.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(task_span_backlog,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/index_query.pl",
+                "task_span_backlog_dict",
+                "serving predicate",
+            ),
+        ],
+    },
+    "task_span_lesson": {
+        "does": "Returns one lesson's task-span rollup with every recorded reason count.",
+        "judgement": "Being unrouted from a web page is correct for now.",
+        "reason": "This lookup serves analysis clients through the worker and MCP surface; no page consumes lesson task-span receipts yet.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(task_span_lesson,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/index_query.pl",
+                "task_span_lesson_dict",
+                "serving predicate",
+            ),
+        ],
+    },
+    "coverage_backlog": {
+        "does": "Returns metaphors without live renderers and counts of lesson standard-anchor and structured-negative gaps.",
+        "judgement": "Being unrouted from a web page is correct for now.",
+        "reason": "This backlog serves analysis clients through the worker and MCP surface; no page consumes it yet.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(coverage_backlog,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/index_query.pl",
+                "coverage_backlog_dict",
+                "serving predicate",
+            ),
+        ],
+    },
+    "metaphor_coverage": {
+        "does": "Returns one metaphor's renderer status and the evidence recorded with its coverage receipt.",
+        "judgement": "Being unrouted from a web page is correct for now.",
+        "reason": "This receipt lookup serves analysis clients through the worker and MCP surface; no page consumes it yet.",
+        "evidence": [
+            evidence(
+                "hermes/dispatch_spec.pl",
+                "dispatch_spec(metaphor_coverage,",
+                "worker dispatch",
+            ),
+            evidence(
+                "knowledge/index/index_query.pl",
+                "metaphor_coverage_dict",
+                "serving predicate",
+            ),
+        ],
+    },
     "deformation_visualizer_catalog": {
         "does": "Lists the callable comparison families (representation and "
         "decimal) and the generated gallery directories with live file counts "

@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --gres=gpu:1
-#SBATCH --output=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-19-total-audit/stageB_%j.out
-#SBATCH --error=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-19-total-audit/stageB_%j.err
+#SBATCH --output=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-22-total-audit-run3/stageB_%j.out
+#SBATCH --error=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-22-total-audit-run3/stageB_%j.err
 
 # Stage B — the bounded model pass over untouched stores. Runs after Stage A
 # (submit with --dependency=afterok:<stageA jobid>). Serves gemma-4-26B-A4B
@@ -15,7 +15,7 @@
 set -euo pipefail
 
 REPO=/N/scratch/tmsavich/hermes
-RUN=$REPO/.bigred-output/2026-08-19-total-audit
+RUN=$REPO/.bigred-output/2026-08-22-total-audit-run3
 ENVBIN=/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin
 MODEL=/N/scratch/datahub/nvme/llms/quantized/gemma-4-26B-A4B-it/gemma-4-26B-A4B-it_Q4_K_M.gguf
 PORT=8088

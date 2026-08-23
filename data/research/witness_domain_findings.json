@@ -1,5 +1,17 @@
 [
   {
+    "domain": "hermes_worker.pl diagnose/abduce irregular contract: harvested misconception domain atom plus ground input and got terms.",
+    "notes": "Probe {\"op\": \"abduce_error\", \"input\": [\"parallelogram\", \"rectangle\"], \"got\": \"holds\", \"domain\": \"combinatorial\"} returned ok=true in 1.0 ms.",
+    "op": "abduce_error",
+    "params": [
+      "input",
+      "got",
+      "domain"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0002\", \"ok\": true, \"result\": []}",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/crosswalk/families/cw_edges.pl regex rule\\(cw_accommodation, registry\\(([a-z_]+:[a-z_]+/\\d),(\\w+), — three rows: (critique:accommodate/1, dialectic_critique), (reorganization_engine:accommodate/1, learner_reorg), (reorganization_engine:reorganize_system/2, learner_reorg). target is a Module:Name/Arity TERM string.",
     "notes": "target-term parses 'critique:accommodate/1' via json_to_term; quote exactly, no spaces.",
     "op": "accommodation_witness",
@@ -143,6 +155,26 @@
     "verified_ok": true
   },
   {
+    "domain": "hermes/solution_step_check.pl: any nonempty solution text; equations are extracted and checked when present.",
+    "notes": "Probe {\"op\": \"check_solution_steps\", \"text\": \"absolute magnitude\"} returned ok=true in 5.4 ms.",
+    "op": "check_solution_steps",
+    "params": [
+      "text"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0003\", \"ok\": true, \"result\": {\"checked_equations\": 0, \"first_refuted_step\": \"none\", \"refuted_equations\": 0, \"steps\": [{\"equations\": [], \"index\": 1, \"verdict\": \"not_checked\"}]}}",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/attested_phrases.pl and canonical_phrases.pl: nonempty classroom-language content.",
+    "notes": "Probe {\"op\": \"commitment_match\", \"content\": \"absolute magnitude\"} returned ok=true in 155.7 ms.",
+    "op": "commitment_match",
+    "params": [
+      "content"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0004\", \"ok\": true, \"result\": {\"abstained\": true, \"matches\": []}}",
+    "verified_ok": true
+  },
+  {
     "domain": "operation in {add, subtract, multiply, divide}; a, b integers; limit positive int (default 20); mode in {direct, developmental} (default direct).",
     "notes": "",
     "op": "compute",
@@ -189,6 +221,17 @@
     "verified_ok": true
   },
   {
+    "domain": "formal/incompatibility/error_rule_inferences.pl material_inference/3 ids with a JSON defeater list.",
+    "notes": "Probe {\"op\": \"defeasible_classify\", \"defeater_set\": [], \"inference_id\": \"rule_add_written_numerals_right_aligned_licenses_unaligned_decimal_operation_is_decimal_value_operation\"} returned ok=true in 1.2 ms.",
+    "op": "defeasible_classify",
+    "params": [
+      "defeater_set",
+      "inference_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0005\", \"ok\": true, \"result\": {\"outcome\": \"coherent\", \"witness\": {\"added_commitments\": [], \"cause\": \"no_incoherence_found\", \"combined_context\": [\"s(comp_nec rule(add_written_numerals_right_aligned))\"], \"concl",
+    "verified_ok": true
+  },
+  {
     "domain": "proposition: term matching requires_entitlement_fact/1 - today result_of(cross_multiply, _, _, _, _, _) (arity 6, first arg cross_multiply) - or result_of(Kind, ...) where Kind is a practice_kind with an LX-elaborated vocabulary (formal/learner/deontic_scorekeeper.pl:234ff).",
     "notes": "",
     "op": "deontic_requires_entitlement",
@@ -196,6 +239,38 @@
       "proposition"
     ],
     "reply_excerpt": "{\"kind\": \"manual_entitlement_requirement\", \"proposition\": \"result_of(cross_multiply,2,3,4,6,ok)\", \"source\": \"requires_entitlement_fact\"}",
+    "verified_ok": true
+  },
+  {
+    "domain": "hermes_worker.pl diagnose/abduce irregular contract: harvested misconception domain atom plus input and got terms.",
+    "notes": "Probe {\"op\": \"diagnose_error\", \"input\": [\"parallelogram\", \"rectangle\"], \"got\": \"holds\", \"domain\": \"combinatorial\"} returned ok=true in 0.5 ms.",
+    "op": "diagnose_error",
+    "params": [
+      "input",
+      "got",
+      "domain"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0006\", \"ok\": true, \"result\": []}",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/pml/discourse_features.pl: a JSON list of utterance dicts with id, speaker, and text.",
+    "notes": "Probe {\"op\": \"discourse_features\", \"utterances\": [{\"id\": \"u1\", \"speaker\": \"student\", \"text\": \"i added the tens first\"}]} returned ok=true in 1.2 ms.",
+    "op": "discourse_features",
+    "params": [
+      "utterances"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0007\", \"ok\": true, \"result\": {\"context_evidence\": [], \"context_evidence_count\": 0, \"limits\": {\"anaphora\": \"supplied links, named speakers, and bounded exact-head nominal candidates only; no automatic referen",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/pml/discourse_pragmatics.pl: a JSON list of utterance dicts with id, speaker, and text.",
+    "notes": "Probe {\"op\": \"discourse_pragmatics\", \"utterances\": [{\"id\": \"u1\", \"speaker\": \"student\", \"text\": \"i added the tens first\"}]} returned ok=true in 1.1 ms.",
+    "op": "discourse_pragmatics",
+    "params": [
+      "utterances"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0008\", \"ok\": true, \"result\": {\"atom_count\": 0, \"atom_counts\": [], \"evidence_candidate_count\": 0, \"limits\": {\"commitments\": \"no commitment or entitlement is deposited\", \"interaction\": \"no uptake, agreement su",
     "verified_ok": true
   },
   {
@@ -241,6 +316,16 @@
     ],
     "reply_excerpt": "{\"id\": \"exec_practice\", \"ok\": true, \"result\": {\"invocation_policy\": \"read_only_registry_fact_query\", \"kind\": \"executable_practice_registry_entry\", \"legacy_functor\": \"mua_relations:practice/2\", \"practi",
     "verified_ok": true
+  },
+  {
+    "domain": "curriculum/im/lesson_monitoring.pl encoded lessons; field_context_cache.json records 1,308 current IM successes and nine stale/known absence keys, while traditional rows expose a missing-source exception.",
+    "notes": "IM-G1-U1-L1 returned ok in 12806.2 ms. The nine cache absence keys all returned named unknown_lesson_code: IM-G6-U5-L16, IM-G7-U7-L21, IM-G7-U8-L21, IM-G8-U2-L14, IM-G8-U2-L15, IM-G8-U6-L14, IM-G8-U6-L17, IM-G8-U6-L18, IM-G8-U7-L20. A real encoded traditional lesson raised the same missing rays_new_practical_notes.md source exception in 120.9 ms. Queue entry left open as a real defect.",
+    "op": "field_context",
+    "params": [
+      "lesson_code"
+    ],
+    "reply_excerpt": "{\"error\": {\"message\": \"Operation 'field_context' raised: source_sink `lessons('traditional/sources/rays_new_practical_notes.md')' does not exist\", \"type\": \"op_exception\"}, \"id\": \"tail-0002\", \"ok\": false}",
+    "verified_ok": false
   },
   {
     "domain": "kind: a CGI addition automaton name (count_on_from_larger, make_ten_split_leftover, make_base_transfer, base_ones_chunking, ...); na, nb non-negative ints; d positive int (same denominator both sides; defaults 7, 8, 10).",
@@ -336,6 +421,67 @@
     "verified_ok": true
   },
   {
+    "domain": "knowledge/geometry/concepts/angles.pl angle_material_claim/5 ids (8).",
+    "notes": "Probe {\"op\": \"geometry_angle_material_witness\", \"claim_id\": \"polygon_sum_over_triangle_sum\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_angle_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0048\", \"ok\": true, \"result\": {\"boundary\": \"finite_angle_curriculum_claim_not_general_euclidean_geometry\", \"concept\": \"polygon_angle_sum_via_triangulation\", \"concept_tier_boundary\": \"loaded_concept_tier_recor",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/area_perimeter.pl area_perimeter_material_claim/5 ids (15).",
+    "notes": "Probe {\"op\": \"geometry_area_perimeter_material_witness\", \"claim_id\": \"area_complete_unit_cover\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_area_perimeter_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0053\", \"ok\": true, \"result\": {\"boundary\": \"finite_area_perimeter_curriculum_claim_not_general_measure_theory\", \"concept\": \"area_as_interior_coverage\", \"concept_tier_boundary\": \"loaded_concept_tier_record\", \"",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/attributes.pl attribute_material_claim/5 ids (5).",
+    "notes": "Probe {\"op\": \"geometry_attribute_material_witness\", \"claim_id\": \"equal_sides_not_angle_equality\"} returned ok=true in 0.2 ms.",
+    "op": "geometry_attribute_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0045\", \"ok\": true, \"result\": {\"boundary\": \"finite_attribute_material_row_not_general_proof_theory\", \"concept\": \"equal_sides_does_not_imply_equal_angles\", \"conclusion\": \"all angles of P are equal\", \"condition",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/ccss/geometry.pl standard_anchor/4 correlated concept+code rows (41).",
+    "notes": "Probe {\"op\": \"geometry_ccss_standard_witness\", \"concept\": \"shape_recognition_2d_3d\", \"code\": \"K.G.A.1\"} returned ok=true in 2.9 ms.",
+    "op": "geometry_ccss_standard_witness",
+    "params": [
+      "concept",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0009\", \"ok\": true, \"result\": {\"boundary\": \"finite_ccss_geometry_anchor_table_not_general_standards_model\", \"code\": \"K.G.A.1\", \"concept\": \"shape_recognition_2d_3d\", \"concept_boundary\": \"loaded_geometry_concep",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/classification.pl classification_material_claim/5 ids (21).",
+    "notes": "Probe {\"op\": \"geometry_classification_material_witness\", \"claim_id\": \"square_to_rectangle\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_classification_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0054\", \"ok\": true, \"result\": {\"boundary\": \"finite_classification_curriculum_claim_not_general_taxonomy_theory\", \"concept\": \"square_as_rectangle\", \"concept_tier_boundary\": \"loaded_concept_tier_record\", \"conce",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/coordinate_geometry.pl coordinate_material_claim/5 ids (7).",
+    "notes": "Probe {\"op\": \"geometry_coordinate_material_witness\", \"claim_id\": \"slope_ratio_over_height_only\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_coordinate_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0047\", \"ok\": true, \"result\": {\"boundary\": \"finite_coordinate_geometry_curriculum_claim_not_general_analytic_geometry\", \"concept\": \"slope_as_ratio_of_change\", \"concept_tier_boundary\": \"loaded_concept_tier_rec",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/geometry/concepts/cross_links.pl regex (?s)concept_relation\\((\\w+),\\s*(\\w+),\\s*(\\w+),\\s*(\\w+)\\) -> (source, relation, target, status); status is an optional dispatch param defaulting to entitled, which matches every authored row.",
     "notes": "Not a cw_driver family — user:cross_link_witness/5 from the geometry schema. Facts are multiline; use DOTALL. 'status_' marks verification state (the op's own optional 'status' param is left to default).",
     "op": "geometry_cross_link_witness",
@@ -345,6 +491,16 @@
       "target"
     ],
     "reply_excerpt": "{\"id\": \"geo_cross\", \"ok\": true, \"result\": {\"boundary\": \"material_inference_has_loaded_tier_support\", \"fact\": \"concept_relation(tilted_square_as_diamond,manifests_as,orientation_invariant_naming,entitl",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/developmental_arcs.pl developmental_marker/4 ids (4).",
+    "notes": "Probe {\"op\": \"geometry_developmental_arc_witness\", \"arc_id\": \"square_classification_arc\"} returned ok=true in 0.7 ms.",
+    "op": "geometry_developmental_arc_witness",
+    "params": [
+      "arc_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0039\", \"ok\": true, \"result\": {\"boundary\": \"finite_developmental_arc_not_universal_learning_law\", \"concept_fact\": \"geom_concept(square_classification_arc,\\\"Developmental arc from square-as-unit-shape (single-",
     "verified_ok": true
   },
   {
@@ -359,6 +515,83 @@
     "verified_ok": true
   },
   {
+    "domain": "knowledge/standards/im/grade_5.pl standard_anchor/4 correlated concept+framework+code rows (338).",
+    "notes": "Probe {\"op\": \"geometry_im_grade5_standard_anchor_witness\", \"concept\": \"im_grade5_u1_l1\", \"framework\": \"ccss\", \"code\": \"5.MD.C.3\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_im_grade5_standard_anchor_witness",
+    "params": [
+      "concept",
+      "framework",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0010\", \"ok\": true, \"result\": {\"boundary\": \"finite_im_grade5_standard_anchor_table_not_general_alignment_model\", \"code\": \"5.MD.C.3\", \"concept\": \"im_grade5_u1_l1\", \"concept_boundary\": \"loaded_geometry_concept_",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/im/grade_6.pl im_lesson standard_anchor/4 concept+code rows (152).",
+    "notes": "Probe {\"op\": \"geometry_im_grade6_lesson_standard_witness\", \"concept\": \"area_compose_decompose_polygons\", \"code\": \"IM-G6-U1-L1\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_im_grade6_lesson_standard_witness",
+    "params": [
+      "concept",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0011\", \"ok\": true, \"result\": {\"boundary\": \"finite_im_grade6_lesson_anchor_table_not_general_curriculum_model\", \"code\": \"IM-G6-U1-L1\", \"concept\": \"area_compose_decompose_polygons\", \"concept_boundary\": \"loaded",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/im/grade_7.pl im_lesson standard_anchor/4 concept+code rows (143).",
+    "notes": "Probe {\"op\": \"geometry_im_grade7_lesson_standard_witness\", \"concept\": \"scale_drawings\", \"code\": \"IM-G7-U1-L1\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_im_grade7_lesson_standard_witness",
+    "params": [
+      "concept",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0012\", \"ok\": true, \"result\": {\"boundary\": \"finite_im_grade7_lesson_anchor_table_not_general_curriculum_model\", \"code\": \"IM-G7-U1-L1\", \"concept\": \"scale_drawings\", \"concept_boundary\": \"loaded_geometry_concept",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/im/grade_8.pl im_lesson standard_anchor/4 concept+code rows (134).",
+    "notes": "Probe {\"op\": \"geometry_im_grade8_lesson_standard_witness\", \"concept\": \"rigid_motion_properties\", \"code\": \"IM-G8-U1-L1\"} returned ok=true in 0.4 ms.",
+    "op": "geometry_im_grade8_lesson_standard_witness",
+    "params": [
+      "concept",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0013\", \"ok\": true, \"result\": {\"boundary\": \"finite_im_grade8_lesson_anchor_table_not_general_curriculum_model\", \"code\": \"IM-G8-U1-L1\", \"concept\": \"rigid_motion_properties\", \"concept_boundary\": \"loaded_geometr",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/standards/indiana/geometry.pl in_indiana standard_anchor/4 concept+code rows (26).",
+    "notes": "Probe {\"op\": \"geometry_indiana_standard_witness\", \"concept\": \"shape_attributes_informal\", \"code\": \"K.G.1\"} returned ok=true in 0.2 ms.",
+    "op": "geometry_indiana_standard_witness",
+    "params": [
+      "concept",
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0014\", \"ok\": true, \"result\": {\"boundary\": \"finite_indiana_geometry_anchor_table_not_general_standards_model\", \"code\": \"K.G.1\", \"concept\": \"shape_attributes_informal\", \"concept_boundary\": \"loaded_geometry_con",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/metaphors/lakoff_nunez_inventory.pl correlated metaphor_source/4 concept+metaphor rows (21).",
+    "notes": "Probe {\"op\": \"geometry_lakoff_nunez_metaphor_witness\", \"concept\": \"line_segment_as_path\", \"metaphor\": \"source_path_goal\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_lakoff_nunez_metaphor_witness",
+    "params": [
+      "concept",
+      "metaphor"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0058\", \"ok\": true, \"result\": {\"boundary\": \"finite_lakoff_nunez_geometry_metaphor_claim_not_general_cognitive_metaphor_theory\", \"citations\": [\"ln_ch2_p38\", \"ln_ch2_p39\", \"ln_ch3\"], \"concept\": \"line_segment_as",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/*.pl geom_concept/4 keys; material_inference_profile_witness/3 computes a finite profile for a concept.",
+    "notes": "Probe {\"op\": \"geometry_material_profile_witness\", \"concept\": \"aaa_similarity_for_triangles\"} returned ok=true in 8.0 ms.",
+    "op": "geometry_material_profile_witness",
+    "params": [
+      "concept"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0015\", \"ok\": true, \"result\": {\"profile\": \"profile(aaa_similarity_for_triangles,strength(aaa_similarity_for_triangles,entitled(0),incompatible(0),total(0)),entitled([]),incompatible([]),boundaries([]))\", \"wit",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/geometry/concepts/measurement.pl geom_misconception/6 first args whose clause lives in that file (the witness filters by clause file). Today exactly ONE row: ruler_counts_marks_not_spaces. Regex: ^geom_misconception\\( in that file.",
     "notes": "The keyable surface is a single id; the 103 refusals were the driver's claim_id-style pool never containing it. A sweep needs only this one key.",
     "op": "geometry_measurement_misconception_witness",
@@ -366,6 +599,47 @@
       "id_value"
     ],
     "reply_excerpt": "{\"boundary\": \"finite_measurement_misconception_table_not_general_diagnostic_model\", \"citation\": [\"vdw_ch19_p486\", \"vdw_ch19_p490\"], \"concept\": \"ruler_units_vs_marks\", \"fact\": \"geom_misconception(ruler",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/metaphors/measuring_stick.pl correlated metaphor_source/4 concept+metaphor rows (14).",
+    "notes": "Probe {\"op\": \"geometry_measuring_stick_metaphor_witness\", \"concept\": \"numbers_as_physical_segments\", \"metaphor\": \"measuring_stick_metaphor\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_measuring_stick_metaphor_witness",
+    "params": [
+      "concept",
+      "metaphor"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0057\", \"ok\": true, \"result\": {\"boundary\": \"finite_measuring_stick_metaphor_claim_not_general_cognitive_metaphor_theory\", \"citations\": [\"ln_ch3_p68\", \"ln_ch3_p69\"], \"concept\": \"numbers_as_physical_segments\", ",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/bootstrap/n103_activities.pl local bootstrap/6 ids (38).",
+    "notes": "Probe {\"op\": \"geometry_n103_bootstrap_witness\", \"bootstrap_id\": \"n103_act_1_1_parallel_grid_triangle_sum\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_n103_bootstrap_witness",
+    "params": [
+      "bootstrap_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0055\", \"ok\": true, \"result\": {\"boundary\": \"finite_n103_bootstrap_table_not_general_activity_model\", \"concept\": \"triangle_angle_sum_180\", \"fact\": \"bootstrap(n103_act_1_1_parallel_grid_triangle_sum,triangle_an",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/pck/classification.pl pck_synthesis/5 concept ids (5).",
+    "notes": "Probe {\"op\": \"geometry_pck_classification_witness\", \"concept\": \"quadrilateral_hierarchy\"} returned ok=true in 0.7 ms.",
+    "op": "geometry_pck_classification_witness",
+    "params": [
+      "concept"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0040\", \"ok\": true, \"result\": {\"boundary\": \"finite_pck_synthesis_pointer_not_general_teacher_knowledge_model\", \"citations\": [\"corpus_pst_quadrilateral_hierarchy\", \"ng_2012\", \"fuentes_ma_2018\", \"pickreign_2007",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/pythagoras.pl pythagorean_material_claim/5 ids (8).",
+    "notes": "Probe {\"op\": \"geometry_pythagorean_material_witness\", \"claim_id\": \"pythagorean_side_equation\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_pythagorean_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0049\", \"ok\": true, \"result\": {\"boundary\": \"finite_pythagorean_curriculum_claim_not_general_metric_geometry\", \"concept\": \"pythagorean_theorem\", \"conclusion\": \"a^2 + b^2 = c^2\", \"condition_roles\": [{\"kind\": \"s",
     "verified_ok": true
   },
   {
@@ -380,6 +654,87 @@
     "verified_ok": true
   },
   {
+    "domain": "knowledge/geometry/concepts/shape_recognition.pl shape_recognition_material_claim/5 ids (5).",
+    "notes": "Probe {\"op\": \"geometry_shape_recognition_material_witness\", \"claim_id\": \"property_classification_over_visual\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_shape_recognition_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0046\", \"ok\": true, \"result\": {\"boundary\": \"finite_shape_recognition_curriculum_claim_not_general_visual_classifier\", \"concept\": \"shape_identified_by_properties_not_appearance\", \"concept_tier_boundary\": \"load",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/similarity_congruence.pl similarity_material_claim/5 ids (8).",
+    "notes": "Probe {\"op\": \"geometry_similarity_material_witness\", \"claim_id\": \"similarity_definition\"} returned ok=true in 0.3 ms.",
+    "op": "geometry_similarity_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0050\", \"ok\": true, \"result\": {\"boundary\": \"finite_similarity_claim_not_general_polygon_similarity_theory\", \"concept\": \"similar_figures\", \"conclusion\": \"the figures are similar\", \"condition_roles\": [{\"kind\": ",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/synthesizer_anchors.pl synthesizer_anchor_material_claim/5 ids (1).",
+    "notes": "Probe {\"op\": \"geometry_synthesizer_anchor_material_witness\", \"claim_id\": \"category_container_inclusion_license\"} returned ok=true in 0.4 ms.",
+    "op": "geometry_synthesizer_anchor_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0043\", \"ok\": true, \"result\": {\"boundary\": \"finite_synthesizer_anchor_lx_claim_not_general_cognitive_metaphor_theory\", \"concept\": \"category_of_shapes_as_container\", \"concept_boundary\": \"loaded_geometry_concep",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/synthesizer_triangulations.pl local tier(ref(concept,...),...) rows (31).",
+    "notes": "Probe {\"op\": \"geometry_synthesizer_triangulation_witness\", \"concept\": \"square_rectangle_classification\"} returned ok=true in 0.2 ms.",
+    "op": "geometry_synthesizer_triangulation_witness",
+    "params": [
+      "concept"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0042\", \"ok\": true, \"result\": {\"boundary\": \"finite_cross_source_triangulation_claim_not_general_literature_model\", \"concept\": \"square_rectangle_classification\", \"concept_boundary\": \"loaded_geometry_concept_re",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/transformations.pl transformation_material_claim/5 ids (11).",
+    "notes": "Probe {\"op\": \"geometry_transformation_material_witness\", \"claim_id\": \"point_image_rotation_center_diagnostic\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_transformation_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0052\", \"ok\": true, \"result\": {\"boundary\": \"finite_transformation_curriculum_claim_not_general_plane_isometry_theory\", \"concept\": \"point_image_segment\", \"concept_tier_boundary\": \"loaded_concept_tier_record\", ",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/bootstrap/van_de_walle_activities.pl local bootstrap/6 ids (41).",
+    "notes": "Probe {\"op\": \"geometry_van_de_walle_bootstrap_witness\", \"bootstrap_id\": \"vdw_act_20_01_shape_sorts\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_van_de_walle_bootstrap_witness",
+    "params": [
+      "bootstrap_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0056\", \"ok\": true, \"result\": {\"boundary\": \"finite_van_de_walle_bootstrap_table_not_general_activity_model\", \"concept\": \"square_recognition\", \"fact\": \"bootstrap(vdw_act_20_01_shape_sorts,square_recognition,ac",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/van_hiele_levels.pl van_hiele_level_material_claim/5 ids (4).",
+    "notes": "Probe {\"op\": \"geometry_van_hiele_level_material_witness\", \"claim_id\": \"level_0_square_rectangle_example\"} returned ok=true in 0.2 ms.",
+    "op": "geometry_van_hiele_level_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0044\", \"ok\": true, \"result\": {\"boundary\": \"finite_van_hiele_level_anchor_not_general_developmental_diagnosis\", \"condition_roles\": [{\"kind\": \"example_anchor\", \"role\": \"level_0_visual_recognition_example\"}], \"",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/van_hiele/levels.pl correlated van_hiele_marker/4 concept+level rows (31).",
+    "notes": "Probe {\"op\": \"geometry_van_hiele_marker_witness\", \"concept\": \"square_rectangle_classification\", \"level\": 0} returned ok=true in 0.2 ms.",
+    "op": "geometry_van_hiele_marker_witness",
+    "params": [
+      "concept",
+      "level"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0041\", \"ok\": true, \"result\": {\"boundary\": \"finite_van_hiele_marker_table_not_general_developmental_diagnosis\", \"citation\": [\"vh_paper2_p245\", \"vh_fuys_clinical_pat\"], \"concept\": \"square_rectangle_classificat",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/geometry/van_hiele/transitions.pl van_hiele_material_claim/5 first args; 4 ids: didactic_gap_produces_memorization, level_relativity_of_correctness, definitions_require_level_2, appropriate_phases_support_level_transition. Regex: ^van_hiele_material_claim\\(",
     "notes": "claim_id is a term param (atom).",
     "op": "geometry_van_hiele_material_witness",
@@ -387,6 +742,16 @@
       "claim_id"
     ],
     "reply_excerpt": "{\"boundary\": \"tier_record_found\", \"claim_id\": \"didactic_gap_produces_memorization\", \"concept\": \"geometric_language\", \"conclusion\": \"Student cannot understand and falls back to memorization or imitatio",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/geometry/concepts/volume_surface_area.pl volume_surface_area_material_claim/5 ids (10).",
+    "notes": "Probe {\"op\": \"geometry_volume_surface_area_material_witness\", \"claim_id\": \"euler_convex_polyhedron_formula\"} returned ok=true in 0.1 ms.",
+    "op": "geometry_volume_surface_area_material_witness",
+    "params": [
+      "claim_id"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0051\", \"ok\": true, \"result\": {\"boundary\": \"finite_volume_surface_area_curriculum_claim_not_general_solid_geometry\", \"concept\": \"eulers_polyhedron_formula\", \"concept_tier_boundary\": \"loaded_concept_tier_recor",
     "verified_ok": true
   },
   {
@@ -412,6 +777,16 @@
     "verified_ok": true
   },
   {
+    "domain": "Hermes encyclopedia ground_query_dict/2 over the harvested attested/canonical phrase vocabulary.",
+    "notes": "Probe {\"op\": \"ground\", \"query\": \"absolute magnitude\"} returned ok=true in 221.4 ms.",
+    "op": "ground",
+    "params": [
+      "query"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0016\", \"ok\": true, \"result\": {\"geometry\": [], \"literature\": [{\"citation\": \"KIM A. CHEEK (2012)\", \"commitment\": \"c_counting_cardinality_units\", \"domain\": \"whole_number\", \"id\": \"40311\", \"incompatible_with\": \"d",
+    "verified_ok": true
+  },
+  {
     "domain": "Computed witness (executes the grounded op under a cost snapshot); no fact file enumerates tuples. Valid operations: add/subtract (source grounded_arithmetic, inputs '[recollection([...]),recollection([...])]', output the exact result recollection), successor (1 input), base_decompose (source grounded_utils, output 'bases_remainder(recollection([...]),recollection([...]))'), is_recollection (source robinson_q, output 'history(B)'). Use a small authored list.",
     "notes": "output must unify with the computed result, so author tuples where the arithmetic is done by hand. All recollection terms are tally lists; integers are NOT accepted here (term-typed params).",
     "op": "grounded_arith_witness",
@@ -422,6 +797,16 @@
       "source"
     ],
     "reply_excerpt": "{\"id\": \"grounded_arith\", \"ok\": true, \"result\": {\"cost_witness\": {\"after_goal\": 1, \"after_restore\": 0, \"before\": 0, \"kind\": \"grounded_arithmetic_cost_snapshot\", \"policy\": \"restore_direct_cost_accumulat",
+    "verified_ok": true
+  },
+  {
+    "domain": "Hermes strategy catalog operation values; grounding_for_operation_dict/2 accepts an operation atom.",
+    "notes": "Probe {\"op\": \"grounding_for\", \"operation\": \"addition\"} returned ok=true in 0.4 ms.",
+    "op": "grounding_for",
+    "params": [
+      "operation"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0017\", \"ok\": true, \"result\": {\"coverage_note\": \"Metaphors selected by L&N target-concept mapping for addition; absence of a metaphor here means L&N do not ground that operation in that source domain.\", \"meta",
     "verified_ok": true
   },
   {
@@ -445,6 +830,16 @@
       "source"
     ],
     "reply_excerpt": "{\"id\": \"grounding_met\", \"ok\": true, \"result\": {\"anchor\": \"domains(physical_object_collections,arithmetic)\", \"derivation\": \"definition_table_lookup\", \"kind\": \"grounding_metaphor_crosswalk\", \"legacy_fun",
+    "verified_ok": true
+  },
+  {
+    "domain": "hermes_worker.pl image_schema_dispatch_dict/2 practice vocabulary; counting is a valid practice request.",
+    "notes": "Probe {\"op\": \"image_schema\", \"practice\": \"counting\"} returned ok=true in 0.1 ms.",
+    "op": "image_schema",
+    "params": [
+      "practice"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0018\", \"ok\": true, \"result\": {\"image_schema\": null, \"note\": \"no_image_schema_grounding\", \"practice\": \"counting\"}}",
     "verified_ok": true
   },
   {
@@ -480,6 +875,37 @@
     "verified_ok": true
   },
   {
+    "domain": "knowledge/index/relevance_negation.pl known_topic/1 finite topic table (17 keys).",
+    "notes": "Probe {\"op\": \"index_topic_subtraction\", \"topic\": \"addition\"} returned ok=true in 43.4 ms.",
+    "op": "index_topic_subtraction",
+    "params": [
+      "topic"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0019\", \"ok\": true, \"result\": {\"excluded\": 237, \"excluded_sample\": [{\"machine\": \"algebraic/balance_preserving_linear_solution\", \"reason\": \"family_mismatch(addition,algebraic,[algebraic])\"}, {\"machine\": \"algeb",
+    "verified_ok": true
+  },
+  {
+    "domain": "lesson_enactment_list lesson keys; inferential_strength_dispatch_dict/2 accepts a lesson code.",
+    "notes": "Probe {\"op\": \"inferential_strength\", \"lesson\": \"IM-G1-U1-L11\"} returned ok=true in 0.4 ms.",
+    "op": "inferential_strength",
+    "params": [
+      "lesson"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0020\", \"ok\": true, \"result\": {\"inferential_strength\": {\"misconception_incompatibilities\": 0, \"misconception_incompatibilities_kind\": \"breadth_tally\", \"per_operation\": [], \"proof_paths\": 0, \"strategy_incompat",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/automaton_input_contracts.pl execution-verified operation+kind rows (284).",
+    "notes": "Probe {\"op\": \"input_contract\", \"operation\": \"addition\", \"kind\": \"base_ones_chunking\"} returned ok=true in 0.1 ms.",
+    "op": "input_contract",
+    "params": [
+      "operation",
+      "kind"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0021\", \"ok\": true, \"result\": {\"example\": {\"a\": 47, \"b\": 28}, \"kind\": \"base_ones_chunking\", \"operation\": \"addition\"}}",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/crosswalk/families/cw_edges.pl: regex rule\\((cw_integer_signed_claim), isc\\\\((\\\\w+), — group 2 is the canonical key; cross with source='literature_commitment'. Concretely: re.findall(r'rule\\(cw_integer_signed_claim, isc\\((\\w+),', text) over knowledge/crosswalk/families/cw_edges.pl yields the canonical enum; tuples are (canonical, 'literature_commitment').",
     "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane.",
     "op": "integer_signed_claim_witness",
@@ -499,6 +925,58 @@
       "to"
     ],
     "reply_excerpt": "{\"from\": [\"n(confession(alice))\", \"n(confession(bob))\"], \"kind\": \"mutual_recognition\", \"normative_release\": \"n(exp_nec forgiveness(alice,bob))\", \"participants\": [\"alice\", \"bob\"], \"participants_distinc",
+    "verified_ok": true
+  },
+  {
+    "domain": "lesson_enactment_list lesson keys; optional task and observation fields may be omitted.",
+    "notes": "Probe {\"op\": \"lesson_arithmetic_demonstration\", \"lesson\": \"IM-G1-U1-L11\"} returned ok=true in 0.6 ms.",
+    "op": "lesson_arithmetic_demonstration",
+    "params": [
+      "lesson"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0022\", \"ok\": true, \"result\": {\"interpretation_limit\": \"A reproduced answer is a candidate explanation. It does not establish what a student was thinking.\", \"lesson_code\": \"IM-G1-U1-L11\", \"lesson_name\": \"Make",
+    "verified_ok": true
+  },
+  {
+    "domain": "curriculum/im/lesson_deformation_chart.pl charted_lesson_code/1 union: local hand-authored and division rows plus generated host+fraction evidence (77 codes).",
+    "notes": "Two current chart codes were verified ok (IM-G1-U7-L10 and division code IM-G6-U4-L10); one current IM lesson outside charted_lesson_code/1 returned named no_deformation_chart. The live source union contains 77 codes; the web manifest lists 76 because it omits the served division row.",
+    "op": "lesson_deformation_chart",
+    "params": [
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0121\", \"ok\": true, \"result\": {\"cells\": [{\"deformations\": [{\"deformation\": \"transplant(vertical)\", \"family\": \"transplant_deformation\", \"scene\": {\"canvas\": {\"height\": 420, \"width\": 760}, \"denominator\": 2, \"fam",
+    "verified_ok": true
+  },
+  {
+    "domain": "curriculum/im/enactment/*.pl plus support/data_representation_lessons.pl lesson_enactment_form/3 and fraction partition_span/5 declarations (180 runnable lessons).",
+    "notes": "Probe {\"op\": \"lesson_enactment_run\", \"lesson\": \"IM-G1-U1-L11\"} returned ok=true in 0.4 ms.",
+    "op": "lesson_enactment_run",
+    "params": [
+      "lesson"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0120\", \"ok\": true, \"result\": {\"enactment_count\": 1, \"enactments\": [{\"artifact_kind\": \"printed\", \"artifact_summary\": \"record(claims and rulings,[row(There are 12 votes for rabbit.,true),row(There are 18 votes",
+    "verified_ok": true
+  },
+  {
+    "domain": "curriculum/im/generated/lesson_misconception_witness_store.pl lesson+operation+name facts (1,833), currently unreachable through JSON dispatch because lesson_code is typed json rather than code.",
+    "notes": "All 60 exact baked-store tuples probed returned no_lesson_misconception_incompatibility_witness. Direct runtime isolation proved the baked marker and fact exist and the atom-valued handler succeeds, while the string-valued handler fails; dispatch_spec declares lesson_code-json. Queue entry left open.",
+    "op": "lesson_misconception_incompatibility_witness",
+    "params": [
+      "lesson_code",
+      "operation",
+      "name"
+    ],
+    "reply_excerpt": "{\"error\": {\"message\": \"lesson_misconception_incompatibility_witness found no matching lesson recorded example\", \"type\": \"no_lesson_misconception_incompatibility_witness\"}, \"id\": \"tail-0118\", \"ok\": false}",
+    "verified_ok": false
+  },
+  {
+    "domain": "Hermes encyclopedia literature_search_dict/2 over nonempty harvested phrase queries.",
+    "notes": "Probe {\"op\": \"lit_search\", \"query\": \"absolute magnitude\"} returned ok=true in 1220.8 ms.",
+    "op": "lit_search",
+    "params": [
+      "query"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0023\", \"ok\": true, \"result\": {\"cases\": [{\"bibkey\": \"IJSME_Cheek_2012_Students'\", \"citation\": \"KIM A. CHEEK (2012)\", \"commitment\": \"c_counting_cardinality_units\", \"commitment_label\": \"Counting and cardinality",
     "verified_ok": true
   },
   {
@@ -599,6 +1077,16 @@
     "verified_ok": true
   },
   {
+    "domain": "curriculum/im/lesson_monitoring.pl encoded_lesson/6 domain (1,313); current traditional rows expose a missing-source exception.",
+    "notes": "IM-G1-U1-L1 returned ok in 2338.6 ms and an unknown lesson returned named absence. A real encoded traditional lesson raised source_sink lessons('traditional/sources/rays_new_practical_notes.md') does not exist in 5500.0 ms. Queue entry left open as a real defect.",
+    "op": "monitoring_chart_export",
+    "params": [
+      "lesson_code"
+    ],
+    "reply_excerpt": "{\"error\": {\"message\": \"Operation 'monitoring_chart_export' raised: source_sink `lessons('traditional/sources/rays_new_practical_notes.md')' does not exist\", \"type\": \"op_exception\"}, \"id\": \"tail-0001\", \"ok\": false}",
+    "verified_ok": false
+  },
+  {
     "domain": "Computed scorer, no fact enumeration. source='pml_vocabulary': subject = any action kind known to mua_relations:kind_vocabulary_terms/2 (action kinds from action_automaton_vocabulary/3, e.g. unit_fraction_iteration, count_on_from_larger); input = free corpus-row text (JSON string; the 'dict' converter is a passthrough, so a plain string works). source='pml_axiom_batch': subject fixed 'axiom_batch', input = a JSON list of PML clause strings scored by hermes_encyclopedia:pml_score_dict/2.",
     "notes": "Scores 0..N; an unknown subject still succeeds with score 0 (kind_vocabulary_terms is det), so any atom subject + text input is well-formed for the pml_vocabulary lane. Verified probe scored 2.",
     "op": "mua_coherence_witness",
@@ -645,6 +1133,16 @@
     "verified_ok": true
   },
   {
+    "domain": "knowledge/standards/im/lesson_anchors.pl K-5 lessons plus curriculum/scope_and_sequence grade 6-8 lesson rows (1,308 current IM lessons).",
+    "notes": "Three in-domain current-IM probes returned ok in 1.8-3.5 ms; one absent code returned named unknown_lesson_code in 201.1 ms. Run-2's 1,572 circuit-open outcomes are contaminated, and the old 3,028-code pool also included non-lesson keys.",
+    "op": "notation_monitoring_chart",
+    "params": [
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0137\", \"ok\": true, \"result\": {\"cells\": [{\"deformations\": [{\"deformation\": \"operational_equals_chain\", \"family\": \"notation_error\", \"host_note\": \"Rendered over a representative equation from the lesson's opera",
+    "verified_ok": true
+  },
+  {
     "domain": "kind in {write_equation, mirror_written}; optional a, b, r ints, operator in {+,-,=}, and digit for mirror_written; all defaulted.",
     "notes": "",
     "op": "notation_render",
@@ -652,6 +1150,16 @@
       "kind"
     ],
     "reply_excerpt": "{\"canvas\": {\"height\": 120, \"width\": 760}, \"frames\": [{\"caption\": \"Write 2 + 3 = 5.\", \"scene\": {\"baseline\": 40, \"format\": \"notation\", \"glyphPitch\": 24, \"glyphs\": [{\"ch\": \"2\", \"flip\": \"none\", \"ghost\": \"",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/tools/axiom_pack_audit.pl number-theory witness over a finite integer list; [2,3,5] is the canonical probe.",
+    "notes": "Probe {\"op\": \"number_theory_self_defeat_witness\", \"list\": [2, 3, 5]} returned ok=true in 0.2 ms.",
+    "op": "number_theory_self_defeat_witness",
+    "params": [
+      "list"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0024\", \"ok\": true, \"result\": {\"assumption\": \"n(is_complete([2,3,5]))\", \"composite_case\": {\"euclid_number\": 31, \"kind\": \"euclid_composite_case\", \"list\": [2, 3, 5], \"product\": 30, \"status\": \"not_applicable_pri",
     "verified_ok": true
   },
   {
@@ -677,6 +1185,36 @@
     "verified_ok": true
   },
   {
+    "domain": "hermes/pair_scoring.pl: a JSON event list; a one-event list returns an empty graph without refusing.",
+    "notes": "Probe {\"op\": \"pair_graph\", \"events\": [{\"id\": \"u1\", \"speaker\": \"student\", \"text\": \"i added the tens first\"}]} returned ok=true in 0.1 ms.",
+    "op": "pair_graph",
+    "params": [
+      "events"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0025\", \"ok\": true, \"result\": {\"edges\": [], \"nodes\": []}}",
+    "verified_ok": true
+  },
+  {
+    "domain": "hermes/pair_scoring.pl: a JSON event list; a one-event list returns no candidate pairs without refusing.",
+    "notes": "Probe {\"op\": \"pair_score\", \"events\": [{\"id\": \"u1\", \"speaker\": \"student\", \"text\": \"i added the tens first\"}]} returned ok=true in 0.1 ms.",
+    "op": "pair_score",
+    "params": [
+      "events"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0026\", \"ok\": true, \"result\": []}",
+    "verified_ok": true
+  },
+  {
+    "domain": "curriculum/im/lesson_monitoring.pl pedagogical_question_clusters/3 over nonempty query text.",
+    "notes": "Probe {\"op\": \"pedagogical_questions\", \"query\": \"absolute magnitude\"} returned ok=true in 32.3 ms.",
+    "op": "pedagogical_questions",
+    "params": [
+      "query"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0027\", \"ok\": true, \"result\": {\"match_count\": 1, \"matches\": [{\"advancing_questions\": [\"Use a number line or context to distinguish position from change.\", \"Explain a sign rule with opposites or repeated addit",
+    "verified_ok": true
+  },
+  {
     "domain": "knowledge/crosswalk/families/cw_place_value_number_claim.pl: regex (?m)^pv\\((\\w+), — group 1 is the canonical key (the family's own claim table; heads start at column 0). Tuples are (canonical, 'literature_commitment').",
     "notes": "All params are atoms sent as JSON strings. source='literature_commitment' is the always-live lane: it needs only literature_vocabulary:canonical_commitment(LitAtom,_) for the row's literature atom, which held for every family probed. The other lane per canonical uses source = the row's full quoted legacy-functor atom (e.g. 'action_automata_registry:action_automaton_cluster/3(calculus,direct_substitution)') with detail edge(...)/edge_surface(...); those sources are enumerable from the same fact rows but are awkward to quote, so a driver should sweep the literature_commitment lane. These four families dispatch to their own module (cw_counting_claim / cw_fraction_claim / cw_place_value_number_claim / cw_whole_number_claim), not through cw_driver:family_witness, but the request shape is identical.",
     "op": "place_value_number_claim_witness",
@@ -685,6 +1223,16 @@
       "source"
     ],
     "reply_excerpt": "{\"id\": \"place_value\", \"ok\": true, \"result\": {\"canonical\": \"base_ten_composite_unit_arithmetic\", \"derivation\": \"literature_canonical_commitment_lookup\", \"detail\": \"commitment(c_base_ten_composite_units",
+    "verified_ok": true
+  },
+  {
+    "domain": "hermes/encyclopedia.pl pml_score_dict/2 over a JSON list of clause strings; the empty list is a valid zero-clause score.",
+    "notes": "Probe {\"op\": \"pml_score\", \"clauses\": []} returned ok=true in 0.1 ms.",
+    "op": "pml_score",
+    "params": [
+      "clauses"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0028\", \"ok\": true, \"result\": {\"axioms\": [], \"clause_count\": 0, \"incompatibilities\": [], \"math_actions\": [], \"passage_modes\": [], \"polarity_mismatches\": [], \"profile\": {\"dominant_mode\": \"none\", \"dominant_pola",
     "verified_ok": true
   },
   {
@@ -699,6 +1247,16 @@
     "verified_ok": true
   },
   {
+    "domain": "hermes_worker.pl primitive_for_practice_dispatch_dict/2 practice vocabulary; counting is valid.",
+    "notes": "Probe {\"op\": \"primitive_for_practice\", \"practice\": \"counting\"} returned ok=true in 0.1 ms.",
+    "op": "primitive_for_practice",
+    "params": [
+      "practice"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0029\", \"ok\": true, \"result\": {\"grounding_metaphor_label\": null, \"note\": \"no_metaphor_grounding\", \"practice\": \"counting\", \"visual_primitive\": null}}",
+    "verified_ok": true
+  },
+  {
     "domain": "source='registry': action_automaton_pair/4 dispatches per operation to productive_*_deformation/3 fact tables in knowledge/strategies/math/*_action_pairs.pl (addition->productive_deformation, ratio->productive_ratio_deformation, fraction->productive_fraction_deformation, etc.; 16 operations wired at action_automata_registry.pl:1314-1345). Harvest e.g. sar_add_action_pairs.pl regex (?s)productive_deformation\\((\\w+),\\s*(\\w+),\\s*(\\w+)\\) for (productive, deformation, family) with operation='addition', source='registry'. source='addition'/'fraction' are fixed-operation lanes over the same two fact tables.",
     "notes": "All five params are atoms. The pair facts are multiline in-file; use DOTALL regex.",
     "op": "productive_deformation_witness",
@@ -710,6 +1268,16 @@
       "source"
     ],
     "reply_excerpt": "{\"id\": \"prod_deform\", \"ok\": true, \"result\": {\"deformation\": \"additive_extension_of_ratio\", \"deformation_witness\": {\"action_kind\": \"additive_extension_of_ratio\", \"cluster\": \"proportional_ratio_unit_coo",
+    "verified_ok": true
+  },
+  {
+    "domain": "lesson-code surface over monitoring_chart_figure_export/2; an IM unit/lesson code may return zero candidates without refusing.",
+    "notes": "Probe {\"op\": \"ranked_figures\", \"lesson_code\": \"IM-G1-U1\"} returned ok=true in 878.5 ms.",
+    "op": "ranked_figures",
+    "params": [
+      "lesson_code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0030\", \"ok\": true, \"result\": {\"candidate_count\": 1359, \"candidates\": [{\"bibkey\": \"ESM_Bakker_2006_Historical\", \"domains\": [\"statistics\"], \"evidence\": {\"is_hybridized_transplant\": false, \"score_components\": [",
     "verified_ok": true
   },
   {
@@ -733,6 +1301,14 @@
     "verified_ok": false
   },
   {
+    "domain": "No live domain: review_queue retired with the review queue in eade506b.",
+    "notes": "The live worker returned unknown_op, matching the review-queue retirement in eade506b.",
+    "op": "review_queue",
+    "params": [],
+    "reply_excerpt": "{\"error\": {\"message\": \"Unsupported capability request: review_queue\", \"type\": \"unknown_op\"}, \"id\": \"tail-0031\", \"ok\": false}",
+    "verified_ok": false
+  },
+  {
     "domain": "rhythm_axioms rhythm_transition/2 rows: direct modal pairs s(u)->s(comp_nec(a)), s(u_prime)->s(comp_nec(a)), s(a)->s(exp_poss(lg)), s(a)->s(comp_poss(t)), s(t)->s(comp_nec(neg(u))), s(lg)->s(exp_nec(u_prime)), s(t_b)->s(comp_nec(t_n)), s(t_n)->s(comp_nec(t_b)); plus necessity cashouts to='s(Payload)' for the comp_nec/exp_nec rows (e.g. s(u)->s(a)).",
     "notes": "Requires axiom_pack_enabled(rhythm), which held in the stock worker.",
     "op": "rhythm_transition_witness",
@@ -752,6 +1328,28 @@
       "claim"
     ],
     "reply_excerpt": "{\"axiom\": \"q3_zero_or_successor\", \"case\": \"successor\", \"conclusion\": \"o(eq(4,succ(3)))\", \"kind\": \"robinson_axiom\", \"predecessor\": 3, \"predecessor_history\": [\"succ(2)\", \"succ(1)\", \"succ(0)\", \"axiom(zer",
+    "verified_ok": true
+  },
+  {
+    "domain": "formal/pml/semantic_axioms.pl dialectical_transition/2 rows wrapped as [s(Stage)] to s(ModalTerm) (8).",
+    "notes": "Probe {\"op\": \"semantic_material_witness\", \"from\": \"[s(u)]\", \"to\": \"s(comp_nec(a))\"} returned ok=true in 0.1 ms.",
+    "op": "semantic_material_witness",
+    "params": [
+      "from",
+      "to"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0032\", \"ok\": true, \"result\": {\"conclusion\": \"s(comp_nec a)\", \"interpretation\": \"emergence_of_tension_from_unity\", \"kind\": \"dialectical_transition\", \"modality\": \"comp_nec\", \"payload\": \"a\", \"premise\": \"s(u)\", ",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/crosswalk/families/cw_edges.pl cw_sequent_proof sources paired with a canonical identity sequent (5).",
+    "notes": "Probe {\"op\": \"sequent_proof_witness\", \"sequent\": \"=>([comp_nec(a)],[comp_nec(a)])\", \"source\": \"deontic_bridge\"} returned ok=true in 0.4 ms.",
+    "op": "sequent_proof_witness",
+    "params": [
+      "sequent",
+      "source"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0033\", \"ok\": true, \"result\": {\"derivation\": \"deontic_scorekeeper_bridge_call\", \"kind\": \"sequent_proof_crosswalk\", \"legacy_functor\": \"deontic_scorekeeper:proves_via_sequent_core/1\", \"parameters\": {\"bridge\": \"",
     "verified_ok": true
   },
   {
@@ -786,6 +1384,57 @@
     "verified_ok": true
   },
   {
+    "domain": "data/learningcommons/derived/im_standards_progression_overlay.json from_code/to_code endpoint union (306 codes).",
+    "notes": "One of 306 overlay endpoint codes returned ok in 97.3 ms; one absent code returned the named no_standards_progression_candidate response in 93.4 ms.",
+    "op": "standards_progression_candidates",
+    "params": [
+      "code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0123\", \"ok\": true, \"result\": {\"code\": \"1.G.A\", \"incoming\": [{\"cross_grade_prefix\": false, \"from_code\": \"1.G.A.2\", \"from_grade_prefix\": \"1\", \"learner_reachability\": false, \"mediating_lessons\": [{\"grade\": \"1\",",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/math/state_vocabulary.pl state_label/4 keys (64).",
+    "notes": "Probe {\"op\": \"state_labels\", \"state\": \"classify_three_measure_triangle_conditions\"} returned ok=true in 0.1 ms.",
+    "op": "state_labels",
+    "params": [
+      "state"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0034\", \"ok\": true, \"result\": {\"alternates\": [{\"citation\": \"IM-G7-U7-L9 and L10; CCSS 7.G.A.2\", \"label\": \"one triangle, more than one, or none\", \"tradition\": \"illustrative_mathematics\"}], \"default\": \"classify",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/attested_phrases.pl and canonical_phrases.pl nonempty content phrases.",
+    "notes": "Probe {\"op\": \"strategy_recognize\", \"content\": \"absolute magnitude\"} returned ok=true in 47.9 ms.",
+    "op": "strategy_recognize",
+    "params": [
+      "content"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0035\", \"ok\": true, \"result\": [{\"automaton_accepting\": [\"q_accept\"], \"automaton_start\": \"q_start\", \"candidate_strategy\": {\"kind\": \"drop_sign_use_magnitude_sum\", \"operation\": \"integer\"}, \"confidence\": 0.166666",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/automaton_input_contracts.pl verified kind+example input pairs (284).",
+    "notes": "Probe {\"op\": \"strategy_trace\", \"strategy\": \"base_ones_chunking\", \"input\": {\"a\": 47, \"b\": 28}} returned ok=true in 1.5 ms.",
+    "op": "strategy_trace",
+    "params": [
+      "strategy",
+      "input"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0036\", \"ok\": true, \"result\": {\"expected\": \"75\", \"jump_witness\": {\"derivation\": \"no_known_running_sum_trace\", \"extraction\": \"\", \"jump_count\": 0, \"jumps\": [], \"kind\": \"strategy_number_line_jumps_unavailable\", ",
+    "verified_ok": true
+  },
+  {
+    "domain": "knowledge/strategies/inferential_strength.pl: any safely parsed target term; unsupported targets return no_path_measure.",
+    "notes": "Probe {\"op\": \"target_inferential_strength_witness\", \"target\": \"probe\"} returned ok=true in 26.0 ms.",
+    "op": "target_inferential_strength_witness",
+    "params": [
+      "target"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0037\", \"ok\": true, \"result\": {\"incompatibility_witness\": {\"conflicts\": [], \"count\": 0, \"discovered_witnesses\": [], \"kind\": \"incompatibility_power\", \"registry_witnesses\": [], \"scope\": \"closed_world_finite_reg",
+    "verified_ok": true
+  },
+  {
     "domain": "practice: any atom; teacher_layer/2 is det and composes whatever channels the practice grounds. Meaningful values are practice atoms from mua_relations practice_kind/3 / grounding metaphor tables.",
     "notes": "counting_on returned ok with an empty dict (all channels thin, witness field intentionally dropped). Served, but a sweep wanting content should key practices that carry grounding metaphors.",
     "op": "teacher_layer",
@@ -816,6 +1465,17 @@
       "source"
     ],
     "reply_excerpt": "{\"id\": \"unit_coord\", \"ok\": true, \"result\": {\"derivation\": \"deterministic_strategy_demo\", \"detail\": \"composite(6)\", \"key\": \"compose(2,3)\", \"kind\": \"unit_coordination_crosswalk\", \"legacy_functor\": \"diva",
+    "verified_ok": true
+  },
+  {
+    "domain": "hermes/encyclopedia.pl: encoded lesson code plus a JSON list of reader-axiom strings; an empty list is valid.",
+    "notes": "Probe {\"op\": \"validate_reader_axioms\", \"clauses\": [], \"lesson_code\": \"IM-G1-U1-L1\"} returned ok=true in 2.6 ms.",
+    "op": "validate_reader_axioms",
+    "params": [
+      "clauses",
+      "lesson_code"
+    ],
+    "reply_excerpt": "{\"id\": \"tail-0038\", \"ok\": true, \"result\": {\"clause_count\": 0, \"lesson_code\": \"IM-G1-U1-L1\", \"licensed_posture_count\": 2, \"licensed_postures\": [{\"mode\": \"normative\", \"polarity\": \"compressive\"}, {\"mode\": \"subjective\", \"pol",
     "verified_ok": true
   },
   {

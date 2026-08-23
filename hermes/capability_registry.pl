@@ -43,6 +43,7 @@ capability('compute', 'hermes_worker', 'learner', [], routed_paged).
 capability('coordinate_plane_render', 'coordinate_plane_scene', 'render', [], routed_paged).
 capability('corpus_grammar_summary', 'corpus_attested_grammar', 'render', [], routed_paged).
 capability('counting_claim_witness', 'cw_counting_claim', 'crosswalk', ['canonical', 'source'], routed_paged).
+capability('coverage_backlog', 'index_query', 'unclassified', [], unrouted).
 capability('critique_bad_infinite', 'critique', 'dialectic', ['proof'], routed_paged).
 capability('data_display_render', 'data_display_scene', 'render', [], routed_paged).
 capability('decimal_claim_witness', 'cw_driver', 'crosswalk', ['canonical', 'source'], routed_paged).
@@ -145,6 +146,7 @@ capability('material_inference_witness', 'cw_driver', 'crosswalk', ['conclusion'
 capability('measurement_strip_render', 'measurement_strip_scene', 'render', [], routed_paged).
 capability('media_alignment', 'media_alignment', 'pml', ['segments', 'source'], routed_paged).
 capability('metaphor_break_witness', 'cw_driver', 'crosswalk', ['detail', 'inference', 'metaphor', 'source'], routed_paged).
+capability('metaphor_coverage', 'index_query', 'unclassified', ['metaphor'], unrouted).
 capability('misconception_hook_witness', 'cw_driver', 'misconceptions', ['family', 'operation', 'outcome', 'source'], routed_paged).
 capability('misconception_incompatibility_witness', 'misconception_registry', 'misconceptions', ['conflict', 'move'], routed_only).
 capability('misconception_jumps_witness', 'visualization', 'misconceptions', ['a', 'b', 'deformation', 'operation'], routed_only).
@@ -222,6 +224,8 @@ capability('state_labels', 'user', 'synthesis', ['state'], routed_paged).
 capability('strategy_recognize', 'strategy_recognizer', 'synthesis', ['content'], unrouted).
 capability('strategy_trace', 'hermes_encyclopedia', 'synthesis', ['input', 'strategy'], routed_paged).
 capability('target_inferential_strength_witness', 'user', 'synthesis', ['target'], routed_paged).
+capability('task_span_backlog', 'index_query', 'unclassified', [], unrouted).
+capability('task_span_lesson', 'index_query', 'unclassified', ['lesson'], unrouted).
 capability('teacher_layer', 'teacher_layer', 'render', [], routed_paged).
 capability('trace_adjudication', 'trace_adjudication', 'pml', ['ledger', 'utterances'], routed_paged).
 capability('unit_coordination_svg', 'unit_coordination_viz', 'render', ['base', 'denominator', 'numerator', 'value_up'], routed_paged).
@@ -305,12 +309,10 @@ capability('knowledge/discourse/commitment_automata.pl', 'commitment_automata', 
 capability('knowledge/geometry/geometry_bridge.pl', 'geometry_bridge', 'geometry_witness', [], orphan_module).
 capability('knowledge/index/consumption_attested_run2.pl', 'consumption_attested_run2', 'unclassified', [], orphan_module).
 capability('knowledge/index/consumption_lifecycle.pl', 'consumption_lifecycle', 'unclassified', [], orphan_module).
-capability('knowledge/index/coverage_absence_registry.pl', 'coverage_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/data_consumption_manifest.pl', 'data_consumption_manifest', 'unclassified', [], orphan_module).
 capability('knowledge/index/im_lesson_identity.pl', 'im_lesson_identity', 'unclassified', [], orphan_module).
 capability('knowledge/index/machine_block_decomposition.pl', 'machine_block_decomposition', 'unclassified', [], orphan_module).
 capability('knowledge/index/research_measurement_registry.pl', 'research_measurement_registry', 'unclassified', [], orphan_module).
-capability('knowledge/index/task_span_absence_registry.pl', 'task_span_absence_registry', 'unclassified', [], orphan_module).
 capability('knowledge/index/vision_lesson_digest_audit.pl', 'vision_lesson_digest_audit', 'unclassified', [], orphan_module).
 capability('knowledge/misconceptions/literature_canonical_mappings.pl', 'literature_canonical_mappings', 'misconceptions', [], orphan_module).
 capability('knowledge/misconceptions/monitoring_registry_bridge.pl', 'monitoring_registry_bridge', 'misconceptions', [], orphan_module).
@@ -535,7 +537,7 @@ capability_parameter('lesson_arithmetic_demonstration', 'observed_answer', null,
 capability_parameter('lesson_arithmetic_demonstration', 'work_transcription', 'string', false, null).
 capability_parameter('lesson_deformation_chart', 'code', 'string', true, "IM-G3-U5-L2").
 capability_parameter('lesson_enactment_run', 'lesson', 'string', true, "IM-G4-U2-L4").
-capability_parameter('lesson_misconception_incompatibility_witness', 'lesson_code', null, true, null).
+capability_parameter('lesson_misconception_incompatibility_witness', 'lesson_code', 'string', true, null).
 capability_parameter('lesson_misconception_incompatibility_witness', 'name', null, true, null).
 capability_parameter('lesson_misconception_incompatibility_witness', 'operation', null, false, null).
 capability_parameter('list_misconceptions', 'domain', 'string', false, null).
@@ -551,6 +553,7 @@ capability_parameter('metaphor_break_witness', 'metaphor', null, true, null).
 capability_parameter('metaphor_break_witness', 'inference', null, true, null).
 capability_parameter('metaphor_break_witness', 'detail', null, true, null).
 capability_parameter('metaphor_break_witness', 'source', null, true, null).
+capability_parameter('metaphor_coverage', 'metaphor', 'string', true, null).
 capability_parameter('misconception_hook_witness', 'operation', null, true, null).
 capability_parameter('misconception_hook_witness', 'outcome', null, true, null).
 capability_parameter('misconception_hook_witness', 'family', null, true, null).
@@ -651,6 +654,7 @@ capability_parameter('strategy_recognize', 'content', 'string', true, null).
 capability_parameter('strategy_trace', 'strategy', 'string', true, null).
 capability_parameter('strategy_trace', 'input', 'object', false, null).
 capability_parameter('target_inferential_strength_witness', 'target', null, true, null).
+capability_parameter('task_span_lesson', 'lesson', 'string', true, null).
 capability_parameter('unit_coordination_witness', 'key', null, true, null).
 capability_parameter('unit_coordination_witness', 'detail', null, true, null).
 capability_parameter('unit_coordination_witness', 'source', null, true, null).

@@ -15,7 +15,7 @@ set -euo pipefail
 LOCAL_REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
 SSHCFG=/Users/tio/Desktop/BigRed-Local/bigred.sshconfig
 REMOTE_REPO=/N/scratch/tmsavich/hermes
-RUN=$REMOTE_REPO/.bigred-output/2026-08-19-total-audit
+RUN=$REMOTE_REPO/.bigred-output/2026-08-22-total-audit-run3
 ENVBIN=/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin
 
 say() { echo "[launch] $*"; }

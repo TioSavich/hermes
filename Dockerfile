@@ -55,7 +55,7 @@ EXPOSE 8765
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s \
     CMD ["python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/mode', timeout=4)"]
 
-# Bind 0.0.0.0 so the published port reaches the host. The FERPA gate posture
-# is the repo default: server.py reads HERMES_GATE itself (off unless
-# HERMES_GATE=on); nothing here changes gate semantics.
+# Bind 0.0.0.0 so the published port reaches the host; Docker's -p mapping
+# decides what the container port reaches. Pasted work stays in the
+# container's gitignored runtime directory, same as a local launch.
 CMD ["python3", "-m", "hermes.app.server", "--host", "0.0.0.0", "--port", "8765"]

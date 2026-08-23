@@ -19,7 +19,11 @@
             machines_for_topic/3,      % +Topic, -Machines, -Excluded
             topic_subtraction/2,       % +Topic, -Counts
             topic_subtraction_dict/2,  % +Topic, -Dict
-            signature_anchors_dict/3, % +Family, +Signature, -Dict
+            signature_anchors_dict/3,  % +Family, +Signature, -Dict
+            task_span_lesson_dict/2,   % +Lesson, -Dict
+            task_span_backlog_dict/1,  % -Dict
+            metaphor_coverage_dict/2,  % +Metaphor, -Dict
+            coverage_backlog_dict/1,   % -Dict
             standards_progression_candidates_dict/2, % +Code, -Dict
             index_topic/1              % ?Topic
           ]).
@@ -32,6 +36,8 @@
 :- use_module(index(standards_progression_overlay),
               [ standards_progression_candidates_dict/2 ]).
 :- use_module(index(admitted_review_proposals), []).
+:- use_module(index(task_span_absence_registry), []).
+:- use_module(index(coverage_absence_registry), []).
 
 %!  window_of(?Machine, -Row) is nondet.
 %
@@ -175,3 +181,97 @@ signature_anchors_dict(Family, Signature, Dict) :-
         admission: mechanical_strong_band,
         rows: Rows
     }.
+
+
+%!  task_span_lesson_dict(+Lesson, -Dict) is semidet.
+%
+%   Return one lesson's task-span rollup and every recorded reason count.
+%   Fails when Lesson has no rollup row; an empty reasons list is a valid
+%   account of a lesson whose rollup carries no reason rows.
+task_span_lesson_dict(Lesson, Dict) :-
+    atom(Lesson),
+    task_span_absence_registry:lesson_task_span_rollup(
+        Lesson, Grade, Spans, Resolved, Readiness, PrimaryBlocker),
+    findall(_{reason: Reason, count: Count},
+            task_span_absence_registry:lesson_task_span_reason_count(
+                Lesson, Reason, Count),
+            Reasons),
+    Dict = task_span_lesson{
+        lesson: Lesson,
+        grade: Grade,
+        spans: Spans,
+        resolved: Resolved,
+        readiness: Readiness,
+        primary_blocker: PrimaryBlocker,
+        reasons: Reasons
+    }.
+
+
+%!  task_span_backlog_dict(-Dict) is semidet.
+%
+%   Return the ranked task-span reason queue and the lessons one parser away
+%   from task evidence. Fails when the generated queue is empty.
+task_span_backlog_dict(Dict) :-
+    findall(_{rank: Rank, reason: Reason, lesson_count: LessonCount},
+            task_span_absence_registry:task_span_reason_queue(
+                Rank, Reason, LessonCount),
+            ReasonQueue),
+    ReasonQueue = [_|_],
+    findall(_{lesson: Lesson, reason: Reason, span_count: SpanCount},
+            task_span_absence_registry:lesson_one_parser_away(
+                Lesson, Reason, SpanCount),
+            OneParserAway),
+    Dict = task_span_backlog{
+        reason_queue: ReasonQueue,
+        one_parser_away: OneParserAway
+    }.
+
+
+%!  metaphor_coverage_dict(+Metaphor, -Dict) is semidet.
+%
+%   Return the renderer receipt for Metaphor. Status and each evidence term
+%   are rendered as text so the dispatch result remains a JSON value. Fails
+%   when the generated registry carries no renderer receipt for Metaphor.
+metaphor_coverage_dict(Metaphor, Dict) :-
+    atom(Metaphor),
+    coverage_absence_registry:coverage_receipt(
+        metaphor(Metaphor), renderer, Status, Evidence),
+    term_string(Status, StatusText, [quoted(false)]),
+    maplist(index_term_string, Evidence, EvidenceText),
+    Dict = metaphor_coverage{
+        metaphor: Metaphor,
+        status: StatusText,
+        evidence: EvidenceText
+    }.
+
+
+%!  coverage_backlog_dict(-Dict) is semidet.
+%
+%   Return every metaphor without a renderer and counts of the two lesson
+%   receipt gaps. Fails when no metaphor renderer gap remains.
+coverage_backlog_dict(Dict) :-
+    findall(_{metaphor: Metaphor, status: StatusText},
+            ( coverage_absence_registry:metaphor_without_renderer(
+                  Metaphor, Status),
+              term_string(Status, StatusText, [quoted(false)])
+            ),
+            MetaphorsWithoutRenderer),
+    MetaphorsWithoutRenderer = [_|_],
+    findall(Lesson,
+            coverage_absence_registry:lesson_without_standard_anchor(
+                Lesson, _StandardStatus),
+            LessonsWithoutStandardAnchor),
+    length(LessonsWithoutStandardAnchor, StandardAnchorCount),
+    findall(Lesson,
+            coverage_absence_registry:lesson_without_structured_negative(
+                Lesson, _NegativeStatus),
+            LessonsWithoutStructuredNegative),
+    length(LessonsWithoutStructuredNegative, StructuredNegativeCount),
+    Dict = coverage_backlog{
+        metaphors_without_renderer: MetaphorsWithoutRenderer,
+        lessons_without_standard_anchor: StandardAnchorCount,
+        lessons_without_structured_negative: StructuredNegativeCount
+    }.
+
+index_term_string(Term, Text) :-
+    term_string(Term, Text, [quoted(false)]).

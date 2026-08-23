@@ -1515,6 +1515,18 @@ def main() -> int:
                          help="rebuild from the same inputs and byte-compare against disk")
     args = parser.parse_args()
 
+    if not args.candidates.is_file():
+        # Stage-0 candidates are a gitignored artifact only the local docling
+        # corpus can rebuild; a clone without it must not touch the tracked
+        # stores, and --check has nothing sound to compare against.
+        print(
+            "SKIP emit_admitted_question_stores: "
+            f"{args.candidates} absent locally (gitignored stage-0 artifact; "
+            "scripts/questions/build_admission_candidates.py rebuilds it from "
+            "the docling corpus); tracked stores retained unchanged"
+        )
+        return 0
+
     labels_text, guide_text, labels_report, guide_report, void_by_lane = run(args)
 
     if args.check:

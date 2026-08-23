@@ -12,7 +12,9 @@ if ! swipl --on-error=status --on-warning=status -q \
     cat "$diagnostics" >&2
     exit 1
 fi
-if rg -n 'ERROR:|Warning:' "$diagnostics"; then
+# grep, not rg: a missing rg exits 127 inside the if-condition and would
+# silently skip this assertion while the check still prints PASS.
+if grep -nE 'ERROR:|Warning:' "$diagnostics"; then
     echo "strict worker load emitted diagnostics" >&2
     exit 1
 fi

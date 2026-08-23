@@ -160,7 +160,16 @@ def main() -> int:
     labels, guide = context.admission_store_rows()
     check_counts(labels, guide)
     warrants = check_spans(labels, guide)
-    check_void_history(load_jsonl(CANDIDATES), load_jsonl(VERDICTS))
+    if CANDIDATES.is_file():
+        check_void_history(load_jsonl(CANDIDATES), load_jsonl(VERDICTS))
+    else:
+        # Same absence class as the guide-lane docling skip above: the
+        # stage-0 candidates file is gitignored and local-only.
+        print(
+            "SKIP void-history re-derivation: "
+            f"{CANDIDATES.relative_to(ROOT)} absent locally "
+            "(gitignored stage-0 artifact)"
+        )
     assert warrants == Counter({
         "printed_region": EXPECTED_PRINTED_REGION,
         "im_author_heading": EXPECTED_AUTHOR_HEADING,

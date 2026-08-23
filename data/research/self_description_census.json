@@ -417,16 +417,16 @@
       "sequent": 14,
       "standards": 23,
       "synthesis": 71,
-      "unclassified": 12,
+      "unclassified": 14,
       "workflow": 29,
       "zeeman": 4
     },
     "by_status": {
       "lazy_reachable": 11,
-      "orphan_module": 130,
+      "orphan_module": 128,
       "routed_only": 15,
       "routed_paged": 195,
-      "unrouted": 13
+      "unrouted": 17
     },
     "orphan_verdicts": {
       "consumed_by_builder": 8,
@@ -434,12 +434,12 @@
       "deliberately_unloaded": 4,
       "include_active": 23,
       "quarantined": 19,
-      "stalled_input": 17,
+      "stalled_input": 15,
       "superseded": 0,
       "undetermined": 22
     },
-    "total": 364,
-    "unrouted": 13
+    "total": 366,
+    "unrouted": 17
   },
   "generated_by": "scripts/research/build_self_description_census.py",
   "orphan_modules": [
@@ -1863,29 +1863,6 @@
       "capability_class": "unclassified",
       "evidence": [
         {
-          "locator": "/** <module> Generated coverage and absence registry",
-          "path": "knowledge/index/coverage_absence_registry.pl",
-          "relation": "source inspected"
-        },
-        {
-          "confidence": "high",
-          "drafter_date": "2026-08-22",
-          "drafter_model": "sonnet",
-          "judgement_path": "knowledge/index/coverage_absence_registry.pl",
-          "locator": "scripts/extract_coverage_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
-          "path": "data/research/orphan_judgements_authored.json",
-          "relation": "authored judgement"
-        }
-      ],
-      "module": "coverage_absence_registry",
-      "note": "NEW 2026-08-22: verified scripts/extract_coverage_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
-      "path": "knowledge/index/coverage_absence_registry.pl",
-      "verdict": "stalled_input"
-    },
-    {
-      "capability_class": "unclassified",
-      "evidence": [
-        {
           "locator": "/** <module> Generated data-consumption manifest",
           "path": "knowledge/index/data_consumption_manifest.pl",
           "relation": "source inspected"
@@ -1972,29 +1949,6 @@
       "module": "research_measurement_registry",
       "note": "NEW 2026-08-22: verified scripts/extract_research_measurement_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/research_measurement_registry.pl",
-      "verdict": "stalled_input"
-    },
-    {
-      "capability_class": "unclassified",
-      "evidence": [
-        {
-          "locator": "/** <module> Generated student-task-span absence registry",
-          "path": "knowledge/index/task_span_absence_registry.pl",
-          "relation": "source inspected"
-        },
-        {
-          "confidence": "high",
-          "drafter_date": "2026-08-22",
-          "drafter_model": "sonnet",
-          "judgement_path": "knowledge/index/task_span_absence_registry.pl",
-          "locator": "scripts/extract_task_span_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
-          "path": "data/research/orphan_judgements_authored.json",
-          "relation": "authored judgement"
-        }
-      ],
-      "module": "task_span_absence_registry",
-      "note": "NEW 2026-08-22: verified scripts/extract_task_span_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
-      "path": "knowledge/index/task_span_absence_registry.pl",
       "verdict": "stalled_input"
     },
     {
@@ -3389,6 +3343,24 @@
       "reason": "Its consumer is the MathTutorBench measurement path, which calls the worker directly. A tutor-facing page would want the narrated trace rather than the step table, and no such page has been designed."
     },
     {
+      "does": "Returns metaphors without live renderers and counts of lesson standard-anchor and structured-negative gaps.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(coverage_backlog,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "coverage_backlog_dict",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "serving predicate"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct for now.",
+      "name": "coverage_backlog",
+      "reason": "This backlog serves analysis clients through the worker and MCP surface; no page consumes it yet."
+    },
+    {
       "does": "Lists the callable comparison families (representation and decimal) and the generated gallery directories with live file counts and audience placement, for a frontier model choosing a drawing surface.",
       "evidence": [
         {
@@ -3449,6 +3421,24 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "lesson_enactment_run",
       "reason": "The serializer fills the dict shape strategy_trace_dict/3 returns, so an enactment already reaches every consumer a strategy trace reaches. A second route would duplicate a display path rather than add one."
+    },
+    {
+      "does": "Returns one metaphor's renderer status and the evidence recorded with its coverage receipt.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(metaphor_coverage,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "metaphor_coverage_dict",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "serving predicate"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct for now.",
+      "name": "metaphor_coverage",
+      "reason": "This receipt lookup serves analysis clients through the worker and MCP surface; no page consumes it yet."
     },
     {
       "does": "Returns the 739 admitted model-authored story-problem analyses by lesson code or statement id, each row carrying its statement, anchor, the five analysis fields, and its testimony and receipt.",
@@ -3552,6 +3542,42 @@
       "judgement": "Being unrouted from a web page is correct.",
       "name": "strategy_recognize",
       "reason": "The MCP server exposes it as a tool. The lack of a page route does not make the operation unreachable to its current consumer."
+    },
+    {
+      "does": "Returns the ranked task-span reason queue and the lessons one parser away from executable task evidence.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(task_span_backlog,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "task_span_backlog_dict",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "serving predicate"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct for now.",
+      "name": "task_span_backlog",
+      "reason": "This query serves analysis clients through the worker and MCP surface; no page consumes the backlog yet."
+    },
+    {
+      "does": "Returns one lesson's task-span rollup with every recorded reason count.",
+      "evidence": [
+        {
+          "locator": "dispatch_spec(task_span_lesson,",
+          "path": "hermes/dispatch_spec.pl",
+          "relation": "worker dispatch"
+        },
+        {
+          "locator": "task_span_lesson_dict",
+          "path": "knowledge/index/index_query.pl",
+          "relation": "serving predicate"
+        }
+      ],
+      "judgement": "Being unrouted from a web page is correct for now.",
+      "name": "task_span_lesson",
+      "reason": "This lookup serves analysis clients through the worker and MCP surface; no page consumes lesson task-span receipts yet."
     }
   ]
 }

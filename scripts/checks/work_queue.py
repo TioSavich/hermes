@@ -154,6 +154,18 @@ def main() -> int:
         if errors:
             return fail("; ".join(errors))
 
+        ledger = builder.DEFAULT_AUDIT_DIR / builder.AUDIT_LEDGER_NAME
+        if not ledger.is_file():
+            # Audit collections are local-only (gitignored); a clone can
+            # validate the tracked queue's schema but cannot rebuild it.
+            print(
+                "SKIP work-queue rebuild: "
+                f"{ledger.relative_to(builder.ROOT)} absent locally "
+                "(audit collections are local-only); "
+                "tracked queue schema validated"
+            )
+            return 0
+
         rebuilt, resolved, prunable = builder.build_full(builder.DEFAULT_AUDIT_DIR)
         rebuilt_json = builder.render_json(rebuilt).encode("utf-8")
         rebuilt_md = builder.render_markdown(rebuilt, resolved, prunable).encode("utf-8")

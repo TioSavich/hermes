@@ -212,6 +212,16 @@ def no_network_request_boundary(
 
 
 def main() -> int:
+    if not shadow_scorer.DEFAULT_PROBE.is_file():
+        # Same convention as the three sibling sidekick checks: the frozen
+        # probe rows live in the gitignored sidekick runtime; a clone
+        # without them skips rather than raising.
+        print(
+            "SKIP G5 shadow scorer: "
+            f"{shadow_scorer.DEFAULT_PROBE} absent locally "
+            "(gitignored sidekick runtime carries the frozen probe rows)"
+        )
+        return 0
     assert shadow_scorer.chat is measure_floors.chat
     assert shadow_scorer.execute is measure_floors.execute
     assert shadow_scorer.backend_fingerprint is measure_floors.backend_fingerprint

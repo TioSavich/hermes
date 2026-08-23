@@ -49,8 +49,10 @@ that starts with `sk-`.
   - **By hand**: create a file `hermes/app/runtime/.env` containing one line —
     `REALLMS_API_KEY=sk-...your-key...`.
 
-The two surfaces that only score locally — **Ask Hermes** questions and **Lesson
-lab** — work without a key. Everything that writes prose needs the key.
+The symbolic surfaces — the **Explore** and **Encyclopedia** tabs: strategy
+runs, misconception checks, lesson charts, the visualizers — work without a
+key. Everything that writes prose, including **Ask Hermes** replies, needs
+the key.
 
 ---
 
@@ -85,24 +87,26 @@ bash hermes/app/examples/seed.sh          # copies the synthetic roster + discus
 
 ## The happy path — one discussion, start to finish
 
-The recommended order across the left-hand surfaces is **Discussions → Roster &
-profiles → Pairing → Results**. Here it is with the synthetic example already in
-place, so you can follow along before using your own class.
+The whole workflow lives on the console's **Workspace** tab as lettered
+steps: **Parse → Profiles → Pairing page → Grades → Results**. Here it is
+with the synthetic example already in place, so you can follow along before
+using your own class.
 
-1. **Discussions.** This surface turns a Canvas discussion paste into scored,
+1. **Parse.** This step turns a Canvas discussion paste into scored,
    structured data. The path field already points at
-   `input/All_Discussions.txt` (the synthetic discussion). Click **Parse**, then
-   **PML score**, then **Metrics + graph**. Each button reports what it wrote.
+   `input/All_Discussions.txt` (the synthetic discussion). Click **Parse**,
+   then **LLM rubric score**, then **Metrics**. Each button reports what it
+   wrote.
 
    For your own class later: paste a Canvas discussion into a text file, drop it in
    `hermes/app/runtime/input/`, and put that filename in the path field.
 
-2. **Roster & profiles.** The roster lives at `hermes/app/runtime/roster.csv` (two
+2. **Profiles.** The roster lives at `hermes/app/runtime/roster.csv` (two
    columns: Sortable Name, User Login — the synthetic one is already there). Click
    **Write profiles** to have Hermes write one short, warm profile per student from
    how they participated.
 
-3. **Pairing.** Two ways to pair:
+3. **Pairing page.** Two ways to pair:
    - **Recommend dyads** reads a discussion and lists candidate pairs with a plain
      one-line reason for each ("why this pair"). The students appear under
      pseudonyms (S01, S02, …) because this view never touches names.
@@ -114,8 +118,11 @@ place, so you can follow along before using your own class.
    the left to read it — profiles render as text, scores and metrics as tables, the
    pairing page as a preview. No hunting through folders.
 
-That is one full pass. For your own course, replace the synthetic roster and
-discussion with your own local files and run the same four surfaces.
+That is one full pass. (The **Grades** step between Pairing page and Results
+drafts 10-point grades and feedback from the parsed discussion; it follows
+the same pattern.) For your own course,
+replace the synthetic roster and discussion with your own local files and run
+the same steps.
 
 ---
 

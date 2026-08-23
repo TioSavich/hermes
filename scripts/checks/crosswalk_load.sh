@@ -40,7 +40,7 @@ if CROSSWALK_CHECK_ROOT="$staged_crosswalk" \
     echo "canonical_all unexpectedly loaded with cw_stress_map absent" >&2
     exit 1
 fi
-if ! rg -q 'cw_stress_map' "$diagnostics"; then
+if ! grep -q 'cw_stress_map' "$diagnostics"; then
     cat "$diagnostics" >&2
     echo "missing-family diagnostic did not name cw_stress_map" >&2
     exit 1

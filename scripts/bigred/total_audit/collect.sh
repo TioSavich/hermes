@@ -4,8 +4,8 @@ set -euo pipefail
 
 LOCAL_REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
 SSHCFG=/Users/tio/Desktop/BigRed-Local/bigred.sshconfig
-RUN=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-19-total-audit
-DEST="$LOCAL_REPO/.bigred-collected/2026-08-19-total-audit"
+RUN=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-22-total-audit-run3
+DEST="$LOCAL_REPO/.bigred-collected/2026-08-22-total-audit-run3"
 
 mkdir -p "$DEST"
 rsync -az -e "ssh -F $SSHCFG" bigred:"$RUN/" "$DEST/"

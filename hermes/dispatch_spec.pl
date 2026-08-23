@@ -605,6 +605,18 @@ dispatch_spec(signature_anchors,
     call(index_query:signature_anchors_dict,
          [family, signature, out(dict)]),
     raw(no_signature_anchor, malformed_signature_anchors)).
+dispatch_spec(task_span_backlog, [],
+    call(index_query:task_span_backlog_dict, [out(dict)]),
+    raw(no_task_span_backlog)).
+dispatch_spec(task_span_lesson, [lesson-code],
+    call(index_query:task_span_lesson_dict, [lesson, out(dict)]),
+    raw(no_task_span_lesson)).
+dispatch_spec(coverage_backlog, [],
+    call(index_query:coverage_backlog_dict, [out(dict)]),
+    raw(no_coverage_backlog)).
+dispatch_spec(metaphor_coverage, [metaphor-atom],
+    call(index_query:metaphor_coverage_dict, [metaphor, out(dict)]),
+    raw(no_metaphor_coverage)).
 dispatch_spec(corpus_grammar_summary,
     [],
     call(corpus_attested_grammar:corpus_grammar_summary, [out(witness)]),
@@ -643,7 +655,7 @@ dispatch_spec(misconception_incompatibility_witness,
     witness(no_misconception_incompatibility_witness,
             malformed_misconception_incompatibility_request)).
 dispatch_spec(lesson_misconception_incompatibility_witness,
-    [lesson_code-json, name-term, operation-default(term, _)],
+    [lesson_code-code, name-term, operation-default(term, _)],
     call(user:lesson_misconception_incompatibility_witness,
          [lesson_code, operation, name, out(witness)]),
     witness(no_lesson_misconception_incompatibility_witness,
@@ -1020,6 +1032,10 @@ dispatch_message(question_moves, no_result, "question_moves found no mechanicall
 dispatch_message(question_moves, malformed, "question_moves accepts an optional lesson atom and limit 1 through 100").
 dispatch_message(signature_anchors, no_result, "signature_anchors found no mechanically admitted corpus anchor for that filter").
 dispatch_message(signature_anchors, malformed, "signature_anchors accepts optional family and signature atoms").
+dispatch_message(task_span_backlog, malformed, "task_span_backlog accepts no parameters").
+dispatch_message(task_span_lesson, malformed, "task_span_lesson requires a lesson atom").
+dispatch_message(coverage_backlog, malformed, "coverage_backlog accepts no parameters").
+dispatch_message(metaphor_coverage, malformed, "metaphor_coverage requires a metaphor atom").
 dispatch_message(corpus_grammar_summary, no_witness, "corpus_grammar_summary found no matching summary").
 dispatch_message(grounding_inference_witness, no_witness, "grounding_inference_witness found no matching metaphor-grounding result").
 dispatch_message(grounding_inference_witness, malformed, "grounding_inference_witness requires metaphor and inference").

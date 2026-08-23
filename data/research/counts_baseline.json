@@ -57,19 +57,19 @@
     "carried": false,
     "derivation": "orphan_modules rows via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 130
+    "value": 128
   },
   "census.registry_rows": {
     "carried": false,
     "derivation": "capability_registry.pl row count via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 364
+    "value": 366
   },
   "census.unrouted_rows": {
     "carried": false,
     "derivation": "unrouted rows via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 13
+    "value": 17
   },
   "curriculum.field_contexts": {
     "carried": false,

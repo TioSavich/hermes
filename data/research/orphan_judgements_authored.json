@@ -1126,13 +1126,13 @@
         "date": "2026-08-22",
         "model": "fable"
       },
-      "evidence": "scripts/research/build_work_queue.py:ATTESTED_LINE regex reads store_consumption_attested/…; scripts/bigred/total_audit/build_consumption_attestation.py is its producer; scripts/checks/consumption_gate.py consumes it in the gate.",
+      "evidence": "scripts/research/build_work_queue.py:ATTESTED_LINE regex reads store_consumption_attested/\u2026; scripts/bigred/total_audit/build_consumption_attestation.py is its producer; scripts/checks/consumption_gate.py consumes it in the gate.",
       "extends_closed_set": true,
       "inherited_from_census": false,
       "intended_consumer": "scripts/research/build_work_queue.py (attested rows gate which stores count as read); scripts/checks/consumption_gate.py reads it beside the lifecycle store",
       "judgement_class": "consumed_by_builder",
       "module": "consumption_attested_run2",
-      "note": "NEW 2026-08-22 ceremony: same late-landing class as consumption_lifecycle.pl — the f0f01cbd registry predates the store. Script-lane store the worker never loads; a tracked builder output (the work queue) derives from it.",
+      "note": "NEW 2026-08-22 ceremony: same late-landing class as consumption_lifecycle.pl \u2014 the f0f01cbd registry predates the store. Script-lane store the worker never loads; a tracked builder output (the work queue) derives from it.",
       "path": "knowledge/index/consumption_attested_run2.pl"
     },
     {
@@ -1150,24 +1150,6 @@
       "module": "consumption_lifecycle",
       "note": "NEW 2026-08-22 ceremony: the store entered the registry orphan set because the f0f01cbd ceremony extracted the registry before this store landed in the tree; the worker never loads it because it is a script-lane store. Its rows drive a tracked builder output (the work queue), so the class is consumed_by_builder, not stalled_input.",
       "path": "knowledge/index/consumption_lifecycle.pl"
-    },
-    {
-      "capability_class": "unclassified",
-      "confidence": "high",
-      "consumption_gate_consistency_note": "Consumption-gate brief (design-consumption-gate-brief.md) adjudication: an extract_*.py --check that rebuilds the store and byte-compares is the producer's own gate, not a consumer; per that ruling this row is stalled_input, matching the brief's own class for this store.",
-      "consumption_gate_overlap": true,
-      "drafter": {
-        "date": "2026-08-22",
-        "model": "sonnet"
-      },
-      "evidence": "scripts/extract_coverage_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
-      "extends_closed_set": false,
-      "inherited_from_census": false,
-      "intended_consumer": "none_named (byte-identity producer gate only)",
-      "judgement_class": "stalled_input",
-      "module": "coverage_absence_registry",
-      "note": "NEW 2026-08-22: verified scripts/extract_coverage_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
-      "path": "knowledge/index/coverage_absence_registry.pl"
     },
     {
       "capability_class": "unclassified",
@@ -1240,24 +1222,6 @@
       "module": "research_measurement_registry",
       "note": "NEW 2026-08-22: verified scripts/extract_research_measurement_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
       "path": "knowledge/index/research_measurement_registry.pl"
-    },
-    {
-      "capability_class": "unclassified",
-      "confidence": "high",
-      "consumption_gate_consistency_note": "Consumption-gate brief (design-consumption-gate-brief.md) adjudication: an extract_*.py --check that rebuilds the store and byte-compares is the producer's own gate, not a consumer; per that ruling this row is stalled_input, matching the brief's own class for this store.",
-      "consumption_gate_overlap": true,
-      "drafter": {
-        "date": "2026-08-22",
-        "model": "sonnet"
-      },
-      "evidence": "scripts/extract_task_span_absence_registry.py:check_output(expected, output) re-renders the registry and byte-compares it to the committed file; no predicate query of the store's own facts was found.",
-      "extends_closed_set": false,
-      "inherited_from_census": false,
-      "intended_consumer": "none_named (byte-identity producer gate only)",
-      "judgement_class": "stalled_input",
-      "module": "task_span_absence_registry",
-      "note": "NEW 2026-08-22: verified scripts/extract_task_span_absence_registry.py --check is a regen-and-byte-compare gate (check_output pattern), which the consumption-gate brief explicitly rules is 'the producer's gate, not consumption'; this row is one of the brief's own 21 registry_orphan-class overlap stores.",
-      "path": "knowledge/index/task_span_absence_registry.pl"
     },
     {
       "capability_class": "unclassified",

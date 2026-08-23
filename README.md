@@ -88,17 +88,34 @@ vendored SWI-Prolog and Python (Apple Silicon Macs).
 - The PDF homework surface needs `pdftotext` (Poppler); the Docker image
   carries it, a local install may not.
 - Student data never enters this repository. Anything you paste or drop
-  stays in `hermes/app/runtime/` on your machine, which git ignores. The
-  FERPA gate is off by default for loopback launches; launch with
-  `HERMES_GATE=on` to restore the lock.
+  stays in `hermes/app/runtime/` on your machine, which git ignores, and
+  the server answers only on loopback (`127.0.0.1`) unless you bind it
+  elsewhere yourself.
 
 ## Verify a checkout
+
+A fresh clone verifies with three commands, none of which need local
+research data:
+
+```sh
+python3 scripts/bundle/app_manifest.py --verify   # file set covers the worker's load closure
+python3 scripts/bundle/smoke_bundle.py            # every page, route, and report chain answers
+python3 -m hermes.mcp.selfcheck                   # the MCP tool surface, end to end
+```
+
+The full check suite certifies the maintainer's working tree:
 
 ```sh
 bash scripts/checks/run_all.sh          # the full check suite (~10 min)
 python3 scripts/render/check_prebaked.py
 python3 scripts/bundle/smoke_bundle.py
 ```
+
+A number of its checks re-derive tracked artifacts from local research
+state the repository does not carry — the docling extraction tree,
+`hermes/app/runtime/experiments/`, and collected audit runs. On a clone
+without that state, those checks fail on their missing inputs by name;
+that reports the boundary, not a broken checkout.
 
 When lesson, strategy, misconception, standards, literature, or
 inferential-strength facts change, regenerate the lesson context cache before the

@@ -527,6 +527,65 @@ GEOM_MISCONCEPTION_ID_RE = re.compile(r"^geom_misconception\(\s*(\w+)",
                                       re.MULTILINE)
 VAN_HIELE_CLAIM_RE = re.compile(r"^van_hiele_material_claim\(\s*(\w+)",
                                 re.MULTILINE)
+# Run-3 refusal-tail geometry domains. These witnesses filter to rows in one
+# named finite store; feeding the union concept/claim/bootstrap pools repeats
+# the run-2 refusal artifact even though each store enumerates its own keys.
+DEVELOPMENTAL_MARKER_ID_RE = re.compile(
+    r"^developmental_marker\(\s*(\w+)", re.MULTILINE)
+PCK_SYNTHESIS_ID_RE = re.compile(r"^pck_synthesis\(\s*(\w+)", re.MULTILINE)
+VAN_HIELE_MARKER_KEY_RE = re.compile(
+    r"^van_hiele_marker\(\s*(\w+),\s*(\d+)", re.MULTILINE)
+SYNTHESIZER_TRIANGULATION_CONCEPT_RE = re.compile(
+    r"^tier\(ref\(concept,\s*(\w+)\)", re.MULTILINE)
+LESSON_ENACTMENT_FORM_CODE_RE = re.compile(
+    r"^(?:lesson_enactment:)?lesson_enactment_form\(\s*'([^']+)'",
+    re.MULTILINE)
+PARTITION_SPAN_CODE_RE = re.compile(r"^partition_span\(\s*'([^']+)'",
+                                    re.MULTILINE)
+LESSON_HOST_EVIDENCE_CODE_RE = re.compile(
+    r"^lesson_host_evidence\(\s*'([^']+)'", re.MULTILINE)
+LESSON_FRACTION_EVIDENCE_CODE_RE = re.compile(
+    r"^lesson_fraction_evidence\(\s*'([^']+)'", re.MULTILINE)
+HAND_AUTHORED_CHART_CODE_RE = re.compile(
+    r"^hand_authored_chart_lesson\(\s*'([^']+)'", re.MULTILINE)
+DIVISION_CHART_CODE_RE = re.compile(r"^division_chart_lesson\(\s*'([^']+)'",
+                                    re.MULTILINE)
+SCOPE_SEQUENCE_LESSON_CODE_RE = re.compile(r"`(IM-G[678]-U\d+-L\d+)`")
+GEOMETRY_MATERIAL_DOMAIN_SPECS = [
+    ("geometry_synthesizer_anchor_material_witness",
+     "knowledge/geometry/concepts/synthesizer_anchors.pl",
+     "synthesizer_anchor_material_claim"),
+    ("geometry_van_hiele_level_material_witness",
+     "knowledge/geometry/concepts/van_hiele_levels.pl",
+     "van_hiele_level_material_claim"),
+    ("geometry_attribute_material_witness",
+     "knowledge/geometry/concepts/attributes.pl", "attribute_material_claim"),
+    ("geometry_shape_recognition_material_witness",
+     "knowledge/geometry/concepts/shape_recognition.pl",
+     "shape_recognition_material_claim"),
+    ("geometry_coordinate_material_witness",
+     "knowledge/geometry/concepts/coordinate_geometry.pl",
+     "coordinate_material_claim"),
+    ("geometry_angle_material_witness",
+     "knowledge/geometry/concepts/angles.pl", "angle_material_claim"),
+    ("geometry_pythagorean_material_witness",
+     "knowledge/geometry/concepts/pythagoras.pl", "pythagorean_material_claim"),
+    ("geometry_similarity_material_witness",
+     "knowledge/geometry/concepts/similarity_congruence.pl",
+     "similarity_material_claim"),
+    ("geometry_volume_surface_area_material_witness",
+     "knowledge/geometry/concepts/volume_surface_area.pl",
+     "volume_surface_area_material_claim"),
+    ("geometry_transformation_material_witness",
+     "knowledge/geometry/concepts/transformations.pl",
+     "transformation_material_claim"),
+    ("geometry_area_perimeter_material_witness",
+     "knowledge/geometry/concepts/area_perimeter.pl",
+     "area_perimeter_material_claim"),
+    ("geometry_classification_material_witness",
+     "knowledge/geometry/concepts/classification.pl",
+     "classification_material_claim"),
+]
 # knowledge/standards/indiana/standard_k_ns_4.pl known_pattern/2 first args.
 KNOWN_PATTERN_RE = re.compile(r"^known_pattern\(\s*([a-z_]+\(\d+\)),",
                               re.MULTILINE)
@@ -804,31 +863,18 @@ def harvest_tuple_domains(log) -> dict[str, tuple[tuple[str, ...], list, str]]:
     if strategy_trace_pairs:
         domains["strategy_trace"] = (("strategy", "input"), strategy_trace_pairs, "paired")
 
-    # item 5: the two metaphor witnesses. metaphor_source/4 is multifile
-    # across measuring_stick.pl (14 rows, measuring-stick family) and
-    # lakoff_nunez_inventory.pl (21 rows, L&N family) — both files declare
-    # `:- multifile metaphor_source/4` and both witnesses probe the SAME
-    # shared fact base, filtered internally by their own family-membership
-    # check. Reading only measuring_stick.pl (the widening spec's literal
-    # file pointer) would hand geometry_lakoff_nunez_metaphor_witness 14
-    # pairs that can never match its family filter — a deliberate deviation:
-    # union both files' pairs and let each op's own family check select its
-    # real subset, which is what makes both ops reachable at all.
+    # The two metaphor witnesses share a multifile base but each applies its
+    # own family filter. Preserve each source file's correlated pairs instead
+    # of handing both ops the 35-row union (which guaranteed 14 or 21 named
+    # refusals per run).
     ms_text = _read("knowledge/geometry/metaphors/measuring_stick.pl", log)
     ln_text = _read("knowledge/geometry/metaphors/lakoff_nunez_inventory.pl", log)
-    metaphor_pairs: list[tuple[str, str]] = []
-    seen_mp = set()
-    for src in (ms_text, ln_text):
-        if not src:
-            continue
-        for m in METAPHOR_SOURCE_RE.finditer(src):
-            pair = (m.group(1), m.group(2))
-            if pair not in seen_mp:
-                seen_mp.add(pair)
-                metaphor_pairs.append(pair)
-    if metaphor_pairs:
+    if ms_text:
+        metaphor_pairs = list(dict.fromkeys(METAPHOR_SOURCE_RE.findall(ms_text)))
         domains["geometry_measuring_stick_metaphor_witness"] = (
             ("concept", "metaphor"), metaphor_pairs, "tuple")
+    if ln_text:
+        metaphor_pairs = list(dict.fromkeys(METAPHOR_SOURCE_RE.findall(ln_text)))
         domains["geometry_lakoff_nunez_metaphor_witness"] = (
             ("concept", "metaphor"), metaphor_pairs, "tuple")
 
@@ -858,6 +904,132 @@ def harvest_tuple_domains(log) -> dict[str, tuple[tuple[str, ...], list, str]]:
         if triples:
             domains["geometry_im_grade5_standard_anchor_witness"] = (
                 ("concept", "framework", "code"), triples, "tuple")
+
+    # Refusal-tail geometry witnesses: every key comes from the finite table
+    # the handler itself filters to, rather than the broad union pools.
+    single_key_geometry = [
+        ("geometry_developmental_arc_witness",
+         "knowledge/geometry/concepts/developmental_arcs.pl",
+         DEVELOPMENTAL_MARKER_ID_RE, "arc_id"),
+        ("geometry_pck_classification_witness",
+         "knowledge/geometry/pck/classification.pl",
+         PCK_SYNTHESIS_ID_RE, "concept"),
+        ("geometry_synthesizer_triangulation_witness",
+         "knowledge/geometry/concepts/synthesizer_triangulations.pl",
+         SYNTHESIZER_TRIANGULATION_CONCEPT_RE, "concept"),
+    ]
+    for op, rel, rx, param in single_key_geometry:
+        text = _read(rel, log)
+        if text:
+            keys = list(dict.fromkeys(rx.findall(text)))
+            if keys:
+                domains[op] = ((param,), [(key,) for key in keys], "tuple")
+
+    text = _read("knowledge/geometry/van_hiele/levels.pl", log)
+    if text:
+        pairs = [(concept, int(level)) for concept, level in
+                 VAN_HIELE_MARKER_KEY_RE.findall(text)]
+        if pairs:
+            domains["geometry_van_hiele_marker_witness"] = (
+                ("concept", "level"), pairs, "tuple")
+
+    for op, rel, predicate in GEOMETRY_MATERIAL_DOMAIN_SPECS:
+        text = _read(rel, log)
+        if not text:
+            continue
+        rx = re.compile(rf"^{predicate}\(\s*([A-Za-z0-9_]+)", re.MULTILINE)
+        keys = list(dict.fromkeys(rx.findall(text)))
+        if keys:
+            domains[op] = (("claim_id",), [(key,) for key in keys], "tuple")
+
+    for op, rel in [
+        ("geometry_n103_bootstrap_witness",
+         "knowledge/geometry/bootstrap/n103_activities.pl"),
+        ("geometry_van_de_walle_bootstrap_witness",
+         "knowledge/geometry/bootstrap/van_de_walle_activities.pl"),
+    ]:
+        text = _read(rel, log)
+        if text:
+            keys = list(dict.fromkeys(BOOTSTRAP_ID_RE.findall(text)))
+            if keys:
+                domains[op] = (("bootstrap_id",), [(key,) for key in keys],
+                               "tuple")
+
+    # The enactment catalog contains nine named refusals beside 180 runnable
+    # lessons. Read the declarations that enact_lesson/2 consumes, including
+    # the data-lane support include and the fraction lane's partition spans.
+    enactment_codes = set()
+    enactment_sources = list((REPO / "curriculum/im/enactment").glob("*.pl"))
+    enactment_sources += list(
+        (REPO / "curriculum/im/enactment/support").glob("*.pl"))
+    for path in enactment_sources:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError as e:
+            log(f"tuple-domain source unreadable: {path} ({type(e).__name__})")
+            continue
+        enactment_codes.update(LESSON_ENACTMENT_FORM_CODE_RE.findall(text))
+        enactment_codes.update(PARTITION_SPAN_CODE_RE.findall(text))
+    if enactment_codes:
+        domains["lesson_enactment_run"] = (
+            ("lesson",), [(code,) for code in sorted(enactment_codes)], "tuple")
+
+    # lesson_deformation_chart's real domain is the union implemented by
+    # charted_lesson_code/1: hand-authored rows, evidence rows with both a host
+    # and a fraction, and the division row.
+    chart_text = _read("curriculum/im/lesson_deformation_chart.pl", log)
+    evidence_text = _read(
+        "curriculum/im/generated/lesson_representation_evidence.pl", log)
+    if chart_text and evidence_text:
+        hosts = set(LESSON_HOST_EVIDENCE_CODE_RE.findall(evidence_text))
+        fractions = set(LESSON_FRACTION_EVIDENCE_CODE_RE.findall(evidence_text))
+        chart_codes = hosts & fractions
+        chart_codes.update(HAND_AUTHORED_CHART_CODE_RE.findall(chart_text))
+        chart_codes.update(DIVISION_CHART_CODE_RE.findall(chart_text))
+        if chart_codes:
+            domains["lesson_deformation_chart"] = (
+                ("code",), [(code,) for code in sorted(chart_codes)], "tuple")
+
+    # The standards-progression query reads only edge endpoints from this
+    # candidate overlay. Codes absent from both endpoint positions are its
+    # named honest-absence surface.
+    overlay_text = _read(
+        "data/learningcommons/derived/im_standards_progression_overlay.json", log)
+    if overlay_text:
+        try:
+            overlay = json.loads(overlay_text)
+            edges = overlay.get("edges", [])
+            overlay_codes = sorted({
+                code for edge in edges if isinstance(edge, dict)
+                for code in (edge.get("from_code"), edge.get("to_code"))
+                if isinstance(code, str) and code
+            })
+        except json.JSONDecodeError:
+            overlay_codes = []
+            log("standards progression overlay JSON did not parse")
+        if overlay_codes:
+            domains["standards_progression_candidates"] = (
+                ("code",), [(code,) for code in overlay_codes], "tuple")
+
+    # notation_monitoring_chart serves every current IM lesson (charted rows
+    # plus the explicit no-material payload), not every IM-shaped code seen in
+    # unrelated manifests. K-5 enumerate in lesson_anchors.pl; grades 6-8
+    # enumerate in the scope-and-sequence markdown the handler parses.
+    im_lesson_codes = set()
+    lesson_anchor_text = _read("knowledge/standards/im/lesson_anchors.pl", log)
+    if lesson_anchor_text:
+        for _concept, framework, code in STANDARD_ANCHOR_RE.findall(
+                lesson_anchor_text):
+            if framework == "im_lesson" and re.match(
+                    r"^IM-G(?:K|[1-5])-U\d+-L\d+$", code):
+                im_lesson_codes.add(code)
+    for grade in (6, 7, 8):
+        text = _read(f"curriculum/scope_and_sequence/grade{grade}.md", log)
+        if text:
+            im_lesson_codes.update(SCOPE_SEQUENCE_LESSON_CODE_RE.findall(text))
+    if im_lesson_codes:
+        domains["notation_monitoring_chart"] = (
+            ("code",), [(code,) for code in sorted(im_lesson_codes)], "tuple")
 
     # item 11: semantic_material_witness. semantic_material_witness([s(Stage)],
     # s(ModalTerm), _) :- dialectical_transition(Stage, ModalTerm), ... —

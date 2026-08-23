@@ -5,8 +5,8 @@
 #SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
-#SBATCH --output=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-19-total-audit/stageA_%j.out
-#SBATCH --error=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-19-total-audit/stageA_%j.err
+#SBATCH --output=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-22-total-audit-run3/stageA_%j.out
+#SBATCH --error=/N/scratch/tmsavich/hermes/.bigred-output/2026-08-22-total-audit-run3/stageA_%j.err
 
 # Stage A — the deterministic lanes: closure, census, load probe, op sweep
 # under clause coverage, HTTP sweep, ledger. Every step leaves a done-marker
@@ -15,7 +15,7 @@
 set -euo pipefail
 
 REPO=/N/scratch/tmsavich/hermes
-RUN=$REPO/.bigred-output/2026-08-19-total-audit
+RUN=$REPO/.bigred-output/2026-08-22-total-audit-run3
 ENVBIN=/N/u/tmsavich/BigRed200/.conda/envs/umedcta/bin
 export HERMES_SWIPL=$ENVBIN/swipl
 export HERMES_PYTHON=$ENVBIN/python3

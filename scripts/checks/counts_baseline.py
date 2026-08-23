@@ -21,6 +21,16 @@ def main() -> int:
         current = load_baseline()
         derived = derive_baseline(current, preserve_carried=True)
     except (BaselineError, OSError, RuntimeError, ValueError) as exc:
+        experiments = ROOT / "hermes/app/runtime/experiments"
+        if not experiments.is_dir():
+            # A clone carries no runtime tree at all; a maintainer's tree
+            # with a single missing checkpoint dir still fails below.
+            print(
+                "SKIP counts baseline re-derivation: "
+                "hermes/app/runtime/experiments absent locally "
+                "(gitignored research state); tracked baseline not compared"
+            )
+            return 0
         print(f"counts_baseline.py: {exc}", file=sys.stderr)
         return 1
     old = render(current)

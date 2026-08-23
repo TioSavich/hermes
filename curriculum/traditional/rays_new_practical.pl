@@ -54,9 +54,12 @@ ray_misconception_info(Name, SourceKey, CitationKey, SourceNote, Info) :-
 
 text_interpreter:explicit_lesson_text_source(Code, Path) :-
     traditional_lesson(Code, _, _, _, _, _),
+    % The notes file is not in the tree; file_errors(fail) makes its
+    % absence a clean failure so consumers take their named-absence
+    % path instead of catching an existence raise.
     absolute_file_name(lessons('traditional/sources/rays_new_practical_notes.md'),
                        Path,
-                       [access(read)]).
+                       [access(read), file_errors(fail)]).
 
 traditional_lesson('TRAD-RAY-G1-OA-C6-ADD-FACTS',
                    trad_ray_g1_addition_facts,

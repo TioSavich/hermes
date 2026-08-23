@@ -2,6 +2,13 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:abduce_error",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:accommodation_witness",
     "resolution": "sampler-domain-artifact"
@@ -93,6 +100,20 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:check_solution_steps",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:commitment_match",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:compute",
     "resolution": "sampler-domain-artifact"
@@ -121,8 +142,36 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:defeasible_classify",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:deontic_requires_entitlement",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:diagnose_error",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:discourse_features",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:discourse_pragmatics",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -212,8 +261,57 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_angle_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_area_perimeter_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_attribute_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_ccss_standard_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_classification_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_coordinate_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:geometry_cross_link_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_developmental_arc_witness",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -226,8 +324,85 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_im_grade5_standard_anchor_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_im_grade6_lesson_standard_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_im_grade7_lesson_standard_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_im_grade8_lesson_standard_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_indiana_standard_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_lakoff_nunez_metaphor_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:geometry_material_profile_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:geometry_measurement_misconception_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_measuring_stick_metaphor_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_n103_bootstrap_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_pck_classification_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_pythagorean_material_witness",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -240,8 +415,71 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_shape_recognition_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_similarity_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_synthesizer_anchor_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_synthesizer_triangulation_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_transformation_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_van_de_walle_bootstrap_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_van_hiele_level_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_van_hiele_marker_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:geometry_van_hiele_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:geometry_volume_surface_area_material_witness",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -261,8 +499,22 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:ground",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:grounded_arith_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:grounding_for",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -277,6 +529,13 @@
     "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:grounding_metaphor_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:image_schema",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -303,6 +562,27 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:index_topic_subtraction",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:inferential_strength",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:input_contract",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:integer_signed_claim_witness",
     "resolution": "sampler-domain-artifact"
@@ -312,6 +592,34 @@
     "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:intersubjective_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:lesson_arithmetic_demonstration",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "Two charted codes were probed successfully, including the division row, while one current IM lesson outside the 77-code charted_lesson_code/1 domain returned named no_deformation_chart. Run-2 mixed honest absences with a broad sampler domain; run 3 now uses the 77 served codes.",
+    "id": "op-refusal:lesson_deformation_chart",
+    "resolution": "honest-absence-surface"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served an exact tuple drawn from its own finite backing store on 2026-08-22. The run-2 refusals came from a broad or uncorrelated key pool; run 3 now harvests the op-local domain.",
+    "id": "op-refusal:lesson_enactment_run",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:lit_search",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -401,8 +709,22 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "Three current-IM lesson probes returned ok in 1.8-3.5 ms and one absent code returned named absence. The run-2 circuit count was contaminated, and its 3,028-code pool included non-lessons; run 3 now uses the 1,308 current IM lesson codes.",
+    "id": "op-refusal:notation_monitoring_chart",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:notation_render",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:number_theory_self_defeat_witness",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -422,8 +744,36 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:pair_graph",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:pair_score",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:pedagogical_questions",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:place_value_number_claim_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:pml_score",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -436,8 +786,22 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:primitive_for_practice",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:productive_deformation_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:ranked_figures",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -457,6 +821,13 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "review_queue was deleted in eade506b with the review-queue retirement; the live worker replies unknown_op. The audit row predates the retirement.",
+    "id": "op-refusal:review_queue",
+    "resolution": "op-retired"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:rhythm_transition_witness",
     "resolution": "sampler-domain-artifact"
@@ -466,6 +837,20 @@
     "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:robinson_axiom_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:semantic_material_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:sequent_proof_witness",
     "resolution": "sampler-domain-artifact"
   },
   {
@@ -492,6 +877,41 @@
   {
     "date": "2026-08-22",
     "evidence": "data/research/witness_domain_findings.json",
+    "finding": "One of 306 overlay endpoint codes was probed successfully and one absent code returned the named no-candidate response. Run-2 mixed honest absences with unrelated codes; run 3 now uses the 306 endpoints.",
+    "id": "op-refusal:standards_progression_candidates",
+    "resolution": "honest-absence-surface"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:state_labels",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:strategy_recognize",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:strategy_trace",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:target_inferential_strength_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:teacher_layer",
     "resolution": "sampler-domain-artifact"
@@ -508,6 +928,13 @@
     "evidence": "data/research/witness_domain_findings.json",
     "finding": "The op serves well-formed requests, verified through the worker on 2026-08-22. The run-2 refusals came from sampling outside the op's key domain; the real domain now feeds the audit driver for run 3.",
     "id": "op-refusal:unit_coordination_witness",
+    "resolution": "sampler-domain-artifact"
+  },
+  {
+    "date": "2026-08-22",
+    "evidence": "data/research/witness_domain_findings.json",
+    "finding": "The op served a well-formed request through the live worker on 2026-08-22. Its single run-2 refusal was the shape probe or another sampler-domain artifact.",
+    "id": "op-refusal:validate_reader_axioms",
     "resolution": "sampler-domain-artifact"
   },
   {
