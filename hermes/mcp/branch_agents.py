@@ -70,8 +70,8 @@ BRANCHES: dict[str, BranchSpec] = {
     ),
     "curriculum_reading": BranchSpec(
         "curriculum_reading",
-        "Read monitoring and deformation-chart material for an exact lesson code.",
-        ("monitoring_chart", "monitoring_chart_detail", "lesson_deformation_chart", "lesson_deformation_chart_detail"),
+        "Read the lesson dossier, monitoring, and deformation-chart material for an exact lesson code.",
+        ("lesson_dossier", "monitoring_chart", "monitoring_chart_detail", "lesson_deformation_chart", "lesson_deformation_chart_detail"),
     ),
     "deontic_scorekeeping": BranchSpec(
         "deontic_scorekeeping",

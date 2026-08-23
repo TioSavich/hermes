@@ -157,7 +157,18 @@ def _proof_metadata(docs_by_kind: dict) -> dict:
     }
 
 
-def build_hybridized_model_chart_html(docs_by_kind: dict) -> str:
+def build_hybridized_model_chart_html(
+    docs_by_kind: dict,
+    provenance: dict[str, dict] | None = None,
+) -> str:
+    provenance = (
+        provenance
+        if provenance is not None
+        else export_monitoring_visuals.load_render_provenance()
+    )
+    provenance_line = export_monitoring_visuals.provenance_line_html(
+        "hybridized_model", provenance
+    )
     metadata = _proof_metadata(docs_by_kind)
     rows = []
     for kind, doc in ordered_case_items(docs_by_kind):
@@ -189,7 +200,7 @@ def build_hybridized_model_chart_html(docs_by_kind: dict) -> str:
             f'<td><code>{html.escape(foreign)}</code><br>'
             f'<span>licensed in</span> <code>{html.escape(licensed)}</code><br>'
             f'<span>placed on</span> <code>{html.escape(illicit)}</code><br>'
-            f'<strong>{html.escape(violation)}</strong></td>'
+            f'<strong>{html.escape(violation)}</strong>{provenance_line}</td>'
             '</tr>'
         )
     rows_html = "\n".join(rows)
@@ -216,6 +227,7 @@ def build_hybridized_model_chart_html(docs_by_kind: dict) -> str:
     .step {{ font-size: 12px; font-weight: 700; color: #6d5b31; }}
     .verb {{ margin-top: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }}
     p {{ margin: 6px 0 0; line-height: 1.35; }}
+    .provenance {{ color: #4d4638; font-size: 13px; }}
     .case-title {{ display: block; font-weight: 700; }}
     .missing {{ color: #8b1e16; }}
   </style>
@@ -248,10 +260,14 @@ def build_hybridized_model_chart_html(docs_by_kind: dict) -> str:
 """
 
 
-def write_hybridized_model_chart(out_dir: Path, docs_by_kind: dict) -> Path:
+def write_hybridized_model_chart(
+    out_dir: Path,
+    docs_by_kind: dict,
+    provenance: dict[str, dict] | None = None,
+) -> Path:
     return export_engine.write_text(
         out_dir / "hybridized_model_chart.html",
-        build_hybridized_model_chart_html(docs_by_kind),
+        build_hybridized_model_chart_html(docs_by_kind, provenance),
     )
 
 
@@ -265,11 +281,15 @@ def merge_existing_docs(out_dir: Path, new_docs: dict) -> dict:
     return docs
 
 
-def export_final_svgs(out_dir: Path, docs: dict) -> None:
+def export_final_svgs(
+    out_dir: Path,
+    docs: dict,
+    provenance: dict[str, dict] | None = None,
+) -> None:
     docs_path = out_dir / "docs.json"
     export_engine.write_json(docs_path, docs)
     export_engine.render_monitoring_docs(docs, out_dir)
-    export_monitoring_visuals.build_gallery(out_dir, docs)
+    export_monitoring_visuals.build_gallery(out_dir, docs, provenance)
 
 
 def export_filmstrip(out_dir: Path, code: str, doc: dict) -> Path:
@@ -304,10 +324,11 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     docs_by_kind = hybridization_docs()
+    provenance = export_monitoring_visuals.load_render_provenance()
     new_docs = demo_docs(docs_by_kind)
     export_engine.write_json(out_dir / "hybridization_docs.json", new_docs)
     docs = merge_existing_docs(out_dir, new_docs)
-    export_final_svgs(out_dir, docs)
+    export_final_svgs(out_dir, docs, provenance)
     filmstrips = [
         export_filmstrip(
             out_dir,
@@ -325,7 +346,7 @@ def main() -> int:
             doc,
         )
     ]
-    chart = write_hybridized_model_chart(out_dir, docs_by_kind)
+    chart = write_hybridized_model_chart(out_dir, docs_by_kind, provenance)
 
     print(f"Wrote hybridization demo to {out_dir}")
     for kind in docs_by_kind:

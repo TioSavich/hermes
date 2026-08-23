@@ -134,6 +134,7 @@ capability('knowledge', 'hermes_worker', 'learner', [], routed_paged).
 capability('learner_reset', 'more_machine_learner', 'learner', [], routed_paged).
 capability('lesson_arithmetic_demonstration', 'lesson_arithmetic_demonstration', 'workflow', ['lesson', 'observed_answer', 'task_id', 'work_transcription'], routed_paged).
 capability('lesson_deformation_chart', 'lesson_deformation_chart', 'workflow', ['code'], routed_paged).
+capability('lesson_dossier', 'user', 'unclassified', ['lesson_code'], routed_paged).
 capability('lesson_enactment_list', 'user', 'workflow', [], unrouted).
 capability('lesson_enactment_run', 'user', 'workflow', ['lesson'], unrouted).
 capability('lesson_misconception_incompatibility_witness', 'user', 'misconceptions', ['lesson_code', 'name', 'operation'], routed_only).
@@ -267,10 +268,8 @@ capability('formal/formalization/synthesis/run_lazy.pl', 'run_lazy', 'synthesis'
 capability('formal/formalization/synthesis/run_synth.pl', 'run_synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth.pl', 'synth', 'synthesis', [], orphan_module).
 capability('formal/formalization/synthesis/synth_lazy.pl', 'synth_lazy', 'synthesis', [], orphan_module).
-capability('formal/incompatibility/error_rule_incompatibility_adapter.pl', 'error_rule_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
 capability('formal/incompatibility/error_rule_inferences.pl', 'error_rule_inferences', 'incompatibility', [], orphan_module).
 capability('formal/incompatibility/incompatibility_entailment_order.pl', 'incompatibility_entailment_order', 'incompatibility', [], orphan_module).
-capability('formal/incompatibility/registry_incompatibility_adapter.pl', 'registry_incompatibility_adapter', 'incompatibility', [], lazy_reachable).
 capability('formal/juncture/differance_juncture.pl', 'differance_juncture', 'juncture', [], orphan_module).
 capability('formal/learner/activity_contract.pl', 'activity_contract', 'learner', [], orphan_module).
 capability('formal/learner/arithmetic_machine.pl', 'arithmetic_machine', 'learner', [], lazy_reachable).
@@ -536,6 +535,7 @@ capability_parameter('lesson_arithmetic_demonstration', 'task_id', 'string', fal
 capability_parameter('lesson_arithmetic_demonstration', 'observed_answer', null, false, null).
 capability_parameter('lesson_arithmetic_demonstration', 'work_transcription', 'string', false, null).
 capability_parameter('lesson_deformation_chart', 'code', 'string', true, "IM-G3-U5-L2").
+capability_parameter('lesson_dossier', 'lesson_code', 'string', true, "IM-G1-U1-L1").
 capability_parameter('lesson_enactment_run', 'lesson', 'string', true, "IM-G4-U2-L4").
 capability_parameter('lesson_misconception_incompatibility_witness', 'lesson_code', 'string', true, null).
 capability_parameter('lesson_misconception_incompatibility_witness', 'name', null, true, null).
@@ -668,6 +668,7 @@ capability_parameter('whole_number_addsub_claim_witness', 'source', 'string', tr
 capability_parameter('whole_number_claim_witness', 'canonical', 'string', true, null).
 capability_parameter('whole_number_claim_witness', 'source', 'string', true, null).
 capability_description('check_math_claim', "Check one typed mathematical claim term: equivalence(fraction(A,B), fraction(C,D)), multiplication, difference, sum, subtraction, comparison, fraction_sum, fraction_of, iterate_to_whole, ordering, quadrilateral claims, or arithmetic_equation; leaves are integers or registered vocabulary atoms.").
+capability_description('lesson_dossier', "Gather the tracked lesson-filtered stores for one IM lesson code and report content or absence for each surface, with detail-call keys and links to matching generated pages.").
 capability_description('lesson_enactment_list', "List enacted IM lessons with every declared form, plus named refusals and the machine each refusal would need.").
 capability_description('lesson_enactment_run', "Run every distinct enacted form for one IM lesson and return each result through the strategy-trace response shape.").
 
@@ -808,6 +809,7 @@ capability_route('knowledge', 'GET', '/api/knowledge').
 capability_route('learner_reset', 'POST', '/api/learner/reset').
 capability_route('lesson_arithmetic_demonstration', 'POST', '/api/lesson_arithmetic_demonstration').
 capability_route('lesson_deformation_chart', 'POST', '/api/lesson_deformation_chart').
+capability_route('lesson_dossier', 'POST', '/api/lesson_dossier').
 capability_route('lesson_misconception_incompatibility_witness', 'POST', '/api/witness/misconception').
 capability_route('list_misconceptions', 'POST', '/api/misconceptions').
 capability_route('list_standards', 'POST', '/api/standards').
@@ -1015,7 +1017,6 @@ capability_page('embodied_proof_witness', '/hermes/app/web/breaks.html').
 capability_page('event_score', '/hermes/app/web/discussions.html').
 capability_page('executable_practice_witness', '/more-zeeman/witnesses.html').
 capability_page('field_connectivity_audit', '/hermes/app/web/console.html').
-capability_page('field_context', '/hermes/app/web/console.html').
 capability_page('field_context', '/more-zeeman/monitoring_chart.html').
 capability_page('fraction_cgi_addition', '/more-zeeman/visualizations.html').
 capability_page('fraction_claim_witness', '/more-zeeman/witnesses.html').
@@ -1120,6 +1121,7 @@ capability_page('knowledge', '/more-zeeman/bridge.html').
 capability_page('learner_reset', '/more-zeeman/bridge.html').
 capability_page('lesson_arithmetic_demonstration', '/more-zeeman/monitoring_chart.html').
 capability_page('lesson_deformation_chart', '/more-zeeman/monitoring_chart.html').
+capability_page('lesson_dossier', '/hermes/app/web/lesson.html').
 capability_page('list_misconceptions', '/hermes/app/web/console.html').
 capability_page('list_standards', '/hermes/app/web/console.html').
 capability_page('list_strategies', '/hermes/app/web/console.html').
@@ -1286,7 +1288,6 @@ capability_page('formal/formalization/synthesis/run_lazy.pl', '/hermes/app/web/b
 capability_page('formal/formalization/synthesis/run_synth.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/synthesis/synth.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/formalization/synthesis/synth_lazy.pl', '/hermes/app/web/breaks.html').
-capability_page('formal/incompatibility/registry_incompatibility_adapter.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/juncture/differance_juncture.pl', '/hermes/app/web/breaks.html').
 capability_page('formal/juncture/differance_juncture.pl', '/hermes/app/web/generated/fractal_loops/index.html').
 capability_page('formal/learner/activity_contract.pl', '/more-zeeman/bridge.html').
@@ -1326,8 +1327,6 @@ capability_page('knowledge/strategies/math/unit_coordination_viz.pl', '/more-zee
 capability_page('knowledge/strategies/math_benchmark.pl', '/more-zeeman/bridge.html').
 capability_page('knowledge/strategies/render/authored_render_citations.pl', '/more-zeeman/generated/data_store_index.html').
 
-capability_lazy_via('formal/incompatibility/error_rule_incompatibility_adapter.pl', 'axiom_toggle').
-capability_lazy_via('formal/incompatibility/registry_incompatibility_adapter.pl', 'axiom_toggle').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'compute').
 capability_lazy_via('formal/learner/arithmetic_machine.pl', 'learner_reset').
 capability_lazy_via('formal/learner/fraction_band_ladder.pl', 'reorganize').

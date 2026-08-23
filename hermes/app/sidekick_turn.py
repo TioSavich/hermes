@@ -1,6 +1,6 @@
 """The sidekick chat turn engine. Pure logic: no HTTP, no route context.
 
-One entry point, run_turn/6. The caller supplies a Completer (the local model
+One entry point, run_turn. The caller supplies a Completer (the local model
 client, or a scripted fake in the sandbox check) and an in-process
 HermesMCPServer; this module owns the deterministic router, the bounded state
 machine, tool execution with the three-way response classification, the
@@ -21,7 +21,7 @@ import json
 import re
 import time
 from dataclasses import dataclass, field
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Mapping, Sequence
 
 from hermes.app.sidekick_llm import ClientResult, assistant_echo
 
@@ -34,6 +34,8 @@ MENU_TOOLS = (
     "check_math_claim",
     "monitoring_chart",
     "lesson_deformation_chart",
+    "deformation_compare",
+    "fraction_comparison_compare",
     "list_strategies",
     "strategy_trace",
     "strategy_recognize",
@@ -44,6 +46,8 @@ MENU_TOOLS = (
 MAX_TOKENS_FORMULATION = 160
 MAX_TOKENS_FINAL = 320
 RESULT_TRIM_BYTES = 4096
+HISTORY_MAX_TURNS = 6
+HISTORY_CHAR_BUDGET = 6000
 
 # What counts as a limit statement in a reply after an abstention. Copied from
 # scripts/sidekick/measure_floors.py:73-78 (LIMIT_MARKERS) with a provenance
@@ -99,6 +103,24 @@ _MISCONCEPTION_ASK = re.compile(
     r"\b(?:misconception|error pattern|why do students think|common error)s?\b",
     re.IGNORECASE,
 )
+_COMPARE_WORDS = re.compile(r"\b(?:compare|comparison|beside|side\s+by\s+side)\b", re.IGNORECASE)
+_DRAW_WORDS = re.compile(r"\b(?:draw|chart|show|render|display)\b", re.IGNORECASE)
+_FRACTION_VALUE = re.compile(r"(?<![\d/])(-?\d+)\s*/\s*([1-9]\d*)(?![\d/])")
+_OPERATION_WORD = re.compile(
+    r"\b(addition|subtraction|multiplication|division|fraction|decimal|integer|"
+    r"geometry|measurement|probability|ratio|statistics|calculus|counting)\b",
+    re.IGNORECASE,
+)
+_DEFORMATION_FAMILIES = (
+    ("quadrant_sign_error", ("quadrant sign error", "quadrant-sign error")),
+    ("reflection_by_rotation", ("reflection by rotation", "reflection-by-rotation")),
+    ("flip_needed", ("flip needed", "flip-needed")),
+    ("unfillable_by_parity", ("unfillable by parity", "unfillable-by-parity")),
+    ("angle_confused_with_ray_length", ("angle confused with ray length",)),
+    ("bar_histogram_conflation", ("bar histogram conflation", "bar-chart histogram conflation")),
+    ("net_fold_failure", ("net fold failure", "net-fold failure")),
+    ("boundary_peg_as_interior", ("boundary peg as interior", "boundary-peg as interior")),
+)
 _STOPWORDS = frozenset(
     "a an the is are was were do does did my your their his her its of in on at "
     "to for with about and or but so that this these those what which how why "
@@ -113,6 +135,7 @@ class TurnResult:
     chooser: str
     route: dict[str, str] | None
     calls: list[dict[str, Any]] = field(default_factory=list)
+    drawings: list[dict[str, Any]] = field(default_factory=list)
     fallback: dict[str, str] | None = None
     rejected_reply: str | None = None
     flags: list[str] = field(default_factory=list)
@@ -125,6 +148,7 @@ class TurnResult:
             "chooser": self.chooser,
             "route": self.route,
             "calls": self.calls,
+            "drawings": self.drawings,
             "fallback": self.fallback,
             "rejected_reply": self.rejected_reply,
             "flags": self.flags,
@@ -132,7 +156,113 @@ class TurnResult:
         }
 
 
-def route_message(message: str, strategy_names: frozenset[str]) -> dict[str, str] | None:
+def window_history(history: Sequence[Mapping[str, Any]] | None) -> list[dict[str, str]]:
+    """Keep recent plain user/assistant turns within the E2B slot budget.
+
+    llama-server divides its ``-c`` context across ``-np`` slots. Keep no more
+    than six prior turns and, working newest-first, drop older turns once their
+    combined content would pass 6,000 characters.
+    """
+    valid: list[dict[str, str]] = []
+    for item in history or ():
+        role = item.get("role") if isinstance(item, Mapping) else None
+        content = item.get("content") if isinstance(item, Mapping) else None
+        if role in {"user", "assistant"} and isinstance(content, str) and content.strip():
+            valid.append({"role": role, "content": content.strip()})
+    kept_reversed: list[dict[str, str]] = []
+    used = 0
+    for item in reversed(valid[-HISTORY_MAX_TURNS:]):
+        size = len(item["content"])
+        if used + size > HISTORY_CHAR_BUDGET:
+            break
+        kept_reversed.append(item)
+        used += size
+    return list(reversed(kept_reversed))
+
+
+def _named_int(text: str, *names: str) -> int | None:
+    for name in names:
+        name_pattern = re.escape(name).replace(r"\ ", r"\s+")
+        pattern = re.compile(
+            rf"\b{name_pattern}\b\s*(?:=|is|:)?\s*(-?\d+)\b",
+            re.IGNORECASE,
+        )
+        match = pattern.search(text)
+        if match:
+            return int(match.group(1))
+    return None
+
+
+def _json_after(text: str, label: str) -> Any | None:
+    match = re.search(rf"\b{re.escape(label)}\b\s*(?:=|is|:)?\s*", text, re.IGNORECASE)
+    if not match:
+        return None
+    source = text[match.end():].lstrip()
+    try:
+        return json.JSONDecoder().raw_decode(source)[0]
+    except (json.JSONDecodeError, TypeError):
+        return None
+
+
+def _deformation_arguments(text: str) -> dict[str, Any] | None:
+    lowered = text.casefold().replace("_", " ")
+    family = next(
+        (name for name, phrases in _DEFORMATION_FAMILIES
+         if any(phrase in lowered for phrase in phrases)),
+        None,
+    )
+    if family is None:
+        return None
+    arguments: dict[str, Any] = {"family": family}
+    if family == "quadrant_sign_error":
+        x = _named_int(text, "x")
+        y = _named_int(text, "y")
+        if x is None or y is None:
+            point = re.search(r"\(\s*(-?\d+)\s*,\s*(-?\d+)\s*\)", text)
+            if point:
+                x, y = int(point.group(1)), int(point.group(2))
+        if x is None or y is None:
+            return None
+        arguments.update(x=x, y=y)
+    elif family in {"reflection_by_rotation", "boundary_peg_as_interior"}:
+        vertices = _json_after(text, "vertices")
+        if not isinstance(vertices, list):
+            return None
+        arguments["vertices"] = vertices
+    elif family == "flip_needed":
+        piece = re.search(r"\bpiece\s*(?:=|is|:)?\s*([lfnpyz])\b", text, re.IGNORECASE)
+        if not piece:
+            return None
+        arguments["piece"] = piece.group(1).casefold()
+    elif family == "unfillable_by_parity":
+        cols = _named_int(text, "cols", "columns")
+        rows = _named_int(text, "rows")
+        if cols is None or rows is None:
+            return None
+        arguments.update(cols=cols, rows=rows)
+    elif family == "angle_confused_with_ray_length":
+        degrees = _named_int(text, "degrees", "angle")
+        short_length = _named_int(text, "short length", "short_length")
+        long_length = _named_int(text, "long length", "long_length")
+        if None in {degrees, short_length, long_length}:
+            return None
+        arguments.update(
+            degrees=degrees, short_length=short_length, long_length=long_length
+        )
+    elif family == "bar_histogram_conflation":
+        pairs = _json_after(text, "pairs")
+        if not isinstance(pairs, list):
+            return None
+        arguments["pairs"] = pairs
+    elif family == "net_fold_failure":
+        solid = re.search(r"\bsolid\s*(?:=|is|:)?\s*(cube)\b", text, re.IGNORECASE)
+        if not solid and "cube" not in lowered:
+            return None
+        arguments["solid"] = "cube"
+    return arguments
+
+
+def route_message(message: str, strategy_names: frozenset[str]) -> dict[str, Any] | None:
     """Deterministic intent router: ordered, first match wins.
 
     Genre of the console chat's scene routers
@@ -145,7 +275,43 @@ def route_message(message: str, strategy_names: frozenset[str]) -> dict[str, str
     claim = _CLAIM.search(text)
     if claim:
         return {"intent": "explicit_claim", "tool": "check_math_claim",
-                "hint": f"The claim to check, verbatim from the teacher: {claim.group(1).strip()}"}
+                "hint": f"The claim to check, verbatim from the teacher: {claim.group(1).strip()}",
+                "arguments": {"term": claim.group(1).strip()}}
+
+    fractions = _FRACTION_VALUE.findall(text)
+    if len(fractions) >= 2 and _COMPARE_WORDS.search(text):
+        (n1, d1), (n2, d2) = fractions[:2]
+        family = "number_line_fraction_comparison"
+        family_phrases = {
+            "area model": "area_model_fraction_comparison",
+            "set model": "set_model_fraction_comparison",
+            "benchmark": "benchmark_fraction_comparison",
+            "common unit": "common_unit_fraction_comparison",
+            "number line": "number_line_fraction_comparison",
+        }
+        family = next(
+            (value for phrase, value in family_phrases.items() if phrase in lowered),
+            family,
+        )
+        arguments = {
+            "family": family,
+            "n1": int(n1), "d1": int(d1), "n2": int(n2), "d2": int(d2),
+        }
+        return {
+            "intent": "fraction_comparison_draw",
+            "tool": "fraction_comparison_compare",
+            "hint": "Use the two stated fractions and the stated representation, if any",
+            "arguments": arguments,
+        }
+
+    deformation_arguments = _deformation_arguments(text)
+    if deformation_arguments and (_COMPARE_WORDS.search(text) or _DRAW_WORDS.search(text)):
+        return {
+            "intent": "deformation_comparison_draw",
+            "tool": "deformation_compare",
+            "hint": "Use the named deformation family and only its stated fields",
+            "arguments": deformation_arguments,
+        }
 
     wrong = _WRONG_ANSWER.search(text)
     operands = _A_OP_B.search(text)
@@ -164,35 +330,45 @@ def route_message(message: str, strategy_names: frozenset[str]) -> dict[str, str
         compact = f"{a}{op_norm}{b}".replace(" ", "")
         return {"intent": "wrong_answer_report", "tool": "abduce_error",
                 "hint": (f"domain: {domain}; input: {compact}; "
-                         f"got: {wrong.group(1).replace(' ', '')}")}
+                         f"got: {wrong.group(1).replace(' ', '')}"),
+                "arguments": {"domain": domain, "input": compact,
+                              "got": wrong.group(1).replace(" ", "")}}
 
     code = LESSON_CODE.search(text)
     if code:
         canonical = f"IM-G{code.group(1)}-U{code.group(2)}-L{code.group(3)}"
         if _MISTAKE_WORDS.search(text):
             return {"intent": "lesson_mistakes", "tool": "lesson_deformation_chart",
-                    "hint": f"code: {canonical}"}
+                    "hint": f"code: {canonical}",
+                    "arguments": {"code": canonical, "full": bool(_DRAW_WORDS.search(text))}}
         return {"intent": "lesson_chart", "tool": "monitoring_chart",
-                "hint": f"code: {canonical}"}
+                "hint": f"code: {canonical}",
+                "arguments": {"code": canonical, "full": bool(_DRAW_WORDS.search(text))}}
 
     for name in sorted(strategy_names):
         spoken = name.replace("_", " ")
         if name.casefold() in lowered or (spoken and spoken in lowered):
             return {"intent": "named_strategy", "tool": "strategy_trace",
                     "hint": (f"strategy: {name}; use the worked input from the "
-                             "declaration unless the teacher gave numbers")}
+                             "declaration unless the teacher gave numbers"),
+                    "arguments": {"strategy": name}}
 
     if _INVENTORY.search(text):
+        operation = _OPERATION_WORD.search(text)
+        arguments = {"operation": operation.group(1).casefold()} if operation else {}
         return {"intent": "strategy_inventory", "tool": "list_strategies",
-                "hint": "pass an operation word only when the teacher named one"}
+                "hint": "pass an operation word only when the teacher named one",
+                "arguments": arguments}
 
     if _OBSERVATION.search(text):
         return {"intent": "classroom_observation", "tool": "strategy_recognize",
-                "hint": "content: the teacher's whole message, verbatim"}
+                "hint": "content: the teacher's whole message, verbatim",
+                "arguments": {"content": text}}
 
     if _MISCONCEPTION_ASK.search(text):
         return {"intent": "misconception_ask", "tool": "misconception_search_rows",
-                "hint": f"query: {content_words(text)}; k: 5"}
+                "hint": f"query: {content_words(text)}; k: 5",
+                "arguments": {"query": content_words(text), "k": 5}}
 
     return None
 
@@ -249,6 +425,36 @@ def _trim_payload(payload: Any) -> tuple[str, bool]:
     if len(raw) <= RESULT_TRIM_BYTES:
         return text, False
     return raw[:RESULT_TRIM_BYTES].decode("utf-8", "ignore"), True
+
+
+def _drawing_artifact(tool: str, payload: dict[str, Any]) -> dict[str, Any] | None:
+    if payload.get("ok") is not True:
+        return None
+    document = payload.get("result")
+    if not isinstance(document, dict):
+        return None
+    if isinstance(document.get("frames"), list):
+        kind = "frames"
+    elif (
+        isinstance(document.get("productive"), dict)
+        and isinstance(document["productive"].get("frames"), list)
+        and isinstance(document.get("deformation"), dict)
+        and isinstance(document["deformation"].get("frames"), list)
+    ):
+        kind = "compare"
+    elif tool in {"monitoring_chart", "lesson_deformation_chart"}:
+        # These are chart documents rather than one filmstrip. The page keeps
+        # their bounded JSON fallback and extracts any nested frame documents.
+        kind = "chart"
+    else:
+        return None
+    return {"tool": tool, "kind": kind, "document": document}
+
+
+def _remember_drawing(turn: TurnResult, tool: str, payload: dict[str, Any]) -> None:
+    artifact = _drawing_artifact(tool, payload)
+    if artifact is not None:
+        turn.drawings.append(artifact)
 
 
 def _call_row(
@@ -384,27 +590,102 @@ def run_turn(
     mcp: Any,
     prompts: Mapping[str, str],
     strategy_names: frozenset[str],
+    history: Sequence[Mapping[str, Any]] | None = None,
 ) -> TurnResult:
     started = time.time()
     if mode not in {"routed", "model"}:
         mode = "routed"
     try:
         if mode == "routed":
-            result = _run_routed(message, complete, mcp, prompts, strategy_names)
+            result = _run_routed(
+                message, complete, mcp, prompts, strategy_names, window_history(history)
+            )
         else:
-            result = _run_model_chooses(message, complete, mcp, prompts)
+            result = _run_model_chooses(
+                message, complete, mcp, prompts, window_history(history)
+            )
     except _ModelOffline as offline:
-        block, rows = grounding_block(mcp, message)
-        result = TurnResult(
-            reply=offline_answer(block),
-            mode=mode,
-            chooser="none",
-            route=None,
-            calls=list(offline.calls) + rows,
-            fallback={"kind": offline.kind, "detail": offline.detail},
-        )
+        if mode == "routed":
+            result = _run_offline_routed(
+                message, mcp, strategy_names, offline.kind, offline.detail, offline.calls
+            )
+        else:
+            result = TurnResult(
+                reply=("The local model is offline, so model-decides mode cannot "
+                       "answer this message."),
+                mode=mode,
+                chooser="none",
+                route=None,
+                calls=list(offline.calls),
+                fallback={"kind": offline.kind, "detail": offline.detail},
+            )
     result.timing["total_ms"] = int((time.time() - started) * 1000)
     return result
+
+
+def _run_offline_routed(
+    message: str,
+    mcp: Any,
+    strategy_names: frozenset[str],
+    offline_kind: str,
+    offline_detail: str,
+    prior_calls: list[dict[str, Any]],
+) -> TurnResult:
+    route = route_message(message, strategy_names)
+    if route is None:
+        return TurnResult(
+            reply=("The local model is offline, and no deterministic route "
+                   "matches this message."),
+            mode="routed",
+            chooser="none",
+            route=None,
+            calls=list(prior_calls),
+            fallback={"kind": offline_kind, "detail": offline_detail},
+        )
+    tool = str(route["tool"])
+    arguments = route.get("arguments")
+    if not isinstance(arguments, dict):
+        return TurnResult(
+            reply=("The local model is offline, and this deterministic route "
+                   "cannot form the required inputs from the message."),
+            mode="routed",
+            chooser="route",
+            route={"intent": str(route["intent"]), "tool": tool},
+            calls=list(prior_calls),
+            fallback={"kind": offline_kind, "detail": offline_detail},
+        )
+    turn = TurnResult(
+        reply="",
+        mode="routed",
+        chooser="route",
+        route={"intent": str(route["intent"]), "tool": tool},
+        calls=[row for row in prior_calls
+               if not (row.get("executed") and row.get("tool") == tool)],
+        fallback={"kind": offline_kind, "detail": offline_detail},
+    )
+    exec_started = time.time()
+    payload, response_class = execute_tool(mcp, tool, arguments)
+    turn.calls.append(_call_row(
+        tool, "route", arguments, executed=True,
+        response_class=response_class, payload=payload,
+        elapsed_ms=int((time.time() - exec_started) * 1000),
+    ))
+    _remember_drawing(turn, tool, payload)
+    if response_class == "result":
+        names = {
+            "monitoring_chart": "the lesson monitoring chart",
+            "lesson_deformation_chart": "the lesson deformation chart",
+            "deformation_compare": "the representation and its deformation",
+            "fraction_comparison_compare": "the fraction comparison and its deformation",
+        }
+        subject = names.get(tool, f"the {tool.replace('_', ' ')} result")
+        turn.reply = (f"I returned {subject}. This used a deterministic route; "
+                      "the local model is not running.")
+    elif response_class == "abstention":
+        turn.reply = _abstention_sentence(tool) + " The model is offline."
+    else:
+        turn.reply = _refusal_sentence(tool, payload) + " The model is offline."
+    return turn
 
 
 class _ModelOffline(Exception):
@@ -478,6 +759,7 @@ def _run_routed(
     mcp: Any,
     prompts: Mapping[str, str],
     strategy_names: frozenset[str],
+    history: list[dict[str, str]],
 ) -> TurnResult:
     system = prompts["sidekick_routed.md"]
     route = route_message(message, strategy_names)
@@ -493,16 +775,20 @@ def _run_routed(
                          "detail": "no deterministic route matched this message"}
         conversation = [
             {"role": "system", "content": system},
+            *history,
             {"role": "user", "content": f"{message}\n\n{block}"},
         ]
         return _finalize(turn, complete, conversation, None)
 
     tool = route["tool"]
     menu = _menu(mcp, (tool,))
+    parsed_arguments = json.dumps(route.get("arguments", {}), ensure_ascii=False, sort_keys=True)
     mandate = (f"For this message, call {tool} now. {route['hint']}. "
+               f"The deterministic parse produced these candidate arguments: {parsed_arguments}. "
                "Draw every argument only from the teacher's words.")
     conversation: list[dict[str, Any]] = [
         {"role": "system", "content": f"{system}\n\n{mandate}"},
+        *history,
         {"role": "user", "content": message},
     ]
 
@@ -530,6 +816,7 @@ def _run_routed(
                          "detail": f"the model made no {tool} call in two attempts"}
         conversation = [
             {"role": "system", "content": system},
+            *history,
             {"role": "user", "content": f"{message}\n\n{block}"},
         ]
         return _finalize(turn, complete, conversation, None)
@@ -541,6 +828,7 @@ def _run_routed(
     turn.calls.append(_call_row(name, "route", arguments, executed=True,
                                 response_class=response_class, payload=payload,
                                 elapsed_ms=int((time.time() - exec_started) * 1000)))
+    _remember_drawing(turn, name, payload)
 
     if response_class == "refusal":
         error = payload.get("error") or {}
@@ -558,6 +846,8 @@ def _run_routed(
             turn.calls.append(_call_row(name2, "route", arguments2, executed=True,
                                         response_class=response_class2, payload=payload2,
                                         elapsed_ms=int((time.time() - exec_started) * 1000)))
+            turn.drawings.clear()
+            _remember_drawing(turn, name2, payload2)
             if response_class2 == "refusal":
                 turn.fallback = {"kind": "refusal_after_retry",
                                  "detail": "both calls were rejected by the tool"}
@@ -573,6 +863,7 @@ def _run_routed(
 
     conversation = [
         {"role": "system", "content": system},
+        *history,
         {"role": "user", "content": message},
         assistant_echo(last_result.message),
         _tool_message(call_id, payload),
@@ -585,12 +876,14 @@ def _run_model_chooses(
     complete: Completer,
     mcp: Any,
     prompts: Mapping[str, str],
+    history: list[dict[str, str]],
 ) -> TurnResult:
     system = prompts["sidekick_menu.md"]
     menu = _menu(mcp)
     turn = TurnResult(reply="", mode="model", chooser="model", route=None)
     conversation: list[dict[str, Any]] = [
         {"role": "system", "content": system},
+        *history,
         {"role": "user", "content": message},
     ]
 
@@ -634,6 +927,7 @@ def _run_model_chooses(
         turn.calls.append(_call_row(name, "model", arguments, executed=True,
                                     response_class=response_class, payload=payload,
                                     elapsed_ms=int((time.time() - exec_started) * 1000)))
+        _remember_drawing(turn, name, payload)
         executed_payloads.append((f"call_{index}", payload))
         order = {"refusal": 2, "abstention": 1, "result": 0}
         if worst_class is None or order[response_class] > order.get(worst_class, 0):

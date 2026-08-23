@@ -35,7 +35,9 @@ button { cursor: pointer; }
 .dot.off { background: #a4432e; }
 .modes { display: flex; gap: 1rem; align-items: baseline; padding: 0.6rem 1.3rem; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .modes label { display: inline-flex; gap: 0.35rem; align-items: baseline; font-weight: 600; }
+.modes label.disabled { opacity: 0.55; }
 .modes .caption { font-size: 0.85rem; opacity: 0.85; max-width: 46rem; }
+.new-conversation { margin-left: auto; padding: 0.25rem 0.65rem; border: 1px solid var(--line); border-radius: 4px; background: rgba(255,252,244,0.78); color: var(--ink); }
 .measured { font-size: 0.8rem; opacity: 0.8; }
 
 .main { display: grid; grid-template-columns: minmax(20rem, 3fr) minmax(22rem, 2fr); gap: 0; min-height: 0; }
@@ -46,6 +48,18 @@ button { cursor: pointer; }
 .turn .who { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
 .turn .said { margin: 0.15rem 0 0; white-space: pre-wrap; }
 .turn.notice .said { border-left: 3px solid var(--gold, #b58a2a); padding-left: 0.7rem; font-size: 0.92rem; opacity: 0.9; }
+.thread-chart { margin-top: 0.65rem; padding: 0.65rem; border: 1px solid var(--line); border-radius: 6px; background: rgba(255,252,244,0.74); }
+.thread-chart h3 { margin: 0 0 0.45rem; font-size: 0.9rem; }
+.thread-chart svg { display: block; width: 100%; max-height: 24rem; }
+.chart-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.chart-side { min-width: 0; }
+.chart-side h4 { margin: 0 0 0.3rem; font-size: 0.8rem; }
+.chart-controls { display: flex; gap: 0.45rem; align-items: center; margin-top: 0.45rem; font-size: 0.78rem; }
+.chart-controls button { border: 1px solid var(--line); border-radius: 3px; background: var(--paper); color: var(--ink); }
+.chart-caption { flex: 1; }
+.raw-fallback { margin-top: 0.5rem; font-size: 0.78rem; }
+.raw-fallback pre { max-height: 14rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .chart-pair { grid-template-columns: 1fr; } .new-conversation { margin-left: 0; } }
 .honesty {
   margin: 0 1.3rem 0.6rem; padding: 0.5rem 0.8rem; font-size: 0.82rem;
   border: 1px solid var(--line); border-left: 3px solid var(--gold, #b58a2a);
@@ -87,8 +101,9 @@ button { cursor: pointer; }
 
   <div class="modes">
     <label><input type="radio" name="mode" value="routed" checked /> Route decides</label>
-    <label><input type="radio" name="mode" value="model" /> Model decides</label>
+    <label id="model-mode-label"><input type="radio" name="mode" value="model" /> Model decides</label>
     <span class="caption" id="mode-caption"></span>
+    <button type="button" class="new-conversation" id="new-conversation">New conversation</button>
   </div>
 
   <div class="main">
@@ -98,8 +113,8 @@ button { cursor: pointer; }
         Everything on this page runs on this machine; no network call leaves it.
         The model never receives student names unless they are pasted here.
         An abstention row in the panel means the knowledge base holds nothing
-        for that ask, and the reply must say so. The first consultation boots a
-        Prolog worker and can take about eleven seconds.
+        for that ask, and the reply must say so. The first consultation starts
+        the knowledge base and can take about eleven seconds.
       </div>
       <div class="askrow">
         <textarea id="ask" placeholder="Bring a claim, a lesson code, or something a student did."></textarea>
@@ -108,8 +123,8 @@ button { cursor: pointer; }
     </div>
     <div class="panel">
       <h2>Consultations this turn</h2>
-      <div class="panelnote">Each row is one tool call: who chose it, the
-        arguments sent, and what came back — a result, a refusal, or an
+      <div class="panelnote">Each row records one consultation: who chose it,
+        the arguments sent, and whether it returned a result, refusal, or
         abstention. Payloads over 4&nbsp;KB are cut and marked. Raw payloads
         expand below each row.</div>
       <div class="calls" id="calls"></div>
@@ -117,18 +132,23 @@ button { cursor: pointer; }
   </div>
 </div>
 
+<script src="../more-zeeman/render/drawer.js"></script>
+<script src="../more-zeeman/render/compare.js"></script>
 <script>
 (function () {
   "use strict";
   var CAPTIONS = {
-    routed: "The page decides when a tool runs and which one. The model writes only the tool's arguments and the reply.",
-    model: "The model receives the same eight tools and decides alone. Measured on its own, this model class calls a tool when asked to and does not decide that it needs one; this mode lets you watch that."
+    routed: "The page chooses the consultation. The model writes only its inputs and the reply.",
+    model: "The model receives the same ten tools and decides which consultations to run. This mode is unavailable while the local model is offline."
   };
   var stream = document.getElementById("stream");
   var callsBox = document.getElementById("calls");
   var ask = document.getElementById("ask");
   var send = document.getElementById("send");
   var caption = document.getElementById("mode-caption");
+  var newConversation = document.getElementById("new-conversation");
+  var history = [];
+  var chartSerial = 0;
 
   function mode() {
     var checked = document.querySelector('input[name="mode"]:checked');
@@ -154,6 +174,126 @@ button { cursor: pointer; }
     stream.appendChild(turn);
     stream.scrollTop = stream.scrollHeight;
     return turn;
+  }
+
+  function trimJson(value) {
+    var text;
+    try { text = JSON.stringify(value, null, 1); }
+    catch (_err) { text = String(value); }
+    return text.length > 4096 ? text.slice(0, 4096) + "\n[cut at 4 KB]" : text;
+  }
+
+  function rawFallback(parent, value) {
+    var details = document.createElement("details");
+    details.className = "raw-fallback";
+    details.appendChild(el("summary", "", "raw JSON (cut at 4 KB when needed)"));
+    var pre = el("pre");
+    pre.textContent = trimJson(value);
+    details.appendChild(pre);
+    parent.appendChild(details);
+  }
+
+  function renderFrameDocument(parent, doc, title) {
+    var drawerApi = window.HermesDrawer;
+    if (!drawerApi || !drawerApi.createDetached || !Array.isArray(doc.frames) || !doc.frames.length) {
+      rawFallback(parent, doc);
+      return false;
+    }
+    var id = "thread-frame-" + (++chartSerial);
+    var box = el("section", "thread-chart");
+    box.appendChild(el("h3", "", title || "Drawing"));
+    var stage = el("div"); stage.id = id; box.appendChild(stage);
+    var controls = el("div", "chart-controls");
+    var prev = el("button", "", "Previous");
+    var next = el("button", "", "Next");
+    var count = el("span", "", "");
+    var cap = el("span", "chart-caption", "");
+    controls.appendChild(prev); controls.appendChild(count); controls.appendChild(next); controls.appendChild(cap);
+    box.appendChild(controls); parent.appendChild(box);
+    var drawer = drawerApi.createDetached({ stage: id, isolated: true });
+    function update() {
+      count.textContent = "step " + (drawer.index + 1) + " of " + drawer.doc.frames.length;
+      cap.textContent = (drawer.doc.frames[drawer.index] || {}).caption || "";
+      prev.disabled = drawer.index <= 0;
+      next.disabled = drawer.index >= drawer.doc.frames.length - 1;
+    }
+    prev.addEventListener("click", function () { drawer.goTo(drawer.index - 1); update(); });
+    next.addEventListener("click", function () { drawer.goTo(drawer.index + 1); update(); });
+    drawer.ingest(doc); update();
+    return true;
+  }
+
+  function renderCompareDocument(parent, doc, title) {
+    var draw = window.HermesDrawer && window.HermesDrawer._internal;
+    var productive = doc.productive && doc.productive.frames;
+    var deformation = doc.deformation && doc.deformation.frames;
+    if (!draw || !Array.isArray(productive) || !productive.length ||
+        !Array.isArray(deformation) || !deformation.length) {
+      rawFallback(parent, doc);
+      return false;
+    }
+    var box = el("section", "thread-chart");
+    box.appendChild(el("h3", "", title || "Comparison"));
+    var pair = el("div", "chart-pair");
+    var prodSide = el("div", "chart-side");
+    var defSide = el("div", "chart-side");
+    prodSide.appendChild(el("h4", "", String(doc.productiveKind || "productive").replace(/_/g, " ")));
+    defSide.appendChild(el("h4", "", String(doc.deformationKind || "deformation").replace(/_/g, " ")));
+    var prodStage = el("div"); var defStage = el("div");
+    prodSide.appendChild(prodStage); defSide.appendChild(defStage);
+    pair.appendChild(prodSide); pair.appendChild(defSide); box.appendChild(pair);
+    var controls = el("div", "chart-controls");
+    var prev = el("button", "", "Previous"); var next = el("button", "", "Next");
+    var count = el("span"); var cap = el("span", "chart-caption");
+    controls.appendChild(prev); controls.appendChild(count); controls.appendChild(next); controls.appendChild(cap);
+    box.appendChild(controls); parent.appendChild(box);
+    var index = 0; var steps = Math.max(productive.length, deformation.length);
+    var bounds = draw.documentBounds(productive.concat(deformation), doc.canvas);
+    function paint(stage, frames) {
+      stage.textContent = "";
+      var frame = frames[Math.min(index, frames.length - 1)];
+      var svg = draw.buildSvg(frame, bounds); svg.setAttribute("width", "100%");
+      stage.appendChild(svg);
+    }
+    function update() {
+      paint(prodStage, productive); paint(defStage, deformation);
+      count.textContent = "step " + (index + 1) + " of " + steps;
+      cap.textContent = ((productive[Math.min(index, productive.length - 1)] || {}).caption || "") +
+        " / " + ((deformation[Math.min(index, deformation.length - 1)] || {}).caption || "");
+      prev.disabled = index <= 0; next.disabled = index >= steps - 1;
+    }
+    prev.addEventListener("click", function () { index = Math.max(0, index - 1); update(); });
+    next.addEventListener("click", function () { index = Math.min(steps - 1, index + 1); update(); });
+    update();
+    return true;
+  }
+
+  function collectFrameDocuments(value, found) {
+    if (!value || typeof value !== "object" || found.length >= 3) return;
+    if (Array.isArray(value.frames) && value.frames.length) { found.push(value); return; }
+    Object.keys(value).some(function (key) {
+      var child = value[key];
+      if (Array.isArray(child)) child.forEach(function (item) { collectFrameDocuments(item, found); });
+      else collectFrameDocuments(child, found);
+      return found.length >= 3;
+    });
+  }
+
+  function renderDrawing(turn, artifact) {
+    if (!artifact || !artifact.document) return;
+    var title = String(artifact.tool || "drawing").replace(/_/g, " ");
+    if (artifact.kind === "frames") {
+      renderFrameDocument(turn, artifact.document, title);
+    } else if (artifact.kind === "compare") {
+      renderCompareDocument(turn, artifact.document, title);
+    } else {
+      var found = [];
+      collectFrameDocuments(artifact.document, found);
+      found.forEach(function (doc, index) {
+        renderFrameDocument(turn, doc, title + (found.length > 1 ? " " + (index + 1) : ""));
+      });
+      rawFallback(turn, artifact.document);
+    }
   }
 
   function chip(cls, text) { return el("span", "chip " + cls, text); }
@@ -207,7 +347,14 @@ button { cursor: pointer; }
       var online = s.model && s.model.online;
       modelDot.className = "dot " + (online ? "on" : "off");
       document.getElementById("model-state").textContent = online ? "running" :
-        "not running — replies come from the knowledge base only. Start it with hermes/app/launch_sidekick.sh";
+        "The local model is offline; deterministic routes still run.";
+      var modelRadio = document.querySelector('input[name="mode"][value="model"]');
+      modelRadio.disabled = !online;
+      document.getElementById("model-mode-label").classList.toggle("disabled", !online);
+      if (!online && mode() === "model") {
+        document.querySelector('input[name="mode"][value="routed"]').checked = true;
+        setCaption();
+      }
       var warm = s.worker || "cold";
       workerDot.className = "dot " + (warm === "warm" ? "on" : (warm.indexOf("failed") === 0 ? "off" : ""));
       document.getElementById("worker-state").textContent = warm;
@@ -232,7 +379,7 @@ button { cursor: pointer; }
     }).catch(function (err) {
       document.getElementById("model-dot").className = "dot off";
       document.getElementById("model-state").textContent =
-        "status request failed (" + err.message + ") — if the console server predates this page, restart it";
+        "The status request failed: " + err.message + ".";
       document.getElementById("worker-state").textContent = "unknown";
       document.getElementById("gguf-state").textContent = "";
       document.getElementById("measured").textContent = "";
@@ -244,6 +391,7 @@ button { cursor: pointer; }
     if (!message) return;
     ask.value = "";
     send.disabled = true;
+    newConversation.disabled = true;
     addTurn("teacher", message);
     var pending = addTurn("sidekick", "…", "notice");
     var controller = new AbortController();
@@ -251,16 +399,22 @@ button { cursor: pointer; }
     fetch("/api/sidekick_chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: message, mode: mode() }),
+      body: JSON.stringify({ message: message, mode: mode(), history: history.slice() }),
       signal: controller.signal
     }).then(function (r) { return r.json(); }).then(function (body) {
       clearTimeout(timer);
       pending.remove();
-      addTurn(body.busy ? "page" : "sidekick", body.reply || body.error || "(empty reply)",
-              body.fallback || body.busy ? "notice" : "");
+      var answer = body.reply || body.error || "(empty reply)";
+      var answerTurn = addTurn(body.busy ? "page" : "sidekick", answer,
+                               body.fallback || body.busy ? "notice" : "");
+      (body.drawings || []).forEach(function (artifact) { renderDrawing(answerTurn, artifact); });
+      if (!body.busy && !body.error) {
+        history.push({ role: "user", content: message });
+        history.push({ role: "assistant", content: answer });
+      }
       if (body.fallback) {
         stream.appendChild(el("div", "fallbackline",
-          "fallback " + body.fallback.kind + ": " + body.fallback.detail));
+          "Limit (" + body.fallback.kind + "): " + body.fallback.detail));
       }
       if (body.flags && body.flags.indexOf("model_declined_consult") >= 0) {
         stream.appendChild(el("div", "fallbackline",
@@ -277,6 +431,7 @@ button { cursor: pointer; }
       renderCalls(body.calls);
       stream.scrollTop = stream.scrollHeight;
       send.disabled = false;
+      newConversation.disabled = false;
       refreshStatus();
     }).catch(function (err) {
       clearTimeout(timer);
@@ -285,11 +440,18 @@ button { cursor: pointer; }
         ? "The turn passed its 180 s budget and was stopped."
         : "The request failed: " + err, "notice");
       send.disabled = false;
+      newConversation.disabled = false;
       refreshStatus();
     });
   }
 
   send.addEventListener("click", sendTurn);
+  newConversation.addEventListener("click", function () {
+    history = [];
+    stream.textContent = "";
+    callsBox.textContent = "";
+    ask.focus();
+  });
   ask.addEventListener("keydown", function (event) {
     if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) sendTurn();
   });

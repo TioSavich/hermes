@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Generate the finite Brandomian incompatibility-entailment register and reader.
 
-The register is deliberately a closed-world instrument.  It indexes the
+The register is deliberately a closed-world instrument. It indexes the
 tracked Big Red discovery cache together with the canonical engine's declared
-seed hyperedges, then computes the replacement relation over that finite
-collection.  It does not turn lack of an incompatibility record into a
-substantive result: vacuous containment is retained as its own class.
+seed hyperedges, then computes candidate replacements over that finite
+collection. Every earned candidate is rechecked against the tracked feeder
+union installed by the served worker. It does not turn lack of an
+incompatibility record into a substantive result: vacuous containment is
+retained as its own class.
 """
 from __future__ import annotations
 
@@ -296,6 +298,125 @@ def calculate(hyperedges: list[Hyperedge]) -> dict[str, object]:
     }
 
 
+def reearn_against_served_closure(result: dict[str, object]) -> None:
+    """Keep only strict candidates supported by the worker's tracked union.
+
+    The finite inventory bounds candidate generation. The served union has
+    thousands of terms, so expanding the candidate universe to every ordered
+    pair would create a different instrument. This pass instead asks the
+    production closure about each finite earned candidate, rejects defeated or
+    newly mutual rows, and records the worker profile count for each survivor.
+    """
+    finite_earned: dict[tuple[str, str], tuple[tuple[int, int], ...]] = result["earned"]  # type: ignore[assignment]
+    candidates = tuple(
+        sorted(finite_earned, key=lambda pair: (term_key(pair[0]), term_key(pair[1])))
+    )
+    candidate_facts = "\n".join(
+        f"candidate({prolog_term(replacement)}, {prolog_term(replaced)})."
+        for replacement, replaced in candidates
+    )
+    program = f"""
+:- use_module(incompat(incompatibility_sets), []).
+:- use_module(incompat(served_incompatibility_closure), []).
+
+{candidate_facts}
+
+main :-
+    served_incompatibility_closure:install_served_incompatibility_closure,
+    forall(candidate(Replacement, Replaced),
+           report_candidate(Replacement, Replaced)).
+
+report_candidate(Replacement, Replaced) :-
+    (   once(incompatibility_sets:incompatibility_entailment_witness(
+                 Replacement, Replaced, Witness))
+    ->  get_dict(profiles_checked, Witness, Profiles),
+        length(Profiles, ProfileCount),
+        (   once(incompatibility_sets:incompatibility_entails(
+                     Replaced, Replacement))
+        ->  Status = mutual
+        ;   Status = earned
+        )
+    ;   Status = refused,
+        ProfileCount = 0
+    ),
+    write('runtime'), put(9),
+    write_term(Replacement,
+               [quoted(true), ignore_ops(true), numbervars(true)]), put(9),
+    write_term(Replaced,
+               [quoted(true), ignore_ops(true), numbervars(true)]), put(9),
+    write(Status), put(9), write(ProfileCount), nl.
+"""
+    with tempfile.TemporaryDirectory(
+        prefix="hermes-incompatibility-order-"
+    ) as temporary:
+        probe = Path(temporary) / "reearn_served_closure.pl"
+        probe.write_text(program, encoding="utf-8")
+        completed = subprocess.run(
+            [
+                "swipl",
+                "-q",
+                "-l",
+                str(ROOT / "paths.pl"),
+                "-s",
+                str(probe),
+                "-g",
+                "main",
+                "-t",
+                "halt",
+            ],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    if completed.returncode:
+        raise RuntimeError(
+            completed.stderr.strip()
+            or "SWI-Prolog served-closure incompatibility check failed"
+        )
+    if completed.stderr.strip():
+        raise RuntimeError(completed.stderr.strip())
+
+    verdicts: dict[tuple[str, str], tuple[str, int]] = {}
+    for line in completed.stdout.splitlines():
+        if not line.strip():
+            continue
+        fields = line.split("\t")
+        if len(fields) != 5 or fields[0] != "runtime":
+            raise RuntimeError(f"unexpected served-closure verdict row: {line}")
+        pair = (fields[1], fields[2])
+        if pair in verdicts:
+            raise RuntimeError(f"duplicate served-closure verdict: {pair}")
+        status = fields[3]
+        if status not in {"earned", "mutual", "refused"}:
+            raise RuntimeError(f"unknown served-closure verdict {status}: {pair}")
+        verdicts[pair] = (status, int(fields[4]))
+
+    missing = set(candidates) - set(verdicts)
+    unexpected = set(verdicts) - set(candidates)
+    if missing or unexpected:
+        raise RuntimeError(
+            "served-closure verdict coverage mismatch: "
+            f"missing={sorted(missing)} unexpected={sorted(unexpected)}"
+        )
+
+    reearned: dict[tuple[str, str], tuple[tuple[int, int], ...]] = {}
+    defeated: list[tuple[str, str, str]] = []
+    for pair in candidates:
+        status, profile_count = verdicts[pair]
+        if status == "earned":
+            if profile_count < 1:
+                raise RuntimeError(f"served earned row has no profiles: {pair}")
+            reearned[pair] = tuple((-1, -1) for _ in range(profile_count))
+        else:
+            defeated.append((pair[0], pair[1], status))
+
+    result["finite_candidate_earned_count"] = len(finite_earned)
+    result["worker_closure_defeated_candidates"] = tuple(defeated)
+    result["earned"] = reearned
+
+
 def positive_control() -> None:
     """A hand-worked dog/mammal fixture guards the indexed replacement logic.
 
@@ -323,14 +444,16 @@ def positive_control() -> None:
 
 REGISTER = r"""/** <module> Generated finite incompatibility-entailment register
  *
- * This register models Brandomian incompatibility-entailment over a bounded,
- * declared corpus.  Its source is exactly the two tracked discovered-set caches
- * that incompatibility_sets.pl consults — the Big Red iteration7 harvest and
- * the locally computed error-rule cache — plus the five declared seed
- * hyperedges in brandomian_incompatibility.pl.  The nonterminating candidate is
- * counted by incompatibility_discovered_kind_count/2 but is not a declared
- * incompatible hyperedge: it has no incompatibility verdict.  It does not load optional registry adapters,
- * live discovery, geometry, learner servers, or literature mappings.
+ * This register derives finite candidates from exactly the two tracked
+ * discovered-set caches that incompatibility_sets.pl consults — the Big Red
+ * iteration7 harvest and the locally computed error-rule cache — plus the five
+ * declared seed hyperedges in brandomian_incompatibility.pl. Every candidate
+ * earned by that bounded inventory is then rechecked against the same tracked
+ * literature, misconception-registry, and error-rule feeder union installed by
+ * the served worker. A candidate survives only when the worker relation holds
+ * in that direction and refuses the reverse direction. The nonterminating
+ * candidate is counted by incompatibility_discovered_kind_count/2 but is not a
+ * declared incompatible hyperedge: it has no incompatibility verdict.
  *
  * The two caches carry different warrants.  A Lakoff-Nunez break is jointly
  * incoherent as mathematics; an error-rule triple coded from the research
@@ -349,8 +472,9 @@ REGISTER = r"""/** <module> Generated finite incompatibility-entailment register
  * incompatibility_earned_entails(A, B, WitnessCount) is a strict finite
  * entailment: B has a nonempty minimal profile; replacing B by A preserves
  * every profile context; and B does not preserve every profile context for A.
- * It is not classical consequence.  WitnessCount records the number of B's
- * minimal profile edges checked. incompatibility_earned_entailment_support/3
+ * It is not classical consequence. WitnessCount records the number of B's
+ * profile rows checked in the served worker closure.
+ * incompatibility_earned_entailment_support/3
  * marks the evidential boundary without changing the relation: a one-edge
  * target profile is sparse_witness because one shared remainder alone can
  * establish replacement; two or more independently checked profile edges are
@@ -410,6 +534,8 @@ def render_register(hyperedges: list[Hyperedge], result: dict[str, object]) -> s
     discovered_kind_counts: Counter[str] = result.get("discovered_kind_counts", kind_counts)  # type: ignore[assignment]
     excluded: list[tuple[Source, frozenset[str]]] = result.get("excluded_candidates", [])  # type: ignore[assignment]
     raw_source_counts: Counter[str] = result["raw_source_counts"]  # type: ignore[assignment]
+    finite_candidate_earned_count = int(result["finite_candidate_earned_count"])
+    defeated_candidates: tuple[tuple[str, str, str], ...] = result["worker_closure_defeated_candidates"]  # type: ignore[assignment]
     lines = [REGISTER.rstrip(), ""]
     for edge in hyperedges:
         terms = tuple(sorted(edge.terms, key=term_key))
@@ -456,6 +582,8 @@ def render_register(hyperedges: list[Hyperedge], result: dict[str, object]) -> s
         "minimal_hyperedges": sum(edge.minimal for edge in hyperedges),
         "contents": len(contents),
         "earned_entailments": len(earned),
+        "finite_candidate_earned_entailments": finite_candidate_earned_count,
+        "worker_closure_defeated_earned_candidates": len(defeated_candidates),
         "sparse_witness_earned_entailments": sum(len(witnesses) == 1 for witnesses in earned.values()),
         "multi_profile_witness_earned_entailments": sum(len(witnesses) >= 2 for witnesses in earned.values()),
         "vacuous_entailments": len(vacuous),
@@ -538,6 +666,8 @@ def view_payload(hyperedges: list[Hyperedge], result: dict[str, object]) -> dict
             "minimalHyperedges": sum(edge.minimal for edge in hyperedges),
             "contents": len(contents),
             "earned": len(earned),
+            "finiteCandidateEarned": int(result["finite_candidate_earned_count"]),
+            "workerClosureDefeated": len(result["worker_closure_defeated_candidates"]),  # type: ignore[arg-type]
             "vacuous": len(vacuous),
             "equivalent": len(equivalent),
             "density": sorted([[count, total] for count, total in density.items()]),
@@ -579,7 +709,7 @@ def render_view(hyperedges: list[Hyperedge], result: dict[str, object]) -> str:
 <body>
 <main>
   <h1>Finite incompatibility-entailment order</h1>
-  <p class=\"lede\">A navigable register of the declared Big Red cache and canonical seed hyperedges. It encodes Brandomian incompatibility-entailment, not classical consequence.</p>
+  <p class=\"lede\">A navigable register whose candidates come from the declared Big Red cache and canonical seed hyperedges. Earned rows are rechecked against the tracked feeder union served by the worker. It encodes Brandomian incompatibility-entailment, not classical consequence.</p>
   <p class=\"limit\">The order is finite and bounded by these declarations. Sparse data can make containment too strong. Vacuous containment remains separate from earned entailment.</p>
   <section id=\"summary\" class=\"summary\"></section>
   <div class=\"chooser\"><input id=\"filter\" type=\"search\" placeholder=\"Filter a content term\" aria-label=\"Filter contents\"><select id=\"content\" aria-label=\"Choose a content\"></select></div>
@@ -594,13 +724,13 @@ def render_view(hyperedges: list[Hyperedge], result: dict[str, object]) -> str:
   function metric(value,label) {{ const box=node("div",undefined,"metric"); box.append(node("b",String(value))); box.append(node("span",label)); return box; }}
   function termButton(value) {{ const b=node("button",value,"term"); b.type="button"; b.addEventListener("click",()=>select(value)); return b; }}
   function list(values, empty) {{ const out=node("ul"); if(!values.length) {{ out.append(node("li",empty,"empty")); return out; }} values.forEach(value=>{{const li=node("li");li.append(termButton(value));out.append(li);}}); return out; }}
-  function earnedList(values, empty) {{ const out=node("ul"); if(!values.length) {{ out.append(node("li",empty,"empty")); return out; }} values.forEach(value=>{{const li=node("li");li.append(termButton(value.term)); li.append(node("span",value.support.replaceAll("_"," ")+"; "+value.witnessCount+" profile edge"+(value.witnessCount===1?"":"s"),"badge"));out.append(li);}}); return out; }}
+  function earnedList(values, empty) {{ const out=node("ul"); if(!values.length) {{ out.append(node("li",empty,"empty")); return out; }} values.forEach(value=>{{const li=node("li");li.append(termButton(value.term)); li.append(node("span",value.support.replaceAll("_"," ")+"; "+value.witnessCount+" worker profile row"+(value.witnessCount===1?"":"s"),"badge"));out.append(li);}}); return out; }}
   function panel(title, body) {{ const section=node("section",undefined,"panel"); section.append(node("h2",title)); section.append(body); return section; }}
   function select(value) {{ $("content").value=value; render(value); }}
   function populate(filter="") {{ const selected=$("content").value; const match=filter.toLowerCase(); const values=Object.keys(data.contents).filter(v=>v.toLowerCase().includes(match)).sort(); $("content").textContent=""; values.forEach(value=>{{const option=node("option",value);option.value=value;$("content").append(option);}}); if(values.includes(selected)) $("content").value=selected; else if(values.length) $("content").value=values[0]; if(values.length) render($("content").value); else $("detail").textContent="No content matches this filter."; }}
   function edgeCard(edge) {{ const box=node("article",undefined,"edge"); const heading=node("div"); heading.append(node("span","#"+edge.id+" ","term")); edge.terms.forEach((value,index)=>{{if(index) heading.append(document.createTextNode(", "));heading.append(termButton(value));}}); if(edge.minimal) heading.append(node("span","minimal","badge minimal")); if(edge.emergent) heading.append(node("span","emergent","badge emergent")); box.append(heading); box.append(node("p",edge.sources.join("; "),"limit")); return box; }}
   function render(value) {{ const item=data.contents[value]; if(!item) return; const root=$("detail");root.textContent=""; const title=node("h2",value,"term"); const density=node("p","Declared hyperedges mentioning this content: "+item.declaredMentions+". Minimal profile edges: "+item.minimalProfileEdges+".","limit"); root.append(title,density); if(item.profileClass==="vacuous") root.append(node("p","This content has an empty minimal profile. Any containment into it is listed as vacuous, not earned.","limit")); const grid=node("div",undefined,"grid"); grid.append(panel("Earned entailments from this content",earnedList(item.earnedOut,"No strict earned entailments in this finite register."))); grid.append(panel("Contents that earn this content",earnedList(item.earnedIn,"No strict earned entailments into this content in this finite register."))); grid.append(panel("Equivalent profile",list(item.equivalent,"No distinct content has an identical minimal partner-context profile."))); if(item.mutualNonidentical.length) grid.append(panel("Mutual replacement, nonidentical profile",list(item.mutualNonidentical,""))); root.append(grid); const hyper=node("section");hyper.style.marginTop="1rem";hyper.append(node("h2","Declared incompatible hyperedges containing this content")); item.hyperedges.forEach(id=>hyper.append(edgeCard(byId.get(id))));root.append(hyper); }}
-  const s=data.summary; $("summary").append(metric(s.declaredHyperedges,"distinct declared hyperedges"),metric(s.minimalHyperedges,"minimal hyperedges"),metric(s.contents,"contents"),metric(s.earned,"earned strict entailments"),metric(s.vacuous,"vacuous ordered pairs"),metric(s.equivalent,"equivalent pairs"));
+  const s=data.summary; $("summary").append(metric(s.declaredHyperedges,"distinct declared hyperedges"),metric(s.minimalHyperedges,"minimal hyperedges"),metric(s.contents,"contents"),metric(s.finiteCandidateEarned,"finite earned candidates"),metric(s.earned,"worker-confirmed strict entailments"),metric(s.workerClosureDefeated,"worker-defeated candidates"),metric(s.vacuous,"vacuous ordered pairs"),metric(s.equivalent,"equivalent pairs"));
   const emergent=$("emergent"); data.hyperedges.filter(e=>e.emergent).forEach(edge=>emergent.append(edgeCard(edge)));
   $("filter").addEventListener("input",event=>populate(event.target.value)); $("content").addEventListener("change",event=>render(event.target.value)); populate();
 }})();
@@ -628,10 +758,13 @@ def summary(hyperedges: list[Hyperedge], result: dict[str, object], elapsed: flo
     vacuous: tuple[tuple[str, str], ...] = result["vacuous"]  # type: ignore[assignment]
     equivalent: tuple[tuple[str, str], ...] = result["equivalent"]  # type: ignore[assignment]
     contents: tuple[str, ...] = result["contents"]  # type: ignore[assignment]
+    candidate_count = int(result["finite_candidate_earned_count"])
+    defeated_count = len(result["worker_closure_defeated_candidates"])  # type: ignore[arg-type]
     return (
         f"incompatibility entailment register {'current' if checked else 'written'}: "
         f"hyperedges={len(hyperedges)}; minimal={sum(edge.minimal for edge in hyperedges)}; "
-        f"contents={len(contents)}; earned={len(earned)}; vacuous={len(vacuous)}; "
+        f"contents={len(contents)}; finite_candidates={candidate_count}; "
+        f"earned={len(earned)}; defeated={defeated_count}; vacuous={len(vacuous)}; "
         f"equivalent={len(equivalent)}; wall_seconds={elapsed:.3f}"
     )
 
@@ -645,6 +778,7 @@ def main() -> int:
     rows, discovered_kind_counts, excluded = load_inventory()
     hyperedges = build_hyperedges(rows)
     result = calculate(hyperedges)
+    reearn_against_served_closure(result)
     result["discovered_kind_counts"] = discovered_kind_counts
     result["excluded_candidates"] = excluded
     register = render_register(hyperedges, result)

@@ -29,6 +29,7 @@
 :- op(500, fx, neg).
 
 :- dynamic worker_root/1.
+:- dynamic lesson_dossier_inventory_cache/1.
 :- discontiguous dispatch_request/4.
 :- prolog_load_context(directory, Dir),
    asserta(worker_root(Dir)).
@@ -195,6 +196,8 @@ load_runtime :-
     % stay module-qualified because incompatibility_sets exports a different,
     % profile-based incompatibility_entails/2 under the same name.
     use_module(incompat(brandomian_incompatibility), []),
+    use_module(incompat(served_incompatibility_closure), []),
+    served_incompatibility_closure:install_served_incompatibility_closure,
     % The emergence criterion (size >= 3, jointly incoherent, every
     % one-element removal coherent), reused from the search tool rather than
     % reimplemented: the hyperedges op calls verified_emergent/1 on cached
@@ -1635,9 +1638,9 @@ dispatch_request(brandomian_check, Id, Request, Response) :-
 
 % Discovered incompatibility hyperedges, surfaced for the console. Rows come
 % from the Big Red iteration7 discovery cache (every discovered_set_kind/3
-% row of arity >= 2, cached kind and file provenance attached) plus the size >= 3
-% hyperedges declared in the canonical relation (kind "declared" — where the
-% catalogue-attested incommensurability triple lives). Emergence, meaning
+% row of arity >= 2, cached kind and file provenance attached) plus every
+% arity >= 2 hyperedge declared in the canonical relation (kind "declared" —
+% including the catalogue-attested incommensurability triple). Emergence, meaning
 % jointly incoherent with NO incoherent proper subset, is COMPUTED per row
 % against a runnable relation rather than read off the cache: defeasible rows
 % re-run verified_emergent/1 over the combined premise+defeater content set,
@@ -3442,6 +3445,535 @@ monitoring_chart_export_dict(Code, Dict) :-
     ;   Dict = Dict0
     ).
 
+%!  lesson_dossier_dict(+Code, -Dict) is det.
+%
+%   Gather the tracked, lesson-filtered stores behind the public worker and
+%   app surfaces. Each surface says whether this lesson has content, gives the
+%   count or compact keys needed for a detail call, and reports how many lesson
+%   codes the same surface serves elsewhere. Generated-page pointers are read
+%   only from the shipped app tree.
+lesson_dossier_dict(Code, Dict) :-
+    atom_string(Code, CodeString),
+    lesson_dossier_inventory(Inventory),
+    lesson_dossier_monitoring(Code, Inventory.encoded_lessons,
+                              Monitoring, Chart),
+    lesson_dossier_field_context(Code, Inventory.encoded_lessons,
+                                 FieldContext, Identity),
+    lesson_dossier_inferential_strength(Code, Inventory.encoded_lessons,
+                                        Chart, InferentialStrength),
+    lesson_dossier_ranked_figures(Code, Inventory.encoded_lessons,
+                                  Chart, RankedFigures),
+    lesson_dossier_deformation(Code, Inventory.deformation_lessons,
+                               Chart, Deformation),
+    lesson_dossier_notation(Code, Inventory.notation_lessons, Notation),
+    lesson_dossier_task_span(Code, Inventory.task_span_lessons, TaskSpan),
+    lesson_dossier_guide_questions(Code, Inventory.guide_question_lessons,
+                                   GuideQuestions),
+    lesson_dossier_question_moves(Code, Inventory.question_move_lessons,
+                                  QuestionMoves),
+    lesson_dossier_enactment(Code, Inventory.enactment_catalog, Enactment),
+    lesson_dossier_arithmetic(Code, Arithmetic),
+    lesson_dossier_misconception_witnesses(
+        Code, Inventory.misconception_witness_lessons, MisconceptionWitnesses),
+    lesson_dossier_model_analyses(Code, Inventory.model_analysis_lessons,
+                                  ModelAnalyses),
+    lesson_dossier_reader_validation(Code, Inventory.encoded_lessons,
+                                     ReaderValidation),
+    lesson_dossier_generated_pages(Code, GeneratedPages, GeneratedSurface),
+    Surfaces = [Monitoring, FieldContext, InferentialStrength, RankedFigures,
+                Deformation, Notation, TaskSpan, GuideQuestions, QuestionMoves,
+                Enactment, Arithmetic, MisconceptionWitnesses, ModelAnalyses,
+                ReaderValidation, GeneratedSurface],
+    include(lesson_dossier_surface_has_content, Surfaces, Present),
+    length(Present, PresentCount),
+    length(Surfaces, SurfaceCount),
+    EmptyCount is SurfaceCount - PresentCount,
+    (   PresentCount =:= 0
+    ->  Status = "no_lesson_content",
+        Summary = "No tracked lesson surface carries content for this lesson code."
+    ;   Status = "content_found",
+        format(string(Summary),
+               "~d of ~d tracked lesson surfaces carry content for this lesson code.",
+               [PresentCount, SurfaceCount])
+    ),
+    Dict = _{
+        lesson_code: CodeString,
+        status: Status,
+        summary: Summary,
+        identity: Identity,
+        content_surface_count: PresentCount,
+        empty_surface_count: EmptyCount,
+        surfaces: Surfaces,
+        generated_pages: GeneratedPages,
+        inventory: Inventory.public
+    }.
+
+lesson_dossier_surface_has_content(Surface) :-
+    get_dict(has_content, Surface, true).
+
+lesson_dossier_inventory(Inventory) :-
+    lesson_dossier_inventory_cache(Inventory),
+    !.
+lesson_dossier_inventory(Inventory) :-
+    findall(Code,
+            lesson_monitoring:encoded_lesson(Code, _, _, _, _, _),
+            Encoded0),
+    sort(Encoded0, Encoded),
+    length(Encoded, EncodedCount),
+    findall(Code, lesson_deformation_chart:charted_lesson_code(Code), Deformation0),
+    sort(Deformation0, Deformation),
+    length(Deformation, DeformationCount),
+    lesson_dossier_manifest_lesson_count(
+        'notation_lesson_charts/manifest.json', NotationCount),
+    findall(Code,
+            task_span_absence_registry:lesson_task_span_rollup(
+                Code, _, _, _, _, _),
+            TaskSpan0),
+    sort(TaskSpan0, TaskSpan),
+    length(TaskSpan, TaskSpanCount),
+    findall(Code,
+            ( lesson_monitoring:attributed_question_row(Row),
+              get_dict(status, Row, mechanically_admitted),
+              get_dict(lesson, Row, CodeText),
+              atom_string(Code, CodeText)
+            ),
+            Guide0),
+    sort(Guide0, Guide),
+    length(Guide, GuideCount),
+    findall(Code,
+            question_move_pilot:question_move(
+                _, _, _, _, _, _, evidence([q_ref(Code, _, _)]),
+                review_status(mechanically_admitted), _),
+            Move0),
+    sort(Move0, Moves),
+    length(Moves, MoveCount),
+    lesson_enactment_catalog_dict(EnactmentCatalog),
+    ensure_model_analysis_loaded,
+    findall(Code,
+            ( model_analysis_pilot:model_analysis_row(_, _, _, Anchor, _, _),
+              Anchor = anchor(lesson(Code), _, _, _)
+            ),
+            Analysis0),
+    sort(Analysis0, Analyses),
+    length(Analyses, AnalysisCount),
+    findall(Code,
+            lesson_monitoring:lesson_misconception_witness_fact(
+                Code, _, _, _),
+            Witness0),
+    sort(Witness0, Witnesses),
+    length(Witnesses, WitnessCount),
+    Public = _{
+        encoded_lesson_count: EncodedCount,
+        deformation_chart_lesson_count: DeformationCount,
+        notation_chart_lesson_count: NotationCount,
+        task_span_lesson_count: TaskSpanCount,
+        guide_question_lesson_count: GuideCount,
+        question_move_lesson_count: MoveCount,
+        enactment_lesson_count: EnactmentCatalog.lesson_count,
+        model_analysis_lesson_count: AnalysisCount,
+        misconception_witness_lesson_count: WitnessCount,
+        arithmetic_demonstration_lesson_count: 1
+    },
+    Inventory0 = _{
+        encoded_lessons: EncodedCount,
+        deformation_lessons: DeformationCount,
+        notation_lessons: NotationCount,
+        task_span_lessons: TaskSpanCount,
+        guide_question_lessons: GuideCount,
+        question_move_lessons: MoveCount,
+        enactment_catalog: EnactmentCatalog,
+        model_analysis_lessons: AnalysisCount,
+        misconception_witness_lessons: WitnessCount,
+        public: Public
+    },
+    asserta(lesson_dossier_inventory_cache(Inventory0)),
+    Inventory = Inventory0.
+
+lesson_dossier_manifest_lesson_count(Relative, Count) :-
+    absolute_file_name(hermes('app/web/generated'), Root,
+                       [file_type(directory), access(read)]),
+    directory_file_path(Root, Relative, Path),
+    setup_call_cleanup(
+        open(Path, read, Stream, [encoding(utf8)]),
+        json_read_dict(Stream, Manifest),
+        close(Stream)),
+    get_dict(lessons, Manifest, Lessons),
+    length(Lessons, Count).
+
+lesson_dossier_monitoring(Code, AvailableCount, Surface, Chart) :-
+    (   monitoring_chart_export_dict(Code, Chart0)
+    ->  Chart = Chart0,
+        lesson_dossier_content_keys(Chart0, [lesson_code], Keys),
+        length(Keys, Count),
+        lesson_dossier_fetch(monitoring_chart_export, lesson_code, Code, Fetch),
+        Surface = _{id: "monitoring_chart", title: "Monitoring chart",
+                    has_content: true, count: Count,
+                    summary: "The monitoring chart carries the listed non-empty sections.",
+                    detail_keys: Keys, fetch: Fetch,
+                    url: MonitoringURL,
+                    available_lesson_count: AvailableCount, absence: null},
+        lesson_dossier_code_url(
+            "/more-zeeman/monitoring_chart.html?lesson=~w", Code, MonitoringURL)
+    ;   Chart = _{},
+        lesson_dossier_absent_surface(
+            "monitoring_chart", "Monitoring chart", AvailableCount,
+            "The monitoring chart has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_field_context(Code, AvailableCount, Surface, Identity) :-
+    (   field_context:field_context_dict(Code, Context)
+    ->  lesson_dossier_list_count(Context, standards, StandardCount),
+        lesson_dossier_list_count(Context, strategies, StrategyCount),
+        lesson_dossier_list_count(Context, misconceptions, MisconceptionCount),
+        lesson_dossier_list_count(Context, monitoring_clusters, ClusterCount),
+        ( get_dict(lesson, Context, Identity0) -> Identity = Identity0 ; Identity = _{} ),
+        ( get_dict(coverage_status, Context, Coverage) -> true ; Coverage = "unknown" ),
+        lesson_dossier_fetch(field_context, lesson_code, Code, Fetch),
+        Surface = _{id: "field_context", title: "Field context",
+                    has_content: true, count: 4,
+                    summary: _{coverage_status: Coverage,
+                               standards: StandardCount, strategies: StrategyCount,
+                               misconceptions: MisconceptionCount,
+                               monitoring_clusters: ClusterCount},
+                    detail_keys: [standards, strategies, misconceptions,
+                                  monitoring_clusters], fetch: Fetch,
+                    url: "/console.html#explore",
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   Identity = _{},
+        lesson_dossier_absent_surface(
+            "field_context", "Field context", AvailableCount,
+            "The field context has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_inferential_strength(Code, AvailableCount, Chart, Surface) :-
+    (   get_dict(inferential_strength, Chart, Strength),
+        is_dict(Strength),
+        lesson_dossier_value_has_content(Strength)
+    ->  lesson_dossier_fetch(inferential_strength, lesson, Code, Fetch),
+        Surface = _{id: "inferential_strength", title: "Inferential strength",
+                    has_content: true, count: 1, summary: Strength,
+                    detail_keys: [], fetch: Fetch, url: null,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "inferential_strength", "Inferential strength", AvailableCount,
+            "Inferential strength has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_ranked_figures(Code, AvailableCount, Chart, Surface) :-
+    (   get_dict(figures, Chart, Figures),
+        get_dict(candidate_count, Figures, Count), Count > 0
+    ->  lesson_dossier_fetch(ranked_figures, lesson_code, Code, Fetch),
+        Surface = _{id: "ranked_figures", title: "Ranked figures",
+                    has_content: true, count: Count,
+                    summary: "The lesson has ranked figure candidates.",
+                    detail_keys: [selected, candidates], fetch: Fetch, url: null,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "ranked_figures", "Ranked figures", AvailableCount,
+            "Ranked figures have no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_deformation(Code, AvailableCount, Chart, Surface) :-
+    (   get_dict(deformation_chart, Chart, Deformation),
+        get_dict(available, Deformation, true)
+    ->  lesson_dossier_fetch(lesson_deformation_chart, code, Code, Fetch),
+        lesson_dossier_code_url(
+            "/generated/lesson_deformation_charts/~w/index.html", Code, URL),
+        Surface = _{id: "lesson_deformation_chart",
+                    title: "Lesson deformation chart", has_content: true,
+                    count: 1, summary: Deformation.provenance_note,
+                    detail_keys: [chart], fetch: Fetch, url: URL,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "lesson_deformation_chart", "Lesson deformation chart", AvailableCount,
+            "The lesson deformation chart has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_notation(Code, AvailableCount, Surface) :-
+    (   lesson_dossier_generated_chart(
+            'notation_lesson_charts', Code, Chart)
+    ->  lesson_dossier_list_count(Chart, cells, Count),
+        lesson_dossier_fetch(notation_monitoring_chart, code, Code, Fetch),
+        lesson_dossier_code_url(
+            "/generated/notation_lesson_charts/~w/index.html", Code, URL),
+        Surface = _{id: "notation_monitoring_chart",
+                    title: "Notation monitoring chart", has_content: true,
+                    count: Count, summary: Chart.host_note,
+                    detail_keys: [cells], fetch: Fetch, url: URL,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "notation_monitoring_chart", "Notation monitoring chart", AvailableCount,
+            "The notation monitoring chart has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_generated_chart(Directory, Code, Chart) :-
+    absolute_file_name(hermes('app/web/generated'), Root,
+                       [file_type(directory), access(read)]),
+    directory_file_path(Root, Directory, ChartRoot),
+    directory_file_path(ChartRoot, Code, LessonRoot),
+    directory_file_path(LessonRoot, 'chart.json', Path),
+    exists_file(Path),
+    setup_call_cleanup(
+        open(Path, read, Stream, [encoding(utf8)]),
+        json_read_dict(Stream, Chart),
+        close(Stream)).
+
+lesson_dossier_task_span(Code, AvailableCount, Surface) :-
+    (   index_query:task_span_lesson_dict(Code, Span)
+    ->  lesson_dossier_list_count(Span, reasons, ReasonCount),
+        lesson_dossier_fetch(task_span_lesson, lesson, Code, Fetch),
+        Surface = _{id: "task_span_lesson", title: "Task-span record",
+                    has_content: true, count: ReasonCount, summary: Span,
+                    detail_keys: [reasons], fetch: Fetch, url: null,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "task_span_lesson", "Task-span record", AvailableCount,
+            "The task-span store has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_guide_questions(Code, AvailableCount, Surface) :-
+    lesson_monitoring:guide_question_labels_dict(Code, all, all, 5, Questions),
+    Count = Questions.matched_count,
+    (   Count > 0
+    ->  lesson_dossier_fetch(guide_question_labels, lesson, Code, Fetch),
+        lesson_dossier_code_url("/questions.html?lesson=~w", Code, URL),
+        Surface = _{id: "guide_question_labels",
+                    title: "Questions from IM teacher guides", has_content: true,
+                    count: Count, summary: "Attributed question rows match this lesson.",
+                    detail_keys: [rows], fetch: Fetch, url: URL,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "guide_question_labels", "Questions from IM teacher guides", AvailableCount,
+            "The attributed question stores have no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_question_moves(Code, AvailableCount, Surface) :-
+    (   question_move_pilot:question_moves_dict(Code, 5, Moves)
+    ->  Count = Moves.matched_count,
+        lesson_dossier_fetch(question_moves, lesson, Code, Fetch),
+        Surface = _{id: "question_moves", title: "Licensed question moves",
+                    has_content: true, count: Count,
+                    summary: "Mechanically admitted question moves match this lesson.",
+                    detail_keys: [rows], fetch: Fetch,
+                    url: QuestionURL, available_lesson_count: AvailableCount,
+                    absence: null}
+        , lesson_dossier_code_url("/questions.html?lesson=~w", Code, QuestionURL)
+    ;   lesson_dossier_absent_surface(
+            "question_moves", "Licensed question moves", AvailableCount,
+            "The licensed question-move store has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_enactment(Code, Catalog, Surface) :-
+    atom_string(Code, CodeString),
+    (   member(Row, Catalog.lessons), Row.lesson == CodeString
+    ->  length(Row.forms, Count),
+        lesson_dossier_fetch(lesson_enactment_run, lesson, Code, Fetch),
+        Surface = _{id: "lesson_enactment_run", title: "Lesson enactment",
+                    has_content: true, count: Count,
+                    summary: _{status: "runnable", forms: Row.forms},
+                    detail_keys: Row.forms, fetch: Fetch, url: null,
+                    available_lesson_count: Catalog.lesson_count, absence: null}
+    ;   member(Refusal, Catalog.refusals), Refusal.lesson == CodeString
+    ->  Surface = _{id: "lesson_enactment_run", title: "Lesson enactment",
+                    has_content: true, count: 1,
+                    summary: _{status: "named_refusal",
+                               machine_needed: Refusal.machine_needed},
+                    detail_keys: [], fetch: null, url: null,
+                    available_lesson_count: Catalog.lesson_count, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "lesson_enactment_run", "Lesson enactment", Catalog.lesson_count,
+            "The lesson enactment store has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_arithmetic(Code, Surface) :-
+    lesson_arithmetic_demonstration:lesson_arithmetic_demonstration_dict(
+        Code, "", "", "", Demonstration),
+    (   Demonstration.status == "ready"
+    ->  length(Demonstration.tasks, Count),
+        lesson_dossier_fetch(lesson_arithmetic_demonstration, lesson, Code, Fetch),
+        Surface = _{id: "lesson_arithmetic_demonstration",
+                    title: "Lesson arithmetic demonstration", has_content: true,
+                    count: Count, summary: Demonstration.lesson_name,
+                    detail_keys: Demonstration.tasks, fetch: Fetch, url: null,
+                    available_lesson_count: 1, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "lesson_arithmetic_demonstration", "Lesson arithmetic demonstration", 1,
+            "The arithmetic demonstration has no content for this lesson code.", Surface)
+    ).
+
+lesson_dossier_misconception_witnesses(Code, AvailableCount, Surface) :-
+    findall(_{operation: OperationText, name: NameText},
+            ( lesson_monitoring:lesson_misconception_witness_fact(
+                  Code, Operation, Name, _),
+              term_to_text(Operation, OperationText),
+              term_to_text(Name, NameText)
+            ),
+            Keys0),
+    sort(Keys0, Keys),
+    length(Keys, Count),
+    (   Count > 0
+    ->  maplist(lesson_dossier_misconception_fetch(Code), Keys, Fetches),
+        Surface = _{id: "lesson_misconception_incompatibility_witness",
+                    title: "Misconception incompatibility witnesses",
+                    has_content: true, count: Count,
+                    summary: "The baked witness store carries these query keys.",
+                    detail_keys: Keys,
+                    fetch: _{operation: "lesson_misconception_incompatibility_witness",
+                             calls: Fetches},
+                    url: null, available_lesson_count: AvailableCount,
+                    absence: null}
+    ;   lesson_dossier_absent_surface(
+            "lesson_misconception_incompatibility_witness",
+            "Misconception incompatibility witnesses", AvailableCount,
+            "The misconception witness store has no content for this lesson code.",
+            Surface)
+    ).
+
+lesson_dossier_model_analyses(Code, AvailableCount, Surface) :-
+    (   model_analysis_lookup_dict(Code, _, 3, 0, Analyses)
+    ->  Count = Analyses.total,
+        lesson_dossier_fetch(model_analysis_lookup, lesson_code, Code, Fetch),
+        Surface = _{id: "model_analysis_lookup", title: "Stored model analyses",
+                    has_content: true, count: Count,
+                    summary: "Verified stored analyses match this lesson.",
+                    detail_keys: Analyses.rows, fetch: Fetch, url: null,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "model_analysis_lookup", "Stored model analyses", AvailableCount,
+            "The stored model-analysis surface has no content for this lesson code.",
+            Surface)
+    ).
+
+lesson_dossier_reader_validation(Code, AvailableCount, Surface) :-
+    (   lesson_monitoring:encoded_lesson(Code, _, _, _, _, _)
+    ->  lesson_dossier_fetch(validate_reader_axioms, lesson_code, Code, Fetch),
+        Surface = _{id: "validate_reader_axioms", title: "Reader validation",
+                    has_content: false, count: 0,
+                    summary: "Reader validation requires caller-supplied clauses and stores no lesson result.",
+                    detail_keys: [clauses], fetch: Fetch, url: null,
+                    available_lesson_count: AvailableCount,
+                    absence: "Reader validation stores no per-lesson result."}
+    ;   lesson_dossier_absent_surface(
+            "validate_reader_axioms", "Reader validation", AvailableCount,
+            "Reader validation has no encoded lesson context for this lesson code.",
+            Surface)
+    ).
+
+lesson_dossier_generated_pages(Code, Pages, Surface) :-
+    lesson_dossier_generated_paths(Code, Paths),
+    maplist(lesson_dossier_generated_page, Paths, Pages),
+    length(Pages, Count),
+    lesson_dossier_generated_item_count(AvailableCount),
+    (   Count > 0
+    ->  Surface = _{id: "generated_pages", title: "Generated lesson pages",
+                    has_content: true, count: Count,
+                    summary: "Tracked generated files match this lesson code.",
+                    detail_keys: Pages, fetch: null, url: null,
+                    available_lesson_count: AvailableCount, absence: null}
+    ;   lesson_dossier_absent_surface(
+            "generated_pages", "Generated lesson pages", AvailableCount,
+            "The generated app tree has no page or drawing for this lesson code.",
+            Surface)
+    ).
+
+lesson_dossier_generated_paths(Code, Paths) :-
+    absolute_file_name(hermes('app/web/generated'), Root,
+                       [file_type(directory), access(read)]),
+    atom_string(Code, CodeString),
+    findall(Path,
+            lesson_dossier_generated_path(Root, CodeString, Path),
+            Paths0),
+    sort(Paths0, Paths).
+
+lesson_dossier_generated_path(Root, Code, Path) :-
+    member(Template,
+           ["notation_lesson_charts/~w/index.html",
+            "lesson_deformation_charts/~w/index.html"]),
+    format(string(Relative), Template, [Code]),
+    directory_file_path(Root, Relative, Path),
+    exists_file(Path).
+lesson_dossier_generated_path(Root, Code, Path) :-
+    member(Template,
+           ["best_IM_scenes/~w-*.svg",
+            "monitoring_visuals*/~w-*.svg",
+            "notation_demos/*~w*"]),
+    format(string(RelativePattern), Template, [Code]),
+    directory_file_path(Root, RelativePattern, Pattern),
+    expand_file_name(Pattern, Matches),
+    member(Path, Matches),
+    exists_file(Path).
+
+lesson_dossier_misconception_fetch(Code, Key,
+        _{lesson_code: CodeString, name: Key.name,
+          operation: Key.operation}) :-
+    atom_string(Code, CodeString).
+
+lesson_dossier_generated_page(Path, _{url: URL, label: Label}) :-
+    absolute_file_name(hermes('app/web/generated'), Root,
+                       [file_type(directory), access(read)]),
+    atom_concat(Root, Relative0, Path),
+    atom_concat('/', Relative, Relative0),
+    format(string(URL), "/generated/~w", [Relative]),
+    atom_string(Relative, Label).
+
+lesson_dossier_generated_item_count(Count) :-
+    absolute_file_name(hermes('app/web/generated'), Root,
+                       [file_type(directory), access(read)]),
+    findall(Path,
+            ( member(PatternTail,
+                     ["notation_lesson_charts/*/index.html",
+                      "lesson_deformation_charts/*/index.html",
+                      "best_IM_scenes/IM-G*-*.svg",
+                      "monitoring_visuals*/IM-G*-*.svg",
+                      "notation_demos/*IM-G*"]),
+              directory_file_path(Root, PatternTail, Pattern),
+              expand_file_name(Pattern, Matches),
+              member(Path, Matches), exists_file(Path)
+            ),
+            Paths0),
+    sort(Paths0, Paths),
+    length(Paths, Count).
+
+lesson_dossier_content_keys(Dict, Excluded, Keys) :-
+    findall(Key,
+            ( get_dict(Key, Dict, Value),
+              \+ memberchk(Key, Excluded),
+              lesson_dossier_value_has_content(Value)
+            ),
+            Keys0),
+    sort(Keys0, Keys).
+
+lesson_dossier_value_has_content(Value) :-
+    is_list(Value), !, Value \== [].
+lesson_dossier_value_has_content(Value) :-
+    is_dict(Value), !, dict_pairs(Value, _, Pairs), Pairs \== [].
+lesson_dossier_value_has_content(Value) :-
+    string(Value), !, Value \== "".
+lesson_dossier_value_has_content(Value) :-
+    number(Value), !, Value =\= 0.
+lesson_dossier_value_has_content(Value) :-
+    nonvar(Value), Value \== null, Value \== false, Value \== [].
+
+lesson_dossier_list_count(Dict, Key, Count) :-
+    (   get_dict(Key, Dict, Value), is_list(Value)
+    ->  length(Value, Count)
+    ;   Count = 0
+    ).
+
+lesson_dossier_fetch(Operation, Key, Code,
+                     _{operation: OperationText, arguments: Arguments}) :-
+    atom_string(Operation, OperationText),
+    atom_string(Code, CodeString),
+    put_dict(Key, _{}, CodeString, Arguments).
+
+lesson_dossier_code_url(Template, Code, URL) :-
+    format(string(URL), Template, [Code]).
+
+lesson_dossier_absent_surface(Id, Title, AvailableCount, Absence,
+        _{id: Id, title: Title, has_content: false, count: 0,
+          summary: Absence, detail_keys: [], fetch: null, url: null,
+          available_lesson_count: AvailableCount, absence: Absence}).
+
 resonant_misconception_export_dict(
         resonant_misconception(Name, Domain, Citation, Score),
         _{name: NameText, domain: DomainText, citation: CitationText,
@@ -4541,19 +5073,13 @@ hyperedge_row(KindFilter, Row) :-
     ->  true
     ;   KindFilter == declared
     ),
+    literature_deontic_bridge:lit_incompatible_hyperedge(Set),
     brandomian_incompatibility:incompatible_set(Set),
-    length(Set, Len),
-    Len >= 3,
-    (   brandomian_incompatibility:minimal_incompatible_set(Set)
-    ->  Emergent = true,
-        Check = "minimal_in_canonical_relation_no_declared_proper_subset"
-    ;   Emergent = false,
-        Check = "canonical_relation_declares_an_incoherent_proper_subset"
-    ),
-    catalogue_break_for(Set, Break),
-    maplist(term_to_text, Set, SetTexts),
-    Row = _{ source: "canonical_relation",
-             provenance: "formal/incompatibility/brandomian_incompatibility.pl declared incompatible claim groups (size >= 3 only; the seed pairs are reachable through brandomian_check)",
+    literature_hyperedge_provenance(Set, LiteratureRows),
+    canonical_hyperedge_classification(Set, Emergent, Check, Break, SetTexts),
+    Row = _{ source: "literature_deontic_bridge_installed",
+             provenance: "Installed from gated literature-deontic rows; each literature_rows id and bibkey resolves through lit_derived_meta/4.",
+             literature_rows: LiteratureRows,
              context: "brandomian_engine",
              set: SetTexts,
              kind: "declared",
@@ -4561,6 +5087,56 @@ hyperedge_row(KindFilter, Row) :-
              emergence_check: Check,
              content_set: SetTexts,
              catalogue_break: Break }.
+hyperedge_row(KindFilter, Row) :-
+    (   KindFilter == all
+    ->  true
+    ;   KindFilter == declared
+    ),
+    brandomian_incompatibility:incompatible_set(Set),
+    length(Set, Len),
+    Len >= 2,
+    \+ literature_deontic_bridge:lit_incompatible_hyperedge(Set),
+    canonical_hyperedge_classification(Set, Emergent, Check, Break, SetTexts),
+    canonical_hyperedge_provenance(Len, Provenance),
+    Row = _{ source: "canonical_relation",
+             provenance: Provenance,
+             context: "brandomian_engine",
+             set: SetTexts,
+             kind: "declared",
+             emergent: Emergent,
+             emergence_check: Check,
+             content_set: SetTexts,
+             catalogue_break: Break }.
+
+canonical_hyperedge_classification(Set, Emergent, Check, Break, SetTexts) :-
+    (   brandomian_incompatibility:minimal_incompatible_set(Set)
+    ->  Emergent = true,
+        Check = "minimal_in_canonical_relation_no_declared_proper_subset"
+    ;   Emergent = false,
+        Check = "canonical_relation_declares_an_incoherent_proper_subset"
+    ),
+    catalogue_break_for(Set, Break),
+    maplist(term_to_text, Set, SetTexts).
+
+canonical_hyperedge_provenance(Len, Provenance) :-
+    (   Len >= 3
+    ->  Provenance = "formal/incompatibility/brandomian_incompatibility.pl declared incompatible claim groups (size >= 3 only; the seed pairs are reachable through brandomian_check)"
+    ;   Provenance = "formal/incompatibility/brandomian_incompatibility.pl declared incompatible claim groups (arity >= 2)"
+    ).
+
+literature_hyperedge_provenance(Set, LiteratureRows) :-
+    Set = [applies_rule(SrRule), normative_commitment(Commitment)],
+    literature_deontic_bridge:lit_deontic_edge(
+        SrRule, Commitment, SupportIds),
+    findall(
+        _{id: IdText, bibkey: BibkeyText, citation: Citation},
+        ( member(Id, SupportIds),
+          literature_incompatibility_facts:lit_derived_meta(
+              Id, Bibkey, Citation, _Gloss),
+          term_to_text(Id, IdText),
+          term_to_text(Bibkey, BibkeyText)
+        ),
+        LiteratureRows).
 
 hyperedge_kind_atom(Kind, Kind) :-
     atom(Kind),

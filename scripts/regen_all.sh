@@ -78,6 +78,9 @@ add_automata_lane() {
 }
 
 add_curriculum_lane() {
+    # The tracked guide corpus must verify before any consumer reads it.
+    labels+=("scripts/curriculum/sync_im_teacher_guides_docling.py --check")
+    commands+=("python3 scripts/curriculum/sync_im_teacher_guides_docling.py --check")
     add_python scripts/curriculum/compile_action_mappings.py
     add_python scripts/curriculum/build_im_defragged_task_instances.py
     add_python scripts/curriculum/build_lesson_evidence.py
@@ -114,6 +117,7 @@ add_registry_lane() {
     add_python hermes/app/scripts/export_parametric_fraction_errors.py
     add_python hermes/app/scripts/export_lesson_deformation_charts.py
     add_python hermes/app/scripts/export_compare_defaults.py
+    add_python scripts/enactment/build_best_im.py
     add_python scripts/generate_visual_surface_indexes.py
     add_python scripts/extract_a_fortiori_context_closure.py
     add_python scripts/extract_coverage_absence_registry.py
@@ -177,6 +181,9 @@ if [[ $lane == automata ]]; then
 fi
 
 add_tail
+# The page inventory reads titles and paths produced by builders in every lane,
+# including the generated data-store and capability pages in the shared tail.
+add_python scripts/build_html_surface_index.py
 
 if (( dry_run )); then
     printf '%s\n' "${commands[@]}"

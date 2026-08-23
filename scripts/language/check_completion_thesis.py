@@ -6,8 +6,8 @@ from __future__ import annotations
 from fractions import Fraction
 from pathlib import Path
 
+from fixture_task_rows import fixture_row, fixture_source_hashes
 from probe_reader_coverage import sentences
-from probe_task_statements import load_rows
 from pusu_harness import (
     PrologRunner,
     compare_ground_truth,
@@ -15,7 +15,6 @@ from pusu_harness import (
     metric_rows,
     output_row,
     sentence_source_spans,
-    source_hashes,
 )
 from surface_normalizer import normalize_surface
 
@@ -24,11 +23,10 @@ BOXES = "im_defrag_748d648a603084b18ef50728_1"
 COMPARISON = "im_defrag_bfee414957b9544aaf7a78bc_1"
 EXPRESSION = "im_defrag_cccb8e4da6df0e2433600096_1"
 ROOT = Path(__file__).resolve().parents[2]
-LANGUAGE_RUNTIME = ROOT / "hermes/app/runtime/experiments/language"
 
 
 def source_row(record_id: str) -> dict:
-    return next(row for row in load_rows() if str(row["id"]) == record_id)
+    return fixture_row(record_id)
 
 
 def corpus_receipt(runner: PrologRunner, record_id: str) -> tuple[dict, dict, list[str]]:
@@ -63,15 +61,7 @@ def main() -> int:
         {"synthetic": [{"result_term": "4"}]},
     )
     assert synthetic_join["verdict"] == "agree"
-    if not LANGUAGE_RUNTIME.is_dir():
-        print(
-            "SKIP completion-thesis corpus receipts: "
-            "hermes/app/runtime/experiments/language absent locally "
-            "(gitignored language runtime); tracked ground-truth loading and numeric "
-            "comparison control verified"
-        )
-        return 0
-    hashes = source_hashes()
+    hashes = fixture_source_hashes()
     runner = PrologRunner()
     try:
         records = []

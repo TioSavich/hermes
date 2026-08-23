@@ -115,6 +115,22 @@ def monitoring_chart_export(ctx: Any) -> None:
     ctx._send_json({"ok": True, "result": result})
 
 
+def lesson_dossier(ctx: Any) -> None:
+    lesson_code = _lesson_code(ctx)
+    if not lesson_code:
+        ctx._send_json({"error": "lesson_code is required"}, status=400)
+        return
+    completed, result = _bounded_monitoring_request(
+        ctx, "lesson_dossier", lesson_code, "Lesson dossier"
+    )
+    if not completed:
+        return
+    if not isinstance(result, dict):
+        ctx._send_json({"error": "lesson_dossier returned a non-object payload"}, status=500)
+        return
+    ctx._send_json({"ok": True, "result": result})
+
+
 def ranked_figures(ctx: Any) -> None:
     lesson_code = _lesson_code(ctx)
     if not lesson_code:
@@ -231,6 +247,7 @@ ROUTES = (
     Route("GET", "/api/lesson_visual", lesson_visual),
     Route("POST", "/api/field_context", field_context),
     Route("POST", "/api/monitoring_chart_export", monitoring_chart_export),
+    Route("POST", "/api/lesson_dossier", lesson_dossier),
     Route("POST", "/api/ranked_figures", ranked_figures),
     Route("POST", "/api/monitoring_visuals", monitoring_visuals),
     Route("POST", "/api/lesson_arithmetic_demonstration", lesson_arithmetic_demonstration),

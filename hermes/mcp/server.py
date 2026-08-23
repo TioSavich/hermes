@@ -52,6 +52,7 @@ QUOTIENT_GRAPH_ARTIFACTS = {
 CORE_TO_WORKER = {
     "prolog_query": "prolog_query",
     "monitoring_chart": "monitoring_chart_export",
+    "lesson_dossier": "lesson_dossier",
     "lesson_deformation_chart": "lesson_deformation_chart",
     "deontic_scorecard": "deontic_scorecard",
     "deontic_consequences": "deontic_consequences",
@@ -88,6 +89,7 @@ TOOL_BUNDLES = {
 }
 
 CORE_TOOLS = (
+    ("lesson_dossier", "Gather every tracked lesson-filtered Hermes surface for one IM lesson code. The result reports content or absence for each surface, together with detail-call keys and shipped generated-page links. It reads only files included in a bare clone. Expected time: under one minute on the first call while the lesson inventories load.", ("code",)),
     ("monitoring_chart", "Return a compact monitoring-chart inventory for an IM lesson code. Use monitoring_chart_detail for one named section; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
     ("monitoring_chart_detail", "Return one named section from a monitoring chart. Call monitoring_chart first to obtain the section inventory. Expected time: a few seconds.", ("code", "section")),
     ("lesson_deformation_chart", "Return a compact deformation-chart inventory for an IM lesson code. The tool serves 77 codes: 3 hand-authored fraction charts, 73 evidence-joined fraction charts, and 1 compiled division chart. It refuses 0 eligible codes with fraction_operands_unrecoverable and 1 with no_deformation_chart, the one lesson whose guide carries no host or fraction evidence. Five of the evidence-joined charts carry fractions recovered from the source PDF pages, each anchored to the lesson's own surviving guide text. Evidence-joined hosts and fractions cite the lesson's own guide text or compiled evidence rows. Circle, rectangle, and bar cells draw licensed partition deformations; number-line and set cells use paired comparison scenes, with text-only output when a pair has no honest layout. Every reply carries provenance and provenance_note. Use lesson_deformation_chart_detail for one scene or frame; set full to true only for renderer-oriented consumers. Expected time: a few seconds after worker startup.", ("code", "full")),
@@ -436,6 +438,8 @@ def core_tool(name: str, description: str, parameters: tuple[str, ...], strategy
         properties["domain"] = {"type": "string", "minLength": 1, "description": "Registered misconception domain, such as fraction."}
         properties["input"] = {"type": "string", "minLength": 1, "description": "Problem input in the worker's term-form text."}
         properties["got"] = {"type": "string", "minLength": 1, "description": "Student answer in the worker's term-form text."}
+    elif name == "lesson_dossier":
+        required = ["code"]
     elif name == "lesson_enactment_run":
         required = ["lesson"]
         properties["lesson"] = {"type": "string", "minLength": 1, "description": "Exact IM lesson code returned by lesson_enactment_list."}
@@ -737,6 +741,12 @@ class HermesMCPServer:
             return self.misconception_lookup(arguments)
         if name == "monitoring_chart":
             return self.monitoring_chart(arguments)
+        if name == "lesson_dossier":
+            code = self._code(arguments, "lesson_dossier")
+            value = self._worker_request("lesson_dossier", lesson_code=code)
+            if not isinstance(value, dict):
+                raise ToolCallError("lesson_dossier returned an invalid dossier.", kind="worker_failure")
+            return value
         if name == "monitoring_chart_detail":
             return self.monitoring_chart_detail(arguments)
         if name == "lesson_deformation_chart":

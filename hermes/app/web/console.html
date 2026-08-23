@@ -187,7 +187,7 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
 .search input { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 0.95rem; }
 .catalog-section h3 { margin: 0.4rem 0 0.5rem; font-size: 0.95rem; }
 .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; }
-.lesson-card { text-align: left; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.7rem; transition: transform 0.08s ease, box-shadow 0.12s ease, border-color 0.12s; }
+.lesson-card { display: block; color: inherit; text-decoration: none; text-align: left; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); padding: 0.6rem 0.7rem; transition: transform 0.08s ease, box-shadow 0.12s ease, border-color 0.12s; }
 .lesson-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,12,8,0.14); border-color: var(--gold-deep); }
 .lesson-card .code { font: 0.82rem var(--mono); font-weight: 600; }
 .lesson-card .ttl { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 0.15rem; line-height: 1.3; }
@@ -399,6 +399,8 @@ details.raw pre { white-space: pre-wrap; font: 0.74rem/1.45 var(--mono); backgro
     </div>
     <div class="top-controls">
       <span id="app-request-status" class="pill pending" role="status" aria-live="polite">◌ Checking the app…</span>
+      <a class="btn ghost" href="lesson">Lesson dossier</a>
+      <a class="btn ghost" href="surfaces.html">All pages</a>
       <button class="btn ghost" id="quickstart-btn">Quickstart &amp; settings</button>
     </div>
   </div>
@@ -1121,14 +1123,12 @@ function lessonCard(row) {
     ? `${charts.join(' + ')} chart${charts.length === 1 ? '' : 's'}`
     : (CATALOG_CHARTS_COMPLETE ? 'no chart' : 'chart availability unavailable');
   const capability = `${counts.strategies || 0} strategies · ${counts.misconceptions || 0} misconceptions · ${chartText}`;
-  return `<button class="lesson-card" data-lesson="${escAttr(code)}"><span class="code">${esc(code)}</span>${title}<span class="capability-line">${esc(capability)}</span><span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></button>`;
+  return `<a class="lesson-card" href="lesson?code=${encodeURIComponent(code)}"><span class="code">${esc(code)}</span>${title}<span class="capability-line">${esc(capability)}</span><span class="badge ${ready ? 'ready' : 'thin'}">${badge}</span></a>`;
 }
 function renderCatalog(rows, heading) {
   return `<div class="catalog-section"><h3>${esc(heading)}</h3><div class="catalog-grid">${rows.map(lessonCard).join('') || '<span class="muted-inline">none</span>'}</div></div>`;
 }
-function wireCatalogClicks() {
-  document.querySelectorAll('.lesson-card').forEach(c => c.addEventListener('click', () => openLesson(c.dataset.lesson)));
-}
+function wireCatalogClicks() {}
 async function loadCatalog() {
   catalogLoaded = true;
   const catalog = $("#catalog");
@@ -1297,13 +1297,13 @@ async function openLesson(code) {
   const nearby = (cov !== 'usable' && cov !== 'fully_connected') ? nearbyStrongLessons(code) : [];
   const nearbyLine = nearby.length
     ? `<div class="exp-line"><b>Try these nearby prepared lessons:</b> ${nearby.map(n =>
-        `<a href="#" class="nearby-lesson" data-lesson="${escAttr(n.lesson_code)}">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
+        `<a href="lesson?code=${encodeURIComponent(n.lesson_code)}" class="nearby-lesson">${esc(n.lesson_code)}</a>`).join(' · ')}</div>`
     : '';
   const chartChip = lessonChartChip(code, await chartManifestTask);
   const notationChip = notationChartChip(code, await notationManifestTask);
   detail.innerHTML = `<div class="card"><div class="fc">
     <div class="fc-head"><h3>${esc(lesson.title || code)}</h3>
-      <div class="fc-meta"><span class="chip">${esc(code)}</span><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
+      <div class="fc-meta"><a class="chip" href="lesson?code=${encodeURIComponent(code)}">${esc(code)}</a><span class="chip">grade ${esc(String(lesson.grade ?? '—'))}</span></div>
       ${briefLine}${nearbyLine}
       <div class="ce-row">
         <a class="stance-chip" href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(code)}">Plan this lesson</a>
@@ -1318,9 +1318,6 @@ async function openLesson(code) {
     </div>
     <div class="fc-sec"><h4>What to listen for</h4>${miscCardsHtml(misconceptions)}</div>
   </div></div>`;
-  detail.querySelectorAll('.nearby-lesson').forEach(a => a.addEventListener('click', e => {
-    e.preventDefault(); openLesson(a.dataset.lesson);
-  }));
 }
 
 function miscCardsHtml(misconceptions) {
@@ -2086,10 +2083,10 @@ async function planLesson() {
     const lesson = lessons.find(row => String(row.lesson_code || '').toUpperCase() === code);
     if (lesson && lesson.coverage_status !== 'usable' && lesson.status !== 'fully_connected') {
       const nearby = nearbyStrongLessons(code);
-      note.innerHTML = `Hermes has the lesson goal but not enough monitored approaches yet.${nearby.length ? ' Try these nearby prepared lessons: ' + nearby.map(row => `<a href="../more-zeeman/monitoring_chart.html?lesson=${encodeURIComponent(row.lesson_code)}">${esc(row.lesson_code)}</a>`).join(', ') + '.' : ''}`;
+      note.innerHTML = `Hermes has the lesson goal but not enough monitored approaches yet.${nearby.length ? ' Try these nearby prepared lessons: ' + nearby.map(row => `<a href="lesson?code=${encodeURIComponent(row.lesson_code)}">${esc(row.lesson_code)}</a>`).join(', ') + '.' : ''}`;
       return;
     }
-    location.href = '../more-zeeman/monitoring_chart.html?lesson=' + encodeURIComponent(code);
+    location.href = 'lesson?code=' + encodeURIComponent(code);
   } catch (error) {
     note.textContent = 'The lesson list is not available right now. Try again when the app is running.';
   }

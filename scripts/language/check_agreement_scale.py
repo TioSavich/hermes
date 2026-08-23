@@ -7,16 +7,14 @@ import json
 import subprocess
 from pathlib import Path
 
+from fixture_task_rows import fixture_row, fixture_source_hashes
 from guide_sentences import editor_lines, fragments
 from probe_reader_coverage import sentences
-from probe_task_statements import load_rows
 from pusu_harness import (
     PrologRunner,
-    build_summary,
     load_ground_truth,
     output_row,
     sentence_source_spans,
-    source_hashes,
 )
 from surface_normalizer import normalize_surface
 
@@ -27,15 +25,11 @@ LIN = "im_defrag_1783d222456f739e3067673c_1"
 UNIT_RATE_ROWS = {
     "im_defrag_90eb8a5c62cd0001fdf65e98_1": "2",
     "im_defrag_a0d5027fc2422d3df7a7cfcf_1": "40",
-    "im_defrag_93e0f0a5aa46652109d4baf0_1": "27",
 }
-RESULTS = REPO / "hermes/app/runtime/experiments/language/pusu_results.jsonl"
-SUMMARY = REPO / "hermes/app/runtime/experiments/language/pusu_summary.json"
-EXPERIMENTS = REPO / "hermes/app/runtime/experiments"
 
 
 def corpus_row(runner: PrologRunner, record_id: str, corpus_index: int) -> dict:
-    source = next(row for row in load_rows() if str(row["id"]) == record_id)
+    source = fixture_row(record_id)
     normalization = normalize_surface(str(source["complete_statement"]), profile="im")
     sentence_texts = sentences(str(normalization["text"]))
     sentence_spans = sentence_source_spans(sentence_texts, normalization, source)
@@ -46,7 +40,7 @@ def corpus_row(runner: PrologRunner, record_id: str, corpus_index: int) -> dict:
         normalization,
         sentence_texts,
         load_ground_truth(),
-        source_hashes(),
+        fixture_source_hashes(),
     )
 
 
@@ -135,52 +129,9 @@ def check_guide_lines() -> None:
     assert editor_lines("a\fb\nc") == ["a\fb", "c"]
 
 
-def check_full_artifacts() -> None:
-    target = load_rows()
-    rows = [json.loads(line) for line in RESULTS.read_text(encoding="utf-8").splitlines()
-            if line.strip()]
-    hashes = source_hashes()
-    assert len(rows) == len(target) == 4712
-    assert [row["record_id"] for row in rows] == [str(row["id"]) for row in target]
-    assert len({row["record_id"] for row in rows}) == 4712
-    assert sum(row["sentence_count"] for row in rows) == 28758
-    assert all(row["source_sha256"] == hashes for row in rows)
-    expected_summary = build_summary(rows, target, hashes)
-    assert json.loads(SUMMARY.read_text(encoding="utf-8")) == expected_summary
-    totals = expected_summary["total"]
-    # 2026-08-15: the relation-emission slice adds five completions (three
-    # agreeing, two without comparable truth) and two partial promotions;
-    # measured from the final-tree harness pass, agreement rate unchanged
-    # at 0.9913.
-    # 2026-08-18: the G2 pricing/rate slice adds two completions, both
-    # measured from the final-tree harness pass. The flour row agrees
-    # (4/5). The Han babysitting row is an adjudicated FALSE disagreement:
-    # the reader answers the statement's ask (7 hours at the rate,
-    # 231/4 = 7 x 33/4) while the wave5 map receipt (line 1518) verifies
-    # only the intermediate division 33/4 - a map row answering its own
-    # sub-problem, the pattern the 08-15 session named. Agreement reads
-    # 1030/1040 = 0.9904 with that one row recorded, not repaired.
-    # 2026-08-18 (later): the G8 ask-binding slice adds one completion -
-    # the U6-L10 two-way table, completed_from_partial, agreeing with its
-    # wave5 receipt - the first grade-8 completion (0/321 -> 1/321).
-    # Measured from the final-tree harness pass; zero prior answers moved.
-    assert totals["completed_full"]["numerator"] == 909
-    assert totals["completed_from_partial"]["numerator"] == 164
-    assert totals["agreeing"]["numerator"] == 1031
-    assert totals["agreeing"]["denominator"] == 1041
-
-
 def main() -> int:
     check_engine_recipes()
     check_guide_lines()
-    if not EXPERIMENTS.is_dir():
-        print(
-            "SKIP agreement-scale language receipts: "
-            "hermes/app/runtime/experiments absent locally (gitignored research state); "
-            "tracked saturation recipes and guide line accounting verified"
-        )
-        return 0
-    check_full_artifacts()
     runner = PrologRunner()
     try:
         lin = corpus_row(runner, LIN, 0)

@@ -23,7 +23,6 @@ import compile_action_mappings as compiler  # noqa: E402
 import equation_verification as eqv  # noqa: E402
 
 OUTPUT = ROOT / "scripts" / "curriculum" / "lesson_equation_verifications.json"
-DOCLING_GUIDES = compiler.MIDDLE_GUIDE_ROOT
 
 
 def validate_tracked_ledger(path: pathlib.Path) -> dict:
@@ -142,17 +141,6 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--output", type=pathlib.Path, default=OUTPUT)
     args = parser.parse_args()
-
-    if args.check and not DOCLING_GUIDES.is_dir():
-        payload = validate_tracked_ledger(args.output)
-        print(
-            "SKIP equation-verification ledger re-derivation: "
-            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
-            "TeacherLessonGuides absent locally (docling full-output); "
-            f"tracked schema and {payload['summary']['routine_spans']} span receipts "
-            "reconcile with accepted and refused denominators"
-        )
-        return 0
 
     payload = build(ROOT)
     rendered = render(payload)

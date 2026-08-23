@@ -6,8 +6,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+from fixture_task_rows import fixture_row
 from probe_reader_coverage import sentences
-from probe_task_statements import load_rows
 from pusu_harness import (
     PrologRunner,
     compare_ground_truth,
@@ -22,11 +22,10 @@ PLANE = "im_defrag_2f1df73a1a4681025ce9f31b_1"
 ASK = re.compile(r"^asks\(result,([^()]+)\)$")
 QUANTITY = re.compile(r"^quantity\(([^(),]+),")
 ROOT = Path(__file__).resolve().parents[2]
-LANGUAGE_RUNTIME = ROOT / "hermes/app/runtime/experiments/language"
 
 
 def source_row(record_id: str) -> dict[str, object]:
-    return next(row for row in load_rows() if str(row["id"]) == record_id)
+    return fixture_row(record_id)
 
 
 def reader_receipt(runner: PrologRunner, record_id: str) -> tuple[dict, dict]:
@@ -66,13 +65,6 @@ def main() -> int:
         {"numeric": [{"result_term": "560"}]},
     )
     assert synthetic["verdict"] == "agree"
-    if not LANGUAGE_RUNTIME.is_dir():
-        print(
-            "SKIP PUSU seeded-1 corpus receipts: "
-            "hermes/app/runtime/experiments/language absent locally "
-            "(gitignored language runtime); tracked numeric ground-truth join verified"
-        )
-        return 0
     runner = PrologRunner()
     try:
         plane_normalization, plane = reader_receipt(runner, PLANE)

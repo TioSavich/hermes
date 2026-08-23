@@ -183,14 +183,18 @@ degenerate_incompatible_set :-
     !.
 
 universal_incompatible_content :-
-    % a content C declared somewhere that turns out incoherent merely by being
-    % paired with a fresh, unrelated probe — i.e. C is incompatible with
-    % something it has no declared relation to.
-    incompatible_set(Some),
-    member(C, Some),
+    % A fresh-probe pair can contain a declared incompatible subset only when
+    % that subset is degenerate or is itself a pair containing the probe.
+    % The preceding degenerate_incompatible_set check covers the first case;
+    % inspect only two-member declarations here. This is equivalent to asking
+    % brandomian_incoherent([C,P]) for every declared C, without rescanning the
+    % full hyperedge table once per content.
     probe_atom(P),
+    incompatible_set([A, B]),
+    ( A == P -> C = B ; B == P -> C = A ),
+    incompatible_set(Some),
+    memberchk_eq_list(C, Some),
     \+ memberchk_eq_list(P, Some),
-    brandomian_incoherent([C, P]),
     !.
 
 memberchk_eq_list(X, [Y|_]) :- X == Y, !.

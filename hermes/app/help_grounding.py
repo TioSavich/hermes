@@ -12,7 +12,9 @@ MAX_GROUNDING_BYTES = 6 * 1024
 PAGE_CONTEXT: dict[str, dict[str, str]] = {
     "console": {"theme": "Norms & curriculum", "lede": "Work with a mathematical discussion, computation, or lesson.", "path": "/hermes/app/web/console.html", "theory": "/more-zeeman/landing.html"},
     "discussions": {"theme": "Norms & curriculum", "lede": "Check the mathematical claims in a discussion and keep the evidence with each finding.", "path": "/hermes/app/web/discussions.html", "theory": "/more-zeeman/muds.html"},
-    "sidekick": {"theme": "Norms & curriculum", "lede": "Ask the local model a question and review the consultations used in its reply.", "path": "/hermes/app/web/sidekick.html", "theory": "/more-zeeman/landing.html"},
+    "lesson": {"theme": "Norms & curriculum", "lede": "Gather every tracked lesson surface for one IM lesson code, with content and absences stated per section.", "path": "/hermes/app/web/lesson.html", "theory": "/more-zeeman/monitoring_chart.html"},
+    "surfaces": {"theme": "Norms & curriculum", "lede": "Open the HTML entrances shipped with the app from one file inventory.", "path": "/hermes/app/web/surfaces.html", "theory": "/more-zeeman/atlas.html"},
+    "sidekick": {"theme": "Norms & curriculum", "lede": "Ask Sidekick a question, request a drawing, and inspect the consultations used in its reply.", "path": "/hermes/app/web/sidekick.html", "theory": "/more-zeeman/landing.html"},
     "visualizations": {"theme": "Objects", "lede": "Choose a mathematical representation, run its worked example, and change the inputs.", "path": "/more-zeeman/visualizations.html", "theory": "/more-zeeman/strategies.html"},
     "strategy-machine": {"theme": "Objects", "lede": "Choose an automaton, run it with your inputs, and follow its actions.", "path": "/more-zeeman/strategies/machine.html", "theory": "/more-zeeman/strategies.html"},
     "witnesses": {"theme": "Recollection", "lede": "Find finite examples that support a mathematical, curricular, or formal claim.", "path": "/more-zeeman/witnesses.html", "theory": "/more-zeeman/landing.html"},

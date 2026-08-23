@@ -19,6 +19,10 @@ def root(ctx: Any) -> None:
     ctx._send_file(ctx.web_root / "console.html")
 
 
+def lesson(ctx: Any) -> None:
+    ctx._send_file(ctx.web_root / "lesson.html")
+
+
 def quickstart(ctx: Any) -> None:
     doc = ctx.app_dir / "QUICKSTART.md"
     if doc.is_file():
@@ -96,6 +100,7 @@ def static_fallback(ctx: Any) -> None:
 
 ROUTES = (
     Route("GET", "/", root),
+    Route("GET", "/lesson", lesson),
     Route("GET", "/api/quickstart", quickstart),
     Route("GET", "/api/sample", sample),
     Route("GET", "/api/inputs", inputs),

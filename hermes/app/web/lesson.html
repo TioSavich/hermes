@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-hermes-base="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes lesson dossier</title>
+<link rel="icon" type="image/svg+xml" href="hermes_logo.svg" />
+<link rel="stylesheet" href="../more-zeeman/hermes-tokens.css" />
+<script defer src="../more-zeeman/render/hermes-shell.js" data-root="../more-zeeman/" data-app="./" data-active="lesson"></script>
+<style>
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.5 var(--serif); }
+.wrap { width: min(72rem, 100%); margin: 0 auto; padding: 1.4rem 1.3rem 4rem; }
+h1 { margin: 0 0 .35rem; font-size: 1.75rem; }
+.lede { max-width: 62ch; color: var(--muted); }
+.lookup { display: flex; gap: .55rem; margin: 1.1rem 0; flex-wrap: wrap; }
+.lookup input { flex: 1; min-width: 17rem; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: 6px; background: #fffaf0; font: .95rem var(--mono); }
+.lookup button { padding: .55rem 1rem; border: 1px solid var(--teal-deep); border-radius: 6px; background: var(--teal); color: white; font: inherit; cursor: pointer; }
+.status { margin: .8rem 0 1.2rem; padding: .7rem .85rem; border-left: 4px solid var(--gold-deep); background: rgba(212,167,71,.1); }
+.identity { margin: 0 0 1rem; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: .85rem; }
+.surface { border: 1px solid var(--line); border-radius: 9px; padding: .85rem .95rem; background: rgba(255,253,247,.7); }
+.surface.empty { background: rgba(237,228,207,.38); }
+.surface h2 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.surface p { margin: .3rem 0; }
+.meta { color: var(--muted); font-size: .82rem; }
+.summary { font-size: .9rem; overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .65rem; }
+.links a { display: inline-block; padding: .25rem .5rem; border: 1px solid var(--line); border-radius: 5px; }
+details { margin-top: .55rem; font-size: .78rem; }
+details pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--ink); color: var(--paper); padding: .55rem; border-radius: 5px; max-height: 18rem; overflow: auto; }
+.generated { margin-top: 1.5rem; }
+.generated ul { columns: 2; padding-left: 1.2rem; }
+@media (max-width: 640px) { .generated ul { columns: 1; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Lesson dossier</h1>
+  <p class="lede">Enter one IM lesson code to gather every tracked lesson surface in one place. Each section names its content or states its absence.</p>
+  <form id="lookup" class="lookup">
+    <label for="lesson-code" hidden>Lesson code</label>
+    <input id="lesson-code" name="code" placeholder="IM-G1-U1-L1" autocomplete="off" />
+    <button type="submit">Open dossier</button>
+  </form>
+  <div id="status" class="status" aria-live="polite">Enter a lesson code.</div>
+  <p id="identity" class="identity"></p>
+  <div id="surfaces" class="grid"></div>
+  <section id="generated" class="generated" hidden>
+    <h2>Generated pages and drawings</h2>
+    <ul id="generated-list"></ul>
+  </section>
+</main>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("lookup");
+  var input = document.getElementById("lesson-code");
+  var status = document.getElementById("status");
+  var identity = document.getElementById("identity");
+  var surfaces = document.getElementById("surfaces");
+  var generated = document.getElementById("generated");
+  var generatedList = document.getElementById("generated-list");
+
+  function text(tag, value, className) {
+    var node = document.createElement(tag);
+    node.textContent = value;
+    if (className) node.className = className;
+    return node;
+  }
+
+  function summaryText(value) {
+    if (typeof value === "string") return value;
+    if (!value || typeof value !== "object") return String(value || "");
+    return Object.keys(value).map(function (key) {
+      var item = value[key];
+      return key.replace(/_/g, " ") + ": " +
+        (typeof item === "object" ? JSON.stringify(item) : String(item));
+    }).join("; ");
+  }
+
+  function renderSurface(row) {
+    var card = document.createElement("section");
+    card.className = "surface" + (row.has_content ? "" : " empty");
+    card.appendChild(text("h2", row.title || row.id));
+    card.appendChild(text("p", summaryText(row.summary), "summary"));
+    card.appendChild(text("p", String(row.count || 0) + " item(s) for this lesson; " +
+      String(row.available_lesson_count || 0) + " lesson or item records available across the surface.", "meta"));
+    var links = document.createElement("div");
+    links.className = "links";
+    if (row.url) {
+      var deeper = document.createElement("a");
+      deeper.href = row.url;
+      deeper.textContent = "Open deeper page";
+      links.appendChild(deeper);
+    }
+    if (links.childNodes.length) card.appendChild(links);
+    if ((row.detail_keys && row.detail_keys.length) || row.fetch) {
+      var details = document.createElement("details");
+      details.appendChild(text("summary", "Detail keys and worker call"));
+      var pre = text("pre", JSON.stringify({ detail_keys: row.detail_keys || [], fetch: row.fetch || null }, null, 2));
+      details.appendChild(pre);
+      card.appendChild(details);
+    }
+    return card;
+  }
+
+  function renderDossier(result) {
+    var code = result.lesson_code || input.value.trim();
+    document.title = code + " lesson dossier";
+    status.textContent = code + ": " + result.summary;
+    var lesson = result.identity || {};
+    identity.textContent = lesson.title ? lesson.title + " (" + code + ")" : code;
+    surfaces.textContent = "";
+    (result.surfaces || []).forEach(function (row) { surfaces.appendChild(renderSurface(row)); });
+    generatedList.textContent = "";
+    var pages = result.generated_pages || [];
+    generated.hidden = pages.length === 0;
+    pages.forEach(function (page) {
+      var li = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = page.url;
+      link.textContent = page.label || page.url;
+      li.appendChild(link);
+      generatedList.appendChild(li);
+    });
+  }
+
+  function openCode(code) {
+    code = String(code || "").trim().toUpperCase();
+    if (!code) { status.textContent = "Enter a lesson code."; return; }
+    input.value = code;
+    status.textContent = "Gathering tracked lesson surfaces for " + code + "…";
+    identity.textContent = "";
+    surfaces.textContent = "";
+    generated.hidden = true;
+    var target = new URL(window.location.href);
+    target.pathname = "/lesson";
+    target.search = "?code=" + encodeURIComponent(code);
+    history.replaceState(null, "", target.pathname + target.search);
+    fetch("/api/lesson_dossier", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lesson_code: code })
+    }).then(function (response) {
+      return response.json().then(function (body) { return { response: response, body: body }; });
+    }).then(function (out) {
+      if (!out.response.ok || !out.body.ok) {
+        throw new Error((out.body && out.body.error) || ("status " + out.response.status));
+      }
+      renderDossier(out.body.result || {});
+    }).catch(function (error) {
+      status.textContent = "The dossier request failed: " + error.message;
+    });
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    openCode(input.value);
+  });
+  var params = new URLSearchParams(window.location.search);
+  var initial = params.get("code") || params.get("lesson");
+  if (initial) openCode(initial);
+}());
+</script>
+</body>
+</html>

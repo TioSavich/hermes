@@ -51,9 +51,10 @@ This builder re-derives the join from scratch every run:
      misconception; see memory ``misconception-under-erasure.md``).
 
   4. Consume ``authored_render_citations.pl`` as a separate reviewed lane.
-     Its link verdicts bypass the mechanical family prefilter, while its two
-     refusal verdicts replace generic missing-bibkey reasons with the named
-     point where the reviewed join stopped.
+     Its link verdicts bypass the mechanical family prefilter. Reviewed
+     refusals replace generic missing-bibkey reasons with the named point where
+     the join stopped, while authored material without a registry citation key
+     remains unlinked under an ``authored_uncited`` provenance verdict.
 
   5. Every id with no surviving link is recorded in
      ``misconception_render_unlinked/2`` with the reason the join stopped:
@@ -530,7 +531,12 @@ def load_authored_rows(census: dict[str, dict]) -> list[dict]:
     if unknown:
         raise SystemExit(f"authored citation store names unknown render ids: {unknown}")
     verdict_counts = collections.Counter(row["verdict"].get("kind") for row in rows)
-    expected = {"link": 7, "no_registry_bibkey": 9, "no_literature_signal": 23}
+    expected = {
+        "link": 7,
+        "no_registry_bibkey": 7,
+        "authored_uncited": 2,
+        "no_literature_signal": 23,
+    }
     if dict(verdict_counts) != expected:
         raise SystemExit(
             f"authored verdict counts are {dict(verdict_counts)}, expected {expected}"
@@ -557,7 +563,7 @@ def compute_links_and_unlinked(
     registry_rows: list[tuple[str, str, str, str]],
     op_render_family: dict[str, set[str]],
     authored_rows: list[dict],
-) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str | None]]]:
+) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, object | None]]]:
     registry_names = {name for name, _op, _bibkey, _note in registry_rows}
     registry_by_bibkey: dict[str, list[tuple[str, str]]] = collections.defaultdict(list)
     for name, op, bibkey, _note in registry_rows:
@@ -583,7 +589,7 @@ def compute_links_and_unlinked(
         citations_by_id[c["id"]].append(c["bibkey"])
 
     links: list[tuple[str, str, str]] = []
-    unlinked: list[tuple[str, str, str | None]] = []
+    unlinked: list[tuple[str, str, object | None]] = []
 
     for render_id in sorted(census):
         representation = census[render_id]["representation"]
@@ -618,7 +624,16 @@ def compute_links_and_unlinked(
             links.extend(sorted(row_links))
             continue
 
-        if authored and authored["verdict"]["kind"] == "no_registry_bibkey":
+        if authored and authored["verdict"]["kind"] == "authored_uncited":
+            verdict = authored["verdict"]
+            unlinked.append(
+                (render_id, "authored_uncited", {
+                    "cited_as": verdict["cited_as"],
+                    "author": verdict["author"],
+                    "date": verdict["date"],
+                })
+            )
+        elif authored and authored["verdict"]["kind"] == "no_registry_bibkey":
             unlinked.append(
                 (render_id, "no_registry_bibkey", authored["verdict"]["nearest_literature"])
             )
@@ -693,11 +708,13 @@ PROLOG_HEADER = """\
 %
 % AUTHORED ABSENCES STAY NAMED. Reviewed refusals distinguish literature with
 % no usable registry bibkey from a source that names no literature signal.
+% Authored material with an honest free-text source but no registry key remains
+% unlinked as authored_uncited(CitedAs, Author, Date).
 """
 
 
 def render_module(citations: list[dict], links: list[tuple[str, str, str]],
-                   unlinked: list[tuple[str, str, str | None]], census: dict[str, dict]) -> str:
+                   unlinked: list[tuple[str, str, object | None]], census: dict[str, dict]) -> str:
     lines: list[str] = []
     write = lines.append
     write(PROLOG_HEADER)
@@ -753,6 +770,13 @@ def render_module(citations: list[dict], links: list[tuple[str, str, str]],
             write(f"misconception_render_unlinked({render_id}, reason(prefilter_rejected({pl_atom(arg)}))).")
         elif reason == "no_registry_bibkey":
             write(f"misconception_render_unlinked({render_id}, reason(no_registry_bibkey(nearest_literature({pl_string(arg)})))).")
+        elif reason == "authored_uncited":
+            assert isinstance(arg, dict)
+            write(
+                f"misconception_render_unlinked({render_id}, "
+                f"reason(authored_uncited({pl_string(arg['cited_as'])}, "
+                f"{pl_string(arg['author'])}, {pl_string(arg['date'])})))."
+            )
         elif reason == "no_literature_signal":
             write(f"misconception_render_unlinked({render_id}, reason(no_literature_signal)).")
         elif reason == "bibkey_not_in_registry":
@@ -1053,6 +1077,17 @@ check_unlinked_warrant(_Census, Id, no_literature_signal) :-
     -> true
     ;  throw(error(unlinked_reason_wrong(Id, no_literature_signal), _))
     ).
+check_unlinked_warrant(_Census, Id,
+                       authored_uncited(CitedAs, Author, Date)) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, authored_uncited),
+      get_dict(cited_as, Verdict, CitedAs),
+      get_dict(author, Verdict, Author),
+      get_dict(date, Verdict, Date)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, authored_uncited), _))
+    ).
 check_unlinked_warrant(_Census, Id, Reason) :-
     throw(error(unlinked_bad_reason(Id, Reason), _)).
 
@@ -1060,7 +1095,7 @@ check_unlinked_warrant(_Census, Id, Reason) :-
 %
 %   Confirms that the generated verdicts consume all 39 authored rows. The one
 %   link also found by the widened mechanical regex stays via(bibkey); the
-%   other five link rows use via(authored).
+%   other six link rows use via(authored).
 check_authored_store(CensusIds) :-
     findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
     length(Ids, 39),
@@ -1075,7 +1110,11 @@ check_authored_store(CensusIds) :-
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_registry_bibkey) ),
-                  9),
+                  7),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, authored_uncited) ),
+                  2),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_literature_signal) ),
@@ -1117,6 +1156,13 @@ check_authored_output(Id, no_registry_bibkey, Verdict) :-
 check_authored_output(Id, no_literature_signal, _Verdict) :-
     !,
     misconception_render_unlinked(Id, reason(no_literature_signal)).
+check_authored_output(Id, authored_uncited, Verdict) :-
+    !,
+    get_dict(cited_as, Verdict, CitedAs),
+    get_dict(author, Verdict, Author),
+    get_dict(date, Verdict, Date),
+    misconception_render_unlinked(
+        Id, reason(authored_uncited(CitedAs, Author, Date))).
 check_authored_output(Id, Kind, _Verdict) :-
     throw(error(authored_bad_verdict(Id, Kind), _)).
 
@@ -1141,6 +1187,7 @@ misconception_render_link_summary(Summary) :-
     aggregate_all(count, misconception_render_unlinked(_, reason(bibkey_not_in_registry)), NotInRegistryCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(prefilter_rejected(_))), PrefilterCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(no_registry_bibkey(_))), NoRegistryBibkeyCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(authored_uncited(_, _, _))), AuthoredUncitedCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(no_literature_signal)), NoLiteratureSignalCount),
 
     Summary = _{
@@ -1157,6 +1204,7 @@ misconception_render_link_summary(Summary) :-
                                 bibkey_not_in_registry: NotInRegistryCount,
                                 prefilter_rejected: PrefilterCount,
                                 no_registry_bibkey: NoRegistryBibkeyCount,
+                                authored_uncited: AuthoredUncitedCount,
                                 no_literature_signal: NoLiteratureSignalCount }
     }.
 

@@ -63,7 +63,7 @@
     "carried": false,
     "derivation": "capability_registry.pl row count via build_self_description_census",
     "producer": "regen_all tail: build_self_description_census.py",
-    "value": 366
+    "value": 365
   },
   "census.unrouted_rows": {
     "carried": false,

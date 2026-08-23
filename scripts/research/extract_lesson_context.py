@@ -1021,13 +1021,29 @@ def _label_store_question(row: dict) -> GuideQuestion:
 
 def _guide_admission_key(row: dict) -> tuple[str, int, str, str]:
     return (
-        row["source"], row["line_start"], row["text"], row["activity_location"]
+        _tracked_docling_guide_source(row["source"]),
+        row["line_start"],
+        row["text"],
+        row["activity_location"],
     )
+
+
+def _tracked_docling_guide_source(source: str) -> str:
+    legacy_prefix = (
+        "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
+        "TeacherLessonGuides/"
+    )
+    if source.startswith(legacy_prefix):
+        return (
+            "curriculum/im_teacher_guides_docling/"
+            + source.removeprefix(legacy_prefix)
+        )
+    return source
 
 
 def _question_admission_key(question: GuideQuestion) -> tuple[str, int, str, str]:
     return (
-        question.source,
+        _tracked_docling_guide_source(question.source),
         question.line_start,
         question.text,
         question.activity_location,

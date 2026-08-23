@@ -4,10 +4,13 @@ The Sidekick chat page (`http://127.0.0.1:8765/sidekick.html`) runs a locally
 tuned language model beside the Hermes knowledge base. Every part of it runs
 on your machine; no network call leaves it.
 
-The model is a gemma E2B checkpoint tuned on tool-calling sequences, quantized
-to Q4_K_M, about 3.4 GB on disk. The page works without it — replies then come
-from the knowledge base alone, and the page says that is what is happening —
-but the chat demonstration needs the model file and llama.cpp.
+The model is a Gemma E2B checkpoint tuned on tool-calling sequences, quantized
+to Q4_K_M, about 3.4 GB on disk. The page works without it. A deterministic
+route still runs when the message contains enough information to form a
+consultation, including lesson charts, fraction comparisons, and
+representation/deformation comparisons. The reply labels that route and states
+that the model is offline. An unmatched message states that the offline page
+cannot answer it.
 
 ## Before you begin
 
@@ -52,9 +55,17 @@ Then open `http://127.0.0.1:8765/sidekick.html`.
 - While the console and the sidekick lane are both warm, two Prolog workers
   run. That is deliberate: a long chat turn must not block the other pages.
 - Without the model file, the page still answers from the knowledge base and
-  labels those answers as retrieval, not model prose.
+  labels deterministic answers as routed results, not model prose.
+  Model-decides mode is disabled.
 - On a machine without a GPU (no Metal or CUDA), the model runs on CPU and is
   slow. The page still works; turns just take longer.
-- The page has two modes. "Route decides" picks the tool deterministically
-  and asks the model only to word the call. "Model decides" hands the model
-  the same eight tools and lets you watch what it does and does not call.
+- The page keeps the visible conversation until **New conversation** is used.
+  Each request sends prior user and Sidekick turns. The turn engine retains at
+  most the newest six turns and drops older turns above its 6,000-character
+  history budget.
+- Frame documents and productive/deformation comparisons are drawn inside the
+  conversation with the shared Hermes drawer. Chart shapes without a supported
+  drawing keep a raw JSON disclosure cut at 4 KB.
+- The page has two modes. "Route decides" picks the consultation
+  deterministically and asks the model only to word the call. "Model decides"
+  hands the model the same ten consultations and records what it chooses.

@@ -131,7 +131,7 @@
     "lesson": "IM-G6-U2-L14",
     "fragment": "Diego read the first 100 pages from a 325-page book in the last 4 days.",
     "statement": "Lin read the first 54 pages from a 270-page book in the last 3 days. Diego read the first 100 pages from a 325-page book in the last 4 days. Elena read the first 160 pages from a 480-page book in the last 5 days. If they continue to read every day at these rates, who will finish first, second, and third? Explain or show your reasoning.",
-    "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-2-14-Lesson-teacher-guide-/document.md",
+    "path": "curriculum/im_teacher_guides_docling/Grade6/Grade6-2-14-Lesson-teacher-guide-/document.md",
     "line_start": 365,
     "line_end": 369
   },
@@ -139,7 +139,7 @@
     "lesson": "IM-G6-U3-L4",
     "fragment": "Bottles of sparkling water usually cost $1.69 each. This week, 4 bottles cost $5.",
     "statement": "Bottles of sparkling water usually cost $1.69 each. This week, 4 bottles cost $5. Are bottles of sparkling water cheaper or more expensive this week? How much cheaper or more expensive? Show your reasoning.",
-    "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-3-4-Lesson-teacher-guide-/document.md",
+    "path": "curriculum/im_teacher_guides_docling/Grade6/Grade6-3-4-Lesson-teacher-guide-/document.md",
     "line_start": 561,
     "line_end": 563
   },
@@ -147,7 +147,7 @@
     "lesson": "IM-G6-U3-L8",
     "fragment": "The fastest elevators in the Burj Khalifa can travel 330 feet in just 10 seconds.",
     "statement": "The fastest elevators in the Burj Khalifa can travel 330 feet in just 10 seconds. How far does the elevator travel in 11 seconds? Explain or show your reasoning.",
-    "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-3-8-Lesson-teacher-guide-/document.md",
+    "path": "curriculum/im_teacher_guides_docling/Grade6/Grade6-3-8-Lesson-teacher-guide-/document.md",
     "line_start": 512,
     "line_end": 514
   },
@@ -155,7 +155,7 @@
     "lesson": "IM-G7-U4-L12",
     "fragment": "The original price of a bicycle was $375. Now it is on sale for $295.",
     "statement": "3. The original price of a bicycle was $375. Now it is on sale for $295. What percentage of the original price was the markdown?",
-    "path": "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade7/Grade7-4-12-Lesson-teacher-guide-/document.md",
+    "path": "curriculum/im_teacher_guides_docling/Grade7/Grade7-4-12-Lesson-teacher-guide-/document.md",
     "line_start": 361,
     "line_end": 361
   }

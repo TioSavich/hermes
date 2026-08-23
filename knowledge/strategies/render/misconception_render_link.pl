@@ -46,6 +46,8 @@
 %
 % AUTHORED ABSENCES STAY NAMED. Reviewed refusals distinguish literature with
 % no usable registry bibkey from a source that names no literature signal.
+% Authored material with an honest free-text source but no registry key remains
+% unlinked as authored_uncited(CitedAs, Author, Date).
 
 :- module(misconception_render_link,
           [ render_deformation_citation/3,
@@ -114,7 +116,7 @@ misconception_render_unlinked(clear_inner_referent, reason(no_registry_bibkey(ne
 misconception_render_unlinked(cross_multiplication_rule_without_ground, reason(no_registry_bibkey(nearest_literature("Glade 2017 (extract-028); Baruk 1987 (corpus figures)")))).
 misconception_render_unlinked(decimal_add_unaligned_numerals, reason(no_literature_signal)).
 misconception_render_unlinked(decimal_numeral_comparison_without_scale_alignment, reason(no_literature_signal)).
-misconception_render_unlinked(decimal_scale_loss_comparison, reason(no_registry_bibkey(nearest_literature("ASKTM G4Q2 coded legend, A2/B2")))).
+misconception_render_unlinked(decimal_scale_loss_comparison, reason(authored_uncited("ASKTM G4Q2 coded legend, A2/B2; NSF Grant 1561453", "Tio Savich", "2026-08-23"))).
 misconception_render_unlinked(decimal_subtract_unaligned_numerals, reason(no_literature_signal)).
 misconception_render_unlinked(decimal_whole_number_reading, reason(no_literature_signal)).
 misconception_render_unlinked(digit_transposition, reason(no_literature_signal)).
@@ -130,7 +132,7 @@ misconception_render_unlinked(net_does_not_fold, reason(no_literature_signal)).
 misconception_render_unlinked(operational_equals_subtract_from_one_side, reason(no_literature_signal)).
 misconception_render_unlinked(quadrant_sign_error, reason(no_literature_signal)).
 misconception_render_unlinked(reflection_by_rotation, reason(no_literature_signal)).
-misconception_render_unlinked(set_model_subset_size_focus, reason(no_registry_bibkey(nearest_literature("Van de Walle, ch. 15, Models for Fractions")))).
+misconception_render_unlinked(set_model_subset_size_focus, reason(authored_uncited("Van de Walle, ch. 15, Models for Fractions", "Tio Savich", "2026-08-23"))).
 misconception_render_unlinked(shade_wrong_count, reason(no_literature_signal)).
 misconception_render_unlinked(unequal_partition, reason(no_literature_signal)).
 misconception_render_unlinked(unfillable_by_parity, reason(no_literature_signal)).
@@ -423,6 +425,17 @@ check_unlinked_warrant(_Census, Id, no_literature_signal) :-
     -> true
     ;  throw(error(unlinked_reason_wrong(Id, no_literature_signal), _))
     ).
+check_unlinked_warrant(_Census, Id,
+                       authored_uncited(CitedAs, Author, Date)) :-
+    !,
+    ( authored_render_citations:authored_render_citation(Id, Verdict, _, _, _),
+      get_dict(kind, Verdict, authored_uncited),
+      get_dict(cited_as, Verdict, CitedAs),
+      get_dict(author, Verdict, Author),
+      get_dict(date, Verdict, Date)
+    -> true
+    ;  throw(error(unlinked_reason_wrong(Id, authored_uncited), _))
+    ).
 check_unlinked_warrant(_Census, Id, Reason) :-
     throw(error(unlinked_bad_reason(Id, Reason), _)).
 
@@ -430,7 +443,7 @@ check_unlinked_warrant(_Census, Id, Reason) :-
 %
 %   Confirms that the generated verdicts consume all 39 authored rows. The one
 %   link also found by the widened mechanical regex stays via(bibkey); the
-%   other five link rows use via(authored).
+%   other six link rows use via(authored).
 check_authored_store(CensusIds) :-
     findall(Id, authored_render_citations:authored_render_citation(Id, _, _, _, _), Ids),
     length(Ids, 39),
@@ -445,7 +458,11 @@ check_authored_store(CensusIds) :-
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_registry_bibkey) ),
-                  9),
+                  7),
+    aggregate_all(count,
+                  ( authored_render_citations:authored_render_citation(_, V, _, _, _),
+                    get_dict(kind, V, authored_uncited) ),
+                  2),
     aggregate_all(count,
                   ( authored_render_citations:authored_render_citation(_, V, _, _, _),
                     get_dict(kind, V, no_literature_signal) ),
@@ -487,6 +504,13 @@ check_authored_output(Id, no_registry_bibkey, Verdict) :-
 check_authored_output(Id, no_literature_signal, _Verdict) :-
     !,
     misconception_render_unlinked(Id, reason(no_literature_signal)).
+check_authored_output(Id, authored_uncited, Verdict) :-
+    !,
+    get_dict(cited_as, Verdict, CitedAs),
+    get_dict(author, Verdict, Author),
+    get_dict(date, Verdict, Date),
+    misconception_render_unlinked(
+        Id, reason(authored_uncited(CitedAs, Author, Date))).
 check_authored_output(Id, Kind, _Verdict) :-
     throw(error(authored_bad_verdict(Id, Kind), _)).
 
@@ -511,6 +535,7 @@ misconception_render_link_summary(Summary) :-
     aggregate_all(count, misconception_render_unlinked(_, reason(bibkey_not_in_registry)), NotInRegistryCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(prefilter_rejected(_))), PrefilterCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(no_registry_bibkey(_))), NoRegistryBibkeyCount),
+    aggregate_all(count, misconception_render_unlinked(_, reason(authored_uncited(_, _, _))), AuthoredUncitedCount),
     aggregate_all(count, misconception_render_unlinked(_, reason(no_literature_signal)), NoLiteratureSignalCount),
 
     Summary = _{
@@ -527,6 +552,7 @@ misconception_render_link_summary(Summary) :-
                                 bibkey_not_in_registry: NotInRegistryCount,
                                 prefilter_rejected: PrefilterCount,
                                 no_registry_bibkey: NoRegistryBibkeyCount,
+                                authored_uncited: AuthoredUncitedCount,
                                 no_literature_signal: NoLiteratureSignalCount }
     }.
 

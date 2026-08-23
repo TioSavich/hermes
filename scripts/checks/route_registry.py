@@ -12,6 +12,7 @@ from hermes.app.routes.registry import DuplicateRouteError, Route, Router, build
 
 EXPECTED_TEXT = """
 GET / static
+GET /lesson static
 GET /api/quickstart static
 GET /api/sample static
 GET /api/inputs static
@@ -43,6 +44,7 @@ POST /api/misconception_search misconception_search
 GET /api/lesson_visual monitoring
 POST /api/field_context monitoring
 POST /api/monitoring_chart_export monitoring
+POST /api/lesson_dossier monitoring
 POST /api/ranked_figures monitoring
 POST /api/monitoring_visuals monitoring
 POST /api/lesson_arithmetic_demonstration monitoring

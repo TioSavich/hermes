@@ -27,8 +27,9 @@ What this check holds:
   ``too_vague`` as its RegistryName (2026-08 ruling: too_vague is never
   served as a misconception).
 
-  Authored lane.  Five reviewed links emit ``via(authored)``; the angle row
-  remains mechanical after regex widening. Reviewed refusals keep their named
+  Authored lane.  Six reviewed links emit ``via(authored)``; the angle row
+  remains mechanical after regex widening. Two authored sources without
+  registry keys emit ``authored_uncited``; reviewed refusals keep their named
   absence reason.
 """
 from __future__ import annotations
@@ -128,7 +129,8 @@ def main() -> int:
         key = reason.split("(")[0]
         reason_counts[key] = reason_counts.get(key, 0) + 1
     expected_reasons = {
-        "no_registry_bibkey": 9,
+        "no_registry_bibkey": 7,
+        "authored_uncited": 2,
         "no_literature_signal": 23,
     }
     if reason_counts != expected_reasons:

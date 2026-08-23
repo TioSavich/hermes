@@ -7,6 +7,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -21,8 +22,13 @@ from scripts.curriculum import structure_to_task_rows as anchoring  # noqa: E402
 from scripts.research import extract_lesson_context as context  # noqa: E402
 
 
-CANDIDATES = ROOT / "hermes/app/runtime/experiments/questions_admission/candidates.jsonl"
 VERDICTS = ROOT / "curriculum/im/generated/questions_admission_verdicts.jsonl"
+LEGACY_GUIDES = (
+    ROOT
+    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
+    / "TeacherLessonGuides"
+)
+TRACKED_GUIDES = ROOT / "curriculum/im_teacher_guides_docling"
 
 EXPECTED_STATUS = {
     "labels": Counter({"mechanically_admitted": 6822, "mechanically_held": 2305}),
@@ -63,9 +69,47 @@ def load_jsonl(path: Path) -> list[dict]:
     ]
 
 
-def check_emitter() -> None:
+def guide_source(source: str) -> Path:
+    path = ROOT / source
+    try:
+        return TRACKED_GUIDES / path.relative_to(LEGACY_GUIDES)
+    except ValueError:
+        return path
+
+
+def build_candidates(directory: Path) -> Path:
+    candidates = directory / "candidates.jsonl"
     completed = subprocess.run(
-        ["python3", "scripts/questions/emit_admitted_question_stores.py", "--check"],
+        [
+            "python3",
+            "scripts/questions/build_admission_candidates.py",
+            "--candidates",
+            str(candidates),
+            "--model-input",
+            str(directory / "model_input.jsonl"),
+            "--pilot-key",
+            str(directory / "pilot_key.jsonl"),
+        ],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr or completed.stdout
+    assert candidates.is_file(), completed.stdout
+    return candidates
+
+
+def check_emitter(candidates: Path) -> None:
+    completed = subprocess.run(
+        [
+            "python3",
+            "scripts/questions/emit_admitted_question_stores.py",
+            "--check",
+            "--candidates",
+            str(candidates),
+        ],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -107,25 +151,22 @@ def check_spans(labels: list[dict], guide: list[dict]) -> Counter:
             assert row["label_origin"] == "machine_classification"
             assert row["label"] == row["region_identity"] == row["region_type"]
 
-    admitted_guide = [row for row in guide if row["status"] == "mechanically_admitted"]
-    skipped = 0
-    for row in admitted_guide:
-        source = ROOT / row["source"]
-        if not source.is_file():
-            skipped += 1
-            continue
+    guide_anchor_count = 0
+    for row in guide:
+        source = guide_source(row["source"])
+        assert source.is_file(), source
         assert hashlib.sha256(source.read_bytes()).hexdigest() == row["doc_sha256"]
+        guide_anchor_count += 1
         lines = source.read_text(encoding="utf-8").split("\n")
         cited = lines[row["line_start"] - 1 : row["line_end"]]
         assert context.cited_span_contains(row["text"], cited)
-        assert row["warrant"] == "printed_region"
-        assert row["label_origin"] == "machine_classification"
-        assert row["label"] == row["region_identity"] == row["activity_location"]
-    if skipped:
-        print(
-            "SKIP admitted guide span/sha re-derivation: "
-            f"{skipped} local docling source(s) absent"
-        )
+        if row["status"] == "mechanically_admitted":
+            assert row["warrant"] == "printed_region"
+            assert row["label_origin"] == "machine_classification"
+            assert row["label"] == row["region_identity"] == row["activity_location"]
+    assert guide_anchor_count == 2616
+    print(f"guide doc_sha256 anchors: {guide_anchor_count}/2616 resolved")
+    admitted_guide = [row for row in guide if row["status"] == "mechanically_admitted"]
     return Counter(row["warrant"] for row in admitted_labels + admitted_guide)
 
 
@@ -156,20 +197,13 @@ def check_void_history(candidates: list[dict], verdicts: list[dict]) -> None:
 
 
 def main() -> int:
-    check_emitter()
+    with tempfile.TemporaryDirectory(prefix="hermes-admission-check-") as tmp:
+        candidates = build_candidates(Path(tmp))
+        check_emitter(candidates)
+        check_void_history(load_jsonl(candidates), load_jsonl(VERDICTS))
     labels, guide = context.admission_store_rows()
     check_counts(labels, guide)
     warrants = check_spans(labels, guide)
-    if CANDIDATES.is_file():
-        check_void_history(load_jsonl(CANDIDATES), load_jsonl(VERDICTS))
-    else:
-        # Same absence class as the guide-lane docling skip above: the
-        # stage-0 candidates file is gitignored and local-only.
-        print(
-            "SKIP void-history re-derivation: "
-            f"{CANDIDATES.relative_to(ROOT)} absent locally "
-            "(gitignored stage-0 artifact)"
-        )
     assert warrants == Counter({
         "printed_region": EXPECTED_PRINTED_REGION,
         "im_author_heading": EXPECTED_AUTHOR_HEADING,

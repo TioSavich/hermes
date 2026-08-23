@@ -31,6 +31,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
@@ -887,23 +888,13 @@ GUIDE_CHECK_CODE_TEMPLATE = """
 """ + SHARED_HEADING_RULE_CODE + """
 %! check_admitted_guide_questions is det.
 %
-%  Structural checks (uniqueness, taxonomy, receipts, testimony, summary,
-%  heading-position re-derivation) always run. Span/sha re-derivation
-%  against the local docling corpus SKIPS LOUDLY when that corpus is
-%  absent -- the corpus is local and sole (see the module header) -- and
-%  the Python check (scripts/checks/admitted_question_stores.py) does the
-%  span work wherever it exists, which is every machine run_all.sh
-%  currently runs on.
+%  Structural checks and span/sha re-derivation run against the tracked
+%  teacher-guide corpus on every checkout.
 check_admitted_guide_questions :-
-    ( exists_directory('hermes/app/runtime/experiments/gemma4_tutor/docling')
-    -> DoclingPresent = true
-    ;  DoclingPresent = false,
-       format('check_admitted_guide_questions: SKIPPING span/sha re-derivation, docling corpus absent locally~n', [])
-    ),
     findall(Row, admitted_guide_question(_, _, _, _, _, _), AdmittedRows),
     findall(Row, held_guide_question(_, _, _, _, _, _), HeldRows),
     forall(admitted_guide_question(L, La, T, A, Te, R),
-           check_admitted_guide_row(DoclingPresent, L, La, T, A, Te, R)),
+           check_admitted_guide_row(L, La, T, A, Te, R)),
     forall(held_guide_question(L, La, T, A, To, H),
            check_held_guide_row(L, La, T, A, To, H)),
     check_guide_anchor_consistency,
@@ -913,7 +904,7 @@ check_admitted_guide_questions :-
     format('check_admitted_guide_questions: ~d admitted, ~d held, all receipts passed~n',
            [AdmittedCount, HeldCount]).
 
-check_admitted_guide_row(DoclingPresent, Lesson, LabelArg, Text,
+check_admitted_guide_row(Lesson, LabelArg, Text,
         anchor(source_guide(Source), doc_sha256(DocSha), line_span(Start, End),
                activity_location(ActivityLocation), LabelOriginTerm,
                warrant(Warrant)),
@@ -970,9 +961,7 @@ check_admitted_guide_row(DoclingPresent, Lesson, LabelArg, Text,
     ;  throw(error(admitted_guide_questions(bad_receipt(Lesson, ReceiptList)), _))
     ),
     check_testimony(admitted_guide_questions, Testimony),
-    ( DoclingPresent == false
-    -> true
-    ;  ( exists_file(Source)
+    ( exists_file(Source)
        -> true
        ;  throw(error(admitted_guide_questions(source_missing(Lesson, Source)), _))
        ),
@@ -1008,10 +997,10 @@ check_admitted_guide_row(DoclingPresent, Lesson, LabelArg, Text,
        ( sub_atom(NormCited, _, _, _, NormText)
        -> true
        ;  throw(error(admitted_guide_questions(span_mismatch(Lesson, Start, End)), _))
-       )
-    ).
+       ).
 
-check_held_guide_row(Lesson, _StoredLabel, _Text, _Anchor,
+check_held_guide_row(Lesson, _StoredLabel, _Text,
+        anchor(source_guide(Source), doc_sha256(DocSha), _, _, _, _),
         testimony_or_none(TestimonyOrNone), held(Reason)) :-
     ( TestimonyOrNone == none
     -> true
@@ -1020,6 +1009,18 @@ check_held_guide_row(Lesson, _StoredLabel, _Text, _Anchor,
     ( valid_held_reason(Reason)
     -> true
     ;  throw(error(admitted_guide_questions(bad_held_reason(Lesson, Reason)), _))
+    ),
+    ( exists_file(Source)
+    -> true
+    ;  throw(error(admitted_guide_questions(source_missing(Lesson, Source)), _))
+    ),
+    ( DocSha == none
+    -> throw(error(admitted_guide_questions(missing_doc_sha(Lesson)), _))
+    ;  file_sha256_hex(Source, ActualSha),
+       ( ActualSha == DocSha
+       -> true
+       ;  throw(error(admitted_guide_questions(sha_drift(Lesson, Source)), _))
+       )
     ).
 
 % Positional-serving ruling: label_contradicts_heading is retired at
@@ -1370,9 +1371,9 @@ def build_guide_store(
         "",
         GUIDE_LICENSE_SENTENCE,
         "",
-        "Sources are local docling paths under",
-        "hermes/app/runtime/experiments/gemma4_tutor/docling/ -- local and sole,",
-        "not carried by the bundle. These rows are served only on research",
+        "Sources are tracked paths under curriculum/im_teacher_guides_docling/.",
+        "The manifest there pins each file to its local Docling source. These",
+        "rows are served only on research",
         "surfaces that say so; the teacher-facing dict never resolves them.",
         "",
         "Admission rule (positional-serving ruling, replacing the section 13",
@@ -1516,16 +1517,26 @@ def main() -> int:
     args = parser.parse_args()
 
     if not args.candidates.is_file():
-        # Stage-0 candidates are a gitignored artifact only the local docling
-        # corpus can rebuild; a clone without it must not touch the tracked
-        # stores, and --check has nothing sound to compare against.
-        print(
-            "SKIP emit_admitted_question_stores: "
-            f"{args.candidates} absent locally (gitignored stage-0 artifact; "
-            "scripts/questions/build_admission_candidates.py rebuilds it from "
-            "the docling corpus); tracked stores retained unchanged"
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/questions/build_admission_candidates.py",
+                "--candidates",
+                str(args.candidates),
+                "--model-input",
+                str(args.candidates.with_name("model_input.jsonl")),
+                "--pilot-key",
+                str(args.candidates.with_name("pilot_key.jsonl")),
+            ],
+            cwd=ROOT,
+            text=True,
+            check=False,
         )
-        return 0
+        if completed.returncode or not args.candidates.is_file():
+            raise SystemExit(
+                "could not rebuild the derived admission candidates from the "
+                "tracked guide corpus"
+            )
 
     labels_text, guide_text, labels_report, guide_report, void_by_lane = run(args)
 

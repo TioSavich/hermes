@@ -71,6 +71,8 @@
     witnesses:      { theme: "recollection", lede: "Find finite examples that support a mathematical, curricular, or formal claim." },
     monitoring:     { theme: "norms",        lede: "Assemble one lesson's standards, anticipated strategies, and recorded misconceptions." },
     questions:      { theme: "norms",        lede: "Find assessing and advancing questions by topic, strategy state, or standard." },
+    lesson:         { theme: "norms",        lede: "Gather every tracked surface for one lesson code." },
+    surfaces:       { theme: "norms",        lede: "Open every shipped HTML entrance from one generated index." },
     review:         { theme: "norms",        lede: "Review one proposal with its warrant and recorded actions." },
     gallery:        { theme: "objects",      lede: "Browse coded samples of mathematical representations." },
     landing:        { theme: "recollection", lede: "Choose a Hermes surface or follow the eight-chapter journey." },
@@ -108,7 +110,10 @@
   var NAV = [
     { title: "Hermes", kind: "practice", base: "light", items: [
       ["explore",     "Lessons",          app("console.html#explore")],
+      ["lesson",      "Lesson dossier",   app("lesson")],
+      ["surfaces",    "All pages",        app("surfaces.html")],
       ["discussions", "Discussions",      app("discussions.html")],
+      ["sidekick",    "Sidekick",         app("sidekick.html")],
       ["visualizations", "Math tools",      mz("visualizations.html")],
       ["landing",     "Journey",          mz("landing.html")],
       ["research",    "Research",         mz("research.html")],
@@ -124,6 +129,7 @@
       "discussions.html": "discussions", "console.html": "console",
       "sidekick.html": "sidekick",
       "questions.html": "questions",
+      "lesson.html": "lesson", "surfaces.html": "surfaces",
       "monitoring_chart.html": "monitoring", "visualizations.html": "visualizations",
       "machine.html": "strategy-machine",
       "atlas.html": "atlas", "witnesses.html": "witnesses",

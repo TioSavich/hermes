@@ -34,7 +34,10 @@ NAV_SECTION_RE = re.compile(
 NAV_ITEM_RE = re.compile(r'\["([^"]+)",\s*"([^"]+)",\s*([^\]]+?)\],')
 EXPECTED_NAV = (
     ("explore", "Lessons", 'app("console.html#explore")'),
+    ("lesson", "Lesson dossier", 'app("lesson")'),
+    ("surfaces", "All pages", 'app("surfaces.html")'),
     ("discussions", "Discussions", 'app("discussions.html")'),
+    ("sidekick", "Sidekick", 'app("sidekick.html")'),
     ("visualizations", "Math tools", 'mz("visualizations.html")'),
     ("landing", "Journey", 'mz("landing.html")'),
     ("research", "Research", 'mz("research.html")'),

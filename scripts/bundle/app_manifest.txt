@@ -971,6 +971,7 @@ curriculum/im_teacher_guides/kindergarten/unit8/lesson6.md
 curriculum/im_teacher_guides/kindergarten/unit8/lesson7.md
 curriculum/im_teacher_guides/kindergarten/unit8/lesson8.md
 curriculum/im_teacher_guides/kindergarten/unit8/lesson9.md
+curriculum/im_teacher_guides_docling/manifest.json
 curriculum/lesson_gap.pl
 curriculum/scope_and_sequence/grade6.md
 curriculum/scope_and_sequence/grade7.md
@@ -980,6 +981,7 @@ data/asktm/survey_questions.md
 data/learningcommons/derived/im_standards_progression_overlay.json
 data/research/corpus_binding_diagnostics.json
 data/research/corpus_binding_proposals.json
+data/research/counts_baseline.json
 data/research/grade78_pairing_proposals.jsonl
 data/research/incompatibility_triples.json
 data/research/lesson_embedding_payloads.json
@@ -990,6 +992,7 @@ data/research/literature/corpus_index.jsonl
 data/research/literature/corpus_manifest.json
 data/research/misconception_embeddings.json
 data/research/misconception_embeddings.npz
+data/research/orphan_judgements_authored.json
 data/research/recognition_benchmark.json
 data/research/references.bib
 data/research/registry_op_embedding_payloads.json
@@ -1003,6 +1006,10 @@ data/research/strategy_embeddings.npz
 data/research/talkmoves_recognizer_sweep.json
 data/research/vision_excerpt_verification.json
 data/research/window_vs_shards.json
+data/research/witness_domain_findings.json
+data/research/work_queue.json
+data/research/work_queue_addenda.json
+data/research/work_queue_resolutions.json
 data/research_assets/research/2026-05-11-action-automata-corpus-bindings.csv
 data/research_assets/research/2026-05-11-fraction-monitoring-chart-clusters.json
 data/research_assets/research/2026-05-11-geometry-monitoring-chart-clusters.json
@@ -1053,6 +1060,7 @@ formal/incompatibility/incompatibility_sets_discovered.pl
 formal/incompatibility/incompatibility_sets_error_rules.pl
 formal/incompatibility/registry_incompatibility_adapter.pl
 formal/incompatibility/sequent_brandom_bridge.pl
+formal/incompatibility/served_incompatibility_closure.pl
 formal/juncture/differance_juncture.pl
 formal/learner/README.md
 formal/learner/action_semantic_context.pl
@@ -1181,6 +1189,7 @@ hermes/app/routes/sidekick.py
 hermes/app/routes/static.py
 hermes/app/routes/worker.py
 hermes/app/routes/workflow.py
+hermes/app/scripts/export_compare_defaults.py
 hermes/app/scripts/export_engine.py
 hermes/app/scripts/export_fraction_cliff.py
 hermes/app/scripts/export_hybridization_demo.py
@@ -3647,9 +3656,11 @@ hermes/app/web/generated/talkmoves_reports/tm_0112.json
 hermes/app/web/generated/talkmoves_reports/tm_0249.json
 hermes/app/web/generated/talkmoves_reports/tm_0468.json
 hermes/app/web/hermes_logo.svg
+hermes/app/web/lesson.html
 hermes/app/web/no.html
 hermes/app/web/questions.html
 hermes/app/web/sidekick.html
+hermes/app/web/surfaces.html
 hermes/app/worker.py
 hermes/app/workflow/__init__.py
 hermes/app/workflow/content.py
@@ -3904,6 +3915,8 @@ knowledge/geometry/van_hiele/levels.pl
 knowledge/geometry/van_hiele/transitions.pl
 knowledge/hyperedges/bigred_emergent_hyperedges.pl
 knowledge/index/admitted_review_proposals.pl
+knowledge/index/consumption_attested_run2.pl
+knowledge/index/consumption_lifecycle.pl
 knowledge/index/corpus_window.pl
 knowledge/index/corpus_window.txt
 knowledge/index/coverage_absence_registry.pl
@@ -4121,6 +4134,7 @@ knowledge/strategies/render/area_unit_covering_scene.pl
 knowledge/strategies/render/attested_deformations.pl
 knowledge/strategies/render/attested_objects.pl
 knowledge/strategies/render/attested_uses.pl
+knowledge/strategies/render/authored_render_citations.pl
 knowledge/strategies/render/balance_scale_scene.pl
 knowledge/strategies/render/base_ten_scene.pl
 knowledge/strategies/render/coordinate_plane_scene.pl

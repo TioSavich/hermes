@@ -20,12 +20,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
+
+from fixture_task_rows import load_fixture_rows
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -222,6 +225,17 @@ def coverage_receipt() -> tuple[bytes, dict[str, set[str]]]:
         ],
     }
     return (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode(), after_codes
+
+
+def focused_coverage_receipt() -> tuple[dict[str, Any], dict[str, set[str]]]:
+    """Exercise the coverage join on the tracked focused fixture."""
+    statements = load_fixture_rows()
+    lessons = {str(row["lesson"]) for row in statements}
+    _before_codes, after_codes = joined_lesson_codes(lessons)
+    summary = coverage_summary(statements, after_codes)
+    if summary["total_statements"] != len(statements):
+        raise RuntimeError("focused standard coverage denominator drifted")
+    return summary, after_codes
 
 
 def contract_genre(input_value: dict[str, Any]) -> str:
@@ -540,10 +554,13 @@ def main() -> int:
     if args.threshold < 1:
         parser.error("--threshold must be at least 1")
 
-    pusu_available = PUSU_RESULTS.is_file()
+    pusu_available = PUSU_RESULTS.is_file() and not os.environ.get(
+        "HERMES_SHIP_C_FORCE_CLONE"
+    )
     if pusu_available:
         coverage_bytes, lesson_codes = coverage_receipt()
     else:
+        focused_coverage, _focused_codes = focused_coverage_receipt()
         lesson_codes = None
     clusters = cluster_contract_families()
     rows, summary = build_rows(lesson_codes, args.threshold)
@@ -563,10 +580,10 @@ def main() -> int:
         print(json.dumps(summary, sort_keys=True))
     else:
         print(
-            "SKIP standard-doing coverage receipt: "
-            "hermes/app/runtime/experiments/language/pusu_results.jsonl absent locally "
-            "(gitignored language runtime); tracked standards, machine maps, contracts, "
-            f"and {summary['rows']}-row standard-doing store verified"
+            "standard-doing focused coverage: "
+            f"{focused_coverage['statements_with_code']}/"
+            f"{focused_coverage['total_statements']} fixture rows carry a code; "
+            f"{summary['rows']}-row store verified"
         )
     return 0 if fresh else 1
 

@@ -59,6 +59,9 @@ LEGACY_FALLBACK_ROUTES = {"/api/cgi_dispatch",
                           "/api/action/topology/gaps"}
 # Routes intentionally cordoned from the main server may be listed here.
 RESEARCH_WING_ROUTES: set[str] = set()
+# Page paths the app serves as routes rather than files. The route registry
+# check and lesson_dossier_surface exercise the /lesson route live.
+PAGE_ROUTES = {"/lesson"}
 
 SKIP_SCHEMES = ("http:", "https:", "mailto:", "data:", "javascript:",
                 "tel:", "#", "about:")
@@ -284,6 +287,9 @@ def static_audit(tree: Path, report: Report) -> None:
                 elif path not in routes and \
                         not any(path.startswith(p) for p in prefixes):
                     dead.append(f"{rel}: {raw} (no such route)")
+                checked += 1
+                continue
+            if path in PAGE_ROUTES:
                 checked += 1
                 continue
             if path.startswith(OPTIONAL_PREFIXES):
@@ -628,7 +634,7 @@ def live_probes(tree: Path, python: str, swipl: str | None,
             "pack(robinson)": "enabled",
             "pack(number_theory)": "enabled",
             "pack(geometry)": "enabled",
-            "pack(registry_incompatibility)": "disabled",
+            "pack(registry_incompatibility)": "enabled",
         }
         try:
             toggle_status, toggle_body = call(

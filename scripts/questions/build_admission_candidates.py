@@ -76,18 +76,12 @@ CANDIDATES_PATH = OUT_DIR / "candidates.jsonl"
 MODEL_INPUT_PATH = OUT_DIR / "model_input.jsonl"
 PILOT_KEY_PATH = OUT_DIR / "pilot_key.jsonl"
 
-# The guide lane's per-row anchors (D1/D2/D7) live under this gitignored
-# docling tree. Nothing tracked may hard-require a gitignored input, and a
-# rebuild without the tree would hold every guide row as source_missing --
-# replacing the only good candidates.jsonl with a degraded one. When the
-# tree is absent, main() prints one SKIP line and writes nothing.
-GUIDE_DOCLING_ROOT = (
-    ROOT / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides"
+GUIDE_SOURCE_ROOT = (
+    ROOT
+    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
+    / "TeacherLessonGuides"
 )
-DOCLING_SKIP_LINE = (
-    "SKIP build_admission_candidates: docling guide anchors absent; "
-    "existing outputs retained"
-)
+GUIDE_TRACKED_ROOT = ROOT / "curriculum/im_teacher_guides_docling"
 
 GRADE_TOKENS = ("k", "1", "2", "3", "4", "5", "6", "7", "8")
 GRADE_MODULES = tuple(f"grade_{token}_extracted_guide_questions" for token in GRADE_TOKENS)
@@ -410,6 +404,16 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def tracked_guide_source(source: str) -> str:
+    """Translate a legacy guide-store source path to the tracked corpus."""
+    path = ROOT / source
+    try:
+        relative = path.relative_to(GUIDE_SOURCE_ROOT)
+    except ValueError:
+        return source
+    return (GUIDE_TRACKED_ROOT / relative).relative_to(ROOT).as_posix()
+
+
 # ---------------------------------------------------------------------------
 # Labels lane (store 1): D1-D7
 # ---------------------------------------------------------------------------
@@ -691,32 +695,39 @@ def build_guide_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def check_guide_row(
     row: dict[str, Any], duplicate_ids: dict[str, list[str]]
 ) -> tuple[str, str | None, dict[str, Any], str | None]:
-    source_path = ROOT / row["source"]
+    source_path = ROOT / tracked_guide_source(row["source"])
 
     # D1 source_present
     if not source_path.is_file():
         return "held", "source_missing", {}, None
+
+    # D7 doc_sha_pinned is computed as soon as D1 establishes a source, so a
+    # row held by a later text gate still carries a resolvable document anchor.
+    try:
+        doc_sha = sha256_file(source_path)
+    except OSError:
+        return "held", "source_unreadable", {}, None
 
     # D2 span_integrity (reused context.cited_span_contains; \n-split line
     # addressing matches validate_guide_question's own convention)
     try:
         source_lines = source_path.read_text(encoding="utf-8").split("\n")
     except UnicodeError:
-        return "held", "source_unreadable", {}, None
+        return "held", "source_unreadable", {}, doc_sha
     line_start, line_end = row["line_start"], row["line_end"]
     if not (1 <= line_start <= line_end <= len(source_lines)):
-        return "held", "span_mismatch", {}, None
+        return "held", "span_mismatch", {}, doc_sha
     cited_lines = source_lines[line_start - 1: line_end]
     if not context.cited_span_contains(row["text"], cited_lines):
-        return "held", "span_mismatch", {}, None
+        return "held", "span_mismatch", {}, doc_sha
 
     # D3 interrogative_form
     if not interrogative_form_ok(row["text"]):
-        return "held", "not_interrogative", {}, None
+        return "held", "not_interrogative", {}, doc_sha
 
     # D4 text_clean
     if not text_clean_ok(row["text"]):
-        return "held", "malformed_text", {}, None
+        return "held", "malformed_text", {}, doc_sha
 
     # D5 label_heading_position -- INFORMATIONAL ONLY as of the 2026-08-20
     # positional-serving ruling. This step used to hold a row whose
@@ -739,13 +750,7 @@ def check_guide_row(
 
     # D6 anchor_unique
     if row["_id"] in duplicate_ids:
-        return "held", "duplicate_span", {"partners": duplicate_ids[row["_id"]]}, None
-
-    # D7 doc_sha_pinned
-    try:
-        doc_sha = sha256_file(source_path)
-    except OSError:
-        return "held", "source_unreadable", {}, None
+        return "held", "duplicate_span", {"partners": duplicate_ids[row["_id"]]}, doc_sha
 
     return "pass", None, {"heading_warrant": heading_warrant}, doc_sha
 
@@ -772,7 +777,7 @@ def render_guide_candidate(
         else:
             heading_warrant = "heading_contradicts"
     anchor = {
-        "source": row["source"],
+        "source": tracked_guide_source(row["source"]),
         "doc_sha256": doc_sha,
         "line_span": [row["line_start"], row["line_end"]],
         "activity_location": row["activity_location"],
@@ -1022,13 +1027,6 @@ def main() -> int:
              "files on disk; exits nonzero on any missing or differing output",
     )
     args = parser.parse_args()
-
-    # Both the build and the check need the gitignored guide anchors; without
-    # them a build would degrade candidates.jsonl and a check would report a
-    # mismatch that is really an absent input.
-    if not GUIDE_DOCLING_ROOT.is_dir():
-        print(DOCLING_SKIP_LINE)
-        return 0
 
     built = build_all()
     outputs = [

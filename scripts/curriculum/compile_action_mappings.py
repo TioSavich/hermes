@@ -29,7 +29,6 @@ from scripts.research.extract_lesson_context import (  # noqa: E402
     MIDDLE_CUTOFF_RE,
     MIDDLE_GUIDE_RE,
     MIDDLE_TASK_RE,
-    picture_description_lines,
 )
 
 # Every corpus this compiler reads and every artifact it writes is named once,
@@ -40,10 +39,9 @@ from scripts.research.extract_lesson_context import (  # noqa: E402
 # comparison in ``--check`` is what says the reroute was faithful.
 GUIDE_ROOT = ROOT / "curriculum/im_teacher_guides"
 MIDDLE_GUIDE_ROOT = (
-    ROOT
-    / "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output"
-    / "TeacherLessonGuides"
+    ROOT / "curriculum/im_teacher_guides_docling"
 )
+MIDDLE_GUIDE_MANIFEST = MIDDLE_GUIDE_ROOT / "manifest.json"
 SCOPE_ROOT = ROOT / "curriculum/scope_and_sequence"
 LESSON_FACT_ROOT = ROOT / "curriculum/im"
 GENERATED_ROOT = LESSON_FACT_ROOT / "generated"
@@ -52,8 +50,8 @@ GENERATED_ROOT = LESSON_FACT_ROOT / "generated"
 # keeps the source path as its runtime discriminator; it does not emit a
 # source_corpus atom. A Docling path is line-addressable evidence only after the
 # citation validator below confirms that the cited line contains its excerpt.
-# Docling text enters the reader only after picture_description_lines() removes
-# the separately generated Granite Vision captions and image references.
+# Docling text enters the reader only after the tracked manifest's line-index
+# receipt removes separately generated picture descriptions and image refs.
 HAND_TEMPLATED_GUIDE_CORPUS = "im_teacher_guides_hand_templated"
 DOCLING_GUIDE_CORPUS = "docling_2_114_0_teacher_lesson_guides"
 RECOVERED_SPAN_CORPUS = "recovered_task_span_sidecar"
@@ -85,6 +83,39 @@ def _source_corpus(source: str) -> str:
     if source.lower().endswith(".pdf"):
         return VISION_HARVEST_CORPUS
     return "repo_source"
+
+
+@lru_cache(maxsize=1)
+def _picture_description_index() -> dict[str, frozenset[int]]:
+    try:
+        payload = json.loads(MIDDLE_GUIDE_MANIFEST.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise SystemExit(f"cannot read tracked guide manifest: {exc}") from exc
+    if payload.get("schema") != "im_teacher_guides_docling_manifest_v1":
+        raise SystemExit("tracked guide manifest has an unexpected schema")
+    index: dict[str, frozenset[int]] = {}
+    for entry in payload.get("files", []):
+        path = entry.get("tracked_path")
+        excluded = entry.get("excluded_picture_description_line_indices")
+        if not isinstance(path, str) or not isinstance(excluded, list):
+            raise SystemExit("tracked guide manifest lacks picture-line receipts")
+        index[path] = frozenset(int(line) for line in excluded)
+    return index
+
+
+def _tracked_picture_description_lines(path: pathlib.Path) -> set[int]:
+    try:
+        path.relative_to(MIDDLE_GUIDE_ROOT)
+    except ValueError:
+        # Checks construct synthetic guide trees under the repository root.
+        # Those fixtures contain no generated picture-description annotations
+        # and are intentionally outside the tracked-corpus manifest.
+        return set()
+    relative = path.relative_to(ROOT).as_posix()
+    excluded = _picture_description_index().get(relative)
+    if excluded is None:
+        raise SystemExit(f"tracked guide manifest has no entry for {relative}")
+    return set(excluded)
 
 
 CODE_RE = re.compile(r"IM-G([K0-8])-U(\d+)-L(\d+)")
@@ -465,11 +496,7 @@ def _read_docling_teacher_guides(root: pathlib.Path) -> list[LessonDoc]:
             lines = path.read_text(
                 encoding="utf-8", errors="replace"
             ).splitlines()
-            excluded = picture_description_lines(path, lines)
-            if excluded is None:
-                raise SystemExit(
-                    f"Docling guide picture annotations cannot be separated: {path}"
-                )
+            excluded = _tracked_picture_description_lines(path)
             headings = {
                 line.strip()
                 for line in lines
@@ -673,11 +700,7 @@ def _segment_docling_task_regions(
 ) -> tuple[tuple[StudentTaskSpan, ...], str | None, int]:
     """Segment one Docling guide once, excluding annotations and furniture."""
     lines = doc.path.read_text(encoding="utf-8", errors="replace").splitlines()
-    excluded = picture_description_lines(doc.path, lines)
-    if excluded is None:
-        raise SystemExit(
-            f"Docling guide picture annotations cannot be separated: {doc.path}"
-        )
+    excluded = _tracked_picture_description_lines(doc.path)
     body_start = next(
         (index for index, line in enumerate(lines) if line == "## Activity Narrative"),
         None,

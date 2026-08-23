@@ -227,7 +227,8 @@ def build_lesson_index(chart: dict, cells: list) -> str:
     rows.append("<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
                 "max-width:1180px;margin:0 auto;padding:28px'>")
     rows.append(f"<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
-                f"{html.escape(code)}: notation monitoring chart</h1>")
+                f"<a href='../../../lesson?code={html.escape(code, quote=True)}'>"
+                f"{html.escape(code)}</a>: notation monitoring chart</h1>")
     rows.append(f"<p><strong>Standards:</strong> {html.escape(standards)} &nbsp; "
                 f"<strong>Representative equation:</strong> "
                 f"<code>{html.escape(equation)}</code></p>")
@@ -324,8 +325,9 @@ def build_top_index(records: list, skipped: list) -> str:
                 for c in r["cells"] for d in c["deformations"]
             })
             rows.append(
-                f"<li><a href='{html.escape(r['code'])}/index.html'>"
+                f"<li><a href='../../lesson?code={html.escape(r['code'], quote=True)}'>"
                 f"{html.escape(r['code'])}</a> "
+                f"<a href='{html.escape(r['code'], quote=True)}/index.html'>open chart</a> "
                 f"&mdash; <code>{html.escape(r['representative_equation'])}</code>; "
                 f"{html.escape('; '.join(defs))}</li>"
             )
@@ -339,7 +341,8 @@ def build_top_index(records: list, skipped: list) -> str:
                     "chart was rendered.</p>")
         rows.append("<ul>")
         for s in skipped:
-            rows.append(f"<li><code>{html.escape(s)}</code></li>")
+            rows.append(f"<li><a href='../../lesson?code={html.escape(s, quote=True)}'>"
+                        f"<code>{html.escape(s)}</code></a></li>")
         rows.append("</ul>")
 
     rows.append("</body>")

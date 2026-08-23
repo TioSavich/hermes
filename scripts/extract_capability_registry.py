@@ -95,6 +95,7 @@ class Parameter:
 # table supplies examples for the MCP core's irregular legacy operations too.
 PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
     "monitoring_chart_export": {"lesson_code": "IM-G3-U5-L2"},
+    "lesson_dossier": {"lesson_code": "IM-G1-U1-L1"},
     "lesson_deformation_chart": {"code": "IM-G3-U5-L2"},
     "deontic_scorecard": {"agent": "student", "commitments": [], "entitlements": []},
     "deontic_consequences": {"agent": "student", "commitments": []},
@@ -129,6 +130,11 @@ PARAMETER_EXAMPLES: dict[str, dict[str, object]] = {
 }
 
 OPERATION_DESCRIPTIONS = {
+    "lesson_dossier": (
+        "Gather the tracked lesson-filtered stores for one IM lesson code and "
+        "report content or absence for each surface, with detail-call keys and "
+        "links to matching generated pages."
+    ),
     "check_math_claim": (
         "Check one typed mathematical claim term: equivalence(fraction(A,B), "
         "fraction(C,D)), multiplication, difference, sum, subtraction, "

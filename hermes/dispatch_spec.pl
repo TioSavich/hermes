@@ -686,6 +686,10 @@ dispatch_spec(monitoring_chart_export,
     [lesson_code-code],
     call(user:monitoring_chart_export_dict, [lesson_code, out(dict)]),
     raw(unknown_lesson_code, missing_lesson_code)).
+dispatch_spec(lesson_dossier,
+    [lesson_code-code],
+    call(user:lesson_dossier_dict, [lesson_code, out(dict)]),
+    raw(missing_lesson_code)).
 dispatch_spec(ranked_figures,
     [lesson_code-code],
     call(user:monitoring_chart_figure_export, [lesson_code, out(dict)]),
@@ -813,6 +817,7 @@ dispatch_message(pair_score, malformed, "pair_score requires events list").
 dispatch_message(pair_graph, malformed, "pair_graph requires events list").
 dispatch_message(monitoring_chart_export, malformed, "monitoring_chart_export requires lesson_code").
 dispatch_message(monitoring_chart_export, no_result, "monitoring_chart_export found no matching chart for lesson_code").
+dispatch_message(lesson_dossier, malformed, "lesson_dossier requires lesson_code").
 dispatch_message(ranked_figures, malformed, "ranked_figures requires lesson_code").
 dispatch_message(ranked_figures, no_result, "ranked_figures found no matching selector candidates for lesson_code").
 dispatch_message(field_context, malformed, "field_context requires lesson_code").

@@ -29,6 +29,7 @@ Run: python3 hermes/app/scripts/export_lesson_deformation_charts.py
 from __future__ import annotations
 
 import html
+import re
 import sys
 from pathlib import Path
 
@@ -37,6 +38,18 @@ sys.path.insert(0, str(REPO))
 from hermes.app.scripts import export_engine
 
 OUT = export_engine.gallery_output(REPO / "hermes" / "app" / "web" / "generated" / "lesson_deformation_charts")
+LESSON_CODE_RE = re.compile(r"IM-G(?:K|[1-8])-U\d+-L\d+")
+
+
+def linked_lesson_codes(value: str) -> str:
+    safe = html.escape(value)
+    return LESSON_CODE_RE.sub(
+        lambda match: (
+            f"<a href='../../../lesson?code={match.group(0)}'>"
+            f"{match.group(0)}</a>"
+        ),
+        safe,
+    )
 
 # --- Enumerate and build every chart in one SWI-Prolog process ----------------
 
@@ -233,8 +246,9 @@ def build_lesson_index(chart: dict, cells: list) -> str:
     rows.append("<body style='font-family:system-ui;background:#f8f1df;color:#1b1810;"
                 "max-width:1180px;margin:0 auto;padding:28px'>")
     rows.append(f"<h1 style=\"font-family:Georgia,'Times New Roman',serif\">"
-                f"{html.escape(code)}: {html.escape(title)}</h1>")
-    rows.append(f"<p><strong>Standards:</strong> {html.escape(standards)} &nbsp; "
+                f"<a href='../../../lesson?code={html.escape(code, quote=True)}'>"
+                f"{html.escape(code)}</a>: {html.escape(title)}</h1>")
+    rows.append(f"<p><strong>Standards:</strong> {linked_lesson_codes(standards)} &nbsp; "
                 f"<strong>Fractions charted:</strong> {html.escape(fractions)}</p>")
     rows.append(provenance_banner(chart))
     rows.append(chart_body_copy(chart))
@@ -290,8 +304,9 @@ def build_top_index(records: list, shared_drawings: list[str]) -> str:
     for r in records:
         lesson_items.append(
             "<li style='margin:.45rem 0'>"
-            f"<a href='{html.escape(r['code'], quote=True)}/index.html'>"
-            f"{html.escape(r['code'])}</a> &middot; {html.escape(r['title'])}<br>"
+            f"<a href='../../lesson?code={html.escape(r['code'], quote=True)}'>"
+            f"{html.escape(r['code'])}</a> &middot; {html.escape(r['title'])} "
+            f"<a href='{html.escape(r['code'], quote=True)}/index.html'>open chart</a><br>"
             "<span style='color:#6b6252;font-size:.88rem'>hosts "
             f"{html.escape(', '.join(r['hosts']))} &middot; fractions "
             f"{html.escape(', '.join(r['fractions']))}</span></li>"

@@ -3,11 +3,12 @@
 /** <module> Incompatibility register/runtime agreement gate
  *
  * The generated register and `incompatibility_sets` read overlapping
- * hyperedges through different paths. This check requires every earned
- * register row to resolve through the runtime witness relation. It also
- * rejects a co-derivation permission whose declared profile or exact witness
- * edge no longer exists, or whose exact replacement pair is not earned by the
- * register.
+ * hyperedges through different paths. Before comparing them, this check
+ * installs the same tracked feeder union as the served worker. It requires
+ * every earned register row to resolve through the runtime witness relation.
+ * It also rejects a co-derivation permission whose declared profile or exact
+ * witness edge no longer exists, or whose exact replacement pair is not
+ * earned by the register.
  *
  * Run: swipl -q -l paths.pl -s scripts/checks/incompatibility_register_runtime_agreement.pl -g main -t halt
  */
@@ -20,9 +21,11 @@
 :- use_module(incompat(brandomian_incompatibility),
               [incompatible_set/1,
                incompatible_set_co_derivation/3]).
+:- use_module(incompat(served_incompatibility_closure), []).
 
 
 main :-
+    served_incompatibility_closure:install_served_incompatibility_closure,
     findall(
         row(Replacement, Replaced, RegisterWitnessCount),
         incompatibility_earned_entails(

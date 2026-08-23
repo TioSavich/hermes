@@ -146,12 +146,30 @@ def chat(ctx: Any) -> None:
     payload = ctx.payload if isinstance(ctx.payload, dict) else {}
     message = str(payload.get("message") or "").strip()
     mode = str(payload.get("mode") or "routed")
+    raw_history = payload.get("history", [])
     if not message:
         ctx._send_json({"error": "message is required"}, status=400)
         return
     if len(message) > 4000:
         ctx._send_json({"error": "message is over the 4000-character bound"}, status=400)
         return
+    if not isinstance(raw_history, list) or len(raw_history) > 50:
+        ctx._send_json({"error": "history must be a list of at most 50 prior turns"}, status=400)
+        return
+    history: list[dict[str, str]] = []
+    for item in raw_history:
+        if not isinstance(item, dict):
+            ctx._send_json({"error": "each history turn must be an object"}, status=400)
+            return
+        role = item.get("role")
+        content = item.get("content")
+        if role not in {"user", "assistant"} or not isinstance(content, str):
+            ctx._send_json({"error": "history turns require a user or assistant role and text content"}, status=400)
+            return
+        if len(content) > 4000:
+            ctx._send_json({"error": "a history turn is over the 4000-character bound"}, status=400)
+            return
+        history.append({"role": role, "content": content})
     if not SERVICE.lock.acquire(timeout=_LOCK_WAIT_S):
         ctx._send_json({
             "busy": True,
@@ -165,7 +183,9 @@ def chat(ctx: Any) -> None:
             names = SERVICE.strategy_names
         client = SidekickClient()
         started = time.time()
-        result = run_turn(message, mode, client.complete, mcp, ctx.prompts, names)
+        result = run_turn(
+            message, mode, client.complete, mcp, ctx.prompts, names, history=history
+        )
         body = result.to_dict()
         body["elapsed_ms"] = int((time.time() - started) * 1000)
         ctx._send_json(body)

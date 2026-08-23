@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import html
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -19,6 +20,81 @@ from hermes.app.scripts import export_engine
 
 DEFAULT_LESSONS = ["IM-G1-U3-L17", "IM-G2-U2-L7", "IM-G4-U4-L20"]
 DEFAULT_OUT = export_engine.gallery_output(REPO_ROOT / "hermes" / "app" / "web" / "generated" / "monitoring_visuals")
+
+PROVENANCE_GOAL = (
+    "use_module(library(http/json)),"
+    "use_module(render(misconception_render_link)),"
+    "forall(misconception_render_link:misconception_render_link(Id,Name,Via),"
+    "((Via=via(bibkey(B0))->atom_string(B0,Bib);"
+    "Via=via(authored),authored_render_citations:authored_render_citation(Id,V,_,_,_),"
+    "get_dict(bibkey,V,Bib);"
+    "Via=via(name_equality),once(misconception_registry:misconception_registry_entry("
+    "Name,_,citation(B0,_),_,_)),atom_string(B0,Bib)),"
+    "atom_string(Id,IdText),atom_string(Name,NameText),"
+    "json_write_dict(user_output,_{id:IdText,kind:cited,cited_as:Bib,"
+    "registry_name:NameText},[width(0)]),nl)),"
+    "forall(misconception_render_link:misconception_render_unlinked("
+    "Id,reason(authored_uncited(CitedAs,Author,Date))),"
+    "(atom_string(Id,IdText),json_write_dict(user_output,_{id:IdText,"
+    "kind:authored_uncited,cited_as:CitedAs,author:Author,date:Date},"
+    "[width(0)]),nl)),halt."
+)
+
+
+def load_render_provenance() -> dict[str, dict]:
+    """Read the governed render-link store through SWI-Prolog."""
+    proc = subprocess.run(
+        ["swipl", "-q", "-l", "paths.pl", "-g", PROVENANCE_GOAL],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=120,
+    )
+    if proc.returncode:
+        detail = proc.stderr.strip() or proc.stdout.strip()
+        raise RuntimeError(f"render provenance query failed: {detail}")
+    rows: dict[str, dict] = {}
+    for line in proc.stdout.splitlines():
+        if not line.startswith("{"):
+            continue
+        row = json.loads(line)
+        render_id = row.get("id")
+        if isinstance(render_id, str):
+            rows[render_id] = row
+    if not rows:
+        raise RuntimeError("render provenance query returned no governed rows")
+    return rows
+
+
+def visual_render_id(visual: dict) -> str | None:
+    """Resolve the render id already carried by a demo document."""
+    grammar = visual.get("grammar") if isinstance(visual, dict) else None
+    deformation = grammar.get("deformation") if isinstance(grammar, dict) else None
+    misconception = deformation.get("misconception") if isinstance(deformation, dict) else None
+    if isinstance(misconception, str) and misconception:
+        return misconception
+    if visual.get("family") == "transplant_deformation":
+        return "hybridized_model"
+    return None
+
+
+def provenance_line_html(render_id: str | None, provenance: dict[str, dict]) -> str:
+    """Return one provenance line, or nothing for an ungrounded row."""
+    row = provenance.get(render_id or "")
+    if not row:
+        return ""
+    cited_as = html.escape(str(row.get("cited_as") or ""))
+    if row.get("kind") == "cited" and cited_as:
+        return f'<p class="provenance">Citation: {cited_as}.</p>'
+    if row.get("kind") == "authored_uncited" and cited_as:
+        author = html.escape(str(row.get("author") or "unknown author"))
+        date = html.escape(str(row.get("date") or "undated"))
+        return (
+            f'<p class="provenance">Source: {cited_as} '
+            f'(authored, uncited; {author}, {date}).</p>'
+        )
+    return ""
 
 
 def configure_cli(parser) -> None:
@@ -85,7 +161,12 @@ def frame_sequence_html(side_proof: dict) -> str:
     return "<br>".join(items) if items else "none"
 
 
-def build_gallery(out_dir: Path, docs: dict[str, dict]) -> None:
+def build_gallery(
+    out_dir: Path,
+    docs: dict[str, dict],
+    provenance: dict[str, dict] | None = None,
+) -> None:
+    provenance = provenance if provenance is not None else load_render_provenance()
     cards: list[str] = []
     for code, payload in docs.items():
         visuals = payload.get("visuals") or []
@@ -112,9 +193,10 @@ def build_gallery(out_dir: Path, docs: dict[str, dict]) -> None:
                     media = f"""<div class="note">{note}</div>"""
                 cards.append(
                     f"""<figure>
-  <figcaption><b>{html.escape(code)}</b> {html.escape(side)}<br><span>{expression} {family}</span></figcaption>
+  <figcaption><b><a href="../../lesson?code={html.escape(code, quote=True)}">{html.escape(code)}</a></b> {html.escape(side)}<br><span>{expression} {family}</span></figcaption>
   {media}
   <p>{desc}</p>
+  {provenance_line_html(visual_render_id(visual), provenance)}
   {proof_summary_html(visual, side)}
 </figure>"""
                 )
@@ -133,6 +215,7 @@ figcaption span, p {{ color: #665f4f; }}
 img {{ width: 100%; height: 220px; object-fit: contain; background: #f8f1df; border: 1px solid #cabf9f; }}
 .note {{ min-height: 220px; display: grid; place-items: center; padding: 12px; background: #fff4e8; border: 1px solid #cabf9f; color: #665f4f; text-align: center; }}
 p {{ margin: 8px 0 0; font-size: 0.9rem; }}
+.provenance {{ color: #4d4638; }}
 .proof {{ margin: 10px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 10px; font-size: 0.78rem; color: #4d4638; }}
 .proof dt {{ font-weight: 700; }}
 .proof dd {{ margin: 0; overflow-wrap: anywhere; }}

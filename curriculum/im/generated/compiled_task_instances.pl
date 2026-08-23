@@ -3093,7 +3093,7 @@ compiled_lesson_task_instance('IM-G6-U2-L2', productive-divide(12, 6),
 compiled_lesson_task_instance('IM-G6-U2-L2', productive-divide(8, 2),
                               task_evidence(rule(im_g6_u2_l2_divide_2), source(e343_pdf('Grade6-2-Unit-teacher-guide-.pdf', pages("51"))), position(activity_2), excerpt("For each pint of glue, there are 4 cups of corn flour."))).
 compiled_lesson_task_instance('IM-G6-U2-L2', productive-multiply(3, 2),
-                              task_evidence(rule(equal_groups_each_has), source('hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/TeacherLessonGuides/Grade6/Grade6-2-2-Lesson-teacher-guide-/document.md', lines(599, 599)), position(student_task_statement(3)/item(1)), excerpt("Lin has 3 sets of stationery. Each set has 2"))).
+                              task_evidence(rule(equal_groups_each_has), source('curriculum/im_teacher_guides_docling/Grade6/Grade6-2-2-Lesson-teacher-guide-/document.md', lines(599, 599)), position(student_task_statement(3)/item(1)), excerpt("Lin has 3 sets of stationery. Each set has 2"))).
 compiled_lesson_task_instance('IM-G6-U2-L3', productive-add(18, 6),
                               task_evidence(rule(im_g6_u2_l3_add_16), source(e343_pdf('Grade6-2-Unit-teacher-guide-.pdf', pages("74"))), position(practice_4), excerpt("Write the missing number under each tick mark on the number line."))).
 compiled_lesson_task_instance('IM-G6-U2-L3', productive-add(30, 6),

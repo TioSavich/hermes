@@ -27,6 +27,7 @@ hermes/app/web/generated/notation_demos/.
 """
 from __future__ import annotations
 
+import html
 import sys
 from pathlib import Path
 
@@ -43,6 +44,13 @@ DEFAULT_OUT = (
 # corpus has no number-writing lesson, so the notation deformations attach to a
 # counting/addition lesson as host (spec §1, §8).
 HOST_LESSON = "IM-GK-U1-L12"
+
+
+def link_lesson_codes(value: str) -> str:
+    """Escape generated copy and link each visible host-lesson code."""
+    safe = html.escape(value)
+    link = f"<a href='../../lesson?code={HOST_LESSON}'>{HOST_LESSON}</a>"
+    return safe.replace(HOST_LESSON, link)
 
 
 # --- The three demos, each (code, swipl goal, honesty card) ------------------
@@ -136,7 +144,8 @@ def write_index(out_dir: Path, rendered: list[dict]) -> Path:
         "quantity it was meant to mean. Each deformation is born only as a "
         "labeled misconception (one flagged glyph or one appended mark). The "
         "diff between a correct inscription and its deformation is one field.</p>",
-        f"<p>Demos 1 and 3 host on the real lesson <code>{HOST_LESSON}</code> "
+        f"<p>Demos 1 and 3 host on the real lesson <code>"
+        f"{link_lesson_codes(HOST_LESSON)}</code> "
         "(<code>grade_k.pl:18</code>). The IM K/Grade-1 corpus carries no "
         "number-writing lesson, so a numeral-reversal deformation attaches to a "
         "counting/addition lesson as host. The honesty card under each demo "
@@ -152,10 +161,10 @@ def write_index(out_dir: Path, rendered: list[dict]) -> Path:
         parts.append(
             f"<section style='margin:28px 0;padding:16px;"
             "border:1px solid #cabf9f;background:#fdfaf0'>"
-            f"<h2 style='margin-top:0'>{item['title']}</h2>"
+            f"<h2 style='margin-top:0'>{link_lesson_codes(item['title'])}</h2>"
             f"<p style='color:#5a513c;font-size:0.95em'><strong>Honesty card:"
-            f"</strong> {item['card']}</p>"
-            f"<p><small><code>{item['code']}</code></small></p>"
+            f"</strong> {link_lesson_codes(item['card'])}</p>"
+            f"<p><small><code>{link_lesson_codes(item['code'])}</code></small></p>"
             f"{frames_html}"
             "</section>"
         )

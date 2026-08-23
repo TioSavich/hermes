@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 from pathlib import Path
 
 
@@ -60,9 +61,15 @@ def best_scenes_index() -> str:
     cards = []
     for path in sorted(directory.glob("*.svg")):
         label = path.stem.replace("_", " ").replace("-", " ")
+        match = re.match(r"(IM-G(?:K|\d+)-U\d+-L\d+)", path.stem)
+        lesson_link = (
+            f'<a href="../../lesson?code={html.escape(match.group(1), quote=True)}">'
+            f'{html.escape(match.group(1))}</a>: '
+            if match else ""
+        )
         cards.append(
-            '<figure><figcaption>{}</figcaption><img src="{}" alt="{}"></figure>'.format(
-                html.escape(label), html.escape(path.name), html.escape(label)
+            '<figure><figcaption>{}{}</figcaption><img src="{}" alt="{}"></figure>'.format(
+                lesson_link, html.escape(label), html.escape(path.name), html.escape(label)
             )
         )
     body = "\n".join(cards) or "<p>No lesson scenes were generated.</p>"

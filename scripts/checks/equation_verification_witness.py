@@ -299,9 +299,6 @@ dict_string(Dict, Key, Value) :-
     return outcomes
 
 
-DOCLING_GUIDES = compiler.MIDDLE_GUIDE_ROOT
-
-
 def validate_tracked_ledger() -> tuple[int, int]:
     ledger = json.loads(compiler.EQUATION_VERIFICATIONS.read_text(encoding="utf-8"))
     if ledger.get("schema") != "lesson_equation_verifications_v1":
@@ -327,19 +324,6 @@ def validate_tracked_ledger() -> tuple[int, int]:
 
 
 def main() -> int:
-    if not DOCLING_GUIDES.is_dir():
-        spans, accepted = validate_tracked_ledger()
-        controls = formal_core_controls()
-        if not controls:
-            raise SystemExit("formal-core controls returned no receipts")
-        print(
-            "SKIP equation-verification guide witnesses: "
-            "hermes/app/runtime/experiments/gemma4_tutor/docling/full-output/"
-            "TeacherLessonGuides absent locally (docling full-output); "
-            f"tracked ledger schema, {spans} spans, {accepted} accepted reason traces, "
-            f"and {len(controls)} formal-core controls verified"
-        )
-        return 0
     docs, covered, attachments = coverage()
     rows = compiler.validate_equation_verifications(ROOT, docs, covered, attachments)
     ledger = json.loads(

@@ -57,6 +57,20 @@ CHECKS = (
         fix="Confirm that this checkout includes the lesson corpus, then run the command again from the repository root.",
     ),
     Check(
+        label="lesson_dossier names content and absence for IM-G1-U1-L1",
+        tool="lesson_dossier",
+        arguments={"code": "IM-G1-U1-L1"},
+        accepts=lambda value: isinstance(value, dict)
+        and value.get("lesson_code") == "IM-G1-U1-L1"
+        and value.get("content_surface_count", 0) > 0
+        and value.get("empty_surface_count", 0) > 0
+        and len(value.get("surfaces", []))
+        == value.get("content_surface_count", 0) + value.get("empty_surface_count", 0)
+        and all("has_content" in row for row in value.get("surfaces", []))
+        and all(row.get("has_content") or row.get("absence") for row in value.get("surfaces", [])),
+        fix="Run lesson_dossier through the worker and confirm that every tracked surface returns either content metadata or one absence sentence.",
+    ),
+    Check(
         label="check_math_claim for ordinary-language addition",
         tool="check_math_claim",
         arguments={"term": "I added 4 and 2 and got 6"},

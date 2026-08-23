@@ -1,13 +1,15 @@
 /** <module> Generated finite incompatibility-entailment register
  *
- * This register models Brandomian incompatibility-entailment over a bounded,
- * declared corpus.  Its source is exactly the two tracked discovered-set caches
- * that incompatibility_sets.pl consults — the Big Red iteration7 harvest and
- * the locally computed error-rule cache — plus the five declared seed
- * hyperedges in brandomian_incompatibility.pl.  The nonterminating candidate is
- * counted by incompatibility_discovered_kind_count/2 but is not a declared
- * incompatible hyperedge: it has no incompatibility verdict.  It does not load optional registry adapters,
- * live discovery, geometry, learner servers, or literature mappings.
+ * This register derives finite candidates from exactly the two tracked
+ * discovered-set caches that incompatibility_sets.pl consults — the Big Red
+ * iteration7 harvest and the locally computed error-rule cache — plus the five
+ * declared seed hyperedges in brandomian_incompatibility.pl. Every candidate
+ * earned by that bounded inventory is then rechecked against the same tracked
+ * literature, misconception-registry, and error-rule feeder union installed by
+ * the served worker. A candidate survives only when the worker relation holds
+ * in that direction and refuses the reverse direction. The nonterminating
+ * candidate is counted by incompatibility_discovered_kind_count/2 but is not a
+ * declared incompatible hyperedge: it has no incompatibility verdict.
  *
  * The two caches carry different warrants.  A Lakoff-Nunez break is jointly
  * incoherent as mathematics; an error-rule triple coded from the research
@@ -26,8 +28,9 @@
  * incompatibility_earned_entails(A, B, WitnessCount) is a strict finite
  * entailment: B has a nonempty minimal profile; replacing B by A preserves
  * every profile context; and B does not preserve every profile context for A.
- * It is not classical consequence.  WitnessCount records the number of B's
- * minimal profile edges checked. incompatibility_earned_entailment_support/3
+ * It is not classical consequence. WitnessCount records the number of B's
+ * profile rows checked in the served worker closure.
+ * incompatibility_earned_entailment_support/3
  * marks the evidential boundary without changing the relation: a one-edge
  * target profile is sparse_witness because one shared remainder alone can
  * establish replacement; two or more independently checked profile edges are
@@ -1544,46 +1547,45 @@ incompatibility_earned_entails(borrow_across_zero_no_cascade, add_instead_of_sub
 incompatibility_earned_entails(borrow_across_zero_no_cascade, borrow_without_reducing_bases, 1).
 incompatibility_earned_entails(borrow_across_zero_no_cascade, smaller_from_larger_in_column, 1).
 incompatibility_earned_entails(even, composite, 1).
-incompatibility_earned_entails(inference(classes_are_containers_grounds_sets), o(grounded(classes_are_containers)), 11).
-incompatibility_earned_entails(inference(functions_are_curves_grounds_functions), o(grounded(functions_are_curves)), 11).
-incompatibility_earned_entails(inference(measuring_stick_grounds_length), o(grounded(measuring_stick)), 12).
-incompatibility_earned_entails(inference(motion_along_path_grounds_arithmetic), o(grounded(motion_along_a_path)), 11).
-incompatibility_earned_entails(inference(object_collection_grounds_subtraction), inference(object_construction_grounds_arithmetic), 10).
-incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_collection)), 42).
-incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(inference(object_construction_grounds_arithmetic), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), 11).
-incompatibility_earned_entails(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), 11).
-incompatibility_earned_entails(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), 1).
-incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 1).
-incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 1).
-incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 1).
-incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 1).
-incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), 1).
-incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(numeral_length_order_inverts_decimal_value_order)), 2).
-incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(the_numerals_carry_different_place_counts)), 1).
-incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(written_numeral_order_diverges_from_decimal_value_order)), 2).
-incompatibility_earned_entails(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1).
-incompatibility_earned_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 1).
-incompatibility_earned_entails(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 1).
-incompatibility_earned_entails(o(context(numeral_length_order_tracks_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 1).
-incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), 1).
-incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_ten)), 2).
-incompatibility_earned_entails(o(context(the_divisor_is_not_a_whole_number)), o(context(the_divisor_is_not_one)), 1).
-incompatibility_earned_entails(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_a_whole_number)), 5).
-incompatibility_earned_entails(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_one)), 1).
-incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_does_not_terminate)), 3).
-incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_repeats_periodically)), 4).
-incompatibility_earned_entails(o(context(the_expansion_repeats_periodically)), o(context(the_expansion_does_not_terminate)), 3).
-incompatibility_earned_entails(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), 1).
-incompatibility_earned_entails(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 1).
-incompatibility_earned_entails(o(grounded(object_collection)), o(grounded(object_construction)), 20).
-incompatibility_earned_entails(o(irrational_demanded), o(fractional_unit_demanded), 12).
-incompatibility_earned_entails(o(irrational_demanded), o(subtract_larger_from_smaller), 12).
-incompatibility_earned_entails(o(zero_demanded), o(fractional_unit_demanded), 12).
-incompatibility_earned_entails(o(zero_demanded), o(subtract_larger_from_smaller), 12).
+incompatibility_earned_entails(inference(classes_are_containers_grounds_sets), o(grounded(classes_are_containers)), 24).
+incompatibility_earned_entails(inference(functions_are_curves_grounds_functions), o(grounded(functions_are_curves)), 24).
+incompatibility_earned_entails(inference(measuring_stick_grounds_length), o(grounded(measuring_stick)), 25).
+incompatibility_earned_entails(inference(motion_along_path_grounds_arithmetic), o(grounded(motion_along_a_path)), 24).
+incompatibility_earned_entails(inference(object_collection_grounds_subtraction), inference(object_construction_grounds_arithmetic), 69).
+incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_collection)), 55).
+incompatibility_earned_entails(inference(object_collection_grounds_subtraction), o(grounded(object_construction)), 33).
+incompatibility_earned_entails(inference(object_construction_grounds_arithmetic), o(grounded(object_construction)), 33).
+incompatibility_earned_entails(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), 24).
+incompatibility_earned_entails(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), 24).
+incompatibility_earned_entails(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), 2).
+incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 2).
+incompatibility_earned_entails(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 2).
+incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), 2).
+incompatibility_earned_entails(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), 2).
+incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), 2).
+incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(numeral_length_order_inverts_decimal_value_order)), 4).
+incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(the_numerals_carry_different_place_counts)), 2).
+incompatibility_earned_entails(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(written_numeral_order_diverges_from_decimal_value_order)), 4).
+incompatibility_earned_entails(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 2).
+incompatibility_earned_entails(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), 2).
+incompatibility_earned_entails(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 2).
+incompatibility_earned_entails(o(context(numeral_length_order_tracks_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 2).
+incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), 2).
+incompatibility_earned_entails(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_ten)), 4).
+incompatibility_earned_entails(o(context(the_divisor_is_not_a_whole_number)), o(context(the_divisor_is_not_one)), 2).
+incompatibility_earned_entails(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_a_whole_number)), 10).
+incompatibility_earned_entails(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_one)), 2).
+incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_does_not_terminate)), 6).
+incompatibility_earned_entails(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_repeats_periodically)), 8).
+incompatibility_earned_entails(o(context(the_expansion_repeats_periodically)), o(context(the_expansion_does_not_terminate)), 6).
+incompatibility_earned_entails(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), 2).
+incompatibility_earned_entails(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), 2).
+incompatibility_earned_entails(o(grounded(object_collection)), o(grounded(object_construction)), 33).
+incompatibility_earned_entails(o(irrational_demanded), o(fractional_unit_demanded), 51).
+incompatibility_earned_entails(o(irrational_demanded), o(subtract_larger_from_smaller), 51).
+incompatibility_earned_entails(o(zero_demanded), o(fractional_unit_demanded), 51).
+incompatibility_earned_entails(o(zero_demanded), o(subtract_larger_from_smaller), 51).
 incompatibility_earned_entails(prime_greater_than_2, odd, 1).
-incompatibility_earned_entails(strategy(subtraction,decompose_base_for_ones), strategy(subtraction,borrow_across_zero_cascade), 1).
 
 incompatibility_earned_entailment_support(borrow_across_zero_no_cascade, add_instead_of_subtract_column, sparse_witness).
 incompatibility_earned_entailment_support(borrow_across_zero_no_cascade, borrow_without_reducing_bases, sparse_witness).
@@ -1599,36 +1601,35 @@ incompatibility_earned_entailment_support(inference(object_collection_grounds_su
 incompatibility_earned_entailment_support(inference(object_construction_grounds_arithmetic), o(grounded(object_construction)), multi_profile_witness).
 incompatibility_earned_entailment_support(inference(points_on_line_grounds_number), o(grounded(numbers_are_points_on_a_line)), multi_profile_witness).
 incompatibility_earned_entailment_support(inference(weierstrass_continuity_grounds_continuity), o(grounded(weierstrass_continuity_metaphor)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(a_factor_lies_between_zero_and_one)), o(context(a_factor_is_a_non_integer_decimal)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(component_sum_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(component_order_inverts_for_equal_numerators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(denominator_order_inverts_for_equal_numerators)), o(context(numerator_order_diverges_for_unequal_denominators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(fraction_part_numeral_order_diverges_from_value_order)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(numeral_length_order_inverts_decimal_value_order)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(the_numerals_carry_different_place_counts)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(fraction_part_numeral_order_diverges_within_equal_integer_parts)), o(context(written_numeral_order_diverges_from_decimal_value_order)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(numeral_length_order_tracks_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(gap_order_diverges_from_fraction_order)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(inverse_component_order_diverges_for_equal_denominators)), o(context(inverse_denominator_order_diverges_for_unequal_numerators)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(numeral_length_order_inverts_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(numeral_length_order_tracks_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_one)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_divisor_is_a_power_of_five)), o(context(the_divisor_is_not_ten)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(the_divisor_is_not_a_whole_number)), o(context(the_divisor_is_not_one)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(the_divisor_is_not_a_whole_number)), o(context(the_divisor_is_not_one)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_a_whole_number)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_one)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(the_divisor_lies_between_zero_and_one)), o(context(the_divisor_is_not_one)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_does_not_terminate)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_nines_without_end)), o(context(the_expansion_repeats_periodically)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(context(the_expansion_repeats_periodically)), o(context(the_expansion_does_not_terminate)), multi_profile_witness).
-incompatibility_earned_entailment_support(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), sparse_witness).
-incompatibility_earned_entailment_support(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), sparse_witness).
+incompatibility_earned_entailment_support(o(context(the_tenths_digit_is_nine)), o(context(the_numeral_carries_a_nonzero_fraction_part)), multi_profile_witness).
+incompatibility_earned_entailment_support(o(context(written_numeral_order_diverges_from_decimal_value_order)), o(context(the_numerals_carry_different_place_counts)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(grounded(object_collection)), o(grounded(object_construction)), multi_profile_witness).
 incompatibility_earned_entailment_support(o(irrational_demanded), o(fractional_unit_demanded), multi_profile_witness).
 incompatibility_earned_entailment_support(o(irrational_demanded), o(subtract_larger_from_smaller), multi_profile_witness).
 incompatibility_earned_entailment_support(o(zero_demanded), o(fractional_unit_demanded), multi_profile_witness).
 incompatibility_earned_entailment_support(o(zero_demanded), o(subtract_larger_from_smaller), multi_profile_witness).
 incompatibility_earned_entailment_support(prime_greater_than_2, odd, sparse_witness).
-incompatibility_earned_entailment_support(strategy(subtraction,decompose_base_for_ones), strategy(subtraction,borrow_across_zero_cascade), sparse_witness).
 
 incompatibility_vacuously_entails(add_counts_without_composite_unit, o(grounded(cantors_metaphor))).
 incompatibility_vacuously_entails(add_counts_without_composite_unit, o(grounded(functions_are_sets_of_ordered_pairs))).
@@ -3202,9 +3203,11 @@ incompatibility_data_density(124, 1).
 incompatibility_order_count(declared_input_hyperedges, 699).
 incompatibility_order_count(minimal_hyperedges, 314).
 incompatibility_order_count(contents, 385).
-incompatibility_order_count(earned_entailments, 44).
-incompatibility_order_count(sparse_witness_earned_entailments, 22).
-incompatibility_order_count(multi_profile_witness_earned_entailments, 22).
+incompatibility_order_count(earned_entailments, 43).
+incompatibility_order_count(finite_candidate_earned_entailments, 44).
+incompatibility_order_count(worker_closure_defeated_earned_candidates, 1).
+incompatibility_order_count(sparse_witness_earned_entailments, 5).
+incompatibility_order_count(multi_profile_witness_earned_entailments, 38).
 incompatibility_order_count(vacuous_entailments, 1536).
 incompatibility_order_count(equivalent_pairs, 9).
 incompatibility_order_count(mutual_nonidentical_pairs, 0).

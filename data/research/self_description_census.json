@@ -406,7 +406,7 @@
       "crosswalk": 38,
       "dialectic": 1,
       "geometry_witness": 35,
-      "incompatibility": 11,
+      "incompatibility": 9,
       "infrastructure": 20,
       "juncture": 1,
       "learner": 25,
@@ -417,15 +417,15 @@
       "sequent": 14,
       "standards": 23,
       "synthesis": 71,
-      "unclassified": 14,
+      "unclassified": 15,
       "workflow": 29,
       "zeeman": 4
     },
     "by_status": {
-      "lazy_reachable": 11,
+      "lazy_reachable": 9,
       "orphan_module": 128,
       "routed_only": 15,
-      "routed_paged": 195,
+      "routed_paged": 196,
       "unrouted": 17
     },
     "orphan_verdicts": {
@@ -438,7 +438,7 @@
       "superseded": 0,
       "undetermined": 22
     },
-    "total": 366,
+    "total": 365,
     "unrouted": 17
   },
   "generated_by": "scripts/research/build_self_description_census.py",

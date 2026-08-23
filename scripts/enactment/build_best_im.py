@@ -222,7 +222,8 @@ def warrant_html(row: dict) -> str:
     if read_from and read_from != row.get("lesson"):
         block += (
             f"<br><span style='font-size:12px;color:{QUIET}'>The form was named "
-            f"from {esc(read_from)}, {esc(form_warrant.get('source', ''))}:"
+            f"from <a href='../lesson?code={esc(read_from)}'>{esc(read_from)}</a>, "
+            f"{esc(form_warrant.get('source', ''))}:"
             f"{esc(form_warrant.get('line', ''))}</span>"
         )
     return block + "</blockquote>"
@@ -265,7 +266,8 @@ def card(row: dict, scenes: list[str]) -> str:
     return f"""
 <article style='border:1px solid {RULE};background:{CARD};padding:16px 18px;margin:16px 0'>
   <h3 style="font-family:Georgia,'Times New Roman',serif;margin:0 0 2px">
-    {esc(row['lesson'])} &middot; grade {esc(row['grade'])} &middot; <em>{esc(row['form'])}</em>
+    <a href='../lesson?code={esc(row['lesson'])}'>{esc(row['lesson'])}</a>
+    &middot; grade {esc(row['grade'])} &middot; <em>{esc(row['form'])}</em>
   </h3>
   <p style='margin:0 0 10px;color:{MID}'>{esc(row.get('form_gloss', ''))}</p>
   <p style='margin:0 0 10px'>{verdict_mark(row.get('verdict', ''))}
